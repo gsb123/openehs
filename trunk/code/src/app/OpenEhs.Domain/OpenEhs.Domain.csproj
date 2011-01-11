@@ -42,8 +42,8 @@
   <ItemGroup>
     <Compile Include="Models\Address\Address.cs" />
     <Compile Include="Models\LogIn\LogIn.cs" />
-    <Compile Include="Models\Patient\Gender.cs" />
-    <Compile Include="Models\Patient\Patient.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="Patient.cs" />
     <Compile Include="Models\Staff\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -53,6 +53,7 @@
     <Folder Include="Models\InPatient\" />
     <Folder Include="Models\Labs\" />
     <Folder Include="Models\OutPatient\" />
+    <Folder Include="Models\Patient\" />
     <Folder Include="Models\Products\" />
     <Folder Include="Models\Vitals\" />
   </ItemGroup>
