@@ -40,8 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Patient.cs" />
+    <Compile Include="Models\Address\Address.cs" />
+    <Compile Include="Models\LogIn\LogIn.cs" />
+    <Compile Include="Models\Patient\Gender.cs" />
+    <Compile Include="Models\Patient\Patient.cs" />
+    <Compile Include="Models\Staff\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Billing\" />
+    <Folder Include="Models\CheckIn\" />
+    <Folder Include="Models\InPatient\" />
+    <Folder Include="Models\Labs\" />
+    <Folder Include="Models\OutPatient\" />
+    <Folder Include="Models\Products\" />
+    <Folder Include="Models\Vitals\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
