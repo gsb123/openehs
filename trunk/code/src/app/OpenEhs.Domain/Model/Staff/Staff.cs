@@ -22,7 +22,7 @@ namespace OpenEhs.Domain
         private string _middlename;
         private string _lastname;
         private string _phonenumber;
-        private int _stafftype;
+        private StaffType _stafftype;
         private string _licensenumber;
         private Address _address;
         private LogIn _login;
@@ -61,7 +61,7 @@ namespace OpenEhs.Domain
             set { _phonenumber = value; }
         }
 
-        public int StaffType
+        public StaffType StaffType
         {
             get { return _stafftype; }
             set { _stafftype = value; }
@@ -89,7 +89,7 @@ namespace OpenEhs.Domain
 
         #region Constructor(s)
 
-        public Staff(int id, string firstname, string middlename, string lastname, string phonenumber, int stafftype, string licensenumber, Address address, LogIn login)
+        public Staff(int id, string firstname, string middlename, string lastname, string phonenumber, StaffType stafftype, string licensenumber, Address address, LogIn login)
         {
             Id = id;
             FirstName = firstname;

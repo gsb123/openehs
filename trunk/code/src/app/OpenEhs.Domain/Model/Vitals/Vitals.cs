@@ -10,7 +10,7 @@ namespace OpenEhs.Domain
         #region Fields
 
         private int _id;
-        private int _type;
+        private VitalsType _type;
         private float _height;
         private float _weight;
         private int _heartrate;
@@ -29,7 +29,7 @@ namespace OpenEhs.Domain
             set { _id = value; }
         }
 
-        public int Type
+        public VitalsType Type
         {
             get { return _type; }
             set { _type = value; }
@@ -81,7 +81,7 @@ namespace OpenEhs.Domain
 
         #region Constructor(s)
 
-        public Vitals(int id, int type, float height, float weight, int heartrate, float temperature, int bpsystolic, int bpdiastolic, int respiratoryrate)
+        public Vitals(int id, VitalsType type, float height, float weight, int heartrate, float temperature, int bpsystolic, int bpdiastolic, int respiratoryrate)
         {
             Id = id;
             Type = type;

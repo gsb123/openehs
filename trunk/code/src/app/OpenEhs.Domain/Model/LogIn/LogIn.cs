@@ -20,7 +20,7 @@ namespace OpenEhs.Domain
         private int _id;
         private string _username;
         private string _password;
-        private string _loginpermissions;
+        private LogInPermissions _loginpermissions;
 
         #endregion
 
@@ -44,7 +44,7 @@ namespace OpenEhs.Domain
             set { _password = value; }
         }
 
-        public string LogInPermissions
+        public LogInPermissions LogInPermissions
         {
             get { return _loginpermissions; }
             set { _loginpermissions = value; }
@@ -54,7 +54,7 @@ namespace OpenEhs.Domain
 
         #region Constructor(s)
 
-        public LogIn(int id, string username, string password, string loginpermissions)
+        public LogIn(int id, string username, string password, LogInPermissions loginpermissions)
         {
             Id = id;
             UserName = username;
