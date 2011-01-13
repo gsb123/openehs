@@ -57,6 +57,7 @@
     <Compile Include="Model\Patient\EmergencyContact.cs" />
     <Compile Include="Model\Patient\Gender.cs" />
     <Compile Include="Model\Patient\Patient.cs" />
+    <Compile Include="Model\Patient\Relationship.cs" />
     <Compile Include="Model\Products\Products.cs" />
     <Compile Include="Model\Service\Service.cs" />
     <Compile Include="Model\Staff\Staff.cs" />
