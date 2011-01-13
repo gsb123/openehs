@@ -12,7 +12,7 @@ namespace OpenEhs.Domain
         private int _id;
         private string _name;
         private string _unit;
-        private string _catagory;
+        private string _catagory;   //TODO split to table (abstract it out)
         private decimal _unitcost;
         private int _quantityonhand;
 
