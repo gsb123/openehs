@@ -7,6 +7,7 @@ namespace OpenEhs.Domain
 {
     public enum Gender
     {
-
+        Male,
+        Female
     }
 }
