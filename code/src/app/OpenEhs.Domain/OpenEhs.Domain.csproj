@@ -45,6 +45,8 @@
     <Compile Include="Model\Billing\InvoiceItem.cs" />
     <Compile Include="Model\Billing\Payment.cs" />
     <Compile Include="Model\CheckIn\PatientCheckIn.cs" />
+    <Compile Include="Model\CheckIn\PCIStatus.cs" />
+    <Compile Include="Model\CheckIn\PCIType.cs" />
     <Compile Include="Model\Diagnosis\PreWrittenDiagnosis.cs" />
     <Compile Include="Model\InPatient\InPatient.cs" />
     <Compile Include="Model\InPatient\InPatientEncounter.cs" />
