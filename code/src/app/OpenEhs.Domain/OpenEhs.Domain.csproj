@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\RequiredFieldException.cs" />
+    <Compile Include="Exceptions\ValueLessThanZeroException.cs" />
     <Compile Include="Model\Address\Address.cs" />
     <Compile Include="Model\Billing\Invoice.cs" />
     <Compile Include="Model\Billing\InvoiceItem.cs" />

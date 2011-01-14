@@ -11,11 +11,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenEhs.Domain
+namespace OpenEhs.Domain.Exceptions
 {
-    public enum PCIType
+    /// <summary>
+    /// Primary purpose is to be thrown when a value is supposed to be > 0
+    /// </summary>
+    class ValueLessThanZeroException
     {
-        OutPatient = 0,
-        InPatient = 1
     }
 }
