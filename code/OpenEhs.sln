@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F1FD6E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Domain", "src\app\OpenEhs.Domain\OpenEhs.Domain.csproj", "{9F0827C4-FFAE-4B13-9736-012A13662D90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Web", "src\app\OpenEhs.Web\OpenEhs.Web.csproj", "{0D8E6BC1-5D8F-4900-9845-772A3FAC193C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,11 +37,16 @@ Global
 		{9F0827C4-FFAE-4B13-9736-012A13662D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F0827C4-FFAE-4B13-9736-012A13662D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F0827C4-FFAE-4B13-9736-012A13662D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D8E6BC1-5D8F-4900-9845-772A3FAC193C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D8E6BC1-5D8F-4900-9845-772A3FAC193C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D8E6BC1-5D8F-4900-9845-772A3FAC193C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D8E6BC1-5D8F-4900-9845-772A3FAC193C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{0D8E6BC1-5D8F-4900-9845-772A3FAC193C} = {08F3D030-DEA3-4542-92DB-E322A169F333}
 		{EEF2D502-CDEF-4B26-B83F-66F07694E1E9} = {634B7C0D-518D-4D32-BDF0-8335B32B590F}
 		{7501A878-FBE8-444D-9884-B4237DF11207} = {9C50DA22-C175-47B2-9862-A6B4F5D4FD00}
 		{9F0827C4-FFAE-4B13-9736-012A13662D90} = {F1FD6ECE-3FB5-4461-8037-EB7255E0F589}
