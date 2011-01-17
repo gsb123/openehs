@@ -6,11 +6,6 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenEhs.Domain
 {
     public class Staff
@@ -18,12 +13,12 @@ namespace OpenEhs.Domain
         #region Fields
 
         private int _id;
-        private string _firstname;
-        private string _middlename;
-        private string _lastname;
-        private string _phonenumber;
-        private StaffType _stafftype;
-        private string _licensenumber;
+        private string _firstName;
+        private string _middleName;
+        private string _lastName;
+        private string _phoneNumber;
+        private StaffType _type;
+        private string _licenseNumber;
         private Address _address;
         private LogIn _login;
 
@@ -39,38 +34,38 @@ namespace OpenEhs.Domain
 
         public string FirstName
         {
-            get { return _firstname; }
-            set { _firstname = value; }
+            get { return _firstName; }
+            set { _firstName = value; }
         }
 
         public string MiddleName
         {
-            get { return _middlename; }
-            set { _middlename = value; }
+            get { return _middleName; }
+            set { _middleName = value; }
         }
 
         public string LastName
         {
-            get { return _lastname; }
-            set { _lastname = value; }
+            get { return _lastName; }
+            set { _lastName = value; }
         }
 
         public string PhoneNumber
         {
-            get { return _phonenumber; }
-            set { _phonenumber = value; }
+            get { return _phoneNumber; }
+            set { _phoneNumber = value; }
         }
 
-        public StaffType StaffType
+        public StaffType Type
         {
-            get { return _stafftype; }
-            set { _stafftype = value; }
+            get { return _type; }
+            set { _type = value; }
         }
 
         public string LicenseNumber
         {
-            get { return _licensenumber; }
-            set { _licensenumber = value; }
+            get { return _licenseNumber; }
+            set { _licenseNumber = value; }
         }
 
         public Address Address
@@ -96,7 +91,7 @@ namespace OpenEhs.Domain
             MiddleName = middlename;
             LastName = lastname;
             PhoneNumber = phonenumber;
-            StaffType = stafftype;
+            Type = stafftype;
             LicenseNumber = licensenumber;
             Address = address;
             LogIn = login;

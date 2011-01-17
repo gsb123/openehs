@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\MyFakeLogger.cs" />
+    <Compile Include="Fakes\MyFakeLogManager.cs" />
+    <Compile Include="Interfaces\ILogManager.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

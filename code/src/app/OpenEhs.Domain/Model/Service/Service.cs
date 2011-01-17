@@ -6,11 +6,6 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenEhs.Domain
 {
     public class Service
@@ -19,7 +14,7 @@ namespace OpenEhs.Domain
 
         private int _id;
         private string _name;
-        private decimal _servicecost;
+        private decimal _price;
 
         #endregion
 
@@ -37,21 +32,21 @@ namespace OpenEhs.Domain
             set { _name = value; }
         }
 
-        public decimal ServiceCost
+        public decimal Price
         {
-            get { return _servicecost; }
-            set { _servicecost = value; }
+            get { return _price; }
+            set { _price = value; }
         }
 
         #endregion
 
         #region Constructor(s)
 
-        public Service(int id, string name, decimal servicecost)
+        public Service(int id, string name, decimal price)
         {
             Id = id;
             Name = name;
-            ServiceCost = servicecost;
+            Price = price;
         }
 
         #endregion

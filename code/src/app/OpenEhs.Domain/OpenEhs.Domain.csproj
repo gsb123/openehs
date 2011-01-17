@@ -34,17 +34,18 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Vitals\BloodPressure.cs" />
+    <Compile Include="Model\Vitals\BloodPressureCategory.cs" />
+    <Compile Include="Model\Product\Category.cs" />
     <Compile Include="Exceptions\RequiredFieldException.cs" />
     <Compile Include="Exceptions\ValueLessThanZeroException.cs" />
     <Compile Include="Model\Address\Address.cs" />
     <Compile Include="Model\Billing\Invoice.cs" />
-    <Compile Include="Model\Billing\InvoiceItem.cs" />
+    <Compile Include="Model\Billing\InvoiceLineItem.cs" />
     <Compile Include="Model\Billing\Payment.cs" />
     <Compile Include="Model\CheckIn\PatientCheckIn.cs" />
     <Compile Include="Model\CheckIn\PCIStatus.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="Model\Patient\Gender.cs" />
     <Compile Include="Model\Patient\Patient.cs" />
     <Compile Include="Model\Patient\Relationship.cs" />
-    <Compile Include="Model\Products\Products.cs" />
+    <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Service\Service.cs" />
     <Compile Include="Model\Staff\Staff.cs" />
     <Compile Include="Model\Staff\StaffType.cs" />

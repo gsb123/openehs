@@ -6,24 +6,19 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenEhs.Domain
 {
-    public class InvoiceItem
+    public class InvoiceLineItem
     {
         #region Fields
 
         private int _id;
-        private Invoice _invoiceid;
-        private Products _productsid;
-        private Service _serviceid;
-        private decimal _quantity;
+        private Product _product;
+        private Service _service;
+        private decimal _quantity; // NOTE: So, is there a reason for this to be a floating point number?
 
         #endregion
+
 
         #region Properties
 
@@ -33,22 +28,16 @@ namespace OpenEhs.Domain
             set { _id = value; }
         }
 
-        public Invoice InvoiceID
+        public Product Product
         {
-            get { return _invoiceid; }
-            set { _invoiceid = value; }
+            get { return _product; }
+            set { _product = value; }
         }
 
-        public Products ProductsID
+        public Service Service
         {
-            get { return _productsid; }
-            set { _productsid = value; }
-        }
-
-        public Service ServiceID
-        {
-            get { return _serviceid; }
-            set { _serviceid = value; }
+            get { return _service; }
+            set { _service = value; }
         }
 
         public decimal Quantity
@@ -57,16 +46,27 @@ namespace OpenEhs.Domain
             set { _quantity = value; }
         }
 
+        public decimal Total
+        {
+            get
+            {
+                if (_service != null)
+                    return _service.Price;
+
+                return _product.Price * Quantity;
+            }
+        }
+
         #endregion
+
 
         #region Constructor(s)
 
-        public InvoiceItem(int id, Invoice invoiceid, Products productsid, Service serviceid, decimal quantity)
+        public InvoiceLineItem(int id, Product product, Service service, decimal quantity)
         {
             Id = id;
-            InvoiceID = invoiceid;
-            ProductsID = productsid;
-            ServiceID = serviceid;
+            Product = product;
+            Service = service;
             Quantity = quantity;
         }
 

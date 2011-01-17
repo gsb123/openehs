@@ -6,14 +6,9 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenEhs.Domain
 {
-    public class EmergencyContact
+    public class EmergencyContact // NOTE: Should we just call this class "Contact"?
     {
         #region Fields
 
