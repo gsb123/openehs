@@ -13,16 +13,16 @@ using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class Products
+    public class Product
     {
         #region Fields
 
         private int _id;
         private string _name;
         private string _unit;
-        private string _catagory;   //TODO split to table (abstract it out)
-        private decimal _unitcost;
-        private int _quantityonhand;
+        private string _category;   //TODO split to table (abstract it out)
+        private decimal _unitCost;
+        private int _quantityOnHand;
 
         #endregion
 
@@ -46,34 +46,34 @@ namespace OpenEhs.Domain
             set { _unit = value; }
         }
 
-        public string Catagory
+        public string Category
         {
-            get { return _catagory; }
-            set { _catagory = value; }
+            get { return _category; }
+            set { _category = value; }
         }
 
         public decimal UnitCost
         {
-            get { return _unitcost; }
-            set { _unitcost = value; }
+            get { return _unitCost; }
+            set { _unitCost = value; }
         }
 
         public int QuantityOnHand
         {
-            get { return _quantityonhand; }
-            set { _quantityonhand = value; }
+            get { return _quantityOnHand; }
+            set { _quantityOnHand = value; }
         }
 
         #endregion
 
         #region Constructor(s)
 
-        public Products(int id, string name, string unit, string catagory, decimal unitcost, int quantityonhand)
+        public Product(int id, string name, string unit, string catagory, decimal unitcost, int quantityonhand)
         {
             Id = id;
             Name = name;
             Unit = unit;
-            Catagory = catagory;
+            Category = catagory;
             UnitCost = unitcost;
             QuantityOnHand = quantityonhand;
         }
