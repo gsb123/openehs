@@ -6,11 +6,6 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenEhs.Domain
 {
     public class Product
@@ -19,9 +14,10 @@ namespace OpenEhs.Domain
 
         private int _id;
         private string _name;
+        private string _description;
         private string _unit;
-        private string _category;   //TODO split to table (abstract it out)
-        private decimal _unitCost;
+        private Category _category;
+        private decimal _price;
         private int _quantityOnHand;
 
         #endregion
@@ -40,22 +36,34 @@ namespace OpenEhs.Domain
             set { _name = value; }
         }
 
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+            }
+        }
+
         public string Unit
         {
             get { return _unit; }
             set { _unit = value; }
         }
 
-        public string Category
+        public Category Category
         {
             get { return _category; }
             set { _category = value; }
         }
 
-        public decimal UnitCost
+        public decimal Price
         {
-            get { return _unitCost; }
-            set { _unitCost = value; }
+            get { return _price; }
+            set { _price = value; }
         }
 
         public int QuantityOnHand
@@ -68,14 +76,15 @@ namespace OpenEhs.Domain
 
         #region Constructor(s)
 
-        public Product(int id, string name, string unit, string catagory, decimal unitcost, int quantityonhand)
+        public Product(int id, string name, string description, string unit, Category category, decimal price, int quantityOnHand)
         {
             Id = id;
             Name = name;
+            Description = description;
             Unit = unit;
-            Category = catagory;
-            UnitCost = unitcost;
-            QuantityOnHand = quantityonhand;
+            Category = category;
+            Price = price;
+            QuantityOnHand = quantityOnHand;
         }
 
         #endregion

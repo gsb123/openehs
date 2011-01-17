@@ -8,8 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenEhs.Domain
 {
@@ -20,8 +18,9 @@ namespace OpenEhs.Domain
         private int _id;
         private decimal _total;
         private DateTime _date;
-        private Patient _patientid;
-        private PatientCheckIn _patientcheckinid;
+        private Patient _patient;
+        private readonly IList<InvoiceLineItem> _lineItems;
+        private PatientCheckIn _patientcheckinid; // NOTE: So what exactly does a check-in object have to do with an Invoice?
 
         #endregion
 
@@ -45,13 +44,21 @@ namespace OpenEhs.Domain
             set { _date = value; }
         }
 
-        public Patient PatientID
+        public Patient Patient
         {
-            get { return _patientid; }
-            set { _patientid = value; }
+            get { return _patient; }
+            set { _patient = value; }
         }
 
-        public PatientCheckIn PatientCheckInID
+        public IList<InvoiceLineItem> LineItems
+        {
+            get
+            {
+                return _lineItems;
+            }
+        }
+
+        public PatientCheckIn PatientCheckIn
         {
             get { return _patientcheckinid; }
             set { _patientcheckinid = value; }
@@ -61,13 +68,14 @@ namespace OpenEhs.Domain
 
         #region Constructor(s)
 
-        public Invoice(int id, decimal total, DateTime date, Patient patientid, PatientCheckIn patientcheckinid)
+        public Invoice(int id, decimal total, DateTime date, Patient patient, IList<InvoiceLineItem> lineItems, PatientCheckIn patientCheckin)
         {
             Id = id;
             Total = total;
             Date = date;
-            PatientID = patientid;
-            PatientCheckInID = patientcheckinid;
+            Patient = patient;
+            _lineItems = lineItems;
+            PatientCheckIn = patientCheckin;
         }
 
         #endregion

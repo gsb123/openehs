@@ -6,11 +6,15 @@
  * Author: Matthew Kimber (matthew.kimber@gmail.com)
  *****************************************************************************/
 
-// TODO: Create logger abstraction to ease unit testing and make logging pluggable.
-
-namespace OpenEhs.Infrastructure.Logging
+namespace OpenEhs.Domain
 {
-    public interface ILogger
+    public enum BloodPressureCategory
     {
+        None,
+        Normal,
+        Prehypertension,
+        StageOneHypertension,
+        StageTwoHypertension,
+        Crisis
     }
 }

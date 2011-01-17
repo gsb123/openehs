@@ -6,11 +6,6 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenEhs.Domain
 {
     public class Vitals
@@ -21,11 +16,10 @@ namespace OpenEhs.Domain
         private VitalsType _type;
         private float _height;
         private float _weight;
-        private int _heartrate;
+        private int _heartRate;
         private float _temperature;
-        private int _bpsystolic;
-        private int _bpdiastolic;
-        private int _respiratoryrate;
+        private BloodPressure _bloodPressure;
+        private int _respiratoryRate;
 
         #endregion
 
@@ -57,8 +51,8 @@ namespace OpenEhs.Domain
 
         public int HeartRate
         {
-            get { return _heartrate; }
-            set { _heartrate = value; }
+            get { return _heartRate; }
+            set { _heartRate = value; }
         }
 
         public float Temperature
@@ -67,39 +61,42 @@ namespace OpenEhs.Domain
             set { _temperature = value; }
         }
 
-        public int BPSystolic
+        public BloodPressure BloodPressure
         {
-            get { return _bpsystolic; }
-            set { _bpsystolic = value; }
-        }
-
-        public int BPDiastolic
-        {
-            get { return _bpdiastolic; }
-            set { _bpdiastolic = value; }
+            get
+            {
+                return _bloodPressure;
+            }
+            set 
+            {
+                _bloodPressure = value;
+            }
         }
 
         public int RespiratoryRate
         {
-            get { return _respiratoryrate; }
-            set { _respiratoryrate = value; }
+            get { return _respiratoryRate; }
+            set { _respiratoryRate = value; }
         }
 
         #endregion
 
         #region Constructor(s)
 
-        public Vitals(int id, VitalsType type, float height, float weight, int heartrate, float temperature, int bpsystolic, int bpdiastolic, int respiratoryrate)
+        public Vitals(int id, VitalsType type, float height, float weight, int heartRate, float temperature, int bpSystolic, int bpDiastolic, int respiratoryRate)
+            : this(id, type, height, weight, heartRate, temperature, new BloodPressure(bpSystolic, bpDiastolic), respiratoryRate )
+        {}
+
+        public Vitals(int id, VitalsType type, float height, float weight, int heartRate, float temperature, BloodPressure bloodPressure, int respiratoryRate)
         {
             Id = id;
             Type = type;
             Height = height;
             Weight = weight;
-            HeartRate = heartrate;
+            HeartRate = heartRate;
             Temperature = temperature;
-            BPSystolic = bpsystolic;
-            BPDiastolic = bpdiastolic;
-            RespiratoryRate = respiratoryrate;
+            BloodPressure = bloodPressure;
+            RespiratoryRate = respiratoryRate;
         }
 
         #endregion

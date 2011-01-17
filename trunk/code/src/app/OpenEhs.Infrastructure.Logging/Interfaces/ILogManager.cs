@@ -6,11 +6,11 @@
  * Author: Matthew Kimber (matthew.kimber@gmail.com)
  *****************************************************************************/
 
-// TODO: Create logger abstraction to ease unit testing and make logging pluggable.
-
 namespace OpenEhs.Infrastructure.Logging
 {
-    public interface ILogger
+    public interface ILogManager
     {
+        ILogger GetLogger(string name);
+        ILogger GetCurrentClassLogger();
     }
 }
