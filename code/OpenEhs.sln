@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Domain.Tests", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Infrastructure.Logging", "src\app\OpenEhs.Infrastructure.Logging\OpenEhs.Infrastructure.Logging.csproj", "{9F638D35-2A4F-4E49-BC3D-A84F8B4A81E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Infrastructure.Security", "src\app\OpenEhs.Infrastructure.Security\OpenEhs.Infrastructure.Security.csproj", "{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{9F638D35-2A4F-4E49-BC3D-A84F8B4A81E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F638D35-2A4F-4E49-BC3D-A84F8B4A81E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F638D35-2A4F-4E49-BC3D-A84F8B4A81E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{78BFCAC9-E6EA-4DAC-B66F-72BFF5388282} = {634B7C0D-518D-4D32-BDF0-8335B32B590F}
 		{7501A878-FBE8-444D-9884-B4237DF11207} = {9C50DA22-C175-47B2-9862-A6B4F5D4FD00}
 		{9F638D35-2A4F-4E49-BC3D-A84F8B4A81E0} = {E914149B-71A6-406B-B08E-82B3823641AB}
+		{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5} = {E914149B-71A6-406B-B08E-82B3823641AB}
 		{9F0827C4-FFAE-4B13-9736-012A13662D90} = {F1FD6ECE-3FB5-4461-8037-EB7255E0F589}
 	EndGlobalSection
 EndGlobal
