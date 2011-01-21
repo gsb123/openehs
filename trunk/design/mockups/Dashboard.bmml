@@ -11,5 +11,6 @@
         <text>OpenEHS</text>
       </controlProperties>
     </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::SearchBox" x="1123" y="190" w="164" h="-1" measuredW="94" measuredH="25" zOrder="2" locked="false" isInGroup="-1"/>
   </controls>
 </mockup>
