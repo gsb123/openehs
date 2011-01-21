@@ -6,11 +6,12 @@
         <text>OpenEHS%20Dashboard</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="378" y="172" w="-1" h="-1" measuredW="185" measuredH="62" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Canvas" x="332" y="138" w="1020" h="84" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Title" x="343" y="145" w="-1" h="-1" measuredW="362" measuredH="62" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>OpenEHS</text>
+        <text>Navigation%20here...</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::SearchBox" x="1123" y="190" w="164" h="-1" measuredW="94" measuredH="25" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::SearchBox" x="1173" y="164" w="164" h="-1" measuredW="94" measuredH="25" zOrder="3" locked="false" isInGroup="-1"/>
   </controls>
 </mockup>

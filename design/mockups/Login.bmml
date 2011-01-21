@@ -6,7 +6,7 @@
         <text>OpenEHS%20Login</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="656" y="336" w="368" h="230" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="656" y="336" w="368" h="250" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>square</borderStyle>
       </controlProperties>
@@ -31,17 +31,17 @@
         <text>Password</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="378" y="172" w="-1" h="-1" measuredW="185" measuredH="62" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="747" y="196" w="-1" h="-1" measuredW="185" measuredH="62" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>OpenEHS</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="856" y="503" w="-1" h="-1" measuredW="56" measuredH="28" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="857" y="523" w="-1" h="-1" measuredW="55" measuredH="28" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Login</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="671" y="566" w="-1" h="-1" measuredW="112" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="800" y="488" w="-1" h="-1" measuredW="112" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Forgot%20Password%3F</text>
       </controlProperties>
@@ -51,6 +51,20 @@
         <size>18</size>
         <text>Login</text>
       </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="__group__" x="656" y="586" w="-1" h="-1" measuredW="268" measuredH="26" zOrder="10" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="13" controlTypeID="com.balsamiq.mockups::Link" x="180" y="1" w="-1" h="-1" measuredW="88" measuredH="25" zOrder="0" locked="false" isInGroup="15">
+          <controlProperties>
+            <text>Register%20now%21</text>
+          </controlProperties>
+        </control>
+        <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="178" h="25" measuredW="178" measuredH="25" zOrder="1" locked="false" isInGroup="15">
+          <controlProperties>
+            <text>Don%27t%20have%20a%20user%20account%3F</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
     </control>
   </controls>
 </mockup>
