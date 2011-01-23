@@ -40,7 +40,7 @@
         <text>Address</text>
       </controlProperties>
     </control>
-    <control controlID="20" controlTypeID="com.balsamiq.mockups::FieldSet" x="919" y="338" w="352" h="419" measuredW="200" measuredH="170" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::FieldSet" x="919" y="338" w="352" h="410" measuredW="200" measuredH="170" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Notes</text>
       </controlProperties>
@@ -51,7 +51,7 @@
       </controlProperties>
     </control>
     <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="332" y="138" w="1000" h="84" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::TextArea" x="934" y="399" w="322" h="343" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::TextArea" x="934" y="399" w="322" h="331" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
         <text>This%20is%20the%20patient%20note%20for%20the%20physician%20to%20write%20miscellaneous%20information.</text>
         <verticalScrollbar>true</verticalScrollbar>
@@ -109,7 +109,7 @@
         <text>Dashboard%2C%20Patients%2C%20Reports%2C%20Billing%2C%20Admin</text>
       </controlProperties>
     </control>
-    <control controlID="40" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="433" w="98" h="-1" measuredW="31" measuredH="29" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="433" w="164" h="-1" measuredW="31" measuredH="29" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Esi</text>
       </controlProperties>
@@ -119,7 +119,7 @@
         <text>First%20Name</text>
       </controlProperties>
     </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="483" w="98" h="-1" measuredW="79" measuredH="29" zOrder="30" locked="false" isInGroup="-1">
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="483" w="164" h="-1" measuredW="79" measuredH="29" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
@@ -129,7 +129,7 @@
         <text>Middle%20Name</text>
       </controlProperties>
     </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="533" w="98" h="-1" measuredW="42" measuredH="29" zOrder="32" locked="false" isInGroup="-1">
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="533" w="164" h="-1" measuredW="42" measuredH="29" zOrder="32" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Kone</text>
       </controlProperties>
@@ -165,7 +165,7 @@
         <text>Date%20of%20Death</text>
       </controlProperties>
     </control>
-    <control controlID="53" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="686" w="107" h="-1" measuredW="94" measuredH="29" zOrder="40" locked="false" isInGroup="-1">
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="686" w="136" h="-1" measuredW="94" measuredH="29" zOrder="40" locked="false" isInGroup="-1">
       <controlProperties>
         <text>0277404000</text>
       </controlProperties>
@@ -185,14 +185,20 @@
         <text>Phone%20Number</text>
       </controlProperties>
     </control>
-    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="503" y="610" w="-1" h="-1" measuredW="40" measuredH="25" zOrder="44" locked="false" isInGroup="-1">
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="503" y="610" w="-1" h="-1" measuredW="39" measuredH="25" zOrder="44" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Name</text>
       </controlProperties>
     </control>
-    <control controlID="60" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="632" w="-1" h="-1" measuredW="84" measuredH="29" zOrder="45" locked="false" isInGroup="-1">
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::TextInput" x="503" y="632" w="305" h="-1" measuredW="84" measuredH="29" zOrder="45" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Otumi%20Kone</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::CheckBox" x="1206" y="285" w="-1" h="-1" measuredW="66" measuredH="22" zOrder="46" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text>Active</text>
       </controlProperties>
     </control>
   </controls>
