@@ -38,6 +38,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Templates\ITemplate.cs" />
+    <Compile Include="Model\Templates\DiagnosisTemplate.cs" />
+    <Compile Include="Model\Patient\ChronicDisease.cs" />
     <Compile Include="Model\Vitals\BloodPressure.cs" />
     <Compile Include="Model\Vitals\BloodPressureCategory.cs" />
     <Compile Include="Model\Product\Category.cs" />
@@ -71,8 +74,11 @@
     <Compile Include="Model\Surgery\Surgery.cs" />
     <Compile Include="Model\Vitals\Vitals.cs" />
     <Compile Include="Model\Vitals\VitalsType.cs" />
+    <Compile Include="Model\Templates\NoteTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\User\Role.cs" />
+    <Compile Include="Model\Templates\ReasonNote.cs" />
+    <Compile Include="Model\Templates\SurgeryTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Labs\" />
