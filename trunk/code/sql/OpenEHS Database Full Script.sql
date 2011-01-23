@@ -153,12 +153,21 @@ Quantity                float           NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 );
 
+CREATE TABLE Category
+(
+CategoryID          int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
+Name                varchar(15)     NOT NULL,
+Description         text            NOT NULL,
+DateCreated         timestamp       NOT NULL                    DEFAULT NOW(),
+IsActive            bit             NOT NULL                    DEFAULT 1
+);
+
 CREATE TABLE Product
 (
 ProductID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Name                    varchar(50)     NOT NULL,
 Unit                    varchar(10)     NOT NULL,
-Category                varchar(20)     NOT NULL,
+CategoryID              int             NOT NULL,
 ProductCost             decimal(6,2)    NOT NULL,
 QuantityOnHand          int             NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
@@ -406,6 +415,10 @@ ALTER TABLE PreWrittenReason
 ADD CONSTRAINT PreWrittenReasonMustHaveStaffID
 FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 
+ALTER TABLE Product
+ADD CONSTRAINT ProductMustHaveCategoryID
+FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID);
+
 #----------------------------------------------------------------------------------------------------------
 #-------------------------------------------------TRIGGERS-------------------------------------------------
 #----------------------------------------------------------------------------------------------------------
@@ -413,7 +426,7 @@ FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 #----------Auto Correct Patient Name----------
 
 DELIMITER $$
-CREATE TRIGGER tr_AutoCorrectFormatPatientName
+CREATE TRIGGER tr_AutoCorrectFormatPatientInfo
 BEFORE INSERT ON Patient
 
 FOR EACH ROW
@@ -422,6 +435,8 @@ BEGIN
     SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), substr(NEW.FirstName,2));
     SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), substr(NEW.MiddleName,2));
     SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), substr(NEW.LastName,2));
+    SET NEW.TribeRace = CONCAT(UCASE(substr(NEW.TribeRace,1,1)), substr(NEW.TribeRace,2));
+    SET NEW.Religion = CONCAT(UCASE(substr(NEW.Religion,1,1)), substr(NEW.Religion,2));
 END;
 $$
 DELIMITER ;
@@ -1099,7 +1114,7 @@ CREATE PROCEDURE sp_insertProduct
 (
 IN i_Name               varchar(30),
 IN i_Unit               varchar(10),
-IN i_Category           varchar(20),
+IN i_CategoryID         int,
 IN i_ProductCost        decimal(6, 2),
 IN i_QuantityOnHand     int
 )
@@ -1110,7 +1125,7 @@ INSERT INTO Product
 (
 Name,
 Unit,
-Category,
+CategoryID,
 ProductCost,
 QuantityOnHand
 )
@@ -1118,7 +1133,7 @@ VALUES
 (
 i_Name,
 i_Unit,
-i_Category,
+i_CategoryID,
 i_ProductCost,
 i_QuantityOnHand
 );
@@ -1138,7 +1153,7 @@ CREATE PROCEDURE sp_updateProduct
 IN i_ProductID          int,
 IN i_Name               varchar(30),
 IN i_Unit               varchar(10),
-IN i_Category           varchar(20),
+IN i_CategoryID         int,
 IN i_ProductCost        decimal(6, 2),
 IN i_QuantityOnHand     int
 )
@@ -1148,7 +1163,7 @@ BEGIN
 UPDATE Product SET
 Name = i_Name,
 Unit = i_Unit,
-Category = i_Category,
+CategoryID = i_CategoryID,
 ProductCost = i_ProductCost,
 QuantityOnHand = i_QuantityOnHand
 WHERE ProductID = i_ProductID;
@@ -1747,6 +1762,35 @@ i_Quantity
 END ||
 DELIMITER ;
 
+#--------------insert Category Table--------------
+/******************************************
+* sp_insertCategory inserts into the
+* Category table.
+******************************************/
+
+DELIMITER |
+CREATE PROCEDURE sp_insertCategory
+(
+IN i_Name          varchar(15),
+IN i_Description   text
+)
+
+BEGIN
+
+INSERT INTO Category
+(
+Name,
+Description
+)
+VALUES
+(
+i_Name,
+i_Description
+);
+
+END ||
+DELIMITER ;
+
 #-----------------------------------------------------------------------------------------------------------
 #-------------------------------------------------TEST DATA-------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------
@@ -1774,8 +1818,8 @@ CALL sp_insertPatient
 'Male',
 '303-276-8557',
 'AB+',
-'White',
-'LDS',
+'white',
+'lDS',
 1102547
 );
 
@@ -1849,11 +1893,17 @@ CALL sp_updateInvoice
 800.25
 );
 
+CALL sp_insertCategory
+(
+'test category',
+'test description'
+);
+
 CALL sp_insertProduct
 (
 'test product',
 'ml',
-'test',
+1,
 100.00,
 50
 );
