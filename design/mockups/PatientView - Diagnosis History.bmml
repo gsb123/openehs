@@ -31,10 +31,10 @@
     </control>
     <control controlID="17" controlTypeID="com.balsamiq.mockups::HRule" x="476" y="321" w="811" h="-1" measuredW="100" measuredH="5" zOrder="7" locked="false" isInGroup="-1"/>
     <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="332" y="138" w="1000" h="84" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
-    <control controlID="39" controlTypeID="com.balsamiq.mockups::ButtonBar" x="332" y="138" w="810" h="84" measuredW="376" measuredH="31" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::ButtonBar" x="332" y="138" w="810" h="84" measuredW="385" measuredH="31" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>1</selectedIndex>
-        <text>Dashboard%2C%20Charts%2C%20Reports%2C%20Billing%2C%20Admin</text>
+        <text>Dashboard%2C%20Patients%2C%20Reports%2C%20Billing%2C%20Admin</text>
       </controlProperties>
     </control>
   </controls>
