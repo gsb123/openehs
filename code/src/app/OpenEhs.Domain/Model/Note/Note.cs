@@ -15,59 +15,26 @@ namespace OpenEhs.Domain
 {
     public class Note
     {
-        #region Fields
-
-        private int _id;
-        private string _title;
-        private string _body;
-        private DateTime _datecreated;
-        private Staff _staffid;
-
-        #endregion
-
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
-
-        public string Body
-        {
-            get { return _body; }
-            set { _body = value; }
-        }
-
-        public DateTime DateCreated
-        {
-            get { return _datecreated; }
-            set { _datecreated = value; }
-        }
-
-        private Staff StaffID
-        {
-            get { return _staffid; }
-            set { _staffid = value; }
-        }
+        public int Id { get; private set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public DateTime DateCreated { get; set; }
+        private Staff Author { get; set; }
 
         #endregion
+
 
         #region Constructor(s)
 
-        public Note(int id, string title, string body, DateTime datecreated, Staff staffid)
+        public Note(int id, string title, string body, DateTime datecreated, Staff author)
         {
             Id = id;
             Title = title;
             Body = body;
             DateCreated = datecreated;
-            StaffID = staffid;
+            Author = author;
         }
 
         #endregion

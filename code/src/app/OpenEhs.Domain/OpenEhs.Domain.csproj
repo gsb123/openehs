@@ -59,7 +59,6 @@
     <Compile Include="Model\User\User.cs" />
     <Compile Include="Model\User\LogInPermissions.cs" />
     <Compile Include="Model\Note\Note.cs" />
-    <Compile Include="Model\Note\PreWrittenNote.cs" />
     <Compile Include="Model\OutPatient\OutPatientEncounter.cs" />
     <Compile Include="Model\Patient\Allergy.cs" />
     <Compile Include="Model\Patient\EmergencyContact.cs" />
