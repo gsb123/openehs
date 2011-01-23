@@ -74,6 +74,7 @@
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\StaffRepository.cs" />
+    <Compile Include="TemplateRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
