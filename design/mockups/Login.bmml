@@ -31,28 +31,23 @@
         <text>Password</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="747" y="196" w="-1" h="-1" measuredW="185" measuredH="62" zOrder="6" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>OpenEHS</text>
-      </controlProperties>
-    </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="857" y="523" w="-1" h="-1" measuredW="56" measuredH="28" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="857" y="523" w="-1" h="-1" measuredW="55" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Login</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="800" y="488" w="-1" h="-1" measuredW="112" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="800" y="488" w="-1" h="-1" measuredW="112" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Forgot%20Password%3F</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="656" y="304" w="-1" h="-1" measuredW="47" measuredH="32" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="656" y="304" w="-1" h="-1" measuredW="47" measuredH="32" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <size>18</size>
         <text>Login</text>
       </controlProperties>
     </control>
-    <control controlID="15" controlTypeID="__group__" x="656" y="586" w="268" h="26" measuredW="268" measuredH="26" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="15" controlTypeID="__group__" x="656" y="586" w="268" h="26" measuredW="268" measuredH="26" zOrder="9" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="13" controlTypeID="com.balsamiq.mockups::Link" x="180" y="1" w="-1" h="-1" measuredW="88" measuredH="25" zOrder="0" locked="false" isInGroup="15">
           <controlProperties>
@@ -65,6 +60,12 @@
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Image" x="689" y="193" w="302" h="64" measuredW="469" measuredH="98" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <filter>true</filter>
+        <src>../identity/logo/OpenEHS%2520-%2520Logo.png</src>
+      </controlProperties>
     </control>
   </controls>
 </mockup>

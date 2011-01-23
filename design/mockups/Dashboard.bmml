@@ -15,8 +15,25 @@
     </control>
     <control controlID="14" controlTypeID="com.balsamiq.mockups::StickyNote" x="1438" y="122" w="340" h="462" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Possible%20items%20for%20the%20dashboard%3A%0A%20%0AQuick%20Tasks%3A%0A-%20Create%20New%20Patient%0A-%20Patient%20Lookup%0A%20%0ALists%3A%0A-%20Recently%20Accessed%20Patients</text>
+        <text>Possible%20items%20for%20the%20dashboard%3A%0A%20%0AQuick%20Tasks%3A%0A-%20Create%20New%20Patient%0A-%20Patient%20Lookup%0A%20%0ALists%3A%0A-%20Recent%20Activity%0A-%20Recently%20Accessed%20Patients</text>
       </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="__group__" x="440" y="637" w="800" h="172" measuredW="800" measuredH="172" zOrder="5" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::DataGrid" x="0" y="23" w="800" h="149" measuredW="240" measuredH="208" zOrder="0" locked="false" isInGroup="17">
+          <controlProperties>
+            <selectedIndex>3</selectedIndex>
+            <text>Name%20%5E%2C%20DOB%0ADaniel%20AGYEI%2C%2010/11/1989%0AHans%20SARPEI%2C%2028/06/1976%0AAsamoah%20GYAN%2C%2022/11/1985%0AJohn%20PANTSIL%2C%2015/06/1981%0AJohn%20MENSAH%2C%2029/11/1982%0AMatthew%20AMOAH%2C%2024/10/1980%0A%7B75L%2C%200R%7D</text>
+            <value>77</value>
+            <verticalScrollbar>true</verticalScrollbar>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="123" measuredH="25" zOrder="1" locked="false" isInGroup="17">
+          <controlProperties>
+            <text>Recently%20Accessed</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
     </control>
   </controls>
 </mockup>
