@@ -14,29 +14,44 @@ using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
-    public class StaffRepository : IStaffRepository
+    public class ProductRepository : IProductRepository
     {
-        public Staff Get(int id)
+        public Product Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Staff> GetAll()
+        public IList<Product> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Add(Staff entity)
+        public void Add(Product entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(Staff entity)
+        public void Remove(Product entity)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Staff> Find(Expression<Func<Staff, bool>> predicate)
+        public IQueryable<Product> Find(Expression<Func<Product, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Product> GetActiveProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Product> GetInactiveProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Product> GetByCategory(Category category)
         {
             throw new NotImplementedException();
         }

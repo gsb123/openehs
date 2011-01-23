@@ -1,13 +1,23 @@
-﻿using System;
+﻿/*****************************************************************************
+ * Project: Open Electronic Healthcare System
+ * Group: Ghana Team
+ * Date: 16-Jan-2011
+ * 
+ * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ *****************************************************************************/
+
+using System;
+using System.Collections.Generic;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
     public interface IPatientRepository : IRepository<Patient>
     {
-        Patient FindByPhoneNumber(string phoneNumber);
-        Patient FindByName(string name);
-        Patient FindByDateOfBirth(DateTime dateOfBirth);
-        Patient FindByOldPhysicalRecord(string number);
+        IList<Patient> GetAll();
+        IList<Patient> FindByPhoneNumber(string phoneNumber);
+        IList<Patient> FindByName(string name);
+        IList<Patient> FindByDateOfBirth(DateTime dateOfBirth);
+        IList<Patient> FindByOldPhysicalRecord(string number);
     }
 }
