@@ -32,5 +32,25 @@ namespace OpenEhs.Data
         {
             throw new NotImplementedException();
         }
+
+        public IList<ITemplate> GetAllSurgeryTemplates()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ITemplate> GetAllDiagnosisTemplates()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ITemplate> GetAllNoteTemplates()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ITemplate> GetAllReasonTemplates()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

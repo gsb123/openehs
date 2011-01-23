@@ -13,69 +13,22 @@ namespace OpenEhs.Domain
 {
     public class Invoice
     {
-        #region Fields
-
-        private int _id;
-        private decimal _total;
-        private DateTime _date;
-        private Patient _patient;
-        private readonly IList<InvoiceLineItem> _lineItems;
-        private PatientCheckIn _patientcheckinid; // NOTE: So what exactly does a check-in object have to do with an Invoice?
-
-        #endregion
-
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public decimal Total
-        {
-            get { return _total; }
-            set { _total = value; }
-        }
-
-        public DateTime Date
-        {
-            get { return _date; }
-            set { _date = value; }
-        }
-
-        public Patient Patient
-        {
-            get { return _patient; }
-            set { _patient = value; }
-        }
-
-        public IList<InvoiceLineItem> LineItems
-        {
-            get
-            {
-                return _lineItems;
-            }
-        }
-
-        public PatientCheckIn PatientCheckIn
-        {
-            get { return _patientcheckinid; }
-            set { _patientcheckinid = value; }
-        }
+        public virtual int Id { get; set; }
+        public virtual decimal Total { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual IList<InvoiceLineItem> LineItems { get; private set; }
+        public virtual PatientCheckIn PatientCheckIn { get; set; }
 
         #endregion
 
-        #region Constructor(s)
-
-        public Invoice(int id, decimal total, DateTime date, Patient patient, IList<InvoiceLineItem> lineItems, PatientCheckIn patientCheckin)
+        #region Constructor
+        
+        public Invoice()
         {
-            Id = id;
-            Total = total;
-            Date = date;
-            Patient = patient;
-            _lineItems = lineItems;
-            PatientCheckIn = patientCheckin;
+            LineItems = new List<InvoiceLineItem>();
         }
 
         #endregion
