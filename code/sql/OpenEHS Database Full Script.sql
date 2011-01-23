@@ -147,18 +147,18 @@ CREATE TABLE InvoiceItem
 (
 InvoiceItemID           int             AUTO_INCREMENT             PRIMARY KEY         NOT NULL,
 InvoiceID               int             NOT NULL,
-ProductsID              int             NULL,
+ProductID               int             NULL,
 ServiceID               int             NULL,
 Quantity                float           NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 );
 
-CREATE TABLE Products
+CREATE TABLE Product
 (
-ProductsID              int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+ProductID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Name                    varchar(50)     NOT NULL,
 Unit                    varchar(10)     NOT NULL,
-Catagory                varchar(20)     NOT NULL,
+Category                varchar(20)     NOT NULL,
 ProductCost             decimal(6,2)    NOT NULL,
 QuantityOnHand          int             NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
@@ -340,7 +340,7 @@ FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID);
 
 ALTER TABLE InvoiceItem
 ADD CONSTRAINT FK_InvoiceItemMustHaveProductID
-FOREIGN KEY (ProductsID) REFERENCES Products(ProductsID);
+FOREIGN KEY (ProductID) REFERENCES Product(ProductID);
 
 ALTER TABLE InvoiceItem
 ADD CONSTRAINT FK_InvoiceItemMustHaveServiceID
@@ -1095,22 +1095,22 @@ DELIMITER ;
 ************************************/
 
 DELIMITER | 
-CREATE PROCEDURE sp_insertProducts
+CREATE PROCEDURE sp_insertProduct
 (
 IN i_Name               varchar(30),
 IN i_Unit               varchar(10),
-IN i_Catagory           varchar(20),
+IN i_Category           varchar(20),
 IN i_ProductCost        decimal(6, 2),
 IN i_QuantityOnHand     int
 )
 
 BEGIN
 
-INSERT INTO Products
+INSERT INTO Product
 (
 Name,
 Unit,
-Catagory,
+Category,
 ProductCost,
 QuantityOnHand
 )
@@ -1118,7 +1118,7 @@ VALUES
 (
 i_Name,
 i_Unit,
-i_Catagory,
+i_Category,
 i_ProductCost,
 i_QuantityOnHand
 );
@@ -1133,25 +1133,25 @@ DELIMITER ;
 ************************************/
 
 DELIMITER | 
-CREATE PROCEDURE sp_updateProducts
+CREATE PROCEDURE sp_updateProduct
 (
-IN i_ProductsID         int,
+IN i_ProductID          int,
 IN i_Name               varchar(30),
 IN i_Unit               varchar(10),
-IN i_Catagory           varchar(20),
+IN i_Category           varchar(20),
 IN i_ProductCost        decimal(6, 2),
 IN i_QuantityOnHand     int
 )
 
 BEGIN
 
-UPDATE Products SET
+UPDATE Product SET
 Name = i_Name,
 Unit = i_Unit,
-Catagory = i_Catagory,
+Category = i_Category,
 ProductCost = i_ProductCost,
 QuantityOnHand = i_QuantityOnHand
-WHERE ProductsID = i_ProductsID;
+WHERE ProductID = i_ProductID;
 
 END ||
 DELIMITER ;
@@ -1163,16 +1163,16 @@ DELIMITER ;
 ************************************/
 
 DELIMITER | 
-CREATE PROCEDURE sp_deleteProducts
+CREATE PROCEDURE sp_deleteProduct
 (
-IN i_ProductsID      int
+IN i_ProductID      int
 )
 
 BEGIN
 
-UPDATE Products SET
+UPDATE Product SET
 IsActice = 0
-WHERE ProductsID = i_ProductsID;
+WHERE ProductID = i_ProductID;
 
 END ||
 DELIMITER ;
@@ -1722,7 +1722,7 @@ DELIMITER |
 CREATE PROCEDURE sp_insertInvoiceItem
 (
 IN i_InvoiceID      int,
-IN i_ProductsID     int,
+IN i_ProductID      int,
 IN i_ServiceID      int,
 IN i_Quantity       float
 )
@@ -1732,14 +1732,14 @@ BEGIN
 INSERT INTO InvoiceItem
 (
 InvoiceID,
-ProductsID,
+ProductID,
 ServiceID,
 Quantity
 )
 VALUES
 (
 i_InvoiceID,
-i_ProductsID,
+i_ProductID,
 i_ServiceID,
 i_Quantity
 );
@@ -1849,7 +1849,7 @@ CALL sp_updateInvoice
 800.25
 );
 
-CALL sp_insertProducts
+CALL sp_insertProduct
 (
 'test product',
 'ml',
