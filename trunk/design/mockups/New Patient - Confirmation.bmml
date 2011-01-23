@@ -19,10 +19,10 @@
         <text>New%20Patient</text>
       </controlProperties>
     </control>
-    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="1025" y="693" w="78" h="40" measuredW="57" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="1025" y="693" w="78" h="40" measuredW="58" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <color>10470904</color>
-        <text>Next</text>
+        <text>Finish</text>
       </controlProperties>
     </control>
     <control controlID="95" controlTypeID="com.balsamiq.mockups::PointyButton" x="913" y="297" w="190" h="-1" measuredW="118" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
@@ -44,9 +44,24 @@
         <text>1.%20Basic%20Information</text>
       </controlProperties>
     </control>
-    <control controlID="98" controlTypeID="com.balsamiq.mockups::Button" x="576" y="693" w="95" h="40" measuredW="73" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="98" controlTypeID="com.balsamiq.mockups::Button" x="757" y="477" w="150" h="50" measuredW="111" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Previous</text>
+        <text>Print%20ID%20Card</text>
+      </controlProperties>
+    </control>
+    <control controlID="99" controlTypeID="com.balsamiq.mockups::Button" x="757" y="542" w="150" h="50" measuredW="95" measuredH="28" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Print%20Chart</text>
+      </controlProperties>
+    </control>
+    <control controlID="100" controlTypeID="com.balsamiq.mockups::SubTitle" x="576" y="363" w="-1" h="-1" measuredW="187" measuredH="40" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Patient%20Created</text>
+      </controlProperties>
+    </control>
+    <control controlID="101" controlTypeID="com.balsamiq.mockups::Paragraph" x="576" y="410" w="527" h="52" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20patient%20Kevin%20Prince%20Boateng%20was%20successfully%20created%21%20Please%20create%20an%20ID%20card%20as%20well%20as%20a%20physical%20chart%20for%20records.</text>
       </controlProperties>
     </control>
   </controls>
