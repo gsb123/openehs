@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1352" measuredH="835" mockupW="1024" mockupH="768">
+<mockup version="1.0" skin="sketch" measuredW="1736" measuredH="835" mockupW="1408" mockupH="769">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="328" y="67" w="1024" h="768" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -8,10 +8,15 @@
     </control>
     <control controlID="9" controlTypeID="com.balsamiq.mockups::SearchBox" x="1155" y="163" w="164" h="-1" measuredW="65" measuredH="25" zOrder="2" locked="false" isInGroup="-1"/>
     <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="332" y="138" w="1000" h="84" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::ButtonBar" x="332" y="138" w="810" h="84" measuredW="376" measuredH="31" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::ButtonBar" x="332" y="138" w="810" h="84" measuredW="385" measuredH="31" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>1</selectedIndex>
-        <text>Dashboard%2C%20Charts%2C%20Reports%2C%20Billing%2C%20Admin</text>
+        <text>Dashboard%2C%20Patients%2C%20Reports%2C%20Billing%2C%20Admin</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::StickyNote" x="1395" y="66" w="341" h="343" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Actions%3A%0A-%20Create%20New%20Patient%0A-%20Search%20for%20Patient%0A%20%0ALists%3A%0A-%20Recently%20Accessed%20Patients</text>
       </controlProperties>
     </control>
   </controls>
