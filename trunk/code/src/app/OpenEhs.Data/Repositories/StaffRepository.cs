@@ -40,5 +40,35 @@ namespace OpenEhs.Data
         {
             throw new NotImplementedException();
         }
+
+        public IList<Staff> FindByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Staff> FindByPhoneNumber(string phoneNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Staff> FindByType(StaffType type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Staff> GetAllInactive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Staff> GetAllActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Staff FindByUser(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
