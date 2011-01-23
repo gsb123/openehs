@@ -14,7 +14,7 @@
         <text>Dashboard%2C%20Patients%2C%20Reports%2C%20Billing%2C%20Admin</text>
       </controlProperties>
     </control>
-    <control controlID="61" controlTypeID="com.balsamiq.mockups::DataGrid" x="440" y="370" w="800" h="440" measuredW="294" measuredH="208" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::DataGrid" x="440" y="370" w="800" h="440" measuredW="293" measuredH="208" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <hLines>false</hLines>
         <text>ID%20%5E%2C%20Name%2C%20DOB%0A400231%2C%20AGYEI%5C%2C%20Daniel%2C%2010/11/1989%0A400322%2C%20SARPEI%5C%2C%20Hans%2C%2028/06/1976%0A401089%2C%20GYAN%5C%2C%20Asamoah%2C%2022/11/1985%0A401128%2C%20PANTSIL%5C%2C%20John%2C%2015/06/1981%0A398812%2C%20MENSAH%5C%2C%20John%2C%2029/11/1982%0A233134%2C%20AMOAH%5C%2C%20Matthew%2C%2024/10/1980%0A%7B10C%2C%2075L%2C%200R%7D</text>
@@ -27,6 +27,7 @@
     </control>
     <control controlID="65" controlTypeID="com.balsamiq.mockups::Button" x="441" y="284" w="122" h="54" measuredW="103" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
+        <color>10470904</color>
         <text>New%20Patient</text>
       </controlProperties>
     </control>
