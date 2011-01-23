@@ -15,56 +15,17 @@ namespace OpenEhs.Domain
 {
     public class Address
     {
-        #region Fields
-
-        private int _id;
-        private string _street1;
-        private string _street2;
-        private string _city;
-        private string _region;
-        private string _country;
-
-        #endregion
-
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string Street1
-        {
-            get { return _street1; }
-            set { _street1 = value; }
-        }
-
-        public string Street2
-        {
-            get { return _street2; }
-            set { _street2 = value; }
-        }
-
-        public string City
-        {
-            get { return _city; }
-            set { _city = value; }
-        }
-
-        public string Region
-        {
-            get { return _region; }
-            set { _region = value; }
-        }
-
-        public string Country
-        {
-            get { return _country; }
-            set { _country = value; }
-        }
+        public int Id { get; private set; }
+        public string Street1 { get; set; }
+        public string Street2 { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string Country { get; set; }
 
         #endregion
+
 
         #region Constructor(s)
 

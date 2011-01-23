@@ -8,10 +8,10 @@
 
 namespace OpenEhs.Domain
 {
-    public interface ITemplate
+    public class ReasonTemplate : ITemplate
     {
-        int Id { get; }
-        string Body { get; set; }
-        bool IsActive { get; set; }
+        public int Id { get; private set; }
+        public string Body { get; set; }
+        public bool IsActive { get; set; }
     }
 }
