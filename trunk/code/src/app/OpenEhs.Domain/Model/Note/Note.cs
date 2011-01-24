@@ -14,14 +14,13 @@ namespace OpenEhs.Domain
     {
         #region Properties
 
-        public int Id { get; private set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-        public DateTime DateCreated { get; set; }
-        private Staff Author { get; set; }
+        public virtual int Id { get; private set; }
+        public virtual string Title { get; set; }
+        public virtual string Body { get; set; }
+        public virtual DateTime DateCreated { get; set; }
+        public virtual Staff Author { get; set; }
 
         #endregion
-
 
         #region Constructor(s)
 

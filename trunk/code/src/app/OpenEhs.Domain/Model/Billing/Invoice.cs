@@ -15,7 +15,7 @@ namespace OpenEhs.Domain
     {
         #region Properties
 
-        public virtual int Id { get; set; }
+        public virtual int Id { get; private set; }
         public virtual decimal Total { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual Patient Patient { get; set; }
