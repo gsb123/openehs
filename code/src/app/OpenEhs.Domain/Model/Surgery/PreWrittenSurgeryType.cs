@@ -24,17 +24,8 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string SurgeryType
-        {
-            get { return _surgerytype; }
-            set { _surgerytype = value; }
-        }
+        public int Id {get; private set;}
+        public string SurgeryType  {get; set;}
 
         #endregion
 

@@ -25,59 +25,14 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public VitalsType Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
-
-        public float Height
-        {
-            get { return _height; }
-            set { _height = value; }
-        }
-
-        public float Weight
-        {
-            get { return _weight; }
-            set { _weight = value; }
-        }
-
-        public int HeartRate
-        {
-            get { return _heartRate; }
-            set { _heartRate = value; }
-        }
-
-        public float Temperature
-        {
-            get { return _temperature; }
-            set { _temperature = value; }
-        }
-
-        public BloodPressure BloodPressure
-        {
-            get
-            {
-                return _bloodPressure;
-            }
-            set 
-            {
-                _bloodPressure = value;
-            }
-        }
-
-        public int RespiratoryRate
-        {
-            get { return _respiratoryRate; }
-            set { _respiratoryRate = value; }
-        }
+        public int Id {get; private set;}
+        public VitalsType Type {get; set;}
+        public float Height {get; set;}
+        public float Weight {get; set;}
+        public int HeartRate  {get; set;}
+        public float Temperature  {get; set;}
+        public BloodPressure BloodPressure {get; set;}
+        public int RespiratoryRate  {get; set;}
 
         #endregion
 

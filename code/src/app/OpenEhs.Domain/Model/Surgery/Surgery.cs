@@ -29,47 +29,13 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string SurgeryType
-        {
-            get { return _surgerytype; }
-            set { _surgerytype = value; }
-        }
-
-        public int RoomNumber
-        {
-            get { return _roomnumber; }
-            set { _roomnumber = value; }
-        }
-
-        public DateTime StartTime
-        {
-            get { return _starttime; }
-            set { _starttime = value; }
-        }
-
-        public DateTime EndTime
-        {
-            get { return _endtime; }
-            set { _endtime = value; }
-        }
-
-        public string Comments
-        {
-            get { return _comments; }
-            set { _comments = value; }
-        }
-
-        public InPatient InPatientID
-        {
-            get { return _inpatientid; }
-            set { _inpatientid = value; }
-        }
+        public int Id {get; private set;}
+        public string SurgeryType {get; set;}
+        public int RoomNumber {get; set;}
+        public DateTime StartTime {get; set;}
+        public DateTime EndTime {get; set;}
+        public string Comments {get; set;}
+        public InPatient InPatientID {get; set;}
 
         #endregion
 

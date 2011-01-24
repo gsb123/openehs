@@ -19,30 +19,8 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Systolic
-        {
-            get
-            {
-                return _systolic;
-            }
-            set
-            {
-                _systolic = value;
-            }
-        }
-
-        public int Diastolic
-        {
-            get
-            {
-                return _diastolic;
-            }
-            set 
-            {
-                _diastolic = value;
-            }
-        }
-
+        public int Systolic {get; set;}
+        public int Diastolic {get; set;}
         public BloodPressureCategory Category
         {
             get
