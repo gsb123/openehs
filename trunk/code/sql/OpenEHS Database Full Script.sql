@@ -170,6 +170,7 @@ Unit                    varchar(10)     NOT NULL,
 CategoryID              int             NOT NULL,
 ProductCost             decimal(6,2)    NOT NULL,
 QuantityOnHand          int             NOT NULL,
+Counter                 int             NOT NULL                DEFAULT 1,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 );
 
@@ -297,10 +298,10 @@ IsActive                    bit(1)      NOT NULL                DEFAULT 1
 
 CREATE TABLE Role
 (
-RoleID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Name            varchar(30)     NOT NULL,
-Description     varchar(130)    NULL,
-DateCreated     timestamp       NOT NULL                DEFAULT NOW()
+RoleID              int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+RoleName            varchar(30)     NOT NULL,
+RoleDescription     varchar(130)    NULL,
+DateCreated         timestamp       NOT NULL                DEFAULT NOW()
 );
 
 #----------------------------------------------------------------------------------------------------------
@@ -1787,6 +1788,27 @@ VALUES
 i_Name,
 i_Description
 );
+
+END ||
+DELIMITER ;
+
+#--------------update Product Count Table--------------
+/******************************************
+* sp_updateProductCount inserts into the
+* Category table.
+******************************************/
+
+DELIMITER |
+CREATE PROCEDURE sp_updateProductCount
+(
+IN i_ProductID      int
+)
+
+BEGIN
+
+UPDATE Product SET
+Counter = Counter + 1
+WHERE ProductID = i_ProductID;
 
 END ||
 DELIMITER ;
