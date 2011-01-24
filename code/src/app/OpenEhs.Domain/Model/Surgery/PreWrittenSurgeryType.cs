@@ -24,8 +24,8 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id {get; private set;}
-        public string SurgeryType  {get; set;}
+        public virtual int Id { get; private set; }
+        public virtual string SurgeryType { get; set; }
 
         #endregion
 

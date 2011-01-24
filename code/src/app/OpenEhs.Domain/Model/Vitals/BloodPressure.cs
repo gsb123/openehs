@@ -19,8 +19,8 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Systolic {get; set;}
-        public int Diastolic {get; set;}
+        public virtual int Systolic {get; set;}
+        public virtual int Diastolic {get; set;}
         public BloodPressureCategory Category
         {
             get

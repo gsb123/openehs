@@ -29,13 +29,13 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id {get; private set;}
-        public string SurgeryType {get; set;}
-        public int RoomNumber {get; set;}
-        public DateTime StartTime {get; set;}
-        public DateTime EndTime {get; set;}
-        public string Comments {get; set;}
-        public InPatient InPatientID {get; set;}
+        public virtual int Id { get; private set; }
+        public virtual string SurgeryType { get; set; }
+        public virtual int RoomNumber { get; set; }
+        public virtual DateTime StartTime { get; set; }
+        public virtual DateTime EndTime { get; set; }
+        public virtual string Comments { get; set; }
+        public virtual InPatient InPatientID { get; set; }
 
         #endregion
 

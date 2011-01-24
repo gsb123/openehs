@@ -10,7 +10,7 @@ namespace OpenEhs.Domain
 {
     public class Role
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public virtual string Name { get; private set; }
+        public virtual string Description { get; private set; }
     }
 }

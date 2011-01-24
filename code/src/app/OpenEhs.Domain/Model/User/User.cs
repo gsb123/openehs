@@ -12,11 +12,9 @@ namespace OpenEhs.Domain
     {
         #region Properties
 
-        public int Id { get; private set; }
-
-        public string UserName { get; set; }
-
-        public string Password { get; set; }
+        public virtual int Id { get; private set; }
+        public virtual string UserName { get; set; }
+        public virtual string Password { get; set; }
 
         #endregion
 
