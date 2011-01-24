@@ -25,14 +25,14 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id {get; private set;}
-        public VitalsType Type {get; set;}
-        public float Height {get; set;}
-        public float Weight {get; set;}
-        public int HeartRate  {get; set;}
-        public float Temperature  {get; set;}
-        public BloodPressure BloodPressure {get; set;}
-        public int RespiratoryRate  {get; set;}
+        public virtual int Id {get; private set;}
+        public virtual VitalsType Type { get; set; }
+        public virtual float Height { get; set; }
+        public virtual float Weight { get; set; }
+        public virtual int HeartRate { get; set; }
+        public virtual float Temperature { get; set; }
+        public virtual BloodPressure BloodPressure { get; set; }
+        public virtual int RespiratoryRate { get; set; }
 
         #endregion
 

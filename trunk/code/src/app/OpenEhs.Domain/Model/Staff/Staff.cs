@@ -26,15 +26,15 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id {get; private set;} 
-        public string FirstName {get; set;}
-        public string MiddleName {get; set;}
-        public string LastName {get; set;}
-        public string PhoneNumber {get; set;}
-        public StaffType Type { get; set; }
-        public string LicenseNumber { get; set; }
-        public Address Address { get; set; }
-        public User User { get; set; }
+        public virtual int Id { get; private set; }
+        public virtual string FirstName { get; set; }
+        public virtual string MiddleName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual string PhoneNumber { get; set; }
+        public virtual StaffType Type { get; set; }
+        public virtual string LicenseNumber { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual User User { get; set; }
 
         #endregion
 

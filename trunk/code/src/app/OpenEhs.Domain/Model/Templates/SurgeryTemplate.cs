@@ -10,8 +10,8 @@ namespace OpenEhs.Domain
 {
     public class SurgeryTemplate : ITemplate
     {
-        public int Id { get; private set; }
-        public string Body { get; set; }
-        public bool IsActive { get; set; }
+        public virtual int Id { get; private set; }
+        public virtual string Body { get; set; }
+        public virtual bool IsActive { get; set; }
     }
 }
