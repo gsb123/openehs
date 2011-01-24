@@ -26,59 +26,15 @@ namespace OpenEhs.Domain
 
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string FirstName
-        {
-            get { return _firstName; }
-            set { _firstName = value; }
-        }
-
-        public string MiddleName
-        {
-            get { return _middleName; }
-            set { _middleName = value; }
-        }
-
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
-
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set { _phoneNumber = value; }
-        }
-
-        public StaffType Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
-
-        public string LicenseNumber
-        {
-            get { return _licenseNumber; }
-            set { _licenseNumber = value; }
-        }
-
-        public Address Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        public User User
-        {
-            get { return _login; }
-            set { _login = value; }
-        }
+        public int Id {get; private set;} 
+        public string FirstName {get; set;}
+        public string MiddleName {get; set;}
+        public string LastName {get; set;}
+        public string PhoneNumber {get; set;}
+        public StaffType Type { get; set; }
+        public string LicenseNumber { get; set; }
+        public Address Address { get; set; }
+        public User User { get; set; }
 
         #endregion
 
