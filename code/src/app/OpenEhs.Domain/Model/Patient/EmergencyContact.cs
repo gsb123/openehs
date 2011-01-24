@@ -10,61 +10,15 @@ namespace OpenEhs.Domain
 {
     public class EmergencyContact // NOTE: Should we just call this class "Contact"?
     {
-        #region Fields
-
-        private int _id;
-        private string _firstname;
-        private string _lastname;
-        private string _phonenumber;
-        private Relationship _relationship;
-        private Address _addressid;
-        private Patient _patientid;
-
-        #endregion
-
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string FirstName
-        {
-            get { return _firstname; }
-            set { _firstname = value; }
-        }
-
-        public string LastName
-        {
-            get { return _lastname; }
-            set { _lastname = value; }
-        }
-
-        public string PhoneNumber
-        {
-            get { return _phonenumber; }
-            set { _phonenumber = value; }
-        }
-
-        public Relationship Relationship
-        {
-            get { return _relationship; }
-            set { _relationship = value; }
-        }
-
-        public Address AddressID
-        {
-            get { return _addressid; }
-            set { _addressid = value; }
-        }
-
-        public Patient PatientID
-        {
-            get { return _patientid; }
-            set { _patientid = value; }
-        }
+        public virtual int Id { get; private set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual string PhoneNumber { get; set; }
+        public virtual Relationship Relationship { get; set; }
+        public virtual Address AddressID { get; set; }
+        public virtual Patient PatientID { get; set; }
 
         #endregion
 

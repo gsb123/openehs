@@ -12,89 +12,19 @@ namespace OpenEhs.Domain
 {
     public class Patient
     {
-        #region Fields
-
-        private int _id;
-        private string _firstname;
-        private string _middlename;
-        private string _lastname;
-        private DateTime _dateofbirth;
-        private Gender _gender;
-        private string _phonenumber;
-        private Address _address;
-        private string _bloodtype;
-        private string _triberace;
-        private string _religion;
-
-        #endregion
-
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string FirstName
-        {
-            get { return _firstname; }
-            set { _firstname = value; }
-        }
-
-        public string MiddleName
-        {
-            get { return _middlename; }
-            set { _middlename = value; }
-        }
-
-        public string LastName
-        {
-            get { return _lastname; }
-            set { _lastname = value; }
-        }
-
-        public DateTime DateOfBirth
-        {
-            get { return _dateofbirth; }
-            set { _dateofbirth = value; }
-        }
-
-        public Gender Gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
-
-        public string PhoneNumber
-        {
-            get { return _phonenumber; }
-            set { _phonenumber = value; }
-        }
-
-        public Address Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        public string BloodType
-        {
-            get { return _bloodtype; }
-            set { _bloodtype = value; }
-        }
-
-        public string TribeRace
-        {
-            get { return _triberace; }
-            set { _triberace = value; }
-        }
-
-        public string Religion
-        {
-            get { return _religion; }
-            set { _religion = value; }
-        }
+        public virtual int Id { get; private set; }
+        public virtual string FirstName { get; set; }
+        public virtual string MiddleName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
+        public virtual Gender Gender { get; set; }
+        public virtual string PhoneNumber { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual string BloodType { get; set; }
+        public virtual string TribeRace { get; set; }
+        public virtual string Religion { get; set; }
 
         #endregion
 

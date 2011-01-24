@@ -15,61 +15,15 @@ namespace OpenEhs.Domain
 {
     public class InPatient
     {
-        #region Fields
-
-        private int _id;
-        private PatientCheckIn _patientcheckinid;
-        private string _admissionreason;
-        private string _comments;
-        private DateTime _admitdate;
-        private Staff _staffid;
-        private int _wardnumber;
-
-        #endregion
-
         #region Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public PatientCheckIn PatientCheckInID
-        {
-            get { return _patientcheckinid; }
-            set { _patientcheckinid = value; }
-        }
-
-        public string AdmissionReason
-        {
-            get { return _admissionreason; }
-            set { _admissionreason = value; }
-        }
-
-        public string Comments
-        {
-            get { return _comments; }
-            set { _comments = value; }
-        }
-
-        public DateTime AdmitDate
-        {
-            get { return _admitdate; }
-            set { _admitdate = value; }
-        }
-
-        public Staff StaffID
-        {
-            get { return _staffid; }
-            set { _staffid = value; }
-        }
-
-        public int WardNumber
-        {
-            get { return _wardnumber; }
-            set { _wardnumber = value; }
-        }
+        public virtual int Id { get; private set; }
+        public virtual PatientCheckIn PatientCheckInID { get; set; }
+        public virtual string AdmissionReason { get; set; }
+        public virtual string Comments { get; set; }
+        public virtual DateTime AdmitDate { get; set; }
+        public virtual Staff StaffID { get; set; }
+        public virtual int WardNumber { get; set; }
 
         #endregion
 

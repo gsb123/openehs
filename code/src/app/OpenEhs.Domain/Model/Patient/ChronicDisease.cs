@@ -10,7 +10,21 @@ namespace OpenEhs.Domain
 {
     public class ChronicDisease
     {
-        public int Id { get; private set; }
-        public string Name { get; set; }
+        #region Properties
+
+        public virtual int Id { get; private set; }
+        public virtual string Name { get; set; }
+
+        #endregion
+
+        #region Constructor(s)
+
+        public ChronicDisease(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        #endregion
     }
 }
