@@ -7,58 +7,32 @@
  *****************************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
     public class Category
     {
-        #region Fields
-
-        private string _name;
-        private string _description;
-
-        #endregion
-
         #region Properties
 
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-
-        public string Description
-        {
-            get
-            {
-                return _description;
-            }
-            set 
-            {
-                _description = value;
-            }
-        }
+        public virtual int Id { get; private set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual IList<Product> Products { get; set; }
+        public virtual DateTime DateCreated { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
-
-        #region Constructor
 
         public Category()
-            : this(String.Empty, String.Empty)
-        {}
-
-        public Category(string name, string description)
         {
-            Name = name;
-            Description = description;
+            Products = new List<Product>();
         }
 
-        #endregion
+        public virtual void AddProduct(Product product)
+        {
+            product.Category = this;
+            Products.Add(product);
+        }
     }
 }
