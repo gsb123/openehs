@@ -86,10 +86,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mappings\Category.hbm.xml">
+    <EmbeddedResource Include="Mappings\Category.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Mappings\Product.hbm.xml" />
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Product.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
