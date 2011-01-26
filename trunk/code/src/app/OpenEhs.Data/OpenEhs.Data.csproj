@@ -86,7 +86,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mappings\Category.hbm.xml" />
+    <Content Include="Mappings\Category.hbm.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Mappings\Product.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
