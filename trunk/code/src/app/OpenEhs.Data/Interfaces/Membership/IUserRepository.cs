@@ -1,17 +1,16 @@
 ﻿/*****************************************************************************
  * Project: Open Electronic Healthcare System
  * Group: Ghana Team
- * Date: 23-Jan-2011
+ * Date: 26-Jan-2011
  * 
  * Author: Matthew Kimber (matthew.kimber@gmail.com)
  *****************************************************************************/
 
-namespace OpenEhs.Domain
+using OpenEhs.Domain;
+
+namespace OpenEhs.Data
 {
-    public class DiagnosisTemplate : ITemplate
+    public interface IUserRepository : IRepository<User>
     {
-        public virtual int Id { get; private set; }
-        public virtual string Body { get; set; }
-        public virtual bool IsActive { get; set; }
     }
 }

@@ -36,11 +36,6 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
         }
 
-        public IQueryable<Staff> Find(Expression<Func<Staff, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<Staff> FindByName(string name)
         {
             throw new NotImplementedException();

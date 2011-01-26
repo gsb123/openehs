@@ -8,9 +8,8 @@
 
 namespace OpenEhs.Domain
 {
-    public interface ITemplate
+    public interface ITemplate : IEntity
     {
-        int Id { get; }
         string Body { get; set; }
         bool IsActive { get; set; }
     }

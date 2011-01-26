@@ -31,11 +31,6 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
         }
 
-        public IQueryable<Patient> Find(Expression<Func<Patient, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<Patient> GetAll()
         {
             throw new NotImplementedException();

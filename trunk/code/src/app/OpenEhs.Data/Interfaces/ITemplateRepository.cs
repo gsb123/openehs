@@ -13,9 +13,5 @@ namespace OpenEhs.Data
 {
     public interface ITemplateRepository : IRepository<ITemplate>
     {
-        IList<ITemplate> GetAllSurgeryTemplates();
-        IList<ITemplate> GetAllDiagnosisTemplates();
-        IList<ITemplate> GetAllNoteTemplates();
-        IList<ITemplate> GetAllReasonTemplates();
     }
 }
