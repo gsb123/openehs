@@ -264,34 +264,18 @@ PatientEncounterID  int             NOT NULL,
 IsActive            bit(1)          NOT NULL                DEFAULT 1
 );
 
-CREATE TABLE PreWrittenNote
+CREATE TABLE TemplateCategory
 (
-PreWrittenNoteID            int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Body                        longtext    NOT NULL,
-StaffID                     int         NOT NULL,
-IsActive                    bit(1)      NOT NULL                DEFAULT 1
+TemplateCategoryID              int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+TemplateCategoryName            text        NOT NULL,
+TemplateCategoryDescription     text        NULL
 );
 
-CREATE TABLE PreWrittenDiagnosis
+CREATE TABLE Template
 (
-PreWrittenNoteID            int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Diagnosis                   longtext    NOT NULL,
-StaffID                     int         NOT NULL,
-IsActive                    bit(1)      NOT NULL                DEFAULT 1
-);
-
-CREATE TABLE PreWrittenSurgeryType
-(
-PreWrittenSurgeryTypeID     int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-SurgeryType                 text        NOT NULL,
-StaffID                     int         NOT NULL,
-IsActive                    bit(1)      NOT NULL                DEFAULT 1
-);
-
-CREATE TABLE PreWrittenReason
-(
-PreWrittenReason            int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Reason                      text        NOT NULL,
+TemplateID                  int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+TemplateBody                longtext    NOT NULL,
+TemplateCategoryID          int         NOT NULL,
 StaffID                     int         NOT NULL,
 IsActive                    bit(1)      NOT NULL                DEFAULT 1
 );
@@ -400,21 +384,13 @@ ALTER TABLE PatientProblem
 ADD CONSTRAINT FK_PatientProblemMustHaveProblemID
 FOREIGN KEY (ProblemID) REFERENCES Problem(ProblemID);
 
-ALTER TABLE PreWrittenSurgeryType
-ADD CONSTRAINT PreWrittenSurgeryTypeMustHaveStaffID
+ALTER TABLE Template
+ADD CONSTRAINT TemplateMustHaveStaffID
 FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 
-ALTER TABLE PreWrittenDiagnosis
-ADD CONSTRAINT PreWrittenDiagnosisMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
-
-ALTER TABLE PreWrittenNote
-ADD CONSTRAINT PreWrittenNoteMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
-
-ALTER TABLE PreWrittenReason
-ADD CONSTRAINT PreWrittenReasonMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
+ALTER TABLE Template
+ADD CONSTRAINT TemplateMustHaveTemplateCategoryID
+FOREIGN KEY (TemplateCategoryID) REFERENCES TemplateCategory(TemplateCategoryID);
 
 ALTER TABLE Product
 ADD CONSTRAINT ProductMustHaveCategoryID
@@ -1276,225 +1252,94 @@ i_PatientEncounterID
 END ||
 DELIMITER ;
 
-#--------------insert into PreWrittenNote Table--------------
+#--------------insert into TemplateCategory Table--------------
 /******************************************
-* sp_insertPreWrittenNote inserts into the
-* PreWrittenNote table.
+* sp_insertTemplateCategory inserts into the
+* TemplateCategory table.
 ******************************************/
 
 DELIMITER |
-CREATE PROCEDURE sp_insertPreWrittenNote
+CREATE PROCEDURE sp_insertTemplateCategory
 (
-IN i_Body               text,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30)
 )
 
 BEGIN
 
-DECLARE _staffID int;
-
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-INSERT INTO PreWrittenNote
+INSERT INTO TemplateCategory
 (
-Body,
-StaffID
+
 )
 VALUES
 (
-i_Body,
-_staffID
+
 );
 
 END ||
 DELIMITER ;
 
-#--------------insert into PreWrittenDiagnosis Table--------------
+#--------------insert into Template Table--------------
 /******************************************
-* sp_insertPreWrittenDiagnosis inserts into
-* PreWrittenDiagnosis table.
+* sp_insertTemplate inserts into the
+* Template table.
 ******************************************/
 
 DELIMITER |
-CREATE PROCEDURE sp_insertPreWrittenDiagnosis
+CREATE PROCEDURE sp_insertTemplate
 (
-IN i_Diagnosis          text,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30)
+IN i_TemplateBody           text,
+IN i_TemplateCategoryID     int,
+IN i_StaffID                int
+#IN i_staffFN            varchar(30),
+#IN i_staffLN            varchar(30)
 )
 
 BEGIN
 
-DECLARE _staffID int;
+#DECLARE _staffID int;
 
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
+#SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
 
-INSERT INTO PreWrittenDiagnosis
+INSERT INTO Template
 (
-Diagnosis,
+TemplateBody,
+TemplateCategoryID,
 StaffID
+#StaffID
 )
 VALUES
 (
-i_Diagnosis,
-_staffID
+i_TemplateBody,
+i_TemplateCategoryID,
+i_StaffID
+#_staffID
 );
 
 END ||
 DELIMITER ;
 
-#--------------insert into PreWrittenReason Table--------------
+#--------------Delete Template Table--------------
 /******************************************
-* sp_insertPreWrittenReason inserts into
-* PreWrittenReason table.
+* sp_deleteTemplate updates the
+* Template table by changing IsActive to 0.
 ******************************************/
 
 DELIMITER |
-CREATE PROCEDURE sp_insertPreWrittenReason
+CREATE PROCEDURE sp_delectTemplate
 (
-IN i_Reason             text,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30)
+IN i_TemplateID     int,
+IN i_StaffID        int
 )
 
 BEGIN
 
-DECLARE _staffID int;
-
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-INSERT INTO PreWrittenReason
-(
-Reason,
-StaffID
-)
-VALUES
-(
-i_Reason,
-_staffID
-);
-
-END ||
-DELIMITER ;
-
-#--------------insert into PreWrittenSurgeryType Table--------------
-/******************************************
-* sp_insertPreWrittenSurgeryType inserts into
-* PreWrittenSurgeryType table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertPreWrittenSurgeryType
-(
-IN i_SurgeryType        text,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30)
-)
-
-BEGIN
-
-DECLARE _staffID int;
-
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-INSERT INTO PreWrittenSurgeryType
-(
-SurgeryType,
-StaffID
-)
-VALUES
-(
-i_SurgeryType,
-_staffID
-);
-
-END ||
-DELIMITER ;
-
-#--------------delete PreWrittenSurgeryType Table--------------
-/******************************************
-* sp_deletePreWrittenSurgeryType deletes
-* PreWrittenSurgeryType table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_delectPreWrittenSurgeryType
-(
-i_PreWrittenSurgeryTypeID       int
-)
-
-BEGIN
-
-UPDATE PreWrittenSurgeryType SET
+UPDATE Template SET
 IsActive = 0
-WHERE PreWrittenSurgeryTypeID = i_PreWrittenSurgeryTypeID;
+WHERE TemplateID = i_Template && StaffID = i_StaffID;
 
 END ||
 DELIMITER ;
 
-#--------------delete PreWrittenNote Table--------------
-/******************************************
-* sp_deletePreWrittenNote deletes
-* PreWrittenNote table.
-******************************************/
 
-DELIMITER |
-CREATE PROCEDURE sp_delectPreWrittenNote
-(
-i_PreWrittenNoteID       int
-)
-
-BEGIN
-
-UPDATE PreWrittenNote SET
-IsActive = 0
-WHERE PreWrittenNoteID = i_PreWrittenNoteID;
-
-END ||
-DELIMITER ;
-
-#--------------delete PreWrittenDiagnosis Table--------------
-/******************************************
-* sp_deletePreWrittenDiagnosis deletes
-* PreWrittenDiagnosis table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_delectPreWrittenDiagnosis
-(
-i_PreWrittenDiagnosisID       int
-)
-
-BEGIN
-
-UPDATE PreWrittenDiagnosis SET
-IsActive = 0
-WHERE PreWrittenDiagnosisID = i_PreWrittenDiagnosisID;
-
-END ||
-DELIMITER ;
-
-#--------------delete PreWrittenReason Table--------------
-/******************************************
-* sp_deletePreWrittenReason deletes
-* PreWrittenReason table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_delectPreWrittenReason
-(
-i_PreWrittenReasonID       int
-)
-
-BEGIN
-
-UPDATE PreWrittenReason SET
-IsActive = 0
-WHERE PreWrittenReasonID = i_PreWrittenReasonID;
-
-END ||
-DELIMITER ;
 
 #--------------insert into PatientEncounter Table--------------
 /******************************************
@@ -1971,54 +1816,11 @@ NOW(),
 1
 );
 
-CALL sp_insertPreWrittenNote
-(
-'test body',
-'cameron',
-'harp'
-);
+#CALL sp_insertTemplate
+#(
+#'Test Body for Staff 1',
 
-CALL sp_insertPreWrittenDiagnosis
-(
-'test diagnosis',
-'cameron',
-'harp'
-);
-
-CALL sp_insertPreWrittenDiagnosis
-(
-'test diagnosis',
-'jimmy',
-'john'
-);
-
-CALL sp_insertPreWrittenReason
-(
-'test Reason',
-'cameron',
-'harp'
-);
-
-CALL sp_insertPreWrittenReason
-(
-'test Reason',
-'jimmy',
-'john'
-);
-
-CALL sp_insertPreWrittenSurgeryType
-(
-'test SurgeryType',
-'cameron',
-'harp'
-);
-
-CALL sp_insertPreWrittenSurgeryType
-(
-'test SurgeryType',
-'jimmy',
-'john'
-);
+#);
 
 CALL sp_insertSurgery
 (
