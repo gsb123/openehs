@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Invoice
+    public class Invoice: IEntity
     {
         #region Properties
 
@@ -19,16 +19,21 @@ namespace OpenEhs.Domain
         public virtual decimal Total { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual IList<InvoiceLineItem> LineItems { get; private set; }
+        public virtual IList<InvoiceLineItem> LineItems { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
 
         #endregion
 
-        #region Constructor
-        
-        public Invoice()
+        #region Methods
+
+        public void AddLineItem(InvoiceLineItem item)
         {
-            LineItems = new List<InvoiceLineItem>();
+            LineItems.Add(item);
+        }
+
+        public void RemoveLineItem(InvoiceLineItem item)
+        {
+            LineItems.Remove(item);
         }
 
         #endregion
