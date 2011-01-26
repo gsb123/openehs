@@ -34,6 +34,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\lib\nhibernate\Required_For_LazyLoading\Castle\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -43,6 +46,9 @@
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\..\lib\nhibernate\Required_For_LazyLoading\Castle\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Data.Linq">
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\Remotion.Data.Linq.dll</HintPath>
@@ -68,14 +74,20 @@
     <Compile Include="SessionProvider.cs" />
     <Compile Include="Repositories\TemplateRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\OpenEhs.Domain\OpenEhs.Domain.csproj">
       <Project>{9F0827C4-FFAE-4B13-9736-012A13662D90}</Project>
       <Name>OpenEhs.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Mappings\Category.hbm.xml" />
+    <Content Include="Mappings\Product.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
