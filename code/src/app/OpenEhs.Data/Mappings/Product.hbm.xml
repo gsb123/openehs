@@ -3,11 +3,11 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
   <class name="Product">
-    <id name="Id">
+    <id name="Id" column="ProductID">
       <generator class="native" />
     </id>
     <property name="Name" />
-    <property name="Category" />
+    <one-to-one name="Category" />
     <property name="Unit" />
     <property name="Price" />
     <property name="QuantityOnHand" />
