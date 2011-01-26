@@ -36,11 +36,6 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
         }
 
-        public IQueryable<Product> Find(Expression<Func<Product, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<Product> GetActiveProducts()
         {
             throw new NotImplementedException();
