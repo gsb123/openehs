@@ -20,19 +20,7 @@ namespace OpenEhs.Domain
         public virtual int Id { get; private set; }
         public virtual string Name { get; set; }
         public virtual string Medication { get; set; }
-        public virtual Patient PatientID { get; set; }
-
-        #endregion
-
-        #region Constructor(s)
-
-        public Allergy(int id, string name, string medication, Patient patientid)
-        {
-            Id = id;
-            Name = name;
-            Medication = medication;
-            PatientID = patientid;
-        }
+        public virtual Patient Patient { get; set; }
 
         #endregion
     }
