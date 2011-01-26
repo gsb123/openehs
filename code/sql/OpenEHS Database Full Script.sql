@@ -1261,17 +1261,21 @@ DELIMITER ;
 DELIMITER |
 CREATE PROCEDURE sp_insertTemplateCategory
 (
+IN i_TCName         text,
+IN i_TCDescription  text
 )
 
 BEGIN
 
 INSERT INTO TemplateCategory
 (
-
+TemplateCategoryName,
+TemplateCategoryDescription
 )
 VALUES
 (
-
+i_TCName,
+i_TCDescription
 );
 
 END ||
@@ -1816,11 +1820,37 @@ NOW(),
 1
 );
 
-#CALL sp_insertTemplate
-#(
-#'Test Body for Staff 1',
+CALL sp_insertTemplateCategory
+(
+'Diagnosis',
+NULL
+);
 
-#);
+CALL sp_insertTemplateCategory
+(
+'Surgery',
+NULL
+);
+
+CALL sp_insertTemplateCategory
+(
+'General Note',
+NULL
+);
+
+CALL sp_insertTemplate
+(
+'Test diagnosis for Staff 1',
+1,
+1
+);
+
+CALL sp_insertTemplate
+(
+'Test diagnosis for Staff 2',
+1,
+2
+);
 
 CALL sp_insertSurgery
 (
