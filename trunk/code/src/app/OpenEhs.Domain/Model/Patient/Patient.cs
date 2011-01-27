@@ -7,10 +7,11 @@
  *****************************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Patient
+    public class Patient: IEntity
     {
         #region Properties
 
@@ -21,6 +22,7 @@ namespace OpenEhs.Domain
         public virtual DateTime DateOfBirth { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual string PhoneNumber { get; set; }
+        public virtual IList<Problem> Problems { get; set; }
         public virtual Address Address { get; set; }
         public virtual string BloodType { get; set; }
         public virtual string TribeRace { get; set; }
@@ -28,22 +30,16 @@ namespace OpenEhs.Domain
 
         #endregion
 
-        #region Constructor(s)
+        #region Methods
 
-        public Patient(int id, string firstname, string middlename, string lastname, DateTime dateofbirth, Gender gender, string phonenumber, Address address,
-            string bloodtype, string triberace, string religion)
+        public void AddProblem(Problem problem)
         {
-            Id = id;
-            FirstName = firstname;
-            MiddleName = middlename;
-            LastName = lastname;
-            DateOfBirth = dateofbirth;
-            Gender = gender;
-            PhoneNumber = phonenumber;
-            Address = address;
-            BloodType = bloodtype;
-            TribeRace = triberace;
-            Religion = religion;
+            Problems.Add(problem);
+        }
+
+        public void RemoveProblem(Problem problem)
+        {
+            Problems.Remove(problem);
         }
 
         #endregion

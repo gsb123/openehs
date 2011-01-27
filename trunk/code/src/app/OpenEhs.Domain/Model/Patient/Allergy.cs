@@ -13,7 +13,7 @@ using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class Allergy
+    public class Allergy: IEntity
     {
         #region Properties
 

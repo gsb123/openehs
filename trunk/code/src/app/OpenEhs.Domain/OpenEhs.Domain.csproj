@@ -39,8 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Common Interfaces\IEntity.cs" />
+    <Compile Include="Model\Encounter\PatientEncounter.cs" />
+    <Compile Include="Model\Patient\Problem.cs" />
     <Compile Include="Model\Templates\ITemplate.cs" />
-    <Compile Include="Model\Patient\ChronicDisease.cs" />
     <Compile Include="Model\Vitals\BloodPressure.cs" />
     <Compile Include="Model\Vitals\BloodPressureCategory.cs" />
     <Compile Include="Model\Product\Category.cs" />
@@ -53,13 +54,9 @@
     <Compile Include="Model\CheckIn\PatientCheckIn.cs" />
     <Compile Include="Model\CheckIn\PCIStatus.cs" />
     <Compile Include="Model\CheckIn\PCIType.cs" />
-    <Compile Include="Model\Diagnosis\PreWrittenDiagnosis.cs" />
-    <Compile Include="Model\InPatient\InPatient.cs" />
-    <Compile Include="Model\InPatient\InPatientEncounter.cs" />
     <Compile Include="Model\User\User.cs" />
     <Compile Include="Model\User\LogInPermissions.cs" />
     <Compile Include="Model\Note\Note.cs" />
-    <Compile Include="Model\OutPatient\OutPatientEncounter.cs" />
     <Compile Include="Model\Patient\Allergy.cs" />
     <Compile Include="Model\Patient\EmergencyContact.cs" />
     <Compile Include="Model\Patient\Gender.cs" />
@@ -69,7 +66,6 @@
     <Compile Include="Model\Service\Service.cs" />
     <Compile Include="Model\Staff\Staff.cs" />
     <Compile Include="Model\Staff\StaffType.cs" />
-    <Compile Include="Model\Surgery\PreWrittenSurgeryType.cs" />
     <Compile Include="Model\Surgery\Surgery.cs" />
     <Compile Include="Model\Vitals\Vitals.cs" />
     <Compile Include="Model\Vitals\VitalsType.cs" />

@@ -13,20 +13,8 @@ using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class Surgery
+    public class Surgery: IEntity
     {
-        #region Fields
-
-        private int _id;
-        private string _surgerytype;
-        private int _roomnumber;
-        private DateTime _starttime;
-        private DateTime _endtime;
-        private string _comments;
-        private InPatient _inpatientid;
-
-        #endregion
-
         #region Properties
 
         public virtual int Id { get; private set; }
@@ -35,23 +23,9 @@ namespace OpenEhs.Domain
         public virtual DateTime StartTime { get; set; }
         public virtual DateTime EndTime { get; set; }
         public virtual string Comments { get; set; }
-        public virtual InPatient InPatientID { get; set; }
+        public virtual PatientEncounter PatientEncounter { get; set; }
 
         #endregion
 
-        #region Constructor(s)
-
-        public Surgery(int id, string surgerytype, int roomnumber, DateTime starttime, DateTime endtime, string comments, InPatient inpatientid)
-        {
-            Id = id;
-            SurgeryType = surgerytype;
-            RoomNumber = roomnumber;
-            StartTime = starttime;
-            EndTime = endtime;
-            Comments = comments;
-            InPatientID = inpatientid;
-        }
-
-        #endregion
     }
 }

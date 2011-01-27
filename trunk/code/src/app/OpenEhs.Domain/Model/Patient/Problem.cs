@@ -1,30 +1,23 @@
 ﻿/*****************************************************************************
  * Project: Open Electronic Healthcare System
  * Group: Ghana Team
- * Date: 23-Jan-2011
+ * Date: Jan-26-2011
  * 
- * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ * Author: Kevin Russon
  *****************************************************************************/
+
+using System;
 
 namespace OpenEhs.Domain
 {
-    public class ChronicDisease
+    public class Problem: IEntity
     {
         #region Properties
 
         public virtual int Id { get; private set; }
-        public virtual string Name { get; set; }
+        public virtual string ProblemName { get; set; }
 
         #endregion
 
-        #region Constructor(s)
-
-        public ChronicDisease(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-
-        #endregion
     }
 }
