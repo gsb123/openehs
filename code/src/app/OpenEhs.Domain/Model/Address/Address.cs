@@ -8,7 +8,7 @@
 
 namespace OpenEhs.Domain
 {
-    public class Address
+    public class Address: IEntity
     {
         #region Properties
 
