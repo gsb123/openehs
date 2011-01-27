@@ -10,7 +10,7 @@ using System;
 
 namespace OpenEhs.Domain
 {
-    public class Note
+    public class Note: IEntity
     {
         #region Properties
 
@@ -22,17 +22,5 @@ namespace OpenEhs.Domain
 
         #endregion
 
-        #region Constructor(s)
-
-        public Note(int id, string title, string body, DateTime datecreated, Staff author)
-        {
-            Id = id;
-            Title = title;
-            Body = body;
-            DateCreated = datecreated;
-            Author = author;
-        }
-
-        #endregion
     }
 }

@@ -13,7 +13,7 @@ using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class Payment
+    public class Payment: IEntity
     {
         #region Properties
 

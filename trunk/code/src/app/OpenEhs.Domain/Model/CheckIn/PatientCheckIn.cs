@@ -13,29 +13,17 @@ using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class PatientCheckIn
+    public class PatientCheckIn: IEntity
     {
         #region Properties
 
         public virtual int Id { get; private set; }
         public virtual DateTime DateTime { get; set; }
         public virtual PCIType Type { get; set; }
-        public virtual Patient PatientID { get; set; }
+        public virtual Patient Patient { get; set; }
         public virtual PCIStatus Status { get; set; }
 
         #endregion
 
-        #region Constructor(s)
-
-        public PatientCheckIn(int id, DateTime datetime, PCIType type, Patient patientid, PCIStatus status)
-        {
-            Id = id;
-            DateTime = datetime;
-            Type = type;
-            PatientID = patientid;
-            Status = status;
-        }
-
-        #endregion
     }
 }
