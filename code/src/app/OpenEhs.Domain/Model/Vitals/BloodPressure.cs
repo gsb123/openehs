@@ -10,12 +10,6 @@ namespace OpenEhs.Domain
 {
     public class BloodPressure
     {
-        #region Fields
-
-        private int _systolic;
-        private int _diastolic;
-
-        #endregion
 
         #region Properties
 
@@ -26,23 +20,23 @@ namespace OpenEhs.Domain
             get
             {
                 // Normal Blood Pressure
-                if ((_systolic > 0 && _systolic < 120) && (_diastolic > 0 && _diastolic < 80))
+                if ((Systolic > 0 && Systolic < 120) && (Diastolic > 0 && Diastolic < 80))
                     return BloodPressureCategory.Normal;
                 
                 // Prehypertension
-                if ((_systolic >= 120 && _systolic <= 139) || (_diastolic >= 80 && _diastolic <= 89))
+                if ((Systolic >= 120 && Systolic <= 139) || (Diastolic >= 80 && Diastolic <= 89))
                     return BloodPressureCategory.Prehypertension;
 
                 // Stage 1 Hypertension
-                if ((_systolic >= 140 && _systolic <= 159) || (_diastolic >= 90 && _diastolic <= 99))
+                if ((Systolic >= 140 && Systolic <= 159) || (Diastolic >= 90 && Diastolic <= 99))
                     return BloodPressureCategory.StageOneHypertension;
 
                 // Stage 2 Hypertension
-                if ((_systolic >= 160 && _systolic <= 179) || (_diastolic >= 100 && _diastolic <= 109))
+                if ((Systolic >= 160 && Systolic <= 179) || (Diastolic >= 100 && Diastolic <= 109))
                     return BloodPressureCategory.StageTwoHypertension;
 
                 // Hypertensive Crisis
-                if (_systolic >= 180 || _diastolic >= 110)
+                if (Systolic >= 180 || Systolic >= 110)
                     return BloodPressureCategory.Crisis;
 
                 return BloodPressureCategory.None;
@@ -51,15 +45,6 @@ namespace OpenEhs.Domain
 
         #endregion
 
-        #region Constructor(s)
-
-        public BloodPressure()
-            : this(0, 0)
-        {}
-
-        public BloodPressure(int systolic, int diastolic)
-        {}
-
-        #endregion
+ 
     }
 }

@@ -8,7 +8,7 @@
 
 namespace OpenEhs.Domain
 {
-    public class EmergencyContact // NOTE: Should we just call this class "Contact"?
+    public class EmergencyContact: IEntity // NOTE: Should we just call this class "Contact"?
     {
         #region Properties
 
@@ -17,23 +17,8 @@ namespace OpenEhs.Domain
         public virtual string LastName { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual Relationship Relationship { get; set; }
-        public virtual Address AddressID { get; set; }
-        public virtual Patient PatientID { get; set; }
-
-        #endregion
-
-        #region Constructor(s)
-
-        public EmergencyContact(int id, string firstname, string lastname, string phonenumber, Relationship relationship, Address addressid, Patient patientid)
-        {
-            Id = id;
-            FirstName = firstname;
-            LastName = lastname;
-            PhoneNumber = phonenumber;
-            Relationship = relationship;
-            AddressID = addressid;
-            PatientID = patientid;
-        }
+        public virtual Address Address { get; set; }
+        public virtual Patient Patient { get; set; }
 
         #endregion
     }

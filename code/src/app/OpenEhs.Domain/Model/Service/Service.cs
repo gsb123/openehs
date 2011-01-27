@@ -8,11 +8,11 @@
 
 namespace OpenEhs.Domain
 {
-    public class Service
+    public class Service: IEntity
     {
         #region Properties
 
-        public virtual int Id { get; set; }
+        public virtual int Id { get; private set; }
         public virtual string Name { get; set; }
         public virtual decimal Price { get; set; }
 

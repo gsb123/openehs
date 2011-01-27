@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Category
+    public class Category: IEntity
     {
         #region Properties
 
@@ -20,14 +20,8 @@ namespace OpenEhs.Domain
         public virtual string Description { get; set; }
         public virtual IList<Product> Products { get; set; }
         public virtual DateTime DateCreated { get; set; }
-        public virtual bool IsActive { get; set; }
 
         #endregion
-
-        public Category()
-        {
-            Products = new List<Product>();
-        }
 
         public virtual void AddProduct(Product product)
         {
