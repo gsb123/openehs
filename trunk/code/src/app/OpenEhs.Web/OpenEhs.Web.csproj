@@ -64,6 +64,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\PatientModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,7 +126,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Patient\NewPatient.cshtml" />
+    <Content Include="Views\Patient\CreatePatient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Patient\Index.cshtml" />
