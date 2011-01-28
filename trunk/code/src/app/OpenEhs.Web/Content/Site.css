@@ -103,7 +103,6 @@ page width. Or, you can specify an exact pixel width. */
     margin: 0;
     color: #fff;
     border: none;
-    line-height: 2em;
     font-size: 32px !important;
 }
 
@@ -133,7 +132,6 @@ ul#menu
     padding: 0 0 2px;
     position: relative;
     margin: 0;
-    text-align: right;
 }
 
 ul#menu li
@@ -153,10 +151,10 @@ ul#menu li#greeting
 
 ul#menu li a
 {
-    padding: 10px 20px;
+    padding: 20px 40px;
     font-weight: bold;
     text-decoration: none;
-    line-height: 2.8em;
+    line-height: 4.5em;
     background-color: #e8eef4;
     color: #034af3;
 }
