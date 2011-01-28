@@ -1,0 +1,19 @@
+﻿@model OpenEhs.Web.Models.CreatePatientModel
+@{
+    ViewBag.Title = "Create New Patient";
+}
+<fieldset>
+    <legend>Create a Patient</legend>
+    @using (Html.BeginForm()) {
+        <div class="label" style="float:left; margin-right: 10px;">
+            @Html.LabelFor(m => m.FirstName)
+        </div>
+        <div class="formInput">
+            @Html.TextBoxFor(m => m.FirstName)
+        </div>
+        
+        
+        <p>
+            <input type="submit" value="Submit" /></p>
+    }
+</fieldset>

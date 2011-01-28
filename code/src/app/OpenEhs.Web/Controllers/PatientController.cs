@@ -13,7 +13,7 @@ namespace OpenEhs.Web.Controllers {
             return View();
         }
 
-        public ActionResult NewPatient() {
+        public ActionResult CreatePatient() {
             return View();
         }
 
@@ -21,5 +21,8 @@ namespace OpenEhs.Web.Controllers {
             return View();
         }
 
+        public ActionResult ViewPatients() {
+            return View();
+        }
     }
 }
