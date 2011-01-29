@@ -40,6 +40,9 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\..\lib\moq\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
