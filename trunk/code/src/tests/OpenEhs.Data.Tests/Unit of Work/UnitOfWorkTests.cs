@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using Moq;
 using NUnit.Framework;
 
 namespace OpenEhs.Data.Tests.Unit_of_Work
@@ -9,21 +11,17 @@ namespace OpenEhs.Data.Tests.Unit_of_Work
         [Test]
         public void CanStartUnitOfWork()
         {
-            IUnitOfWork uow = UnitOfWork.Start();
-        }
-    }
+            var mockFactory = new Mock<IUnitOfWorkFactory>();
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
 
-    public static class UnitOfWork
-    {
-        public static IUnitOfWork Current { get; private set; }
-        
-        public static IUnitOfWork Start()
-        {
-            throw new NotImplementedException();
-        }
-    }
+            mockFactory.Setup(factory => factory.Create()).Returns(mockUnitOfWork.Object);
 
-    public interface IUnitOfWork : IDisposable
-    {
+            var fieldInfo = typeof (UnitOfWork).GetField("_unitOfWorkFactory",
+                                                         BindingFlags.Static | BindingFlags.SetField |
+                                                         BindingFlags.NonPublic);
+            fieldInfo.SetValue(null, mockFactory.Object);
+
+            var uow = UnitOfWork.Start();
+        }
     }
 }
