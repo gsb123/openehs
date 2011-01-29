@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Moq;
 using NUnit.Framework;
 
@@ -8,6 +7,14 @@ namespace OpenEhs.Data.Tests.Unit_of_Work
     [TestFixture]
     public class UnitOfWorkTests
     {
+        private IUnitOfWorkFactory _factory;
+        private IUnitOfWork _unitOfWork;
+
+        [SetUp]
+        public void Setup()
+        {
+        }
+
         [Test]
         public void CanStartUnitOfWork()
         {
