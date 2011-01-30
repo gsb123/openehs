@@ -15,5 +15,11 @@
     <one-to-many name="Address" />
     <one-to-one name="User" />
     <property name="IsActive" />
+
+    <bag name="Surgery" table="SurgeryStaff">
+      <key column="StaffID" />
+      <many-to-many column="SurgeryID" class="Surgery" />
+    </bag>
+    
   </class>
 </hibernate-mapping>
