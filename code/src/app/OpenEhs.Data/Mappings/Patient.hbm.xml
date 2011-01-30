@@ -12,12 +12,17 @@
     <property name="DateOfBirth" />
     <property name="Gender" />
     <property name="PhoneNumber" />
-    <many-to-many name="Problems" />
     <one-to-many name="Address" />
     <property name="BloodType" />
     <property name="TribeRace" />
     <property name="Religion" />
     <property name="OldPhysicalRecordNumb" />
     <property name="IsActive" />
+
+    <bag name="Problem" table="PatientProblem">
+      <key column="PatientID" />
+      <many-to-many column="ProblemID" class="Problem" />
+    </bag>
+    
   </class>
 </hibernate-mapping>
