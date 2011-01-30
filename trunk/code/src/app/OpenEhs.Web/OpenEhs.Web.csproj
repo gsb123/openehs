@@ -134,6 +134,16 @@
   <ItemGroup>
     <Content Include="Views\Patient\SearchPatients.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenEhs.Data\OpenEhs.Data.csproj">
+      <Project>{7501A878-FBE8-444D-9884-B4237DF11207}</Project>
+      <Name>OpenEhs.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenEhs.Domain\OpenEhs.Domain.csproj">
+      <Project>{9F0827C4-FFAE-4B13-9736-012A13662D90}</Project>
+      <Name>OpenEhs.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
