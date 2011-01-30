@@ -6,5 +6,9 @@
     <id name="Id">
       <generator class="native" />
     </id>
+    <property name="TemplateBody" />
+    <one-to-many name="TemplateCategory" />
+    <one-to-many name="Staff" />
+    <property name="IsActive" />
   </class>
 </hibernate-mapping>
