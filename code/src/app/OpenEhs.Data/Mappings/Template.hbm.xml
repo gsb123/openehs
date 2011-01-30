@@ -2,13 +2,25 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
-  <class name="Template">
+  
+  <class name="Template" table="Template">
     <id name="Id">
       <generator class="native" />
     </id>
     <property name="TemplateBody" />
-    <one-to-many name="TemplateCategory" />
-    <one-to-many name="Staff" />
+
+    <!--One-to-many mapping: TemplateCategory-->
+    <bag name="TemplateCategory" lazy="false">
+      <key column="TemplateCategoryID" />
+      <one-to-many class="TemplateCategory" />
+    </bag>
+
+    <!--One-to-many mapping: Staff-->
+    <bag name="Staff" lazy="false">
+      <key column="StaffID" />
+      <one-to-many class="Staff" />
+    </bag>
+    
     <property name="IsActive" />
   </class>
 </hibernate-mapping>

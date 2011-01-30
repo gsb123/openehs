@@ -2,7 +2,8 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
-  <class name="Staff">
+  
+  <class name="Staff" table="Staff">
     <id name="Id">
       <generator class="native" />
     </id>
@@ -12,10 +13,11 @@
     <property name="PhoneNumber" />
     <property name="StaffType" />
     <property name="LicenseNumber" />
-    <one-to-many name="Address" />
+    <one-to-one name="Address" />
     <one-to-one name="User" />
     <property name="IsActive" />
 
+    <!--Many-to-many mapping: Surgery-->
     <bag name="Surgery" table="SurgeryStaff">
       <key column="StaffID" />
       <many-to-many column="SurgeryID" class="Surgery" />

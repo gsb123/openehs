@@ -3,7 +3,7 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="Surgery">
+  <class name="Surgery" table="Surgery">
     <id name="Id">
       <generator class="native" />
     </id>
@@ -14,6 +14,7 @@
     <property name="Comments" />
     <property name="PatientEncounter" />
     
+    <!--Many-to-many mapping: Staff-->
     <bag name="Staff" table="SurgeryStaff">
       <key column="SurgeryID" />
       <many-to-many column="StaffID" class="Staff" />

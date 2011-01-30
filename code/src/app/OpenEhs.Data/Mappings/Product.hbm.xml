@@ -2,12 +2,19 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
-  <class name="Product">
+  
+  <class name="Product" tabel="Product">
     <id name="Id" column="ProductID">
       <generator class="native" />
     </id>
     <property name="Name" />
-    <one-to-many name="Category" />
+
+    <!--One-to-many mapping: Category-->
+    <bag name="Category" lazy="false">
+      <key column="CategoryID" />
+      <one-to-many class="Category" />
+    </bag>
+    
     <property name="Unit" />
     <property name="Price" />
     <property name="QuantityOnHand" />

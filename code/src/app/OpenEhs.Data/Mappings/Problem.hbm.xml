@@ -3,12 +3,13 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="Problem">
+  <class name="Problem" tabel="Problem">
     <id name="Id">
       <generator class="native" />
     </id>
     <property name="ProblemName" />
 
+    <!--Many-to-many mapping: Patient-->
     <bag name="Patient" table="PatientProblem">
       <key column="ProblemID" />
       <many-to-many column="PatientID" class="Patient" />
