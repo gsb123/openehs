@@ -93,7 +93,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Mappings\Address.hbm.xml" />
+    <Content Include="Mappings\EmergencyContact.hbm.xml" />
+    <Content Include="Mappings\Invoice.hbm.xml" />
+    <Content Include="Mappings\Payment.hbm.xml" />
     <Content Include="Mappings\Problem.hbm.xml" />
+    <Content Include="Mappings\Service.hbm.xml" />
     <Content Include="Mappings\Surgery.hbm.xml" />
     <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
     <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml" />
