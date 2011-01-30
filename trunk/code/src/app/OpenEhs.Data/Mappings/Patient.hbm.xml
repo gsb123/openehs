@@ -6,5 +6,18 @@
     <id name="Id">
       <generator class="native" />
     </id>
+    <property name="FirstName" />
+    <property name="MiddleName" />
+    <property name="LastName" />
+    <property name="DateOfBirth" />
+    <property name="Gender" />
+    <property name="PhoneNumber" />
+    <many-to-many name="Problems" />
+    <one-to-many name="Address" />
+    <property name="BloodType" />
+    <property name="TribeRace" />
+    <property name="Religion" />
+    <property name="OldPhysicalRecordNumb" />
+    <property name="IsActive" />
   </class>
 </hibernate-mapping>
