@@ -20,6 +20,7 @@ namespace OpenEhs.Domain
         public virtual DateTime DateCreated { get; set; }
         public virtual Staff Author { get; set; }
         public virtual PatientEncounter PatientEncounter { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
 

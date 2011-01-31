@@ -23,6 +23,7 @@ namespace OpenEhs.Domain
         public virtual string Diagnosis { get; set; }
         public virtual Staff Staff { get; set; }
         public virtual string AdmitReason { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }

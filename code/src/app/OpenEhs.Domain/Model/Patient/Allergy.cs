@@ -21,6 +21,7 @@ namespace OpenEhs.Domain
         public virtual string Name { get; set; }
         public virtual string Medication { get; set; }
         public virtual Patient Patient { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }
