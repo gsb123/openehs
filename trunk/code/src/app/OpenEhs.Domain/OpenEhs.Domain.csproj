@@ -41,7 +41,6 @@
     <Compile Include="Model\Common Interfaces\IEntity.cs" />
     <Compile Include="Model\Encounter\PatientEncounter.cs" />
     <Compile Include="Model\Patient\Problem.cs" />
-    <Compile Include="Model\Templates\ITemplate.cs" />
     <Compile Include="Model\Templates\TemplateCategory.cs" />
     <Compile Include="Model\Vitals\BloodPressure.cs" />
     <Compile Include="Model\Vitals\BloodPressureCategory.cs" />

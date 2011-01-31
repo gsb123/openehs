@@ -8,17 +8,21 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+using NHibernate;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
     public class ProductRepository : IProductRepository
     {
+        private ISession Session
+        {
+            get { return UnitOfWork.CurrentSession; }
+        }
+
         public Product Get(int id)
         {
-            throw new NotImplementedException();
+            return Session.Get<Product>(id);
         }
 
         public IList<Product> GetAll()
@@ -26,14 +30,14 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
         }
 
-        public void Add(Product entity)
+        public void Add(Product product)
         {
-            throw new NotImplementedException();
+            Session.Save(product);
         }
 
-        public void Remove(Product entity)
+        public void Remove(Product product)
         {
-            throw new NotImplementedException();
+            Session.Delete(product);
         }
 
         public IList<Product> GetActiveProducts()
