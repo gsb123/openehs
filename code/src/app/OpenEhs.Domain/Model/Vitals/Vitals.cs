@@ -25,6 +25,7 @@ namespace OpenEhs.Domain
         public virtual BloodPressure BloodPressure { get; set; }
         public virtual int RespiratoryRate { get; set; }
         public virtual PatientEncounter PatientEncounter { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
 

@@ -18,6 +18,7 @@ namespace OpenEhs.Domain
         public virtual string Unit { get; set; }
         public virtual decimal Price { get; set; }
         public virtual int QuantityOnHand { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }
