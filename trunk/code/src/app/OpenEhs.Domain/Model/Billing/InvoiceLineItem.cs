@@ -26,6 +26,7 @@ namespace OpenEhs.Domain
                 return Product.Price * Quantity;
             }
         }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }

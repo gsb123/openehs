@@ -22,6 +22,7 @@ namespace OpenEhs.Domain
         public virtual PCIType Type { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual PCIStatus Status { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
 

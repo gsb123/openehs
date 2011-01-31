@@ -21,6 +21,7 @@ namespace OpenEhs.Domain
         public virtual decimal CashAmount { get; set; }
         public virtual DateTime PaymentDate { get; set; }
         public virtual Invoice InvoiceID { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }

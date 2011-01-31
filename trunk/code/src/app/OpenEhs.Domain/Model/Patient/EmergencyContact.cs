@@ -19,6 +19,7 @@ namespace OpenEhs.Domain
         public virtual Relationship Relationship { get; set; }
         public virtual Address Address { get; set; }
         public virtual Patient Patient { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }
