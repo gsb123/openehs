@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="OpenEhs.Domain"
+                   namespace="OpenEhs.Domain">
+
+  <class name="Vitals" table="Vitals">
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="Time" />
+    <property name="Type" />
+    <property name="Height" />
+    <property name="Weight" />
+    <property name="HeartRate" />
+    <property name="Temperature" />
+    <property name="BPSystolic" />
+    <property name="BPDiastolic" />
+    <property name="RespiratoryRate" />
+
+    <!--One-to-many mapping: PatientEncounter-->
+    <bag name="PatientEncounter" lazy="false">
+      <key column="PatientEncounterID" />
+      <one-to-many class="PatientEncounter" />
+    </bag>
+    
+    <property name="IsActive" />
+  </class>
+</hibernate-mapping>
