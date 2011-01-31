@@ -8,10 +8,11 @@
 
 namespace OpenEhs.Domain
 {
-    public class Template : ITemplate
+    public class Template
     {
-        public int Id { get; private set; }
-        public string Body { get; set; }
-        public bool IsActive { get; set; }
+        public virtual int Id { get; private set; }
+        public virtual string Body { get; set; }
+        public virtual Staff Staff { get; set; }
+        public virtual TemplateCategory TemplateCategory { get; set; }
     }
 }
