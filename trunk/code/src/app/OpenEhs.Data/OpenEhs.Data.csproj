@@ -114,6 +114,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Mappings\Surgery.hbm.xml" />
+    <Content Include="Mappings\TemplateCategory.hbm.xml" />
     <Content Include="Mappings\Vitals.hbm.xml" />
     <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
     <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml" />
