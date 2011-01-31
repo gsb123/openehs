@@ -8,42 +8,42 @@ namespace OpenEhs.Data
 {
     public class TemplateRepository : ITemplateRepository
     {
-        public ITemplate Get(int id)
+        public Template Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IList<ITemplate> GetAll()
+        public IList<Template> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Add(ITemplate entity)
+        public void Add(Template entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(ITemplate entity)
+        public void Remove(Template entity)
         {
             throw new NotImplementedException();
         }
 
-        public IList<ITemplate> GetAllSurgeryTemplates()
+        public IList<Template> GetAllSurgeryTemplates()
         {
             throw new NotImplementedException();
         }
 
-        public IList<ITemplate> GetAllDiagnosisTemplates()
+        public IList<Template> GetAllDiagnosisTemplates()
         {
             throw new NotImplementedException();
         }
 
-        public IList<ITemplate> GetAllNoteTemplates()
+        public IList<Template> GetAllNoteTemplates()
         {
             throw new NotImplementedException();
         }
 
-        public IList<ITemplate> GetAllReasonTemplates()
+        public IList<Template> GetAllReasonTemplates()
         {
             throw new NotImplementedException();
         }
