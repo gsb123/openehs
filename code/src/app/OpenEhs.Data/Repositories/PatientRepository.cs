@@ -36,42 +36,22 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
         }
 
-        IList<Patient> IPatientRepository.FindByPhoneNumber(string phoneNumber)
+        IList<Patient> FindByPhoneNumber(string phoneNumber)
         {
             throw new NotImplementedException();
         }
 
-        IList<Patient> IPatientRepository.FindByName(string name)
+        IList<Patient> FindByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        IList<Patient> IPatientRepository.FindByDateOfBirth(DateTime dateOfBirth)
+        IList<Patient> FindByDateOfBirth(DateTime dateOfBirth)
         {
             throw new NotImplementedException();
         }
 
-        IList<Patient> IPatientRepository.FindByOldPhysicalRecord(string number)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Patient FindByPhoneNumber(string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Patient FindByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Patient FindByDateOfBirth(DateTime dateOfBirth)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Patient FindByOldPhysicalRecord(string number)
+        IList<Patient> FindByOldPhysicalRecord(string number)
         {
             throw new NotImplementedException();
         }
