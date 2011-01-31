@@ -80,6 +80,8 @@
     <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Repositories\Membership\UserRepository.cs" />
     <Compile Include="Common\UnitOfWork.cs" />
+    <Compile Include="Common\UnitOfWorkFactory.cs" />
+    <Compile Include="Common\UnitOfWorkImplementor.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
