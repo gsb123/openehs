@@ -104,6 +104,7 @@
     <Content Include="Mappings\Invoice.hbm.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Mappings\InvoiceItem.hbm.xml" />
     <Content Include="Mappings\Note.hbm.xml" />
     <Content Include="Mappings\PatientEncounter.hbm.xml" />
     <Content Include="Mappings\Payment.hbm.xml">
