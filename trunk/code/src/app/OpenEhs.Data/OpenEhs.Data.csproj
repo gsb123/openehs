@@ -95,30 +95,32 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mappings\Address.hbm.xml">
+    <EmbeddedResource Include="Mappings\Address.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Mappings\EmergencyContact.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\EmergencyContact.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Mappings\Invoice.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Invoice.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Mappings\InvoiceItem.hbm.xml" />
-    <Content Include="Mappings\Note.hbm.xml" />
-    <Content Include="Mappings\PatientEncounter.hbm.xml" />
-    <Content Include="Mappings\Payment.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InvoiceItem.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Note.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PatientEncounter.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Payment.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Mappings\Problem.hbm.xml" />
-    <Content Include="Mappings\Service.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Problem.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Service.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Mappings\Surgery.hbm.xml" />
-    <Content Include="Mappings\TemplateCategory.hbm.xml" />
-    <Content Include="Mappings\Vitals.hbm.xml" />
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Surgery.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TemplateCategory.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
     <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Staff.hbm.xml" />
     <EmbeddedResource Include="Mappings\Template.hbm.xml" />
     <EmbeddedResource Include="Mappings\Membership\User.hbm.xml" />
