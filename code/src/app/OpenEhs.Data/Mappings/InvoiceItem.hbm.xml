@@ -7,9 +7,9 @@
     <id name="Id">
       <generator class="native" />
     </id>
-    <property name="Invoice" />
-    <property name="Product" />
-    <property name="Service" />
+    <one-to-one name="Invoice" />
+    <one-to-one name="Product" />
+    <one-to-one name="Service" />
     <property name="Quantity" />
     <property name="IsActive" />
   </class>
