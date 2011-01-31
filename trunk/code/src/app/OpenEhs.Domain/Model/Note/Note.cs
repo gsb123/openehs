@@ -19,6 +19,7 @@ namespace OpenEhs.Domain
         public virtual string Body { get; set; }
         public virtual DateTime DateCreated { get; set; }
         public virtual Staff Author { get; set; }
+        public virtual PatientEncounter PatientEncounter { get; set; }
 
         #endregion
 

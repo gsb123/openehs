@@ -27,6 +27,7 @@ namespace OpenEhs.Domain
         public virtual string BloodType { get; set; }
         public virtual string TribeRace { get; set; }
         public virtual string Religion { get; set; }
+        public virtual int OldPhysicalRecordNumber { get; set; }
 
         #endregion
 
