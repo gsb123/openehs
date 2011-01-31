@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="OpenEhs.Domain"
+                   namespace="OpenEhs.Domain">
+
+  <class name="InvoiceItem" table="InvoiceItem">
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="Invoice" />
+    <property name="Product" />
+    <property name="Service" />
+    <property name="Quantity" />
+    <property name="IsActive" />
+  </class>
+</hibernate-mapping>
