@@ -14,6 +14,7 @@
     <property name="Gender" />
     <property name="PhoneNumber" />
     
+    <!-- TODO: Change to one-to-one. -->
     <!--One-to-many mapping: Address-->
     <bag name="Address" lazy="false">
       <key column="AddressID" />
@@ -23,7 +24,7 @@
     <property name="BloodType" />
     <property name="TribeRace" />
     <property name="Religion" />
-    <property name="OldPhysicalRecordNumb" />
+    <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" />
     <property name="IsActive" />
 
     <!--Many-to-many mapping: Problems-->
