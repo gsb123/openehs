@@ -68,6 +68,7 @@
     <Compile Include="Common\ILocalData.cs" />
     <Compile Include="Common\IUnitOfWork.cs" />
     <Compile Include="Common\IUnitOfWorkFactory.cs" />
+    <Compile Include="Common\IUnitOfWorkImplementor.cs" />
     <Compile Include="Common\Local.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

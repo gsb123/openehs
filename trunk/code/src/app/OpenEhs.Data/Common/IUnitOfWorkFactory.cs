@@ -17,6 +17,6 @@ namespace OpenEhs.Data
         ISession CurrentSession { get; set; }
         ISessionFactory SessionFactory { get; }
         IUnitOfWork Create();
-        void DisposeUnitOfWork(UnitOfWorkImplementor adapter);
+        void DisposeUnitOfWork(IUnitOfWorkImplementor adapter);
     }
 }
