@@ -9,13 +9,7 @@
     </id>
     <property name="Name" />
     <property name="Medication" />
-
-    <!--One-to-many mapping: TemplateCategory-->
-    <bag name="Patient" lazy="false">
-      <key column="PatientID" />
-      <one-to-many class="Patient" />
-    </bag>
-    
+    <one-to-one name="Patient" />
     <property name="IsActive" />
   </class>
 </hibernate-mapping>

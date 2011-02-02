@@ -19,7 +19,6 @@
     <property name="Comments" />
     <property name="Location" />
     <property name="Diagnosis" />
-    <property name="Staff" />
 
     <!--One-to-many mapping: Staff-->
     <bag name="Staff" lazy="false">

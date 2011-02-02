@@ -9,12 +9,7 @@
     </id>
     <property name="Total" />
     <property name="Date" />
-
-    <!--One-to-many mapping: Patient-->
-    <bag name="Patient" lazy="false">
-      <key column="PatientID" />
-      <one-to-many class="Patient" />
-    </bag>
+    <one-to-one name="Patient" />
 
     <!--One-to-many mapping: PatientCheckIn-->
     <bag name="PatientCheckIn" lazy="false">
@@ -22,9 +17,25 @@
       <one-to-many class="PatientCheckIn" />
     </bag>
 
-    <property name="IsActive" />
+    <!--One-to-many mapping: PatientCheckIn-->
+    <bag name="InvoiceItem" lazy="false">
+      <key column="InvoiceID" />
+      <one-to-many class="InvoiceItem" />
+    </bag>
     
-    <!--TODO: Map this to InvoiceItem-->
+    <property name="IsActive" />
+
+    <!--One-to-many mapping: Payment-->
+    <bag name="Payment" lazy="false">
+      <key column="InvoiceID" />
+      <one-to-many class="Payment" />
+    </bag>
+
+    <!--One-to-many mapping: InvoiceItem-->
+    <bag name="InvoiceItem" lazy="false">
+      <key column="InvoiceID" />
+      <one-to-many class="InvoiceItem" />
+    </bag>
     
   </class>
 </hibernate-mapping>

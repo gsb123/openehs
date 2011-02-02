@@ -6,5 +6,18 @@
     <id name="Id">
       <generator class="native" />
     </id>
+    <property name="Username" />
+    <property name="EmailAddress" />
+    <property name="ApplicationName" />
+    <property name="Password" />
+    <property name="PasswordQuestion" />
+    <property name="PasswordAnswer" />
+    <property name="DateCreated" />
+    <property name="LastLogin" />
+    <property name="IsOnline" />
+    <property name="IsLockedOut" />
+    <property name="LastLockoutDate" />
+    <property name="FailedPasswordAttemptCount" />
+    <property name="IsActive" />
   </class>
 </hibernate-mapping>

@@ -9,13 +9,7 @@
     </id>
     <property name="CashAmount" />
     <property name="PaymentDate" />
-
-    <!--One-to-many mapping: Invoice-->
-    <bag name="Invoice" lazy="false">
-      <key column="InvoiceID" />
-      <one-to-many class="Invoice" />
-    </bag>
-    
+    <one-to-one name="InvoiceID" />
     <property name="IsActive" />
   </class>
 </hibernate-mapping>
