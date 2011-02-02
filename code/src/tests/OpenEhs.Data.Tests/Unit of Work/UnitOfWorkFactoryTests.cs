@@ -43,7 +43,7 @@ namespace OpenEhs.Data.Tests.Unit_of_Work
                             configuration.Properties["dialect"]);
             Assert.AreEqual("NHibernate.Driver.MySqlDataDriver",
                             configuration.Properties["connection.driver_class"]);
-            Assert.AreEqual("Database=openehs_database;Data Source=localhost;User Id=openehs_admin;Password=password",
+            Assert.AreEqual("Server=127.0.0.1;Database=openehs_database;Uid=OpenEHS_admin;Pwd=password;",
                             configuration.Properties["connection.connection_string"]);
         }
 
