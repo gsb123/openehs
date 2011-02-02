@@ -156,7 +156,7 @@ IsActive                bit(1)          NOT NULL                DEFAULT 1
 CREATE TABLE Category
 (
 CategoryID          int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
-Name                varchar(15)     NOT NULL,
+Name                varchar(30)     NOT NULL,
 Description         text            NOT NULL,
 DateCreated         timestamp       NOT NULL                    DEFAULT NOW(),
 IsActive            bit             NOT NULL                    DEFAULT 1
@@ -182,7 +182,7 @@ ServiceCost             decimal(6, 2)   NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 );
 
-CREATE TABLE User
+CREATE TABLE `User`
 (
 UserID              int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 UserName            varchar(30)         NOT NULL,
@@ -267,7 +267,7 @@ IsActive            bit(1)          NOT NULL                DEFAULT 1
 CREATE TABLE TemplateCategory
 (
 TemplateCategoryID              int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-TemplateCategoryName            text        NOT NULL,
+TemplateCategoryName            varchar(30)        NOT NULL,
 TemplateCategoryDescription     text        NULL
 );
 
