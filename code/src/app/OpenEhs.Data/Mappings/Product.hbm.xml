@@ -6,11 +6,11 @@
     <id name="Id" column="ProductID">
       <generator class="native" />
     </id>
-    <property name="Name" />
+    <property name="Name" not-null="true" length="50" />
     <one-to-one name="Category" />
-    <property name="Unit" />
-    <property name="Price" />
-    <property name="QuantityOnHand" />
-    <property name="IsActive" />
+    <property name="Unit" not-null="true" length="10" />
+    <property name="Price" not-null="true" />
+    <property name="QuantityOnHand" not-null="true" />
+    <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>

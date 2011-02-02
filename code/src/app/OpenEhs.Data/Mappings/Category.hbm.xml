@@ -7,9 +7,9 @@
     <id name="Id">
       <generator class="native" />
     </id>
-    <property name="Name" />
-    <property name="Description" />
-    <property name="DateCreated" />
-    <property name="IsActive" />
+    <property name="Name" not-null="true" />
+    <property name="Description" not-null="false" />
+    <property name="DateCreated" not-null="true" />
+    <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>
