@@ -70,6 +70,7 @@
     <Compile Include="Common\IUnitOfWorkFactory.cs" />
     <Compile Include="Common\IUnitOfWorkImplementor.cs" />
     <Compile Include="Common\Local.cs" />
+    <Compile Include="Interfaces\IEmergencyContactRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IPatientRepository.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Interfaces\ITemplateRepository.cs" />
     <Compile Include="Interfaces\Membership\IRoleRepository.cs" />
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
+    <Compile Include="Repositories\EmergencyContactRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
