@@ -107,7 +107,7 @@ namespace OpenEhs.Data
             return SessionFactory.OpenSession();
         }
 
-        public void DisposeUnitOfWork(UnitOfWorkImplementor adapter)
+        public void DisposeUnitOfWork(IUnitOfWorkImplementor adapter)
         {
             CurrentSession = null;
             UnitOfWork.DisposeUnitOfWork(adapter);

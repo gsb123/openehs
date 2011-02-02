@@ -6,12 +6,13 @@
  * Author: Matthew Kimber (matthew.kimber@gmail.com)
  *****************************************************************************/
 
+using System;
 using System.Data;
 using NHibernate;
 
 namespace OpenEhs.Data
 {
-    public class UnitOfWorkImplementor : IUnitOfWork
+    public class UnitOfWorkImplementor : IUnitOfWorkImplementor
     {
         #region Fields
 
@@ -100,6 +101,11 @@ namespace OpenEhs.Data
         public void Flush()
         {
             _session.Flush();
+        }
+
+        public void IncrementUsages()
+        {
+            throw new NotImplementedException();
         }
 
         #region IDisposable Implementation
