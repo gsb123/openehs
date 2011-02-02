@@ -1,4 +1,12 @@
-﻿using NHibernate;
+﻿/*****************************************************************************
+ * Project: Open Electronic Healthcare System
+ * Group: Ghana Team
+ * Date: 1-Feb-2011
+ * 
+ * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ *****************************************************************************/
+
+using NHibernate;
 using NHibernate.Cfg;
 
 namespace OpenEhs.Data
