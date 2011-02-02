@@ -1,12 +1,27 @@
-﻿using System;
+﻿/*****************************************************************************
+ * Project: Open Electronic Healthcare System
+ * Group: Ghana Team
+ * Date: 1-Feb-2011
+ * 
+ * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ *****************************************************************************/
+
+using System;
 using NHibernate;
 
 namespace OpenEhs.Data
 {
     public static class UnitOfWork
     {
+        #region Fields
+
         private static IUnitOfWorkFactory _unitOfWorkFactory;
         private static IUnitOfWork _innerUnitOfWork;
+
+        #endregion
+
+
+        #region Properties
 
         public static IUnitOfWork Current
         {
@@ -39,6 +54,11 @@ namespace OpenEhs.Data
             }
         }
 
+        #endregion
+
+
+        #region Methods
+
         public static IUnitOfWork Start()
         {
             if (_innerUnitOfWork != null)
@@ -50,7 +70,9 @@ namespace OpenEhs.Data
 
         public static void DisposeUnitOfWork(UnitOfWorkImplementor adapter)
         {
-            throw new NotImplementedException();
+            _innerUnitOfWork = null;
         }
+
+        #endregion
     }
 }

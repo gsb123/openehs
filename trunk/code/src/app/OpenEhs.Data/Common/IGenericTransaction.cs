@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*****************************************************************************
+ * Project: Open Electronic Healthcare System
+ * Group: Ghana Team
+ * Date: 1-Feb-2011
+ * 
+ * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ *****************************************************************************/
+
+using System;
 
 namespace OpenEhs.Data
 {

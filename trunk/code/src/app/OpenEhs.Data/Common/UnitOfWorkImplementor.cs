@@ -1,12 +1,27 @@
-﻿using System.Data;
+﻿/*****************************************************************************
+ * Project: Open Electronic Healthcare System
+ * Group: Ghana Team
+ * Date: 1-Feb-2011
+ * 
+ * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ *****************************************************************************/
+
+using System.Data;
 using NHibernate;
 
 namespace OpenEhs.Data
 {
     public class UnitOfWorkImplementor : IUnitOfWork
     {
+        #region Fields
+
         private readonly UnitOfWorkFactory _factory;
         private readonly ISession _session;
+
+        #endregion
+
+
+        #region Properties
 
         public bool IsInActiveTransaction
         {
@@ -32,11 +47,21 @@ namespace OpenEhs.Data
             }
         }
 
+        #endregion
+
+
+        #region Constructor
+
         public UnitOfWorkImplementor(UnitOfWorkFactory factory, ISession session)
         {
             _factory = factory;
             _session = session;
         }
+
+        #endregion
+
+
+        #region Methods
 
         public IGenericTransaction BeginTransaction()
         {
@@ -72,15 +97,21 @@ namespace OpenEhs.Data
             }
         }
 
+        public void Flush()
+        {
+            _session.Flush();
+        }
+
+        #region IDisposable Implementation
+
         public void Dispose()
         {
             _factory.DisposeUnitOfWork(this);
             _session.Dispose();
         }
 
-        public void Flush()
-        {
-            _session.Flush();
-        }
+        #endregion
+
+        #endregion
     }
 }

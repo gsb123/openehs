@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*****************************************************************************
+ * Project: Open Electronic Healthcare System
+ * Group: Ghana Team
+ * Date: 1-Feb-2011
+ * 
+ * Author: Matthew Kimber (matthew.kimber@gmail.com)
+ *****************************************************************************/
+
+using System;
 using System.IO;
 using System.Xml;
 using NHibernate;
@@ -8,11 +16,18 @@ namespace OpenEhs.Data
 {
     public class UnitOfWorkFactory : IUnitOfWorkFactory
     {
+        #region Fields
+
         private const string DefaultHibernateConfig = "hibernate.cfg.xml";
 
         private static ISession _currentSession;
         private ISessionFactory _sessionFactory;
         private Configuration _configuration;
+
+        #endregion
+
+
+        #region Properties
 
         public Configuration Configuration
         {
@@ -65,8 +80,18 @@ namespace OpenEhs.Data
             }
         }
 
+        #endregion
+
+
+        #region Constructor
+
         internal UnitOfWorkFactory()
         {}
+
+        #endregion
+
+
+        #region Methods
 
         public IUnitOfWork Create()
         {
@@ -87,5 +112,7 @@ namespace OpenEhs.Data
             CurrentSession = null;
             UnitOfWork.DisposeUnitOfWork(adapter);
         }
+
+        #endregion
     }
 }
