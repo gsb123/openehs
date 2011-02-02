@@ -45,5 +45,16 @@ namespace OpenEhs.Data.Tests.Unit_of_Work
             var sessionFactory = _factory.SessionFactory;
             Assert.IsNotNull(sessionFactory);
         }
+
+        [Test]
+        public void AccessingCurrentSessionWhenNoSessionOpenThrows()
+        {
+            try
+            {
+                var session = _factory.CurrentSession;
+            }
+            catch (InvalidOperationException)
+            {}
+        }
     }
 }

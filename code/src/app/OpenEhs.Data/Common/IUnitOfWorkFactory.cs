@@ -7,8 +7,8 @@ namespace OpenEhs.Data
     {
         Configuration Configuration { get; }
         ISession CurrentSession { get; set; }
-        ISessionFactory SessionFactory { get; set; }
+        ISessionFactory SessionFactory { get; }
         IUnitOfWork Create();
-        void DisposeUnitOfWork();
+        void DisposeUnitOfWork(UnitOfWorkImplementor adapter);
     }
 }

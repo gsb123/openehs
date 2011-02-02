@@ -47,5 +47,10 @@ namespace OpenEhs.Data
             _innerUnitOfWork = _unitOfWorkFactory.Create();
             return _innerUnitOfWork;
         }
+
+        public static void DisposeUnitOfWork(UnitOfWorkImplementor adapter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
