@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GenericTransaction.cs" />
+    <Compile Include="Common\IGenericTransaction.cs" />
     <Compile Include="Common\IUnitOfWork.cs" />
     <Compile Include="Common\IUnitOfWorkFactory.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />

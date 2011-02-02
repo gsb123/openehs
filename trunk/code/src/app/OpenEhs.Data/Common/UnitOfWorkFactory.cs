@@ -9,6 +9,7 @@ namespace OpenEhs.Data
     public class UnitOfWorkFactory : IUnitOfWorkFactory
     {
         private const string DefaultHibernateConfig = "hibernate.cfg.xml";
+
         private static ISession _currentSession;
         private ISessionFactory _sessionFactory;
         private Configuration _configuration;
@@ -40,20 +41,32 @@ namespace OpenEhs.Data
 
         public ISession CurrentSession
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get
+            {
+                if (_currentSession == null)
+                    throw new InvalidOperationException("You are not in a unit of work.");
+
+                return _currentSession;
+            }
+            set
+            {
+                _currentSession = value;
+            }
         }
 
         public ISessionFactory SessionFactory
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get
+            {
+                if (_sessionFactory == null)
+                    _sessionFactory = Configuration.BuildSessionFactory();
+
+                return _sessionFactory;
+            }
         }
 
         internal UnitOfWorkFactory()
-        {
-            
-        }
+        {}
 
         public IUnitOfWork Create()
         {
@@ -66,12 +79,13 @@ namespace OpenEhs.Data
 
         private ISession CreateSession()
         {
-            throw new NotImplementedException();
+            return SessionFactory.OpenSession();
         }
 
-        public void DisposeUnitOfWork()
+        public void DisposeUnitOfWork(UnitOfWorkImplementor adapter)
         {
-            throw new NotImplementedException();
+            CurrentSession = null;
+            UnitOfWork.DisposeUnitOfWork(adapter);
         }
     }
 }
