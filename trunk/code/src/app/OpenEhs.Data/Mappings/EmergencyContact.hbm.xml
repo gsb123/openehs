@@ -12,10 +12,10 @@
     <property name="PhoneNumber" />
     <property name="Relationship" />
 
-    <!--One-to-many mapping: Address-->
+    <!--Many-to-one mapping: Address-->
     <bag name="Address" lazy="false">
       <key column="AddressID" />
-      <one-to-many class="Address" />
+      <many-to-one class="Address" />
     </bag>
 
     <!--One-to-many mapping: Patient-->
