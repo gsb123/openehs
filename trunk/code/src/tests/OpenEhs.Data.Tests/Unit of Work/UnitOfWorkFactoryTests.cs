@@ -38,5 +38,12 @@ namespace OpenEhs.Data.Tests.Unit_of_Work
             Assert.AreEqual("Database=openehs_database;Data Source=localhost;User Id=openehs_admin;Password=password",
                             configuration.Properties["connection.connection_string"]);
         }
+
+        [Test]
+        public void CanCreateAndAccessSessionFactory()
+        {
+            var sessionFactory = _factory.SessionFactory;
+            Assert.IsNotNull(sessionFactory);
+        }
     }
 }

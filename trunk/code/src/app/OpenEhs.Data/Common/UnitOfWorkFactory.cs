@@ -20,7 +20,7 @@ namespace OpenEhs.Data
                 if (_configuration == null)
                 {
                     _configuration = new Configuration();
-                    string hibernateConfig = DefaultHibernateConfig;
+                    var hibernateConfig = DefaultHibernateConfig;
 
                     // If not rooted, assume path from base directory.
                     if (Path.IsPathRooted(hibernateConfig) == false)
