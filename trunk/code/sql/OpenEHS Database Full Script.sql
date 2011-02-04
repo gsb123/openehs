@@ -155,11 +155,11 @@ IsActive                bit(1)          NOT NULL                DEFAULT 1
 
 CREATE TABLE Category
 (
-CategoryID          int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
-Name                varchar(30)     NOT NULL,
-Description         text            NOT NULL,
-DateCreated         timestamp       NOT NULL                    DEFAULT NOW(),
-IsActive            bit             NOT NULL                    DEFAULT 1
+CategoryID              int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
+`Name`                  varchar(30)     NOT NULL,
+Description             text            NULL,
+DateCreated             timestamp       NOT NULL                    DEFAULT NOW(),
+IsActive                bit             NOT NULL                    DEFAULT 1
 );
 
 CREATE TABLE Product
@@ -1621,7 +1621,7 @@ DELIMITER ;
 DELIMITER |
 CREATE PROCEDURE sp_insertCategory
 (
-IN i_Name          varchar(15),
+IN i_Name          varchar(30),
 IN i_Description   text
 )
 
@@ -1766,9 +1766,34 @@ CALL sp_updateInvoice
 
 CALL sp_insertCategory
 (
-'test category',
-'test description'
+'Medical Equipment',
+'This includes anything that monitors a bodily function and is used in patient care.'
 );
+
+CALL sp_insertCategory
+(
+'Pharmaceuticals',
+'Drugs provided to a patient for care.'
+);
+
+CALL sp_insertCategory
+(
+'Miscellaneous',
+'General products and supplies that do not fit under a specific category.'
+);
+
+CALL sp_insertCategory
+(
+'Diabetic Supplies',
+'Anything used in the treatment of diabetes.'
+);
+
+CALL sp_insertCategory
+(
+'Catheters',
+'You do not even want to know this one.'
+);
+
 
 CALL sp_insertProduct
 (

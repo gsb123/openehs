@@ -13,8 +13,6 @@
     <property name="Weight" />
     <property name="HeartRate" />
     <property name="Temperature" />
-    <property name="BPSystolic" />
-    <property name="BPDiastolic" />
     <property name="RespiratoryRate" />
 
     <!--One-to-many mapping: PatientEncounter-->

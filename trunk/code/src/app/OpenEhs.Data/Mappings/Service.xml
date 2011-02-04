@@ -3,14 +3,12 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="InvoiceItem" table="InvoiceItem">
+  <class name="Service" table="Service">
     <id name="Id">
       <generator class="native" />
     </id>
-    <one-to-one name="Invoice" />
-    <one-to-one name="Product" />
-    <one-to-one name="Service" />
-    <property name="Quantity" />
+    <property name="Name" />
+    <property name="Price" column="ServiceCost" />
     <property name="IsActive" />
   </class>
 </hibernate-mapping>

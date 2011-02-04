@@ -37,7 +37,8 @@ namespace OpenEhs.Web
 
         protected void Application_BeginRequest()
         {
-            UnitOfWork.Start();
+            if (!UnitOfWork.IsStarted)
+                UnitOfWork.Start();
         }
     }
 }

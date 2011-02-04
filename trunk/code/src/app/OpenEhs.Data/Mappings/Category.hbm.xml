@@ -4,7 +4,7 @@
                    namespace="OpenEhs.Domain">
   
   <class name="Category" table="Category">
-    <id name="Id">
+    <id name="Id" column="CategoryID">
       <generator class="native" />
     </id>
     <property name="Name" not-null="true" length="30" />
