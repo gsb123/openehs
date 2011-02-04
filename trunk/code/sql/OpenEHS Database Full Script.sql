@@ -1794,14 +1794,85 @@ CALL sp_insertCategory
 'You do not even want to know this one.'
 );
 
+CALL sp_insertProduct
+(
+'Large Catheter',
+'each',
+5,
+12.25,
+50
+);
 
 CALL sp_insertProduct
 (
-'test product',
-'ml',
+'Medium Catheter',
+'each',
+5,
+9.98,
+34
+);
+
+CALL sp_insertProduct
+(
+'Small Catheter',
+'each',
+5,
+6.00,
+101
+);
+
+CALL sp_insertProduct
+(
+'Aspirin',
+'250mg',
+2,
+2.35,
+2340
+);
+
+CALL sp_insertProduct
+(
+'Tylenol',
+'500mg',
+2,
+4.43,
+1920
+);
+
+CALL sp_insertProduct
+(
+'Paxil',
+'50mg',
+2,
+6.34,
+344
+);
+
+CALL sp_insertProduct
+(
+'Augmentin',
+'750mg',
+2,
+10.54,
+67
+);
+
+CALL sp_insertProduct
+(
+'Blood Pressure Cuff',
+'each',
 1,
-100.00,
-50
+45.00,
+3
+);
+
+CALL sp_insertProduct
+(
+'Pulse Oximeters',
+'each',
+1,
+2335.43,
+3
 );
 
 CALL sp_insertService
