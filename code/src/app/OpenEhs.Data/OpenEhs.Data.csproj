@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Common\GenericTransaction.cs" />
     <Compile Include="Common\IGenericTransaction.cs" />
     <Compile Include="Common\ILocalData.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Common\IUnitOfWorkFactory.cs" />
     <Compile Include="Common\IUnitOfWorkImplementor.cs" />
     <Compile Include="Common\Local.cs" />
+    <Compile Include="Interfaces\ICategoryRepository.cs" />
     <Compile Include="Interfaces\IEmergencyContactRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -84,7 +86,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\StaffRepository.cs" />
     <Compile Include="Repositories\Membership\RoleRepository.cs" />
-    <Compile Include="Common\SessionProvider.cs" />
     <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Repositories\Membership\UserRepository.cs" />
     <Compile Include="Common\UnitOfWork.cs" />
@@ -103,40 +104,40 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="Mappings\Address.hbm.xml">
+    <EmbeddedResource Include="Mappings\Address.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\EmergencyContact.hbm.xml">
+    <EmbeddedResource Include="Mappings\EmergencyContact.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Invoice.hbm.xml">
+    <EmbeddedResource Include="Mappings\Invoice.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\InvoiceItem.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Note.hbm.xml" />
-    <EmbeddedResource Include="Mappings\PatientEncounter.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Payment.hbm.xml">
+    <EmbeddedResource Include="Mappings\InvoiceLineItem.xml" />
+    <EmbeddedResource Include="Mappings\Note.xml" />
+    <EmbeddedResource Include="Mappings\PatientEncounter.xml" />
+    <EmbeddedResource Include="Mappings\Payment.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Problem.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Service.hbm.xml">
+    <EmbeddedResource Include="Mappings\Problem.xml" />
+    <EmbeddedResource Include="Mappings\Service.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Surgery.hbm.xml" />
-    <EmbeddedResource Include="Mappings\TemplateCategory.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml">
+    <EmbeddedResource Include="Mappings\Surgery.xml" />
+    <EmbeddedResource Include="Mappings\TemplateCategory.xml" />
+    <EmbeddedResource Include="Mappings\Vitals.xml" />
+    <EmbeddedResource Include="Mappings\Allergy.xml" />
+    <EmbeddedResource Include="Mappings\Membership\Role.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Staff.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Template.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Membership\User.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Patient.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Staff.xml" />
+    <EmbeddedResource Include="Mappings\Template.xml" />
+    <EmbeddedResource Include="Mappings\Membership\User.xml" />
+    <EmbeddedResource Include="Mappings\Patient.xml" />
     <EmbeddedResource Include="Mappings\Category.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Product.hbm.xml">
+    <EmbeddedResource Include="Mappings\Product.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

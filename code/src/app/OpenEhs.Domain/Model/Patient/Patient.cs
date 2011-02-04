@@ -23,6 +23,7 @@ namespace OpenEhs.Domain
         public virtual Gender Gender { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual IList<Problem> Problems { get; set; }
+        public virtual IList<Allergy> Allergies { get; set; }
         public virtual Address Address { get; set; }
         public virtual string BloodType { get; set; }
         public virtual string TribeRace { get; set; }

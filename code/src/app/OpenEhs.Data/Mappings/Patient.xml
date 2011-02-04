@@ -21,28 +21,28 @@
     <property name="IsActive" />
 
     <!--One-to-many mapping: Problems-->
-    <bag name="Problem" table="PatientProblem">
+    <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
-      <one-to-many column="ProblemID" class="Problem" />
+      <one-to-many class="Problem" />
     </bag>
     
     <!--One-to-many mapping: Allergies-->
-    <bag name="Allergy" table="Allergy">
+    <bag name="Allergies" table="Allergy">
       <key column="PatientId" />
-      <one-to-many column="AllergyID" class="Allergy" />
+      <one-to-many class="Allergy" />
     </bag>
 
-    <!--One-to-many mapping: Invoices-->
+    <!--
     <bag name="Invoice" table="Invoice">
       <key column="PatientId" />
-      <one-to-many column="InvoiceID" class="Invoice" />
-    </bag>
+      <one-to-many class="Invoice" />
+    </bag> -->
 
-    <!--One-to-many mapping: PatientCheckIn-->
+    <!--
     <bag name="PatientCheckIn" table="PatientCheckIn">
       <key column="PatientId" />
-      <one-to-many column="PatientCheckInID" class="PatientCheckIn" />
+      <one-to-many class="PatientCheckIn" />
     </bag>
-    
+    -->
   </class>
 </hibernate-mapping>

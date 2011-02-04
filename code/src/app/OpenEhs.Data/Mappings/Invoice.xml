@@ -18,24 +18,19 @@
     </bag>
 
     <!--One-to-many mapping: PatientCheckIn-->
-    <bag name="InvoiceItem" lazy="false">
+    <bag name="LineItems" lazy="false">
       <key column="InvoiceID" />
-      <one-to-many class="InvoiceItem" />
+      <one-to-many class="InvoiceLineItem" />
     </bag>
     
     <property name="IsActive" />
 
-    <!--One-to-many mapping: Payment-->
+    <!--
     <bag name="Payment" lazy="false">
       <key column="InvoiceID" />
       <one-to-many class="Payment" />
     </bag>
+    -->
 
-    <!--One-to-many mapping: InvoiceItem-->
-    <bag name="InvoiceItem" lazy="false">
-      <key column="InvoiceID" />
-      <one-to-many class="InvoiceItem" />
-    </bag>
-    
   </class>
 </hibernate-mapping>
