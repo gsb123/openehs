@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using NHibernate;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
     public class UserRepository : IUserRepository
     {
+        private ISession Session
+        {
+            get
+            {
+                return UnitOfWork.CurrentSession;
+            }
+        }
+
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            return Session.Get<User>(id);
         }
 
         public IList<User> GetAll()
@@ -18,12 +27,12 @@ namespace OpenEhs.Data
 
         public void Add(User entity)
         {
-            throw new NotImplementedException();
+            Session.Save(entity);
         }
 
         public void Remove(User entity)
         {
-            throw new NotImplementedException();
+            Session.Delete(entity);
         }
     }
 }
