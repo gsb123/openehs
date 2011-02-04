@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Category: IEntity
+    public class Category : IEntity
     {
         #region Properties
 

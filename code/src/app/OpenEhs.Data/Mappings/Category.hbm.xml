@@ -11,5 +11,10 @@
     <property name="Description" not-null="false" />
     <property name="DateCreated" not-null="true" />
     <property name="IsActive" not-null="true" />
+
+    <bag name="Products" cascade="all">
+      <key column="CategoryID" />
+      <one-to-many class="Product" />
+    </bag>
   </class>
 </hibernate-mapping>
