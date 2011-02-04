@@ -27,11 +27,15 @@
 
     <div class="display-label">IsActive</div>
     <div class="display-field">@Model.IsActive</div>
-
+    
+    @if (Model.Products.Count > 0)
+    {
+    <br />
     <table>
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Qty. Instock</th>
                 <th>Price</th>
             </tr>
         </thead>
@@ -40,11 +44,13 @@
         {
             <tr>
                 <td>@product.Name</td>
+                <td>@product.QuantityOnHand</td>
                 <td>@String.Format("{0:c}", product.Price)</td>
             </tr>
         }
         </tbody>
     </table>
+    }
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
