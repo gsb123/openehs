@@ -137,7 +137,7 @@
     <EmbeddedResource Include="Mappings\Category.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Product.xml">
+    <EmbeddedResource Include="Mappings\Product.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

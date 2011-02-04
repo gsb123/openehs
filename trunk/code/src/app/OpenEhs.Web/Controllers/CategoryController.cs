@@ -10,7 +10,9 @@ namespace OpenEhs.Web.Controllers
         // GET: /Category/
         public ActionResult Index()
         {
-            return View(new CategoryRepository().GetAll());
+            var categories = new CategoryRepository().GetAll();
+            return View(categories);
+            //return View(new CategoryRepository().GetAll());
         }
 
         public ActionResult Create()
@@ -22,6 +24,13 @@ namespace OpenEhs.Web.Controllers
         public ActionResult Create(Category category)
         {
             return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            var category = new CategoryRepository().Get(id);
+
+            return View(category);
         }
     }
 }
