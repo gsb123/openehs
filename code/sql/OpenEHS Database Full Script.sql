@@ -95,7 +95,7 @@ IsActive                    bit(1)              NOT NULL                DEFAULT 
 CREATE TABLE Allergy
 (
 AllergyID               int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
-Name                    varchar(30)     NULL,
+`Name`                    varchar(30)     NULL,
 Medication              varchar(30)     NULL,
 PatientID               int             NOT NULL,
 IsActive                bit(1)          NOT NULL                    DEFAULT 1
@@ -128,7 +128,7 @@ CREATE TABLE Invoice
 (
 InvoiceID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Total                   decimal(6,2)    NOT NULL                DEFAULT 0.00,
-Date                    timestamp       NOT NULL                DEFAULT CURRENT_TIMESTAMP,
+`Date`                  timestamp       NOT NULL                DEFAULT CURRENT_TIMESTAMP,
 PatientID               int             NOT NULL,
 PatientCheckInID        int             NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
@@ -165,7 +165,7 @@ IsActive                bit             NOT NULL                    DEFAULT 1
 CREATE TABLE Product
 (
 ProductID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Name                    varchar(50)     NOT NULL,
+`Name`                  varchar(50)     NOT NULL,
 Unit                    varchar(10)     NOT NULL,
 CategoryID              int             NOT NULL,
 ProductCost             decimal(6,2)    NOT NULL,
@@ -177,7 +177,7 @@ IsActive                bit(1)          NOT NULL                DEFAULT 1
 CREATE TABLE Service
 (
 ServiceID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Name                    varchar(30)     NOT NULL,
+`Name`                    varchar(30)     NOT NULL,
 ServiceCost             decimal(6, 2)   NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 );
@@ -186,7 +186,7 @@ CREATE TABLE `User`
 (
 UserID              int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 UserName            varchar(30)         NOT NULL,
-Password            varchar(30)         NOT NULL,
+`Password`            varchar(30)         NOT NULL,
 LogInPermissions    Char(1)             NOT NULL,
 IsActive            bit(1)              NOT NULL                DEFAULT 1
 );
@@ -222,14 +222,14 @@ IsActive                    bit                 NOT NULL                DEFAULT 
 CREATE TABLE Vitals
 (
 VitalsID            int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Time                timestamp           NOT NULL,
-Type                bit(5)              NOT NULL,
+`Time`              timestamp           NOT NULL,
+`Type`              bit(5)              NOT NULL,
 Height              varchar(5)          NOT NULL,
 Weight              varchar(5)          NOT NULL,
 HeartRate           tinyint             NOT NULL,
 Temperature         decimal(4,1)        NOT NULL,
-BPSystolic          varchar(3)          NOT NULL,
-BPDiastolic         varchar(3)          NOT NULL,
+BPSystolic          int                 NOT NULL,
+BPDiastolic         int                 NOT NULL,
 RespirtoryRate      tinyint             NOT NULL,
 PatientEncounterID  int                 NOT NULL,
 IsActive            bit(1)              NOT NULL                DEFAULT 1

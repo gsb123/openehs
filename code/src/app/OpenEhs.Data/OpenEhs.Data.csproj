@@ -125,7 +125,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Surgery.xml" />
     <EmbeddedResource Include="Mappings\TemplateCategory.xml" />
-    <EmbeddedResource Include="Mappings\Vitals.xml" />
+    <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
     <EmbeddedResource Include="Mappings\Allergy.xml" />
     <EmbeddedResource Include="Mappings\Membership\Role.xml">
       <SubType>Designer</SubType>
