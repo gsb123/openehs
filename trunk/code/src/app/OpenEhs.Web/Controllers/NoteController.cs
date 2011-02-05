@@ -40,9 +40,9 @@ namespace OpenEhs.Web.Controllers
             return View();
         }
 
-        public ActionResult Delete(Note note)
+        public ActionResult Delete(int id)
         {
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
