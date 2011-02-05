@@ -13,14 +13,19 @@
     <property name="Weight" />
     <property name="HeartRate" />
     <property name="Temperature" />
+    <component
+      name="BloodPressure"
+      class="BloodPressure">
+      <property name="Systolic"
+                type="Int32"
+                column="BPSystolic"
+                not-null="false" />
+      <property name="Diastolic"
+                type="Int32"
+                column="BPDiastolic"
+                not-null="false" />
+    </component>
     <property name="RespiratoryRate" />
-
-    <!--One-to-many mapping: PatientEncounter-->
-    <bag name="PatientEncounter" lazy="false">
-      <key column="PatientEncounterID" />
-      <one-to-many class="PatientEncounter" />
-    </bag>
-    
     <property name="IsActive" />
   </class>
 </hibernate-mapping>
