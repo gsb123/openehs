@@ -145,147 +145,163 @@ IsActive                bit(1)            NOT NULL                DEFAULT 1
 
 CREATE TABLE InvoiceItem
 (
-InvoiceItemID           int             AUTO_INCREMENT             PRIMARY KEY         NOT NULL,
-InvoiceID               int             NOT NULL,
-ProductID               int             NULL,
-ServiceID               int             NULL,
-Quantity                float           NULL,
-IsActive                bit(1)          NOT NULL                DEFAULT 1
+    InvoiceItemID               int                 AUTO_INCREMENT             PRIMARY KEY         NOT NULL,
+    InvoiceID                   int                 NOT NULL,
+    ProductID                   int                 NULL,
+    ServiceID                   int                 NULL,
+    Quantity                    float               NULL,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE Category
 (
-CategoryID              int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
-`Name`                  varchar(30)     NOT NULL,
-Description             text            NULL,
-DateCreated             timestamp       NOT NULL                    DEFAULT NOW(),
-IsActive                bit             NOT NULL                    DEFAULT 1
+    CategoryID                  int                 AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
+    `Name`                      varchar(30)         NOT NULL,
+    Description                 text                NULL,
+    DateCreated                 timestamp           NOT NULL                    DEFAULT NOW(),
+    IsActive                    bit                 NOT NULL                    DEFAULT 1
 );
 
 CREATE TABLE Product
 (
-ProductID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-`Name`                  varchar(50)     NOT NULL,
-Unit                    varchar(10)     NOT NULL,
-CategoryID              int             NOT NULL,
-ProductCost             decimal(6,2)    NOT NULL,
-QuantityOnHand          int             NOT NULL,
-Counter                 int             NOT NULL                DEFAULT 1,
-IsActive                bit(1)          NOT NULL                DEFAULT 1
+    ProductID                   int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    `Name`                      varchar(50)         NOT NULL,
+    Unit                        varchar(10)         NOT NULL,
+    CategoryID                  int                 NOT NULL,
+    ProductCost                 decimal(6,2)        NOT NULL,
+    QuantityOnHand              int                 NOT NULL,
+    Counter                     int                 NOT NULL                DEFAULT 1,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE Service
 (
-ServiceID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-`Name`                    varchar(30)     NOT NULL,
-ServiceCost             decimal(6, 2)   NOT NULL,
-IsActive                bit(1)          NOT NULL                DEFAULT 1
+    ServiceID                   int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    `Name`                      varchar(30)         NOT NULL,
+    ServiceCost                 decimal(6, 2)       NOT NULL,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE `User`
 (
-UserID              int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-UserName            varchar(30)         NOT NULL,
-`Password`            varchar(30)         NOT NULL,
-LogInPermissions    Char(1)             NOT NULL,
-IsActive            bit(1)              NOT NULL                DEFAULT 1
+    UserID                      int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    Username                    varchar(30)         NOT NULL,
+    EmailAddress                varchar(50)         NULL,
+    ApplicationName             varchar(30)         NULL,
+    `Password`                  varchar(30)         NOT NULL,
+    PasswordQuestion            varchar(50)         NULL,
+    PasswordAnswer              varchar(50)         NULL,
+    DateCreated                 timestamp           NOT NULL                DEFAULT NOW(),
+    LastLogin                   datetime            NULL,
+    IsOnline                    bit(1)              NOT NULL                DEFAULT 0,
+    IpAddress                   varchar(20)         NULL,
+    IsLockedOut                 bit(1)              NOT NULL                DEFAULT 0,
+    FailedPasswordAttemptCount  int                 NOT NULL                DEFAULT 0,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
+);
+
+CREATE TABLE UserRole
+(
+    UserRoleID                  int                 NOT NULL                PRIMARY KEY         AUTO_INCREMENT,
+    UserID                      int                 NOT NULL,
+    RoleID                      int                 NOT NULL
 );
 
 CREATE TABLE Staff
 (
-StaffID             int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-FirstName           varchar(30)         NOT NULL,
-MiddleName          varchar(30)         NULL,
-LastName            varchar(30)         NOT NULL,
-PhoneNumber         varchar(20)         NOT NULL,
-StaffType           tinyint(1)          NOT NULL,
-LicenseNumber       varchar(20)         NULL                    Default NULL,
-AddressID           int                 NOT NULL,
-UserID             int                 NOT NULL,
-IsActive            bit(1)              NOT NULL                DEFAULT 1
+    StaffID                     int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    FirstName                   varchar(30)         NOT NULL,
+    MiddleName                  varchar(30)         NULL,
+    LastName                    varchar(30)         NOT NULL,
+    PhoneNumber                 varchar(20)         NOT NULL,
+    StaffType                   tinyint(1)          NOT NULL,
+    LicenseNumber               varchar(20)         NULL                    Default NULL,
+    AddressID                   int                 NOT NULL,
+    UserID                      int                 NOT NULL,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE PatientEncounter
 (
-PatientEncounterID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-PatientCheckinID            int                 NOT NULL,
-TimeIn                      time                NOT NULL,
-TimeOut                     time                NULL,
-Comments                    text                NULL,
-Location                    int                 NULL,
-Diagnosis                   text                NULL,
-StaffID                     int                 NOT NULL,
-AdmitReason                 varchar(50)         NULL,
-IsActive                    bit                 NOT NULL                DEFAULT 1
+    PatientEncounterID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    PatientCheckinID            int                 NOT NULL,
+    TimeIn                      time                NOT NULL,
+    TimeOut                     time                NULL,
+    Comments                    text                NULL,
+    Location                    int                 NULL,
+    Diagnosis                   text                NULL,
+    StaffID                     int                 NOT NULL,
+    AdmitReason                 varchar(50)         NULL,
+    IsActive                    bit                 NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE Vitals
 (
-VitalsID            int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-`Time`              timestamp           NOT NULL,
-`Type`              bit(5)              NOT NULL,
-Height              varchar(5)          NOT NULL,
-Weight              varchar(5)          NOT NULL,
-HeartRate           tinyint             NOT NULL,
-Temperature         decimal(4,1)        NOT NULL,
-BPSystolic          int                 NOT NULL,
-BPDiastolic         int                 NOT NULL,
-RespirtoryRate      tinyint             NOT NULL,
-PatientEncounterID  int                 NOT NULL,
-IsActive            bit(1)              NOT NULL                DEFAULT 1
+    VitalsID                    int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    `Time`                      timestamp           NOT NULL,
+    `Type`                      bit(5)              NOT NULL,
+    Height                      varchar(5)          NOT NULL,
+    Weight                      varchar(5)          NOT NULL,
+    HeartRate                   tinyint             NOT NULL,
+    Temperature                 decimal(4,1)        NOT NULL,
+    BPSystolic                  int                 NOT NULL,
+    BPDiastolic                 int                 NOT NULL,
+    RespirtoryRate              tinyint             NOT NULL,
+    PatientEncounterID          int                 NOT NULL,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE Surgery
 (
-SurgeryID           int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-SurgeryType         text            NOT NULL,
-StartTime           time            NOT NULL,
-EndTime             time            NULL,
-RoomNumber          int             NULL,
-Comments            text            NULL,
-PatientEncounterID  int             NOT NULL
+    SurgeryID                   int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    SurgeryType                 text                NOT NULL,
+    StartTime                   time                NOT NULL,
+    EndTime                     time                NULL,
+    RoomNumber                  int                 NULL,
+    Comments                    text                NULL,
+    PatientEncounterID          int                 NOT NULL
 );
 
 CREATE TABLE SurgeryStaff
 (
-SurgeryStaffID          int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-StaffID                 int         NOT NULL,
-SurgeryID               int         NOT NULL
+    SurgeryStaffID              int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    StaffID                     int                 NOT NULL,
+    SurgeryID                   int                 NOT NULL
 );
 
 CREATE TABLE Note
 (
-NoteID              int             AUTO_INCREMENT          PRIMARY KEY                      NOT NULL,
-Title               varchar(30)     NOT NULL,
-Body                longtext        NOT NULL,
-DateCreated         timestamp       NOT NULL                DEFAULT CURRENT_TIMESTAMP,
-StaffID             int             NOT NULL,
-PatientEncounterID  int             NOT NULL,
-IsActive            bit(1)          NOT NULL                DEFAULT 1
+    NoteID                      int                 AUTO_INCREMENT          PRIMARY KEY                      NOT NULL,
+    Title                       varchar(30)         NOT NULL,
+    Body                        longtext            NOT NULL,
+    DateCreated                 timestamp           NOT NULL                DEFAULT CURRENT_TIMESTAMP,
+    StaffID                     int                 NOT NULL,
+    PatientEncounterID          int                 NOT NULL,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE TemplateCategory
 (
-TemplateCategoryID              int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-TemplateCategoryName            varchar(30)        NOT NULL,
-TemplateCategoryDescription     text        NULL
+    TemplateCategoryID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    TemplateCategoryName        varchar(30)         NOT NULL,
+    TemplateCategoryDescription text                NULL
 );
 
 CREATE TABLE Template
 (
-TemplateID                  int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-TemplateBody                longtext    NOT NULL,
-TemplateCategoryID          int         NOT NULL,
-StaffID                     int         NOT NULL,
-IsActive                    bit(1)      NOT NULL                DEFAULT 1
+    TemplateID                  int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    TemplateBody                longtext            NOT NULL,
+    TemplateCategoryID          int                 NOT NULL,
+    StaffID                     int                 NOT NULL,
+    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE Role
 (
-RoleID              int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-RoleName            varchar(30)     NOT NULL,
-RoleDescription     varchar(130)    NULL,
-DateCreated         timestamp       NOT NULL                DEFAULT NOW()
+    RoleID                      int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    `Name`                      varchar(30)         NOT NULL,
+    Description                 varchar(130)        NULL,
+    DateCreated                 timestamp           NOT NULL                DEFAULT NOW()
 );
 
 #----------------------------------------------------------------------------------------------------------
@@ -733,14 +749,12 @@ SELECT LAST_INSERT_ID() INTO _returnAddID;
 INSERT INTO User
 (
 UserName,
-Password,
-LogInPermissions
+`Password`
 )
 VALUES
 (
 i_UserName,
-i_Password,
-i_LIP
+i_Password
 );
 
 SELECT LAST_INSERT_ID() INTO _returnUserID;
@@ -788,7 +802,6 @@ IN i_Region                 varchar(30),
 IN i_Country                varchar(30),
 IN i_UserName               varchar(30),
 IN i_Password               varchar(30),
-IN i_LIP                    char(1),
 IN i_FirstName              varchar(30),
 IN i_MiddleName             varchar(30),
 IN i_LastName               varchar(30),
@@ -816,8 +829,7 @@ WHERE _AddressID = AddressID;
 
 UPDATE User SET
 UserName = i_UserName,
-Password = i_Password,
-LogInPermissions = i_LIP
+Password = i_Password
 WHERE _UserID = UserID;
 
 UPDATE Staff SET
