@@ -4,12 +4,10 @@
                    namespace="OpenEhs.Domain">
 
   <class name="TemplateCategory" table="TemplateCategory">
-    <id name="Id">
+    <id name="Id" column="TemplateCategoryID">
       <generator class="native" />
     </id>
-    <property name="TemplateCategoryName" />
-    <property name="TemplateCategoryDescription" />
-
-    <property name="IsActive" />
+    <property name="TemplateCategoryName" not-null="true" length="30" />
+    <property name="TemplateCategoryDescription" not-null="false" />
   </class>
 </hibernate-mapping>
