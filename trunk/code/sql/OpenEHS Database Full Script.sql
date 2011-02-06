@@ -197,6 +197,7 @@ CREATE TABLE `User`
     IpAddress                   varchar(20)         NULL,
     IsLockedOut                 bit(1)              NOT NULL                DEFAULT 0,
     FailedPasswordAttemptCount  int                 NOT NULL                DEFAULT 0,
+    IsApproved                  bit(1)              NOT NULL                DEFAULT 0,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 

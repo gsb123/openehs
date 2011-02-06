@@ -29,13 +29,13 @@ namespace OpenEhs.Web.Controllers
         // URL: /Account/LogOn
         // **************************************
 
-        public ActionResult LogOn()
+        public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult Login(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {

@@ -7,14 +7,16 @@
  *****************************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Role: IEntity
+    public class Role : IEntity
     {
         public virtual int Id { get; private set; }
-        public virtual string Name { get; private set; }
-        public virtual string Description { get; private set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual IList<User> Users { get; private set; }
         public virtual DateTime DateCreated { get; set; }
     }
 }

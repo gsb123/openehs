@@ -5,9 +5,6 @@
 }
 
 <h2>Log On</h2>
-<p>
-    Please enter your username and password. @Html.ActionLink("Register", "Register") if you don't have an account.
-</p>
 @section head{
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -36,15 +33,12 @@
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
-
-            <div class="editor-label">
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe)
-            </div>
-
             <p>
-                <input type="submit" value="Log On" />
+                <input type="submit" value="Login" />
             </p>
         </fieldset>
+        <p>
+            Don't have a user account? @Html.ActionLink("Register now!", "Register")
+        </p>
     </div>
 }
