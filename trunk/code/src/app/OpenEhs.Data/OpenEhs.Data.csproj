@@ -104,13 +104,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Mappings\PatientCheckIn.hbm.xml" />
     <EmbeddedResource Include="Mappings\Address.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\EmergencyContact.xml">
+    <EmbeddedResource Include="Mappings\EmergencyContact.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Invoice.xml">
+    <EmbeddedResource Include="Mappings\Invoice.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\InvoiceLineItem.xml" />
@@ -133,7 +134,9 @@
     <EmbeddedResource Include="Mappings\Staff.xml" />
     <EmbeddedResource Include="Mappings\Template.xml" />
     <EmbeddedResource Include="Mappings\Membership\User.xml" />
-    <EmbeddedResource Include="Mappings\Patient.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Patient.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Category.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

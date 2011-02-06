@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="OpenEhs.Domain"
+                   namespace="OpenEhs.Domain">
+  
+  <class name="PatientCheckIn" table="PatientCheckIn">
+    <id name="Id" column="PatientCheckinID">
+      <generator class="native" />
+    </id>
+    <property name="CheckInTime" not-null="true" />
+    <property name="PatientType" not-null="true" />
+    <one-to-one name="Patient" class="Patient" />
+    <property name="PatientStatus" not-null="true" />
+    <property name="IsActive" not-null="true" />
+  </class>
+  
+</hibernate-mapping>

@@ -27,12 +27,12 @@ namespace OpenEhs.Domain
 
         #region Methods
 
-        public void AddLineItem(InvoiceLineItem item)
+        public virtual void AddLineItem(InvoiceLineItem item)
         {
             LineItems.Add(item);
         }
 
-        public void RemoveLineItem(InvoiceLineItem item)
+        public virtual void RemoveLineItem(InvoiceLineItem item)
         {
             LineItems.Remove(item);
         }

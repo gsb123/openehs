@@ -44,5 +44,6 @@
       <one-to-many class="PatientCheckIn" />
     </bag>
     -->
+
   </class>
 </hibernate-mapping>

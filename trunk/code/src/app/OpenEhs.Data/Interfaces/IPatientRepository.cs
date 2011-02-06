@@ -18,6 +18,6 @@ namespace OpenEhs.Data
         IList<Patient> FindByPhoneNumber(string phoneNumber);
         IList<Patient> FindByName(string name);
         IList<Patient> FindByDateOfBirth(DateTime dateOfBirth);
-        IList<Patient> FindByOldPhysicalRecord(string number);
+        IList<Patient> FindByOldPhysicalRecord(int number);
     }
 }
