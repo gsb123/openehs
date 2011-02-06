@@ -3,7 +3,7 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
   <class name="User">
-    <id name="Id">
+    <id name="Id" column="UserID">
       <generator class="native" />
     </id>
     <property name="Username" />
@@ -19,5 +19,7 @@
     <property name="LastLockoutDate" />
     <property name="FailedPasswordAttemptCount" />
     <property name="IsActive" />
+    
+    <!-- User should should have at least 1 role. -->
   </class>
 </hibernate-mapping>
