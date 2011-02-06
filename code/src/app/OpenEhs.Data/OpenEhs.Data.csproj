@@ -125,14 +125,14 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Surgery.xml" />
-    <EmbeddedResource Include="Mappings\TemplateCategory.xml" />
+    <EmbeddedResource Include="Mappings\TemplateCategory.hbm.xml" />
     <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
     <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Membership\Role.xml">
+    <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Staff.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Template.xml" />
+    <EmbeddedResource Include="Mappings\Template.hbm.xml" />
     <EmbeddedResource Include="Mappings\Membership\User.hbm.xml" />
     <EmbeddedResource Include="Mappings\Patient.hbm.xml">
       <SubType>Designer</SubType>

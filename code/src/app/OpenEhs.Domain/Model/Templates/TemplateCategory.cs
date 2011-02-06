@@ -8,7 +8,7 @@ namespace OpenEhs.Domain
     public class TemplateCategory
     {
         public virtual int Id { get; set; }
-        public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
+        public virtual string TemplateCategoryName { get; set; }
+        public virtual string TemplateCategoryDescription { get; set; }
     }
 }
