@@ -27,7 +27,8 @@ namespace OpenEhs.Data
 
         public IList<Product> GetAll()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Product>();
+            return criteria.List<Product>();
         }
 
         public void Add(Product product)
