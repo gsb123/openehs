@@ -13,10 +13,11 @@ namespace OpenEhs.Domain
         #region Properties
 
         public virtual int Id { get; private set; }
+        public virtual Invoice Invoice { get; set; }
         public virtual Product Product { get; set; }
         public virtual Service Service { get; set; }
         public virtual decimal Quantity { get; set; }
-        public decimal Total
+        public virtual decimal Total
         {
             get
             {

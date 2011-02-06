@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="OpenEhs.Domain"
+                   namespace="OpenEhs.Domain">
+  <class name="User" table="User">
+    <id name="Id" column="UserID">
+      <generator class="native" />
+    </id>
+    <property name="Username" not-null="true" length="30" />
+    <property name="EmailAddress" not-null="false" length="50" />
+    <property name="ApplicationName" not-null="false" length="30" />
+    <property name="Password" not-null="true" length="30" />
+    <property name="PasswordQuestion" not-null="false" length="50" />
+    <property name="PasswordAnswer" not-null="false" length="50" />
+    <property name="DateCreated" not-null="true" />
+    <property name="LastLogin" not-null="false" />
+    <property name="IsOnline" not-null="true" />
+    <property name="IpAddress" not-null="false" length="20" />
+    <property name="IsLockedOut" not-null="true" />
+    <property name="FailedPasswordAttemptCount" not-null="true" />
+    <property name="IsApproved" not-null="true" />
+    <property name="IsActive" not-null="true" />
+  </class>
+</hibernate-mapping>

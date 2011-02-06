@@ -114,14 +114,14 @@
     <EmbeddedResource Include="Mappings\Invoice.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\InvoiceLineItem.xml" />
-    <EmbeddedResource Include="Mappings\Note.xml" />
-    <EmbeddedResource Include="Mappings\PatientEncounter.xml" />
-    <EmbeddedResource Include="Mappings\Payment.xml">
+    <EmbeddedResource Include="Mappings\InvoiceLineItem.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Note.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PatientEncounter.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Payment.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Problem.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Service.xml">
+    <EmbeddedResource Include="Mappings\Service.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Surgery.xml" />
@@ -131,9 +131,9 @@
     <EmbeddedResource Include="Mappings\Membership\Role.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Staff.xml" />
+    <EmbeddedResource Include="Mappings\Staff.hbm.xml" />
     <EmbeddedResource Include="Mappings\Template.xml" />
-    <EmbeddedResource Include="Mappings\Membership\User.xml" />
+    <EmbeddedResource Include="Mappings\Membership\User.hbm.xml" />
     <EmbeddedResource Include="Mappings\Patient.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
