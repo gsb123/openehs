@@ -49,8 +49,8 @@ namespace OpenEhs.Data
 
         public IList<Patient> FindByPhoneNumber(string phoneNumber)
         {
-            
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("PhoneNumber", phoneNumber));
+            return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByName(string name)
