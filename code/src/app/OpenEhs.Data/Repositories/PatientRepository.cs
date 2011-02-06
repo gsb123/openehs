@@ -12,6 +12,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using OpenEhs.Domain;
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace OpenEhs.Data
 {
@@ -48,6 +49,7 @@ namespace OpenEhs.Data
 
         public IList<Patient> FindByPhoneNumber(string phoneNumber)
         {
+            
             throw new NotImplementedException();
         }
 
@@ -61,9 +63,11 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
         }
 
-        public IList<Patient> FindByOldPhysicalRecord(string number)
+        public IList<Patient> FindByOldPhysicalRecord(int number)
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("OldPhysicalRecordNumber", number));
+            return criteria.List<Patient>();
+            //throw new NotImplementedException();
         }
     }
 }

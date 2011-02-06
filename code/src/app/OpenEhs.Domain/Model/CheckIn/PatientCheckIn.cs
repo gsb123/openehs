@@ -18,10 +18,10 @@ namespace OpenEhs.Domain
         #region Properties
 
         public virtual int Id { get; private set; }
-        public virtual DateTime DateTime { get; set; }
-        public virtual PCIType Type { get; set; }
+        public virtual DateTime CheckInTime { get; set; }
+        public virtual PCIType PatientType { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual PCIStatus Status { get; set; }
+        public virtual PCIStatus PatientStatus { get; set; }
         public virtual bool IsActive { get; set; }
 
         #endregion
