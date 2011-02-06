@@ -17,7 +17,7 @@ namespace OpenEhs.Domain
         public virtual string MiddleName { get; set; }
         public virtual string LastName { get; set; }
         public virtual string PhoneNumber { get; set; }
-        public virtual StaffType Type { get; set; }
+        public virtual StaffType StaffType { get; set; }
         public virtual string LicenseNumber { get; set; }
         public virtual Address Address { get; set; }
         public virtual User User { get; set; }

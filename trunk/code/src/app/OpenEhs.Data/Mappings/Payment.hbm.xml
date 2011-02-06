@@ -4,12 +4,12 @@
                    namespace="OpenEhs.Domain">
 
   <class name="Payment" table="Payment">
-    <id name="Id">
+    <id name="Id" column="PaymentID">
       <generator class="native" />
     </id>
-    <property name="CashAmount" />
-    <property name="PaymentDate" />
-    <one-to-one name="InvoiceID" />
-    <property name="IsActive" />
+    <property name="CashAmount" not-null="true" />
+    <property name="PaymentDate" not-null="true" />
+    <one-to-one name="InvoiceID" class="Invoice" />
+    <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>
