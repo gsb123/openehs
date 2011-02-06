@@ -11,14 +11,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using OpenEhs.Domain;
+using NHibernate;
 
 namespace OpenEhs.Data
 {
     public class PatientRepository : IPatientRepository
     {
+        private ISession Session
+        {
+            get
+            {
+                return UnitOfWork.CurrentSession;
+            }
+        }
         public Patient Get(int id)
         {
-            throw new NotImplementedException();
+            return Session.Get<Patient>(id);
         }
 
         public void Add(Patient entity)
@@ -33,6 +41,8 @@ namespace OpenEhs.Data
 
         public IList<Patient> GetAll()
         {
+            ICriteria criteria = Session.CreateCriteria<Patient>();
+            return criteria.List<Patient>();
             throw new NotImplementedException();
         }
 

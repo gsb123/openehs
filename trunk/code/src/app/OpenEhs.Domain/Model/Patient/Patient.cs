@@ -20,7 +20,7 @@ namespace OpenEhs.Domain
         public virtual string MiddleName { get; set; }
         public virtual string LastName { get; set; }
         public virtual DateTime DateOfBirth { get; set; }
-        public virtual Gender Gender { get; set; }
+        public virtual string Gender { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual IList<Problem> Problems { get; set; }
         public virtual IList<Allergy> Allergies { get; set; }
@@ -34,17 +34,17 @@ namespace OpenEhs.Domain
         #endregion
 
         #region Methods
-
-        public void AddProblem(Problem problem)
+        
+        public virtual void AddProblem(Problem problem)
         {
             Problems.Add(problem);
         }
 
-        public void RemoveProblem(Problem problem)
+        public virtual void RemoveProblem(Problem problem)
         {
             Problems.Remove(problem);
         }
-
+        
         #endregion
     }
 }

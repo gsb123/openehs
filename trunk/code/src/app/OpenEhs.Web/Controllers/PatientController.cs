@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using OpenEhs.Data;
 
 namespace OpenEhs.Web.Controllers {
     public class PatientController : Controller {
@@ -12,6 +13,12 @@ namespace OpenEhs.Web.Controllers {
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            var patient = new PatientRepository().Get(id);
+            return View(patient);
         }
     }
 }

@@ -104,7 +104,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="Mappings\Address.xml">
+    <EmbeddedResource Include="Mappings\Address.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\EmergencyContact.xml">
@@ -119,21 +119,21 @@
     <EmbeddedResource Include="Mappings\Payment.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Problem.xml" />
+    <EmbeddedResource Include="Mappings\Problem.hbm.xml" />
     <EmbeddedResource Include="Mappings\Service.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Surgery.xml" />
     <EmbeddedResource Include="Mappings\TemplateCategory.xml" />
     <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Allergy.xml" />
+    <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
     <EmbeddedResource Include="Mappings\Membership\Role.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Staff.xml" />
     <EmbeddedResource Include="Mappings\Template.xml" />
     <EmbeddedResource Include="Mappings\Membership\User.xml" />
-    <EmbeddedResource Include="Mappings\Patient.xml" />
+    <EmbeddedResource Include="Mappings\Patient.hbm.xml" />
     <EmbeddedResource Include="Mappings\Category.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
