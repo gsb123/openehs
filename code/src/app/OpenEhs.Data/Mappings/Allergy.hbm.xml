@@ -4,12 +4,12 @@
                    namespace="OpenEhs.Domain">
   
   <class name="Allergy" table="Allergy">
-    <id name="Id">
+    <id name="Id" column="AllergyID">
       <generator class="native" />
     </id>
-    <property name="Name" />
-    <property name="Medication" />
-    <one-to-one name="Patient" />
-    <property name="IsActive" />
+    <property name="Name" not-null="false" length="30" />
+    <property name="Medication" not-null="false" length="30" />
+    <one-to-one name="Patient" class="Patient" />
+    <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>

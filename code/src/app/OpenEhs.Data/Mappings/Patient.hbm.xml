@@ -4,29 +4,29 @@
                    namespace="OpenEhs.Domain">
   
   <class name="Patient" table="Patient">
-    <id name="Id">
+    <id name="Id" column="PatientId">
       <generator class="native" />
     </id>
-    <property name="FirstName" />
-    <property name="MiddleName" />
-    <property name="LastName" />
-    <property name="DateOfBirth" />
-    <property name="Gender" />
-    <property name="PhoneNumber" />
-    <one-to-one name="Address" />
-    <property name="BloodType" />
-    <property name="TribeRace" />
-    <property name="Religion" />
-    <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" />
-    <property name="IsActive" />
+    <property name="FirstName" not-null="true" length="30" />
+    <property name="MiddleName" not-null="false" length="30"/>
+    <property name="LastName" not-null="true" length ="30"/>
+    <property name="DateOfBirth" not-null="true"/>
+    <property name="Gender" not-null="true" length="10"/>
+    <property name="PhoneNumber" not-null="false" length="20"/>
+    <one-to-one name="Address" class="Address"/>
+    <property name="BloodType" not-null="false" length="10"/>
+    <property name="TribeRace" not-null="false" length="30"/>
+    <property name="Religion" not-null="false" length="30" />
+    <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
+    <property name="IsActive" not-null="true" />
 
-    <!--One-to-many mapping: Problems-->
+    
     <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
       <one-to-many class="Problem" />
-    </bag>
+    </bag> 
     
-    <!--One-to-many mapping: Allergies-->
+
     <bag name="Allergies" table="Allergy">
       <key column="PatientId" />
       <one-to-many class="Allergy" />

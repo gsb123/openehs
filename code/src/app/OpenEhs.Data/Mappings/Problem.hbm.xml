@@ -3,17 +3,16 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="Problem" tabel="Problem">
-    <id name="Id">
+  <class name="Problem" table="Problem">
+    <id name="Id" column="ProblemID">
       <generator class="native" />
     </id>
-    <property name="ProblemName" />
-
-    <!--Many-to-many mapping: Patient-->
+    <property name="ProblemName" not-null="true" length="30" />
+    
     <bag name="Patient" table="PatientProblem">
       <key column="ProblemID" />
       <many-to-many column="PatientID" class="Patient" />
     </bag>
-
+    
   </class>
 </hibernate-mapping>
