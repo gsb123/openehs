@@ -24,6 +24,7 @@ namespace OpenEhs.Domain
         public virtual string PhoneNumber { get; set; }
         public virtual IList<Problem> Problems { get; set; }
         public virtual IList<Allergy> Allergies { get; set; }
+        public virtual EmergencyContact EmergencyContact { get; set; }
         public virtual Address Address { get; set; }
         public virtual string BloodType { get; set; }
         public virtual string TribeRace { get; set; }
