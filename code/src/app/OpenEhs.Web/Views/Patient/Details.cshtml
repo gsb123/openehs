@@ -19,14 +19,41 @@
 <div id="patientView">
     <div>
         <ul>
-            <li><a href="#patientView-Basic">Basic</li>
-            <li><a href="#patientView-Allergies">Allergies</li>
-            <li><a href="#patientView-Encounters">Encounters</li>
+            <li><a href="#patientView-Basic">Basic</a></li>
+            <li><a href="#patientView-Allergies">Allergies</a></li>
+            <li><a href="#patientView-Encounters">Encounters</a></li>
         </ul>
     </div>
     <div>
         <div id="#patientView-Basic">
-            <h3>Basic patient information goes here.</h3>
+            <fieldset style="padding: 20px;">
+                <legend>General</legend>
+                <div style="float: left;">
+                    @Html.LabelFor(model => model.Id, "Patient ID")<br />
+                    @Html.TextBoxFor(model => model.Id)<br />
+                    @Html.LabelFor(model => model.FirstName, "First Name")<br />
+                    @Html.TextBoxFor(model => model.FirstName)<br />
+                    @Html.LabelFor(model => model.MiddleName, "Middle Name")<br />
+                    @Html.TextBoxFor(model => model.MiddleName)<br />
+                    @Html.LabelFor(model => model.LastName, "Last Name")<br />
+                    @Html.TextBoxFor(model => model.LastName)<br />
+                </div>
+                <div style="margin-left: 20px; float: left;">
+                    @Html.LabelFor(model => model.Gender, "Gender")<br />
+                    @Html.RadioButtonFor(model => model.Gender, "Male") Male
+                    @Html.RadioButtonFor(model => model.Gender, "Female") Female<br />
+                    @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
+                    @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
+                    @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
+                    @Html.TextBoxFor(model => model.PhoneNumber)
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Emergency Contact</legend>
+            </fieldset>
+            <fieldset>
+                <legend>Address</legend>
+            </fieldset>
         </div>
         <div id="#patientView-Allergies">
             <h3>Allergies go here.</h3>
@@ -36,42 +63,6 @@
         </div>
     </div>
 </div>
-
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Patient</legend>
-
-    <div class="display-label">FirstName</div>
-    <div class="display-field">@Model.FirstName</div>
-
-    <div class="display-label">MiddleName</div>
-    <div class="display-field">@Model.MiddleName</div>
-
-    <div class="display-label">LastName</div>
-    <div class="display-field">@Model.LastName</div>
-
-    <div class="display-label">DateOfBirth</div>
-    <div class="display-field">@String.Format("{0:g}", Model.DateOfBirth)</div>
-
-    <div class="display-label">PhoneNumber</div>
-    <div class="display-field">@Model.PhoneNumber</div>
-
-    <div class="display-label">BloodType</div>
-    <div class="display-field">@Model.BloodType</div>
-
-    <div class="display-label">TribeRace</div>
-    <div class="display-field">@Model.TribeRace</div>
-
-    <div class="display-label">Religion</div>
-    <div class="display-field">@Model.Religion</div>
-
-    <div class="display-label">OldPhysicalRecordNumber</div>
-    <div class="display-field">@Model.OldPhysicalRecordNumber</div>
-
-    <div class="display-label">IsActive</div>
-    <div class="display-field">@Model.IsActive</div>
-</fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
