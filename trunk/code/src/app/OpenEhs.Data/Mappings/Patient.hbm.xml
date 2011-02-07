@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
-  
+
   <class name="Patient" table="Patient">
     <id name="Id" column="PatientId">
       <generator class="native" />
@@ -15,20 +15,20 @@
     <property name="PhoneNumber" not-null="false" length="20"/>
 
     <one-to-one name="Address" class="Address" constrained="true" />
-    
-    
+
+
     <property name="BloodType" not-null="false" length="10"/>
     <property name="TribeRace" not-null="false" length="30"/>
     <property name="Religion" not-null="false" length="30" />
     <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
     <property name="IsActive" not-null="true" />
 
-    
+
     <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
       <one-to-many class="Problem" />
-    </bag> 
-    
+    </bag>
+
 
     <bag name="Allergies" table="Allergy">
       <key column="PatientId" />
@@ -36,7 +36,7 @@
     </bag>
 
     <one-to-one name="EmergencyContact" class="EmergencyContact" constrained="true" />
-    
+
 
     <!--
     <bag name="Invoice" table="Invoice">
@@ -51,4 +51,5 @@
     </bag>
     -->
 
+  </class>
 </hibernate-mapping>

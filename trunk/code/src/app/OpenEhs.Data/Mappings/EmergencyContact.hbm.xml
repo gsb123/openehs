@@ -11,8 +11,11 @@
     <property name="LastName" not-null="true" length="30" />
     <property name="PhoneNumber" not-null="true" length="20" />
     <property name="Relationship" not-null="true" />
-    <one-to-one name="Address" class="Address" />
-    <one-to-one name="Patient" class="Patient" />
+    
+    <one-to-one name="Address" class="Address" constrained="true" />
+    
+    <one-to-one name="Patient" class="Patient" constrained="true" />
+    
     <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>
