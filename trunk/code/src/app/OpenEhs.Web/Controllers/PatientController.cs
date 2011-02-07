@@ -5,9 +5,11 @@ namespace OpenEhs.Web.Controllers {
     public class PatientController : Controller {
         //
         // GET: /Patient/
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-            return View();
+            var patients = new PatientRepository().GetAll();
+
+            return View(patients);
         }
 
         public ActionResult Create()
@@ -18,6 +20,7 @@ namespace OpenEhs.Web.Controllers {
         public ActionResult Details(int id)
         {
             var patient = new PatientRepository().Get(id);
+
             return View(patient);
         }
     }

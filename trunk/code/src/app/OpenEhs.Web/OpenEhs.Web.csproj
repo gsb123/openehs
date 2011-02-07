@@ -159,9 +159,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Patient\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OpenEhs.Data\OpenEhs.Data.csproj">
       <Project>{7501A878-FBE8-444D-9884-B4237DF11207}</Project>
       <Name>OpenEhs.Data</Name>
@@ -197,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Patient\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patient\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
