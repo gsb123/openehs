@@ -60,7 +60,6 @@ LastName                    varchar(30)      NOT NULL,
 PhoneNumber                 varchar(20)      NOT NULL,
 Relationship                bit(3)           NOT NULL,
 AddressID                   int              NOT NULL,
-PatientID                   int              NOT NULL,
 IsActive                    bit(1)           NOT NULL                DEFAULT 1
 );
 
@@ -88,7 +87,8 @@ AddressID                   int                 NOT NULL,
 BloodType                   varchar(10)         NULL,
 TribeRace                   varchar(30)         NULL,
 Religion                    varchar(30)         NULL,
-OldPhysicalRecordNumb       int                 Null,       
+OldPhysicalRecordNumb       int                 Null,
+EmergencyContactID          int                 NULL,
 IsActive                    bit(1)              NOT NULL                DEFAULT 1
 ) AUTO_INCREMENT= 100000;
 
@@ -313,13 +313,13 @@ ALTER TABLE EmergencyContact
 ADD CONSTRAINT FK_EmergencyContactMustHaveAddressID
 FOREIGN KEY (AddressID) REFERENCES Address(AddressID);
 
-ALTER TABLE EmergencyContact
-ADD CONSTRAINT FK_EmergencyContactMustHavePatientID
-FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
-
 ALTER TABLE Patient
 ADD CONSTRAINT FK_PatientMustHaveAddressID
 FOREIGN KEY (AddressID) REFERENCES Address(AddressID);
+
+ALTER TABLE Patient
+ADD CONSTRAINT FK_PatientMustHaveEmergencyContactID
+FOREIGN KEY (EmergencyContactID) REFERENCES EmergencyContact(EmergencyContactID);
 
 ALTER TABLE Staff
 ADD CONSTRAINT FK_StaffMustHaveAddressID
@@ -486,195 +486,6 @@ DELIMITER ;
 #-------------------------------------------------Stored Procs-------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------
 
-#--------------Insert Patient Table--------------
-/************************************
-* sp_insertPatient inserts into 
-* Address and EmergencyContact
-* tables.
-************************************/
-
-DELIMITER | 
-CREATE PROCEDURE sp_insertPatient
-(
-IN i_Street1                varchar(30),
-IN i_Street2                varchar(30),
-IN i_City                   varchar(30),
-IN i_Region                 varchar(30),
-IN i_Country                varchar(30),
-IN i_ECStreet1              varchar(30),
-IN i_ECStreet2              varchar(30),
-IN i_ECCity                 varchar(30),
-IN i_ECRegion               varchar(30),
-IN i_ECCountry              varchar(30),
-IN i_CFN                    varchar(30),
-IN i_CLN                    varchar(30),
-IN i_CPN                    varchar(30),
-IN i_Relationship           bit(3),
-IN i_FirstName              varchar(30),
-IN i_MiddleName             varchar(30),
-IN i_LastName               varchar(30),
-IN i_DateOfBirth            date,
-IN i_Gender                 char(10),
-IN i_PhoneNumber            varchar(20),
-IN i_BloodType              varchar(10),
-IN i_TribeRace              varchar(30),
-IN i_Religion               varchar(30),
-IN i_OldPhysicalRecordNumb  int
-)
-
-BEGIN
-
-DECLARE _AddressID              int;
-DECLARE _ECAddressID            int;
-DECLARE _PatientID              int;
-
-INSERT INTO Address
-(
-Street1,
-Street2,
-City,
-Region,
-Country
-)
-VALUES
-(
-i_Street1,
-i_Street2,
-i_City,
-i_Region,
-i_Country
-);
-
-SELECT LAST_INSERT_ID() INTO _AddressID;
-
-INSERT INTO Patient
-(
-FirstName,
-MiddleName,
-LastName,
-DateOfBirth,
-Gender,
-PhoneNumber,
-AddressID,
-BloodType,
-TribeRace,
-Religion,
-OldPhysicalRecordNumb
-)
-VALUES
-(
-i_FirstName,
-i_MiddleName,
-i_LastName,
-i_DateOfBirth,
-i_Gender,
-i_PhoneNumber,
-_AddressID,
-i_BloodType,
-i_TribeRace,
-i_Religion,
-i_OldPhysicalRecordNumb
-);
-
-SELECT LAST_INSERT_ID() INTO _PatientID;
-
-INSERT INTO Address
-(
-Street1,
-Street2,
-City,
-Region,
-Country
-)
-VALUES
-(
-i_ECStreet1,
-i_ECStreet2,
-i_ECCity,
-i_ECRegion,
-i_ECCountry
-);
-
-SELECT LAST_INSERT_ID() INTO _ECAddressID;
-
-INSERT INTO EmergencyContact
-(
-FirstName,
-LastName,
-PhoneNumber,
-RelationShip,
-AddressID,
-PatientID
-)
-VALUES
-(
-i_CFN,
-i_CLN,
-i_CPN,
-i_RelationShip,
-_ECAddressID,
-_PatientID
-);
-
-END ||
-DELIMITER ;
-
-#--------------Update Patient Table--------------
-/************************************
-* sp_updatePatient updates into 
-* Address. Must pass PatientID
-************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_updatePatient
-(
-IN i_PatientID              int,
-IN i_Street1                varchar(30),
-IN i_Street2                varchar(30),
-IN i_City                   varchar(30),
-IN i_Region                 varchar(30),
-IN i_Country                varchar(30),
-IN i_FirstName              varchar(30),
-IN i_MiddleName             varchar(30),
-IN i_LastName               varchar(30),
-IN i_DateOfBirth            date,
-IN i_Gender                 char(10),
-IN i_PhoneNumber            varchar(20),
-IN i_BloodType              varchar(10),
-IN i_TribeRace              varchar(30),
-IN i_Religion               varchar(30),
-IN i_OldPhysicalRecordNumb  int
-)
-
-BEGIN
-
-DECLARE _AddressID  int;
-
-SELECT AddressID FROM Patient WHERE PatientID = i_PatientID INTO _AddressID;
-
-UPDATE Address SET
-Street1 = i_Street1,
-Street2 = i_Street2,
-City = i_City,
-Region = i_Region,
-Country = i_Country
-WHERE _AddressID = AddressID;
-
-UPDATE Patient SET
-FirstName = i_FirstName,
-MiddleName = i_MiddleName,
-LastName = LastName,
-DateOfBirth = i_DateOfBirth,
-Gender = i_Gender,
-PhoneNumber = i_PhoneNumber,
-BloodType = i_BloodType,
-TribeRace = i_TribeRace,
-Religion = i_Religion,
-OldPhysicalRecordNumb = i_OldPhysicalRecordNumb
-WHERE i_PatientID = PatientID;
-
-END ||
-DELIMITER ;
 
 #--------------Delete Patient Table--------------
 /************************************
@@ -1679,117 +1490,172 @@ DELIMITER ;
 #-------------------------------------------------TEST DATA-------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------
 
-CALL sp_insertPatient
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
 (
 '12667 W. 85th Cir',
 '',
 'Arvada',
 'Co',
-'USA',
+'USA'
+);
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
 '2558 S 1687 W',
 '',
 'Layton',
 'Ut',
-'USA',
+'USA'
+);
+
+INSERT INTO EmergencyContact
+(
+FirstName,
+LastName,
+PhoneNumber,
+Relationship,
+AddressID
+)
+VALUES
+(
 'Lila',
 'Harp',
 '303-421-3837',
 4,
+1
+);
+
+INSERT INTO Patient
+(
+FirstName,
+MiddleName,
+LastName,
+DateOfBirth,
+Gender,
+PhoneNumber,
+AddressID,
+BloodType,
+TribeRace,
+Religion,
+OldPhysicalRecordNumb,
+EmergencyContactID
+)
+VALUES
+(
 'Ed',
 '',
 'Harp',
 '1940-02-10',
 'Male',
 '303-276-8557',
+2,
 'AB+',
 'white',
 'lDS',
-1102547
+1102547,
+1
 );
 
-CALL sp_insertPatient
+#--------
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
 (
 '1965 S. 1275 E.',
 '',
 'Ogden',
 'Ut',
-'USA',
+'USA'
+);
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
 '1234 N. 5678 S.',
 '',
 'Midvill',
 'Ut',
-'USA',
+'USA'
+);
+
+INSERT INTO EmergencyContact
+(
+FirstName,
+LastName,
+PhoneNumber,
+Relationship,
+AddressID
+)
+VALUES
+(
 'Bob',
 'Smith',
 '801-895-7452',
 2,
+3
+);
+
+INSERT INTO Patient
+(
+FirstName,
+MiddleName,
+LastName,
+DateOfBirth,
+Gender,
+PhoneNumber,
+AddressID,
+BloodType,
+TribeRace,
+Religion,
+OldPhysicalRecordNumb,
+EmergencyContactID
+)
+VALUES
+(
 'Kim',
 '',
 'Hall',
 '1970-10-15',
 'Female',
 '801-458-7895',
+4,
 'AB',
 'white',
 'N/A',
-null
+null,
+2
 );
 
-CALL sp_insertPatient
-(
-'7587 E. 1202 S.',
-'',
-'Orem',
-'Ut',
-'USA',
-'1002 S. Main St.',
-'',
-'Logan',
-'Ut',
-'USA',
-'Jimmy',
-'Little',
-'801-777-0012',
-1,
-'John',
-'',
-'Little',
-'1980-11-11',
-'Male',
-'801-852-0000',
-'O-',
-'white',
-'Cathloic',
-null
-);
-
-CALL sp_insertPatient
-(
-'1075 Lame Street',
-'',
-'LameVill',
-'Ut',
-'USA',
-'1000 Too Cool Ave',
-'',
-'Draper',
-'Ut',
-'USA',
-'Kyle',
-'Funny',
-'801-777-0012',
-2,
-'Allie',
-'',
-'Funny',
-'1980-11-11',
-'Female',
-'801-102-7000',
-'A+',
-'white',
-'FLDS',
-null
-);
 
 CALL sp_insertProblem
 (
@@ -1803,11 +1669,11 @@ CALL sp_insertProblem
 100000
 );
 
-CALL sp_insertProblem
-(
-'STDs',
-100002
-);
+#CALL sp_insertProblem
+#(
+#'STDs',
+#100002
+#);
 
 CALL sp_insertProblem
 (
@@ -1815,11 +1681,11 @@ CALL sp_insertProblem
 100000
 );
 
-CALL sp_insertProblem
-(
-'Diabetes',
-100003
-);
+#CALL sp_insertProblem
+#(
+#'Diabetes',
+#100003
+#);
 
 CALL sp_insertAllergy
 (
@@ -1863,19 +1729,19 @@ null,
 100001
 );
 
-CALL sp_insertAllergy
-(
-'Wheat',
-null,
-100002
-);
+#CALL sp_insertAllergy
+#(
+#'Wheat',
+#null,
+#100002
+#);
 
-CALL sp_insertAllergy
-(
-'Nuts',
-null,
-100002
-);
+#CALL sp_insertAllergy
+#(
+#'Nuts',
+#null,
+#100002
+#);
 
 CALL sp_insertAllergy
 (
@@ -1884,19 +1750,19 @@ null,
 100001
 );
 
-CALL sp_insertAllergy
-(
-'Lactose',
-null,
-100003
-);
+#CALL sp_insertAllergy
+#(
+#'Lactose',
+#null,
+#100003
+#);
 
-CALL sp_insertAllergy
-(
-'Fish',
-null,
-100003
-);
+#CALL sp_insertAllergy
+#(
+#'Fish',
+#null,
+#100003
+#);
 
 
 CALL sp_insertStaff
