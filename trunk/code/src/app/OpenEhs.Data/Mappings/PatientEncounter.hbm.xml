@@ -7,13 +7,17 @@
     <id name="Id" column="PatientEncounterID">
       <generator class="native" />
     </id>
-    <one-to-one name="PatientCheckIn" class="PatientCheckIn" />
+
+    <many-to-one name="PatientCheckIn" column="PatientCheckInID" unique="true" cascade="all" />
+
     <property name="TimeIn" not-null="true" />
     <property name="TimeOut" not-null="false" />
     <property name="Comments" not-null="false" />
     <property name="Location" not-null="false" />
     <property name="Diagnosis" not-null="false" />
+    
     <one-to-one name="Staff" class="Staff" />
+    
     <property name="AdmitReason" not-null="false" length="50" />
     <property name="IsActive" not-null="true" />
   </class>
