@@ -121,6 +121,7 @@ CheckinTime                 timestamp       NOT NULL,
 PatientType                 tinyint         NOT NULL,
 PatientID                   int             NOT NULL,
 PatientStatus               int             NOT NULL,
+CheckOutTime                timestamp       NULL,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
 
