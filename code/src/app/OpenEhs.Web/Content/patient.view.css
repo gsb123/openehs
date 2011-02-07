@@ -1,0 +1,42 @@
+﻿fieldset
+{
+    clear: both;
+    padding: 20px;
+}
+
+.column
+{
+    float: left;
+    margin-right: 20px;
+}
+
+#BasicInformationColumn
+{
+    float: left;
+    margin-right: 20px;
+}
+
+#BasicInformationNotes
+{
+    float: left;
+}
+
+#Id
+{
+    width: 80px;
+}
+
+#FirstName, #MiddleName, #LastName, #PhoneNumber
+{
+    width: 125px;
+}
+
+#DateOfBirth
+{
+    width: 80px;
+}
+
+#Address_City, #Address_Region
+{
+    width: 125px;
+}

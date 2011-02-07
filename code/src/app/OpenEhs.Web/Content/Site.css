@@ -7,7 +7,7 @@ body
 {
     background-color: #5c87b2;
     font-size: 75%;
-    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    font-family: arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #696969;
@@ -340,4 +340,14 @@ div#title
 .tri-state
 {
     width: 6em;
+}
+
+/* Hacks/Fixes/Utilities */
+.group:after 
+{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
