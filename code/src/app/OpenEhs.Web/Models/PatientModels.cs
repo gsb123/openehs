@@ -8,15 +8,15 @@ namespace OpenEhs.Web.Models
 {
     #region Models
 
-    public class PatientModel 
+    public class PatientModels 
     {
         private Patient _patient;
 
         #region Patient
 
         [Required]
-        [DisplayName("ID")]
-        public int Id
+        [DisplayName("Patient ID")]
+        public int PatientId
         {
             get
             {
@@ -264,8 +264,46 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        #endregion
+        [Required]
+        [DisplayName("Note")]
+        public Note Note
+        {
+            get
+            {
+                return _patient.Note;
+            }
+            set
+            {
+                _patient.Note = value;
+            }
+        }
 
+        [Required]
+        [DisplayName("CheckIns")]
+        public IList<PatientCheckIn> PatientCheckIns
+        {
+            get
+            {
+                return _patient.PatientCheckIns;
+            }
+            set
+            {
+                _patient.PatientCheckIns = value;
+            }
+        }
+
+        public void AddEncounter(PatientCheckIn checkIn)
+        {
+            PatientCheckIns.Add(checkIn);
+        }
+
+        public void RemoveEncounter(PatientCheckIn checkIn)
+        {
+            PatientCheckIns.Remove(checkIn);
+        }
+
+
+        #endregion
 
     }
 
