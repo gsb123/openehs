@@ -32,11 +32,8 @@
     <!--
     <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
-      <one-to-many class="Problem" />
+      <many-to-many class="Problem" />
     </bag>
-
-
-    <one-to-one name="EmergencyContact" class="EmergencyContact" constrained="true" fetch="join" />
 
     <bag name="Invoice" table="Invoice">
       <key column="PatientId" />
