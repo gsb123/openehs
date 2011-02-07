@@ -14,8 +14,7 @@
     <property name="Gender" not-null="true" length="10"/>
     <property name="PhoneNumber" not-null="false" length="20"/>
 
-    <one-to-one name="Address" class="Address" constrained="true" fetch="join" />
-
+    <many-to-one name="Address" column="AddressID" unique="true" cascade="all" />
 
     <property name="BloodType" not-null="false" length="10"/>
     <property name="TribeRace" not-null="false" length="30"/>
@@ -23,28 +22,25 @@
     <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
     <property name="IsActive" not-null="true" />
 
+    <bag name="Allergies" table="Allergy">
+      <key column="PatientId" />
+      <one-to-many class="Allergy" />
+    </bag>
 
+    <!--
     <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
       <one-to-many class="Problem" />
     </bag>
 
 
-    <bag name="Allergies" table="Allergy">
-      <key column="PatientId" />
-      <one-to-many class="Allergy" />
-    </bag>
-
     <one-to-one name="EmergencyContact" class="EmergencyContact" constrained="true" fetch="join" />
 
-
-    <!--
     <bag name="Invoice" table="Invoice">
       <key column="PatientId" />
       <one-to-many class="Invoice" />
-    </bag> -->
+    </bag>
 
-    <!--
     <bag name="PatientCheckIn" table="PatientCheckIn">
       <key column="PatientId" />
       <one-to-many class="PatientCheckIn" />
