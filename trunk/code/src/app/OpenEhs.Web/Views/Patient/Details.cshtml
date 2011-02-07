@@ -152,6 +152,10 @@
         </div>
         <div id="#patientView-Surgery">
             <h3>Surgery go here.</h3>
+			@foreach(var checkin in Model.PatientCheckIns)
+			{
+				<li>@checkin.CheckInTime</li>
+			}
         </div>
     </div>
 </div>
