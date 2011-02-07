@@ -130,7 +130,9 @@
     <EmbeddedResource Include="Mappings\Payment.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Problem.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Problem.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Service.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

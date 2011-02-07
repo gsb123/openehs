@@ -61,7 +61,7 @@
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
             <li><a href="#patientView-Allergies">Allergies</a></li>
             <li><a href="#patientView-Encounters">Encounters</a></li>
-            <li><a href="#patientView-Surgery">Surgery</a></li>
+            <li><a href="#patientView-Testing">Testing</a></li>
         </ul>
     </div>
     <div>
@@ -150,16 +150,25 @@
         <div id="#patientView-Encounters">
             <h3>Encounters go here.</h3>
         </div>
-        <div id="#patientView-Surgery">
-            <h3>Surgery go here.</h3>
-			@foreach(var checkin in Model.PatientCheckIns)
-			{
-				<li>@checkin.CheckInTime</li>
-			}
+
+        <div id="#patientView-Testing">
+            <fieldset>
+            <legend>CheckIn Test</legend>
+			    @foreach(var checkin in Model.PatientCheckIns)
+			    {
+				    <li>@checkin.CheckInTime</li>
+                    <li>@checkin.PatientType</li>
+                    <li>@checkin.PatientStatus</li>     
+                }
+            </fieldset>
+            <fieldset>
+                <legend>Encounter Test</legend>
+            </fieldset>
         </div>
+
     </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
