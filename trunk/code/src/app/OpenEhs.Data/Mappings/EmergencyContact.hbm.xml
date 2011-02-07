@@ -12,9 +12,9 @@
     <property name="PhoneNumber" not-null="true" length="20" />
     <property name="Relationship" not-null="true" />
     
-    <one-to-one name="Address" class="Address" constrained="true" />
+    <one-to-one name="Address" class="Address" constrained="true" fetch="join" />
     
-    <one-to-one name="Patient" class="Patient" constrained="true" />
+    <one-to-one name="Patient" class="Patient" constrained="true" fetch="join" />
     
     <property name="IsActive" not-null="true" />
   </class>
