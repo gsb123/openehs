@@ -27,6 +27,8 @@
       <one-to-many class="Allergy" />
     </bag>
 
+    <many-to-one name="EmergencyContact" column="EmergencyContactID" unique="true" cascade="all" />
+
     <!--
     <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
