@@ -28,6 +28,11 @@
                 buttonImageOnly: true,
                 changeYear: true
             });
+
+            $("#EmergencyContactMoreInfoLink").click(function() {
+                $("#EmergencyContactMoreInfo").slideToggle("slow", function() {
+                });
+            });
         });
     </script>
 
@@ -71,7 +76,22 @@
                 <fieldset>
                     <legend>Emergency Contact</legend>
                     @Html.LabelFor(model => model.EmergencyContact.FirstName)<br />
-                    @Html.TextBoxFor(model => model.EmergencyContact.FirstName)
+                    @Html.TextBoxFor(model => model.EmergencyContact.FirstName)<br />
+                    @Html.LabelFor(model => model.EmergencyContact.LastName)<br />
+                    @Html.TextBoxFor(model => model.EmergencyContact.LastName)<br />
+                    @Html.LabelFor(model => model.EmergencyContact.PhoneNumber)<br />
+                    @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber)<br /><br />
+                    <div id="EmergencyContactMoreInfoLink">More...</div>
+                    <div id="EmergencyContactMoreInfo">
+                        @Html.LabelFor(model => model.EmergencyContact.Address.Street1)<br />
+                        @Html.TextBoxFor(model => model.EmergencyContact.Address.Street1)<br />
+                        @Html.LabelFor(model => model.EmergencyContact.Address.Street2)<br />
+                        @Html.TextBoxFor(model => model.EmergencyContact.Address.Street2)<br />
+                        @Html.LabelFor(model => model.EmergencyContact.Address.City)<br />
+                        @Html.TextBoxFor(model => model.EmergencyContact.Address.City)<br />
+                        @Html.LabelFor(model => model.EmergencyContact.Address.Region)<br />
+                        @Html.TextBoxFor(model => model.EmergencyContact.Address.Region)
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Address</legend>
