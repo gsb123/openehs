@@ -57,12 +57,6 @@
                     @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
                     @Html.TextBoxFor(model => model.PhoneNumber)
                 </div>
-                <ul>
-                @foreach (var allergy in Model.Allergies)
-                {
-                    <li>@allergy.Name</li>
-                }
-                </ul>
             </fieldset>
             <fieldset>
                 <legend>Emergency Contact</legend>
@@ -85,7 +79,13 @@
             }
         </div>
         <div id="#patientView-Allergies">
-            <h3>Allergies go here.</h3>
+            <ul>
+            @foreach (var allergy in Model.Allergies)
+            {
+                <li>@allergy.Name</li>
+            }
+            </ul>
+
         </div>
         <div id="#patientView-Encounters">
             <h3>Encounters go here.</h3>
