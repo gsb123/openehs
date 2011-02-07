@@ -40,3 +40,14 @@
 {
     width: 125px;
 }
+
+#EmergencyContactMoreInfoLink
+{
+    color: #00f;
+    cursor: pointer;
+}
+
+#EmergencyContactMoreInfo
+{
+    display: none;
+}
