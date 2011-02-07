@@ -13,5 +13,11 @@
     <property name="Region" not-null="true" length="30" />
     <property name="Country" not-null="true" length="30" />
     <property name="IsActive" not-null="true" />
+
+    <bag name="Patient">
+      <key column="AddressID" />
+      <one-to-many class="Patient" />
+    </bag>
+    
   </class>
 </hibernate-mapping>
