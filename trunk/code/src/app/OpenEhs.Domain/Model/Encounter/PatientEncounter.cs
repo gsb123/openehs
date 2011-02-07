@@ -15,7 +15,6 @@ namespace OpenEhs.Domain
         #region Properties
 
         public virtual int Id { get; private set; }
-        public virtual PatientCheckIn PatientCheckIn { get; set; }
         public virtual DateTime TimeIn { get; set; }
         public virtual DateTime TimeOut { get; set; }
         public virtual string Comments { get; set; }

@@ -23,6 +23,7 @@ namespace OpenEhs.Domain
         public virtual Patient Patient { get; set; }
         public virtual PCIStatus PatientStatus { get; set; }
         public virtual bool IsActive { get; set; }
+        public virtual IList<PatientEncounter> PatientEncounters { get; set; }
 
         #endregion
 
