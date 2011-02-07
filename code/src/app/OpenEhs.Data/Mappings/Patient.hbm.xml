@@ -34,6 +34,11 @@
       <key column="PatientID" />
       <many-to-many column="ProblemID" class="Problem" />
     </bag>
+
+    <bag name="PatientCheckIns" table="PatientCheckIn">
+      <key column="PatientId" />
+      <one-to-many class="PatientCheckIn" />
+    </bag>
     
     <!--
     <bag name="Problems" table="PatientProblem">

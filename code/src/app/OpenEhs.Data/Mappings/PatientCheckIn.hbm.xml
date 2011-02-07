@@ -9,6 +9,7 @@
     </id>
     <property name="CheckInTime" not-null="true" />
     <property name="PatientType" not-null="true" />
+    <property name="CheckOutTime" not-null="false" />
 
     <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
     
