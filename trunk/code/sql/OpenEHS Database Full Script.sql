@@ -1707,6 +1707,90 @@ CALL sp_insertPatient
 1102547
 );
 
+CALL sp_insertPatient
+(
+'1965 S. 1275 E.',
+'',
+'Ogden',
+'Ut',
+'USA',
+'1234 N. 5678 S.',
+'',
+'Midvill',
+'Ut',
+'USA',
+'Bob',
+'Smith',
+'801-895-7452',
+2,
+'Kim',
+'',
+'Hall',
+'1970-10-15',
+'Female',
+'801-458-7895',
+'AB',
+'white',
+'N/A',
+null
+);
+
+CALL sp_insertPatient
+(
+'7587 E. 1202 S.',
+'',
+'Orem',
+'Ut',
+'USA',
+'1002 S. Main St.',
+'',
+'Logan',
+'Ut',
+'USA',
+'Jimmy',
+'Little',
+'801-777-0012',
+1,
+'John',
+'',
+'Little',
+'1980-11-11',
+'Male',
+'801-852-0000',
+'O-',
+'white',
+'Cathloic',
+null
+);
+
+CALL sp_insertPatient
+(
+'1075 Lame Street',
+'',
+'LameVill',
+'Ut',
+'USA',
+'1000 Too Cool Ave',
+'',
+'Draper',
+'Ut',
+'USA',
+'Kyle',
+'Funny',
+'801-777-0012',
+2,
+'Allie',
+'',
+'Funny',
+'1980-11-11',
+'Female',
+'801-102-7000',
+'A+',
+'white',
+'FLDS',
+null
+);
+
 CALL sp_insertProblem
 (
 'Aids',
