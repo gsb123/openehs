@@ -132,8 +132,10 @@
         </div>
         <div id="#patientView-ChronicDiseases">
             <ul>
-                <li>AIDS</li>
-                <li>Diabetes</li>
+				@foreach(var problems in Model.Problems)
+				{
+					<li>@problems.ProblemName</li>
+				}
             </ul>
         </div>
         <div id="#patientView-Allergies">

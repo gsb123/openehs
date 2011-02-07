@@ -7,6 +7,7 @@
  *****************************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
@@ -16,7 +17,7 @@ namespace OpenEhs.Domain
 
         public virtual int Id { get; private set; }
         public virtual string ProblemName { get; set; }
-        public virtual Patient Patient { get; set; }
+        public virtual IList<Patient> Patient { get; set; }
 
         #endregion
 

@@ -29,6 +29,12 @@
 
     <many-to-one name="EmergencyContact" column="EmergencyContactID" unique="true" cascade="all" />
 
+
+    <bag name="Problems" table="PatientProblem" cascade="none" lazy="false">
+      <key column="PatientID" />
+      <many-to-many column="ProblemID" class="Problem" />
+    </bag>
+    
     <!--
     <bag name="Problems" table="PatientProblem">
       <key column="PatientID" />
