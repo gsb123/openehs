@@ -6,6 +6,8 @@
  * Author: Cameron Harp (charp5257@gmail.com)
  *****************************************************************************/
 
+using System.Collections.Generic;
+
 namespace OpenEhs.Domain
 {
     public class Staff: IEntity
@@ -21,6 +23,7 @@ namespace OpenEhs.Domain
         public virtual string LicenseNumber { get; set; }
         public virtual Address Address { get; set; }
         public virtual User User { get; set; }
+        public virtual IList<Surgery> Surgery { get; set; }
         public virtual bool IsActive { get; set; }
 
         #endregion

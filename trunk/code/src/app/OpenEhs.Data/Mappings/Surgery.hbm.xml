@@ -4,7 +4,7 @@
                    namespace="OpenEhs.Domain">
 
   <class name="Surgery" table="Surgery">
-    <id name="Id">
+    <id name="Id" column="SurgeryID">
       <generator class="native" />
     </id>
     <property name="SurgeryType" />
@@ -12,12 +12,13 @@
     <property name="EndTime" />
     <property name="RoomNumber" />
     <property name="Comments" />
-    <property name="PatientEncounter" />
+
+    <many-to-one name="PatientEncounter" column="PatientEncounterID" unique="true" cascade="all" />
     
     <!--Many-to-many mapping: Staff-->
-    <bag name="Staff" table="SurgeryStaff">
-      <key column="SurgeryID" />
-      <many-to-many column="StaffID" class="Staff" />
+    <bag name="Staff" table="SurgeryStaff" cascade="none" lazy="false">
+      <key column="StaffID" />
+      <many-to-many column="SurgeryID" class="Surgery" />
     </bag>
     
   </class>

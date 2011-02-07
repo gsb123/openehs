@@ -105,6 +105,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Mappings\PatientProblem.hbm.xml" />
+    <Content Include="Mappings\SurgeryStaff.hbm.xml" />
     <EmbeddedResource Include="Mappings\PatientCheckIn.hbm.xml" />
     <EmbeddedResource Include="Mappings\Address.hbm.xml">
       <SubType>Designer</SubType>
@@ -129,7 +130,7 @@
     <EmbeddedResource Include="Mappings\Service.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Surgery.xml" />
+    <EmbeddedResource Include="Mappings\Surgery.hbm.xml" />
     <EmbeddedResource Include="Mappings\TemplateCategory.hbm.xml" />
     <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
     <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
