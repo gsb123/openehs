@@ -38,6 +38,22 @@
 
 }
 
+<div id="patientViewHeader" class="group">
+    @if (Model.MiddleName != String.Empty)
+    {
+        <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName)</h2>
+    }
+    else
+    {
+        <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName)</h2>
+    }
+
+    <h2 style="margin-left: 20px; font-weight: normal;">@Model.Age</h2>
+    <h2 style="margin-left: 20px; font-weight: normal;">DOB: @String.Format("{0:d}", Model.DateOfBirth)</h2>
+    <div style="float: right; margin-right: 20px; margin-top: 13px;">
+        @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive, "Active")
+    </div>
+</div>
 <div id="patientView">
     <div>
         <ul>

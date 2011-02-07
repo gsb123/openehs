@@ -20,6 +20,14 @@ namespace OpenEhs.Domain
         public virtual string MiddleName { get; set; }
         public virtual string LastName { get; set; }
         public virtual DateTime DateOfBirth { get; set; }
+        public virtual int Age
+        {
+            get 
+            { 
+                var age = DateTime.Now.Subtract(DateOfBirth);
+                return age.Days/365;
+            }
+        }
         public virtual string Gender { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual IList<Problem> Problems { get; set; }
