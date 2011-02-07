@@ -45,5 +45,12 @@ namespace OpenEhs.Web.Controllers
             return View();
         }
 
+        public ActionResult Details(int id)
+        {
+            var staff = new StaffRepository().Get(id);
+
+            return View(staff);
+        }
+
     }
 }
