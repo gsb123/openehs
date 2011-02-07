@@ -32,6 +32,9 @@
       <one-to-many class="Allergy" />
     </bag>
 
+    <one-to-one name="EmergencyContact" class="EmergencyContact" />
+    
+
     <!--
     <bag name="Invoice" table="Invoice">
       <key column="PatientId" />
