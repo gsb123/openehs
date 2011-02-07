@@ -50,6 +50,6 @@
       <one-to-many class="PatientCheckIn" />
     </bag>
     -->
-
+  </class>
   </class>
 </hibernate-mapping>
