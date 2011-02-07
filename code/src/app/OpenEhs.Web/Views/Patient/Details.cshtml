@@ -1,7 +1,14 @@
 ﻿@model OpenEhs.Domain.Patient
 
 @{
-    ViewBag.Title = "Details";
+    if (Model.MiddleName != String.Empty)
+    {
+        ViewBag.Title = String.Format("Patient: {2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName);
+    }
+    else
+    {
+        ViewBag.Title = String.Format("Patient: {1}, {0}", Model.FirstName, Model.LastName);
+    }
 }
 
 @section head
@@ -63,6 +70,8 @@
                 </fieldset>
                 <fieldset>
                     <legend>Emergency Contact</legend>
+                    @Html.LabelFor(model => model.EmergencyContact.FirstName)<br />
+                    @Html.TextBoxFor(model => model.EmergencyContact.FirstName)
                 </fieldset>
                 <fieldset>
                     <legend>Address</legend>
