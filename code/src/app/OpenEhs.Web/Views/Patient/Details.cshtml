@@ -45,6 +45,8 @@
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
             <li><a href="#patientView-Allergies">Allergies</a></li>
             <li><a href="#patientView-Encounters">Encounters</a></li>
+            <li><a href="#patientView-Surgery">Surgery</a></li>
+            <li><a href="#patientView-History">History</a></li>
         </ul>
     </div>
     <div>
@@ -82,7 +84,7 @@
                     @Html.TextBoxFor(model => model.EmergencyContact.LastName)<br />
                     @Html.LabelFor(model => model.EmergencyContact.PhoneNumber)<br />
                     @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber)<br /><br />
-                    <div id="EmergencyContactMoreInfoLink">More...</div>
+                    <div id="EmergencyContactMoreInfoLink">Show Details...</div>
                     <div id="EmergencyContactMoreInfo">
                         @Html.LabelFor(model => model.EmergencyContact.Address.Street1)<br />
                         @Html.TextBoxFor(model => model.EmergencyContact.Address.Street1)<br />
@@ -130,6 +132,12 @@
         </div>
         <div id="#patientView-Encounters">
             <h3>Encounters go here.</h3>
+        </div>
+        <div id="#patientView-Surgery">
+            <h3>Surgery go here.</h3>
+        </div>
+        <div id="#patientView-History">
+            <h3>Patient history goes here.</h3>
         </div>
     </div>
 </div>
