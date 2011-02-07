@@ -9,7 +9,9 @@
     </id>
     <property name="CheckInTime" not-null="true" />
     <property name="PatientType" not-null="true" />
-    <one-to-one name="Patient" class="Patient" />
+
+    <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
+    
     <property name="PatientStatus" not-null="true" />
     <property name="IsActive" not-null="true" />
   </class>
