@@ -1797,6 +1797,30 @@ CALL sp_insertProblem
 100000
 );
 
+CALL sp_insertProblem
+(
+'Sickle Cell',
+100000
+);
+
+CALL sp_insertProblem
+(
+'STDs',
+100002
+);
+
+CALL sp_insertProblem
+(
+'Diabetes',
+100000
+);
+
+CALL sp_insertProblem
+(
+'Diabetes',
+100003
+);
+
 CALL sp_insertAllergy
 (
 'Pollen',
@@ -1810,6 +1834,70 @@ CALL sp_insertAllergy
 null,
 100000
 );
+
+CALL sp_insertAllergy
+(
+'Bees',
+null,
+100001
+);
+
+CALL sp_insertAllergy
+(
+'Chocolate',
+null,
+100001
+);
+
+CALL sp_insertAllergy
+(
+'Fruit',
+null,
+100001
+);
+
+CALL sp_insertAllergy
+(
+'Advil',
+null,
+100001
+);
+
+CALL sp_insertAllergy
+(
+'Wheat',
+null,
+100002
+);
+
+CALL sp_insertAllergy
+(
+'Nuts',
+null,
+100002
+);
+
+CALL sp_insertAllergy
+(
+'Morphine',
+null,
+100001
+);
+
+CALL sp_insertAllergy
+(
+'Lactose',
+null,
+100003
+);
+
+CALL sp_insertAllergy
+(
+'Fish',
+null,
+100003
+);
+
 
 CALL sp_insertStaff
 (
