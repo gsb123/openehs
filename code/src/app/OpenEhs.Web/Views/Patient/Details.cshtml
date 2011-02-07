@@ -12,6 +12,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#patientView").jVertTabs();
+            $("#GenderRadio").buttonset();
+
+            $("#DateOfBirth").datepicker({
+                showOn: "button",
+                buttonImage: "@Url.Content("~/Content/themes/base/images/calendar.png")",
+                buttonImageOnly: true,
+                changeYear: true
+            });
         });
     </script>
 }
@@ -40,8 +48,10 @@
                 </div>
                 <div style="margin-left: 20px; float: left;">
                     @Html.LabelFor(model => model.Gender, "Gender")<br />
-                    @Html.RadioButtonFor(model => model.Gender, "Male") Male
-                    @Html.RadioButtonFor(model => model.Gender, "Female") Female<br />
+                    <div id="GenderRadio">
+                        @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio" }) @Html.Label("MaleGenderRadio", "Male")
+                        @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio" }) @Html.Label("FemaleGenderRadio", "Female")
+                    </div>
                     @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
                     @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
                     @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
@@ -51,9 +61,22 @@
             <fieldset>
                 <legend>Emergency Contact</legend>
             </fieldset>
-            <fieldset>
-                <legend>Address</legend>
-            </fieldset>
+            @if (Model.Address == null)
+            {
+                @Html.ActionLink("Add an Address", "addAddress");
+            } else {    
+                <fieldset>
+                    <legend>Address</legend>
+                    @Html.LabelFor(model => model.Address.Street1, "Street 1")<br />
+                    @Html.TextBoxFor(model => model.Address.Street1)<br />
+                    @Html.LabelFor(model => model.Address.Street2, "Street 2")<br />
+                    @Html.TextBoxFor(model => model.Address.Street2)<br />
+                    @Html.LabelFor(model => model.Address.City)<br />
+                    @Html.TextBoxFor(model => model.Address.City)<br />
+                    @Html.LabelFor(model => model.Address.Region)<br />
+                    @Html.TextBoxFor(model => model.Address.Region)
+                </fieldset>
+            }
         </div>
         <div id="#patientView-Allergies">
             <h3>Allergies go here.</h3>
