@@ -13,7 +13,15 @@
     <property name="DateOfBirth" not-null="true"/>
     <property name="Gender" not-null="true" length="10"/>
     <property name="PhoneNumber" not-null="false" length="20"/>
-    <one-to-one name="Address" class="Address"/>
+
+    <many-to-one
+      name="Address"
+      column="AddressID"
+      class="Address"
+      not-null="true" />
+  </class>
+    
+    
     <property name="BloodType" not-null="false" length="10"/>
     <property name="TribeRace" not-null="false" length="30"/>
     <property name="Religion" not-null="false" length="30" />
