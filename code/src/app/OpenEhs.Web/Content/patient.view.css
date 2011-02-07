@@ -51,3 +51,23 @@
 {
     display: none;
 }
+
+#patientViewHeader
+{
+    position: relative;
+    margin-left: 180px;
+    margin-bottom: -15px;
+}
+
+#patientViewHeader h2
+{
+    float: left;
+    top: 50%;
+}
+
+#patientViewHeader h3
+{
+    display: inline-block;
+    float: left;
+    vertical-align: middle;
+}
