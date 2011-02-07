@@ -40,7 +40,7 @@
       <one-to-many class="Allergy" />
     </bag>
 
-    <one-to-one name="EmergencyContact" class="EmergencyContact" />
+    <one-to-one name="EmergencyContact" class="EmergencyContact" constrained="true" />
     
 
     <!--
