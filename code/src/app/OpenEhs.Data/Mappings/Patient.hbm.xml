@@ -14,7 +14,7 @@
     <property name="Gender" not-null="true" length="10"/>
     <property name="PhoneNumber" not-null="false" length="20"/>
 
-    <one-to-one name="Address" class="Address" constrained="true" />
+    <one-to-one name="Address" class="Address" constrained="true" fetch="join" />
 
 
     <property name="BloodType" not-null="false" length="10"/>
@@ -35,7 +35,7 @@
       <one-to-many class="Allergy" />
     </bag>
 
-    <one-to-one name="EmergencyContact" class="EmergencyContact" constrained="true" />
+    <one-to-one name="EmergencyContact" class="EmergencyContact" constrained="true" fetch="join" />
 
 
     <!--
