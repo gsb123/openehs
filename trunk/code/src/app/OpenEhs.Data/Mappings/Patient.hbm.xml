@@ -14,12 +14,7 @@
     <property name="Gender" not-null="true" length="10"/>
     <property name="PhoneNumber" not-null="false" length="20"/>
 
-    <many-to-one
-      name="Address"
-      column="AddressID"
-      class="Address"
-      not-null="true" />
-  </class>
+    <one-to-one name="Address" class="Address" constrained="true" />
     
     
     <property name="BloodType" not-null="false" length="10"/>
@@ -56,5 +51,4 @@
     </bag>
     -->
 
-  </class>
 </hibernate-mapping>
