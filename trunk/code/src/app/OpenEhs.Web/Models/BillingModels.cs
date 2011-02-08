@@ -79,7 +79,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public void AddLineItem(InvoiceLineItem lineItem)
+        {
+            _invoice.LineItems.Add(lineItem);
+        }
 
+        public void RemoveLineItem(InvoiceLineItem lineItem)
+        {
+            _invoice.LineItems.Remove(lineItem);
+        }
 
 
     }
