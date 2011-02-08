@@ -12,28 +12,75 @@ namespace OpenEhs.Web.Models
 
     #region Models
 
-    public class BillingList
+    public class BillingModel
     {
-        private Patient _patient;
-        private IList<Invoice> _invoices;
-        private IList<Payment> _payment;
+        private Invoice _invoice;
+        private Payment _payment;
 
         [Required]
-        [DisplayName("ID")]
+        [DisplayName("Patient ID")]
+        public int PatientId
+        {
+            get
+            {
+                return _invoice.Patient.Id;
+            }
+        }
+
+        [Required]
+        [DisplayName("Invoice ID")]
         public int Id
         {
             get
             {
-                return _patient.Id;
+                return _invoice.Id;
+            }
+        }
+
+
+        [Required]
+        [DisplayName("Total")]
+        public decimal Total
+        {
+            //should this iterate through the InvoiceLineItems and add the amounts to get the total?
+            get
+            {
+                return _invoice.Total;
+
+                /*
+                 * like this?
+                _invoice.Total = 0;
+                foreach (InvoiceLineItem ILI in _invoice.LineItems)
+                {
+                    _invoice.Total += ILI.Total;
+                }
+                 */
+            }
+
+            //probably not needed?
+            set
+            {
+                _invoice.Total = value;
+            }
+        }
+
+        [Required]
+        [DisplayName("Line Items")]
+        public IList<InvoiceLineItem> LineItems
+        {
+            get
+            {
+                return _invoice.LineItems;
+            }
+
+            set
+            {
+                _invoice.LineItems = value;
             }
         }
 
 
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
     }
 
