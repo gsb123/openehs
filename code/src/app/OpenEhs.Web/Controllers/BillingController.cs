@@ -14,10 +14,9 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Index()
         {
-            /*var billing = new 
-            return View();
-             * */
-            throw new NotImplementedException();
+            var billing = new InvoiceRepository().GetAll();
+
+            return View(billing);
         }
 
     }
