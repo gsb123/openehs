@@ -13,6 +13,13 @@
 
     <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
     
+    <!--<one-to-one name="Invoice" class="Invoice" constrained="true" foreign-key="InvoiceID" />-->
+
+    <bag name="Invoices" table="Invoice">
+      <key column="PatientCheckInID" />
+      <one-to-many class="Invoice" />
+    </bag>
+    
     <property name="PatientStatus" not-null="true" />
     <property name="IsActive" not-null="true" />
   </class>

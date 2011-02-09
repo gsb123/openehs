@@ -51,7 +51,7 @@
     <Compile Include="Exceptions\ValueLessThanZeroException.cs" />
     <Compile Include="Model\Address\Address.cs" />
     <Compile Include="Model\Billing\Invoice.cs" />
-    <Compile Include="Model\Billing\InvoiceLineItem.cs" />
+    <Compile Include="Model\Billing\InvoiceItem.cs" />
     <Compile Include="Model\Billing\Payment.cs" />
     <Compile Include="Model\CheckIn\PatientCheckIn.cs" />
     <Compile Include="Model\CheckIn\PCIStatus.cs" />

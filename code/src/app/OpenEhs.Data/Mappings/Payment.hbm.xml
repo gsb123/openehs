@@ -9,7 +9,7 @@
     </id>
     <property name="CashAmount" not-null="true" />
     <property name="PaymentDate" not-null="true" />
-    <one-to-one name="InvoiceID" class="Invoice" />
+    <many-to-one name="Invoice" column="InvoiceID" unique="true" cascade="all" />
     <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>

@@ -15,11 +15,12 @@ namespace OpenEhs.Web.Models
 
     public class BillingViewModel
     {
+        
         private Invoice _invoice;
         private Payment _payment;
 
         #region Billing
-
+        /*
         [Required]
         [DisplayName("Patient ID")]
         public int PatientId
@@ -61,7 +62,7 @@ namespace OpenEhs.Web.Models
                 return _invoice.Patient.MiddleName;
             }
         }
-
+        */
         [Required]
         [DisplayName("Invoice ID")]
         public int Id
@@ -84,16 +85,16 @@ namespace OpenEhs.Web.Models
 
         [Required]
         [DisplayName("Line Items")]
-        public IList<InvoiceLineItem> LineItems
+        public IList<InvoiceItem> LineItems
         {
             get
             {
-                return _invoice.LineItems;
+                return _invoice.InvoiceItems;
             }
 
             set
             {
-                _invoice.LineItems = value;
+                _invoice.InvoiceItems = value;
             }
         }
 
@@ -116,18 +117,18 @@ namespace OpenEhs.Web.Models
         /// Adds an InvoiceLineItem to this Invoice.
         /// </summary>
         /// <param name="lineItem">The InvoiceLineItem to add to this Invoice.</param>
-        public void AddLineItem(InvoiceLineItem lineItem)
+        public void AddLineItem(InvoiceItem lineItem)
         {
-            _invoice.LineItems.Add(lineItem);
+            _invoice.InvoiceItems.Add(lineItem);
         }
 
         /// <summary>
         /// Removes one InvoiceLineItem from this Invoice.
         /// </summary>
         /// <param name="lineItem">The InvoiceLineItem to remove from the Invoice.</param>
-        public void RemoveLineItem(InvoiceLineItem lineItem)
+        public void RemoveLineItem(InvoiceItem lineItem)
         {
-            _invoice.LineItems.Remove(lineItem);
+            _invoice.InvoiceItems.Remove(lineItem);
         }
 
         #endregion

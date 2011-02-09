@@ -18,7 +18,7 @@ namespace OpenEhs.Web.Models
         private Payment _payment;
 
         #region Billing
-
+        /*
         [Required]
         [DisplayName("Patient ID")]
         public int PatientId
@@ -55,7 +55,7 @@ namespace OpenEhs.Web.Models
                 return _invoice.Patient.MiddleName;
             }
         }
-
+        */
         [Required]
         [DisplayName("Invoice ID")]
         public int Id
