@@ -170,7 +170,6 @@ CREATE TABLE Invoice
 InvoiceID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Total                   decimal(6,2)    NOT NULL                DEFAULT 0.00,
 `Date`                  timestamp       NOT NULL                DEFAULT CURRENT_TIMESTAMP,
-PatientID               int             NOT NULL,
 PatientCheckInID        int             NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 ) AUTO_INCREMENT= 1000;
@@ -393,10 +392,6 @@ FOREIGN KEY (OutputID) REFERENCES Output(OutputID);
 ALTER TABLE FluidChart
 ADD CONSTRAINT FK_FluidChartMustHaveIntakeID
 FOREIGN KEY (IntakeID) REFERENCES Intake(IntakeID);
-
-ALTER TABLE Invoice
-ADD CONSTRAINT FK_InvoiceMustHavePatientID
-FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
 
 ALTER TABLE Invoice
 ADD CONSTRAINT FK_InvoiceMustHavePatientCheckInID
@@ -852,12 +847,10 @@ SELECT LAST_INSERT_ID() INTO _PCIID;
 
 INSERT INTO Invoice
 (
-PatientID,
 PatientCheckInID
 )
 VALUES
 (
-i_PatientID,
 _PCIID
 );
 
@@ -874,7 +867,7 @@ DELIMITER ;
 DELIMITER |
 CREATE PROCEDURE sp_updateInvoice
 (
-IN i_PatientID      int,
+IN i_InvoiceID      int,
 IN i_Total          decimal(6,2)
 )
 
@@ -882,7 +875,7 @@ BEGIN
 
 UPDATE Invoice SET
 Total = i_Total
-WHERE i_PatientID = PatientID;
+WHERE i_InvoiceID = InvoiceID;
 
 END ||
 DELIMITER ;
@@ -1868,7 +1861,7 @@ NOW(),
 
 CALL sp_updateInvoice
 (
-100000,
+1000,
 800.25
 );
 
