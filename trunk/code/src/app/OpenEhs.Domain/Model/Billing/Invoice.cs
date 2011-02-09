@@ -16,37 +16,25 @@ namespace OpenEhs.Domain
         #region Properties
 
         public virtual int Id { get; private set; }
-        public virtual decimal Total
-        {
-            get
-            {
-                Total = 0;
-                foreach (InvoiceLineItem lineItem in LineItems)
-                {
-                    Total += lineItem.Total;
-                }
-                return Total;
-            }
-            set;
-        }
+        public virtual decimal Total { get; set; }
         public virtual DateTime Date { get; set; }
-        public virtual Patient Patient { get; set; }
-        public virtual IList<InvoiceLineItem> LineItems { get; set; }
+        public virtual IList<InvoiceItem> InvoiceItems { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
+        public virtual IList<Payment> Payments { get; set; }
         public virtual bool IsActive { get; set; }
 
         #endregion
 
         #region Methods
 
-        public virtual void AddLineItem(InvoiceLineItem item)
+        public virtual void AddLineItem(InvoiceItem item)
         {
-            LineItems.Add(item);
+            InvoiceItems.Add(item);
         }
 
-        public virtual void RemoveLineItem(InvoiceLineItem item)
+        public virtual void RemoveLineItem(InvoiceItem item)
         {
-            LineItems.Remove(item);
+            InvoiceItems.Remove(item);
         }
 
         #endregion
