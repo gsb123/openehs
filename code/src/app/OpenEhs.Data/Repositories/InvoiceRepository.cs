@@ -18,11 +18,22 @@ namespace OpenEhs.Data
             }
         }
 
+        #region Invoice
+
+        /// <summary>
+        /// Get an Invoice with a given id.
+        /// </summary>
+        /// <param name="id">The Id of the invoice to be retrieved.</param>
+        /// <returns></returns>
         public Invoice Get(int id)
         {
             return Session.Get<Invoice>(id);
         }
 
+        /// <summary>
+        /// Gets all the Invoices in the Repository.
+        /// </summary>
+        /// <returns>An IList containing all Invoices in the Repository.</returns>
         public IList<Invoice> GetAll()
         {
             ICriteria criteria = Session.CreateCriteria<Invoice>();
@@ -30,16 +41,31 @@ namespace OpenEhs.Data
             return criteria.List<Invoice>();
         }
 
+        /// <summary>
+        /// Adds an Invoice to the Repository.
+        /// </summary>
+        /// <param name="entity">The Invoice to add to the Repository.</param>
         public void Add(Invoice entity)
         {
-            throw new NotImplementedException();
+            //is this correct? I copied the ProductRepository.
+            Session.Save(entity);
         }
 
+        /// <summary>
+        /// Removes an invoice from the Repository.
+        /// </summary>
+        /// <param name="entity">The Invoice to remove from the Repository.</param>
         public void Remove(Invoice entity)
         {
-            throw new NotImplementedException();
+            //is this correct? I copied the ProductRepository again.
+            Session.Delete(entity);
         }
 
+        /// <summary>
+        /// Finds a list of Invoices for a given PatientId.
+        /// </summary>
+        /// <param name="PatientId">The ID of the Patient Object to match Invoices to.</param>
+        /// <returns>IList of Invoices for the given PatientId.</returns>
         public IList<Invoice> FindByPatientId(int PatientId)
         {
             string q = String.Format("from Invoice where Patient = select * from Patient where Id = {0}", PatientId);
@@ -59,5 +85,7 @@ namespace OpenEhs.Data
             throw new NotImplementedException();
              */
         }
+
+        #endregion
     }
 }
