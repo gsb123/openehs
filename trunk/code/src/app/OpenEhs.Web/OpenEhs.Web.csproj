@@ -98,6 +98,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\jvert-tabs\images\ClosedTabBackground.png" />
+    <Content Include="Content\jvert-tabs\images\ClosedTabBackgroundHover.png" />
+    <Content Include="Content\jvert-tabs\jquery-jvert-tabs-1.1.4.css" />
     <Content Include="Content\patient.view.css" />
     <Content Include="Content\themes\base\images\calendar.png" />
     <Content Include="Global.asax" />
@@ -105,6 +108,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\jquery-jvert-tabs-1.1.4.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
