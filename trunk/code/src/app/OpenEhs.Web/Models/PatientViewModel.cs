@@ -8,7 +8,7 @@ namespace OpenEhs.Web.Models
 {
     #region Models
 
-    public class PatientModels 
+    public class PatientViewModel
     {
         private Patient _patient;
 
