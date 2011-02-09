@@ -94,7 +94,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BillingViewModels.cs" />
-    <Compile Include="Models\PatientModels.cs" />
+    <Compile Include="Models\PatientViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
