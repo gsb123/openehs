@@ -16,7 +16,19 @@ namespace OpenEhs.Domain
         #region Properties
 
         public virtual int Id { get; private set; }
-        public virtual decimal Total { get; set; }
+        public virtual decimal Total
+        {
+            get
+            {
+                Total = 0;
+                foreach (InvoiceLineItem lineItem in LineItems)
+                {
+                    Total += lineItem.Total;
+                }
+                return Total;
+            }
+            set;
+        }
         public virtual DateTime Date { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual IList<InvoiceLineItem> LineItems { get; set; }
