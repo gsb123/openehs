@@ -25,6 +25,7 @@ namespace OpenEhs.Domain
         public virtual DateTime CheckOutTime { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual IList<PatientEncounter> PatientEncounters { get; set; }
+        public virtual IList<Invoice> Invoices { get; set; } 
 
         #endregion
 

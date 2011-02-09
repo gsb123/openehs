@@ -7,10 +7,22 @@
     <id name="Id" column="InvoiceID">
       <generator class="native" />
     </id>
-    <property name="Total" not-null="true "/>
+    <property name="Total" not-null="true" />
     <property name="Date" not-null="true" />
-    <one-to-one name="Patient" class="Patient" />
-    <one-to-one name="PatientCheckIn" class="PatientCheckIn" />
+    <many-to-one name="PatientCheckIn" column="PatientCheckInId" unique="true" cascade="all" />
     <property name="IsActive" not-null="true" />
+
+    <bag name="Payments" table="Payment">
+      <key column="InvoiceID" />
+      <one-to-many class="Payment" />
+    </bag>
+
+    <!--<many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />-->
+    
+    <bag name="InvoiceItems" table="InvoiceItem">
+      <key column="InvoiceID" />
+      <one-to-many class="InvoiceItem" />
+    </bag>
+    
   </class>
 </hibernate-mapping>
