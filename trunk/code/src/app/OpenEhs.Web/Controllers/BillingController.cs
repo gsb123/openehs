@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OpenEhs.Data;
+using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -26,6 +27,12 @@ namespace OpenEhs.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Create(Invoice invoice)
+        {
+            new InvoiceRepository().Add(invoice);
+            return View();
+        }
 
         public ActionResult Details(int id)
         {
