@@ -12,11 +12,26 @@ namespace OpenEhs.Web.Controllers
         //
         // GET: /Billing/
 
+
         public ActionResult Index()
         {
             var billing = new InvoiceRepository().GetAll();
 
             return View(billing);
+        }
+
+        
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+        public ActionResult Details(int id)
+        {
+            var invoice = new InvoiceRepository().Get(id);
+
+            return View(invoice);
         }
 
     }
