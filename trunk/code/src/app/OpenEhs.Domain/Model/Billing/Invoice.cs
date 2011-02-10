@@ -11,12 +11,25 @@ using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Invoice: IEntity
+    public class Invoice : IEntity
     {
         #region Properties
 
         public virtual int Id { get; private set; }
-        public virtual decimal Total { get; set; }
+        public virtual decimal Total
+        {
+            get
+            {
+                var total = 0.0m;
+
+                foreach (var item in InvoiceItems)
+                {
+                    total += item.Total;
+                }
+
+                return total;
+            }
+        }
         public virtual DateTime Date { get; set; }
         public virtual IList<InvoiceItem> InvoiceItems { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }

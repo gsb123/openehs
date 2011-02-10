@@ -172,7 +172,7 @@ Total                   decimal(6,2)    NOT NULL                DEFAULT 0.00,
 `Date`                  timestamp       NOT NULL                DEFAULT CURRENT_TIMESTAMP,
 PatientCheckInID        int             NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
-) AUTO_INCREMENT= 1000;
+);
 
 CREATE TABLE Payment
 (
@@ -2075,7 +2075,7 @@ CALL sp_insertSurgeryStaff
 
 CALL sp_insertInvoiceItem
 (
-1000,
+1,
 1,
 null,
 2
@@ -2083,8 +2083,16 @@ null,
 
 CALL sp_insertInvoiceItem
 (
-1000,
 1,
+2,
 null,
-null
+3
+);
+
+CALL sp_insertInvoiceItem
+(
+1,
+4,
+null,
+10
 );
