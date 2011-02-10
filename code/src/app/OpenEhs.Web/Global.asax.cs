@@ -33,6 +33,10 @@ namespace OpenEhs.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+#if DEBUG
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+#endif
         }
 
         protected void Application_BeginRequest()

@@ -8,6 +8,7 @@
     </property>
     <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
+    <property name="generate_statistics">true</property>
     <mapping assembly="OpenEhs.Data" />
   </session-factory>
 </hibernate-configuration>

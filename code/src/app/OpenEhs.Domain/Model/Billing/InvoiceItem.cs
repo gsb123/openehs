@@ -22,9 +22,12 @@ namespace OpenEhs.Domain
             get
             {
                 if (Service != null)
-                    return Service.Price;
+                    return Service.Price * Quantity;
 
-                return Product.Price * Quantity;
+                if (Product != null)
+                    return Product.Price * Quantity;
+
+                return 0.0m;
             }
         }
         public virtual bool IsActive { get; set; }

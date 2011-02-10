@@ -153,15 +153,28 @@
 
         <div id="#patientView-Testing">
             <fieldset>
-            <legend>CheckIn Test</legend>
-            </fieldset>
-            <fieldset>
                 <legend>CheckIn Test</legend>
                 @foreach (var checkin in Model.PatientCheckIns)
                 {
-                    foreach (var invoice in checkin.Invoices)
+                    if (checkin.Invoice != null)
                     {
-                         <li>@invoice.Total</li>
+                        <li>@String.Format("Invoice #{0} - {2} Items - {1:c}", checkin.Invoice.Id, checkin.Invoice.Total, checkin.Invoice.InvoiceItems.Count)</li>
+                        if (checkin.Invoice.InvoiceItems.Count > 0)
+                        {
+                            <ul>
+                                @foreach(var i in checkin.Invoice.InvoiceItems)
+                                {
+                                    if (i.Product != null)
+                                    {
+                                        <li>@String.Format("{0} x {1} = {2:c}", i.Product.Name, i.Quantity, i.Total)</li>
+                                    }
+                                    else if (i.Service != null)
+                                    {
+                                        <li>@String.Format("{0} x {1} = {2:c}", i.Service.Name, i.Quantity, i.Total)</li>
+                                    }
+                                }
+                            </ul>
+                        }
                     }
                 }
             </fieldset>
