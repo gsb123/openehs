@@ -68,7 +68,7 @@ namespace OpenEhs.Data
         /// <returns>IList of Invoices for the given PatientId.</returns>
         public IList<Invoice> FindByPatientId(int PatientId)
         {
-            string q = String.Format("from Invoice where Patient = select * from Patient where Id = {0}", PatientId);
+            string q = String.Format("from Invoice where PatientCheckIn.Patient = select * from Patient where Id = {0}", PatientId);
             IQuery query = Session.CreateQuery(q);
             return query.List<Invoice>();
             /*

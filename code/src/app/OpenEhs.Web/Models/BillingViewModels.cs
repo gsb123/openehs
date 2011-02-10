@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OpenEhs.Domain;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using OpenEhs.Data;
 
 namespace OpenEhs.Web.Models
 {
@@ -16,19 +17,19 @@ namespace OpenEhs.Web.Models
         private Payment _payment;
 
         #region Billing
-        /*
+        
         [Required]
         [DisplayName("Patient ID")]
         public int PatientId
         {
             get
             {
-                return _invoice.Patient.Id;
+                return _invoice.PatientCheckIn.Patient.Id;
             }
 
             set
             {
-                _invoice.Patient = new PatientRepository().Get(value);
+                _invoice.PatientCheckIn.Patient = new PatientRepository().Get(value);
             }
         }
 
@@ -37,7 +38,7 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                return _invoice.Patient.FirstName;
+                return _invoice.PatientCheckIn.Patient.FirstName;
             }
         }
 
@@ -46,7 +47,7 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                return _invoice.Patient.LastName;
+                return _invoice.PatientCheckIn.Patient.LastName;
             }
         }
 
@@ -55,10 +56,10 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                return _invoice.Patient.MiddleName;
+                return _invoice.PatientCheckIn.Patient.MiddleName;
             }
         }
-        */
+        
         [Required]
         [DisplayName("Invoice ID")]
         public int Id

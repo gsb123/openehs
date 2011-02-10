@@ -1,0 +1,34 @@
+﻿@model OpenEhs.Web.Models.BillingViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>BillingViewModel</legend>
+
+    <div class="display-label">PatientId</div>
+    <div class="display-field">@Model.PatientId</div>
+
+    <div class="display-label">PatientFirstName</div>
+    <div class="display-field">@Model.PatientFirstName</div>
+
+    <div class="display-label">PatientLastName</div>
+    <div class="display-field">@Model.PatientLastName</div>
+
+    <div class="display-label">PatientMiddleName</div>
+    <div class="display-field">@Model.PatientMiddleName</div>
+
+    <div class="display-label">Total</div>
+    <div class="display-field">@String.Format("{0:F}", Model.Total)</div>
+
+    <div class="display-label">Date</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
