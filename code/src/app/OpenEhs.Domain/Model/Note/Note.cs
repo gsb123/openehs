@@ -10,7 +10,7 @@ using System;
 
 namespace OpenEhs.Domain
 {
-    public class Note: IEntity
+    public class Note : IEntity
     {
         #region Properties
 
@@ -19,7 +19,7 @@ namespace OpenEhs.Domain
         public virtual string Body { get; set; }
         public virtual DateTime DateCreated { get; set; }
         public virtual Staff Author { get; set; }
-        public virtual PatientEncounter PatientEncounter { get; set; }
+        public virtual Encounter Encounter { get; set; }
         public virtual bool IsActive { get; set; }
 
         #endregion

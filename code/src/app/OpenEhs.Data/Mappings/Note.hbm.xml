@@ -11,7 +11,7 @@
     <property name="Body" not-null="true" />
     <property name="DateCreated" not-null="true" />
     <one-to-one name="Author" class="Staff" />
-    <one-to-one name="PatientEncounter" class="PatientEncounter" />
+    <one-to-one name="Encounter" class="Encounter" />
     <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>

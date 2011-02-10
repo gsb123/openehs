@@ -8,12 +8,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class Surgery: IEntity
+    public class Surgery : IEntity
     {
         #region Properties
 
@@ -24,7 +22,7 @@ namespace OpenEhs.Domain
         public virtual DateTime EndTime { get; set; }
         public virtual string Comments { get; set; }
         public virtual IList<Staff> Staff { get; set; }
-        public virtual PatientEncounter PatientEncounter { get; set; }
+        public virtual Encounter Encounter { get; set; }
 
         #endregion
 

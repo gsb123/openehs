@@ -10,7 +10,7 @@ using System;
 
 namespace OpenEhs.Domain
 {
-    public class Vitals: IEntity
+    public class Vitals : IEntity
     {
 
         #region Properties
@@ -24,7 +24,7 @@ namespace OpenEhs.Domain
         public virtual float Temperature { get; set; }
         public virtual BloodPressure BloodPressure { get; set; }
         public virtual int RespiratoryRate { get; set; }
-        public virtual PatientEncounter PatientEncounter { get; set; }
+        public virtual Encounter Encounter { get; set; }
         public virtual bool IsActive { get; set; }
 
         #endregion
