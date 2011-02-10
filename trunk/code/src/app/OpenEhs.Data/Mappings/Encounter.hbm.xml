@@ -3,8 +3,8 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="Encounter" table="Encounter">
-    <id name="Id" column="EncounterID">
+  <class name="Encounter" table="PatientEncounter">
+    <id name="Id" column="PatientEncounterID">
       <generator class="native" />
     </id>
 
@@ -17,6 +17,11 @@
     <property name="Diagnosis" not-null="false" />
     
     <one-to-one name="Staff" class="Staff" />
+
+    <bag name="Notes" table="Note">
+      <key column="PatientEncounterId" />
+      <one-to-many class="Note" />
+    </bag>
     
     <property name="AdmitReason" not-null="false" length="50" />
     <property name="IsActive" not-null="true" />
