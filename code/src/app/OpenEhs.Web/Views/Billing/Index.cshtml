@@ -1,64 +1,10 @@
-﻿@model IEnumerable<OpenEhs.Web.Models.BillingViewModel>
+﻿@model OpenEhs.Web.Models.BillingViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "OpenEHS Billing";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            PatientId
-        </th>
-        <th>
-            PatientFirstName
-        </th>
-        <th>
-            PatientLastName
-        </th>
-        <th>
-            PatientMiddleName
-        </th>
-        <th>
-            Total
-        </th>
-        <th>
-            Date
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-            @item.PatientId
-        </td>
-        <td>
-            @item.PatientFirstName
-        </td>
-        <td>
-            @item.PatientLastName
-        </td>
-        <td>
-            @item.PatientMiddleName
-        </td>
-        <td>
-            @String.Format("{0:F}", item.Total)
-        </td>
-        <td>
-            @String.Format("{0:g}", item.Date)
-        </td>
-    </tr>
-}
+<h2>Billing</h2>
 
 </table>
 

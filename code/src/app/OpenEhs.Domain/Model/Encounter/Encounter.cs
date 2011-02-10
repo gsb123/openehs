@@ -7,6 +7,7 @@
  *****************************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
@@ -24,6 +25,7 @@ namespace OpenEhs.Domain
         public virtual string AdmitReason { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
+        public virtual IList<Note> Notes { get; set; }
 
         #endregion
     }

@@ -12,9 +12,7 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Index()
         {
-            var billing = new InvoiceRepository().GetAll();
-
-            return View(billing);
+            return View();
         }
 
         
@@ -26,8 +24,7 @@ namespace OpenEhs.Web.Controllers
         [HttpPost]
         public ActionResult Create(Invoice invoice)
         {
-            new InvoiceRepository().Add(invoice);
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
