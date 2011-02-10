@@ -154,29 +154,35 @@
         <div id="#patientView-Testing">
             <fieldset>
                 <legend>CheckIn Test</legend>
+                <ul>
                 @foreach (var checkin in Model.PatientCheckIns)
                 {
+                    <li>@String.Format("Checked In: {0:dd/MMM/yyyy H:mm:ss zzz}", checkin.CheckInTime)</li>
+                    
                     if (checkin.Invoice != null)
                     {
-                        <li>@String.Format("Invoice #{0} - {2} Items - {1:c}", checkin.Invoice.Id, checkin.Invoice.Total, checkin.Invoice.InvoiceItems.Count)</li>
-                        if (checkin.Invoice.InvoiceItems.Count > 0)
-                        {
-                            <ul>
-                                @foreach(var i in checkin.Invoice.InvoiceItems)
-                                {
-                                    if (i.Product != null)
+                        <ul>
+                            <li>@String.Format("Invoice #{0} - {2} Items - {1:c}", checkin.Invoice.Id, checkin.Invoice.Total, checkin.Invoice.Items.Count)</li>
+                            @if (checkin.Invoice.Items.Count > 0)
+                            {
+                                <ul>
+                                    @foreach(var i in checkin.Invoice.Items)
                                     {
-                                        <li>@String.Format("{0} x {1} = {2:c}", i.Product.Name, i.Quantity, i.Total)</li>
+                                        if (i.Product != null)
+                                        {
+                                            <li>@String.Format("{0} x {1} = {2:c}", i.Product.Name, i.Quantity, i.Total)</li>
+                                        }
+                                        else if (i.Service != null)
+                                        {
+                                            <li>@String.Format("{0} x {1} = {2:c}", i.Service.Name, i.Quantity, i.Total)</li>
+                                        }
                                     }
-                                    else if (i.Service != null)
-                                    {
-                                        <li>@String.Format("{0} x {1} = {2:c}", i.Service.Name, i.Quantity, i.Total)</li>
-                                    }
-                                }
-                            </ul>
-                        }
+                                </ul>
+                            }
+                        </ul>
                     }
                 }
+                </ul>
             </fieldset>
         </div>
 

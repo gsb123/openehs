@@ -7,7 +7,7 @@
     <id name="Id" column="InvoiceID">
       <generator class="native" />
     </id>
-    <!-- <property name="Total" not-null="true" /> -->
+    
     <property name="Date" not-null="true" />
 
     <many-to-one name="PatientCheckIn" 
@@ -22,10 +22,9 @@
       <one-to-many class="Payment" />
     </bag>
 
-    <bag name="InvoiceItems" table="InvoiceItem">
+    <bag name="Items" table="InvoiceItem">
       <key column="InvoiceID" />
       <one-to-many class="InvoiceItem" />
     </bag>
-    
   </class>
 </hibernate-mapping>

@@ -89,12 +89,12 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                return _invoice.InvoiceItems;
+                return _invoice.Items;
             }
 
             set
             {
-                _invoice.InvoiceItems = value;
+                _invoice.Items = value;
             }
         }
 
@@ -119,7 +119,7 @@ namespace OpenEhs.Web.Models
         /// <param name="lineItem">The InvoiceLineItem to add to this Invoice.</param>
         public void AddLineItem(InvoiceItem lineItem)
         {
-            _invoice.InvoiceItems.Add(lineItem);
+            _invoice.Items.Add(lineItem);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace OpenEhs.Web.Models
         /// <param name="lineItem">The InvoiceLineItem to remove from the Invoice.</param>
         public void RemoveLineItem(InvoiceItem lineItem)
         {
-            _invoice.InvoiceItems.Remove(lineItem);
+            _invoice.Items.Remove(lineItem);
         }
 
         #endregion

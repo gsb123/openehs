@@ -22,7 +22,7 @@ namespace OpenEhs.Domain
             {
                 var total = 0.0m;
 
-                foreach (var item in InvoiceItems)
+                foreach (var item in Items)
                 {
                     total += item.Total;
                 }
@@ -31,7 +31,7 @@ namespace OpenEhs.Domain
             }
         }
         public virtual DateTime Date { get; set; }
-        public virtual IList<InvoiceItem> InvoiceItems { get; set; }
+        public virtual IList<InvoiceItem> Items { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
         public virtual IList<Payment> Payments { get; set; }
         public virtual bool IsActive { get; set; }
@@ -42,12 +42,12 @@ namespace OpenEhs.Domain
 
         public virtual void AddLineItem(InvoiceItem item)
         {
-            InvoiceItems.Add(item);
+            Items.Add(item);
         }
 
         public virtual void RemoveLineItem(InvoiceItem item)
         {
-            InvoiceItems.Remove(item);
+            Items.Remove(item);
         }
 
         #endregion
