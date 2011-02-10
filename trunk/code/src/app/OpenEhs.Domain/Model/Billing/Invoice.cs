@@ -20,9 +20,9 @@ namespace OpenEhs.Domain
         {
             get
             {
-                var total = 0.0m;
+                decimal total = 0.0m;
 
-                foreach (var item in Items)
+                foreach (InvoiceItem item in Items)
                 {
                     total += item.Total;
                 }
