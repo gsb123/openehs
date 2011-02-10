@@ -10,7 +10,7 @@ using System;
 
 namespace OpenEhs.Domain
 {
-    public class PatientEncounter: IEntity
+    public class Encounter : IEntity
     {
         #region Properties
 

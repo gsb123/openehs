@@ -3,8 +3,8 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="PatientEncounter" table="PatientEncounter">
-    <id name="Id" column="PatientEncounterID">
+  <class name="Encounter" table="Encounter">
+    <id name="Id" column="EncounterID">
       <generator class="native" />
     </id>
 
