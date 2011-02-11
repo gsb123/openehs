@@ -42,6 +42,17 @@ namespace OpenEhs.Data
         }
 
         /// <summary>
+        /// Gets a list of all the InvoiceItems.
+        /// </summary>
+        /// <returns>Returns an IList of InvoiceItems.</returns>
+        public IList<InvoiceItem> GetAllItems()
+        {
+            ICriteria criteria = Session.CreateCriteria<InvoiceItem>();
+
+            return criteria.List<InvoiceItem>();
+        }
+
+        /// <summary>
         /// Adds an Invoice to the Repository.
         /// </summary>
         /// <param name="entity">The Invoice to add to the Repository.</param>

@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using OpenEhs.Data;
 using OpenEhs.Domain;
+using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -29,10 +30,17 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            var invoice = new InvoiceRepository().Get(id);
-
-            return View(invoice);
+            BillingViewModel billing = new BillingViewModel();
+            billing.PatientId = id;
+            return View(billing);
         }
 
+        public ActionResult Edit(int id)
+        {
+            BillingViewModel billing = new BillingViewModel();
+            billing.PatientId = id;
+
+            return View(billing);
+        }
     }
 }

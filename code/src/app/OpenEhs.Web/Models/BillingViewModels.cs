@@ -17,7 +17,15 @@ namespace OpenEhs.Web.Models
         private Payment _payment;
 
         #region Billing
-        
+
+        public BillingViewModel()
+        {
+            _invoice = new Invoice();
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            _invoice.Items = invoiceRepository.GetAllItems();
+            _payment = new Payment();
+        }
+
         [Required]
         [DisplayName("Patient ID")]
         public int PatientId

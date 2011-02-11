@@ -21,16 +21,32 @@ namespace OpenEhs.Domain
             get
             {
                 decimal total = 0.0m;
-
-                foreach (InvoiceItem item in Items)
+                if (Items != null && Items.Count > 0)
                 {
-                    total += item.Total;
+                    foreach (InvoiceItem item in Items)
+                    {
+                        total += item.Total;
+                    }
                 }
 
                 return total;
             }
         }
-        public virtual DateTime Date { get; set; }
+        public virtual DateTime Date
+        {
+            get
+            {
+                if (PatientCheckIn != null)
+                {
+                    return PatientCheckIn.CheckInTime;
+                }
+                return DateTime.UtcNow;
+            }
+            set
+            {
+                Date = value;
+            }
+        }
         public virtual IList<InvoiceItem> Items { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
         public virtual IList<Payment> Payments { get; set; }
@@ -39,6 +55,11 @@ namespace OpenEhs.Domain
         #endregion
 
         #region Methods
+
+        public Invoice()
+        {
+            PatientCheckIn = new PatientCheckIn();
+        }
 
         public virtual void AddLineItem(InvoiceItem item)
         {
