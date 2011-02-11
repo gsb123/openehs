@@ -33,6 +33,7 @@
     </control>
     <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="857" y="523" w="-1" h="-1" measuredW="55" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
+        <href>Dashboard%26bm%3BDashboard.bmml%26bm%3BDashboard.bmml%26bm%3BDashboard.bmml</href>
         <text>Login</text>
       </controlProperties>
     </control>
