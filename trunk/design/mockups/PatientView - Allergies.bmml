@@ -35,6 +35,7 @@
     <control controlID="41" controlTypeID="com.balsamiq.mockups::ButtonBar" x="438" y="214" w="692" h="59" measuredW="385" measuredH="31" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>Dashboard%26bm%3BDashboard.bmml%26bm%3BDashboard.bmml%26bm%3BDashboard.bmml%2CPatientView%26bm%3BPatientView.bmml%26bm%3BPatientView.bmml%26bm%3BPatientView.bmml%2C%2CBilling%26bm%3BBilling.bmml%26bm%3BBilling.bmml%26bm%3BBilling.bmml%2CAdminView%26bm%3BAdminView.bmml%26bm%3BAdminView.bmml%26bm%3BAdminView.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22110%2C147%2C281%2C206%22%20href%3D%22Dashboard.bmml%22%20alt%3D%22Dashboard%22%20id%3D%2241_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22283%2C147%2C427%2C206%22%20href%3D%22PatientView.bmml%22%20alt%3D%22PatientView%22%20id%3D%2241_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22569%2C147%2C688%2C206%22%20href%3D%22Billing.bmml%22%20alt%3D%22Billing%22%20id%3D%2241_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22690%2C147%2C810%2C206%22%20href%3D%22AdminView.bmml%22%20alt%3D%22AdminView%22%20id%3D%2241_3%22/%3E%0A</map>
         <selectedIndex>1</selectedIndex>
         <text>Dashboard%2C%20Patients%2C%20Reports%2C%20Billing%2C%20Admin</text>
       </controlProperties>
@@ -59,6 +60,50 @@
       <controlProperties>
         <state>selected</state>
         <text>Active</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Canvas" x="553" y="468" w="672" h="57" measuredW="100" measuredH="70" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Label" x="554" y="438" w="-1" h="-1" measuredW="73" measuredH="29" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Allergies</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Canvas" x="553" y="525" w="672" h="57" measuredW="100" measuredH="70" zOrder="14" locked="false" isInGroup="-1"/>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Canvas" x="553" y="582" w="672" h="57" measuredW="100" measuredH="70" zOrder="15" locked="false" isInGroup="-1"/>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Label" x="566" y="483" w="-1" h="-1" measuredW="28" measuredH="25" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Soy</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="566" y="540" w="-1" h="-1" measuredW="28" measuredH="25" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Egg</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Label" x="566" y="597" w="-1" h="-1" measuredW="48" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Peanut</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Icon" x="1194" y="487" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>XIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Icon" x="1194" y="545" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>XIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Icon" x="1194" y="602" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>XIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Button" x="1170" y="438" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add</text>
       </controlProperties>
     </control>
   </controls>

@@ -24,6 +24,7 @@
     <control controlID="46" controlTypeID="com.balsamiq.mockups::ButtonBar" x="438" y="214" w="692" h="59" measuredW="385" measuredH="31" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>Dashboard%26bm%3BDashboard.bmml%26bm%3BDashboard.bmml%26bm%3BDashboard.bmml%2CPatientView%26bm%3BPatientView.bmml%26bm%3BPatientView.bmml%26bm%3BPatientView.bmml%2C%2CBilling%26bm%3BBilling.bmml%26bm%3BBilling.bmml%26bm%3BBilling.bmml%2CAdminView%26bm%3BAdminView.bmml%26bm%3BAdminView.bmml%26bm%3BAdminView.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22110%2C147%2C281%2C206%22%20href%3D%22Dashboard.bmml%22%20alt%3D%22Dashboard%22%20id%3D%2246_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22283%2C147%2C427%2C206%22%20href%3D%22PatientView.bmml%22%20alt%3D%22PatientView%22%20id%3D%2246_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22569%2C147%2C688%2C206%22%20href%3D%22Billing.bmml%22%20alt%3D%22Billing%22%20id%3D%2246_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22690%2C147%2C810%2C206%22%20href%3D%22AdminView.bmml%22%20alt%3D%22AdminView%22%20id%3D%2246_3%22/%3E%0A</map>
         <selectedIndex>1</selectedIndex>
         <text>Dashboard%2C%20Patients%2C%20Reports%2C%20Billing%2C%20Admin</text>
       </controlProperties>
@@ -59,6 +60,60 @@
       <controlProperties>
         <state>selected</state>
         <text>Active</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Canvas" x="553" y="503" w="672" h="57" measuredW="100" measuredH="70" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="632" y="518" w="-1" h="-1" measuredW="58" measuredH="25" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Diabetes</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="553" y="439" w="-1" h="-1" measuredW="138" measuredH="29" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Diagnosis%20History</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Label" x="553" y="478" w="-1" h="-1" measuredW="111" measuredH="25" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Chronic%20Diagnosis</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Label" x="553" y="631" w="-1" h="-1" measuredW="108" measuredH="25" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Acute%20Diagnoses</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Canvas" x="553" y="655" w="672" h="57" measuredW="100" measuredH="70" zOrder="17" locked="false" isInGroup="-1"/>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="632" y="670" w="-1" h="-1" measuredW="190" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Venous%20engorgement%20of%20retina</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Canvas" x="553" y="560" w="672" h="57" measuredW="100" measuredH="70" zOrder="19" locked="false" isInGroup="-1"/>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="632" y="575" w="-1" h="-1" measuredW="71" measuredH="25" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Depression</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Label" x="568" y="518" w="-1" h="-1" measuredW="43" measuredH="25" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>272.2</text>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Label" x="568" y="575" w="-1" h="-1" measuredW="43" measuredH="25" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>250.0</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Label" x="568" y="670" w="-1" h="-1" measuredW="51" measuredH="25" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>362.37</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::ComboBox" x="1111" y="291" w="127" h="-1" measuredW="127" measuredH="25" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>New%20Encounter</text>
       </controlProperties>
     </control>
   </controls>
