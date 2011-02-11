@@ -245,10 +245,13 @@
     <Content Include="Views\Billing\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Billing\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Billing\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Billing\Index.cshtml" />
+    <Content Include="Views\Billing\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

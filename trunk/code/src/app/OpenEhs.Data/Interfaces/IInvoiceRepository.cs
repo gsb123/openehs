@@ -17,6 +17,7 @@ namespace OpenEhs.Data
     {
         Invoice Get(int id);
         IList<Invoice> GetAll();
+        IList<InvoiceItem> GetAllItems();
         void Add(Invoice entity);
         void Remove(Invoice entity);
         IList<Invoice> FindByPatientId(int PatientId);
