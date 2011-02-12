@@ -1,66 +1,54 @@
-﻿fieldset
-{
+﻿fieldset {
     clear: both;
     padding: 20px;
 }
 
-.column
-{
+.column {
     float: left;
     margin-right: 20px;
 }
 
-#BasicInformationColumn
-{
+#BasicInformationColumn {
     float: left;
     margin-right: 20px;
 }
 
-#BasicInformationNotes
-{
+#BasicInformationNotes {
     float: left;
 }
 
-#Id
-{
+#Id {
     width: 80px;
 }
 
-#FirstName, #MiddleName, #LastName, #PhoneNumber
-{
+#FirstName, #MiddleName, #LastName, #PhoneNumber {
     width: 125px;
 }
 
-#DateOfBirth
-{
+#DateOfBirth {
     width: 80px;
 }
 
-#Address_City, #Address_Region
-{
+#Address_City, #Address_Region {
     width: 125px;
 }
 
-#EmergencyContactMoreInfoLink
-{
+#EmergencyContactMoreInfoLink {
     color: #00f;
     cursor: pointer;
 }
 
-#EmergencyContactMoreInfo
-{
+#EmergencyContactMoreInfo {
     display: none;
 }
 
-#patientViewHeader
-{
+#patientViewHeader {
     clear: both;
     margin-left: 180px;
     padding: 0px;
 }
 
-#patientViewHeader h2
-{
+#patientViewHeader h2 {
     float: left;
 }
 
@@ -70,7 +58,7 @@
 }
 
 #allergiesTable {
-    width: 700px;
+    width: 80%;
     margin-left: 40px;
     margin-bottom: 20px;
 }

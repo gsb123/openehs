@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<OpenEhs.Domain.Patient>
-
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
+@section head
+{
+    <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
+}
+<h2>
+    Index</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
-        <th></th>
+        <th>
+        </th>
         <th>
             Name
         </th>
@@ -22,32 +25,26 @@
             Phone No.
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-            @if (item.MiddleName != String.Empty)
-            {
-                @String.Format("{2}, {0} {1}", item.FirstName, item.MiddleName, item.LastName)
-            }
-            else
-            {
-                @String.Format("{1}, {0}", item.FirstName, item.LastName)
-            }
-        </td>
-        <td>
-            @String.Format("{0:d}", item.DateOfBirth)
-        </td>
-        <td>
-            @item.PhoneNumber
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @if (item.MiddleName != String.Empty) {
+                    @String.Format("{2}, {0} {1}", item.FirstName, item.MiddleName, item.LastName)
+                } else {
+                    @String.Format("{1}, {0}", item.FirstName, item.LastName)
+                }
+            </td>
+            <td>
+                @String.Format("{0:d}", item.DateOfBirth)
+            </td>
+            <td>
+                @item.PhoneNumber
+            </td>
+        </tr>
+    }
 </table>
-
