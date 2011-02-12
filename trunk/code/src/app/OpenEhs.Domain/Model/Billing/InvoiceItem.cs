@@ -8,7 +8,7 @@
 
 namespace OpenEhs.Domain
 {
-    public class InvoiceItem: IEntity
+    public class InvoiceItem : IEntity
     {
         #region Properties
 

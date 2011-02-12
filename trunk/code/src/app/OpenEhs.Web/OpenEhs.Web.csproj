@@ -253,6 +253,26 @@
   <ItemGroup>
     <Content Include="Views\Billing\Edit.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\typography\segoe\ttf\segoe.ttf" />
+    <None Include="Content\typography\segoe\ttf\segoeb.ttf" />
+    <None Include="Content\typography\segoe\ttf\segoeui.ttf" />
+    <None Include="Content\typography\segoe\ttf\segoeuib.ttf" />
+    <None Include="Content\typography\segoe\ttf\segoeuii.ttf" />
+    <None Include="Content\typography\segoe\ttf\segoeuil.ttf" />
+    <None Include="Content\typography\segoe\ttf\segoeuiz.ttf" />
+    <None Include="Content\typography\segoe\ttf\seguisb.ttf" />
+    <None Include="Content\typography\segoe\ttf\seguisym.ttf" />
+    <None Include="Content\typography\segoe\woff\segoe.woff" />
+    <None Include="Content\typography\segoe\woff\segoeb.woff" />
+    <None Include="Content\typography\segoe\woff\segoeui.woff" />
+    <None Include="Content\typography\segoe\woff\segoeuib.woff" />
+    <None Include="Content\typography\segoe\woff\segoeuii.woff" />
+    <None Include="Content\typography\segoe\woff\segoeuil.woff" />
+    <None Include="Content\typography\segoe\woff\segoeuiz.woff" />
+    <None Include="Content\typography\segoe\woff\seguisb.woff" />
+    <None Include="Content\typography\segoe\woff\seguisym.woff" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
