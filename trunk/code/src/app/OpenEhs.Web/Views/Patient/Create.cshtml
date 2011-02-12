@@ -1,19 +1,19 @@
 ﻿@model OpenEhs.Domain.Patient
-
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
-
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
+@section head
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
+}
+<h2>
+    Create</h2>
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Patient</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.FirstName)
         </div>
@@ -21,7 +21,6 @@
             @Html.EditorFor(model => model.FirstName)
             @Html.ValidationMessageFor(model => model.FirstName)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.MiddleName)
         </div>
@@ -29,7 +28,6 @@
             @Html.EditorFor(model => model.MiddleName)
             @Html.ValidationMessageFor(model => model.MiddleName)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.LastName)
         </div>
@@ -37,7 +35,6 @@
             @Html.EditorFor(model => model.LastName)
             @Html.ValidationMessageFor(model => model.LastName)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.DateOfBirth)
         </div>
@@ -45,7 +42,6 @@
             @Html.EditorFor(model => model.DateOfBirth)
             @Html.ValidationMessageFor(model => model.DateOfBirth)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.PhoneNumber)
         </div>
@@ -53,7 +49,6 @@
             @Html.EditorFor(model => model.PhoneNumber)
             @Html.ValidationMessageFor(model => model.PhoneNumber)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.BloodType)
         </div>
@@ -61,7 +56,6 @@
             @Html.EditorFor(model => model.BloodType)
             @Html.ValidationMessageFor(model => model.BloodType)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.TribeRace)
         </div>
@@ -69,7 +63,6 @@
             @Html.EditorFor(model => model.TribeRace)
             @Html.ValidationMessageFor(model => model.TribeRace)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Religion)
         </div>
@@ -77,7 +70,6 @@
             @Html.EditorFor(model => model.Religion)
             @Html.ValidationMessageFor(model => model.Religion)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.OldPhysicalRecordNumber)
         </div>
@@ -85,7 +77,6 @@
             @Html.EditorFor(model => model.OldPhysicalRecordNumber)
             @Html.ValidationMessageFor(model => model.OldPhysicalRecordNumber)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.IsActive)
         </div>
@@ -93,14 +84,11 @@
             @Html.EditorFor(model => model.IsActive)
             @Html.ValidationMessageFor(model => model.IsActive)
         </div>
-
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
