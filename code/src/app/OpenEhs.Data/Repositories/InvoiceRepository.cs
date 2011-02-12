@@ -37,7 +37,6 @@ namespace OpenEhs.Data
         public IList<Invoice> GetAll()
         {
             ICriteria criteria = Session.CreateCriteria<Invoice>();
-
             return criteria.List<Invoice>();
         }
 
@@ -48,6 +47,20 @@ namespace OpenEhs.Data
         public IList<InvoiceItem> GetAllItems()
         {
             ICriteria criteria = Session.CreateCriteria<InvoiceItem>();
+
+            return criteria.List<InvoiceItem>();
+        }
+
+        /// <summary>
+        /// Gets a list of the InvoiceItems related to a specific Invoice.
+        /// </summary>
+        /// <param name="invoice">The Invoice to return the InvoiceItems from.</param>
+        /// <returns>A List of InvoiceItems for invoice.</returns>
+        public IList<InvoiceItem> GetItemsFor(Invoice invoice)
+        {
+            ICriteria criteria = Session.CreateCriteria<InvoiceItem>();
+            SimpleExpression expression = NHibernate.Criterion.Expression.Eq("Invoice", invoice);
+            criteria.Add(expression);
 
             return criteria.List<InvoiceItem>();
         }

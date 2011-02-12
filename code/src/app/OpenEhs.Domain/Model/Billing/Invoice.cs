@@ -44,7 +44,7 @@ namespace OpenEhs.Domain
             }
             set
             {
-                Date = value;
+                //Date = value;
             }
         }
         public virtual IList<InvoiceItem> Items { get; set; }
