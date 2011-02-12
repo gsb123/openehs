@@ -44,5 +44,11 @@ namespace OpenEhs.Web
             if (!UnitOfWork.IsStarted)
                 UnitOfWork.Start();
         }
+
+        protected void Application_EndRequest()
+        {
+            UnitOfWork.CurrentSession.Flush();
+            UnitOfWork.CurrentSession.Clear();
+        }
     }
 }

@@ -117,11 +117,11 @@ ProblemID               int         NOT NULL
 CREATE TABLE PatientCheckIn
 (
 PatientCheckInID            int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
-CheckinTime                 timestamp       NOT NULL,
+CheckinTime                 datetime       NOT NULL,
 PatientType                 tinyint         NOT NULL,
 PatientID                   int             NOT NULL,
 PatientStatus               int             NOT NULL,
-CheckOutTime                timestamp       NULL,
+CheckOutTime                datetime       NULL,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
 
