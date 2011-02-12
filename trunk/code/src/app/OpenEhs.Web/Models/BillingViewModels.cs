@@ -21,8 +21,8 @@ namespace OpenEhs.Web.Models
         public BillingViewModel()
         {
             _invoice = new Invoice();
-            InvoiceRepository invoiceRepository = new InvoiceRepository();
-            _invoice.Items = invoiceRepository.GetAllItems();
+            //InvoiceRepository invoiceRepository = new InvoiceRepository();
+            //_invoice.Items = invoiceRepository.GetItemsFor(_invoice);
             _payment = new Payment();
         }
 
@@ -94,6 +94,8 @@ namespace OpenEhs.Web.Models
         {
             get
             {
+                InvoiceRepository invoiceRepository = new InvoiceRepository();
+                _invoice.Items = invoiceRepository.GetItemsFor(_invoice);
                 return _invoice.Items;
             }
 

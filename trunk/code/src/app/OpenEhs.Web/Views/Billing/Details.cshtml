@@ -7,9 +7,9 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>BillingViewModel</legend>
+    <legend>Invoice For @Model.PatientFirstName @(Model.PatientMiddleName != ""?Model.PatientMiddleName + "":"")@Model.PatientLastName on @String.Format("{0:g}", Model.Date)</legend>
 
-    <div class="display-label">PatientId</div>
+    <div class="display-label">Patient ID</div>
     <div class="display-field">@Model.PatientId</div>
 
     <div class="display-label">PatientFirstName</div>
@@ -18,17 +18,51 @@
     <div class="display-label">PatientLastName</div>
     <div class="display-field">@Model.PatientLastName</div>
 
-    <div class="display-label">PatientMiddleName</div>
-    <div class="display-field">@Model.PatientMiddleName</div>
+    @if (Model.PatientMiddleName != "")
+    {
+        <div class="display-label">PatientMiddleName</div>
+        <div class="display-field">@Model.PatientMiddleName</div>
+    }
+    <div class="display-label">Date</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
+
+    <hr />
+    <div class="display-label">Invoice Items</div>
+    <table>
+    <tr>
+        <th>Quantity</th><th>Service</th><th>Product</th><th>Price</th><th>Total</th>
+    </tr>
+    @foreach (OpenEhs.Domain.InvoiceItem Item in @Model.LineItems)
+    {
+        <tr>
+        <td>@Item.Quantity</td>
+        
+        @if (Item.Service != null)
+        {
+            <td>@Item.Service.Name</td>
+            <td></td>      
+            <td>GH$ @Item.Service.Price</td>
+        }
+        else
+        {
+            <td></td>
+            <td>@Item.Product.Name</td>
+            <td>GH$ @Item.Product.Price</td>
+        }
+        
+        <td>GH$ @Item.Total</td>
+        </tr>
+    }
+    </table>
+    <hr />
 
     <div class="display-label">Total</div>
     <div class="display-field">@String.Format("{0:F}", Model.Total)</div>
 
-    <div class="display-label">Date</div>
-    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
+
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
