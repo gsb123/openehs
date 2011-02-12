@@ -161,11 +161,45 @@
             </div>
         </div>
         <div id="#patientView-ChronicDiseases">
-            <ul>
-                @foreach (var problems in Model.Problems) {
-                    <li>@problems.ProblemName</li>
+        <h2 id="chronicDiseasesHeader">
+                Chronic Diseases</h2>
+            <table id="chronicDiseasesTable">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var disease in Model.Problems)
+                    {
+                        <tr>
+                            <td>@disease.ProblemName
+                            </td>
+                            <td>
+                                <input class="allergyEditButton" id="@disease.Id" type="button" value="Edit" />
+                            </td>
+                        </tr>
+                    
+                    }
+                </tbody>
+            </table>
+            <div id="diseaseDialog" title="Edit Disease for @Model.FirstName @Model.LastName">
+                <p class="validateTips">
+                    All form fields are required.</p>
+                @using (Html.BeginForm("EditDisease", "Patient", "POST"))
+                {
+                    <fieldset>
+                        <label for="name">
+                            Name</label>
+                        <input type="text" name="name" id="modal_diseaseName" class="text ui-widget-content ui-corner-all" />
+                    </fieldset>
                 }
-            </ul>
+            </div>
         </div>
         <div id="#patientView-Allergies">
             <h2 id="allergiesHeader">
