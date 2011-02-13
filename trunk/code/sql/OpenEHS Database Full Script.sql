@@ -97,8 +97,15 @@ CREATE TABLE Allergy
 AllergyID               int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
 `Name`                    varchar(30)     NULL,
 Medication              varchar(30)     NULL,
-PatientID               int             NOT NULL,
+#PatientID               int             NOT NULL,
 IsActive                bit(1)          NOT NULL                    DEFAULT 1
+);
+
+CREATE TABLE PatientAllergy
+(
+PatientAllergyID            int         AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
+PatientID                   int         NOT NULL,
+AllergyID                   int         NOT NULL
 );
 
 CREATE TABLE Problem
@@ -369,9 +376,17 @@ ALTER TABLE Staff
 ADD CONSTRAINT FK_StaffMustHaveUserID
 FOREIGN KEY (UserID) REFERENCES User(UserID);
 
-ALTER TABLE Allergy
-ADD CONSTRAINT FK_AllergyMustHavePatientID
+#ALTER TABLE Allergy
+#ADD CONSTRAINT FK_AllergyMustHavePatientID
+#FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
+
+ALTER TABLE PatientAllergy
+ADD CONSTRAINT FK_PatientAllergyMustHavePatientID
 FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
+
+ALTER TABLE PatientAllergy
+ADD CONSTRAINT FK_PatientAllergyMustHaveAllergyID
+FOREIGN KEY (AllergyID) REFERENCES Allergy(AllergyID);
 
 ALTER TABLE PatientCheckIn
 ADD CONSTRAINT FK_PatientCheckInMustHavePatientID
@@ -775,38 +790,6 @@ WHERE i_PatientID = PatientID;
 END ||
 DELIMITER ;
 
-
-#--------------Insert Allergy Table--------------
-/************************************
-* sp_insertAllergy inserts into 
-* Allergy tables. Must pass patientID.
-************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertAllergy
-(
-IN i_Name          varchar(50),
-IN i_Medication    varchar(50),
-IN i_PatientID     int
-)
-
-BEGIN
-
-INSERT INTO Allergy
-(
-Name,
-Medication,
-PatientID
-)
-VALUES
-(
-i_Name,
-i_Medication,
-i_PatientID
-);
-
-END ||
-DELIMITER ;
 
 #--------------Insert Invoice & PatientCheckIn Table--------------
 /**************************************
@@ -1737,67 +1720,147 @@ CALL sp_insertProblem
 #100003
 #);
 
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Pollen',
-null,
-100000
+null
 );
 
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Neosporn',
-null,
-100000
+null
 );
 
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Bees',
-null,
-100001
+null
 );
 
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Chocolate',
-null,
-100001
+null
 );
 
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Fruit',
-null,
-100001
+null
 );
 
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Advil',
-null,
-100001
+null
 );
 
-#CALL sp_insertAllergy
-#(
-#'Wheat',
-#null,
-#100002
-#);
-
-#CALL sp_insertAllergy
-#(
-#'Nuts',
-#null,
-#100002
-#);
-
-CALL sp_insertAllergy
+INSERT INTO Allergy
+(
+Name,
+Medication
+)
+VALUES
 (
 'Morphine',
-null,
-100001
+null
+);
+
+INSERT INTO PatientAllergy
+(
+PatientID,
+AllergyID
+)
+VALUES
+(
+100000,
+1
+);
+
+INSERT INTO PatientAllergy
+(
+PatientID,
+AllergyID
+)
+VALUES
+(
+100000,
+2
+);
+
+INSERT INTO PatientAllergy
+(
+PatientID,
+AllergyID
+)
+VALUES
+(
+100000,
+3
+);
+
+INSERT INTO PatientAllergy
+(
+PatientID,
+AllergyID
+)
+VALUES
+(
+100001,
+1
+);
+
+INSERT INTO PatientAllergy
+(
+PatientID,
+AllergyID
+)
+VALUES
+(
+100001,
+4
+);
+
+INSERT INTO PatientAllergy
+(
+PatientID,
+AllergyID
+)
+VALUES
+(
+100001,
+5
 );
 
 #CALL sp_insertAllergy
