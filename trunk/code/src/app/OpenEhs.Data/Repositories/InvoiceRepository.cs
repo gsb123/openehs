@@ -56,13 +56,17 @@ namespace OpenEhs.Data
         /// </summary>
         /// <param name="invoice">The Invoice to return the InvoiceItems from.</param>
         /// <returns>A List of InvoiceItems for invoice.</returns>
-        public IList<InvoiceItem> GetItemsFor(Invoice invoice)
+        public IList<InvoiceItem> GetItemsFor(int InvoiceId)
         {
-            ICriteria criteria = Session.CreateCriteria<InvoiceItem>();
-            SimpleExpression expression = NHibernate.Criterion.Expression.Eq("Invoice", invoice);
-            criteria.Add(expression);
-
-            return criteria.List<InvoiceItem>();
+            IList<InvoiceItem> LineItems = GetAllItems();
+            for (int i = 0; i < LineItems.Count; i++)
+            {
+                if (LineItems[i].Invoice.Id != InvoiceId)
+                {
+                    LineItems.Remove(LineItems[i]);
+                }
+            }
+            return LineItems;
         }
 
         /// <summary>
