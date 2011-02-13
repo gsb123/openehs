@@ -66,6 +66,33 @@
 			    }
 		    });
 
+             $( "#newVitalDialog" ).dialog({
+			    autoOpen: false,
+			    height: 350,
+			    width: 400,
+			    modal: true,
+			    buttons: {
+				    "Save Allergy": function() {
+                        $.post("Patient/EditAllergy", {
+                            patientID: "@Model.Id",
+                            allergyID: allergyEditId,
+                            allergyName: allergyEditName 
+                            }, function(data) {
+                                var returnData = jQuery.parseJSON(data);
+                                console.log(returnData);
+                                $("#allergyPostStatus").html(returnData.status);
+                                $( this ).dialog( "close" );
+                        });
+				    },
+				    Cancel: function() {
+					    $( this ).dialog( "close" );
+				    }
+			    },
+			    close: function() {
+				    allFields.removeClass( "ui-state-error" );
+			    }
+		    });
+
             $(".allergyEditButton").button().click(function() {
                 allergyEditId = $(this).attr("id");
                 allergyEditName = $(this).attr("name");
@@ -73,7 +100,9 @@
                 $("#allergyDialog").dialog("open");
             });  
 
-
+            $(".vitalAddButton").button().click(function() {
+                $("#newVitalDialog").dialog("open");
+            });  
 
 
             $( "#diseaseDialog" ).dialog({
@@ -205,6 +234,35 @@
 
         <div id="#patientView-Vitals">
         <h2 id="Vitals">Vitals</h2>
+            <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
+                <p class="validateTips">
+                    All form fields are required.</p>
+                @using (Html.BeginForm("AddVital", "Patient", "POST")) {
+                    <fieldset>
+                        <label for="height">Height</label>
+                        <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" />
+
+                        <label for="weight">Weight</label>
+                        <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" />
+
+                        <label for="temperature">Temperature</label>
+                        <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" />
+
+                        <label for="heartRate">Heart Rate</label>
+                        <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" />
+
+                        <label for="bpSystolic">Systolic BP</label>
+                        <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" />
+
+                        <label for="bpDiastolic">Diastolic BP</label>
+                        <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" />
+
+                        <label for="respiratoryRate">Respiratory Rate</label>
+                        <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" />
+                    </fieldset>
+                }
+            </div>
+            <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button" value="Add" />
             <table>
                 <thead>
                     <tr>
