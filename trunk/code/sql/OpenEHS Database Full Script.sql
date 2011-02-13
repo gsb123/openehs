@@ -1859,10 +1859,24 @@ NOW(),
 100000
 );
 
+CALL sp_insertPatientCheckIn
+(
+NOW(),
+1,
+1,
+100001
+);
+
 CALL sp_updateInvoice
 (
 1000,
 800.25
+);
+
+CALL sp_updateInvoice
+(
+1001,
+80.25
 );
 
 CALL sp_insertCategory
@@ -2095,4 +2109,28 @@ CALL sp_insertInvoiceItem
 4,
 null,
 10
+);
+
+CALL sp_insertInvoiceItem
+(
+2,
+null,
+1,
+1
+);
+
+CALL sp_insertInvoiceItem
+(
+2,
+3,
+null,
+50
+);
+
+CALL sp_insertInvoiceItem
+(
+2,
+4,
+null,
+42
 );
