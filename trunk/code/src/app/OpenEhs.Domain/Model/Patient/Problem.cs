@@ -6,18 +6,17 @@
  * Author: Kevin Russon
  *****************************************************************************/
 
-using System;
 using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Problem: IEntity
+    public class Problem : IEntity
     {
         #region Properties
 
         public virtual int Id { get; private set; }
         public virtual string ProblemName { get; set; }
-        public virtual IList<Patient> Patient { get; set; }
+        public virtual IList<Patient> Patients { get; set; }
 
         #endregion
 

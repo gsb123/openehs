@@ -9,7 +9,7 @@
     </id>
 
     <property name="Patient" not-null="true" />
-    <property name="Allergys" not-null="false" />
+    <property name="Allergy" not-null="false" />
 
   </class>
 </hibernate-mapping>
