@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OpenEhs.Data;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -13,7 +14,9 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var invoices = new InvoiceRepository().GetAll();
+
+            return View(invoices);
         }
 
         //
@@ -21,7 +24,9 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var invoice = new InvoiceRepository().Get(id);
+
+            return View(invoice);
         }
 
         //
