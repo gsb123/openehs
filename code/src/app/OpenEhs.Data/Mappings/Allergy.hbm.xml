@@ -3,12 +3,18 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
   
-  <class name="Allergy" table="Allergy">
+  <class name="Allergys" table="Allergy">
     <id name="Id" column="AllergyID">
       <generator class="native" />
     </id>
     <property name="Name" not-null="false" length="30" />
     <property name="Medication" not-null="false" length="30" />
     <property name="IsActive" not-null="true" />
+
+    <bag name="Patient" table="PatientAllergy" cascade="none" lazy="false">
+      <key column="AllergyID" />
+      <many-to-many column="PatientID" class="Patient" />
+    </bag>
+    
   </class>
 </hibernate-mapping>
