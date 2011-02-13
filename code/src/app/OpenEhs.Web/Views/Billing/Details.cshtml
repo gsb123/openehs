@@ -32,7 +32,7 @@
     <tr>
         <th>Quantity</th><th>Service</th><th>Product</th><th>Price</th><th>Total</th>
     </tr>
-    @foreach (OpenEhs.Domain.InvoiceItem Item in @Model.LineItems)
+    @foreach (var Item in Model.LineItems)
     {
         <tr>
         <td>@Item.Quantity</td>

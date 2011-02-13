@@ -94,8 +94,8 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                InvoiceRepository invoiceRepository = new InvoiceRepository();
-                _invoice.Items = invoiceRepository.GetItemsFor(_invoice);
+                //InvoiceRepository invoiceRepository = new InvoiceRepository();
+                //_invoice.Items = invoiceRepository.GetItemsFor(_invoice.Id);
                 return _invoice.Items;
             }
 
@@ -120,6 +120,10 @@ namespace OpenEhs.Web.Models
             }
         }
                 
+        #endregion
+
+        #region methods
+
         /// <summary>
         /// Adds an InvoiceLineItem to this Invoice.
         /// </summary>
@@ -138,7 +142,26 @@ namespace OpenEhs.Web.Models
             _invoice.Items.Remove(lineItem);
         }
 
+        /*public void GetByPatientId(int patientId)
+        {
+            IList<Invoice> invoices = new InvoiceRepository().FindByPatientId(patientId);
+            foreach (Invoice invoice in invoices)
+            {
+                if (invoice.Total > 0)
+                {
+                    _invoice = invoice;
+                }
+            }
+        }
+
+        public void GetByInvoiceId(int invoiceId)
+        {
+            _invoice = new InvoiceRepository().Get(invoiceId);
+        }
+         */
+
         #endregion
+
 
     }
 
