@@ -9,7 +9,7 @@
     </id>
     <property name="ProblemName" not-null="true" length="30" />
     
-    <bag name="Patient" table="PatientProblem" cascade="none" lazy="false">
+    <bag name="Patients" table="PatientProblem" cascade="none" lazy="false">
       <key column="ProblemID" />
       <many-to-many column="PatientID" class="Patient" />
     </bag>

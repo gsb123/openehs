@@ -1,4 +1,4 @@
-﻿namespace OpenEhs.Domain.Model.Patient
+﻿namespace OpenEhs.Domain
 {
     public class PatientProblem : IEntity
     {

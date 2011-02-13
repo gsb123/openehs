@@ -106,8 +106,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mappings\PatientAllergy.hbm.xml" />
-    <Content Include="Mappings\PatientProblem.hbm.xml" />
+    <Content Include="Mappings\PatientAllergy.hbm.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Mappings\PatientProblem.hbm.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Mappings\SurgeryStaff.hbm.xml" />
     <EmbeddedResource Include="Mappings\PatientCheckIn.hbm.xml">
       <SubType>Designer</SubType>
@@ -142,7 +146,9 @@
     <EmbeddedResource Include="Mappings\Surgery.hbm.xml" />
     <EmbeddedResource Include="Mappings\TemplateCategory.hbm.xml" />
     <EmbeddedResource Include="Mappings\Vitals.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Allergy.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Allergy.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Membership\Role.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

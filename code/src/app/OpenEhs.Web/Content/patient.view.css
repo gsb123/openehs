@@ -45,13 +45,14 @@
 
 #patientViewHeader 
 {
+    border: 1px solid #aaa;
     background-color: #eee;
     clear: both;
     margin-left: 170px;
     margin-bottom: -5px;
     padding-left: 28px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 #patientViewHeader h2 {

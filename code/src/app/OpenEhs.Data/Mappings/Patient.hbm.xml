@@ -24,7 +24,7 @@
 
     <many-to-one name="EmergencyContact" column="EmergencyContactID" unique="true" cascade="all" />
 
-    <bag name="Allergys" table="PatientAllergy" cascade="none" lazy="false">
+    <bag name="Allergies" table="PatientAllergy" cascade="none" lazy="false">
       <key column="PatientID" />
       <many-to-many column="AllergyID" class="Allergy" />
     </bag>
