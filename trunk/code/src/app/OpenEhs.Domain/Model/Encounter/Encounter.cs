@@ -26,6 +26,7 @@ namespace OpenEhs.Domain
         public virtual bool IsActive { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
         public virtual IList<Note> Notes { get; set; }
+        public virtual IList<Vitals> Vitals { get; set; }
 
         #endregion
     }

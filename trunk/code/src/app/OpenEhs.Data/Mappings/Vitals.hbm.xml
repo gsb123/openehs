@@ -27,5 +27,6 @@
     </component>
     <property name="RespiratoryRate" />
     <property name="IsActive" />
+    <many-to-one name="Encounter" column="PatientEncounterID" unique="true" cascade="all" />
   </class>
 </hibernate-mapping>

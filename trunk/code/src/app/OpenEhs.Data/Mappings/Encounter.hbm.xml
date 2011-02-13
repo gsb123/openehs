@@ -23,6 +23,11 @@
       <one-to-many class="Note" />
     </bag>
     
+    <bag name="Vitals" table="Vitals">
+      <key column="PatientEncounterId" />
+      <one-to-many class="Vitals" />
+    </bag>
+    
     <property name="AdmitReason" not-null="false" length="50" />
     <property name="IsActive" not-null="true" />
   </class>
