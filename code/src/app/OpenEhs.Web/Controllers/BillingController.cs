@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using OpenEhs.Data;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 
