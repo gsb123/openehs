@@ -6,6 +6,7 @@
  * Author: Matthew Kimber (matthew.kimber@gmail.com)
  *****************************************************************************/
 
+using System;
 namespace OpenEhs.Domain
 {
     public class BloodPressure
@@ -45,6 +46,9 @@ namespace OpenEhs.Domain
 
         #endregion
 
- 
+        public override string ToString()
+        {
+            return Systolic + "/" + Diastolic;
+        }
     }
 }

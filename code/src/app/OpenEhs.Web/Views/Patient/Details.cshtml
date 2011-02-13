@@ -205,21 +205,39 @@
 
         <div id="#patientView-Vitals">
         <h2 id="Vitals">Vitals</h2>
-             <ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="vitalDateColumn">Date</th>
+                        <th class="vitalHeightColumn">Height(cm)</th>
+                        <th class="vitalWeightColumn">Weight(kg)</th>
+                        <th class="vitalTemperatureColumn">Temperature(&deg;c)</th>
+                        <th class="vitalHeartRateColumn">Heart Rate(bpm)</th>
+                        <th class="vitalBloodPressureColumn">Blood Pressure(mmHg)</th>
+                        <th class="vitalRespiratoryRateColumn">Respiratory Rate(Hz)</th>
+                    </tr>
+                </thead>
+                <tbody>
                 @foreach(var checkin in Model.PatientCheckIns)
                 {
                     foreach (var encounter in checkin.Encounters)
                     {
                         foreach (var vital in encounter.Vitals)
                         {
-                            <li>@vital.Time.ToString()</li>
-                            <li>@vital.Height</li>
-                            <li>@vital.Weight</li>
-                            <li>@vital.Temperature</li>
+                            <tr>
+                                <td class="vitalDateColumn">@vital.Time</td>
+                                <td class="vitalHeightColumn">@vital.Height</td>
+                                <td class="vitalWeightColumn">@vital.Weight</td>
+                                <td class="vitalTemperatureColumn">@vital.Temperature</td>
+                                <td class="vitalHeartRateColumn">@vital.HeartRate</td>
+                                <td class="vitalBloodPressureColumn">@vital.BloodPressure</td>
+                                <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate</td>
+                            </tr>
                         }
                     }
                 }
-            </ul> 
+                </tbody>
+            </table>
         </div>
 
         <div id="#patientView-PMH">
