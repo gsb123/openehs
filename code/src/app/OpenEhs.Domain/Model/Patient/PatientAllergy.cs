@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OpenEhs.Domain.Model.Patient
 {
-    public class PatientAllergy
+    public class PatientAllergy : IEntity
     {
         #region Fields
 
