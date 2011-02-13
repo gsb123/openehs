@@ -206,9 +206,19 @@
         <div id="#patientView-Vitals">
         <h2 id="Vitals">Vitals</h2>
              <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
+                @foreach(var checkin in Model.PatientCheckIns)
+                {
+                    foreach (var encounter in checkin.Encounters)
+                    {
+                        foreach (var vital in encounter.Vitals)
+                        {
+                            <li>@vital.Time.ToString()</li>
+                            <li>@vital.Height</li>
+                            <li>@vital.Weight</li>
+                            <li>@vital.Temperature</li>
+                        }
+                    }
+                }
             </ul> 
         </div>
 

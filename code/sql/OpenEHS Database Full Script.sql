@@ -266,8 +266,8 @@ CREATE TABLE PatientEncounter
 (
     PatientEncounterID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     PatientCheckinID            int                 NOT NULL,
-    TimeIn                      time                NOT NULL,
-    TimeOut                     time                NULL,
+    TimeIn                      datetime                NOT NULL,
+    TimeOut                     datetime                NULL,
     Comments                    text                NULL,
     Location                    int                 NULL,
     Diagnosis                   text                NULL,
@@ -287,7 +287,7 @@ CREATE TABLE Vitals
     Temperature                 decimal(4,1)        NOT NULL,
     BPSystolic                  int                 NOT NULL,
     BPDiastolic                 int                 NOT NULL,
-    RespirtoryRate              tinyint             NOT NULL,
+    RespiratoryRate              tinyint             NOT NULL,
     PatientEncounterID          int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
@@ -296,8 +296,8 @@ CREATE TABLE Surgery
 (
     SurgeryID                   int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     SurgeryType                 text                NOT NULL,
-    StartTime                   time                NOT NULL,
-    EndTime                     time                NULL,
+    StartTime                   datetime                NOT NULL,
+    EndTime                     datetime                NULL,
     RoomNumber                  int                 NULL,
     Comments                    text                NULL,
     PatientEncounterID          int                 NOT NULL
@@ -1229,8 +1229,8 @@ DELIMITER |
 CREATE PROCEDURE sp_insertPatientEncounter
 (
 IN i_PatientCheckInID   int,
-IN i_TimeIn             time,
-IN i_TimeOut            time,
+IN i_TimeIn             datetime,
+IN i_TimeOut            datetime,
 IN i_Comments           text,
 IN i_Location           int,
 IN i_Diagnosis          text,
@@ -1281,7 +1281,7 @@ DELIMITER |
 CREATE PROCEDURE sp_updatePatientEncounter
 (
 IN i_PatientEncounterID int,
-IN i_TimeOut            time,
+IN i_TimeOut            datetime,
 IN i_Comments           text,
 IN i_Location           int,
 IN i_Diagnosis          text,
@@ -1318,8 +1318,8 @@ DELIMITER |
 CREATE PROCEDURE sp_insertSurgery
 (
 IN i_SurgeryType        text,
-IN i_StartTime          time,
-IN i_EndTime            time,
+IN i_StartTime          datetime,
+IN i_EndTime            datetime,
 IN i_RoomNumber         int,
 IN i_Comments           text,
 IN i_PatientEncounterID int
@@ -1999,8 +1999,8 @@ CALL sp_insertService
 CALL sp_insertPatientEncounter
 (
 1,
-NOW(),
-null,
+'20101005103238',
+'20101005104827',
 null,
 null,
 null,

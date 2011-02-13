@@ -4,7 +4,7 @@
                    namespace="OpenEhs.Domain">
 
   <class name="Vitals" table="Vitals">
-    <id name="Id">
+    <id name="Id" column="VitalsID">
       <generator class="native" />
     </id>
     <property name="Time" />

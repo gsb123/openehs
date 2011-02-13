@@ -13,12 +13,12 @@
     <property name="RoomNumber" />
     <property name="Comments" />
 
-    <many-to-one name="Encounter" column="EncounterID" unique="true" cascade="all" />
+    <many-to-one name="Encounter" column="PatientEncounterID" unique="true" cascade="all" />
     
     <!--Many-to-many mapping: Staff-->
     <bag name="Staff" table="SurgeryStaff" cascade="none" lazy="false">
       <key column="StaffID" />
-      <many-to-many column="SurgeryID" class="Surgery" />
+      <many-to-many column="SurgeryID" class="Staff" />
     </bag>
     
   </class>
