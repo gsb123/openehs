@@ -11,6 +11,7 @@
 #BasicInformationColumn {
     float: left;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 #BasicInformationNotes {
@@ -58,7 +59,10 @@
 }
 
 #allergiesTable {
-    width: 80%;
     margin-left: 40px;
     margin-bottom: 20px;
+}
+
+#allergiesTable td {
+    width: 150px;
 }

@@ -12,13 +12,18 @@
     <link href="@Url.Content("~/Content/patient.view.css")" rel="Stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-jvert-tabs-1.1.4.js")" type="text/javascript"></script>
+    @* Hack for enabling jQuery intellisense.  See http://blogs.msdn.com/b/webdevtools/archive/2008/10/28/rich-intellisense-for-jquery.aspx *@
+    @if (false) {
+        <script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>
+    }
     <script type="text/javascript">
         $(document).ready(function () {
-
+        var allergyEditId;
+        var allergyEditName;
             var name = $( "#modal_allergyName" ),
 			    allFields = $( [] ).add( name ),
 			    tips = $( ".validateTips" );
-
+                
             $("#patientView").jVertTabs();
             $("#GenderRadio").buttonset();
 
@@ -34,20 +39,23 @@
                 });
             });
 
-
             $( "#allergyDialog" ).dialog({
 			    autoOpen: false,
-			    height: 300,
+			    height: 250,
 			    width: 350,
 			    modal: true,
 			    buttons: {
 				    "Save Allergy": function() {
-					    var bValid = true;
-					    allFields.removeClass( "ui-state-error" );
-
-					    if ( bValid ) {
-						    $( this ).dialog( "close" );
-					    }
+                        $.post("Patient/EditAllergy", {
+                            patientID: "@Model.Id",
+                            allergyID: allergyEditId,
+                            allergyName: allergyEditName 
+                            }, function(data) {
+                                var returnData = jQuery.parseJSON(data);
+                                console.log(returnData);
+                                $("#allergyPostStatus").html(returnData.status);
+                                $( this ).dialog( "close" );
+                        });
 				    },
 				    Cancel: function() {
 					    $( this ).dialog( "close" );
@@ -59,6 +67,9 @@
 		    });
 
             $(".allergyEditButton").button().click(function() {
+                allergyEditId = $(this).attr("id");
+                allergyEditName = $(this).attr("name");
+                $("#modal_allergyName").val(allergyEditName);
                 $("#allergyDialog").dialog("open");
             });  
 
@@ -227,7 +238,7 @@
 
 
         <div id="#patientView-ChronicDiseases">
-        <h2 id="chronicDiseasesHeader">
+            <h2 id="chronicDiseasesHeader">
                 Chronic Diseases</h2>
             <table id="chronicDiseasesTable">
                 <thead>
@@ -241,8 +252,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var disease in Model.Problems)
-                    {
+                    @foreach (var disease in Model.Problems) {
                         <tr>
                             <td>@disease.ProblemName
                             </td>
@@ -257,8 +267,7 @@
             <div id="diseaseDialog" title="Edit Disease for @Model.FirstName @Model.LastName">
                 <p class="validateTips">
                     All form fields are required.</p>
-                @using (Html.BeginForm("EditDisease", "Patient", "POST"))
-                {
+                @using (Html.BeginForm("EditDisease", "Patient", "POST")) {
                     <fieldset>
                         <label for="name">
                             Name</label>
@@ -291,10 +300,9 @@
                                 }
                             </td>
                             <td>
-                                <input class="allergyEditButton" id="@allergy.Id" type="button" value="Edit" />
+                                <input class="allergyEditButton" id="@allergy.Id" name="@allergy.Name" type="button" value="Edit" />
                             </td>
                         </tr>
-                    
                     }
                 </tbody>
             </table>
