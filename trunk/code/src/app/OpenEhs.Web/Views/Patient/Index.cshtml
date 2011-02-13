@@ -5,11 +5,19 @@
 @section head
 {
     <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            $("#createNewPatientButton").button();
+            $("#createNewPatientButton").click(function () {
+                return false;
+            });
+        });
+    </script>
 }
 <h2>
     Index</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("New", "Create", null, new { id = "createNewPatientButton" })
 </p>
 <table>
     <tr>
