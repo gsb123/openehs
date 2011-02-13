@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Model\Common Interfaces\IEntity.cs" />
     <Compile Include="Model\Encounter\Encounter.cs" />
+    <Compile Include="Model\Patient\PatientAllergy.cs" />
     <Compile Include="Model\Patient\PatientProblem.cs" />
     <Compile Include="Model\Patient\Problem.cs" />
     <Compile Include="Model\Surgery\SurgeryStaff.cs" />
