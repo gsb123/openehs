@@ -108,8 +108,10 @@
     <Content Include="Content\jvert-tabs\images\ClosedTabBackground.png" />
     <Content Include="Content\jvert-tabs\images\ClosedTabBackgroundHover.png" />
     <Content Include="Content\jvert-tabs\jquery-jvert-tabs-1.1.4.css" />
+    <Content Include="Content\patient.main.css" />
     <Content Include="Content\patient.view.css" />
     <Content Include="Content\themes\base\images\calendar.png" />
+    <Content Include="Content\typography\SegoeUI.css" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -125,7 +127,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

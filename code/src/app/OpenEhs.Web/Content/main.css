@@ -3,11 +3,14 @@ The base color for this template is #5c87b2. If you'd like
 to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
+
+@import url("/Content/typography/SegoeUI.css") all;
+
 body
 {
     background-color: #5c87b2;
     font-size: 75%;
-    font-family: arial, sans-serif;
+    font-family: Segoe, sans-serif;
     margin: 0;
     padding: 0;
     color: #696969;
