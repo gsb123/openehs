@@ -140,7 +140,7 @@
     } else {
         <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName)</h2>
     }
-    <h2 style="margin-left: 20px; font-weight: normal;">@Model.Age</h2>
+    <h2 style="margin-left: 20px; font-weight: normal;">Age: @Model.Age</h2>
     <h2 style="margin-left: 20px; font-weight: normal;">
         DOB: @String.Format("{0:d}", Model.DateOfBirth)</h2>
     <div style="float: right; margin-right: 20px; margin-top: 13px;">
@@ -233,69 +233,74 @@
         </div>
 
         <div id="#patientView-Vitals">
-        <h2 id="Vitals">Vitals</h2>
-            <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
-                <p class="validateTips">
-                    All form fields are required.</p>
-                @using (Html.BeginForm("AddVital", "Patient", "POST")) {
-                    <fieldset>
-                        <label for="height">Height</label>
-                        <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" />
-
-                        <label for="weight">Weight</label>
-                        <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" />
-
-                        <label for="temperature">Temperature</label>
-                        <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" />
-
-                        <label for="heartRate">Heart Rate</label>
-                        <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" />
-
-                        <label for="bpSystolic">Systolic BP</label>
-                        <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" />
-
-                        <label for="bpDiastolic">Diastolic BP</label>
-                        <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" />
-
-                        <label for="respiratoryRate">Respiratory Rate</label>
-                        <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" />
-                    </fieldset>
-                }
+            <div id="vitalsHeader" class="group">
+                <h2 id="Vitals">Vitals</h2>
+                <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button" value="Add" />
             </div>
-            <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button" value="Add" />
-            <table>
-                <thead>
-                    <tr>
-                        <th class="vitalDateColumn">Date</th>
-                        <th class="vitalHeightColumn">Height(cm)</th>
-                        <th class="vitalWeightColumn">Weight(kg)</th>
-                        <th class="vitalTemperatureColumn">Temperature(&deg;c)</th>
-                        <th class="vitalHeartRateColumn">Heart Rate(bpm)</th>
-                        <th class="vitalBloodPressureColumn">Blood Pressure(mmHg)</th>
-                        <th class="vitalRespiratoryRateColumn">Respiratory Rate(Hz)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach(var checkin in Model.PatientCheckIns)
-                {
-                    foreach (var encounter in checkin.Encounters)
+            <div id="vitalsBody" class="group">
+                <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
+                    <p class="validateTips">
+                        All form fields are required.</p>
+                    @using (Html.BeginForm("AddVital", "Patient", "POST")) {
+                        <fieldset>
+                            <label for="height">Height</label>
+                            <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" />
+
+                            <label for="weight">Weight</label>
+                            <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" />
+
+                            <label for="temperature">Temperature</label>
+                            <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" />
+
+                            <label for="heartRate">Heart Rate</label>
+                            <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" />
+
+                            <label for="bpSystolic">Systolic BP</label>
+                            <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" />
+
+                            <label for="bpDiastolic">Diastolic BP</label>
+                            <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" />
+
+                            <label for="respiratoryRate">Respiratory Rate</label>
+                            <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" />
+                        </fieldset>
+                    }
+                </div>
+            
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="vitalDateColumn">Date</th>
+                            <th class="vitalHeightColumn">Height(cm)</th>
+                            <th class="vitalWeightColumn">Weight(kg)</th>
+                            <th class="vitalTemperatureColumn">Temperature(&deg;c)</th>
+                            <th class="vitalHeartRateColumn">Heart Rate(bpm)</th>
+                            <th class="vitalBloodPressureColumn">Blood Pressure(mmHg)</th>
+                            <th class="vitalRespiratoryRateColumn">Respiratory Rate(Hz)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(var checkin in Model.PatientCheckIns)
                     {
-                        foreach (var vital in encounter.Vitals)
+                        foreach (var encounter in checkin.Encounters)
                         {
-                            <tr>
-                                <td class="vitalDateColumn">@vital.Time</td>
-                                <td class="vitalHeightColumn">@vital.Height</td>
-                                <td class="vitalWeightColumn">@vital.Weight</td>
-                                <td class="vitalTemperatureColumn">@vital.Temperature</td>
-                                <td class="vitalHeartRateColumn">@vital.HeartRate</td>
-                                <td class="vitalBloodPressureColumn">@vital.BloodPressure</td>
-                                <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate</td>
-                            </tr>
+                            foreach (var vital in encounter.Vitals)
+                            {
+                                <tr>
+                                    <td class="vitalDateColumn">@vital.Time</td>
+                                    <td class="vitalHeightColumn">@vital.Height</td>
+                                    <td class="vitalWeightColumn">@vital.Weight</td>
+                                    <td class="vitalTemperatureColumn">@vital.Temperature</td>
+                                    <td class="vitalHeartRateColumn">@vital.HeartRate</td>
+                                    <td class="vitalBloodPressureColumn">@vital.BloodPressure</td>
+                                    <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate</td>
+                                </tr>
+                            }
                         }
                     }
-                }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="#patientView-PMH">

@@ -43,14 +43,25 @@
     display: none;
 }
 
-#patientViewHeader {
+#patientViewHeader 
+{
+    background-color: #eee;
     clear: both;
-    margin-left: 180px;
-    padding: 0px;
+    margin-left: 170px;
+    margin-bottom: -5px;
+    padding-left: 28px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #patientViewHeader h2 {
     float: left;
+    padding: 0px;
+}
+
+#patientViewHeader div 
+{
+    padding-top: 5px;
 }
 
 #allergiesHeader {
@@ -65,4 +76,21 @@
 
 #allergiesTable td {
     width: 150px;
+}
+
+#vitalsHeader
+{
+    padding-right: 10px;
+    clear: both;
+}
+
+#vitalsHeader h2
+{
+    float: left;
+}
+
+#vitalsHeader input
+{
+    margin-top: 15px;
+    float: right;
 }

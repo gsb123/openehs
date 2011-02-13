@@ -54,6 +54,11 @@
     background-color: #eee;
 }
 
+#recentlyAccessedList table td
+{
+    cursor: pointer;
+}
+
 .idColumn
 {
     width: 10%;
