@@ -50,7 +50,7 @@
       <HintPath>..\..\..\lib\nhibernate\Required_Bins\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\nhprof\log4net.dll</HintPath>
+      <HintPath>..\..\..\lib\nhprof\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
