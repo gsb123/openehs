@@ -18,8 +18,8 @@ namespace OpenEhs.Domain
         public virtual int Id {get; private set;}
         public virtual VitalsType Type { get; set; }
         public virtual DateTime Time { get; set; }
-        public virtual string Height { get; set; }
-        public virtual string Weight { get; set; }
+        public virtual int Height { get; set; }
+        public virtual int Weight { get; set; }
         public virtual int HeartRate { get; set; }
         public virtual float Temperature { get; set; }
         public virtual BloodPressure BloodPressure { get; set; }
