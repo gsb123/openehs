@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IInvoiceRepository.cs" />
+    <Compile Include="Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Common\GenericTransaction.cs" />
     <Compile Include="Common\IGenericTransaction.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="Repositories\EmergencyContactRepository.cs" />
+    <Compile Include="Repositories\PaymentRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

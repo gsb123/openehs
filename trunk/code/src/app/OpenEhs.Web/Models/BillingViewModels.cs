@@ -18,12 +18,10 @@ namespace OpenEhs.Web.Models
 
         #region Billing
 
-        public BillingViewModel()
+        public BillingViewModel(int InvoiceId)
         {
-            _invoice = new Invoice();
-            //InvoiceRepository invoiceRepository = new InvoiceRepository();
-            //_invoice.Items = invoiceRepository.GetItemsFor(_invoice);
-            _payment = new Payment();
+            _invoice = new InvoiceRepository().Get(InvoiceId);
+            _payment = new PaymentRepository().GetPaymentFor(InvoiceId);
         }
 
         [Required]
@@ -119,7 +117,20 @@ namespace OpenEhs.Web.Models
                 _invoice.Date = value;
             }
         }
-                
+
+        [DisplayName("Payment Amount")]
+        public decimal PaymentAmount
+        {
+            get
+            {
+                return _payment.CashAmount;
+            }
+            set
+            {
+                _payment.CashAmount = value;
+            }
+        }
+        
         #endregion
 
         #region methods

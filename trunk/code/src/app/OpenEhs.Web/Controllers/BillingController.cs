@@ -29,15 +29,13 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            BillingViewModel billing = new BillingViewModel();
-            //billing.GetByInvoiceId(id);
+            BillingViewModel billing = new BillingViewModel(id);
             return View(billing);
         }
 
         public ActionResult Edit(int id)
         {
-            BillingViewModel billing = new BillingViewModel();
-            //billing.PatientId = id;
+            BillingViewModel billing = new BillingViewModel(id);
 
             return View(billing);
         }

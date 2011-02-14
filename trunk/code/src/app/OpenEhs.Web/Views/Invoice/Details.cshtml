@@ -1,4 +1,4 @@
-﻿@model OpenEhs.Domain.Invoice
+﻿@model OpenEhs.Web.Models.BillingViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -8,9 +8,9 @@
 
 <fieldset>
     <legend>Invoice For 
-        @String.Format("{0} ", Model.PatientCheckIn.Patient.FirstName)
-        @String.Format(Model.PatientCheckIn.Patient.MiddleName == ""?"":"{0}",Model.PatientCheckIn.Patient.MiddleName)
-        @String.Format("{0}", Model.PatientCheckIn.Patient.LastName)
+        @String.Format("{0} ", Model.PatientFirstName)
+        @String.Format(Model.PatientMiddleName == ""?"":"{0}",Model.PatientMiddleName)
+        @String.Format("{0}", Model.PatientLastName)
     </legend>
 
     <div class="display-label">Date</div>
@@ -22,7 +22,7 @@
     <tr>
         <th>Quantity</th><th>Service</th><th>Product</th><th>Price</th><th>Total</th>
     </tr>
-    @foreach (var Item in Model.Items)
+    @foreach (var Item in Model.LineItems)
     {
         <tr>
         <td>@Item.Quantity</td>
@@ -48,6 +48,9 @@
 
     <div class="display-label">Total</div>
     <div class="display-field">@String.Format("{0:F}", Model.Total)</div>
+
+    <div class="display-label">Payment</div>
+    <div class="display-field">@String.Format("{0:F}", Model.PaymentAmount)</div>
 
 </fieldset>
 <p>
