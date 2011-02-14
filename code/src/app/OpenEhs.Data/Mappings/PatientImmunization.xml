@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="OpenEhs.Domain"
+                   namespace="OpenEhs.Domain">
+
+  <class name="PatientImmunization" table="PatientImmunization">
+    <id name="Id" column="PatientImmunizationID">
+      <generator class="native" />
+    </id>
+
+    <property name="Patient" not-null="true" />
+    <property name="Immunization" not-null="false" />
+
+  </class>
+</hibernate-mapping>

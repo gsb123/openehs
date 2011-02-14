@@ -26,6 +26,7 @@
       <one-to-many class="Encounter" />
     </bag>
 
+
     <bag name="Vitals" table="Vitals" cascade="all">
       <key column="PatientCheckInId" />
       <one-to-many class="Vitals" />

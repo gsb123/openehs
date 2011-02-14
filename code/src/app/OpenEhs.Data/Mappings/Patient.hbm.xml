@@ -39,5 +39,11 @@
       <key column="PatientId" />
       <one-to-many class="PatientCheckIn" />
     </bag>
+
+    <bag name="Medications" table="Medication" cascade="all">
+      <key column="PatientID" />
+      <one-to-many class="Medication" />
+    </bag>
+    
   </class>
 </hibernate-mapping>

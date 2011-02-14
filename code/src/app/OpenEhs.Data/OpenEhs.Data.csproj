@@ -108,9 +108,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Mappings\Immunization.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Medication.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Mappings\PatientAllergy.hbm.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Mappings\PatientImmunization.xml" />
     <Content Include="Mappings\PatientProblem.hbm.xml">
       <SubType>Designer</SubType>
     </Content>
