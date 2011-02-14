@@ -462,8 +462,7 @@
     <Content Include="Views\Patient\_tab-Encounters.cshtml" />
     <Content Include="Views\Patient\_tab-Allergy.cshtml" />
     <Content Include="Views\Patient\_tab-ChronicDiseases.cshtml" />
-    <Content Include="Views\Patient\_tab-DxHistory.cshtml" />
-    <Content Include="Views\Patient\_tab-RxList.cshtml" />
+    <Content Include="Views\Patient\_tab-Vitals.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
