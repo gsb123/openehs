@@ -364,13 +364,12 @@
                 <input class="chronicDiseasesAddButton" id="chronicDiseasesAddButton" name="chronicDiseasesAddButton" type="button" value="Add" />
 		  </div>
 		  <div>
-            <ul id="ChronicDiseases">
+            <ul id="ChronicDiseaseList">
 				@foreach (var disease in Model.Problems) 
 				{
-				<li>
-                    <div>
-                        @disease.ProblemName
-                    </div>
+				<li class="group">
+                    <div style="float: left;">@disease.ProblemName</div>
+                    <div style="float: right;"><img src="@Url.Content("~/images/common/icons/16x16/Delete.png")" alt="Delete" /></div>
                 </li>
 				}
             </ul>
@@ -385,12 +384,12 @@
                 <input class="allergyAddButton" id="allergyAddButton" name="allergyAddButton" type="button" value="Add" />
 		  </div>
 		  <div>
+            <ul id="AllergyList">
 				@foreach (var allergy in Model.Allergies) 
 				{
-					<ul>
-						<li>@allergy.Name</li>
-					</ul>
+						<li class="group">@allergy.Name</li>
 				}
+            </ul>
 	      </div>
 </div>
 

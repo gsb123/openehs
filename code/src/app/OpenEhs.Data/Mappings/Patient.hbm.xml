@@ -25,13 +25,12 @@
 
     <many-to-one name="EmergencyContact" column="EmergencyContactID" unique="true" cascade="all" />
 
-    <bag name="Allergies" table="PatientAllergy" cascade="none" lazy="false">
+    <bag name="Allergies" table="PatientAllergy" cascade="all" lazy="false">
       <key column="PatientID" />
       <many-to-many column="AllergyID" class="Allergy" />
     </bag>
     
-    
-    <bag name="Problems" table="PatientProblem" cascade="none" lazy="false">
+    <bag name="Problems" table="PatientProblem" cascade="all" lazy="false">
       <key column="PatientID" />
       <many-to-many column="ProblemID" class="Problem" />
     </bag>
@@ -40,22 +39,5 @@
       <key column="PatientId" />
       <one-to-many class="PatientCheckIn" />
     </bag>
-    
-    <!--
-    <bag name="Problems" table="PatientProblem">
-      <key column="PatientID" />
-      <many-to-many class="Problem" />
-    </bag>
-
-    <bag name="Invoice" table="Invoice">
-      <key column="PatientId" />
-      <one-to-many class="Invoice" />
-    </bag>
-
-    <bag name="PatientCheckIn" table="PatientCheckIn">
-      <key column="PatientId" />
-      <one-to-many class="PatientCheckIn" />
-    </bag>
-    -->
   </class>
 </hibernate-mapping>
