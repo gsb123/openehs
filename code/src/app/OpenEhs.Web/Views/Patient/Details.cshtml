@@ -78,8 +78,10 @@
 			    width: 400,
 			    modal: true,
 			    buttons: {
-				    "Save Vital": function() {
-                        $.post("/Patient/AddVital", {
+				    "Save Vital": function() 
+                    {
+                        $.post("/Patient/AddVital", 
+                        {
                             patientID: "@Model.Id",
                             height: document.getElementById("modal_vitalHeight").value,
                             weight: document.getElementById("modal_vitalWeight").value,
@@ -88,10 +90,9 @@
                             BpSystolic: document.getElementById("modal_vitalBpSystolic").value,
                             BpDiastolic: document.getElementById("modal_vitalBpDiastolic").value,
                             respiratoryRate: document.getElementById("modal_vitalRespiratoryRate").value
-                            }, function(data) {
-                                var returnData = jQuery.parseJSON(data);
-                                $( this ).dialog( "close" );
                         });
+                        $( this ).dialog("close");
+
 				    },
 				    Cancel: function() {
 					    $( this ).dialog( "close" );
