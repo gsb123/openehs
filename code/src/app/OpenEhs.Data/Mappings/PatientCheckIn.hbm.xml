@@ -3,7 +3,7 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
   
-  <class name="PatientCheckIn" table="PatientCheckIn">
+  <class name="PatientCheckIn" table="PatientCheckIn" >
     <id name="Id" column="PatientCheckinID">
       <generator class="native" />
     </id>
@@ -21,12 +21,12 @@
     <property name="PatientStatus" not-null="true" />
     <property name="IsActive" not-null="true" />
 
-    <bag name="Encounters" table="PatientEncounter">
+    <bag name="Encounters" table="PatientEncounter" cascade="all">
       <key column="PatientCheckInID" />
       <one-to-many class="Encounter" />
     </bag>
 
-    <bag name="Vitals" table="Vitals">
+    <bag name="Vitals" table="Vitals" cascade="all">
       <key column="PatientCheckInId" />
       <one-to-many class="Vitals" />
     </bag>
