@@ -2359,3 +2359,38 @@ VALUES
 '2008-05-10 00:00:00',
 100000
 );
+
+INSERT INTO Medication
+(
+`Name`,
+Instruction,
+StartDate,
+ExpDate,
+PatientID
+)
+VALUES
+(
+'Plavix oral tablet 1000mg',
+'Take when not feeling well',
+'2002-01-01 00:00:00',
+'2002-05-02 00:00:00',
+100000
+);
+
+
+INSERT INTO Medication
+(
+`Name`,
+Instruction,
+StartDate,
+ExpDate,
+PatientID
+)
+VALUES
+(
+'DOXYCYCL HYC oral tablet 100mg',
+'Take one tab by mouth twice daily',
+'2005-12-10 00:00:00',
+'2009-08-07 00:00:00',
+100001
+);
