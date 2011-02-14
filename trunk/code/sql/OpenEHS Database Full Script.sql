@@ -96,8 +96,6 @@ CREATE TABLE Allergy
 (
 AllergyID               int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
 `Name`                    varchar(30)     NULL,
-Medication              varchar(30)     NULL,
-#PatientID               int             NOT NULL,
 IsActive                bit(1)          NOT NULL                    DEFAULT 1
 );
 
@@ -1722,79 +1720,65 @@ CALL sp_insertProblem
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Pollen',
-null
+'Pollen'
 );
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Neosporn',
-null
+'Neosporn'
 );
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Bees',
-null
+'Bees'
 );
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Chocolate',
-null
+'Chocolate'
 );
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Fruit',
-null
+'Fruit'
 );
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Advil',
-null
+'Advil'
 );
 
 INSERT INTO Allergy
 (
-Name,
-Medication
+Name
 )
 VALUES
 (
-'Morphine',
-null
+'Morphine'
 );
 
 INSERT INTO PatientAllergy
