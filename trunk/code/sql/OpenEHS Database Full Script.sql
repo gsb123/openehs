@@ -87,6 +87,7 @@ AddressID                   int                 NOT NULL,
 BloodType                   varchar(10)         NULL,
 TribeRace                   varchar(30)         NULL,
 Religion                    varchar(30)         NULL,
+PatientNote                 longtext            NULL,
 OldPhysicalRecordNumb       int                 Null,
 EmergencyContactID          int                 NULL,
 IsActive                    bit(1)              NOT NULL                DEFAULT 1
@@ -1584,6 +1585,7 @@ AddressID,
 BloodType,
 TribeRace,
 Religion,
+PatientNote,
 OldPhysicalRecordNumb,
 EmergencyContactID
 )
@@ -1599,6 +1601,7 @@ VALUES
 'AB+',
 'white',
 'lDS',
+'This patient smells very bad. Also watch out if you talk to close to his face he will spit on you.',
 1102547,
 1
 );
@@ -1668,6 +1671,7 @@ AddressID,
 BloodType,
 TribeRace,
 Religion,
+PatientNote,
 OldPhysicalRecordNumb,
 EmergencyContactID
 )
@@ -1683,6 +1687,7 @@ VALUES
 'AB',
 'white',
 'N/A',
+'Is a chronic lier!',
 null,
 2
 );
