@@ -3,54 +3,103 @@
     <h2 id="medication">
         Medication List
     </h2>
+    <input class="medicationPrintButton" id="medicationPrintButton" name="medicationPrintButton" type="button"
+        value="Print" />
     <input class="medicationAddButton" id="medicationAddButton" name="medicationAddButton" type="button"
         value="Add" />
 </div>
+
+<div id="newMedicationDialog" title="Add New Medication for @Model.FirstName @Model.LastName">
+    <p class="validateTips">
+            All form fields are required.
+    </p>
+    @using (Html.BeginForm("AddMedication", "Patient", "POST"))
+    {
+        <fieldset>
+            <label for="name">
+                Name: 
+            </label>
+            <input type="text" name="name" id="modal_medicationName" class="text ui-widget-content ui-corner-all" /><br />
+
+            <label for="instructions">
+                Instruction:
+            </label>
+            <input type="text" name="instructions" id="modal_medicationInstructions" class="text ui-widget-content ui-corner-all" /><br />
+
+            <label for="startdate">
+                Start Date:
+            </label>
+            <input type="text" name="startdate" id="modal_medicationStartDate" class="text ui-widget-content ui-corner-all" /><br />
+
+            <label for="expdate">
+                Exp Date:
+            </label>
+            <input type="text" name="expdate" id="modal_medicationExpDate" class="text ui-widget-content ui-corner-all" /><br />
+        </fieldset>
+    }
+</div>
+
+
 <div>
     <p><b>
         Current Medications
-    </p></b>
+    </b></p>
 
-    <ul id="MedicationList">
-        @foreach (var medication in Model.Medications) 
-        {
-            if (@medication.ExpDate <= DateTime.Now)
-            {
-                <li>There are no records of current medications for this patient.</li>
-            }
-            else
-            {
-            <li class="group">
-                <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
-                <div style="float: left;"><b>Instructions: </b> @medication.Instruction</div><br />
-                <div style="float: left;"><b>Start Date: </b> @medication.StartDate</div><br />
-                <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
+    @if (Model.Medications.Count == 0)
+    {
+        <ul id="MedicationList">
+            <li style="float: left;">
+                There are no recorded current medications for this patient.
             </li>
+        </ul>
+    }
+    else
+    {
+        <ul id="MedicationList">
+            @foreach (var medication in Model.Medications)
+            {
+                if (@medication.ExpDate >= DateTime.Now)
+                {
+                <li class="group">
+                    <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
+                    <div style="float: left;"><b>Instructions: </b> @medication.Instruction</div><br />
+                    <div style="float: left;"><b>Start Date: </b> @medication.StartDate</div><br />
+                    <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
+                </li>
+                }
             }
-        }
-    </ul>
+        </ul>
+    }
 
+    <br />
     <br />
 
     <p><b>
         Past Medications
-    </p></b>
+    </b></p>
 
-    <ul id="MedicationList">
-        @foreach (var medication in Model.Medications)
-        {
-            if (@medication.ExpDate >= DateTime.Now)
-            {
-                <li>There are no records of past medications for this patient.</li>
-            }
-            else
-            {
-            <li class="group">
-                <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
-                <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
+    @if (Model.Medications.Count == 0)
+    {
+        <ul id="MedicationList">
+            <li style="float: left;">
+                There are no recorded past medications for this patient.
             </li>
+        </ul>
+    }
+    else
+    {
+        <ul id="MedicationList">
+            @foreach (var medication in Model.Medications)
+            {
+                if (@medication.ExpDate <= DateTime.Now)
+                {
+                <li class="group">
+                    <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
+                    <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
+                </li>
+                }
             }
-        }
-    </ul>
+        </ul>
+    }
 
 </div>
