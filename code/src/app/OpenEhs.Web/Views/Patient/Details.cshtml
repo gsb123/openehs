@@ -1,9 +1,9 @@
 ﻿@model OpenEhs.Domain.Patient
 @{
     if (Model.MiddleName != String.Empty) {
-        ViewBag.Title = String.Format("Patient: {2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName);
+        ViewBag.Title = String.Format("OpenEHS - Patient: {2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName);
     } else {
-        ViewBag.Title = String.Format("Patient: {1}, {0}", Model.FirstName, Model.LastName);
+        ViewBag.Title = String.Format("OpenEHS - Patient: {1}, {0}", Model.FirstName, Model.LastName);
     }
 }
 @section head
@@ -261,7 +261,7 @@
             </div>
             <div id="BasicInformationNotes">
                 <label for="patientNoteTextBox">Notes</label>
-                <textarea name="patientNoteTextBox" id="patientNoteTextBox">@Model.PatientNote</textarea>
+                <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.PatientNote</textarea>
             </div>
         </div>
 
