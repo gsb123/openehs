@@ -37,6 +37,7 @@ namespace OpenEhs.Domain
         public virtual string BloodType { get; set; }
         public virtual string TribeRace { get; set; }
         public virtual string Religion { get; set; }
+        public virtual string PatientNote { get; set; }
         public virtual int OldPhysicalRecordNumber { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual Note Note { get; set; }

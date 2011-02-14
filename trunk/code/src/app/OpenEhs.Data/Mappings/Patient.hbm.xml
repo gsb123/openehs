@@ -19,6 +19,7 @@
     <property name="BloodType" not-null="false" length="10"/>
     <property name="TribeRace" not-null="false" length="30"/>
     <property name="Religion" not-null="false" length="30" />
+    <property name="PatientNote" not-null="false" />
     <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
     <property name="IsActive" not-null="true" />
 
