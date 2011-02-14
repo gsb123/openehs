@@ -36,7 +36,7 @@
       <many-to-many column="ProblemID" class="Problem" />
     </bag>
 
-    <bag name="PatientCheckIns" table="PatientCheckIn">
+    <bag name="PatientCheckIns" table="PatientCheckIn" cascade="all">
       <key column="PatientId" />
       <one-to-many class="PatientCheckIn" />
     </bag>
