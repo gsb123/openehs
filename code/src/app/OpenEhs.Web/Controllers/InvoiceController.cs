@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OpenEhs.Data;
+using OpenEhs.Domain;
+using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -24,9 +26,9 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            var invoice = new InvoiceRepository().Get(id);
-
-            return View(invoice);
+            BillingViewModel billing = new BillingViewModel(id);
+            //and we're back to square one where I have to create a viewModel to return both items!
+            return View(billing);
         }
 
         //
