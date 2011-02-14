@@ -191,7 +191,6 @@
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
             <li><a href="#patientView-Allergies">Allergies</a></li>
             <li><a href="#patientView-Encounters">Encounters</a></li>
-            <li><a href="#patientView-Testing">Testing</a></li>
         </ul>
     </div>
     <div>
@@ -290,22 +289,10 @@
             @Html.Partial("_tab-PMH", Model)
         </div>
         <div id="#patientView-DxHistory">
-            <h2 id="DxHistory">
-                Dx History</h2>
-            <ul>
-                <li>History Item 1</li>
-                <li>History Item 2</li>
-                <li>History Item 3</li>
-            </ul>
+            @Html.Partial("_tab-DxHistory", Model)
         </div>
         <div id="#patientView-RxList">
-            <h2 id="RxList">
-                Rx List</h2>
-            <ul>
-                <li>Rx Item 1</li>
-                <li>Rx Item 2</li>
-                <li>Rx Item 3</li>
-            </ul>
+            @Html.Partial("_tab-RxList", Model)
         </div>
         <div id="#patientView-ChronicDiseases">
             @Html.Partial("_tab-ChronicDiseases", Model)
