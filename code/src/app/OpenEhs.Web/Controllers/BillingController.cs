@@ -58,14 +58,16 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var invoice = new BillingEditViewModel(id);
+
+            return View(invoice);
         }
 
         //
         // POST: /Invoice/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(BillingEditViewModel invoice)
         {
             try
             {
@@ -75,7 +77,7 @@ namespace OpenEhs.Web.Controllers
             }
             catch
             {
-                return View();
+                return View(invoice);
             }
         }
 

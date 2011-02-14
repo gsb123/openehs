@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IServiceRepository.cs" />
     <Compile Include="Interfaces\IInvoiceRepository.cs" />
     <Compile Include="Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Interfaces\ITemplateRepository.cs" />
     <Compile Include="Interfaces\Membership\IRoleRepository.cs" />
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
+    <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="Repositories\EmergencyContactRepository.cs" />
     <Compile Include="Repositories\PaymentRepository.cs" />
