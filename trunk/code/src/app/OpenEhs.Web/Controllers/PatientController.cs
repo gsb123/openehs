@@ -59,20 +59,21 @@ namespace OpenEhs.Web.Controllers {
                 var patient = patientRepo.Get(patientID);
 
                 Vitals vitals = new Vitals();
-                vitals.Height = 76;
-                vitals.Weight = 32;
+                vitals.Height = int.Parse(Request.Form["height"]);
+                vitals.Weight = int.Parse(Request.Form["weight"]);
                 BloodPressure bp = new BloodPressure();
-                bp.Diastolic = 140;
-                bp.Systolic = 70;
+                bp.Diastolic = int.Parse(Request.Form["BpDiastolic"]);
+                bp.Systolic = int.Parse(Request.Form["BpSystolic"]);
                 vitals.BloodPressure = bp;
-                vitals.HeartRate = 120;
+                vitals.HeartRate = int.Parse(Request.Form["HeartRate"]);
                 vitals.IsActive = true;
-                vitals.RespiratoryRate = 15;
-                vitals.Temperature = 37;
+                vitals.RespiratoryRate = int.Parse(Request.Form["RespiratoryRate"]);
+                vitals.Temperature = int.Parse(Request.Form["Temperature"]);
                 VitalsType vt = new VitalsType();
                 vitals.Type = vt;
+                vitals.Time = DateTime.Now;
+                vitals.PatientCheckIn = patient.PatientCheckIns[0];
                 patient.PatientCheckIns[0].Vitals.Add(vitals);
-
 
                 return Json(new { 
                     error="false", 
