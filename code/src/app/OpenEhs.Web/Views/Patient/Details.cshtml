@@ -130,7 +130,13 @@
 
             $(".diseaseEditButton").button().click(function() {
                 $("#diseaseDialog").dialog("open");
-            });                 
+            });    
+			
+			$(".allergyAddButton").button().click(function() 
+			{
+                
+            });  
+			             
         });
     </script>
 }
@@ -374,84 +380,38 @@
             </div>
         </div>
 
-        <div id="#patientView-Allergies">
-            <h2 id="allergiesHeader">
-                Allergies</h2>
-            <table id="allergiesTable">
-                <thead>
-                    <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var allergy in Model.Allergies) {
-                        <tr>
-                            <td>@allergy.Name
-                                @if (allergy.Medication != null) {
-                                    @String.Format("({0})", allergy.Medication)                                    
-                                }
-                            </td>
-                            <td>
-                                <input class="allergyEditButton" id="@allergy.Id" name="@allergy.Name" type="button" value="Edit" />
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <div id="allergyDialog" title="Edit Allergy for @Model.FirstName @Model.LastName">
-                <p class="validateTips">
-                    All form fields are required.</p>
-                @using (Html.BeginForm("EditAllergy", "Patient", "POST")) {
-                    <fieldset>
-                        <label for="name">
-                            Name</label>
-                        <input type="text" name="name" id="modal_allergyName" class="text ui-widget-content ui-corner-all" />
-                    </fieldset>
-                }
-            </div>
-        </div>
-        <div id="#patientView-Encounters">
-            <h3>
-                Encounters go here.</h3>
-        </div>
 
-        <div id="#patientView-Testing">
-            <fieldset>
-                <legend>CheckIn Test</legend>
-                <ul>
-                    @foreach (var checkin in Model.PatientCheckIns) {
-                        <li>@String.Format("Checked In: {0:dd/MMM/yyyy H:mm:ss zzz}", checkin.CheckInTime)</li>
-                    
-                       if (checkin.Invoice != null) {
-                        <ul>
-                            <li>@String.Format("Invoice #{0} - {2} Items - {1:c}", checkin.Invoice.Id, checkin.Invoice.Total, checkin.Invoice.Items.Count)</li>
-                            @if (checkin.Invoice.Items.Count > 0) {
-                                <ul>
-                                    @foreach (var i in checkin.Invoice.Items) {
-                                        if (i.Product != null) {
-                                        <li>@String.Format("{0} x {1} = {2:c}", i.Product.Name, i.Quantity, i.Total)</li>
-                                        } else if (i.Service != null) {
-                                        <li>@String.Format("{0} x {1} = {2:c}", i.Service.Name, i.Quantity, i.Total)</li>
-                                        }
-                                    }
-                                </ul>
-                            }
-                        </ul>
-                       }
-                    }
-                </ul>
-            </fieldset>
-            <fieldset>
-                <legend>Encounter Test</legend>
-            </fieldset>
-        </div>
-    </div>
+
+        <div id="#patientView-Allergy">
+          <div id="allergyHeader" class="group">
+                <h2 id="Allergies">Allergies</h2>
+                <input class="allergyAddButton" id="allergyAddButton" name="allergyAddButton" type="button" value="Add" />
+          </div>
+		  <div>
+				<table>
+					<thead>
+						<tr>
+							<th class="allergyNameColumn">Name</th>
+							<th class="allergyActionColumn">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var allergy in Model.Allergies) 
+						{
+							<tr>
+								<th class"allergyNameColumn">@allergy.Name</th>
+								<th></th>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+        </div>  
 </div>
+
+
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
