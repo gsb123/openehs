@@ -23,7 +23,8 @@ namespace OpenEhs.Domain
         public virtual DateTime CheckOutTime { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual IList<Encounter> Encounters { get; set; }
-        public virtual Invoice Invoice { get; set; } 
+        public virtual Invoice Invoice { get; set; }
+        public virtual IList<Vitals> Vitals { get; set; }
 
         #endregion
 

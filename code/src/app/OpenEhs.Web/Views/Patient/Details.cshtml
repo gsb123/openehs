@@ -304,10 +304,8 @@
                     <tbody>
                     @foreach(var checkin in Model.PatientCheckIns)
                     {
-                        foreach (var encounter in checkin.Encounters)
+                        foreach (var vital in checkin.Vitals)
                         {
-                            foreach (var vital in encounter.Vitals)
-                            {
                                 <tr>
                                     <td class="vitalDateColumn">@vital.Time</td>
                                     <td class="vitalHeightColumn">@vital.Height</td>
@@ -317,7 +315,6 @@
                                     <td class="vitalBloodPressureColumn">@vital.BloodPressure</td>
                                     <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate</td>
                                 </tr>
-                            }
                         }
                     }
                     </tbody>
