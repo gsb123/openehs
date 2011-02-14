@@ -1,9 +1,30 @@
 ﻿@model OpenEhs.Domain.Patient
+<div id="medicationHeader" class="group">
+    <h2 id="medication">
+        Medication List
+    </h2>
+    <input class="medicationAddButton" id="medicationAddButton" name="medicationAddButton" type="button"
+        value="Add" />
+</div>
+<div>
+    <p><b>
+        Current Medications
+    </p></b>
 
-            <h2 id="RxList">
-                Rx List</h2>
-            <ul>
-                <li>Rx Item 1</li>
-                <li>Rx Item 2</li>
-                <li>Rx Item 3</li>
-            </ul>
+    <ul id="MedicationList">
+        @foreach (var medication in Model.Medications) {
+            <li class="group">
+                <div style="float: left;">@medication.Name     </div><br />
+                <div style="float: left;">@medication.Instruction</div><br />
+                <div style="float: right;">@medication.StartDate</div>
+            </li>
+        }
+    </ul>
+
+    <br />
+
+    <p><b>
+        Past Medications
+    </p></b>
+
+</div>
