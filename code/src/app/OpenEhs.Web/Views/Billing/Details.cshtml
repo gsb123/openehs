@@ -7,25 +7,15 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>Invoice For @Model.PatientFirstName @(Model.PatientMiddleName != ""?Model.PatientMiddleName + "":"")@Model.PatientLastName on @String.Format("{0:g}", Model.Date)</legend>
+    <legend>Invoice For 
+        @String.Format("{0} ", Model.PatientFirstName)
+        @String.Format(Model.PatientMiddleName == ""?"":"{0}",Model.PatientMiddleName)
+        @String.Format("{0}", Model.PatientLastName)
+    </legend>
 
-    <div class="display-label">Patient ID</div>
-    <div class="display-field">@Model.PatientId</div>
-
-    <div class="display-label">PatientFirstName</div>
-    <div class="display-field">@Model.PatientFirstName</div>
-
-    <div class="display-label">PatientLastName</div>
-    <div class="display-field">@Model.PatientLastName</div>
-
-    @if (Model.PatientMiddleName != "")
-    {
-        <div class="display-label">PatientMiddleName</div>
-        <div class="display-field">@Model.PatientMiddleName</div>
-    }
     <div class="display-label">Date</div>
     <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
-
+    
     <hr />
     <div class="display-label">Invoice Items</div>
     <table>
@@ -57,12 +47,14 @@
     <hr />
 
     <div class="display-label">Total</div>
-    <div class="display-field">@String.Format("{0:F}", Model.Total)</div>
+    <div class="display-field">GH$ @String.Format("{0:F}", Model.Total)</div>
 
+    <div class="display-label">Payment</div>
+    <div class="display-field">GH$ @String.Format("{0:F}", Model.PaymentAmount)</div>
 
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
