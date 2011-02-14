@@ -25,6 +25,12 @@
       <key column="PatientCheckInID" />
       <one-to-many class="Encounter" />
     </bag>
+
+    <bag name="Vitals" table="Vitals">
+      <key column="PatientCheckInId" />
+      <one-to-many class="Vitals" />
+    </bag>
+
   </class>
   
 </hibernate-mapping>
