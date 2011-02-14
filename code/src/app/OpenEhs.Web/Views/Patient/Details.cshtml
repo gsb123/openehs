@@ -40,6 +40,11 @@
                 });
             });
 
+            $("#BasicMoreInfoLink").click(function() {
+                $("#BasicMoreInfo").slideToggle("slow", function() {
+                });
+            });
+
             $( "#allergyDialog" ).dialog({
 			    autoOpen: false,
 			    height: 250,
@@ -190,28 +195,42 @@
             <div id="BasicInformationColumn">
                 <fieldset class="group">
                     <legend>General</legend>
-                    <div class="column">
-                        @Html.LabelFor(model => model.Id, "Patient ID")<br />
-                        @Html.TextBoxFor(model => model.Id)<br />
-                        @Html.LabelFor(model => model.FirstName, "First Name")<br />
-                        @Html.TextBoxFor(model => model.FirstName)<br />
-                        @Html.LabelFor(model => model.MiddleName, "Middle Name")<br />
-                        @Html.TextBoxFor(model => model.MiddleName)<br />
-                        @Html.LabelFor(model => model.LastName, "Last Name")<br />
-                        @Html.TextBoxFor(model => model.LastName)<br />
-                    </div>
-                    <div class="column">
-                        @Html.LabelFor(model => model.Gender, "Gender")<br />
-                        <div id="GenderRadio">
-                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio" })
-                            @Html.Label("MaleGenderRadio", "Male")
-                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio" })
-                            @Html.Label("FemaleGenderRadio", "Female")
+                    <div class="group">
+                        <div class="column">
+                            @Html.LabelFor(model => model.Id, "Patient ID")<br />
+                            @Html.TextBoxFor(model => model.Id)<br />
+                            @Html.LabelFor(model => model.FirstName, "First Name")<br />
+                            @Html.TextBoxFor(model => model.FirstName)<br />
+                            @Html.LabelFor(model => model.MiddleName, "Middle Name")<br />
+                            @Html.TextBoxFor(model => model.MiddleName)<br />
+                            @Html.LabelFor(model => model.LastName, "Last Name")<br />
+                            @Html.TextBoxFor(model => model.LastName)<br />
                         </div>
-                        @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
-                        @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
-                        @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
-                        @Html.TextBoxFor(model => model.PhoneNumber)
+                        <div class="column">
+                            @Html.LabelFor(model => model.Gender, "Gender")<br />
+                            <div id="GenderRadio">
+                                @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio" })
+                                @Html.Label("MaleGenderRadio", "Male")
+                                @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio" })
+                                @Html.Label("FemaleGenderRadio", "Female")
+                            </div>
+                            @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
+                            @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
+                            @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
+                            @Html.TextBoxFor(model => model.PhoneNumber)
+                        </div>
+                    </div>
+                    <div id="BasicMoreInfoLink">
+                        Show Details...</div>
+                    <div id="BasicMoreInfo">
+                        @Html.LabelFor(model => model.Address.Street1)<br />
+                        @Html.TextBoxFor(model => model.Address.Street1)<br />
+                        @Html.LabelFor(model => model.Address.Street2)<br />
+                        @Html.TextBoxFor(model => model.Address.Street2)<br />
+                        @Html.LabelFor(model => model.Address.City)<br />
+                        @Html.TextBoxFor(model => model.Address.City)<br />
+                        @Html.LabelFor(model => model.Address.Region)<br />
+                        @Html.TextBoxFor(model => model.Address.Region)
                     </div>
                 </fieldset>
                 <fieldset>
@@ -222,7 +241,6 @@
                     @Html.TextBoxFor(model => model.EmergencyContact.LastName)<br />
                     @Html.LabelFor(model => model.EmergencyContact.PhoneNumber)<br />
                     @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber)<br />
-                    <br />
                     <div id="EmergencyContactMoreInfoLink">
                         Show Details...</div>
                     <div id="EmergencyContactMoreInfo">
@@ -235,17 +253,6 @@
                         @Html.LabelFor(model => model.EmergencyContact.Address.Region)<br />
                         @Html.TextBoxFor(model => model.EmergencyContact.Address.Region)
                     </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Address</legend>
-                    @Html.LabelFor(model => model.Address.Street1, "Street 1")<br />
-                    @Html.TextBoxFor(model => model.Address.Street1)<br />
-                    @Html.LabelFor(model => model.Address.Street2, "Street 2")<br />
-                    @Html.TextBoxFor(model => model.Address.Street2)<br />
-                    @Html.LabelFor(model => model.Address.City)<br />
-                    @Html.TextBoxFor(model => model.Address.City)<br />
-                    @Html.LabelFor(model => model.Address.Region)<br />
-                    @Html.TextBoxFor(model => model.Address.Region)
                 </fieldset>
             </div>
             <div id="BasicInformationNotes">
@@ -359,12 +366,16 @@
                 <input class="chronicDiseasesAddButton" id="chronicDiseasesAddButton" name="chronicDiseasesAddButton" type="button" value="Add" />
 		  </div>
 		  <div>
+            <ul id="ChronicDiseases">
 				@foreach (var disease in Model.Problems) 
 				{
-					<ul>
-						<li>@disease.ProblemName</li>
-					</ul>
+				<li>
+                    <div>
+                        @disease.ProblemName
+                    </div>
+                </li>
 				}
+            </ul>
           </div>
         </div>
 

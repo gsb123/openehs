@@ -34,15 +34,6 @@
     width: 125px;
 }
 
-#EmergencyContactMoreInfoLink {
-    color: #00f;
-    cursor: pointer;
-}
-
-#EmergencyContactMoreInfo {
-    display: none;
-}
-
 #patientViewHeader 
 {
     border: 1px solid #aaa;
@@ -139,4 +130,41 @@ fieldset
 {
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+#BasicMoreInfoLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 0px;
+}
+
+#BasicMoreInfo
+{
+    clear: both;
+    display: none;
+}
+
+#EmergencyContactMoreInfoLink {
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 0px;
+}
+
+#EmergencyContactMoreInfo {
+    display: none;
+}
+
+#ChronicDiseases li
+{
+    font-size: 1.6em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 20px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
