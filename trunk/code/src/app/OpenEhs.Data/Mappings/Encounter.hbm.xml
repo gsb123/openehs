@@ -10,6 +10,7 @@
 
     <many-to-one name="PatientCheckIn" column="PatientCheckInID" unique="true" cascade="all" />
 
+
     <property name="TimeIn" not-null="true" />
     <property name="TimeOut" not-null="false" />
     <property name="Comments" not-null="false" />
