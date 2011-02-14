@@ -93,6 +93,16 @@ EmergencyContactID          int                 NULL,
 IsActive                    bit(1)              NOT NULL                DEFAULT 1
 ) AUTO_INCREMENT= 100000;
 
+CREATE TABLE Medication
+(
+MedicationID        int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+`Name`              text        NOT NULL,
+Instruction         text        NOT NULL,
+StartDate           datetime    NOT NULL,
+ExpDate             datetime    NOT NULL,
+PatientID           int         NOT NULL
+);
+
 CREATE TABLE Allergy
 (
 AllergyID               int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
@@ -105,6 +115,21 @@ CREATE TABLE PatientAllergy
 PatientAllergyID            int         AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
 PatientID                   int         NOT NULL,
 AllergyID                   int         NOT NULL
+);
+
+CREATE TABLE Immunization
+(
+ImmunizationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+VaccineType             text            NOT NULL,
+DateAdministered        datetime        NOT NULL,
+Comments                text            NULL
+);
+
+CREATE TABLE PatientImmunization
+(
+PatientImmunizationID       int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+PatientID                   int             NOT NULL,
+ImmunizationID              int             NOT NULL
 );
 
 CREATE TABLE Problem
@@ -478,6 +503,18 @@ FOREIGN KEY (TemplateCategoryID) REFERENCES TemplateCategory(TemplateCategoryID)
 ALTER TABLE Product
 ADD CONSTRAINT ProductMustHaveCategoryID
 FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID);
+
+ALTER TABLE PatientImmunization
+ADD CONSTRAINT PatientImmunizationMustHavePatientID
+FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
+
+ALTER TABLE PatientImmunization
+ADD CONSTRAINT PatientImmunizationMustHaveImmunizationID
+FOREIGN KEY (ImmunizationID) REFERENCES Immunization(ImmunizationID);
+
+ALTER TABLE Medication
+ADD CONSTRAINT MedicationMustHavePatientID
+FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
 
 #----------------------------------------------------------------------------------------------------------
 #-------------------------------------------------TRIGGERS-------------------------------------------------
@@ -2214,4 +2251,111 @@ VALUES
 12,
 1,
 1
+);
+
+
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'DTP - Diphtheria, tetanus toxoids, and whole cell pertussis',
+NOW(),
+null
+);
+
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'IPV - Poliovirus vaccine, inactivated',
+NOW(),
+null
+);
+
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'Hep B - 3 dose schedule',
+NOW(),
+null
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100000,
+1
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100000,
+3
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100001,
+2
+);
+
+INSERT INTO Medication
+(
+`Name`,
+Instruction,
+StartDate,
+ExpDate,
+PatientID
+)
+VALUES
+(
+'Lisinopril oral tablet 10mg',
+'Qty 30 of 10mg, 1 every 4 hours. (6 refills)',
+NOW(),
+'2011-04-14 00:00:00',
+100000
+);
+
+INSERT INTO Medication
+(
+`Name`,
+Instruction,
+StartDate,
+ExpDate,
+PatientID
+)
+VALUES
+(
+'Metformin Hydrochlorid (metformin) oral tablet 500mg',
+'Whatever the directions are',
+'2007-10-01 00:00:00',
+'2008-05-10 00:00:00',
+100000
 );
