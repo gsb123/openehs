@@ -91,6 +91,23 @@
     clear: both;
 }
 
+#chronicDiseasesHeader
+{
+	padding-right: 10px;
+    clear: both;
+}
+
+#chronicDiseasesHeader input
+{
+    margin-top: 15px;
+    float: right;
+}
+
+#chronicDiseasesHeader h2
+{
+    float: left;
+}
+
 #allergyHeader h2
 {
     float: left;
