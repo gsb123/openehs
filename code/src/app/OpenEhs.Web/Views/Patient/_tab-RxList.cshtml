@@ -12,12 +12,21 @@
     </p></b>
 
     <ul id="MedicationList">
-        @foreach (var medication in Model.Medications) {
+        @foreach (var medication in Model.Medications) 
+        {
+            if (@medication.ExpDate <= DateTime.Now)
+            {
+                <li>There are no records of current medications for this patient.</li>
+            }
+            else
+            {
             <li class="group">
-                <div style="float: left;">@medication.Name     </div><br />
-                <div style="float: left;">@medication.Instruction</div><br />
-                <div style="float: right;">@medication.StartDate</div>
+                <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
+                <div style="float: left;"><b>Instructions: </b> @medication.Instruction</div><br />
+                <div style="float: left;"><b>Start Date: </b> @medication.StartDate</div><br />
+                <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
             </li>
+            }
         }
     </ul>
 
@@ -26,5 +35,22 @@
     <p><b>
         Past Medications
     </p></b>
+
+    <ul id="MedicationList">
+        @foreach (var medication in Model.Medications)
+        {
+            if (@medication.ExpDate >= DateTime.Now)
+            {
+                <li>There are no records of past medications for this patient.</li>
+            }
+            else
+            {
+            <li class="group">
+                <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
+                <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
+            </li>
+            }
+        }
+    </ul>
 
 </div>
