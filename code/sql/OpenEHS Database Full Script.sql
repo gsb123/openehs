@@ -2198,7 +2198,7 @@ Temperature,
 BPSystolic,
 BPDiastolic,
 RespiratoryRate,
-PatientEncounterID,
+PatientCheckInID,
 IsActive
 )
 VALUES
