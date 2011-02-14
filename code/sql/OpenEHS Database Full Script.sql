@@ -287,14 +287,14 @@ CREATE TABLE Vitals
     VitalsID                    int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     `Time`                      timestamp           NOT NULL,
     `Type`                      bit(5)              NOT NULL,
-    Height                      varchar(5)          NOT NULL,
-    Weight                      varchar(5)          NOT NULL,
+    Height                      tinyint             NOT NULL,
+    Weight                      tinyint             NOT NULL,
     HeartRate                   tinyint             NOT NULL,
     Temperature                 decimal(4,1)        NOT NULL,
     BPSystolic                  int                 NOT NULL,
     BPDiastolic                 int                 NOT NULL,
-    RespiratoryRate              tinyint             NOT NULL,
-    PatientEncounterID          int                 NOT NULL,
+    RespiratoryRate             tinyint             NOT NULL,
+    PatientCheckInID            int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
@@ -456,8 +456,8 @@ ADD CONSTRAINT FK_PatientEncounterMustHavePatientCheckInID
 FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
 ALTER TABLE Vitals
-ADD CONSTRAINT FK_VitalsMustHavePatientEncounterID
-FOREIGN KEY (PatientEncounterID) REFERENCES PatientEncounter(PatientEncounterID);
+ADD CONSTRAINT FK_VitalsMustHavePatientCheckInID
+FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
 ALTER TABLE PatientProblem
 ADD CONSTRAINT FK_PatientProblemMustHavePatientID
@@ -2186,6 +2186,7 @@ CALL sp_insertInvoiceItem
 null,
 42
 );
+
 INSERT INTO Vitals
 (
 Time,
