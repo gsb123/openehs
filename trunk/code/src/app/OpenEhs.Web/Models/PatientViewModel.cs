@@ -3,6 +3,7 @@ using OpenEhs.Domain;
 using System.ComponentModel;
 using System;
 using System.Collections.Generic;
+using OpenEhs.Data;
 
 namespace OpenEhs.Web.Models
 {
@@ -11,6 +12,11 @@ namespace OpenEhs.Web.Models
     public class PatientViewModel
     {
         private Patient _patient;
+
+        public PatientViewModel(int patientId)
+        {
+            _patient = new PatientRepository().Get(patientId);
+        }
 
         #region Patient
 
