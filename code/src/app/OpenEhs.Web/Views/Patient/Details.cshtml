@@ -28,12 +28,14 @@
                 
             $("#patientView").jVertTabs();
 
+
             $("#DateOfBirth").datepicker({
                 showOn: "button",
                 buttonImage: "@Url.Content("~/Content/themes/base/images/calendar.png")",
                 buttonImageOnly: true,
                 changeYear: true
             });
+
 
             $("#EmergencyContactMoreInfoLink").click(function() {
                 $("#EmergencyContactMoreInfo").slideToggle("slow", function() {
@@ -187,6 +189,10 @@
                         $.post("/Patient/AddMedication", 
                         {
                             patientID: "@Model.Id",
+                            name: document.getElementById("modal_medicationName").value,
+                            instructions: document.getElementById("modal_medicationInstructions").value,
+                            startdate: document.getElementById("startDatePicker").value,
+                            expdate: document.getElementById("expDatePicker").value
                             
                         });
                         $( this ).dialog("close");
@@ -200,6 +206,14 @@
 				    allFields.removeClass("ui-state-error");
 			    }
 		    });
+
+            $(function() {
+		    $( "#startDatePicker" ).datepicker();
+	        });
+
+            $(function() {
+		    $( "#expDatePicker" ).datepicker();
+	        });
                    
         });
     </script>
