@@ -166,8 +166,41 @@
             
             $(".medicationAddButton").button().click(function() 
 			{
+                $("#newMedicationDialog").dialog("open");
+            });    
+            
+            $(".medicationPrintButton").button().click(function() 
+			{
                 
-            });           
+            });
+
+
+
+            $("#newMedicationDialog").dialog({
+			    autoOpen: false,
+			    height: 400,
+			    width: 400,
+			    modal: true,
+			    buttons: {
+				    "Save Medication": function() 
+                    {
+                        $.post("/Patient/AddMedication", 
+                        {
+                            patientID: "@Model.Id",
+                            
+                        });
+                        $( this ).dialog("close");
+
+				    },
+				    Cancel: function() {
+					    $( this ).dialog( "close" );
+				    }
+			    },
+			    close: function() {
+				    allFields.removeClass("ui-state-error");
+			    }
+		    });
+                   
         });
     </script>
 }
