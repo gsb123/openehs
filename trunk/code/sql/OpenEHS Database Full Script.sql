@@ -287,14 +287,14 @@ CREATE TABLE Vitals
     VitalsID                    int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     `Time`                      timestamp           NOT NULL,
     `Type`                      bit(5)              NOT NULL,
-    Height                      tinyint             NOT NULL,
-    Weight                      tinyint             NOT NULL,
-    HeartRate                   tinyint             NOT NULL,
-    Temperature                 decimal(4,1)        NOT NULL,
-    BPSystolic                  int                 NOT NULL,
-    BPDiastolic                 int                 NOT NULL,
-    RespiratoryRate             tinyint             NOT NULL,
-    PatientCheckInID            int                 NOT NULL,
+    Height                      tinyint             NULL,
+    Weight                      tinyint             NULL,
+    HeartRate                   tinyint             NULL,
+    Temperature                 decimal(4,1)        NULL,
+    BPSystolic                  int                 NULL,
+    BPDiastolic                 int                 NULL,
+    RespiratoryRate             tinyint             NULL,
+    PatientCheckInID            int                 NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
