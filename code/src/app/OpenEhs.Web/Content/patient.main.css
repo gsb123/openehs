@@ -1,9 +1,9 @@
-﻿#actions
+﻿#Actions
 {
     margin-bottom: 20px;
 }
 
-#actions input
+#Actions input
 {
    font-family: Segoe, Sans-Serif;
    font-size: 3.2em;
@@ -16,59 +16,59 @@
     padding: 15px 20px 16px 20px !important;
 }
 
-#createNewPatientButton
+#CreateNewPatientButton
 {
     float: left;
 }
 
-#search
+#Search
 {
     float: right;
 }
 
-#searchPatientButton
+#SearchPatientButton
 {
     float: right;
     margin-left: 10px;
 }
 
-#patientSearchTextBox
+#PatientSearchTextBox
 {
     float: left;
-    width: 600px;
+    width: 550px;
 }
 
-#recentlyAccessedList table
+#RecentlyAccessedList table
 {
     font-size: 1.3em;
     width: 100%;
 }
 
-#recentlyAccessedList table td, #recentlyAccessedList table th
+#RecentlyAccessedList table td, #RecentlyAccessedList table th
 {
     padding: 10px;
 }
 
-#recentlyAccessedList table tr:hover
+#RecentlyAccessedList table tr:hover
 {
     background-color: #eee;
 }
 
-#recentlyAccessedList table td
+#RecentlyAccessedList table td
 {
     cursor: pointer;
 }
 
-.idColumn
+.IdColumn
 {
     width: 10%;
 }
 
-.nameColumn
+.NameColumn
 {
 }
 
-.dateOfBirthColumn
+.DateOfBirthColumn
 {
     text-align: right;
     width: 15%;

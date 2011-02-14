@@ -101,16 +101,20 @@ page width. Or, you can specify an exact pixel width. */
 
 #header h1
 {
-    font-weight: bold;
     padding: 5px 0;
-    margin: 0;
+    margin: 0 0 15px 0;
     color: #fff;
     border: none;
-    font-size: 32px !important;
+    background: url("../images/openehs.logo.png") no-repeat top left;
+    width: 245px;
+    height: 51px;
+    text-indent: -300px;
 }
 
 #main
 {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     padding: 30px 30px 15px 30px;
     background-color: #fff;
     margin-bottom: 30px;
@@ -131,10 +135,11 @@ page width. Or, you can specify an exact pixel width. */
 ----------------------------------------------------------*/
 ul#menu
 {
+    font-size: 1.6em;
     border-bottom: 1px #5C87B2 solid;
     padding: 0 0 2px;
     position: relative;
-    margin: 0;
+    margin: 0 0 19px 0;
 }
 
 ul#menu li
@@ -146,18 +151,18 @@ ul#menu li
 ul#menu li#greeting
 {
     padding: 10px 20px;
-    font-weight: bold;
     text-decoration: none;
-    line-height: 2.8em;
+    line-height: 1em;
     color: #fff;
 }
 
 ul#menu li a
 {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     padding: 20px 40px;
-    font-weight: bold;
     text-decoration: none;
-    line-height: 4.5em;
+    line-height: 1em;
     background-color: #e8eef4;
     color: #034af3;
 }

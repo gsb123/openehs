@@ -121,6 +121,7 @@
     </Content>
     <Content Include="images\common\icons\16x16\Delete.png" />
     <Content Include="images\common\icons\24x24\Delete.png" />
+    <Content Include="images\openehs.logo.png" />
     <Content Include="Scripts\ckedit\adapters\jquery.js" />
     <Content Include="Scripts\ckedit\ckeditor.js" />
     <Content Include="Scripts\ckedit\ckeditor_basic.js" />
