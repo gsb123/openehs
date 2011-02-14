@@ -1,60 +1,227 @@
 ﻿@model OpenEhs.Web.Models.BillingViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = String.Format("OpenEHS - Invoice #{0:d6}", Model.Id);
+}
+@section head
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PayInFullButton")
+                .button()
+                .click(function () {
+                })
+                .next()
+                    .button({
+                        text: false,
+                        icons: {
+                            primary: "ui-icon-triangle-1-s"
+                        }
+                    })
+                    .click(function () {
+                        alert("Menu!");
+                    })
+                    .parent()
+                        .buttonset();
+        });
+    </script>
+
+    <style type="text/css">
+        #InvoiceTitle > h1
+        {
+            font-size: 2.4em;
+            float: left;
+            margin: 2px 0px 0px 0px;
+        }
+        
+        #TotalAndPayment
+        {
+            text-align: right; 
+            float: right;
+        }
+        
+        #InvoiceTotal
+        {
+            font-size: 2.4em;
+            float: left;
+            margin: 2px 20px 0px 0px;
+        }
+        
+        #PaymentActionButtons
+        {
+            float: left;
+        }
+        
+        #PayInFullButton, #SelectActionButton
+        {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+        
+        #InvoiceHeader
+        {
+            margin-top: 25px;
+        }
+        
+        #InvoiceBillTo
+        {
+            float: left;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+        
+        #InvoiceBillTo fieldset
+        {
+            width: 300px;
+        }
+        
+        #InvoiceBillTo ul
+        {
+            font-size: 1.4em;
+            list-style: none;
+            padding-left: 0px;
+        }
+        
+        #InvoiceHeaderInformation
+        {
+            font-size: 1.4em;
+            float: right;
+        }
+        
+        #InvoiceHeaderInformation table
+        {
+            text-align: right;
+            border-collapse: collapse;
+        }
+        
+        #InvoiceLineItems
+        {
+            font-size: 1.4em;
+        }
+        
+        #InvoiceLineItems table
+        {
+            width: 100%;
+        }
+        
+        .DescriptionColumn
+        {
+            width: 50%;
+        }
+        
+        .UnitColumn
+        {
+            width: 12%;
+            text-align: center;
+        }
+        
+        .PriceColumn
+        {
+            width: 15%;
+            text-align: right;
+        }
+        
+        .QuantityColumn
+        {
+            width: 8%;
+            text-align: center;
+        }
+        
+        .TotalColumn
+        {
+            width: 15%;
+            text-align: right;
+        }
+    </style>
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Invoice For 
-        @String.Format("{0} ", Model.PatientFirstName)
-        @String.Format(Model.PatientMiddleName == ""?"":"{0}",Model.PatientMiddleName)
-        @String.Format("{0}", Model.PatientLastName)
-    </legend>
-
-    <div class="display-label">Date</div>
-    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
-    
-    <hr />
-    <div class="display-label">Invoice Items</div>
-    <table>
-    <tr>
-        <th>Quantity</th><th>Service</th><th>Product</th><th>Price</th><th>Total</th>
-    </tr>
-    @foreach (var Item in Model.LineItems)
-    {
-        <tr>
-        <td>@Item.Quantity</td>
-        
-        @if (Item.Service != null)
-        {
-            <td>@Item.Service.Name</td>
-            <td></td>      
-            <td>GH$ @Item.Service.Price</td>
-        }
-        else
-        {
-            <td></td>
-            <td>@Item.Product.Name</td>
-            <td>GH$ @Item.Product.Price</td>
-        }
-        
-        <td>GH$ @Item.Total</td>
-        </tr>
-    }
-    </table>
-    <hr />
-
-    <div class="display-label">Total</div>
-    <div class="display-field">GH$ @String.Format("{0:F}", Model.Total)</div>
-
-    <div class="display-label">Payment</div>
-    <div class="display-field">GH$ @String.Format("{0:F}", Model.PaymentAmount)</div>
-
-</fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
+<div id="InvoiceTitle" class="group">
+    <h1>Invoice</h1>
+    <div id="TotalAndPayment" class="group">
+        <h1 id="InvoiceTotal">&#x20B5;@Model.Total</h1>
+        <div id="PaymentActionButtons">
+            <button name="PayInFullButton" id="PayInFullButton">Pay</button>
+            <button name="SelectActionButton" id="SelectActionButton">Select Action</button>
+        </div>
+    </div>
+</div>
+<div id="InvoiceHeader" class="group">
+    <div id="InvoiceBillTo" class="group">
+        <fieldset>
+            <legend>Bill To</legend>
+            <ul>
+                <li>
+                    ID# @Model.PatientId
+                </li>
+                <li>
+                    @String.Format("{0} {1}", Model.PatientFirstName, Model.PatientLastName)
+                </li>
+                <li>
+                    @Model.BillToAddress.Street1
+                </li>
+                @if (Model.BillToAddress.Street2 != null)
+                {
+                <li>
+                    @Model.BillToAddress.Street2
+                </li>
+                }
+                <li>@String.Format("{0}, {1}", Model.BillToAddress.City, Model.BillToAddress.Region)</li>
+                <li>@Model.BillToAddress.Country</li>
+            </ul>
+        </fieldset>
+    </div>
+    <div id="InvoiceHeaderInformation">
+        <table>
+            <tr>
+                <td>Invoice #:</td>
+                <td>@Model.Id.ToString("d6")</td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td>@Model.Date.ToString("dd/MMM/yyyy")</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="InvoiceLineItems">
+    <table>
+        <thead>
+            <tr>
+                <th class="DescriptionColumn">Description</th>
+                <th class="UnitColumn">Unit</th>
+                <th class="PriceColumn">Price</th>
+                <th class="QuantityColumn">Qty.</th>
+                <th class="TotalColumn">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LineItems)
+            {
+                if (item.Service != null)
+                {
+            <tr>
+                <td class="DescriptionColumn">@item.Service.Name</td>
+                <td class="UnitColumn">Service</td>
+                <td class="PriceColumn">&#x20B5;@item.Service.Price</td>
+                <td class="QuantityColumn">@item.Quantity</td>
+                <td class="TotalColumn">&#x20B5;@item.Total</td>
+            </tr>
+                }
+                else if (item.Product != null)
+                {
+            <tr>
+                <td class="DescriptionColumn">@item.Product.Name</td>
+                <td class="UnitColumn">@item.Product.Unit</td>
+                <td class="PriceColumn">&#x20B5;@item.Product.Price</td>
+                <td class="QuantityColumn">@item.Quantity</td>
+                <td class="TotalColumn">&#x20B5;@item.Total</td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

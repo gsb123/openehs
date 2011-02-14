@@ -65,6 +65,11 @@ namespace OpenEhs.Web.Models
                 return _invoice.PatientCheckIn.Patient.MiddleName;
             }
         }
+
+        public Address BillToAddress
+        {
+            get { return _invoice.PatientCheckIn.Patient.Address; }
+        }
         
         [Required]
         [DisplayName("Invoice ID")]
@@ -133,7 +138,8 @@ namespace OpenEhs.Web.Models
         
         #endregion
 
-        #region methods
+
+        #region Methods
 
         /// <summary>
         /// Adds an InvoiceLineItem to this Invoice.
@@ -172,8 +178,6 @@ namespace OpenEhs.Web.Models
          */
 
         #endregion
-
-
     }
 
     #endregion

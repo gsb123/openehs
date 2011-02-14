@@ -15,12 +15,13 @@
     <body>
         <div class="page">
             <div id="header">
-                <div id="title">
-                    <h1>
-                        OpenEHS</h1>
-                </div>
-                <div id="logindisplay">
-                    @Html.Partial("_LogOnPartial")
+                <div style="margin-bottom: -30px;" class="group">
+                    <div id="title">
+                        <h1 id="Logotype">@Html.ActionLink("OpenEHS", "Index", "Home")</h1>
+                    </div>
+                    <div id="logindisplay">
+                        @Html.Partial("_LogOnPartial") | <a href="">Help</a>
+                    </div>
                 </div>
                 <div id="menucontainer">
                     <ul id="menu">
