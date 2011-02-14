@@ -129,3 +129,14 @@
     margin-top: 15px;
     float: right;
 }
+
+#noteTextBox
+{
+    width: 150px;
+}
+
+fieldset
+{
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
