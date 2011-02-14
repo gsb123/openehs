@@ -85,12 +85,29 @@
     clear: both;
 }
 
+#allergyHeader
+{
+	padding-right: 10px;
+    clear: both;
+}
+
+#allergyHeader h2
+{
+    float: left;
+}
+
 #vitalsHeader h2
 {
     float: left;
 }
 
 #vitalsHeader input
+{
+    margin-top: 15px;
+    float: right;
+}
+
+#allergyHeader input
 {
     margin-top: 15px;
     float: right;
