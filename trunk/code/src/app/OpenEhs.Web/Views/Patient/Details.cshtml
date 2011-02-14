@@ -12,6 +12,8 @@
     <link href="@Url.Content("~/Content/patient.view.css")" rel="Stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-jvert-tabs-1.1.4.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ckedit/ckeditor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ckedit/adapters/jquery.js")" type="text/javascript"></script>
     @* Hack for enabling jQuery intellisense.  See http://blogs.msdn.com/b/webdevtools/archive/2008/10/28/rich-intellisense-for-jquery.aspx *@
     @if (false) {
         <script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>
@@ -25,7 +27,6 @@
 			    tips = $( ".validateTips" );
                 
             $("#patientView").jVertTabs();
-            $("#GenderRadio").buttonset();
 
             $("#DateOfBirth").datepicker({
                 showOn: "button",
@@ -137,6 +138,18 @@
                 
             });  
 
+            var ckConfig = {
+                toolbar:
+                [
+                    ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
+                    ["UIColor"]
+                ],
+                extraPlugins: "autogrow",
+                autoGrow_maxHeight: 800
+            };
+
+            $("#patientNoteTextBox").ckeditor(ckConfig);
+
 			$(".chronicDiseasesAddButton").button().click(function() 
 			{
                 
@@ -236,10 +249,8 @@
                 </fieldset>
             </div>
             <div id="BasicInformationNotes">
-                <fieldset>
-                    <legend>Notes</legend>
-                    <textarea cols="25" rows="20">@Model.PatientNote</textarea>
-                </fieldset>
+                <label for="patientNoteTextBox">Notes</label>
+                <textarea name="patientNoteTextBox" id="patientNoteTextBox">@Model.PatientNote</textarea>
             </div>
         </div>
 
@@ -408,13 +419,8 @@
                     }
                 </ul>
             </fieldset>
-            <fieldset>
-                <legend>Encounter Test</legend>
-            </fieldset>
         </div>
     </div>
-
-
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
