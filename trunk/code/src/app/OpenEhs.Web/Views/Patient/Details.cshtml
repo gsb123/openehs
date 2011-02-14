@@ -386,27 +386,15 @@
           <div id="allergyHeader" class="group">
                 <h2 id="Allergies">Allergies</h2>
                 <input class="allergyAddButton" id="allergyAddButton" name="allergyAddButton" type="button" value="Add" />
-          </div>
+		  </div>
 		  <div>
-				<table>
-					<thead>
-						<tr>
-							<th class="allergyNameColumn">Name</th>
-							<th class="allergyActionColumn">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach (var allergy in Model.Allergies) 
-						{
-							<tr>
-								<th class"allergyNameColumn">@allergy.Name</th>
-								<th></th>
-							</tr>
-						}
-					</tbody>
-				</table>
-			</div>
-        </div>  
+				@foreach (var allergy in Model.Allergies) 
+				{
+					<ul>
+						<li>@allergy.Name</li>
+					</ul>
+				}
+	      </div>
 </div>
 
 

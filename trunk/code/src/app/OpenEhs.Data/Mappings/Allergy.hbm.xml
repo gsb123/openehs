@@ -8,7 +8,6 @@
       <generator class="native" />
     </id>
     <property name="Name" not-null="false" length="30" />
-    <property name="Medication" not-null="false" length="30" />
     <property name="IsActive" not-null="true" />
 
     <bag name="Patients" table="PatientAllergy" cascade="none" lazy="false">
