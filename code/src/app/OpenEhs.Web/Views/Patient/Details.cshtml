@@ -80,11 +80,16 @@
 			    buttons: {
 				    "Save Vital": function() {
                         $.post("/Patient/AddVital", {
-                            patientID: "@Model.Id"
+                            patientID: "@Model.Id",
+                            height: document.getElementById("modal_vitalHeight").value,
+                            weight: document.getElementById("modal_vitalWeight").value,
+                            temperature: document.getElementById("modal_vitalTemperature").value,
+                            heartRate: document.getElementById("modal_vitalHeartRate").value,
+                            BpSystolic: document.getElementById("modal_vitalBpSystolic").value,
+                            BpDiastolic: document.getElementById("modal_vitalBpDiastolic").value,
+                            respiratoryRate: document.getElementById("modal_vitalRespiratoryRate").value
                             }, function(data) {
                                 var returnData = jQuery.parseJSON(data);
-                                console.log(returnData);
-                                $("#allergyPostStatus").html(returnData.status);
                                 $( this ).dialog( "close" );
                         });
 				    },
