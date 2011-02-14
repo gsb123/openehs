@@ -1,0 +1,69 @@
+﻿@model OpenEhs.Domain.Patient
+<div id="BasicInformationColumn">
+    <fieldset class="group">
+        <legend>General</legend>
+        <div class="group">
+            <div class="column">
+                @Html.LabelFor(model => model.Id, "Patient ID")<br />
+                @Html.TextBoxFor(model => model.Id)<br />
+                @Html.LabelFor(model => model.FirstName, "First Name")<br />
+                @Html.TextBoxFor(model => model.FirstName)<br />
+                @Html.LabelFor(model => model.MiddleName, "Middle Name")<br />
+                @Html.TextBoxFor(model => model.MiddleName)<br />
+                @Html.LabelFor(model => model.LastName, "Last Name")<br />
+                @Html.TextBoxFor(model => model.LastName)<br />
+            </div>
+            <div class="column">
+                @Html.LabelFor(model => model.Gender, "Gender")<br />
+                <div id="GenderRadio">
+                    @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio" })
+                    @Html.Label("MaleGenderRadio", "Male")
+                    @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio" })
+                    @Html.Label("FemaleGenderRadio", "Female")
+                </div>
+                @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
+                @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
+                @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
+                @Html.TextBoxFor(model => model.PhoneNumber)
+            </div>
+        </div>
+        <div id="BasicMoreInfoLink">
+            Show Details...</div>
+        <div id="BasicMoreInfo">
+            @Html.LabelFor(model => model.Address.Street1)<br />
+            @Html.TextBoxFor(model => model.Address.Street1)<br />
+            @Html.LabelFor(model => model.Address.Street2)<br />
+            @Html.TextBoxFor(model => model.Address.Street2)<br />
+            @Html.LabelFor(model => model.Address.City)<br />
+            @Html.TextBoxFor(model => model.Address.City)<br />
+            @Html.LabelFor(model => model.Address.Region)<br />
+            @Html.TextBoxFor(model => model.Address.Region)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Emergency Contact</legend>
+        @Html.LabelFor(model => model.EmergencyContact.FirstName)<br />
+        @Html.TextBoxFor(model => model.EmergencyContact.FirstName)<br />
+        @Html.LabelFor(model => model.EmergencyContact.LastName)<br />
+        @Html.TextBoxFor(model => model.EmergencyContact.LastName)<br />
+        @Html.LabelFor(model => model.EmergencyContact.PhoneNumber)<br />
+        @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber)<br />
+        <div id="EmergencyContactMoreInfoLink">
+            Show Details...</div>
+        <div id="EmergencyContactMoreInfo">
+            @Html.LabelFor(model => model.EmergencyContact.Address.Street1)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Street1)<br />
+            @Html.LabelFor(model => model.EmergencyContact.Address.Street2)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Street2)<br />
+            @Html.LabelFor(model => model.EmergencyContact.Address.City)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.City)<br />
+            @Html.LabelFor(model => model.EmergencyContact.Address.Region)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Region)
+        </div>
+    </fieldset>
+</div>
+<div id="BasicInformationNotes">
+    <label for="patientNoteTextBox">
+        Notes</label>
+    <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.PatientNote</textarea>
+</div>

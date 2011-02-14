@@ -1,0 +1,18 @@
+﻿@model OpenEhs.Domain.Patient
+<div id="allergyHeader" class="group">
+    <h2 id="Allergies">
+        Allergies</h2>
+    <input class="allergyAddButton" id="allergyAddButton" name="allergyAddButton" type="button"
+        value="Add" />
+</div>
+<div>
+    <ul id="AllergyList">
+        @foreach (var allergy in Model.Allergies) {
+            <li class="group">
+                <div style="float: left;">@allergy.Name</div>
+                <div style="float: right;">
+                    <img src="@Url.Content("~/images/common/icons/16x16/Delete.png")" alt="Delete" /></div>
+            </li>
+        }
+    </ul>
+</div>

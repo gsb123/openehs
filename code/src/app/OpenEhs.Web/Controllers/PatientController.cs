@@ -23,16 +23,15 @@ namespace OpenEhs.Web.Controllers {
             return View(patient);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult EditAllergy() {
+        [HttpPost]
+        public ActionResult RemoveAllergy() {
             try {
                 int patientID = int.Parse(Request.Form["patientID"]);
-                int allergyID = int.Parse(Request.Form["allergyID"]);
-                string allergyName = Request.Form["allergyName"];
+                int allergyIndex = int.Parse(Request.Form["allergyID"]);
 
                 PatientRepository repo = new PatientRepository();
                 var patient = repo.Get(patientID);
-                patient.Allergies[allergyID].Name = allergyName;
+                //patient.Allergies[allergyIndex];
 
                 UnitOfWork.CurrentSession.Flush();
 
@@ -43,7 +42,7 @@ namespace OpenEhs.Web.Controllers {
                 });
             } catch (Exception e) {
                 return Json(new {
-                    error = "false",
+                    error = "true",
                     status = "Unable to add allergy successfully",
                     errorMessage = e.Message
                 });

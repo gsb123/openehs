@@ -162,8 +162,7 @@
 			$(".chronicDiseasesAddButton").button().click(function() 
 			{
                 
-            });
-			             
+            });             
         });
     </script>
 }
@@ -173,7 +172,8 @@
     } else {
         <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName)</h2>
     }
-    <h2 style="margin-left: 20px; font-weight: normal;">Age: @Model.Age</h2>
+    <h2 style="margin-left: 20px; font-weight: normal;">
+        Age: @Model.Age</h2>
     <h2 style="margin-left: 20px; font-weight: normal;">
         DOB: @String.Format("{0:d}", Model.DateOfBirth)</h2>
     <div style="float: right; margin-right: 20px; margin-top: 13px;">
@@ -196,79 +196,14 @@
     </div>
     <div>
         <div id="#patientView-Basic" class="group">
-            <div id="BasicInformationColumn">
-                <fieldset class="group">
-                    <legend>General</legend>
-                    <div class="group">
-                        <div class="column">
-                            @Html.LabelFor(model => model.Id, "Patient ID")<br />
-                            @Html.TextBoxFor(model => model.Id)<br />
-                            @Html.LabelFor(model => model.FirstName, "First Name")<br />
-                            @Html.TextBoxFor(model => model.FirstName)<br />
-                            @Html.LabelFor(model => model.MiddleName, "Middle Name")<br />
-                            @Html.TextBoxFor(model => model.MiddleName)<br />
-                            @Html.LabelFor(model => model.LastName, "Last Name")<br />
-                            @Html.TextBoxFor(model => model.LastName)<br />
-                        </div>
-                        <div class="column">
-                            @Html.LabelFor(model => model.Gender, "Gender")<br />
-                            <div id="GenderRadio">
-                                @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio" })
-                                @Html.Label("MaleGenderRadio", "Male")
-                                @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio" })
-                                @Html.Label("FemaleGenderRadio", "Female")
-                            </div>
-                            @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
-                            @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
-                            @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
-                            @Html.TextBoxFor(model => model.PhoneNumber)
-                        </div>
-                    </div>
-                    <div id="BasicMoreInfoLink">
-                        Show Details...</div>
-                    <div id="BasicMoreInfo">
-                        @Html.LabelFor(model => model.Address.Street1)<br />
-                        @Html.TextBoxFor(model => model.Address.Street1)<br />
-                        @Html.LabelFor(model => model.Address.Street2)<br />
-                        @Html.TextBoxFor(model => model.Address.Street2)<br />
-                        @Html.LabelFor(model => model.Address.City)<br />
-                        @Html.TextBoxFor(model => model.Address.City)<br />
-                        @Html.LabelFor(model => model.Address.Region)<br />
-                        @Html.TextBoxFor(model => model.Address.Region)
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Emergency Contact</legend>
-                    @Html.LabelFor(model => model.EmergencyContact.FirstName)<br />
-                    @Html.TextBoxFor(model => model.EmergencyContact.FirstName)<br />
-                    @Html.LabelFor(model => model.EmergencyContact.LastName)<br />
-                    @Html.TextBoxFor(model => model.EmergencyContact.LastName)<br />
-                    @Html.LabelFor(model => model.EmergencyContact.PhoneNumber)<br />
-                    @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber)<br />
-                    <div id="EmergencyContactMoreInfoLink">
-                        Show Details...</div>
-                    <div id="EmergencyContactMoreInfo">
-                        @Html.LabelFor(model => model.EmergencyContact.Address.Street1)<br />
-                        @Html.TextBoxFor(model => model.EmergencyContact.Address.Street1)<br />
-                        @Html.LabelFor(model => model.EmergencyContact.Address.Street2)<br />
-                        @Html.TextBoxFor(model => model.EmergencyContact.Address.Street2)<br />
-                        @Html.LabelFor(model => model.EmergencyContact.Address.City)<br />
-                        @Html.TextBoxFor(model => model.EmergencyContact.Address.City)<br />
-                        @Html.LabelFor(model => model.EmergencyContact.Address.Region)<br />
-                        @Html.TextBoxFor(model => model.EmergencyContact.Address.Region)
-                    </div>
-                </fieldset>
-            </div>
-            <div id="BasicInformationNotes">
-                <label for="patientNoteTextBox">Notes</label>
-                <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.PatientNote</textarea>
-            </div>
+            @Html.Partial("_tab-Basic", Model)
         </div>
-
         <div id="#patientView-Vitals">
             <div id="vitalsHeader" class="group">
-                <h2 id="Vitals">Vitals</h2>
-                <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button" value="Add" />
+                <h2 id="Vitals">
+                    Vitals</h2>
+                <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button"
+                    value="Add" />
             </div>
             <div id="vitalsBody" class="group">
                 <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
@@ -276,170 +211,114 @@
                         All form fields are required.</p>
                     @using (Html.BeginForm("AddVital", "Patient", "POST")) {
                         <fieldset>
-                            <label for="height">Height</label>
+                            <label for="height">
+                                Height</label>
                             <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
-
-                            <label for="weight">Weight</label>
+                            <label for="weight">
+                                Weight</label>
                             <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
-
-                            <label for="temperature">Temperature</label>
+                            <label for="temperature">
+                                Temperature</label>
                             <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
-
-                            <label for="heartRate">Heart Rate</label>
+                            <label for="heartRate">
+                                Heart Rate</label>
                             <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
-
-                            <label for="bpSystolic">Systolic BP</label>
+                            <label for="bpSystolic">
+                                Systolic BP</label>
                             <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
-
-                            <label for="bpDiastolic">Diastolic BP</label>
+                            <label for="bpDiastolic">
+                                Diastolic BP</label>
                             <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
-
-                            <label for="respiratoryRate">Respiratory Rate</label>
+                            <label for="respiratoryRate">
+                                Respiratory Rate</label>
                             <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
                         </fieldset>
                     }
                 </div>
-            
                 <table>
                     <thead>
                         <tr>
-                            <th class="vitalDateColumn">Date</th>
-                            <th class="vitalHeightColumn">Height(cm)</th>
-                            <th class="vitalWeightColumn">Weight(kg)</th>
-                            <th class="vitalTemperatureColumn">Temperature(&deg;c)</th>
-                            <th class="vitalHeartRateColumn">Heart Rate(bpm)</th>
-                            <th class="vitalBloodPressureColumn">Blood Pressure(mmHg)</th>
-                            <th class="vitalRespiratoryRateColumn">Respiratory Rate(Hz)</th>
+                            <th class="vitalDateColumn">
+                                Date
+                            </th>
+                            <th class="vitalHeightColumn">
+                                Height(cm)
+                            </th>
+                            <th class="vitalWeightColumn">
+                                Weight(kg)
+                            </th>
+                            <th class="vitalTemperatureColumn">
+                                Temperature(&deg;c)
+                            </th>
+                            <th class="vitalHeartRateColumn">
+                                Heart Rate(bpm)
+                            </th>
+                            <th class="vitalBloodPressureColumn">
+                                Blood Pressure(mmHg)
+                            </th>
+                            <th class="vitalRespiratoryRateColumn">
+                                Respiratory Rate(Hz)
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach(var checkin in Model.PatientCheckIns)
-                    {
-                        foreach (var vital in checkin.Vitals)
-                        {
-                                <tr>
-                                    <td class="vitalDateColumn">@vital.Time</td>
-                                    <td class="vitalHeightColumn">@vital.Height</td>
-                                    <td class="vitalWeightColumn">@vital.Weight</td>
-                                    <td class="vitalTemperatureColumn">@vital.Temperature</td>
-                                    <td class="vitalHeartRateColumn">@vital.HeartRate</td>
-                                    <td class="vitalBloodPressureColumn">@vital.BloodPressure</td>
-                                    <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate</td>
-                                </tr>
+                        @foreach (var checkin in Model.PatientCheckIns) {
+                            foreach (var vital in checkin.Vitals) {
+                            <tr>
+                                <td class="vitalDateColumn">@vital.Time
+                                </td>
+                                <td class="vitalHeightColumn">@vital.Height
+                                </td>
+                                <td class="vitalWeightColumn">@vital.Weight
+                                </td>
+                                <td class="vitalTemperatureColumn">@vital.Temperature
+                                </td>
+                                <td class="vitalHeartRateColumn">@vital.HeartRate
+                                </td>
+                                <td class="vitalBloodPressureColumn">@vital.BloodPressure
+                                </td>
+                                <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate
+                                </td>
+                            </tr>
+                            }
                         }
-                    }
                     </tbody>
                 </table>
             </div>
         </div>
-
         <div id="#patientView-PMH">
-        <h2 id="PMH">
-                PMH</h2>
-             <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-            </ul> 
+            @Html.Partial("_tab-PMH", Model)
         </div>
-
         <div id="#patientView-DxHistory">
-        <h2 id="DxHistory">
+            <h2 id="DxHistory">
                 Dx History</h2>
-             <ul>
+            <ul>
                 <li>History Item 1</li>
                 <li>History Item 2</li>
                 <li>History Item 3</li>
-            </ul> 
+            </ul>
         </div>
-
         <div id="#patientView-RxList">
-        <h2 id="RxList">
+            <h2 id="RxList">
                 Rx List</h2>
-             <ul>
+            <ul>
                 <li>Rx Item 1</li>
                 <li>Rx Item 2</li>
                 <li>Rx Item 3</li>
-            </ul> 
+            </ul>
         </div>
-
-
         <div id="#patientView-ChronicDiseases">
-            <div id="chronicDiseasesHeader" class="group">
-                <h2 id="ChronicDiseases">Chronic Diseases</h2>
-                <input class="chronicDiseasesAddButton" id="chronicDiseasesAddButton" name="chronicDiseasesAddButton" type="button" value="Add" />
-		  </div>
-		  <div>
-            <ul id="ChronicDiseaseList">
-				@foreach (var disease in Model.Problems) 
-				{
-				<li class="group">
-                    <div style="float: left;">@disease.ProblemName</div>
-                    <div style="float: right;"><img src="@Url.Content("~/images/common/icons/16x16/Delete.png")" alt="Delete" /></div>
-                </li>
-				}
-            </ul>
-          </div>
+            @Html.Partial("_tab-ChronicDiseases", Model)
         </div>
-
-
-
-
-
         <div id="#patientView-Allergy">
-          <div id="allergyHeader" class="group">
-                <h2 id="Allergies">Allergies</h2>
-                <input class="allergyAddButton" id="allergyAddButton" name="allergyAddButton" type="button" value="Add" />
-		  </div>
-
-		  <div>
-            <ul id="AllergyList">
-				@foreach (var allergy in Model.Allergies) 
-				{
-				<li class="group">
-                    <div style="float: left;">@allergy.Name</div>
-                    <div style="float: right;"><img src="@Url.Content("~/images/common/icons/16x16/Delete.png")" alt="Delete" /></div>
-                </li>
-				}
-            </ul>
-          </div>
-</div>
-
-
-<div id="#patientView-Encounters">
-            <h3>
-                Encounters go here.</h3>
+            @Html.Partial("_tab-Allergy", Model)
         </div>
-
-        <div id="#patientView-Testing">
-            <fieldset>
-                <legend>CheckIn Test</legend>
-                <ul>
-                    @foreach (var checkin in Model.PatientCheckIns) {
-                        <li>@String.Format("Checked In: {0:dd/MMM/yyyy H:mm:ss zzz}", checkin.CheckInTime)</li>
-                    
-                       if (checkin.Invoice != null) {
-                        <ul>
-                            <li>@String.Format("Invoice #{0} - {2} Items - {1:c}", checkin.Invoice.Id, checkin.Invoice.Total, checkin.Invoice.Items.Count)</li>
-                            @if (checkin.Invoice.Items.Count > 0) {
-                                <ul>
-                                    @foreach (var i in checkin.Invoice.Items) {
-                                        if (i.Product != null) {
-                                        <li>@String.Format("{0} x {1} = {2:c}", i.Product.Name, i.Quantity, i.Total)</li>
-                                        } else if (i.Service != null) {
-                                        <li>@String.Format("{0} x {1} = {2:c}", i.Service.Name, i.Quantity, i.Total)</li>
-                                        }
-                                    }
-                                </ul>
-                            }
-                        </ul>
-                       }
-                    }
-                </ul>
-            </fieldset>
+        <div id="#patientView-Encounters">
+            @Html.Partial("_tab-Encounters", Model)
         </div>
     </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

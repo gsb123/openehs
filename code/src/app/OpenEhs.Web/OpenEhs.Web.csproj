@@ -307,6 +307,7 @@
     <Content Include="Scripts\ckedit\skins\kama\templates.css" />
     <Content Include="Scripts\ckedit\themes\default\theme.js" />
     <Content Include="Scripts\jquery-jvert-tabs-1.1.4.js" />
+    <Content Include="Scripts\patient_details.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -456,6 +457,11 @@
     <Content Include="Views\Billing\Index.cshtml" />
     <Content Include="Views\Billing\Details.cshtml" />
     <Content Include="Views\Billing\Create.cshtml" />
+    <Content Include="Views\Patient\_tab-PMH.cshtml" />
+    <Content Include="Views\Patient\_tab-Basic.cshtml" />
+    <Content Include="Views\Patient\_tab-Encounters.cshtml" />
+    <Content Include="Views\Patient\_tab-Allergy.cshtml" />
+    <Content Include="Views\Patient\_tab-ChronicDiseases.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
