@@ -307,7 +307,7 @@
     <Content Include="Scripts\ckedit\skins\kama\templates.css" />
     <Content Include="Scripts\ckedit\themes\default\theme.js" />
     <Content Include="Scripts\jquery-jvert-tabs-1.1.4.js" />
-    <Content Include="Scripts\patient_details.js" />
+    <Content Include="Scripts\patient.details.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
