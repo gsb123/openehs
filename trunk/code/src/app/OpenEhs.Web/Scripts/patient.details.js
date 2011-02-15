@@ -53,50 +53,50 @@
         }
     });
 
-        $("#newVitalDialog").dialog({
+    $(".allergyAddButton").button().click(function () { });  
+
+
+    // **** Setup Vitals Tab **** //
+    $("#newVitalDialog").dialog({
         autoOpen: false,
         height: 400,
         width: 400,
         modal: true,
         buttons: {
-            "Save Vital": function() 
-            {
+            "Save Vital": function() {
                 $.post("/Patient/AddVital", 
                 {
                     patientID: "@Model.Id",
-                    height: document.getElementById("modal_vitalHeight").value,
-                    weight: document.getElementById("modal_vitalWeight").value,
-                    temperature: document.getElementById("modal_vitalTemperature").value,
-                    heartRate: document.getElementById("modal_vitalHeartRate").value,
-                    BpSystolic: document.getElementById("modal_vitalBpSystolic").value,
-                    BpDiastolic: document.getElementById("modal_vitalBpDiastolic").value,
-                    respiratoryRate: document.getElementById("modal_vitalRespiratoryRate").value
+                    height: $("#modal_vitalHeight").val(),                  // document.getElementById("modal_vitalHeight").value,
+                    weight: $("#modal_vitalWeight").val(),                  // document.getElementById("modal_vitalWeight").value,
+                    temperature: $("#modal_vitalTemperature").val(),        // document.getElementById("modal_vitalTemperature").value,
+                    heartRate: $("#modal_vitalHeartRate").val(),            // document.getElementById("modal_vitalHeartRate").value,
+                    BpSystolic: $("#modal_vitalBpSystolic").val(),          // document.getElementById("modal_vitalBpSystolic").value,
+                    BpDiastolic: $("#modal_vitalBpDiastolic").val(),        // document.getElementById("modal_vitalBpDiastolic").value,
+                    respiratoryRate: $("#modal_vitalRespiratoryRate").val() // document.getElementById("modal_vitalRespiratoryRate").value
                 });
-                $( this ).dialog("close");
+            
+            $( this ).dialog("close");
 
             },
+        
             Cancel: function() {
                 $( this ).dialog( "close" );
             }
         },
+        
         close: function() {
             allFields.removeClass("ui-state-error");
         }
     });
 
-    $(".allergyEditButton").button().click(function() {
-        allergyEditId = $(this).attr("id");
-        allergyEditName = $(this).attr("name");
-        $("#modal_allergyName").val(allergyEditName);
-        $("#allergyDialog").dialog("open");
-    });  
-
-    $(".vitalAddButton").button().click(function() {
+    $(".vitalAddButton").button().click(function () {
         $("#newVitalDialog").dialog("open");
-    });  
+    });
 
 
-    $( "#diseaseDialog" ).dialog({
+    // **** Setup Chronic Diseases Tab **** //
+    $("#diseaseDialog").dialog({
         autoOpen: false,
         height: 300,
         width: 350,
@@ -121,13 +121,12 @@
 
     $(".diseaseEditButton").button().click(function() {
         $("#diseaseDialog").dialog("open");
-    });    
-            
-    $(".allergyAddButton").button().click(function() 
-    {
-                
-    });  
+    });
 
+    $(".chronicDiseasesAddButton").button().click(function(){});  
+
+
+    // **** Configuration for CKEditor on Patient Note **** //
     var ckConfig = {
         toolbar:
         [
@@ -140,20 +139,14 @@
 
     $("#patientNoteTextBox").ckeditor(ckConfig);
 
-    $(".chronicDiseasesAddButton").button().click(function() 
-    {
-                
-    });  
-            
-    $(".medicationAddButton").button().click(function() 
+
+    // **** Setup Buttons for Prescription List Tab **** //
+    $(".medicationAddButton").button().click(function()
     {
         $("#newMedicationDialog").dialog("open");
     });    
             
-    $(".medicationPrintButton").button().click(function() 
-    {
-                
-    });
+    $(".medicationPrintButton").button().click(function(){});
 
 
     // **** New Medication Modal Dialog **** //
