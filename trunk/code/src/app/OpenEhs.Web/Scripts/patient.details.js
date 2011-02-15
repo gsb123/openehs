@@ -1,4 +1,9 @@
-﻿$(document).ready(function () {
+﻿/// <reference path="jquery-1.4.4.js" />
+/// <reference path="jquery.validate.js" />
+
+
+
+$(document).ready(function () {
     // ------------------------------------------------- //
     //  Initialize jVerticalTabs Plugin                  //
     // ------------------------------------------------- //
@@ -15,13 +20,13 @@
         changeYear: true
     });
 
-    $("#EmergencyContactMoreInfoLink").click(function() {
-        $("#EmergencyContactMoreInfo").slideToggle("slow", function() {
+    $("#EmergencyContactMoreInfoLink").click(function () {
+        $("#EmergencyContactMoreInfo").slideToggle("slow", function () {
         });
     });
 
-    $("#BasicMoreInfoLink").click(function() {
-        $("#BasicMoreInfo").slideToggle("slow", function() {
+    $("#BasicMoreInfoLink").click(function () {
+        $("#BasicMoreInfo").slideToggle("slow", function () {
         });
     });
 
@@ -45,40 +50,51 @@
     // ------------------------------------------------- //
     //  Setup Allergy Tab                                //
     // ------------------------------------------------- //
-    var allergyEditId;
-    var allergyEditName;
-    var name = $("#modal_allergyName"),
-        allFields = $([]).add(name),
-        tips = $(".validateTips");
-
-    $("#allergyDialog").dialog({
+    $("#addAllergyDialog").dialog({
         autoOpen: false,
-        height: 250,
-        width: 350,
+        height: 225,
+        width: 375,
         modal: true,
         buttons: {
-            "Save Allergy": function() {
-                $.post("Patient/EditAllergy", {
-                    patientID: "@Model.Id",
-                    allergyID: allergyEditId,
-                    allergyName: allergyEditName 
-                    }, function(data) {
-                        var returnData = jQuery.parseJSON(data);
-                        console.log(returnData);
-                        $("#allergyPostStatus").html(returnData.status);
-                        $( this ).dialog( "close" );
-                });
+            "Add Allergy": function () {
+                if ($("#addAllergyForm").valid()) {
+                    $.post("/Patient/AddAllergy", {
+                        patientID: $("#patientId").val(),
+                        allergyName: $("#addAllergyName").val()
+                    }, function (returnData) {
+                        if (returnData.error == "false") {
+                            $("#allergyPostStatus").html(returnData.status);
+                            $(this).dialog("close");
+                        } else {
+                            $("#addAllergyDialog .error").html(returnData.status).animate;
+                        }
+                    }, "json");
+                }
             },
-            Cancel: function() {
-                $( this ).dialog( "close" );
+            Cancel: function () {
+                $(this).dialog("close");
             }
         },
-        close: function() {
-            allFields.removeClass( "ui-state-error" );
+        close: function () {
+
         }
     });
 
-    $(".allergyAddButton").button().click(function () { });
+    $("#addAllergyForm").validate();
+
+    $("#allergyAddButton").button().click(function () {
+        $("#addAllergyDialog").dialog("open")
+    });
+
+    // Add remove function to every allergy remove icon
+    $(".allergyRemove").click(function () {
+        $.post("/Patient/RemoveAllergy", {
+            patientID: $("#patientId").val(),
+            allergyID: $(this).attr("id")
+        }, function (returnData) {
+            $("#allergyPostStatus").html(returnData.status);
+        }, "json");
+    });
 
 
     // ------------------------------------------------- //
@@ -90,29 +106,29 @@
         width: 400,
         modal: true,
         buttons: {
-            "Save Vital": function() {
-                $.post("/Patient/AddVital", 
+            "Save Vital": function () {
+                $.post("/Patient/AddVital",
                 {
-                    patientID: "@Model.Id",
-                    height: $("#modal_vitalHeight").val(),                  // document.getElementById("modal_vitalHeight").value,
-                    weight: $("#modal_vitalWeight").val(),                  // document.getElementById("modal_vitalWeight").value,
-                    temperature: $("#modal_vitalTemperature").val(),        // document.getElementById("modal_vitalTemperature").value,
-                    heartRate: $("#modal_vitalHeartRate").val(),            // document.getElementById("modal_vitalHeartRate").value,
-                    BpSystolic: $("#modal_vitalBpSystolic").val(),          // document.getElementById("modal_vitalBpSystolic").value,
-                    BpDiastolic: $("#modal_vitalBpDiastolic").val(),        // document.getElementById("modal_vitalBpDiastolic").value,
-                    respiratoryRate: $("#modal_vitalRespiratoryRate").val() // document.getElementById("modal_vitalRespiratoryRate").value
+                    patientID: $("#patientId").val(),
+                    height: $("#modal_vitalHeight").val(),
+                    weight: $("#modal_vitalWeight").val(),
+                    temperature: $("#modal_vitalTemperature").val(),
+                    heartRate: $("#modal_vitalHeartRate").val(),
+                    BpSystolic: $("#modal_vitalBpSystolic").val(),
+                    BpDiastolic: $("#modal_vitalBpDiastolic").val(),
+                    respiratoryRate: $("#modal_vitalRespiratoryRate").val()
                 });
-            
-            $( this ).dialog("close");
+
+                $(this).dialog("close");
 
             },
-        
-            Cancel: function() {
-                $( this ).dialog( "close" );
+
+            Cancel: function () {
+                $(this).dialog("close");
             }
         },
-        
-        close: function() {
+
+        close: function () {
             allFields.removeClass("ui-state-error");
         }
     });
@@ -131,28 +147,28 @@
         width: 350,
         modal: true,
         buttons: {
-            "Save Disease": function() {
+            "Save Disease": function () {
                 var bValid = true;
-                allFields.removeClass( "ui-state-error" );
+                allFields.removeClass("ui-state-error");
 
-                if ( bValid ) {
-                    $( this ).dialog( "close" );
+                if (bValid) {
+                    $(this).dialog("close");
                 }
             },
-            Cancel: function() {
-                $( this ).dialog( "close" );
+            Cancel: function () {
+                $(this).dialog("close");
             }
         },
-        close: function() {
-            allFields.removeClass( "ui-state-error" );
+        close: function () {
+            allFields.removeClass("ui-state-error");
         }
     });
 
-    $(".diseaseEditButton").button().click(function() {
+    $(".diseaseEditButton").button().click(function () {
         $("#diseaseDialog").dialog("open");
     });
 
-    $(".chronicDiseasesAddButton").button().click(function(){});
+    $(".chronicDiseasesAddButton").button().click(function () { });
 
 
     // ------------------------------------------------- //
@@ -170,34 +186,33 @@
         width: 400,
         modal: true,
         buttons: {
-            "Save Medication": function() 
-            {
-                $.post("/Patient/AddMedication", 
+            "Save Medication": function () {
+                $.post("/Patient/AddMedication",
                 {
-                    patientID: "@Model.Id",
-                    name: document.getElementById("modal_medicationName").value,
-                    instructions: document.getElementById("modal_medicationInstructions").value,
-                    startdate: document.getElementById("startDatePicker").value,
-                    expdate: document.getElementById("expDatePicker").value
-                            
+                    patientID: $("#patientId").val(),
+                    name: $("#modal_medicationName").val(),
+                    instructions: $("#modal_medicationInstructions").val(),
+                    startdate: $("#startDatePicker").val(),
+                    expdate: $("#expDatePicker").val()
+
                 });
-                $( this ).dialog("close");
+                $(this).dialog("close");
 
             },
-            Cancel: function() {
-                $( this ).dialog( "close" );
+            Cancel: function () {
+                $(this).dialog("close");
             }
         },
-        close: function() {
+        close: function () {
             allFields.removeClass("ui-state-error");
         }
     });
 
-    $(function() {
+    $(function () {
         $("#startDatePicker").datepicker();
     });
 
-    $(function() {
+    $(function () {
         $("#expDatePicker").datepicker();
-    });                   
+    });
 });

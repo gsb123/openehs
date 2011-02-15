@@ -23,22 +23,22 @@ namespace OpenEhs.Web.Controllers {
             return View(patient);
         }
 
-        [HttpPost]
-        public ActionResult RemoveAllergy() {
+
+        public JsonResult AddAllergy() {
             try {
-                int patientID = int.Parse(Request.Form["patientID"]);
-                int allergyIndex = int.Parse(Request.Form["allergyID"]);
+                int patientId = int.Parse(Request.Form["patientID"]);
+                string allergyName = Request.Form["allergyName"];
 
                 PatientRepository repo = new PatientRepository();
-                var patient = repo.Get(patientID);
-                //patient.Allergies[allergyIndex];
-
-                UnitOfWork.CurrentSession.Flush();
+                var patient = repo.Get(patientId);
+                Allergy allergy = new Allergy();
+                allergy.Name= allergyName;
+                patient.Allergies.Add(allergy);
 
                 return Json(new {
                     error = "false",
-                    status = "Added allergy successfully",
-                    errorMessage = ""
+                    status = "Added allergy: " + allergyName + " successfully",
+                    allergy = allergy
                 });
             } catch (Exception e) {
                 return Json(new {
@@ -49,10 +49,49 @@ namespace OpenEhs.Web.Controllers {
             }
         }
 
-        public JsonResult AddVital()
-        {
-            try
-            {
+
+        public JsonResult RemoveAllergy() {
+            try {
+                int patientId = int.Parse(Request.Form["patientID"]);
+                int allergyId = int.Parse(Request.Form["allergyID"]);
+
+                PatientRepository repo = new PatientRepository();
+                var patient = repo.Get(patientId);
+                string name = "";
+                bool found = false;
+                foreach (var allergy in patient.Allergies) {
+                    if (allergyId == allergy.Id) {
+                        found = true;
+                        name = allergy.Name;
+                        patient.Allergies.Remove(allergy);
+                        break;
+                    }
+                }
+
+                UnitOfWork.CurrentSession.Flush();
+                if (found) {
+                    return Json(new {
+                        error = "false",
+                        status = "Removed allergy: " + name + " successfully"
+                    });
+                } else {
+                    return Json(new {
+                        error = "true",
+                        status = "Allergy not found, please refresh the page and try again",
+                        errorMessage = "Allergy with id: " + allergyId + " not found"
+                    });
+                }
+            } catch (Exception e) {
+                return Json(new {
+                    error = "true",
+                    status = "Unable to remove allergy",
+                    errorMessage = e.Message
+                });
+            }
+        }
+
+        public JsonResult AddVital() {
+            try {
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientID);
@@ -74,15 +113,12 @@ namespace OpenEhs.Web.Controllers {
                 vitals.PatientCheckIn = patient.PatientCheckIns[0];
                 patient.PatientCheckIns[0].Vitals.Add(vitals);
 
-                return Json(new { 
-                    error="false", 
-                    status="Successfully added vital."
+                return Json(new {
+                    error = "false",
+                    status = "Successfully added vital."
                 });
-            }
-            catch (Exception e)
-            {
-                return Json(new
-                {
+            } catch (Exception e) {
+                return Json(new {
                     error = "true",
                     status = e.Message
                 });
