@@ -216,31 +216,18 @@ fieldset
     margin-bottom: 10px;
 }
 
-#ImmunizationList li
+#immunizationHeader
 {
-    font-size: 1.2em;
-    list-style: none;
-    background-color: #eee;
-    border: 1px solid #aaa;
-    width: 600px;
-    padding: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+	padding-left: 10px;
+	clear: both;
 }
 
-#ImmunizationHeader h2
+#immunizationHeader h2
 {
     float: left;
 }
 
-#ImmunizationHeader input
-{
-    margin-top: 15px;
-    float: right;
-}
-
-#ImmunizationHeader
+#immunizationHeader input
 {
     margin-top: 15px;
     float: right;

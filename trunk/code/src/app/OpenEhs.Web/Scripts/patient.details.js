@@ -217,10 +217,10 @@ $(document).ready(function () {
     });
 
     // ------------------------------------------------- //
-    //  Setup Immunization List Tab                      //
+    //  Setup Immunizations List Tab                      //
     // ------------------------------------------------- //
 
-    $(".immunizationAddButton").button().click(function () {
+    $("#immunizationAddButton").button().click(function () {
         
     });
 
