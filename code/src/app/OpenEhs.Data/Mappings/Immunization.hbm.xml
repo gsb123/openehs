@@ -3,7 +3,7 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="Immunization" table="Immunization">
+  <class name="Immunizations" table="Immunization">
     <id name="Id" column="ImmunizationID">
       <generator class="native" />
     </id>
