@@ -216,6 +216,10 @@ $(document).ready(function () {
         $("#expDatePicker").datepicker();
     });
 
+    // ------------------------------------------------- //
+    //  Setup Immunization List Tab                      //
+    // ------------------------------------------------- //
+
     $(".immunizationAddButton").button().click(function () {
         
     });
