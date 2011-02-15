@@ -464,7 +464,6 @@
     <Content Include="Views\Patient\_tab-ChronicDiseases.cshtml" />
     <Content Include="Views\Patient\_tab-Vitals.cshtml" />
     <Content Include="Views\Patient\_tab-RxList.cshtml" />
-    <Content Include="Views\Patient\_tab-Immunization.cshtml" />
     <Content Include="Views\Patient\_tab-DxHistory.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
