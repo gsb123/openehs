@@ -229,18 +229,18 @@ fieldset
     margin-bottom: 10px;
 }
 
-#immunizationHeader h2
+#ImmunizationHeader h2
 {
     float: left;
 }
 
-#immunizationHeader input
+#ImmunizationHeader input
 {
     margin-top: 15px;
     float: right;
 }
 
-#immunizationHeader
+#ImmunizationHeader
 {
     margin-top: 15px;
     float: right;
