@@ -2,8 +2,7 @@
 <div id="allergyHeader" class="group">
     <h2 id="Allergies">
         Allergies</h2>
-    <input class="allergyAddButton" id="allergyAddButton" name="allergyAddButton" type="button"
-        value="Add" />
+    <input id="allergyAddButton" name="allergyAddButton" type="button" value="Add" />
 </div>
 <div>
     <ul id="AllergyList">
@@ -11,9 +10,18 @@
             <li class="group">
                 <div style="float: left;">@allergy.Name</div>
                 <div style="float: right;">
-                    <span class="ui-icon ui-icon-closethick" />
+                    <span class="allergyRemove ui-icon ui-icon-closethick" id="@allergy.Id"/>
                 </div>
             </li>
         }
     </ul>
+</div>
+<div id="addAllergyDialog" title="Add Allergy for @Model.FirstName @Model.LastName">
+    <form id="addAllergyForm" action="">
+    <fieldset>
+        <label for="name">
+            Allergy Name:</label>
+        <input type="text" name="name" id="addAllergyName" class="text required ui-widget-content ui-corner-all" />
+    </fieldset>
+    </form>
 </div>
