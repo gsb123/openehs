@@ -215,4 +215,9 @@ $(document).ready(function () {
     $(function () {
         $("#expDatePicker").datepicker();
     });
+
+    $(".immunizationAddButton").button().click(function () {
+        
+    });
+
 });
