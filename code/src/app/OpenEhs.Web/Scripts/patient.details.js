@@ -1,20 +1,19 @@
 ﻿$(document).ready(function () {
-    var allergyEditId;
-    var allergyEditName;
-    var name = $( "#modal_allergyName" ),
-        allFields = $( [] ).add( name ),
-        tips = $( ".validateTips" );
-                
+    // ------------------------------------------------- //
+    //  Initialize jVerticalTabs Plugin                  //
+    // ------------------------------------------------- //
     $("#patientView").jVertTabs();
 
 
+    // ------------------------------------------------- //
+    //  Setup Basic Tab                                  //
+    // ------------------------------------------------- //
     $("#DateOfBirth").datepicker({
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
         buttonImageOnly: true,
         changeYear: true
     });
-
 
     $("#EmergencyContactMoreInfoLink").click(function() {
         $("#EmergencyContactMoreInfo").slideToggle("slow", function() {
@@ -26,7 +25,33 @@
         });
     });
 
-    $( "#allergyDialog" ).dialog({
+
+    // ------------------------------------------------- //
+    //  Configure CKEditor on Patient Note               //
+    // ------------------------------------------------- //
+    var ckConfig = {
+        toolbar:
+        [
+            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
+            ["UIColor"]
+        ],
+        extraPlugins: "autogrow",
+        autoGrow_maxHeight: 800
+    };
+
+    $("#patientNoteTextBox").ckeditor(ckConfig);
+
+
+    // ------------------------------------------------- //
+    //  Setup Allergy Tab                                //
+    // ------------------------------------------------- //
+    var allergyEditId;
+    var allergyEditName;
+    var name = $("#modal_allergyName"),
+        allFields = $([]).add(name),
+        tips = $(".validateTips");
+
+    $("#allergyDialog").dialog({
         autoOpen: false,
         height: 250,
         width: 350,
@@ -53,10 +78,12 @@
         }
     });
 
-    $(".allergyAddButton").button().click(function () { });  
+    $(".allergyAddButton").button().click(function () { });
 
 
-    // **** Setup Vitals Tab **** //
+    // ------------------------------------------------- //
+    //  Setup Vitals Tab                                 //
+    // ------------------------------------------------- //
     $("#newVitalDialog").dialog({
         autoOpen: false,
         height: 400,
@@ -95,7 +122,9 @@
     });
 
 
-    // **** Setup Chronic Diseases Tab **** //
+    // ------------------------------------------------- //
+    //  Setup Chronic Diseases Tab                       //
+    // ------------------------------------------------- //
     $("#diseaseDialog").dialog({
         autoOpen: false,
         height: 300,
@@ -123,33 +152,18 @@
         $("#diseaseDialog").dialog("open");
     });
 
-    $(".chronicDiseasesAddButton").button().click(function(){});  
+    $(".chronicDiseasesAddButton").button().click(function(){});
 
 
-    // **** Configuration for CKEditor on Patient Note **** //
-    var ckConfig = {
-        toolbar:
-        [
-            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
-            ["UIColor"]
-        ],
-        extraPlugins: "autogrow",
-        autoGrow_maxHeight: 800
-    };
-
-    $("#patientNoteTextBox").ckeditor(ckConfig);
-
-
-    // **** Setup Buttons for Prescription List Tab **** //
-    $(".medicationAddButton").button().click(function()
-    {
+    // ------------------------------------------------- //
+    //  Setup Prescription List Tab                      //
+    // ------------------------------------------------- //
+    $(".medicationAddButton").button().click(function () {
         $("#newMedicationDialog").dialog("open");
-    });    
-            
-    $(".medicationPrintButton").button().click(function(){});
+    });
 
+    $(".medicationPrintButton").button().click(function () { });
 
-    // **** New Medication Modal Dialog **** //
     $("#newMedicationDialog").dialog({
         autoOpen: false,
         height: 400,
