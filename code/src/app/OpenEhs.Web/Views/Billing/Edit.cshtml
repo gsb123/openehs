@@ -7,6 +7,8 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#NewServiceButton").button();
+            $("#NewProductButton").button();
             $("#PayInFullButton")
                 .button()
                 .click(function () {
@@ -226,8 +228,9 @@
         </tbody>
     </table>
         <div id="LineItemActionButtons">
-            <button name="AddServiceButton" id="AddServiceButton">Add a Service</button>
-            <button name="AddProductButton" id="AddProductButton">Add a Product</button>
+            @Html.ActionLink("New Service", "Edit", Model.Id, new { id = "AddServiceButton" })
+            @*<button name="AddServiceButton" id="AddServiceButton">Add a Service</button>
+            <button name="AddProductButton" id="AddProductButton">Add a Product</button>*@
         </div>
 
 </div>
