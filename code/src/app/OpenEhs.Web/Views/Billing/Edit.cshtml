@@ -228,7 +228,8 @@
         </tbody>
     </table>
         <div id="LineItemActionButtons">
-            @Html.ActionLink("New Service", "Edit", Model.Id, new { id = "AddServiceButton" })
+            @Html.ActionLink("New Service", "Edit", Model.Id, new { id = "NewServiceButton" })
+            @Html.ActionLink("New Product", "Edit", Model.Id, new { id = "NewProductButton" })
             @*<button name="AddServiceButton" id="AddServiceButton">Add a Service</button>
             <button name="AddProductButton" id="AddProductButton">Add a Product</button>*@
         </div>
