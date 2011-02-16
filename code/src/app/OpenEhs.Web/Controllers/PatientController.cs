@@ -142,7 +142,15 @@ namespace OpenEhs.Web.Controllers {
 
                 return Json(new {
                     error = "false",
-                    status = "Successfully added vital."
+                    status = "Successfully added vital.",
+                    date = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"),
+                    height = vitals.Height,
+                    weight = vitals.Weight,
+                    bpDiastolic = vitals.BloodPressure.Diastolic,
+                    bpSystolic = vitals.BloodPressure.Systolic,
+                    heartRate = vitals.HeartRate,
+                    respiratoryRate = vitals.RespiratoryRate,
+                    temperature = vitals.Temperature
                 });
             } catch (Exception e) {
                 return Json(new {
