@@ -9,6 +9,14 @@
         $(document).ready(function () {
             $("#NewServiceButton").button();
             $("#NewProductButton").button();
+            $("#AddServiceButton")
+                .button()
+                .click(function(){
+                    $.post("/Patient/AddLineItem", {
+                        id: $("#id").val();
+                        value: "s"
+                    }
+                })
             $("#PayInFullButton")
                 .button()
                 .click(function () {
@@ -141,11 +149,12 @@
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
+        <input type="text" name="id" id="id" value="@Model.Id" visible="false" style="visibility" />
 
 <div id="InvoiceTitle" class="group">
     <h1>Invoice</h1>
     <div id="TotalAndPayment" class="group">
-        <h1 id="InvoiceTotal">&#x20B5;@Model.Total</h1>
+        <h1 id="InvoiceTotal">GH&#x20B5;@Model.Total</h1>
         <div id="PaymentActionButtons">
             <button name="PayInFullButton" id="PayInFullButton">Pay</button>
             <button name="SelectActionButton" id="SelectActionButton">Select Action</button>
@@ -209,9 +218,9 @@
             <tr>
                 <td class="DescriptionColumn">@Html.DropDownListFor(model => item.Service, new SelectList(Model.Services, "Id", "Name", item.Service.Id))</td>
                 <td class="UnitColumn">Service</td>
-                <td class="PriceColumn">&#x20B5;@item.Service.Price</td>
+                <td class="PriceColumn">GH&#x20B5;@item.Service.Price</td>
                 <td class="QuantityColumn">@Html.EditorFor(model => item.Quantity)</td>
-                <td class="TotalColumn">&#x20B5;@item.Total</td>
+                <td class="TotalColumn">GH&#x20B5;@item.Total</td>
             </tr>
                 }
                 else if (item.Product != null)
@@ -219,19 +228,19 @@
             <tr>
                 <td class="DescriptionColumn">@Html.DropDownListFor(model => item.Product, new SelectList(Model.Products, "Id", "Name", item.Product.Id))</td>
                 <td class="UnitColumn">@item.Product.Unit</td>
-                <td class="PriceColumn">&#x20B5;@item.Product.Price</td>
+                <td class="PriceColumn">GH&#x20B5;@item.Product.Price</td>
                 <td class="QuantityColumn">@Html.EditorFor(model => item.Quantity)</td>
-                <td class="TotalColumn">&#x20B5;@item.Total</td>
+                <td class="TotalColumn">GH&#x20B5;@item.Total</td>
             </tr>
                 }
             }
         </tbody>
     </table>
         <div id="LineItemActionButtons">
-            @Html.ActionLink("New Service", "Edit", Model.Id, new { id = "NewServiceButton" })
-            @Html.ActionLink("New Product", "Edit", Model.Id, new { id = "NewProductButton" })
-            @*<button name="AddServiceButton" id="AddServiceButton">Add a Service</button>
-            <button name="AddProductButton" id="AddProductButton">Add a Product</button>*@
+            @*@Html.ActionLink("New Service", "Edit", Model.Id, new { id = "NewServiceButton" })
+            @Html.ActionLink("New Product", "Edit", Model.Id, new { id = "NewProductButton" })*@
+            <button name="AddServiceButton" id="AddServiceButton">Add a Service</button>
+            <button name="AddProductButton" id="AddProductButton">Add a Product</button>
         </div>
 
 </div>

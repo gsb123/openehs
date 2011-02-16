@@ -80,6 +80,24 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
+        public ActionResult AddLineItem()
+        {
+            int id = int.Parse(Request.Form["id"]);
+            var invoice = new BillingEditViewModel(id);
+            string value = Request.Form["value"];
+            if (value == "s")
+            {
+                invoice.AddEmptyService();
+            }
+            else if (value == "p")
+            {
+                invoice.AddEmptyProduct();
+            }
+
+            return Edit(invoice);
+
+        }
+
         //
         // GET: /Invoice/Delete/5
 

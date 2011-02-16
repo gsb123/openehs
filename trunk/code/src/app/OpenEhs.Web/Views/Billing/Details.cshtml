@@ -142,7 +142,7 @@
 <div id="InvoiceTitle" class="group">
     <h1>Invoice</h1>
     <div id="TotalAndPayment" class="group">
-        <h1 id="InvoiceTotal">&#x20B5;@Model.Total</h1>
+        <h1 id="InvoiceTotal">GH&#x20B5;@Model.Total</h1>
         <div id="PaymentActionButtons">
             <button name="PayInFullButton" id="PayInFullButton">Pay</button>
             <button name="SelectActionButton" id="SelectActionButton">Select Action</button>
@@ -206,9 +206,9 @@
             <tr>
                 <td class="DescriptionColumn">@item.Service.Name</td>
                 <td class="UnitColumn">Service</td>
-                <td class="PriceColumn">&#x20B5;@item.Service.Price</td>
+                <td class="PriceColumn">GH&#x20B5;@item.Service.Price</td>
                 <td class="QuantityColumn">@item.Quantity</td>
-                <td class="TotalColumn">&#x20B5;@item.Total</td>
+                <td class="TotalColumn">GH&#x20B5;@item.Total</td>
             </tr>
                 }
                 else if (item.Product != null)
@@ -216,9 +216,9 @@
             <tr>
                 <td class="DescriptionColumn">@item.Product.Name</td>
                 <td class="UnitColumn">@item.Product.Unit</td>
-                <td class="PriceColumn">&#x20B5;@item.Product.Price</td>
+                <td class="PriceColumn">GH&#x20B5;@item.Product.Price</td>
                 <td class="QuantityColumn">@item.Quantity</td>
-                <td class="TotalColumn">&#x20B5;@item.Total</td>
+                <td class="TotalColumn">GH&#x20B5;@item.Total</td>
             </tr>
                 }
             }
