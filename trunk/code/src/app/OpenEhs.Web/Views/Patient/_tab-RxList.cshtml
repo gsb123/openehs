@@ -29,12 +29,12 @@
             <label for="startdate">
                 Start Date:
             </label>
-            <input type="text" name="startdate" id="startDatePicker" class="text ui-widget-content ui-corner-all" value="Click to Select" /><br />
+            <input type="text" name="startdate" id="RxStartDatePicker" class="text ui-widget-content ui-corner-all" /><br />
 
             <label for="expdate">
                 Exp Date:
             </label>
-            <input type="text" name="expdate" id="expDatePicker" class="text ui-widget-content ui-corner-all" value="Click to Select" /><br />
+            <input type="text" name="expdate" id="RxExpDatePicker" class="text ui-widget-content ui-corner-all" /><br />
         </fieldset>
     }
 </div>
@@ -58,9 +58,10 @@
             // do something.
         } ...
     *@
+
     @if (Model.Medications.Count == 0)
     {
-        <ul id="MedicationList">
+        <ul id="MedicationListOne">
             <li style="float: left;">
                 There are no recorded current medications for this patient.
             </li>
@@ -68,7 +69,7 @@
     }
     else
     {
-        <ul id="MedicationList">
+        <ul id="MedicationListTwo">
             @foreach (var medication in Model.Medications)
             {
                 if (@medication.ExpDate >= DateTime.Now)
@@ -93,7 +94,7 @@
 
     @if (Model.Medications.Count == 0)
     {
-        <ul id="MedicationList">
+        <ul id="MedicationListThree">
             <li style="float: left;">
                 There are no recorded past medications for this patient.
             </li>
@@ -101,7 +102,7 @@
     }
     else
     {
-        <ul id="MedicationList">
+        <ul id="MedicationListFour">
             @foreach (var medication in Model.Medications)
             {
                 if (@medication.ExpDate <= DateTime.Now)

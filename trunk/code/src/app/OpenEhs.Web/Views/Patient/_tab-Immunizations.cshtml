@@ -10,7 +10,7 @@
 	<ul id="immunizationList">
 		@if(Model.Immunizations.Count == 0)
 		{
-			<li>testing</li>
+			<li>Patient does not have any recorded immunizations.</li>
 		}
 		else
 		{
@@ -20,7 +20,7 @@
 				<div style="float: left;"><b>Vaccine Type: </b>@shots.VaccineType</div><br />
 				<div style="float: left;"><b>Date Administered: </b>@shots.DateAdministered</div>
 			</li>
-		}
-		}
+            }
+        }
 	</ul>
 </div>

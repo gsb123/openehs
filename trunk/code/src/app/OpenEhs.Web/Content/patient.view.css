@@ -203,7 +203,46 @@ fieldset
     margin-bottom: 10px;
 }
 
-#MedicationList li
+#MedicationListOne li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#MedicationListTwo li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#MedicationListThree li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#MedicationListFour li
 {
     font-size: 1.2em;
     list-style: none;
@@ -244,4 +283,21 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+#dxHistoryHeader
+{
+	padding-left: 10px;
+	clear: both;
+}
+
+#dxHistoryHeader h2
+{
+    float: left;
+}
+
+#dxHistoryHeader input
+{
+    margin-top: 15px;
+    float: right;
 }
