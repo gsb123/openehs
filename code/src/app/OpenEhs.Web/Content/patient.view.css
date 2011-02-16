@@ -3,6 +3,20 @@
     padding: 20px;
 }
 
+.allergyRemove
+{
+	padding: 5px; 
+	font-size: 14px; 
+	margin: 3px 10px 3px 0px;
+}
+
+.chronicDiseasesRemove
+{
+	padding: 5px; 
+	font-size: 14px; 
+	margin: 3px 10px 3px 0px;
+}
+
 .column {
     float: left;
     margin-right: 20px;
@@ -179,28 +193,32 @@ fieldset
 
 #ChronicDiseaseList li
 {
-    font-size: 1.6em;
+    font-size: 1.4em;
     list-style: none;
     background-color: #eee;
     border: 1px solid #aaa;
     width: 600px;
-    padding: 20px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    height: 50px;
+    line-height: 50px;
+	padding-left: 10px;
 }
 
 #AllergyList li
 {
-    font-size: 1.6em;
+    font-size: 1.4em;
     list-style: none;
     background-color: #eee;
     border: 1px solid #aaa;
     width: 600px;
-    padding: 20px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    height: 50px;
+    line-height: 50px;
+	padding-left: 10px;
 }
 
 #MedicationListOne li

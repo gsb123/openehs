@@ -87,7 +87,12 @@ $(document).ready(function () {
     });
 
     // Add remove function to every allergy remove icon
-    $(".allergyRemove").click(function () {
+    $(".allergyRemove").button({
+        icons: {
+            primary: "ui-icon-closethick"
+        },
+        text: false
+    }).click(function () {
         $.post("/Patient/RemoveAllergy", {
             patientID: $("#patientId").val(),
             allergyID: $(this).attr("id")
@@ -95,6 +100,7 @@ $(document).ready(function () {
             $("#allergyPostStatus").html(returnData.status);
         }, "json");
     });
+
 
 
     // ------------------------------------------------- //
@@ -169,6 +175,8 @@ $(document).ready(function () {
     });
 
     $(".chronicDiseasesAddButton").button().click(function () { });
+
+    $(".chronicDiseasesRemove").button().click(function () { });
 
 
     // ------------------------------------------------- //
