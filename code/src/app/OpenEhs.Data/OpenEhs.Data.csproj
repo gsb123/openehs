@@ -98,7 +98,6 @@
     <Compile Include="Common\UnitOfWorkFactory.cs" />
     <Compile Include="Common\UnitOfWorkImplementor.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\OpenEhs.Domain\OpenEhs.Domain.csproj">
       <Project>{9F0827C4-FFAE-4B13-9736-012A13662D90}</Project>
