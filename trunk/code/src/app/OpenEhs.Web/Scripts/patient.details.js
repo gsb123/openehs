@@ -105,7 +105,48 @@ $(document).ready(function () {
 
     // ------------------------------------------------- //
     //  Setup Vitals Tab                                 //
-    // ------------------------------------------------- //
+    // ------------------------------------------------- //\
+
+    function addVitalsRow(result) {
+
+        var table = document.getElementById("vitalsTable");
+        var tr = document.createElement("tr");
+
+        var dateTd = document.createElement("td");
+        var heightTd = document.createElement("td");
+        var weightTd = document.createElement("td");
+        var temperatureTd = document.createElement("td");
+        var heartRateTd = document.createElement("td");
+        var bloodPressureTd = document.createElement("td");
+        var respiratoryRateTd = document.createElement("td");
+
+        var date = document.createTextNode(result.date);
+        var height = document.createTextNode(result.height);
+        var weight = document.createTextNode(result.weight);
+        var temperature = document.createTextNode(result.temperature);
+        var heartRate = document.createTextNode(result.heartRate);
+        var bloodPressure = document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic);
+        var respiratoryRate = document.createTextNode(result.respiratoryRate);
+
+        dateTd.appendChild(date);
+        heightTd.appendChild(height);
+        weightTd.appendChild(weight);
+        temperatureTd.appendChild(temperature);
+        heartRateTd.appendChild(heartRate);
+        bloodPressureTd.appendChild(bloodPressure);
+        respiratoryRateTd.appendChild(respiratoryRate);
+
+        tr.appendChild(dateTd);
+        tr.appendChild(heightTd);
+        tr.appendChild(weightTd);
+        tr.appendChild(temperatureTd);
+        tr.appendChild(heartRateTd);
+        tr.appendChild(bloodPressureTd);
+        tr.appendChild(respiratoryRateTd);
+
+        table.appendChild(tr);
+    }
+
     $("#newVitalDialog").dialog({
         autoOpen: false,
         height: 400,
@@ -113,19 +154,23 @@ $(document).ready(function () {
         modal: true,
         buttons: {
             "Save Vital": function () {
-                $.post("/Patient/AddVital",
-                {
-                    patientID: $("#patientId").val(),
-                    height: $("#modal_vitalHeight").val(),
-                    weight: $("#modal_vitalWeight").val(),
-                    temperature: $("#modal_vitalTemperature").val(),
-                    heartRate: $("#modal_vitalHeartRate").val(),
-                    BpSystolic: $("#modal_vitalBpSystolic").val(),
-                    BpDiastolic: $("#modal_vitalBpDiastolic").val(),
-                    respiratoryRate: $("#modal_vitalRespiratoryRate").val()
+                $.ajax({ type: "POST",
+                    url: "/Patient/AddVital",
+                    data: { patientID: $("#patientId").val(),
+                        height: $("#modal_vitalHeight").val(),
+                        weight: $("#modal_vitalWeight").val(),
+                        temperature: $("#modal_vitalTemperature").val(),
+                        heartRate: $("#modal_vitalHeartRate").val(),
+                        BpSystolic: $("#modal_vitalBpSystolic").val(),
+                        BpDiastolic: $("#modal_vitalBpDiastolic").val(),
+                        respiratoryRate: $("#modal_vitalRespiratoryRate").val()
+                    },
+                    success: function (response) {
+                        $("#newVitalDialog").dialog("close");
+                        addVitalsRow(response);
+                    },
+                    dataType: "json"
                 });
-
-                $(this).dialog("close");
 
             },
 
@@ -135,10 +180,8 @@ $(document).ready(function () {
         },
 
         close: function () {
-            allFields.removeClass("ui-state-error");
         }
     });
-
     $(".vitalAddButton").button().click(function () {
         $("#newVitalDialog").dialog("open");
     });

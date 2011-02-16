@@ -2,6 +2,7 @@
 <div id="vitalsHeader" class="group">
     <h2 id="Vitals">
         Vitals</h2>
+        <div id="vitalsMessage"></div>
     <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button"
         value="Add" />
 </div>
@@ -35,7 +36,8 @@
             </fieldset>
         }
     </div>
-    <table>
+    <div id="vitalsTableDiv">
+    <table id="vitalsTable">
         <thead>
             <tr>
                 <th class="vitalDateColumn">
@@ -48,7 +50,7 @@
                     Weight(kg)
                 </th>
                 <th class="vitalTemperatureColumn">
-                    Temperature(&deg;c)
+                    Temperature(&deg;C)
                 </th>
                 <th class="vitalHeartRateColumn">
                     Heart Rate(bpm)
@@ -84,4 +86,5 @@
             }
         </tbody>
     </table>
+    </div>
 </div>
