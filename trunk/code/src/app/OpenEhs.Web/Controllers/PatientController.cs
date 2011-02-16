@@ -2,6 +2,8 @@
 using OpenEhs.Data;
 using System;
 using OpenEhs.Domain;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace OpenEhs.Web.Controllers {
     public class PatientController : Controller {
@@ -23,6 +25,27 @@ namespace OpenEhs.Web.Controllers {
             return View(patient);
         }
 
+        /// <summary>
+        /// Search patient records from criteria in 'Search' box
+        /// </summary>
+        /// <param name="values">Collection of values from the posted form</param>
+        /// <returns>List of patients</returns>
+        [HttpPost]
+        public ActionResult Index(FormCollection values)
+        {
+            string searchCriteria = values["PatientSearchTextBox"];    //Get the value entered in the 'Search' field
+
+            IList<Patient> patients = new List<Patient>();
+
+            Regex phoneRegEx = new Regex(@"\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})"); //Check for phone number
+            Match m = phoneRegEx.Match(searchCriteria); //Check if the search string matches the phone number
+            if (m.Success)
+            {
+                patients = new PatientRepository().FindByPhoneNumber(m.ToString());
+            }
+
+            return View(patients);
+        }
 
         public JsonResult AddAllergy() {
             try {

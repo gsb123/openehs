@@ -26,8 +26,11 @@
 <div id="Actions" class="group">
     @Html.ActionLink("New Patient", "Create", null, new { id = "CreateNewPatientButton" })
     <div id="Search" class="group">
-	    <input type="text" name="PatientSearchTextBox" id="PatientSearchTextBox" />
-	    @Html.ActionLink("Search", "Search", null, new { id = "SearchPatientButton" })
+        @using (Html.BeginForm("Index", "Patient"))
+        {
+            <input type="text" name="PatientSearchTextBox" id="PatientSearchTextBox" />
+            <button name="Search" id="SearchPatientButton">Search</button>
+        }
     </div>
 </div>
 <h3>
