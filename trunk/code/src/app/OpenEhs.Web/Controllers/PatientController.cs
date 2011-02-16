@@ -4,6 +4,7 @@ using System;
 using OpenEhs.Domain;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers {
     public class PatientController : Controller {
@@ -20,9 +21,9 @@ namespace OpenEhs.Web.Controllers {
         }
 
         public ActionResult Details(int id) {
-            var patient = new PatientRepository().Get(id);
+            var patientViewModel = new PatientViewModel(id);
 
-            return View(patient);
+            return View(patientViewModel);
         }
 
         /// <summary>
