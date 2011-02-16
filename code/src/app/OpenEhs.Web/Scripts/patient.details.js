@@ -208,12 +208,18 @@ $(document).ready(function () {
         }
     });
 
-    $(function () {
-        $("#startDatePicker").datepicker();
+    $("#RxStartDatePicker").datepicker({
+        showOn: "button",
+        buttonImage: "/Content/themes/base/images/calendar.png",
+        buttonImageOnly: true,
+        changeYear: true
     });
 
-    $(function () {
-        $("#expDatePicker").datepicker();
+    $("#RxExpDatePicker").datepicker({
+        showOn: "button",
+        buttonImage: "/Content/themes/base/images/calendar.png",
+        buttonImageOnly: true,
+        changeYear: true
     });
 
     // ------------------------------------------------- //
@@ -221,7 +227,15 @@ $(document).ready(function () {
     // ------------------------------------------------- //
 
     $("#immunizationAddButton").button().click(function () {
-        
+
+    });
+
+    // ------------------------------------------------- //
+    //  Setup DxHistory List Tab                         //
+    // ------------------------------------------------- //
+
+    $("#dxHistoryAddButton").button().click(function () {
+
     });
 
 });
