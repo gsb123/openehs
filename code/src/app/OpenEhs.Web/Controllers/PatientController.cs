@@ -41,7 +41,10 @@ namespace OpenEhs.Web.Controllers {
             Match m = phoneRegEx.Match(searchCriteria); //Check if the search string matches the phone number
             if (m.Success)
             {
-                patients = new PatientRepository().FindByPhoneNumber(m.ToString());
+                //Format the phone number to 'XXXXXXXXXX' format to search for it
+                string formattedPhoneNumber = phoneRegEx.Replace(m.ToString(), "$1$2$3");
+
+                patients = new PatientRepository().FindByPhoneNumber(formattedPhoneNumber);
             }
 
             return View(patients);
