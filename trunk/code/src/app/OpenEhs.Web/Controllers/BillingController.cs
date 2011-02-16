@@ -55,7 +55,6 @@ namespace OpenEhs.Web.Controllers
 
         //
         // GET: /Invoice/Edit/5
-
         public ActionResult Edit(int id)
         {
             var invoice = new BillingEditViewModel(id);
