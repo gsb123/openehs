@@ -343,6 +343,22 @@ namespace OpenEhs.Web.Models
             _invoice.Items.Remove(lineItem);
         }
 
+        public void AddEmptyService()
+        {
+            InvoiceItem lineItem = new InvoiceItem();
+            lineItem.Service = new Service();
+            lineItem.Quantity = 1;
+            _invoice.Items.Add(lineItem);
+        }
+
+        public void AddEmptyProduct()
+        {
+            InvoiceItem lineItem = new InvoiceItem();
+            lineItem.Product = new Product();
+            lineItem.Quantity = 1;
+            _invoice.Items.Add(lineItem);
+        }
+
         #endregion
 
     }
