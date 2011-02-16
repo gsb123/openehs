@@ -225,7 +225,7 @@ namespace OpenEhs.Web.Models
 
         [Required]
         [DisplayName("Note")]
-        public Note Note
+        public string Note
         {
             get
             {

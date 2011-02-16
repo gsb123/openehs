@@ -4,13 +4,13 @@
         <legend>General</legend>
         <div class="group">
             <div class="column">
-                @Html.LabelFor(model => model.Id, "Patient ID")<br />
-                @Html.TextBoxFor(model => model.Id)<br />
-                @Html.LabelFor(model => model.FirstName, "First Name")<br />
+                @Html.LabelFor(model => model.PatientId)<br />
+                @Html.TextBoxFor(model => model.PatientId)<br />
+                @Html.LabelFor(model => model.FirstName)<br />
                 @Html.TextBoxFor(model => model.FirstName)<br />
-                @Html.LabelFor(model => model.MiddleName, "Middle Name")<br />
+                @Html.LabelFor(model => model.MiddleName)<br />
                 @Html.TextBoxFor(model => model.MiddleName)<br />
-                @Html.LabelFor(model => model.LastName, "Last Name")<br />
+                @Html.LabelFor(model => model.LastName)<br />
                 @Html.TextBoxFor(model => model.LastName)<br />
             </div>
             <div class="column">
@@ -23,7 +23,7 @@
                 </div>
                 @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
                 @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
-                @Html.LabelFor(model => model.PhoneNumber, "Phone Number")<br />
+                @Html.LabelFor(model => model.PhoneNumber)<br />
                 @Html.TextBoxFor(model => model.PhoneNumber)
             </div>
         </div>
@@ -65,5 +65,5 @@
 <div id="BasicInformationNotes">
     <label for="patientNoteTextBox">
         Notes</label>
-    <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.PatientNote</textarea>
+    <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.Note</textarea>
 </div>
