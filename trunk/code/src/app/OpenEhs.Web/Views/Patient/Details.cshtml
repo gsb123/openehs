@@ -1,4 +1,4 @@
-﻿@model OpenEhs.Domain.Patient
+﻿@model OpenEhs.Web.Models.PatientViewModel
 @{
     if (Model.MiddleName != String.Empty) {
         ViewBag.Title = String.Format("OpenEHS - Patient: {2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName);
@@ -33,7 +33,7 @@
     </div>
 </div>
 <div id="patientView">
-    @Html.HiddenFor(model => model.Id, new { @id = "patientId" })
+    @Html.HiddenFor(model => model.PatientId, new { @id = "patientId" })
     <div>
         <ul>
             <li><a href="#patientView-Basic">Basic</a></li>
@@ -77,7 +77,7 @@
         </div>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>
