@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using OpenEhs.Domain;
 using System.ComponentModel;
 using System;
@@ -304,6 +305,30 @@ namespace OpenEhs.Web.Models
             set
             {
                 _patient.Medications = value;
+            }
+        }
+
+        public IList<Medication> CurrentMedications
+        {
+            get
+            {
+                var currentMeds = from med in Medications
+                where med.ExpDate >= DateTime.Now
+                select med;
+
+                return currentMeds.ToList();
+            }
+        }
+
+        public IList<Medication> PastMedications
+        {
+            get
+            {
+                var pastMeds = from med in Medications
+                                  where med.ExpDate <= DateTime.Now
+                                  select med;
+
+                return pastMeds.ToList();
             }
         }
 

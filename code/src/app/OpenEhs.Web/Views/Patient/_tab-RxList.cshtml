@@ -45,21 +45,7 @@
         Current Medications
     </b></p>
 
-    @*  
-        EXAMPLE OF WHAT YOU COULD DO
-        -------------------------------------------
-        var currentMeds =
-                from med in Model.Medications
-                where med.ExpDate >= DateTime.Now
-                select med;  
-
-        if (currentMeds.Count == 0)
-        {
-            // do something.
-        } ...
-    *@
-
-    @if (Model.Medications.Count == 0)
+    @if (Model.CurrentMedications.Count == 0)
     {
         <ul id="MedicationListOne">
             <li style="float: left;">
@@ -70,17 +56,14 @@
     else
     {
         <ul id="MedicationListTwo">
-            @foreach (var medication in Model.Medications)
+            @foreach (var medication in Model.CurrentMedications)
             {
-                if (@medication.ExpDate >= DateTime.Now)
-                {
                 <li class="group">
                     <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
                     <div style="float: left;"><b>Instructions: </b> @medication.Instruction</div><br />
                     <div style="float: left;"><b>Start Date: </b> @medication.StartDate</div><br />
                     <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
                 </li>
-                }
             }
         </ul>
     }
@@ -92,7 +75,7 @@
         Past Medications
     </b></p>
 
-    @if (Model.Medications.Count == 0)
+    @if (Model.PastMedications.Count == 0)
     {
         <ul id="MedicationListThree">
             <li style="float: left;">
@@ -103,15 +86,12 @@
     else
     {
         <ul id="MedicationListFour">
-            @foreach (var medication in Model.Medications)
+            @foreach (var medication in Model.PastMedications)
             {
-                if (@medication.ExpDate <= DateTime.Now)
-                {
-                <li class="group">
-                    <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
-                    <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
-                </li>
-                }
+            <li class="group">
+                <div style="float: left;"><b>Name: </b>@medication.Name     </div><br />
+                <div style="float: left;"><b>Exp Date: </b> @medication.ExpDate</div>
+            </li>
             }
         </ul>
     }
