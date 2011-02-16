@@ -18,7 +18,7 @@ namespace OpenEhs.Web.Models
             _patient = new PatientRepository().Get(patientId);
         }
 
-        #region Patient
+        #region Patient Properties
 
         [Required]
         [DisplayName("Patient ID")]
@@ -112,6 +112,7 @@ namespace OpenEhs.Web.Models
 
         [Required]
         [DisplayName("Phone Number")]
+        [RegularExpression(@"^([0-9]{3})[ ]{1}([0-9]{3})[ ]{1}([0-9]{4})$", ErrorMessage = "Please format phone to XXX XXX XXXX")]
         public string PhoneNumber
         {
             get
@@ -122,54 +123,6 @@ namespace OpenEhs.Web.Models
             {
                 _patient.PhoneNumber = value;
             }
-        }
-
-        [Required]
-        [DisplayName("Problems")]
-        public IList<Problem> Problems
-        {
-            get
-            {
-                return _patient.Problems;
-            }
-            set
-            {
-                _patient.Problems = value;
-            }
-        }
-
-        public void AddProblem(Problem problem)
-        {
-            Problems.Add(problem);
-        }
-
-        public void RemoveProblem(Problem problem)
-        {
-            Problems.Remove(problem);
-        }
-
-        [Required]
-        [DisplayName("Allergies")]
-        public IList<Allergy> Allergies
-        {
-            get
-            {
-                return _patient.Allergies;
-            }
-            set
-            {
-                _patient.Allergies = value;
-            }
-        }
-
-        public void AddAllergy(Allergy allergy)
-        {
-            Allergies.Add(allergy);
-        }
-
-        public void RemoveAllergy(Allergy allergy)
-        {
-            Allergies.Remove(allergy);
         }
 
         [Required]
@@ -298,6 +251,67 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [Required]
+        [DisplayName("Problems")]
+        public IList<Problem> Problems
+        {
+            get
+            {
+                return _patient.Problems;
+            }
+            set
+            {
+                _patient.Problems = value;
+            }
+        }
+
+        [Required]
+        [DisplayName("Allergies")]
+        public IList<Allergy> Allergies
+        {
+            get
+            {
+                return _patient.Allergies;
+            }
+            set
+            {
+                _patient.Allergies = value;
+            }
+        }
+
+        [Required]
+        [DisplayName("Immunizations")]
+        public IList<Immunization> Immunizations
+        {
+            get
+            {
+                return _patient.Immunizations;
+            }
+            set
+            {
+                _patient.Immunizations = value;
+            }
+        }
+
+        [Required]
+        [DisplayName("Medications")]
+        public IList<Medication> Medications
+        {
+            get
+            {
+                return _patient.Medications;
+            }
+            set
+            {
+                _patient.Medications = value;
+            }
+        }
+
+        #endregion
+
+
+        #region Patient Methods
+
         public void AddEncounter(PatientCheckIn checkIn)
         {
             PatientCheckIns.Add(checkIn);
@@ -308,6 +322,140 @@ namespace OpenEhs.Web.Models
             PatientCheckIns.Remove(checkIn);
         }
 
+        /// <summary>
+        /// Remove the encounter by ID
+        /// </summary>
+        /// <param name="encounterId">ID of the encounter to remove</param>
+        /// <returns>If the encounter was successfully removed</returns>
+        public bool RemoveEncounter(int encounterId)
+        {
+            foreach(PatientCheckIn checkIn in PatientCheckIns)
+            {
+                if (checkIn.Id == encounterId)
+                {
+                    PatientCheckIns.Remove(checkIn);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void AddProblem(Problem problem)
+        {
+            Problems.Add(problem);
+        }
+
+        public void RemoveProblem(Problem problem)
+        {
+            Problems.Remove(problem);
+        }
+
+        /// <summary>
+        /// Remove the problem by ID
+        /// </summary>
+        /// <param name="problemId">ID of the problem to remove</param>
+        /// <returns>If the problem was successfully removed</returns>
+        public bool RemoveProblem(int problemId)
+        {
+            foreach (Problem problem in Problems)
+            {
+                if (problem.Id == problemId)
+                {
+                    Problems.Remove(problem);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void AddAllergy(Allergy allergy)
+        {
+            Allergies.Add(allergy);
+        }
+
+        public void RemoveAllergy(Allergy allergy)
+        {
+            Allergies.Remove(allergy);
+        }
+
+        /// <summary>
+        /// Remove the allergy by ID
+        /// </summary>
+        /// <param name="allergyId">ID of the allergy to remove</param>
+        /// <returns>If the allergy was successfully removed</returns>
+        public bool RemoveAllergy(int allergyId)
+        {
+            foreach (Allergy allergy in Allergies)
+            {
+                if (allergy.Id == allergyId)
+                {
+                    Allergies.Remove(allergy);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void AddImmunization(Immunization immunization)
+        {
+            Immunizations.Add(immunization);
+        }
+
+        public void RemoveImmunization(Immunization immunization)
+        {
+            Immunizations.Remove(immunization);
+        }
+
+        /// <summary>
+        /// Remove the immunization by ID
+        /// </summary>
+        /// <param name="immunizationId">ID of the immunization to remove</param>
+        /// <returns>If the immunization was successfully removed</returns>
+        public bool RemoveImmunization(int immunizationId)
+        {
+            foreach (Immunization immunization in Immunizations)
+            {
+                if (immunization.Id == immunizationId)
+                {
+                    Immunizations.Remove(immunization);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void AddMedication(Medication medication)
+        {
+            Medications.Add(medication);
+        }
+
+        public void RemoveMedication(Medication medication)
+        {
+            Medications.Remove(medication);
+        }
+
+        /// <summary>
+        /// Remove the medication by ID
+        /// </summary>
+        /// <param name="medicationId">ID of the medication to remove</param>
+        /// <returns>If the medication was successfully removed</returns>
+        public bool RemoveMedication(int medicationId)
+        {
+            foreach (Medication medication in Medications)
+            {
+                if (medication.Id == medicationId)
+                {
+                    Medications.Remove(medication);
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         #endregion
 
