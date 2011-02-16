@@ -1729,6 +1729,95 @@ null,
 2
 );
 
+#--------
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
+'5698 W. 12th Dr.',
+'',
+'Littleton',
+'Co',
+'USA'
+);
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
+'12478 S Riverdale Rd.',
+'',
+'Ogden',
+'Ut',
+'USA'
+);
+
+INSERT INTO EmergencyContact
+(
+FirstName,
+LastName,
+PhoneNumber,
+Relationship,
+AddressID
+)
+VALUES
+(
+'Troy',
+'Jimmer',
+'458-654-7878',
+3,
+5
+);
+
+INSERT INTO Patient
+(
+FirstName,
+MiddleName,
+LastName,
+DateOfBirth,
+Gender,
+PhoneNumber,
+AddressID,
+BloodType,
+TribeRace,
+Religion,
+PatientNote,
+OldPhysicalRecordNumb,
+EmergencyContactID
+)
+VALUES
+(
+'Ryan',
+'',
+'Olsen',
+'1986-10-07',
+'Male',
+'801-320-8896',
+6,
+'AB',
+'white',
+'Catholic',
+'Is addicted to pain meds',
+null,
+3
+);
+
+
+#--------
+
 
 CALL sp_insertProblem
 (
@@ -2293,6 +2382,45 @@ NOW(),
 null
 );
 
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'YellowFevor',
+'2009-08-07 00:00:00',
+null
+);
+
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'TwinRix',
+'2010-10-15 00:00:00',
+null
+);
+
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'YellowFevor',
+'2002-01-16 00:00:00',
+null
+);
+
 INSERT INTO PatientImmunization
 (
 PatientID,
@@ -2324,6 +2452,39 @@ VALUES
 (
 100001,
 2
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100000,
+4
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100000,
+5
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100001,
+6
 );
 
 INSERT INTO Medication
