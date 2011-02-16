@@ -45,6 +45,19 @@
         Current Medications
     </b></p>
 
+    @*  
+        EXAMPLE OF WHAT YOU COULD DO
+        -------------------------------------------
+        var currentMeds =
+                from med in Model.Medications
+                where med.ExpDate >= DateTime.Now
+                select med;  
+
+        if (currentMeds.Count == 0)
+        {
+            // do something.
+        } ...
+    *@
     @if (Model.Medications.Count == 0)
     {
         <ul id="MedicationList">
