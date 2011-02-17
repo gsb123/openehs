@@ -2421,6 +2421,19 @@ VALUES
 null
 );
 
+INSERT INTO Immunization
+(
+VaccineType,
+DateAdministered,
+Comments
+)
+VALUES
+(
+'Flu Shot',
+'2000-01-05 00:00:00',
+null
+);
+
 INSERT INTO PatientImmunization
 (
 PatientID,
@@ -2485,6 +2498,17 @@ VALUES
 (
 100001,
 6
+);
+
+INSERT INTO PatientImmunization
+(
+PatientID,
+ImmunizationID
+)
+VALUES
+(
+100000,
+7
 );
 
 INSERT INTO Medication
