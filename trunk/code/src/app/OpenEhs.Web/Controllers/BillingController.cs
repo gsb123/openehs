@@ -17,14 +17,6 @@ namespace OpenEhs.Web.Controllers
             return View(invoices);
         }
 
-        //Get: invoice list
-        public ActionResult Index()
-        {
-            var invoices = new InvoiceRepository().GetAll();
-
-            return invoices.;
-        }
-
         //
         // GET: /Invoice/Details/5
 
