@@ -294,6 +294,10 @@ namespace OpenEhs.Web.Models
             }
         }
 
+
+
+        
+
         [Required]
         [DisplayName("Medications")]
         public IList<Medication> Medications
@@ -366,6 +370,17 @@ namespace OpenEhs.Web.Models
                 return valShots.ToList();
             }
         }
+
+        /*
+        public IList<Encounter> TopFiveDx
+        {
+            get
+            {
+                var dx = from dxHistory in Encounter
+                         where dxHistory
+            }
+        }
+         */
 
         #endregion
 
