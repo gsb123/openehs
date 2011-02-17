@@ -278,12 +278,38 @@ $(document).ready(function () {
     // ------------------------------------------------- //
 
     $("#immunizationAddButton").button().click(function () {
-
+        $("#newImmunizationDialog").dialog("open")
     });
 
     $("#immunizationInfoLink").click(function () {
         $("#immunizationMoreInfo").slideToggle("slow", function () {
         });
+    });
+
+    $("#newImmunizationDialog").dialog({
+        autoOpen: false,
+        height: 400,
+        width: 400,
+        modal: true,
+        buttons: {
+            "Save Immunization": function () {
+                $.post("/Patient/AddImmunization",
+                {
+                    patientID: $("#patientId").val(),
+                    vaccinetype: $("#modal_immunizationVaccineType").val(),
+                    dateadministered: $("#modal_immunizationDateAdministered").val(),
+
+                });
+                $(this).dialog("close");
+
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            allFields.removeClass("ui-state-error");
+        }
     });
 
     // ------------------------------------------------- //
