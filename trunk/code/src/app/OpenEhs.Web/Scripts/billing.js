@@ -18,34 +18,4 @@ $(document).ready(function () {
 
     });
 
-    $(function () {
-        var availableTags = [
-			"Cameron",
-			"Peter",
-			"Ryan",
-			"Kim",
-			"Ed",
-			"Rich",
-			"JD",
-			"Nate",
-			"Farmer",
-			"Erlang",
-			"Fortran",
-			"Groovy",
-			"Haskell",
-			"Java",
-			"JavaScript",
-			"Lisp",
-			"Perl",
-			"PHP",
-			"Python",
-			"Ruby",
-			"Scala",
-			"Scheme"
-		];
-        $("#tags").autocomplete({
-            source: availableTags
-        });
-    });
-
 });

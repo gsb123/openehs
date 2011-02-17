@@ -3,6 +3,36 @@
     padding: 20px;
 }
 
+#newEncounterAddButton
+{
+    height: 30px;
+    width: 95px;
+    float: right; 
+    margin-right: 15px; 
+    margin-top: 7px;
+    font-size: 10px;
+    font-weight: bold;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-right-width: medium;
+    border-top-width: medium;
+}
+
+#editPatientInfoButton
+{
+    height: 30px;
+    width: 95px;
+    float: right; 
+    margin-right: 15px; 
+    margin-top: 7px;
+    font-size: 10px;
+    font-weight: bold;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-right-width: medium;
+    border-top-width: medium;
+}
+
 .allergyRemove
 {
 	padding: 5px; 

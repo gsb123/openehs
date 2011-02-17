@@ -31,6 +31,10 @@
     <div style="float: right; margin-right: 20px; margin-top: 13px;">
         @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive, "Active")
     </div>
+    <div>
+        <input value="New Encounter" id="newEncounterAddButton" type="button" />
+        <input value="Edit Patient" id="editPatientInfoButton" type="button" />
+    </div>
 </div>
 <div id="patientView">
     @Html.HiddenFor(model => model.PatientId, new { @id = "patientId" })
