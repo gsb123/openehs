@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using OpenEhs.Domain;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
@@ -131,6 +132,19 @@ namespace OpenEhs.Web.Models
             set
             {
                 _payment.CashAmount = value;
+            }
+        }
+
+        //Trying to get search box to work
+        public IList<Invoice> InvoiceSearch
+        {
+            get
+            {
+                var searchList = from inv in InvoiceSearch
+                                 select inv;
+
+
+                return searchList.ToList();
             }
         }
         
