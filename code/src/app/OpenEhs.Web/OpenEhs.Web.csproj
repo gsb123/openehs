@@ -459,7 +459,6 @@
     <Content Include="Views\Billing\Index.cshtml" />
     <Content Include="Views\Billing\Details.cshtml" />
     <Content Include="Views\Billing\Create.cshtml" />
-    <Content Include="Views\Patient\_tab-PMH.cshtml" />
     <Content Include="Views\Patient\_tab-Basic.cshtml" />
     <Content Include="Views\Patient\_tab-Encounters.cshtml" />
     <Content Include="Views\Patient\_tab-Allergy.cshtml" />
