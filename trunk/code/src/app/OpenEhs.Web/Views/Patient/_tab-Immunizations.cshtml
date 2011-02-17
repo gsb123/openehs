@@ -7,20 +7,49 @@
 </div>
 
 <div>
-	<ul id="immunizationList">
+
+    <p id="immunizationTitle"><b>Immunizations within 10 years</b></p>
+    
+	<ul id="immunizationListOne">
 		@if(Model.Immunizations.Count == 0)
 		{
 			<li>Patient does not have any recorded immunizations.</li>
 		}
 		else
 		{
-		foreach(var shots in Model.Immunizations)
-		{
-			<li class="group">
-				<div style="float: left;"><b>Vaccine Type: </b>@shots.VaccineType</div><br />
-				<div style="float: left;"><b>Date Administered: </b>@shots.DateAdministered</div>
-			</li>
+		foreach (var shots in Model.TenYearImmunization)
+        {
+            if (shots.DateAdministered >= DateTime.Now.AddYears(-10))
+            {
+		        <li class="group">
+			        <div style="float: left;"><b>Vaccine Type: </b>@shots.VaccineType</div><br />
+			        <div style="float: left;"><b>Date Administered: </b>@shots.DateAdministered</div>
+		        </li>
             }
         }
+        }
 	</ul>
+</div>
+
+<div id="immunizationInfoLink">
+        Immunizations Prior to 10 years...
+</div>
+
+    <div id="immunizationMoreInfo">
+
+        <ul id="immunizationListTwo">
+
+            @foreach(var shots in Model.TenYearImmunization)
+            {
+	            if(shots.DateAdministered <= DateTime.Now.AddYears(-10))
+	            {
+		            <li class="group">
+		                <div style="float: left;"><b>Vaccine Type: </b>@shots.VaccineType</div><br />
+			            <div style="float: left;"><b>Date Administered: </b>@shots.DateAdministered</div>
+		            </li>
+                }
+            }
+
+        </ul>
+
 </div>
