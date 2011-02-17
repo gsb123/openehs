@@ -231,6 +231,11 @@ $(document).ready(function () {
 
     $(".medicationPrintButton").button().click(function () { });
 
+    $("#rxInfoLink").click(function () {
+        $("#rxMoreInfo").slideToggle("slow", function () {
+        });
+    });
+
     $("#newMedicationDialog").dialog({
         autoOpen: false,
         height: 400,
