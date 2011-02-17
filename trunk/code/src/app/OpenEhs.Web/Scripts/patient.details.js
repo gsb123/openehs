@@ -7,7 +7,9 @@ $(document).ready(function () {
     // ------------------------------------------------- //
     //  Initialize jVerticalTabs Plugin                  //
     // ------------------------------------------------- //
-    $("#patientView").jVertTabs();
+    $("#patientView").jVertTabs({
+        equalHeights: true
+    });
 
 
     // ------------------------------------------------- //
