@@ -30,6 +30,14 @@ $(document).ready(function () {
         });
     });
 
+    $("#newEncounterAddButton").button().click(function () {
+        
+    });
+
+    $("#editPatientInfoButton").button().click(function () {
+        
+    });
+
 
     // ------------------------------------------------- //
     //  Configure CKEditor on Patient Note               //
