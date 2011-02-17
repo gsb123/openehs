@@ -3,12 +3,42 @@
 @{
     ViewBag.Title = "Index";
 }
+@section head
+{
+	<link href="@Url.Content("~/Content/billing.main.css")" rel="Stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/jquery-jvert-tabs-1.1.4.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ckedit/ckeditor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ckedit/adapters/jquery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/billing.js")" type="text/javascript"></script>
+}
 
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div id="Actions" class="group">
+    @Html.ActionLink("New Billing", "Create", null, new { id = "CreateNewBillingButton" })
+	<div style="float: right">
+		<input id="tags">
+		@Html.ActionLink("Search Billing", "Search", null, new { id = "SearchBillingButton" })
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table>
     <tr>
         <th></th>
