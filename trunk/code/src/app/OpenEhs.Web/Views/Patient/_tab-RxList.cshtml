@@ -41,7 +41,7 @@
 
 
 <div>
-    <p><b>
+    <p id="rxTitle"><b>
         Current Medications
     </b></p>
 
@@ -68,11 +68,13 @@
         </ul>
     }
 
-	<br />
 
-    <p><b>
-        Past Medications
-    </b></p>
+<div id="rxInfoLink">
+	Show Past Medications...
+</div>
+
+    <div id="rxMoreInfo">
+
 
     @if (Model.PastMedications.Count == 0)
     {
@@ -95,3 +97,4 @@
         </ul>
     }
 </div> 
+</div>
