@@ -332,6 +332,19 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public  IList<Immunization> TenYearImmunization
+        {
+            get
+            {
+                var valShots = from immun in Immunizations
+                               select immun;
+
+                //DateTime oneYearBefore = DateTime.Now.AddYears(-10);
+
+                return valShots.ToList();
+            }
+        }
+
         #endregion
 
 
