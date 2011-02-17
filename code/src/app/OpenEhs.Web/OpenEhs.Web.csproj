@@ -107,6 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\billing.main.css" />
     <Content Include="Content\jvert-tabs\images\ClosedTabBackground.png" />
     <Content Include="Content\jvert-tabs\images\ClosedTabBackgroundHover.png" />
     <Content Include="Content\jvert-tabs\jquery-jvert-tabs-1.1.4.css" />
@@ -122,6 +123,7 @@
     <Content Include="images\common\icons\16x16\Delete.png" />
     <Content Include="images\common\icons\24x24\Delete.png" />
     <Content Include="images\openehs.logo.png" />
+    <Content Include="Scripts\billing.js" />
     <Content Include="Scripts\ckedit\adapters\jquery.js" />
     <Content Include="Scripts\ckedit\ckeditor.js" />
     <Content Include="Scripts\ckedit\ckeditor_basic.js" />
