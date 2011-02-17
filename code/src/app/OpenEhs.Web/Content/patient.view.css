@@ -290,7 +290,20 @@ fieldset
     float: right;
 }
 
-#immunizationList li
+#immunizationListOne li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#immunizationListTwo li
 {
     font-size: 1.2em;
     list-style: none;
@@ -318,4 +331,24 @@ fieldset
 {
     margin-top: 15px;
     float: right;
+}
+
+#immunizationInfoLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 40px;
+    font-size: 20px;
+}
+
+#immunizationMoreInfo
+{
+    clear: both;
+    display: none;
+}
+
+#immunizationTitle
+{
+    margin-left: 40px
 }

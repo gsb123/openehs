@@ -281,6 +281,11 @@ $(document).ready(function () {
 
     });
 
+    $("#immunizationInfoLink").click(function () {
+        $("#immunizationMoreInfo").slideToggle("slow", function () {
+        });
+    });
+
     // ------------------------------------------------- //
     //  Setup DxHistory List Tab                         //
     // ------------------------------------------------- //
