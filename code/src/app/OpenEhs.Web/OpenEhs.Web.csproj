@@ -460,7 +460,7 @@
     <Content Include="Views\Billing\Details.cshtml" />
     <Content Include="Views\Billing\Create.cshtml" />
     <Content Include="Views\Patient\_tab-Basic.cshtml" />
-    <Content Include="Views\Patient\_tab-Encounters.cshtml" />
+    <Content Include="Views\Patient\_tab-EncounterHistory.cshtml" />
     <Content Include="Views\Patient\_tab-Allergy.cshtml" />
     <Content Include="Views\Patient\_tab-ChronicDiseases.cshtml" />
     <Content Include="Views\Patient\_tab-Vitals.cshtml" />
