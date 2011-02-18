@@ -27,7 +27,7 @@ namespace OpenEhs.Domain
         public virtual IList<Surgery> Surgeries { get; set; }
         public virtual string Diagnosis { get; set; }
         public virtual Location Locations { get; set; }
-        public virtual Staff Staff { get; set; }
+        public virtual Staff AttendingStaff { get; set; }
 
         #endregion
 
