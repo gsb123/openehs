@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using OpenEhs.Data;
 using System;
 using OpenEhs.Domain;
@@ -158,6 +159,22 @@ namespace OpenEhs.Web.Controllers {
                     status = e.Message
                 });
             }
+        }
+
+        [HttpPost]
+        public ActionResult SearchVisit(FormCollection value1, FormCollection value2)
+        {
+            //Values from textboxes
+            DateTime searchCriteria1 = DateTime.Parse(value1["from"]);
+            DateTime searchCriteria2 = DateTime.Parse(value2["to"]);
+
+            IList<PatientCheckIn> pci = new List<PatientCheckIn>();
+
+            var list = from blah in pci
+                       where blah.CheckInTime >= searchCriteria1 && blah.CheckInTime <= searchCriteria2
+                       select blah;
+
+            return Json(list);
         }
     }
 }

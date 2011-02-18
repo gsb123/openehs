@@ -401,6 +401,11 @@ fieldset
     margin-left: 40px
 }
 
+#visitTitle2
+{
+    margin-left: 40px
+}
+
 #rxInfoLink
 {
     clear: both;
@@ -427,4 +432,81 @@ fieldset
 {
     clear: both;
     display: none;
+}
+
+#visitVitalsLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#visitVitalsMoreInfo
+{
+    clear: both;
+    display: none;
+}
+
+#visitPastMoreInfo
+{
+    clear: both;
+    display: none;
+    margin-left: 40px;
+}
+
+#visitPastLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 40px;
+    font-size: 15px;
+}
+
+#vitalHistory
+{
+    font-size: 10px;
+}
+
+table.vitalsHist {
+	background-color: white;
+}
+
+table.vitalsHist th {
+	background-color: #BDBDBD;
+}
+
+#vitalsHistorySearch input
+{
+    margin-top: 15px;
+}
+
+#from
+{
+    width: 100px;
+    height: 25px;
+}
+
+#to
+{
+    width: 100px;
+    height: 25px;
+}
+
+#pastVisitFieldSet
+{
+    width: 330px;
+}
+
+#searchHistoryResultList
+{
+font-size: 1.2em;
+list-style: none;
+background-color: #eee;
+border: 1px solid #aaa;
+width: 600px;
+padding: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+margin-bottom: 10px;  
 }

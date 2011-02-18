@@ -368,6 +368,17 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<PatientCheckIn> SearchCheckIns
+        {
+            get
+            {
+                var searchVisits = from sci in PatientCheckIns
+                             select sci;
+
+                return searchVisits.ToList();
+            }
+        }
+
         #endregion
 
 

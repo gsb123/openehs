@@ -336,6 +336,41 @@ $(document).ready(function () {
         });
     });
 
+    $("#visitVitalsLink").click(function () {
+        $("#visitVitalsMoreInfo").slideToggle("slow", function () {
+        });
+    });
 
+    $("#visitPastLink").click(function () {
+        $("#visitPastMoreInfo").slideToggle("slow", function () {
+        });
+    });
+
+    $("#visitHistorySearchButton").button().click(function () {
+       $("#visitPastMoreInfo").click(function () {
+                var href = $(this).find("a").attr("href");
+
+                if (href) {
+                    window.location = href;
+                }
+            });
+    });
+
+    $(function() {
+		var dates = $( "#from, #to" ).datepicker({
+			defaultDate: "+1w",
+			changeMonth: true,
+			numberOfMonths: 3,
+			onSelect: function( selectedDate ) {
+				var option = this.id == "from" ? "minDate" : "maxDate",
+					instance = $( this ).data( "datepicker" );
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings );
+				dates.not( this ).datepicker( "option", option, date );
+			}
+		});
+	});
 
 });
