@@ -347,6 +347,7 @@ $(document).ready(function () {
     });
 
     $("#visitHistorySearchButton").button().click(function () {
+        alert("Hello!");
        $("#visitPastMoreInfo").click(function () {
                 var href = $(this).find("a").attr("href");
 
