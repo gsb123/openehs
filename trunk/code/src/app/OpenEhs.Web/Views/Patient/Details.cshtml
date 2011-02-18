@@ -42,7 +42,6 @@
         <ul>
             <li><a href="#patientView-Demographics">Demographics</a></li>
             <li><a href="#patientView-Vitals">Vitals</a></li>
-            <li><a href="#patientView-DxHistory">Dx History</a></li>
             <li><a href="#patientView-RxList">Rx List</a></li>
 			<li><a href="#patientView-Immunizations">Immunizations</a></li>
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
@@ -56,9 +55,6 @@
         </div>
         <div id="#patientView-Vitals">
             @Html.Partial("_tab-Vitals",Model)
-        </div>
-        <div id="#patientView-DxHistory">
-            @Html.Partial("_tab-DxHistory", Model)
         </div>
         <div id="#patientView-RxList">
             @Html.Partial("_tab-RxList", Model)

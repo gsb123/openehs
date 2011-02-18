@@ -13,6 +13,7 @@ namespace OpenEhs.Web.Models
     public class PatientViewModel
     {
         private Patient _patient;
+        private Staff _staff;
 
         public PatientViewModel(int patientId)
         {
@@ -292,11 +293,7 @@ namespace OpenEhs.Web.Models
             {
                 _patient.Immunizations = value;
             }
-        }
-
-
-
-        
+        }    
 
         [Required]
         [DisplayName("Medications")]
@@ -370,17 +367,6 @@ namespace OpenEhs.Web.Models
                 return valShots.ToList();
             }
         }
-
-        /*
-        public IList<Encounter> TopFiveDx
-        {
-            get
-            {
-                var dx = from dxHistory in Encounter
-                         where dxHistory
-            }
-        }
-         */
 
         #endregion
 
