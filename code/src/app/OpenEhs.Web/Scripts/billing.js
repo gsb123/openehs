@@ -19,3 +19,35 @@ $(document).ready(function () {
     });
 
 });
+
+$(document).ready(function () {
+    $("#NewServiceButton").button();
+    $("#NewProductButton").button();
+    $("#NewLineItemButton")
+                .button()
+                .click(function () {
+                    alert("woo?");
+                    /*
+                    $.post("/Patient/AddLineItem", {
+                    id: $("#id").val();
+                    value: "s"
+                    }*/
+                })
+    $("#PayInFullButton")
+                .button()
+                .click(function () {
+                })
+                .next()
+                    .button({
+                        text: false,
+                        icons: {
+                            primary: "ui-icon-triangle-1-s"
+                        }
+                    })
+                    .click(function () {
+                        alert("Menu!");
+                    })
+                    .parent()
+                        .buttonset();
+});
+

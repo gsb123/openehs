@@ -1,29 +1,141 @@
 ﻿#Actions
 {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #Actions input
 {
-   font-family: Segoe, Sans-Serif;
-   font-size: 3.2em;
-   width: 750px;
+	font-family: Segoe, Sans-Serif;
+	font-size: 3.2em;
+	width: 750px;
 }
 
 #CreateNewBillingButton
 {
-    float: left;
+	float: left;
 }
 
 .ui-button-text
 {
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 15px 20px 16px 20px !important;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 15px 20px 16px 20px !important;
 }
 
 #SearchBillingButton
 {
-    float: right;
-    margin-left: 10px;
+	float: right;
+	margin-left: 10px;
+}
+
+#InvoiceTitle > h1
+{
+	font-size: 2.4em;
+	float: left;
+	margin: 2px 0px 0px 0px;
+}
+
+#TotalAndPayment
+{
+	text-align: right;
+	float: right;
+}
+
+#InvoiceTotal
+{
+	font-size: 2.4em;
+	float: left;
+	margin: 2px 20px 0px 0px;
+}
+
+#PaymentActionButtons
+{
+	float: left;
+}
+
+#PayInFullButton, #SelectActionButton
+{
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+#NewLineItemButton
+{
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+#InvoiceHeader
+{
+	margin-top: 25px;
+}
+
+#InvoiceBillTo
+{
+	float: left;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#InvoiceBillTo fieldset
+{
+	width: 300px;
+}
+
+#InvoiceBillTo ul
+{
+	font-size: 1.4em;
+	list-style: none;
+	padding-left: 0px;
+}
+
+#InvoiceHeaderInformation
+{
+	font-size: 1.4em;
+	float: right;
+}
+
+#InvoiceHeaderInformation table
+{
+	text-align: right;
+	border-collapse: collapse;
+}
+
+#InvoiceLineItems
+{
+	font-size: 1.4em;
+}
+
+#InvoiceLineItems table
+{
+	width: 100%;
+}
+
+.DescriptionColumn
+{
+	width: 50%;
+}
+
+.UnitColumn
+{
+	width: 12%;
+	text-align: center;
+}
+
+.PriceColumn
+{
+	width: 15%;
+	text-align: right;
+}
+
+.QuantityColumn
+{
+	width: 8%;
+	text-align: center;
+}
+
+.TotalColumn
+{
+	width: 15%;
+	text-align: right;
 }
