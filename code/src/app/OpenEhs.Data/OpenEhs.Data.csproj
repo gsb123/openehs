@@ -113,6 +113,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Immunization.hbm.xml" />
+    <Content Include="Mappings\Location.hbm.xml" />
     <Content Include="Mappings\PatientAllergy.hbm.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -137,9 +138,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Note.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Encounter.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Payment.hbm.xml">

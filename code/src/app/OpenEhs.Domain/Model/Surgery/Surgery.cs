@@ -22,7 +22,6 @@ namespace OpenEhs.Domain
         public virtual DateTime EndTime { get; set; }
         public virtual string Comments { get; set; }
         public virtual IList<Staff> Staff { get; set; }
-        public virtual Encounter Encounter { get; set; }
 
         #endregion
 

@@ -22,9 +22,11 @@ namespace OpenEhs.Domain
         public virtual PCIStatus PatientStatus { get; set; }
         public virtual DateTime CheckOutTime { get; set; }
         public virtual bool IsActive { get; set; }
-        public virtual IList<Encounter> Encounters { get; set; }
         public virtual Invoice Invoice { get; set; }
         public virtual IList<Vitals> Vitals { get; set; }
+        public virtual string Diagnosis { get; set; }
+        public virtual Location Locations { get; set; }
+        public virtual Staff Staff { get; set; }
 
         #endregion
 

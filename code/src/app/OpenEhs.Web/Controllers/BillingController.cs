@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 using OpenEhs.Data;
@@ -123,5 +126,15 @@ namespace OpenEhs.Web.Controllers
                 return View();
             }
         }
+
+        /*
+        //Trying to get search box to work
+        public JsonResult InvoiceSearch()
+        {
+            //var search
+
+            //return Json();
+        }
+         */
     }
 }

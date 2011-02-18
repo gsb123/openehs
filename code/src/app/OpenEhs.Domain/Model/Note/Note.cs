@@ -7,6 +7,7 @@
  *****************************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
@@ -19,8 +20,8 @@ namespace OpenEhs.Domain
         public virtual string Body { get; set; }
         public virtual DateTime DateCreated { get; set; }
         public virtual Staff Author { get; set; }
-        public virtual Encounter Encounter { get; set; }
         public virtual bool IsActive { get; set; }
+        public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }
 
         #endregion
 

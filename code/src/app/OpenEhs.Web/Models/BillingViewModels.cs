@@ -134,19 +134,6 @@ namespace OpenEhs.Web.Models
                 _payment.CashAmount = value;
             }
         }
-
-        //Trying to get search box to work
-        public IList<Invoice> InvoiceSearch
-        {
-            get
-            {
-                var searchList = from inv in InvoiceSearch
-                                 select inv;
-
-
-                return searchList.ToList();
-            }
-        }
         
         #endregion
 
