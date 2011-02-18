@@ -145,6 +145,13 @@ PatientID               int         NOT NULL,
 ProblemID               int         NOT NULL
 );
 
+CREATE TABLE Location
+(
+LocationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+Department          varchar(20)     NOT NULL,
+RoomNumber          varchar(10)     NOT NULL
+);
+
 CREATE TABLE PatientCheckIn
 (
 PatientCheckInID            int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
@@ -153,6 +160,9 @@ PatientType                 tinyint         NOT NULL,
 PatientID                   int             NOT NULL,
 PatientStatus               int             NOT NULL,
 CheckOutTime                datetime       NULL,
+Diagnosis                   text            NULL,
+LocationID                  int             NOT NULL,
+StaffID                     int             NULL,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
 
@@ -293,20 +303,6 @@ CREATE TABLE Staff
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
-CREATE TABLE PatientEncounter
-(
-    PatientEncounterID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    PatientCheckinID            int                 NOT NULL,
-    TimeIn                      datetime                NOT NULL,
-    TimeOut                     datetime                NULL,
-    Comments                    text                NULL,
-    Location                    int                 NULL,
-    Diagnosis                   text                NULL,
-    StaffID                     int                 NOT NULL,
-    AdmitReason                 varchar(50)         NULL,
-    IsActive                    bit                 NOT NULL                DEFAULT 1
-);
-
 CREATE TABLE Vitals
 (
     VitalsID                    int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
@@ -331,7 +327,7 @@ CREATE TABLE Surgery
     EndTime                     datetime                NULL,
     RoomNumber                  int                 NULL,
     Comments                    text                NULL,
-    PatientEncounterID          int                 NOT NULL
+    PatientCheckInID          int                 NOT NULL
 );
 
 CREATE TABLE SurgeryStaff
@@ -348,7 +344,7 @@ CREATE TABLE Note
     Body                        longtext            NOT NULL,
     DateCreated                 timestamp           NOT NULL                DEFAULT CURRENT_TIMESTAMP,
     StaffID                     int                 NOT NULL,
-    PatientEncounterID          int                 NOT NULL,
+    PatientCheckInID          int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
@@ -400,9 +396,6 @@ ALTER TABLE Staff
 ADD CONSTRAINT FK_StaffMustHaveUserID
 FOREIGN KEY (UserID) REFERENCES User(UserID);
 
-#ALTER TABLE Allergy
-#ADD CONSTRAINT FK_AllergyMustHavePatientID
-#FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
 
 ALTER TABLE PatientAllergy
 ADD CONSTRAINT FK_PatientAllergyMustHavePatientID
@@ -415,6 +408,14 @@ FOREIGN KEY (AllergyID) REFERENCES Allergy(AllergyID);
 ALTER TABLE PatientCheckIn
 ADD CONSTRAINT FK_PatientCheckInMustHavePatientID
 FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
+
+ALTER TABLE PatientCheckIn
+ADD CONSTRAINT FK_PatientCheckInMustHaveLocationID
+FOREIGN KEY (LocationID) REFERENCES Location(LocationID);
+
+ALTER TABLE PatientCheckIn
+ADD CONSTRAINT FK_PatientCheckInMustHaveStaffID
+FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 
 ALTER TABLE FeedChart
 ADD CONSTRAINT FK_FeedChartMustHavePatientCheckInID
@@ -457,12 +458,12 @@ ADD CONSTRAINT FK_NoteMustHaveStaffID
 FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 
 ALTER TABLE Note
-ADD CONSTRAINT FK_NoteMustHavePatientEncounterID
-FOREIGN KEY (PatientEncounterID) REFERENCES PatientEncounter(PatientEncounterID);
+ADD CONSTRAINT FK_NoteMustHavePatientCheckInID
+FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
 ALTER TABLE Surgery
-ADD CONSTRAINT FK_SurgeryMustHavePatientEncounterID
-FOREIGN KEY (PatientEncounterID) REFERENCES PatientEncounter(PatientEncounterID);
+ADD CONSTRAINT FK_SurgeryMustHavePatientCheckInID
+FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
 ALTER TABLE SurgeryStaff
 ADD CONSTRAINT FK_SurgeryStaffMustHaveStaffID
@@ -471,14 +472,6 @@ FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 ALTER TABLE SurgeryStaff
 ADD CONSTRAINT FK_SurgeryStaffMustHaveSurgeryID
 FOREIGN KEY (SurgeryID) REFERENCES Surgery(SurgeryID);
-
-ALTER TABLE PatientEncounter
-ADD CONSTRAINT FK_PatientEncounterMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
-
-ALTER TABLE PatientEncounter
-ADD CONSTRAINT FK_PatientEncounterMustHavePatientCheckInID
-FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
 ALTER TABLE Vitals
 ADD CONSTRAINT FK_VitalsMustHavePatientCheckInID
@@ -827,55 +820,6 @@ END ||
 DELIMITER ;
 
 
-#--------------Insert Invoice & PatientCheckIn Table--------------
-/**************************************
-* sp_insertPatientCheckIn inserts into 
-* PatientCheckIn table and creates the
-* blank Invoice table.
-**************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertPatientCheckIn
-(
-IN i_CheckinTime     timestamp,
-IN i_PatientType     bit(1),
-IN i_PatientStatus   bit(1),
-IN i_PatientID       int
-)
-
-BEGIN
-
-DECLARE _PCIID  int;
-
-INSERT INTO PatientCheckIn
-(
-CheckinTime,
-PatientType,
-PatientStatus,
-PatientID
-)
-VALUES
-(
-i_CheckinTime,
-i_PatientType,
-i_PatientStatus,
-i_PatientID
-);
-
-SELECT LAST_INSERT_ID() INTO _PCIID;
-
-INSERT INTO Invoice
-(
-PatientCheckInID
-)
-VALUES
-(
-_PCIID
-);
-
-END ||
-DELIMITER ;
-
 #--------------Update Invoice Table--------------
 /************************************
 * sp_updateInvoice updates into 
@@ -1116,7 +1060,7 @@ IN i_Body               text,
 IN i_DateCreated        timestamp,
 IN i_staffFN            varchar(30),
 IN i_staffLN            varchar(30),
-IN i_PatientEncounterID int
+IN i_PatientCheckInID int
 )
 
 BEGIN
@@ -1238,95 +1182,6 @@ DELIMITER ;
 
 
 
-#--------------insert into PatientEncounter Table--------------
-/******************************************
-* sp_insertPatientEncounter inserts into the
-* PatientEncounter table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertPatientEncounter
-(
-IN i_PatientCheckInID   int,
-IN i_TimeIn             datetime,
-IN i_TimeOut            datetime,
-IN i_Comments           text,
-IN i_Location           int,
-IN i_Diagnosis          text,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30),
-IN i_AdmitReason        varchar(10)
-)
-
-BEGIN
-
-DECLARE _staffID int;
-
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-INSERT INTO PatientEncounter
-(
-PatientCheckInID,
-TimeIn,
-TimeOut,
-Comments,
-Location,
-Diagnosis,
-StaffID,
-AdmitReason
-)
-VALUES
-(
-i_PatientCheckInID,
-i_TimeIn,
-i_TimeOut,
-i_Comments,
-i_Location,
-i_Diagnosis,
-_staffID,
-AdmitReason
-);
-
-END ||
-DELIMITER ;
-
-#--------------updates PatientEncounter Table--------------
-/******************************************
-* sp_updatePatientEncounter updates the
-* PatientEncounter table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_updatePatientEncounter
-(
-IN i_PatientEncounterID int,
-IN i_TimeOut            datetime,
-IN i_Comments           text,
-IN i_Location           int,
-IN i_Diagnosis          text,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30),
-IN i_AdmitReason        varchar(50)
-)
-
-BEGIN
-
-DECLARE _staffID int;
-
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-UPDATE PatientEncounter SET
-TimeOut = i_TimeOut,
-Comments = i_Comments,
-Location = i_Location,
-Diagnosis = i_Diagnosis,
-StaffID = _staffID,
-AdmitReason = i_AdmitReason
-WHERE PatientEncounterID = i_PatientEncounterID;
-
-END ||
-DELIMITER ;
-
 #--------------insert into Surgery Table--------------
 /******************************************
 * sp_insertSurgery inserts into the
@@ -1341,7 +1196,7 @@ IN i_StartTime          datetime,
 IN i_EndTime            datetime,
 IN i_RoomNumber         int,
 IN i_Comments           text,
-IN i_PatientEncounterID int
+IN i_PatientCheckInID int
 )
 
 BEGIN
@@ -1353,7 +1208,7 @@ StartTime,
 EndTime,
 RoomNumber,
 Comments,
-PatientEncounterID
+PatientCheckInID
 )
 VALUES
 (
@@ -1362,7 +1217,7 @@ i_StartTime,
 i_EndTime,
 i_RoomNumber,
 i_Comments,
-i_PatientEncounterID
+i_PatientCheckInID
 );
 
 END ||
@@ -1978,20 +1833,6 @@ VALUES
 5
 );
 
-#CALL sp_insertAllergy
-#(
-#'Lactose',
-#null,
-#100003
-#);
-
-#CALL sp_insertAllergy
-#(
-#'Fish',
-#null,
-#100003
-#);
-
 
 CALL sp_insertStaff
 (
@@ -2027,22 +1868,6 @@ CALL sp_insertStaff
 '801-458-7687',
 4,
 null
-);
-
-CALL sp_insertPatientCheckIn
-(
-NOW(),
-1,
-1,
-100000
-);
-
-CALL sp_insertPatientCheckIn
-(
-NOW(),
-1,
-1,
-100001
 );
 
 CALL sp_updateInvoice
@@ -2174,41 +1999,6 @@ CALL sp_insertService
 22.50
 );
 
-CALL sp_insertPatientEncounter
-(
-1,
-'20101005103238',
-'20101005104827',
-null,
-null,
-null,
-'cameron',
-'harp',
-null
-);
-
-CALL sp_updatePatientEncounter
-(
-1,
-NOW(),
-'test comments',
-2,
-'test diagnosis',
-'cameron',
-'harp',
-'reason'
-);
-
-CALL sp_insertNote
-(
-'test title',
-'test body',
-NOW(),
-'jimmy',
-'john',
-1
-);
-
 CALL sp_insertTemplateCategory
 (
 'Diagnosis',
@@ -2239,107 +2029,6 @@ CALL sp_insertTemplate
 'Test diagnosis for Staff 2',
 1,
 2
-);
-
-CALL sp_insertSurgery
-(
-'test surgerytype',
-NOW(),
-null,
-null,
-null,
-1
-);
-
-CALL sp_insertSurgeryStaff
-(
-'cameron',
-'harp',
-1
-);
-
-CALL sp_insertSurgeryStaff
-(
-'jimmy',
-'john',
-1
-);
-
-CALL sp_insertInvoiceItem
-(
-1,
-1,
-null,
-2
-);
-
-CALL sp_insertInvoiceItem
-(
-1,
-2,
-null,
-3
-);
-
-CALL sp_insertInvoiceItem
-(
-1,
-4,
-null,
-10
-);
-
-CALL sp_insertInvoiceItem
-(
-2,
-null,
-1,
-1
-);
-
-CALL sp_insertInvoiceItem
-(
-2,
-3,
-null,
-50
-);
-
-CALL sp_insertInvoiceItem
-(
-2,
-4,
-null,
-42
-);
-
-INSERT INTO Vitals
-(
-Time,
-Type,
-Height,
-Weight,
-HeartRate,
-Temperature,
-BPSystolic,
-BPDiastolic,
-RespiratoryRate,
-PatientCheckInID,
-IsActive
-)
-VALUES
-(
-'20100510103842',
-1,
-76,
-78,
-76,
-37,
-140,
-70,
-12,
-1,
-1
 );
 
 
@@ -2578,4 +2267,144 @@ VALUES
 '2005-12-10 00:00:00',
 '2009-08-07 00:00:00',
 100001
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'112'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'210'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'100'
+);
+
+
+INSERT INTO PatientCheckIn
+(
+PatientCheckInID,
+CheckinTime,
+PatientType,
+PatientID,
+PatientStatus,
+CheckOutTime,
+Diagnosis,
+LocationID,
+StaffID,
+IsActive
+)
+VALUE
+(
+1,
+NOW(),
+1,
+100000,
+2,
+NOW(),
+'Smelly Feet',
+1,
+1,
+1
+);
+
+INSERT INTO PatientCheckIn
+(
+CheckinTime,
+PatientType,
+PatientID,
+PatientStatus,
+CheckOutTime,
+Diagnosis,
+LocationID,
+StaffID,
+IsActive
+)
+VALUE
+(
+NOW(),
+2,
+100001,
+1,
+NOW(),
+'Finger Fungus',
+2,
+2,
+1
+);
+
+INSERT INTO PatientCheckIn
+(
+CheckinTime,
+PatientType,
+PatientID,
+PatientStatus,
+CheckOutTime,
+Diagnosis,
+LocationID,
+StaffID,
+IsActive
+)
+VALUE
+(
+NOW(),
+3,
+100002,
+2,
+NOW(),
+'GOHNAHIFASURFALAIDS',
+2,
+2,
+1
+);
+
+INSERT INTO Vitals
+(
+Time,
+Type,
+Height,
+Weight,
+HeartRate,
+Temperature,
+BPSystolic,
+BPDiastolic,
+RespiratoryRate,
+PatientCheckInID,
+IsActive
+)
+VALUES
+(
+'20100510103842',
+1,
+76,
+78,
+76,
+37,
+140,
+70,
+12,
+1,
+1
 );

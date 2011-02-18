@@ -10,6 +10,17 @@
     <property name="CheckInTime" not-null="true" />
     <property name="PatientType" not-null="true" />
     <property name="CheckOutTime" not-null="false" />
+    
+    
+
+    <property name="Diagnosis" not-null="false" />
+
+
+    <one-to-one name="Staff"
+                constrained="true"
+                foreign-key="none"
+                class="Staff" />
+    
 
     <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
 
@@ -21,9 +32,9 @@
     <property name="PatientStatus" not-null="true" />
     <property name="IsActive" not-null="true" />
 
-    <bag name="Encounters" table="PatientEncounter" cascade="all">
+    <bag name="Surgerys" table="Surgery" cascade="all">
       <key column="PatientCheckInID" />
-      <one-to-many class="Encounter" />
+      <one-to-many class="Surgery" />
     </bag>
 
 
@@ -31,6 +42,11 @@
       <key column="PatientCheckInId" />
       <one-to-many class="Vitals" />
     </bag>
+
+    <one-to-one name="Location"
+                constrained="true"
+                foreign-key="none"
+                class="Locaton" />
 
   </class>
   

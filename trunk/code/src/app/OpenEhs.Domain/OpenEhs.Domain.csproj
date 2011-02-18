@@ -38,8 +38,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\CheckIn\Location.cs" />
     <Compile Include="Model\Common Interfaces\IEntity.cs" />
-    <Compile Include="Model\Encounter\Encounter.cs" />
     <Compile Include="Model\Patient\Immunization.cs" />
     <Compile Include="Model\Patient\Medication.cs" />
     <Compile Include="Model\Patient\PatientAllergy.cs" />

@@ -21,6 +21,11 @@
       <key column="StaffID" />
       <many-to-many column="SurgeryID" class="Surgery" />
     </bag>
+
+    <many-to-one name="PatientCheckIn"
+                 class="PatientCheckIn"
+                 unique="true"
+                 column="PatientCheckInID" />
     
   </class>
 </hibernate-mapping>
