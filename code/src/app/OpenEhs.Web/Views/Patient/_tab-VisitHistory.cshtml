@@ -16,17 +16,125 @@
             <div style="float: left;"><b>Visit Date: </b>@visit.CheckInTime</div><br />
             <div style="float: left;"><b>Diagnosis: </b> @visit.Diagnosis</div><br />
             <div>
+                <div id="visitVitalsLink">
+	                Show Vitals...
+                </div>
+                <div id="visitVitalsMoreInfo">
+                    <table id="vitalHistory" class="vitalsHist">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Time
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Height(cm)
+                                </th>
+                                <th>
+                                    Weight(kg)
+                                </th>
+                                <th>
+                                    Temperature(&deg;C)
+                                </th>
+                                <th>
+                                    Heart Rate(bpm)
+                                </th>
+                                <th>
+                                    Blood Pressure(mmHg)
+                                </th>
+                                <th>
+                                    Respiratory Rate(Hz)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var checkin in Model.PatientCheckIns)
+                            {
+                                foreach (var vital in checkin.Vitals)
+                                {
+                                    <tr>
+                                        <td>
+                                            @vital.Time
+                                        </td>
+                                        <td>
+                                            @vital.Type
+                                        </td>
+                                        <td>
+                                            @vital.Height
+                                        </td>
+                                        <td>
+                                            @vital.Weight
+                                        </td>
+                                        <td>
+                                            @vital.Temperature
+                                        </td>
+                                        <td>
+                                            @vital.HeartRate
+                                        </td>
+                                        <td>
+                                            @vital.BloodPressure
+                                        </td>
+                                        <td>
+                                            @vital.RespiratoryRate
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
                 <div id="visitNoteLink">
 	                Show Notes...
                 </div>
                 <div id="visitNoteMoreInfo">
                     <div style="float: left;"><b>Notes: </b> This is where notes go! This is just a test not about visit, I just really wanted 
                                     to see how long the note can be and still look good in this link box I made. Well I hope if you are reading
-                                    this that you like how dry and boaring this is...</div>
+                                    this that you like how dry and boaring this is...
+                    </div>
                 </div>
             </div>
         </li>
     }
     </ul>
+
+    <div id="visitPastLink" font-size="15">
+	        Search past visits...
+    </div>
+        <div id="visitPastMoreInfo">
+            
+            <fieldset id="pastVisitFieldSet">
+                @using (Html.BeginForm("SearchVisit", "Patient"))
+                {
+                    <label for="from">From</label>
+                    <input type="text" id="from" name="from"/>
+                    <label for="to">to</label>
+                    <input type="text" id="to" name="to" />
+                    <input id="visitHistorySearchButton" type="button" value="Search" />
+                }
+            </fieldset>
+            
+
+            <h3>
+                Search Result
+            </h3>
+
+            @*
+            This ul will have a foreach in it to print out the found info!
+            *@
+            @* 
+            <ul id="searchHistoryResultList">
+                
+            </ul>
+            *@
+
+
+
+        </div>
+
 
 </div>
