@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* OpenEHS System
+ * Billing View Models
+ * Peter Litster (aholibamah@gmail.com)
+ * 17-Feb-2011
+ */ 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OpenEhs.Domain;
