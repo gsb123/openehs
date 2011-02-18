@@ -465,7 +465,6 @@
     <Content Include="Views\Patient\_tab-ChronicDiseases.cshtml" />
     <Content Include="Views\Patient\_tab-Vitals.cshtml" />
     <Content Include="Views\Patient\_tab-RxList.cshtml" />
-    <Content Include="Views\Patient\_tab-DxHistory.cshtml" />
     <Content Include="Views\Patient\_tab-Immunizations.cshtml" />
     <Content Include="Views\Billing\Edit.cshtml" />
   </ItemGroup>

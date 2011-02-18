@@ -251,6 +251,19 @@ fieldset
 	padding-left: 10px;
 }
 
+#visitHistoryList li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+}
+
 #MedicationListOne li
 {
     font-size: 1.2em;
@@ -318,6 +331,7 @@ fieldset
 {
     margin-top: 15px;
     float: right;
+    margin-right: 11px;
 }
 
 #immunizationListOne li
@@ -346,21 +360,15 @@ fieldset
     margin-bottom: 10px;
 }
 
-#dxHistoryHeader
+#visitHistoryHeader
 {
 	padding-left: 10px;
 	clear: both;
 }
 
-#dxHistoryHeader h2
+#visitHistoryHeader h2
 {
     float: left;
-}
-
-#dxHistoryHeader input
-{
-    margin-top: 15px;
-    float: right;
 }
 
 #immunizationInfoLink
@@ -388,7 +396,7 @@ fieldset
     margin-left: 40px
 }
 
-#dxTitle
+#visitTitle
 {
     margin-left: 40px
 }
@@ -403,6 +411,19 @@ fieldset
 }
 
 #rxMoreInfo
+{
+    clear: both;
+    display: none;
+}
+
+#visitNoteLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#visitNoteMoreInfo
 {
     clear: both;
     display: none;

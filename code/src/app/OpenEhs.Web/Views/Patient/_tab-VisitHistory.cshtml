@@ -1,3 +1,32 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
-<h3>
-    Visit History Goes Here.</h3>
+<div id="visitHistoryHeader" class="group">
+    <h2 id="visitHistory">
+        Visit History</h2>
+</div>
+
+<div>
+	<p id="visitTitle"><b>
+		Last 2 recorded visits
+	</b></p>
+
+    <ul id="visitHistoryList">
+    @foreach (var visit in Model.PatientCheckIns)
+    {
+        <li class="group">
+            <div style="float: left;"><b>Visit Date: </b>@visit.CheckInTime</div><br />
+            <div style="float: left;"><b>Diagnosis: </b> @visit.Diagnosis</div><br />
+            <div>
+                <div id="visitNoteLink">
+	                Show Notes...
+                </div>
+                <div id="visitNoteMoreInfo">
+                    <div style="float: left;"><b>Notes: </b> This is where notes go! This is just a test not about visit, I just really wanted 
+                                    to see how long the note can be and still look good in this link box I made. Well I hope if you are reading
+                                    this that you like how dry and boaring this is...</div>
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
+
+</div>

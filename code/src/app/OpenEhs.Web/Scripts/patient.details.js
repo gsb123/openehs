@@ -328,11 +328,12 @@ $(document).ready(function () {
     });
 
     // ------------------------------------------------- //
-    //  Setup DxHistory List Tab                         //
+    //  Setup Visit History List Tab                     //
     // ------------------------------------------------- //
 
-    $("#dxHistoryAddButton").button().click(function () {
-
+    $("#visitNoteLink").click(function () {
+        $("#visitNoteMoreInfo").slideToggle("slow", function () {
+        });
     });
 
 
