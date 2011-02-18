@@ -32,7 +32,7 @@
     <property name="PatientStatus" not-null="true" />
     <property name="IsActive" not-null="true" />
 
-    <bag name="Surgerys" table="Surgery" cascade="all">
+    <bag name="Surgeries" table="Surgery" cascade="all">
       <key column="PatientCheckInID" />
       <one-to-many class="Surgery" />
     </bag>
