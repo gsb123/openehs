@@ -124,8 +124,8 @@ namespace OpenEhs.Web.Controllers {
                 var patient = patientRepo.Get(patientID);
 
                 Vitals vitals = new Vitals();
-                vitals.Height = int.Parse(Request.Form["height"]);
-                vitals.Weight = int.Parse(Request.Form["weight"]);
+                vitals.Height = double.Parse(Request.Form["height"]);
+                vitals.Weight = double.Parse(Request.Form["weight"]);
                 BloodPressure bp = new BloodPressure();
                 bp.Diastolic = int.Parse(Request.Form["BpDiastolic"]);
                 bp.Systolic = int.Parse(Request.Form["BpSystolic"]);
@@ -133,7 +133,7 @@ namespace OpenEhs.Web.Controllers {
                 vitals.HeartRate = int.Parse(Request.Form["HeartRate"]);
                 vitals.IsActive = true;
                 vitals.RespiratoryRate = int.Parse(Request.Form["RespiratoryRate"]);
-                vitals.Temperature = int.Parse(Request.Form["Temperature"]);
+                vitals.Temperature = float.Parse(Request.Form["Temperature"]);
                 VitalsType vt = new VitalsType();
                 vitals.Type = vt;
                 vitals.Time = DateTime.Now;
