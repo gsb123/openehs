@@ -23,6 +23,8 @@ namespace OpenEhs.Web.Controllers {
 
         public ActionResult Details(int id) {
             var patientViewModel = new PatientViewModel(id);
+            
+            HttpContext.Session["CurrentPatient"] = id;
 
             return View(patientViewModel);
         }
@@ -135,7 +137,7 @@ namespace OpenEhs.Web.Controllers {
                 vitals.IsActive = true;
                 vitals.RespiratoryRate = int.Parse(Request.Form["RespiratoryRate"]);
                 vitals.Temperature = float.Parse(Request.Form["Temperature"]);
-                VitalsType vt = new VitalsType();
+                var vt = VitalsType.Initial;
                 vitals.Type = vt;
                 vitals.Time = DateTime.Now;
                 vitals.PatientCheckIn = patient.PatientCheckIns[0];
