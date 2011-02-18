@@ -13,8 +13,6 @@
     <property name="RoomNumber" />
     <property name="Comments" />
 
-    <many-to-one name="Encounter" column="PatientEncounterID" unique="true" cascade="all" />
-    
     <!--Many-to-many mapping: Staff-->
     <bag name="Staff" table="SurgeryStaff" cascade="none" lazy="false">
       <key column="StaffID" />
