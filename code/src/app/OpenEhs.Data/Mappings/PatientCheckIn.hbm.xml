@@ -3,8 +3,8 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
   
-  <class name="PatientCheckIn" table="PatientCheckIn" >
-    <id name="Id" column="PatientCheckinID">
+  <class name="PatientCheckIns" table="PatientCheckIn" >
+    <id name="Id" column="PatientCheckInID">
       <generator class="native" />
     </id>
     <property name="CheckInTime" not-null="true" />
@@ -16,7 +16,7 @@
     <property name="Diagnosis" not-null="false" />
 
 
-    <one-to-one name="Staff"
+    <one-to-one name="AttendingStaff"
                 constrained="true"
                 foreign-key="none"
                 class="Staff" />
@@ -43,7 +43,7 @@
       <one-to-many class="Vitals" />
     </bag>
 
-    <one-to-one name="Location"
+    <one-to-one name="Locations"
                 constrained="true"
                 foreign-key="none"
                 class="Locaton" />
