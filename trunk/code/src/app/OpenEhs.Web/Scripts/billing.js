@@ -24,15 +24,33 @@ $(document).ready(function () {
     $("#NewServiceButton").button();
     $("#NewProductButton").button();
     $("#NewLineItemButton")
-                .button()
-                .click(function () {
-                    alert("woo?");
-                    /*
-                    $.post("/Patient/AddLineItem", {
-                    id: $("#id").val();
-                    value: "s"
-                    }*/
-                })
+        autoOpen: false,
+        height: 225,
+        width: 375,
+        modal: true,
+        buttons: {
+            "Add Line Item": function () {
+                if ($("#addLineItemForm").valid()) {
+                    $.post("/Billing/AddLineItem", {
+                        invoiceID: $("#invoiceId").val(),
+                        allergyName: $("#LineItemName").val()
+                    }, function (returnData) {
+                        if (returnData.error == "false") {
+                            $("#LineItemPostStatus").html(returnData.status);
+                            $(this).dialog("close");
+                        } else {
+                            $("#addLineItemDialog .error").html(returnData.status).animate;
+                        }
+                    }, "json");
+                }
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
     $("#PayInFullButton")
                 .button()
                 .click(function () {

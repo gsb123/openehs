@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 using OpenEhs.Data;
+using System;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -83,22 +84,31 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
-        public ActionResult AddLineItem()
+        public JsonResult AddLineItem()
         {
-            int id = int.Parse(Request.Form["id"]);
-            var invoice = new BillingEditViewModel(id);
-            string value = Request.Form["value"];
-            if (value == "s")
-            {
-                invoice.AddEmptyService();
-            }
-            else if (value == "p")
-            {
-                invoice.AddEmptyProduct();
-            }
+            try {
+                int invoiceId = int.Parse(Request.Form["invoiceID"]);
+                string LineItemName = Request.Form["LineItemName"];
 
-            return Edit(invoice);
+                var billing = new BillingEditViewModel(invoiceId);
+                InvoiceItem lineItem = new InvoiceItem();
+                lineItem.Product.Name= LineItemName;
+                lineItem.Quantity = 1;
+                lineItem.IsActive = true;
+                billing.LineItems.Add(lineItem);
 
+                return Json(new {
+                    error = "false",
+                    status = "Added line item: " + LineItemName + " successfully",
+                    lineItem = lineItem
+                });
+            } catch (Exception e) {
+                return Json(new {
+                    error = "true",
+                    status = "Unable to add line item successfully",
+                    errorMessage = e.Message
+                });
+            }
         }
 
         //
