@@ -310,11 +310,11 @@ CREATE TABLE Vitals
     `Type`                      bit(5)              NOT NULL,
     Height                      float             NULL,
     Weight                      float             NULL,
-    HeartRate                   tinyint             NULL,
+    HeartRate                   int             NULL,
     Temperature                 decimal(4,1)        NULL,
     BPSystolic                  int                 NULL,
     BPDiastolic                 int                 NULL,
-    RespiratoryRate             tinyint             NULL,
+    RespiratoryRate             int             NULL,
     PatientCheckInID            int                 NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
