@@ -40,19 +40,19 @@
     @Html.HiddenFor(model => model.PatientId, new { @id = "patientId" })
     <div>
         <ul>
-            <li><a href="#patientView-Basic">Basic</a></li>
+            <li><a href="#patientView-Demographics">Demographics</a></li>
             <li><a href="#patientView-Vitals">Vitals</a></li>
             <li><a href="#patientView-DxHistory">Dx History</a></li>
             <li><a href="#patientView-RxList">Rx List</a></li>
 			<li><a href="#patientView-Immunizations">Immunizations</a></li>
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
             <li><a href="#patientView-Allergies">Allergies</a></li>
-            <li><a href="#patientView-EncounterHistory">Encounter History</a></li>
+            <li><a href="#patientView-VisitHistory">Visit History</a></li>
         </ul>
     </div>
     <div>
-        <div id="#patientView-Basic" class="group">
-            @Html.Partial("_tab-Basic", Model)
+        <div id="#patientView-Demographics" class="group">
+            @Html.Partial("_tab-Demographics", Model)
         </div>
         <div id="#patientView-Vitals">
             @Html.Partial("_tab-Vitals",Model)
@@ -73,7 +73,7 @@
             @Html.Partial("_tab-Allergy", Model)
         </div>
         <div id="#patientView-Encounters">
-            @Html.Partial("_tab-EncounterHistory", Model)
+            @Html.Partial("_tab-VisitHistory", Model)
         </div>
     </div>
     <p>
