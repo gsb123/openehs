@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#newEncounterAddButton").button().click(function () {
+    $("#newCheckInButton").button().click(function () {
         
     });
 
