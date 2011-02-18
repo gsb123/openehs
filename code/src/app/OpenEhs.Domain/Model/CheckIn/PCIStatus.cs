@@ -16,6 +16,7 @@ namespace OpenEhs.Domain
     public enum PCIStatus
     {
         InProgress = 0,
-        CheckedIn = 1
+        CheckedIn = 1,
+        Complete = 2
     }
 }
