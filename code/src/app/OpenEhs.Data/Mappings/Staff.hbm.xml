@@ -22,7 +22,7 @@
       <many-to-many column="SurgeryID" class="Surgery" />
     </bag>
 
-    <many-to-one name="PatientCheckIn"
+    <many-to-one name="PatientCheckIns"
                  class="PatientCheckIn"
                  unique="true"
                  column="PatientCheckInID" />

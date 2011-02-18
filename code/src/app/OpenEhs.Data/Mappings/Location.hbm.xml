@@ -11,7 +11,7 @@
     <property name="RoomNumber" not-null="true" length="10" />
 
 
-    <many-to-one name="PatientCheckIn"
+    <many-to-one name="PatientCheckIns"
                  class="PatientCheckIn"
                  unique="true"
                  column="PatientCheckInID" />

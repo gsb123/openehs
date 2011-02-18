@@ -3,7 +3,7 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
   
-  <class name="PatientCheckIns" table="PatientCheckIn" >
+  <class name="PatientCheckIn" table="PatientCheckIn" >
     <id name="Id" column="PatientCheckInID">
       <generator class="native" />
     </id>
@@ -46,7 +46,7 @@
     <one-to-one name="Locations"
                 constrained="true"
                 foreign-key="none"
-                class="Locaton" />
+                class="Location" />
 
   </class>
   
