@@ -1458,8 +1458,8 @@ AddressID
 )
 VALUES
 (
-'Lila',
-'Harp',
+'Daniel',
+'Agyei',
 '3034213837',
 4,
 1
@@ -1483,9 +1483,9 @@ EmergencyContactID
 )
 VALUES
 (
-'Ed',
+'Hans',
 '',
-'Harp',
+'Sarpei',
 '1940-02-10',
 'Male',
 '3032768557',
@@ -1544,8 +1544,8 @@ AddressID
 )
 VALUES
 (
-'Bob',
-'Smith',
+'Samuel',
+'Inkoom',
 '8018957452',
 2,
 3
@@ -1569,9 +1569,9 @@ EmergencyContactID
 )
 VALUES
 (
-'Kim',
+'Jaide',
 '',
-'Hall',
+'Boateng',
 '1970-10-15',
 'Female',
 '8014587895',
@@ -1630,8 +1630,8 @@ AddressID
 )
 VALUES
 (
-'Troy',
-'Jimmer',
+'Prince',
+'Tagoe',
 '4586547878',
 3,
 5
@@ -1655,9 +1655,9 @@ EmergencyContactID
 )
 VALUES
 (
-'Ryan',
+'Kwadwo',
 '',
-'Olsen',
+'Asamoah',
 '1986-10-07',
 'Male',
 '8013208896',
@@ -2305,7 +2305,6 @@ VALUE
 
 INSERT INTO PatientCheckIn
 (
-PatientCheckInID,
 CheckinTime,
 PatientType,
 PatientID,
@@ -2318,7 +2317,6 @@ IsActive
 )
 VALUE
 (
-1,
 NOW(),
 1,
 100000,
@@ -2327,6 +2325,31 @@ NOW(),
 'Smelly Feet',
 1,
 1,
+1
+);
+
+INSERT INTO PatientCheckIn
+(
+CheckinTime,
+PatientType,
+PatientID,
+PatientStatus,
+CheckOutTime,
+Diagnosis,
+LocationID,
+StaffID,
+IsActive
+)
+VALUE
+(
+'2010-12-05 12:45:10',
+2,
+100000,
+2,
+NOW(),
+'Hyperlipidemia',
+2,
+2,
 1
 );
 
@@ -2376,6 +2399,64 @@ NOW(),
 NOW(),
 'GOHNAHIFASURFALAIDS',
 2,
+2,
+1
+);
+
+INSERT INTO Vitals
+(
+Time,
+Type,
+Height,
+Weight,
+HeartRate,
+Temperature,
+BPSystolic,
+BPDiastolic,
+RespiratoryRate,
+PatientCheckInID,
+IsActive
+)
+VALUES
+(
+'2010-12-05 12:59:40',
+2,
+76,
+78,
+76,
+37,
+140,
+70,
+12,
+2,
+1
+);
+
+INSERT INTO Vitals
+(
+Time,
+Type,
+Height,
+Weight,
+HeartRate,
+Temperature,
+BPSystolic,
+BPDiastolic,
+RespiratoryRate,
+PatientCheckInID,
+IsActive
+)
+VALUES
+(
+'2010-12-05 01:10:30',
+2,
+76,
+78,
+60,
+40,
+112,
+79,
+16,
 2,
 1
 );
