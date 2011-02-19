@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Data;
 using System;
@@ -207,14 +208,44 @@ namespace OpenEhs.Web.Controllers
 
             //IList<PatientCheckIn> pci = new List<PatientCheckIn>();
 
-            var list = from blah in patient.PatientCheckIns
-                       where blah.CheckInTime >= fromDate && blah.CheckInTime <= toDate
-                       select blah;
+            var query = from checkin in patient.PatientCheckIns
+                       where checkin.CheckInTime >= fromDate && checkin.CheckInTime <= toDate
+                       select checkin;
 
-            return Json(new
+            var resultSet = new List<object>();
+            var jsonResult = new JsonResult();
+
+            foreach (var result in query)
             {
-                date = list. .ToString("MM/dd/yyyy HH:mm:ss"),
-            });
+                IList<object> vitalsList = new List<object>();
+
+                foreach (var vitals in result.Vitals)
+                {
+                    vitalsList.Add(new
+                    {
+                        Time = vitals.Time,
+                        Type = vitals.Type,
+                        Height = vitals.Height,
+                        Weight = vitals.Weight,
+                        Temperature = vitals.Temperature,
+                        HeartRate = vitals.HeartRate,
+                        BpDiastolic = vitals.BloodPressure.Diastolic,
+                        BpSystolic = vitals.BloodPressure.Systolic,
+                        RespiratoryRate = vitals.RespiratoryRate
+                    });
+                }
+
+                resultSet.Add(new
+                                  {
+                                      CheckInTime = result.CheckInTime,
+                                      Diagnosis = result.Diagnosis,
+                                      Vitals = vitalsList
+                });
+            }
+
+            jsonResult.Data = resultSet;
+
+            return jsonResult;
         }
     }
 }
