@@ -11,27 +11,36 @@
     <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
         <fieldset>
             <legend>Enter Vital Information</legend>
-            <label for="height">
-                Height</label>
-            <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="weight">
-                Weight</label>
-            <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="temperature">
-                Temperature</label>
-            <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="heartRate">
-                Heart Rate</label>
-            <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="bpSystolic">
-                Systolic BP</label>
-            <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="bpDiastolic">
-                Diastolic BP</label>
-            <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="respiratoryRate">
-                Respiratory Rate</label>
-            <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
+            <form id="addVitals" action="">
+                <div id="radio">
+                    <input type="radio" id="vitalsType1" name="vitalsType" /><label for="vitalsType1">Initial</label>
+                    <input type="radio" id="vitalsType2" name="vitalsType" /><label for="vitalsType2">Discharge</label>
+                    <input type="radio" id="vitalsType3" name="vitalsType" /><label for="vitalsType3">Maintanence</label>
+                    <input type="radio" id="vitalsType4" name="vitalsType" /><label for="vitalsType4">Pre Surgery</label>
+                    <input type="radio" id="vitalsType5" name="vitalsType" /><label for="vitalsType5">Post-Surgery</label>
+                </div>
+                <label for="height">
+                    Height</label>
+                <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
+                <label for="weight">
+                    Weight</label>
+                <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
+                <label for="temperature">
+                    Temperature</label>
+                <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
+                <label for="heartRate">
+                    Heart Rate</label>
+                <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
+                <label for="bpSystolic">
+                    Systolic BP</label>
+                <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
+                <label for="bpDiastolic">
+                    Diastolic BP</label>
+                <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
+                <label for="respiratoryRate">
+                    Respiratory Rate</label>
+                <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
+            </form>
         </fieldset>
     </div>
     <div id="vitalsTableDiv">

@@ -17,7 +17,7 @@ namespace OpenEhs.Domain
     {
         Initial = 0,
         Discharge = 1,
-        Maintance = 2,
+        Maintenance = 2,
         PreSurgery = 3,
         PostSurgery = 4
     }
