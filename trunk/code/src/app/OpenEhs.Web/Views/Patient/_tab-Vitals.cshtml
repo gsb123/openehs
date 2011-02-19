@@ -12,34 +12,35 @@
         <fieldset>
             <legend>Enter Vital Information</legend>
             <form id="addVitals" action="">
-                <div id="radio">
-                    <input type="radio" id="vitalsType1" name="vitalsType" /><label for="vitalsType1">Initial</label>
-                    <input type="radio" id="vitalsType2" name="vitalsType" /><label for="vitalsType2">Discharge</label>
-                    <input type="radio" id="vitalsType3" name="vitalsType" /><label for="vitalsType3">Maintanence</label>
-                    <input type="radio" id="vitalsType4" name="vitalsType" /><label for="vitalsType4">Pre Surgery</label>
-                    <input type="radio" id="vitalsType5" name="vitalsType" /><label for="vitalsType5">Post-Surgery</label>
-                </div>
-                <label for="height">
-                    Height</label>
-                <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="weight">
-                    Weight</label>
-                <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="temperature">
-                    Temperature</label>
-                <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="heartRate">
-                    Heart Rate</label>
-                <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="bpSystolic">
-                    Systolic BP</label>
-                <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="bpDiastolic">
-                    Diastolic BP</label>
-                <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="respiratoryRate">
-                    Respiratory Rate</label>
-                <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
+            <div id="vitalsRadio">
+                <input type="radio" id="vitalsType1" name="modal_vitalsType" value="0" /><label for="vitalsType1">Initial</label>
+                <input type="radio" id="vitalsType2" name="modal_vitalsType" value="1" /><label for="vitalsType2">Discharge</label>
+                <input type="radio" id="vitalsType3" name="modal_vitalsType" value="2" /><label for="vitalsType3">Maintanence</label>
+                <input type="radio" id="vitalsType4" name="modal_vitalsType" value="3" /><label for="vitalsType4">Pre
+                    Surgery</label>
+                <input type="radio" id="vitalsType5" name="modal_vitalsType" value="4" /><label for="vitalsType5">Post-Surgery</label>
+            </div>
+            <label for="height">
+                Height</label>
+            <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="weight">
+                Weight</label>
+            <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="temperature">
+                Temperature</label>
+            <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="heartRate">
+                Heart Rate</label>
+            <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="bpSystolic">
+                Systolic BP</label>
+            <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="bpDiastolic">
+                Diastolic BP</label>
+            <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="respiratoryRate">
+                Respiratory Rate</label>
+            <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
             </form>
         </fieldset>
     </div>
@@ -49,6 +50,9 @@
                 <tr>
                     <th class="vitalDateColumn">
                         Date
+                    </th>
+                    <th class="vitalTypeColumn">
+                        Type
                     </th>
                     <th class="vitalHeightColumn">
                         Height(cm)
@@ -78,8 +82,10 @@
                     <tr>
                         <td class="vitalDateColumn">@vital.Time
                         </td>
+                        <td class="vitalTypeColumn">@vital.Type
+                        </td>
                         <td class="vitalHeightColumn">
-                            @if (vital.Height!=0)
+                            @if (vital.Height != 0)
                             {
                                 @vital.Height
                             }
@@ -89,7 +95,7 @@
                             }
                         </td>
                         <td class="vitalWeightColumn">
-                            @if (vital.Weight!=0)
+                            @if (vital.Weight != 0)
                             {
                                 @vital.Weight
                             }
@@ -99,7 +105,7 @@
                             }
                         </td>
                         <td class="vitalTemperatureColumn">
-                            @if (vital.Temperature!=0)
+                            @if (vital.Temperature != 0)
                             {
                                 @vital.Temperature
                             }
@@ -109,7 +115,7 @@
                             }
                         </td>
                         <td class="vitalHeartRateColumn">
-                            @if (vital.HeartRate!=0)
+                            @if (vital.HeartRate != 0)
                             {
                                 @vital.HeartRate
                             }
@@ -129,7 +135,7 @@
                             }
                         </td>
                         <td class="vitalRespiratoryRateColumn">
-                            @if (vital.RespiratoryRate!=0)
+                            @if (vital.RespiratoryRate != 0)
                             {
                                 @vital.RespiratoryRate
                             }

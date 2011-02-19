@@ -11,7 +11,7 @@ $(document).ready(function () {
         equalHeights: true
     });
 
-    $("#radio").buttonset();
+    $("#vitalsRadio").buttonset();
 
     // ------------------------------------------------- //
     //  Setup Basic Tab                                  //
@@ -211,7 +211,8 @@ $(document).ready(function () {
                         heartRate: $("#modal_vitalHeartRate").val(),
                         BpSystolic: $("#modal_vitalBpSystolic").val(),
                         BpDiastolic: $("#modal_vitalBpDiastolic").val(),
-                        respiratoryRate: $("#modal_vitalRespiratoryRate").val()
+                        respiratoryRate: $("#modal_vitalRespiratoryRate").val(),
+                        type: $('input:radio[name=modal_vitalsType]:checked').val()
                     },
                     success: function (response) {
                         $("#newVitalDialog").dialog("close");
