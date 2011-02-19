@@ -264,7 +264,7 @@ fieldset
     margin-bottom: 10px; 
 }
 
-#visitHistoryListSearch li
+#visitSearchResultsUL li
 {
     font-size: 1.2em;
     list-style: none;

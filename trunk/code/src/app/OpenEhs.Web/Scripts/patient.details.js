@@ -398,6 +398,7 @@ $(document).ready(function () {
     });
 
     function addSearchRow(result) {
+    /*
         alert(result.length);
         for (var i = 0; i < result.length; i++)
         {
@@ -411,6 +412,43 @@ $(document).ready(function () {
                 alert("Blood Pressure: " + vital.BpSystolic + "/" + vital.BpDiastolic);
             }
         }
+        */
+        /*
+        var table = document.getElementById("visitSearchResults");
+            var tr = document.createElement("tr");
+
+            var elements = new Array();
+
+            for(var i=0;i<2;i++)
+                elements[i] = document.createElement("td");
+            
+                elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
+
+                elements[1].appendChild(document.createTextNode(result[0].Diagnosis));
+
+            for(var i=0;i<2;i++)
+                tr.appendChild(elements[i]);
+
+            table.appendChild(tr);
+            */
+
+            var ul = document.getElementById("visitSearchResultsUL");
+            var li = document.createElement("li");
+
+            
+            var elements = new Array();
+
+            for(var i=0;i<2;i++)
+                elements[i] = document.createElement("li");
+
+                elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
+
+                elements[1].appendChild(document.createTextNode(result[0].Diagnosis));
+
+            for(var i=0;i<2;i++)
+                li.appendChild(elements[i]);
+
+            ul.appendChild(li);
     }
 
     $(function() {
@@ -429,5 +467,6 @@ $(document).ready(function () {
 			}
 		});
 	});
+
 
 });

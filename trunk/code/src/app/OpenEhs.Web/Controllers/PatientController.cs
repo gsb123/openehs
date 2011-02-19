@@ -237,8 +237,8 @@ namespace OpenEhs.Web.Controllers
 
                 resultSet.Add(new
                                   {
-                                      CheckInTime = result.CheckInTime,
-                                      Diagnosis = result.Diagnosis,
+                                      result.CheckInTime, 
+                                      result.Diagnosis,
                                       Vitals = vitalsList
                 });
             }
