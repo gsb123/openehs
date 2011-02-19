@@ -211,11 +211,19 @@ namespace OpenEhs.Web.Controllers
 
         public JsonResult AddVital() {
             try {
+                //Get current patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientID);
 
+                //Get current open patient checkin 
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == new DateTime(1,1,1,0,0,0)
+                            select checkin; 
+
+                //Create new vitals object and add appropriate parameters 
                 Vitals vitals = new Vitals();
+                vitals.PatientCheckIn = query.First<PatientCheckIn>();
                 if (Request.Form["height"]!="")
                     vitals.Height = double.Parse(Request.Form["height"]);
                 if (Request.Form["weight"] != "")
@@ -233,12 +241,15 @@ namespace OpenEhs.Web.Controllers
                     vitals.RespiratoryRate = int.Parse(Request.Form["RespiratoryRate"]);
                 if (Request.Form["Temperature"] != "")
                     vitals.Temperature = float.Parse(Request.Form["Temperature"]);
-                vitals.Type = VitalsType.Initial;
+                vitals.Type = (VitalsType)Enum.Parse(typeof(VitalsType), Request.Form["type"]);
                 vitals.Time = DateTime.Now;
                 vitals.PatientCheckIn = patient.PatientCheckIns[0];
                 vitals.IsActive = true;
+
+                //Add new vitals object to patient
                 patient.PatientCheckIns[0].Vitals.Add(vitals);
 
+                //Return results as JSON
                 return Json(new {
                     error = "false",
                     status = "Successfully added vital.",
