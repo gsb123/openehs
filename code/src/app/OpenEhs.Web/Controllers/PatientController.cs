@@ -205,13 +205,16 @@ namespace OpenEhs.Web.Controllers
             DateTime toDate = DateTime.Parse(Request.Form["to"]);
 
 
-            IList<PatientCheckIn> pci = new List<PatientCheckIn>();
+            //IList<PatientCheckIn> pci = new List<PatientCheckIn>();
 
-            var list = from blah in pci
+            var list = from blah in patient.PatientCheckIns
                        where blah.CheckInTime >= fromDate && blah.CheckInTime <= toDate
                        select blah;
 
-            return Json(list);
+            return Json(new
+            {
+                date = list. .ToString("MM/dd/yyyy HH:mm:ss"),
+            });
         }
     }
 }
