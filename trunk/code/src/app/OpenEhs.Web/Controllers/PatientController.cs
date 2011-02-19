@@ -261,7 +261,7 @@ namespace OpenEhs.Web.Controllers
                     heartRate = vitals.HeartRate,
                     respiratoryRate = vitals.RespiratoryRate,
                     temperature = vitals.Temperature,
-                    type = vitals.Type
+                    type = Enum.GetName(typeof(VitalsType), vitals.Type)
                 });
             } catch (Exception e) {
                 return Json(new {
