@@ -53,7 +53,7 @@ namespace OpenEhs.Web.Controllers
             IEnumerable<Patient> patients = new List<Patient>();
 
             //Check if the search criteria contains a Date of Birth
-            Regex dobRegEx = new Regex(@"(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))");
+            Regex dobRegEx = new Regex(@"(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})|(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))|(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})");
             Match m = dobRegEx.Match(searchCriteria);
             if (m.Success)
             {
@@ -73,9 +73,52 @@ namespace OpenEhs.Web.Controllers
                 //Format the phone number to 'XXXXXXXXXX' format to search for it
                 string formattedPhoneNumber = phoneRegEx.Replace(m.ToString(), "$1$2$3");
 
-                IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(formattedPhoneNumber); //Find any patients with this Phone Number
+                //Find any patients with this Phone Number
+                IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(formattedPhoneNumber);
 
                 patients = patients.Union<Patient>(phonePatients);  //Add them to the result set
+            }
+
+            //Check if the search criteria contains a Patient ID (6 character numeric string)
+            Regex idRegEx = new Regex(@"[0-9]{6}"); //Check for Patient ID number
+            m = idRegEx.Match(searchCriteria);  //Check if the search string contains the Patient ID
+            if (m.Success)
+            {
+                //Find any patients with a matching ID
+                IList<Patient> idPatients = new PatientRepository().FindByPatientID(Convert.ToInt32(m.ToString()));
+
+                patients = patients.Union<Patient>(idPatients); //Add them to the result set
+            }
+
+            //Check if the search criteria contains a Patient ID (6 character numeric string)
+            Regex physicalIdRegEx = new Regex(@"[0-9]{6,10}"); //Check for Patient ID number
+            m = physicalIdRegEx.Match(searchCriteria);  //Check if the search string contains the Patient ID
+            if (m.Success)
+            {
+                //Find any patients with a matching ID
+                IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(Convert.ToInt32(m.ToString()));
+
+                patients = patients.Union<Patient>(physicalIdPatients); //Add them to the result set
+            }
+
+            //Check if the search criteria contains a Patient name
+            Regex nameRegEx = new Regex(@"[a-zA-Z]+"); //Check for Patient name
+            string[] names = searchCriteria.Split(' ');
+            foreach (string name in names)
+            {
+                m = nameRegEx.Match(name);  //Check if the search string contains a Patient name
+                if (m.Success)
+                {
+                    //Find any patients with a matching name
+                    IList<Patient> namePatients = new PatientRepository().FindByFirstName(m.ToString());
+                    patients = patients.Union<Patient>(namePatients); //Add them to the result set
+
+                    namePatients = new PatientRepository().FindByMiddleName(m.ToString());
+                    patients = patients.Union<Patient>(namePatients); //Add them to the result set
+
+                    namePatients = new PatientRepository().FindByLastName(m.ToString());
+                    patients = patients.Union<Patient>(namePatients); //Add them to the result set
+                }
             }
 
             return View(patients);  //Return the merged result set with no duplicates
