@@ -264,6 +264,32 @@ fieldset
     margin-bottom: 10px; 
 }
 
+#visitHistoryListSearch li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+}
+
+#NoRecordedVisits
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+}
+
 #MedicationListOne li
 {
     font-size: 1.2em;
@@ -451,6 +477,10 @@ fieldset
 {
     clear: both;
     display: none;
+}
+
+#h3ID
+{
     margin-left: 40px;
 }
 
@@ -468,7 +498,16 @@ fieldset
     font-size: 10px;
 }
 
+#vitalHistorySearch
+{
+    font-size: 10px;
+}
+
 table.vitalsHist {
+	background-color: white;
+}
+
+table.vitalsHistSearch {
 	background-color: white;
 }
 
@@ -495,7 +534,8 @@ table.vitalsHist th {
 
 #pastVisitFieldSet
 {
-    width: 330px;
+    width: 390px;
+    padding-left: 40px;
 }
 
 #searchHistoryResultList
@@ -509,4 +549,30 @@ padding: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
 margin-bottom: 10px;  
+}
+
+#visitVitalsMoreInfoSearch
+{
+    clear: both;
+    display: none;
+}
+
+#visitVitalsLinkSearch
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#visitNoteMoreInfoSearch
+{
+    clear: both;
+    display: none;
+}
+
+#visitNoteLinkSearch
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
 }

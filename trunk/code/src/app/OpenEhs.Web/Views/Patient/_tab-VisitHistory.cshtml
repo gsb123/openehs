@@ -6,11 +6,21 @@
 
 <div>
 	<p id="visitTitle"><b>
-		Last 2 recorded visits
+		Last recorded visits
 	</b></p>
 
+    @if (Model.SearchCheckIns.Count == 0)
+    {
+        <ul id="NoRecordedVisits">
+            <li style="float: left;">
+                There are no recorded current medications for this patient.
+            </li>
+        </ul>
+    }
+    else
+    {
     <ul id="visitHistoryList">
-    @foreach (var visit in Model.PatientCheckIns)
+    @foreach (var visit in Model.SearchCheckInsTop1)
     {
         <li class="group">
             <div style="float: left;"><b>Visit Date: </b>@visit.CheckInTime</div><br />
@@ -50,7 +60,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var checkin in Model.PatientCheckIns)
+                            @foreach (var checkin in Model.SearchCheckInsTop1)
                             {
                                 foreach (var vital in checkin.Vitals)
                                 {
@@ -101,13 +111,15 @@
         </li>
     }
     </ul>
+    }
 
     <div id="visitPastLink" font-size="15">
 	        Search past visits...
     </div>
         <div id="visitPastMoreInfo">
             
-            <fieldset id="pastVisitFieldSet">
+            <div id="pastVisitFieldSet">
+            <fieldset>
                 @using (Html.BeginForm("SearchVisit", "Patient"))
                 {
                     <label for="from">From</label>
@@ -117,22 +129,105 @@
                     <input id="visitHistorySearchButton" type="button" value="Search" />
                 }
             </fieldset>
-            
+            </div>
+          
 
-            <h3>
+            <h3 id="h3ID">
                 Search Result
             </h3>
 
-            @*
-            This ul will have a foreach in it to print out the found info!
-            *@
-            @* 
-            <ul id="searchHistoryResultList">
-                
-            </ul>
-            *@
 
+            <ul id="visitHistoryListSearch">
+    @foreach (var visit in Model.PatientCheckIns)
+    {
+        <li class="group">
+            <div style="float: left;" id="searchCheckInTime"><b>Visit Date: </b></div><br />
+            <div style="float: left;" id="searchDiagnosis"><b>Diagnosis: </b> </div><br />
+            <div>
+                <div id="visitVitalsLinkSearch">
+	                Show Vitals...
+                </div>
+                <div id="visitVitalsMoreInfoSearch">
+                    <table id="vitalHistorySearch" class="vitalsHistSearch">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Time
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Height(cm)
+                                </th>
+                                <th>
+                                    Weight(kg)
+                                </th>
+                                <th>
+                                    Temperature(&deg;C)
+                                </th>
+                                <th>
+                                    Heart Rate(bpm)
+                                </th>
+                                <th>
+                                    Blood Pressure(mmHg)
+                                </th>
+                                <th>
+                                    Respiratory Rate(Hz)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var checkin in Model.PatientCheckIns)
+                            {
+                                foreach (var vital in checkin.Vitals)
+                                {
+                                    <tr>
+                                        <td id="vtime">
+                                            
+                                        </td>
+                                        <td id="vtype">
+                                            
+                                        </td>
+                                        <td id="vheight">
+                                           
+                                        </td>
+                                        <td id="vweight">
+                                            
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td id="vheartrate">
+                                            
+                                        </td>
+                                        <td id="bloodpressure">
+                                            
+                                        </td>
+                                        <td id="vrespiratoryrate">
+                                            
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
+            <div>
+                <div id="visitNoteLinkSearch">
+	                Show Notes...
+                </div>
+                <div id="visitNoteMoreInfoSearch">
+                    <div style="float: left;"><b>Notes: </b> This is where notes go! This is just a test not about visit, I just really wanted 
+                                    to see how long the note can be and still look good in this link box I made. Well I hope if you are reading
+                                    this that you like how dry and boaring this is...
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
 
-        </div>
 </div>
