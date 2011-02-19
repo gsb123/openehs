@@ -57,11 +57,23 @@ namespace OpenEhs.Data
             return criteria.List<Patient>();
         }
 
-        public IList<Patient> FindByName(string name)
+        public IList<Patient> FindByFirstName(string firstName)
+        {     
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("FirstName", firstName));
+
+            return criteria.List<Patient>();
+        }
+
+        public IList<Patient> FindByMiddleName(string middleName)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>();
-            criteria.Add(Restrictions.Eq("FirstName", name));
-            criteria.Add(Restrictions.Eq("LastName", name));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("MiddleName", middleName));
+
+            return criteria.List<Patient>();
+        }
+
+        public IList<Patient> FindByLastName(string lastName)
+        {
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("LastName", lastName));
 
             return criteria.List<Patient>();
         }
@@ -76,6 +88,13 @@ namespace OpenEhs.Data
         public IList<Patient> FindByOldPhysicalRecord(int number)
         {
             ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("OldPhysicalRecordNumber", number));
+
+            return criteria.List<Patient>();
+        }
+
+        public IList<Patient> FindByPatientID(int number)
+        {
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("Id", number));
 
             return criteria.List<Patient>();
         }

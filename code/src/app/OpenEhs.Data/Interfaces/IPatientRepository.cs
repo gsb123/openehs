@@ -16,7 +16,9 @@ namespace OpenEhs.Data
     {
         IList<Patient> GetAll();
         IList<Patient> FindByPhoneNumber(string phoneNumber);
-        IList<Patient> FindByName(string name);
+        IList<Patient> FindByFirstName(string name);
+        IList<Patient> FindByMiddleName(string name);
+        IList<Patient> FindByLastName(string name);
         IList<Patient> FindByDateOfBirth(DateTime dateOfBirth);
         IList<Patient> FindByOldPhysicalRecord(int number);
     }
