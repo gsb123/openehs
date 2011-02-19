@@ -117,44 +117,32 @@ $(document).ready(function () {
     //  Setup Vitals Tab                                 //
     // ------------------------------------------------- //\
 
-    function addVitalsRow(result) {
+    function processVitalsReturn(result) {
+        if(result.error=="false")
+        {
+            var table = document.getElementById("vitalsTable");
+            var tr = document.createElement("tr");
 
-        var table = document.getElementById("vitalsTable");
-        var tr = document.createElement("tr");
+            var elements = new Array();
 
-        var dateTd = document.createElement("td");
-        var heightTd = document.createElement("td");
-        var weightTd = document.createElement("td");
-        var temperatureTd = document.createElement("td");
-        var heartRateTd = document.createElement("td");
-        var bloodPressureTd = document.createElement("td");
-        var respiratoryRateTd = document.createElement("td");
+            for(var i=0;i<7;i++)
+                elements[i] = document.createElement("td");
 
-        var date = document.createTextNode(result.date);
-        var height = document.createTextNode(result.height);
-        var weight = document.createTextNode(result.weight);
-        var temperature = document.createTextNode(result.temperature);
-        var heartRate = document.createTextNode(result.heartRate);
-        var bloodPressure = document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic);
-        var respiratoryRate = document.createTextNode(result.respiratoryRate);
+            elements[0].appendChild(document.createTextNode(result.date));
+            elements[1].appendChild(document.createTextNode(result.height));
+            elements[2].appendChild(document.createTextNode(result.weight));
+            elements[3].appendChild(document.createTextNode(result.temperature));
+            elements[4].appendChild(document.createTextNode(result.heartRate));
+            elements[5].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
+            elements[6].appendChild(document.createTextNode(result.respiratoryRate));
 
-        dateTd.appendChild(date);
-        heightTd.appendChild(height);
-        weightTd.appendChild(weight);
-        temperatureTd.appendChild(temperature);
-        heartRateTd.appendChild(heartRate);
-        bloodPressureTd.appendChild(bloodPressure);
-        respiratoryRateTd.appendChild(respiratoryRate);
+            for(var i=0;i<7;i++)
+                tr.appendChild(elements[i]);
 
-        tr.appendChild(dateTd);
-        tr.appendChild(heightTd);
-        tr.appendChild(weightTd);
-        tr.appendChild(temperatureTd);
-        tr.appendChild(heartRateTd);
-        tr.appendChild(bloodPressureTd);
-        tr.appendChild(respiratoryRateTd);
-
-        table.appendChild(tr);
+            table.appendChild(tr);
+        }
+        else
+            alert ("Error");
     }
 
     $("#newVitalDialog").dialog({
@@ -177,7 +165,7 @@ $(document).ready(function () {
                     },
                     success: function (response) {
                         $("#newVitalDialog").dialog("close");
-                        addVitalsRow(response);
+                        processVitalsReturn(response);
                     },
                     dataType: "json"
                 });
