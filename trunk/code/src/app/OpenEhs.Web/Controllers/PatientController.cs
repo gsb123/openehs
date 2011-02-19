@@ -193,17 +193,22 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult SearchVisit(FormCollection value1, FormCollection value2)
+        public JsonResult SearchVisit()
         {
-            //Values from textboxes
-            DateTime searchCriteria1 = DateTime.Parse(value1["from"]);
-            DateTime searchCriteria2 = DateTime.Parse(value2["to"]);
+            int patientID = int.Parse(Request.Form["patientID"]);
+            PatientRepository patientRepo = new PatientRepository();
+            var patient = patientRepo.Get(patientID);
+
+            //PatientCheckIn checkIn = new PatientCheckIn();
+
+            DateTime fromDate = DateTime.Parse(Request.Form["from"]);
+            DateTime toDate = DateTime.Parse(Request.Form["to"]);
+
 
             IList<PatientCheckIn> pci = new List<PatientCheckIn>();
 
             var list = from blah in pci
-                       where blah.CheckInTime >= searchCriteria1 && blah.CheckInTime <= searchCriteria2
+                       where blah.CheckInTime >= fromDate && blah.CheckInTime <= toDate
                        select blah;
 
             return Json(list);

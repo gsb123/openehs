@@ -370,14 +370,18 @@ $(document).ready(function () {
     });
 
     $("#visitHistorySearchButton").button().click(function () {
-        alert("Hello!");
-       $("#visitPastMoreInfo").click(function () {
-                var href = $(this).find("a").attr("href");
+        $.ajax({ type: "POST",
+                    url: "/Patient/SearchVisit",
+                    data: { patientID: $("#patientId").val(),
+                        from: $("#from").val(),
+                        to: $("#to").val()
+                    },
+                    success: function (response) {
+                        addSearchRow(response);
+                    },
+                    dataType: "json"
+                });
 
-                if (href) {
-                    window.location = href;
-                }
-            });
     });
 
     $(function() {
