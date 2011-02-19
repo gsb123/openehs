@@ -8,10 +8,8 @@
 </div>
 <div id="vitalsBody" class="group">
     <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
-        <p class="validateTips">
-            All form fields are required.</p>
-        @using (Html.BeginForm("AddVital", "Patient", "POST")) {
             <fieldset>
+            <legend>Enter Vital Information</legend>
                 <label for="height">
                     Height</label>
                 <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
@@ -34,7 +32,6 @@
                     Respiratory Rate</label>
                 <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
             </fieldset>
-        }
     </div>
     <div id="vitalsTableDiv">
     <table id="vitalsTable">
