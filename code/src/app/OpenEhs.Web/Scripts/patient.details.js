@@ -11,6 +11,7 @@ $(document).ready(function () {
         equalHeights: true
     });
 
+    $("#radio").buttonset();
 
     // ------------------------------------------------- //
     //  Setup Basic Tab                                  //
@@ -116,6 +117,8 @@ $(document).ready(function () {
     // ------------------------------------------------- //
     //  Setup Vitals Tab                                 //
     // ------------------------------------------------- //\
+
+
 
     function processVitalsReturn(result) {
         if(result.error=="false")
