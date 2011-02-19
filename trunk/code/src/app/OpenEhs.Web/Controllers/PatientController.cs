@@ -141,7 +141,8 @@ namespace OpenEhs.Web.Controllers
                     return Json(new
                     {
                         error = "false",
-                        status = "Removed allergy: " + name + " successfully"
+                        status = "Removed allergy \"" + name + "\" successfully",
+                        Id = allergyId
                     });
                 }
                 else

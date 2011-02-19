@@ -74,10 +74,15 @@ $(document).ready(function () {
                         allergyName: $("#addAllergyName").val()
                     }, function (returnData) {
                         if (returnData.error == "false") {
-                            $("#allergyPostStatus").html(returnData.status);
-                            $(this).dialog("close");
+                            $("#addAllergyDialog").dialog("close");
+                           var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id 
+                                                    + '"><div style="float: left;">' + returnData.allergy.Name 
+                                                    + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id 
+                                                    + '" type="button" value="Remove" /></div></li>';
+                            console.log(newAllergy);
+                            $("#allergyList").append(newAllergy).fadeIn("normal",function(){/*TODO Add remove listener to new li's remove button*/}); 
                         } else {
-                            $("#addAllergyDialog .error").html(returnData.status).animate;
+                            $("#addAllergyDialog .error").html(returnData.status);
                         }
                     }, "json");
                 }
@@ -93,12 +98,17 @@ $(document).ready(function () {
 
     $("#addAllergyForm").validate();
 
+    $("#addAllergyForm").submit(function(){
+        return false;
+    });
+
+
     $("#allergyAddButton").button().click(function () {
         $("#addAllergyDialog").dialog("open")
     });
 
-    // Add remove function to every allergy remove icon
-    $(".allergyRemove").button({
+    // Add remove function to every allergy remove button
+   $(".allergyRemove").button({
         icons: {
             primary: "ui-icon-closethick"
         },
@@ -108,17 +118,20 @@ $(document).ready(function () {
             patientID: $("#patientId").val(),
             allergyID: $(this).attr("id")
         }, function (returnData) {
-            $("#allergyPostStatus").html(returnData.status);
+            if(returnData.error == "false"){
+                $("#allergy_" + returnData.Id).fadeOut("normal", function() {
+                    $(this).remove();
+                });
+            } else {
+                
+            }
         }, "json");
     });
 
 
-
     // ------------------------------------------------- //
     //  Setup Vitals Tab                                 //
-    // ------------------------------------------------- //\
-
-
+    // ------------------------------------------------- //
 
     function processVitalsReturn(result) {
         if(result.error=="false")
@@ -169,7 +182,6 @@ $(document).ready(function () {
             table.appendChild(tr);
 
             //Reset form
-            $("#patientId").val("");
             $("#modal_vitalHeight").val("");
             $("#modal_vitalWeight").val("");
             $("#modal_vitalTemperature").val("");
