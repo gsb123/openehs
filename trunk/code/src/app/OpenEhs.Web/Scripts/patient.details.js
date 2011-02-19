@@ -398,7 +398,19 @@ $(document).ready(function () {
     });
 
     function addSearchRow(result) {
-        alert("Diagnosis: " + result[0].Diagnosis);
+        alert(result.length);
+        for (var i = 0; i < result.length; i++)
+        {
+            alert("Diagnosis: " + result[i].Diagnosis);
+            alert("Check-in Time: " + result[i].CheckInTime);
+
+            for(var x = 0; x < result[i].Vitals.length; x++)
+            {
+                var vital = result[i].Vitals[x];
+
+                alert("Blood Pressure: " + vital.BpSystolic + "/" + vital.BpDiastolic);
+            }
+        }
     }
 
     $(function() {
