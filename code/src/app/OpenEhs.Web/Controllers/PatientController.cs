@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using OpenEhs.Data;
-using System;
 using OpenEhs.Domain;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
@@ -45,19 +46,39 @@ namespace OpenEhs.Web.Controllers
         {
             string searchCriteria = values["PatientSearchTextBox"];    //Get the value entered in the 'Search' field
 
-            IList<Patient> patients = new List<Patient>();
+            //If the search field is empty then return all results
+            if (string.IsNullOrEmpty(searchCriteria))
+                return View(new PatientRepository().GetAll());
+            
+            IEnumerable<Patient> patients = new List<Patient>();
 
+            //Check if the search criteria contains a Date of Birth
+            Regex dobRegEx = new Regex(@"(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))");
+            Match m = dobRegEx.Match(searchCriteria);
+            if (m.Success)
+            {
+                //Parse the DOB to English (en) Great Britain (GB) format 'DD/MM/YYYY' for Ghana
+                DateTime dob = DateTime.Parse(m.ToString(), new CultureInfo("en-GB"));
+
+                IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirth(dob);    //Find any patients with this DOB
+
+                patients = patients.Union<Patient>(dobPatients); //Add them to the result set
+            }
+
+            //Check if the search criteria contains a Phone Number
             Regex phoneRegEx = new Regex(@"\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})"); //Check for phone number
-            Match m = phoneRegEx.Match(searchCriteria); //Check if the search string matches the phone number
+            m = phoneRegEx.Match(searchCriteria); //Check if the search string matches the phone number
             if (m.Success)
             {
                 //Format the phone number to 'XXXXXXXXXX' format to search for it
                 string formattedPhoneNumber = phoneRegEx.Replace(m.ToString(), "$1$2$3");
 
-                patients = new PatientRepository().FindByPhoneNumber(formattedPhoneNumber);
+                IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(formattedPhoneNumber); //Find any patients with this Phone Number
+
+                patients = patients.Union<Patient>(phonePatients);  //Add them to the result set
             }
 
-            return View(patients);
+            return View(patients);  //Return the merged result set with no duplicates
         }
 
         public JsonResult AddAllergy()
