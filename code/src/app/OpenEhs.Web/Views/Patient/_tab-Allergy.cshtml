@@ -1,14 +1,13 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
-
 <div id="allergyHeader" class="group">
     <h2 id="Allergies">
-        Allergies</h2> 
+        Allergies</h2>
     <input id="allergyAddButton" name="allergyAddButton" type="button" value="Add" />
-</div>  
+</div>
 <div>
-    <ul id="AllergyList">
+    <ul id="allergyList">
         @foreach (var allergy in Model.Allergies) {
-            <li class="group">
+            <li class="group" id="@string.Format("{0}{1}", "allergy_", allergy.Id)">
                 <div style="float: left;">@allergy.Name</div>
                 <div style="float: right;">
                     <input class="allergyRemove" id="@allergy.Id" type="button" value="Remove" />
