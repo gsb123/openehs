@@ -384,6 +384,17 @@ $(document).ready(function () {
 
     });
 
+    function addSearchRow(result) {
+
+        var ul = document.getElementById("searchHistoryResultList");
+
+        //for(list in responce)
+        //{
+           // hey
+        //}
+
+    }
+
     $(function() {
 		var dates = $( "#from, #to" ).datepicker({
 			defaultDate: "+1w",
