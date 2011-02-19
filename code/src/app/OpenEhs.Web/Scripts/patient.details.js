@@ -357,7 +357,7 @@ $(document).ready(function () {
     //  Setup Visit History List Tab                     //
     // ------------------------------------------------- //
 
-    $("#visitNoteLink").click(function () {
+     $("#visitNoteLink").click(function () {
         $("#visitNoteMoreInfo").slideToggle("slow", function () {
         });
     });
@@ -369,6 +369,16 @@ $(document).ready(function () {
 
     $("#visitPastLink").click(function () {
         $("#visitPastMoreInfo").slideToggle("slow", function () {
+        });
+    });
+
+    $("#visitVitalsLinkSearch").click(function () {
+        $("#visitVitalsMoreInfoSearch").slideToggle("slow", function () {
+        });
+    });
+
+    $("#visitNoteLinkSearch").click(function () {
+        $("#visitNoteMoreInfoSearch").slideToggle("slow", function () {
         });
     });
 
@@ -389,12 +399,8 @@ $(document).ready(function () {
 
     function addSearchRow(result) {
 
-        var ul = document.getElementById("searchHistoryResultList");
-
-        //for(list in responce)
-        //{
-           // hey
-        //}
+        for(var list in result)
+            document.write(list.CheckInTime);
 
     }
 
