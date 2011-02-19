@@ -2,86 +2,137 @@
 <div id="vitalsHeader" class="group">
     <h2 id="Vitals">
         Vitals</h2>
-        <div id="vitalsMessage"></div>
+    <div id="vitalsMessage">
+    </div>
     <input class="vitalAddButton" id="vitalAddButton" name="vitalAddButton" type="button"
         value="Add" />
 </div>
 <div id="vitalsBody" class="group">
     <div id="newVitalDialog" title="Add New Vital for @Model.FirstName @Model.LastName">
-            <fieldset>
+        <fieldset>
             <legend>Enter Vital Information</legend>
-                <label for="height">
-                    Height</label>
-                <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="weight">
-                    Weight</label>
-                <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="temperature">
-                    Temperature</label>
-                <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="heartRate">
-                    Heart Rate</label>
-                <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="bpSystolic">
-                    Systolic BP</label>
-                <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="bpDiastolic">
-                    Diastolic BP</label>
-                <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
-                <label for="respiratoryRate">
-                    Respiratory Rate</label>
-                <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
-            </fieldset>
+            <label for="height">
+                Height</label>
+            <input type="text" name="height" id="modal_vitalHeight" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="weight">
+                Weight</label>
+            <input type="text" name="weight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="temperature">
+                Temperature</label>
+            <input type="text" name="temperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="heartRate">
+                Heart Rate</label>
+            <input type="text" name="heartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="bpSystolic">
+                Systolic BP</label>
+            <input type="text" name="bpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="bpDiastolic">
+                Diastolic BP</label>
+            <input type="text" name="bpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
+            <label for="respiratoryRate">
+                Respiratory Rate</label>
+            <input type="text" name="respiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
+        </fieldset>
     </div>
     <div id="vitalsTableDiv">
-    <table id="vitalsTable">
-        <thead>
-            <tr>
-                <th class="vitalDateColumn">
-                    Date
-                </th>
-                <th class="vitalHeightColumn">
-                    Height(cm)
-                </th>
-                <th class="vitalWeightColumn">
-                    Weight(kg)
-                </th>
-                <th class="vitalTemperatureColumn">
-                    Temperature(&deg;C)
-                </th>
-                <th class="vitalHeartRateColumn">
-                    Heart Rate(bpm)
-                </th>
-                <th class="vitalBloodPressureColumn">
-                    Blood Pressure(mmHg)
-                </th>
-                <th class="vitalRespiratoryRateColumn">
-                    Respiratory Rate(Hz)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var checkin in Model.PatientCheckIns) {
-                foreach (var vital in checkin.Vitals) {
+        <table id="vitalsTable">
+            <thead>
                 <tr>
-                    <td class="vitalDateColumn">@vital.Time
-                    </td>
-                    <td class="vitalHeightColumn">@vital.Height
-                    </td>
-                    <td class="vitalWeightColumn">@vital.Weight
-                    </td>
-                    <td class="vitalTemperatureColumn">@vital.Temperature
-                    </td>
-                    <td class="vitalHeartRateColumn">@vital.HeartRate
-                    </td>
-                    <td class="vitalBloodPressureColumn">@vital.BloodPressure
-                    </td>
-                    <td class="vitalRespiratoryRateColumn">@vital.RespiratoryRate
-                    </td>
+                    <th class="vitalDateColumn">
+                        Date
+                    </th>
+                    <th class="vitalHeightColumn">
+                        Height(cm)
+                    </th>
+                    <th class="vitalWeightColumn">
+                        Weight(kg)
+                    </th>
+                    <th class="vitalTemperatureColumn">
+                        Temperature(&deg;C)
+                    </th>
+                    <th class="vitalHeartRateColumn">
+                        Heart Rate(bpm)
+                    </th>
+                    <th class="vitalBloodPressureColumn">
+                        Blood Pressure(mmHg)
+                    </th>
+                    <th class="vitalRespiratoryRateColumn">
+                        Respiratory Rate(Hz)
+                    </th>
                 </tr>
+            </thead>
+            <tbody>
+                @foreach (var checkin in Model.PatientCheckIns)
+                {
+                    foreach (var vital in checkin.Vitals)
+                    {
+                    <tr>
+                        <td class="vitalDateColumn">@vital.Time
+                        </td>
+                        <td class="vitalHeightColumn">
+                            @if (vital.Height!=0)
+                            {
+                                @vital.Height
+                            }
+                            else
+                            {
+                                <span>N/A</span>
+                            }
+                        </td>
+                        <td class="vitalWeightColumn">
+                            @if (vital.Weight!=0)
+                            {
+                                @vital.Weight
+                            }
+                            else
+                            {
+                                <span>N/A</span>
+                            }
+                        </td>
+                        <td class="vitalTemperatureColumn">
+                            @if (vital.Temperature!=0)
+                            {
+                                @vital.Temperature
+                            }
+                            else
+                            {
+                                <span>N/A</span>
+                            }
+                        </td>
+                        <td class="vitalHeartRateColumn">
+                            @if (vital.HeartRate!=0)
+                            {
+                                @vital.HeartRate
+                            }
+                            else
+                            {
+                                <span>N/A</span>
+                            }
+                        </td>
+                        <td class="vitalBloodPressureColumn">
+                            @if (!vital.BloodPressure.Equals(""))
+                            {
+                                @vital.BloodPressure
+                            }
+                            else
+                            {
+                                <span>N/A</span>
+                            }
+                        </td>
+                        <td class="vitalRespiratoryRateColumn">
+                            @if (vital.RespiratoryRate!=0)
+                            {
+                                @vital.RespiratoryRate
+                            }
+                            else
+                            {
+                                <span>N/A</span>
+                            }
+                        </td>
+                    </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
 </div>
