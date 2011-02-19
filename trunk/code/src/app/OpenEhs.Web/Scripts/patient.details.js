@@ -398,10 +398,7 @@ $(document).ready(function () {
     });
 
     function addSearchRow(result) {
-
-        for(var list in result)
-            document.write(list.CheckInTime);
-
+        alert("Diagnosis: " + result[0].Diagnosis);
     }
 
     $(function() {
