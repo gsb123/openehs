@@ -8,9 +8,9 @@
 
 using System;
 using System.Collections.Generic;
-using OpenEhs.Domain;
 using NHibernate;
 using NHibernate.Criterion;
+using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
@@ -60,12 +60,17 @@ namespace OpenEhs.Data
         public IList<Patient> FindByName(string name)
         {
             ICriteria criteria = Session.CreateCriteria<Patient>();
-            return null;
+            criteria.Add(Restrictions.Eq("FirstName", name));
+            criteria.Add(Restrictions.Eq("LastName", name));
+
+            return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByDateOfBirth(DateTime dateOfBirth)
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("DateOfBirth", dateOfBirth));
+
+            return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByOldPhysicalRecord(int number)
