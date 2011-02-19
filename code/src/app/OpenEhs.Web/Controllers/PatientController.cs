@@ -260,7 +260,8 @@ namespace OpenEhs.Web.Controllers
                     bpSystolic = vitals.BloodPressure.Systolic,
                     heartRate = vitals.HeartRate,
                     respiratoryRate = vitals.RespiratoryRate,
-                    temperature = vitals.Temperature
+                    temperature = vitals.Temperature,
+                    type = vitals.Type
                 });
             } catch (Exception e) {
                 return Json(new {
