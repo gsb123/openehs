@@ -141,42 +141,43 @@ $(document).ready(function () {
 
             var elements = new Array();
 
-            for(var i=0;i<7;i++)
+            for(var i=0;i<8;i++)
                 elements[i] = document.createElement("td");
             
             elements[0].appendChild(document.createTextNode(result.date));
+            elements[1].appendChild(document.createTextNode(result.type));
 
             if(result.height!="0")
-                elements[1].appendChild(document.createTextNode(result.height));
-            else
-                elements[1].appendChild(document.createTextNode("N/A"));
-                
-            if(result.weight!="0")
-                elements[2].appendChild(document.createTextNode(result.weight));
+                elements[2].appendChild(document.createTextNode(result.height));
             else
                 elements[2].appendChild(document.createTextNode("N/A"));
-            
-            if(result.temperater!="0")
-                elements[3].appendChild(document.createTextNode(result.temperature));
+                
+            if(result.weight!="0")
+                elements[3].appendChild(document.createTextNode(result.weight));
             else
                 elements[3].appendChild(document.createTextNode("N/A"));
-
-            if(result.heartRate!="0")
-                elements[4].appendChild(document.createTextNode(result.heartRate));
+            
+            if(result.temperater!="0")
+                elements[4].appendChild(document.createTextNode(result.temperature));
             else
                 elements[4].appendChild(document.createTextNode("N/A"));
 
-            if(result.bpSystolic!="0")
-                elements[5].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
+            if(result.heartRate!="0")
+                elements[5].appendChild(document.createTextNode(result.heartRate));
             else
                 elements[5].appendChild(document.createTextNode("N/A"));
 
-            if(result.respiratoryRate!="0")
-                elements[6].appendChild(document.createTextNode(result.respiratoryRate));
+            if(result.bpSystolic!="0")
+                elements[6].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
             else
                 elements[6].appendChild(document.createTextNode("N/A"));
 
-            for(var i=0;i<7;i++)
+            if(result.respiratoryRate!="0")
+                elements[7].appendChild(document.createTextNode(result.respiratoryRate));
+            else
+                elements[7].appendChild(document.createTextNode("N/A"));
+
+            for(var i=0;i<8;i++)
                 tr.appendChild(elements[i]);
 
             table.appendChild(tr);
