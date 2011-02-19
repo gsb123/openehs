@@ -46,7 +46,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Middle Name")]
         public string MiddleName
         {
@@ -112,7 +111,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Phone Number")]
         [RegularExpression(@"^([0-9]{3})[ ]{1}([0-9]{3})[ ]{1}([0-9]{4})$", ErrorMessage = "Please format phone to XXX XXX XXXX")]
         public string PhoneNumber
@@ -127,7 +125,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Emergency Contact")]
         public EmergencyContact EmergencyContact
         { 
@@ -155,7 +152,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Blood Type")]
         public string BloodType
         {
@@ -183,7 +179,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Religion")]
         public string Religion
         {
@@ -197,7 +192,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Old Physical Record Number")]
         public int OldPhysicalRecordNumber
         {
@@ -211,7 +205,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Active")]
         public bool IsActive
         {
@@ -225,7 +218,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Note")]
         public string Note
         {
@@ -239,7 +231,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("CheckIns")]
         public IList<PatientCheckIn> PatientCheckIns
         {
@@ -253,7 +244,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Problems")]
         public IList<Problem> Problems
         {
@@ -267,7 +257,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Allergies")]
         public IList<Allergy> Allergies
         {
@@ -281,7 +270,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
         [DisplayName("Immunizations")]
         public IList<Immunization> Immunizations
         {
@@ -295,7 +283,6 @@ namespace OpenEhs.Web.Models
             }
         }    
 
-        [Required]
         [DisplayName("Medications")]
         public IList<Medication> Medications
         {
