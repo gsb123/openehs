@@ -127,19 +127,54 @@ $(document).ready(function () {
 
             for(var i=0;i<7;i++)
                 elements[i] = document.createElement("td");
-
+            
             elements[0].appendChild(document.createTextNode(result.date));
-            elements[1].appendChild(document.createTextNode(result.height));
-            elements[2].appendChild(document.createTextNode(result.weight));
-            elements[3].appendChild(document.createTextNode(result.temperature));
-            elements[4].appendChild(document.createTextNode(result.heartRate));
-            elements[5].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
-            elements[6].appendChild(document.createTextNode(result.respiratoryRate));
+
+            if(result.height!="0")
+                elements[1].appendChild(document.createTextNode(result.height));
+            else
+                elements[1].appendChild(document.createTextNode("N/A"));
+                
+            if(result.weight!="0")
+                elements[2].appendChild(document.createTextNode(result.weight));
+            else
+                elements[2].appendChild(document.createTextNode("N/A"));
+            
+            if(result.temperater!="0")
+                elements[3].appendChild(document.createTextNode(result.temperature));
+            else
+                elements[3].appendChild(document.createTextNode("N/A"));
+
+            if(result.heartRate!="0")
+                elements[4].appendChild(document.createTextNode(result.heartRate));
+            else
+                elements[4].appendChild(document.createTextNode("N/A"));
+
+            if(result.bpSystolic!="0")
+                elements[5].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
+            else
+                elements[5].appendChild(document.createTextNode("N/A"));
+
+            if(result.respiratoryRate!="0")
+                elements[6].appendChild(document.createTextNode(result.respiratoryRate));
+            else
+                elements[6].appendChild(document.createTextNode("N/A"));
 
             for(var i=0;i<7;i++)
                 tr.appendChild(elements[i]);
 
             table.appendChild(tr);
+
+            //Reset form
+            $("#patientId").val("");
+            $("#modal_vitalHeight").val("");
+            $("#modal_vitalWeight").val("");
+            $("#modal_vitalTemperature").val("");
+            $("#modal_vitalHeartRate").val("");
+            $("#modal_vitalBpSystolic").val("");
+            $("#modal_vitalBpDiastolic").val("");
+            $("#modal_vitalRespiratoryRate").val("");
+
         }
         else
             alert ("Error");

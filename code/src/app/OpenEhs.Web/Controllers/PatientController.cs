@@ -7,23 +7,28 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using OpenEhs.Web.Models;
 
-namespace OpenEhs.Web.Controllers {
-    public class PatientController : Controller {
+namespace OpenEhs.Web.Controllers
+{
+    public class PatientController : Controller
+    {
 
         // GET: /Patient/
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
             var patients = new PatientRepository().GetAll();
 
             return View(patients);
         }
 
-        public ActionResult Create() {
+        public ActionResult Create()
+        {
             return View();
         }
 
-        public ActionResult Details(int id) {
+        public ActionResult Details(int id)
+        {
             var patientViewModel = new PatientViewModel(id);
-            
+
             HttpContext.Session["CurrentPatient"] = id;
 
             return View(patientViewModel);
@@ -54,24 +59,30 @@ namespace OpenEhs.Web.Controllers {
             return View(patients);
         }
 
-        public JsonResult AddAllergy() {
-            try {
+        public JsonResult AddAllergy()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 string allergyName = Request.Form["allergyName"];
 
                 PatientRepository repo = new PatientRepository();
                 var patient = repo.Get(patientId);
                 Allergy allergy = new Allergy();
-                allergy.Name= allergyName;
+                allergy.Name = allergyName;
                 patient.Allergies.Add(allergy);
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Added allergy: " + allergyName + " successfully",
                     allergy = allergy
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add allergy successfully",
                     errorMessage = e.Message
@@ -80,8 +91,10 @@ namespace OpenEhs.Web.Controllers {
         }
 
 
-        public JsonResult RemoveAllergy() {
-            try {
+        public JsonResult RemoveAllergy()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 int allergyId = int.Parse(Request.Form["allergyID"]);
 
@@ -89,8 +102,10 @@ namespace OpenEhs.Web.Controllers {
                 var patient = repo.Get(patientId);
                 string name = "";
                 bool found = false;
-                foreach (var allergy in patient.Allergies) {
-                    if (allergyId == allergy.Id) {
+                foreach (var allergy in patient.Allergies)
+                {
+                    if (allergyId == allergy.Id)
+                    {
                         found = true;
                         name = allergy.Name;
                         patient.Allergies.Remove(allergy);
@@ -99,20 +114,28 @@ namespace OpenEhs.Web.Controllers {
                 }
 
                 UnitOfWork.CurrentSession.Flush();
-                if (found) {
-                    return Json(new {
+                if (found)
+                {
+                    return Json(new
+                    {
                         error = "false",
                         status = "Removed allergy: " + name + " successfully"
                     });
-                } else {
-                    return Json(new {
+                }
+                else
+                {
+                    return Json(new
+                    {
                         error = "true",
                         status = "Allergy not found, please refresh the page and try again",
                         errorMessage = "Allergy with id: " + allergyId + " not found"
                     });
                 }
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to remove allergy",
                     errorMessage = e.Message
@@ -127,20 +150,27 @@ namespace OpenEhs.Web.Controllers {
                 var patient = patientRepo.Get(patientID);
 
                 Vitals vitals = new Vitals();
-                vitals.Height = double.Parse(Request.Form["height"]);
-                vitals.Weight = double.Parse(Request.Form["weight"]);
-                BloodPressure bp = new BloodPressure();
-                bp.Diastolic = int.Parse(Request.Form["BpDiastolic"]);
-                bp.Systolic = int.Parse(Request.Form["BpSystolic"]);
-                vitals.BloodPressure = bp;
-                vitals.HeartRate = int.Parse(Request.Form["HeartRate"]);
-                vitals.IsActive = true;
-                vitals.RespiratoryRate = int.Parse(Request.Form["RespiratoryRate"]);
-                vitals.Temperature = float.Parse(Request.Form["Temperature"]);
-                var vt = VitalsType.Initial;
-                vitals.Type = vt;
+                if (Request.Form["height"]!="")
+                    vitals.Height = double.Parse(Request.Form["height"]);
+                if (Request.Form["weight"] != "")
+                    vitals.Weight = double.Parse(Request.Form["weight"]);
+                if (Request.Form["BpDiastolic"] != "" && Request.Form["BpSystolic"] != "")
+                {
+                    BloodPressure bp = new BloodPressure();
+                    bp.Diastolic = int.Parse(Request.Form["BpDiastolic"]);
+                    bp.Systolic = int.Parse(Request.Form["BpSystolic"]);
+                    vitals.BloodPressure = bp;
+                }
+                if (Request.Form["HeartRate"] != "")
+                    vitals.HeartRate = int.Parse(Request.Form["HeartRate"]);
+                if (Request.Form["RespiratoryRate"] != "")
+                    vitals.RespiratoryRate = int.Parse(Request.Form["RespiratoryRate"]);
+                if (Request.Form["Temperature"] != "")
+                    vitals.Temperature = float.Parse(Request.Form["Temperature"]);
+                vitals.Type = VitalsType.Initial;
                 vitals.Time = DateTime.Now;
                 vitals.PatientCheckIn = patient.PatientCheckIns[0];
+                vitals.IsActive = true;
                 patient.PatientCheckIns[0].Vitals.Add(vitals);
 
                 return Json(new {
