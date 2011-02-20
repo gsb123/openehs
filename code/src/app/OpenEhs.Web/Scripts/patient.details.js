@@ -12,6 +12,8 @@ $(document).ready(function () {
 
     $("#vitalsRadio").buttonset();
 
+     $("#checkinRadio").buttonset();
+
     // ------------------------------------------------- //
     //  Setup Basic Tab                                  //
     // ------------------------------------------------- //
@@ -63,8 +65,10 @@ $(document).ready(function () {
         modal: true,
         buttons: {
             "Check In": function () {},
-            Cancel: function() {}
-            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        },
         close: function() {}
         });
     // ------------------------------------------------- //
