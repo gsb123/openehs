@@ -33,9 +33,6 @@
         Age: @Model.Age</h2>
     <h2 style="margin-left: 20px; font-weight: normal;">
         DOB: @String.Format("{0:d}", Model.DateOfBirth)</h2>
-    <div style="float: right; margin-right: 10px; margin-top: 5px;">
-        @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive, "Active")
-    </div>
     <div>
         <input value="New Check-In" id="newCheckInButton" type="button" />
         <input value="Edit Patient" id="editPatientInfoButton" type="button" />
