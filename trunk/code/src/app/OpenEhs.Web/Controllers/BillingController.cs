@@ -125,8 +125,18 @@ namespace OpenEhs.Web.Controllers
             lineItem.Quantity = 1;
 
             new InvoiceRepository().AddLineItem(lineItem);
-            //RedirectToAction("Edit", "Billing");
-            //return Edit(invoiceId);
+            return new RedirectResult("/Billing/Edit/" + invoiceId);
+        }
+
+        public RedirectResult AddServiceLineItem(int invoiceId)
+        {
+            InvoiceItem lineItem = new InvoiceItem();
+            lineItem.Invoice = new InvoiceRepository().Get(invoiceId);
+            lineItem.IsActive = true;
+            lineItem.Service = new ServiceRepository().Get(1);
+            lineItem.Quantity = 1;
+
+            new InvoiceRepository().AddLineItem(lineItem);
             return new RedirectResult("/Billing/Edit/" + invoiceId);
         }
 
