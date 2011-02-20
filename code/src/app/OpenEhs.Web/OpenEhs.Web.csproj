@@ -114,7 +114,6 @@
     <Content Include="Content\patient.main.css" />
     <Content Include="Content\patient.view.css" />
     <Content Include="Content\themes\base\images\calendar.png" />
-    <Content Include="Content\typography\SegoeUI.css" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -319,7 +318,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\main.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -438,24 +436,6 @@
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\typography\segoe\ttf\segoe.ttf" />
-    <None Include="Content\typography\segoe\ttf\segoeb.ttf" />
-    <None Include="Content\typography\segoe\ttf\segoeui.ttf" />
-    <None Include="Content\typography\segoe\ttf\segoeuib.ttf" />
-    <None Include="Content\typography\segoe\ttf\segoeuii.ttf" />
-    <None Include="Content\typography\segoe\ttf\segoeuil.ttf" />
-    <None Include="Content\typography\segoe\ttf\segoeuiz.ttf" />
-    <None Include="Content\typography\segoe\ttf\seguisb.ttf" />
-    <None Include="Content\typography\segoe\ttf\seguisym.ttf" />
-    <None Include="Content\typography\segoe\woff\segoe.woff" />
-    <None Include="Content\typography\segoe\woff\segoeb.woff" />
-    <None Include="Content\typography\segoe\woff\segoeui.woff" />
-    <None Include="Content\typography\segoe\woff\segoeuib.woff" />
-    <None Include="Content\typography\segoe\woff\segoeuii.woff" />
-    <None Include="Content\typography\segoe\woff\segoeuil.woff" />
-    <None Include="Content\typography\segoe\woff\segoeuiz.woff" />
-    <None Include="Content\typography\segoe\woff\seguisb.woff" />
-    <None Include="Content\typography\segoe\woff\seguisym.woff" />
     <Content Include="Views\Billing\Index.cshtml" />
     <Content Include="Views\Billing\Details.cshtml" />
     <Content Include="Views\Billing\Create.cshtml" />
