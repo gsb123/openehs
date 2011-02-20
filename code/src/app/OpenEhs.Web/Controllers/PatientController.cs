@@ -296,13 +296,8 @@ namespace OpenEhs.Web.Controllers
             PatientRepository patientRepo = new PatientRepository();
             var patient = patientRepo.Get(patientID);
 
-            //PatientCheckIn checkIn = new PatientCheckIn();
-
             DateTime fromDate = DateTime.Parse(Request.Form["from"]);
             DateTime toDate = DateTime.Parse(Request.Form["to"]);
-
-
-            //IList<PatientCheckIn> pci = new List<PatientCheckIn>();
 
             var query = from checkin in patient.PatientCheckIns
                        where checkin.CheckInTime >= fromDate && checkin.CheckInTime <= toDate
