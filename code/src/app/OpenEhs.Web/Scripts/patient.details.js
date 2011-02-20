@@ -420,7 +420,15 @@ $(document).ready(function () {
             },
             success: function (response) {
                 //addSearchRow(response);
+                //Code for date pick
+                for(var i = 0; i < response.length; i++)
+                {
+                    var select = '<table><thead><tr><th>' + responce[0].Date + '</th>    </tr></thead><tbody></tbody></table>';
+                } 
 
+
+                //Code fore table
+                /*
                 for (var i = 0; i < 1; i++)
                 {
                 for(var x = 0; x < response[i].Vitals.length; x++)
@@ -433,6 +441,7 @@ $(document).ready(function () {
                     $("#visitHistorySearchList").replaceWith(searchResult);
                 }
                 }
+                */
 
             },
             dataType: "json"
