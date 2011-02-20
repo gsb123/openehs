@@ -19,3 +19,30 @@ h5 { font-size: 1.6em; }
 h6 { font-size: 1.4em; }
 p { font-size: 1.2em; }
 label { font-size: 1.2em; }
+
+table 
+{
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+thead
+{
+    border: 1px solid gray;
+}
+
+th
+{
+    background-color: #ccc;
+}
+
+td, th
+{
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+.striped
+{
+    background-color: #eee;
+}
