@@ -17,6 +17,11 @@
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/patient.details.js")" type="text/javascript"></script>
     
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#patients-tab").addClass("current");
+        });
+    </script>
 }
 <div id="patientViewHeader" class="group">
     @if (Model.MiddleName != String.Empty) {

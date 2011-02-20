@@ -1,6 +1,14 @@
 ﻿@{
     ViewBag.Title = "OpenEHS - Dashboard";
 }
+@section head
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dashboard-tab").addClass("current");
+        });
+    </script>
+}
 
 <h2>Dashboard</h2>
 <p>

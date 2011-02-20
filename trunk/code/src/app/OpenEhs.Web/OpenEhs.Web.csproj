@@ -92,6 +92,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BillingController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
@@ -108,20 +109,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\billing.main.css" />
+    <Content Include="Content\elements.css" />
+    <Content Include="Content\footer.css" />
+    <Content Include="Content\hacks.css" />
+    <Content Include="Content\header.css" />
     <Content Include="Content\jvert-tabs\images\ClosedTabBackground.png" />
     <Content Include="Content\jvert-tabs\images\ClosedTabBackgroundHover.png" />
     <Content Include="Content\jvert-tabs\jquery-jvert-tabs-1.1.4.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\navigation.css" />
     <Content Include="Content\patient.main.css" />
     <Content Include="Content\patient.view.css" />
+    <Content Include="Content\reset.css" />
     <Content Include="Content\themes\base\images\calendar.png" />
+    <Content Include="Content\typography.css" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="images\button.highlight.png" />
     <Content Include="images\common\icons\16x16\Delete.png" />
     <Content Include="images\common\icons\24x24\Delete.png" />
+    <Content Include="images\main.background.png" />
+    <Content Include="images\openehs.logo.big.png" />
     <Content Include="images\openehs.logo.png" />
+    <Content Include="images\selected.menuitem.arrow.png" />
     <Content Include="Scripts\billing.js" />
     <Content Include="Scripts\ckedit\adapters\jquery.js" />
     <Content Include="Scripts\ckedit\ckeditor.js" />
@@ -447,6 +461,9 @@
     <Content Include="Views\Patient\_tab-RxList.cshtml" />
     <Content Include="Views\Patient\_tab-Immunizations.cshtml" />
     <Content Include="Views\Billing\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Help\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
