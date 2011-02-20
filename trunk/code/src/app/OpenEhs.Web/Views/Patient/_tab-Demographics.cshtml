@@ -63,7 +63,9 @@
     </fieldset>
 </div>
 <div id="BasicInformationNotes">
-    <label for="patientNoteTextBox">
-        Notes</label>
+    <div id="isActivePatient">
+        @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive, "Active")
+    </div>
+    <label for="patientNoteTextBox">Notes</label>
     <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.Note</textarea>
 </div>
