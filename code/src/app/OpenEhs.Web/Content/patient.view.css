@@ -180,6 +180,11 @@
     float: right;
 }
 
+#selectAction
+{
+	margin: 2px 2px 2px 2px;
+}
+
 #medicationHeader input
 {
     margin-top: 15px;
@@ -275,6 +280,11 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px; 
+}
+
+#visitSearchResults
+{
+	margin-left: 40px;
 }
 
 #NoRecordedVisits
