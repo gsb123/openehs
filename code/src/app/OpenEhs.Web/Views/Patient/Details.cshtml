@@ -90,7 +90,7 @@
                     <input type="radio" id="checkinType2" name="modal_checkinType" value="1" /><label for="checkinType2">Inpatient</label>
                 </div>
                 <label for="location">Location</label>
-                <select name="location">
+                <select name="location" id="modal_checkinLocation">
                 @foreach (var location in Model.GetLocations)
                 {
                     <option value="@location.Id">@location.Department Room: @location.RoomNumber</option>
@@ -98,7 +98,7 @@
                 </select>
                 <br />
                 <label for="staff">Attending Phsyician</label>
-                <select name="staff">
+                <select name="staff" id="modal_checkinStff">
                 @foreach (var staff in Model.GetActivePhysicians)
                 {
                     <option value="@staff.Id">@staff.LastName , @staff.FirstName</option>
