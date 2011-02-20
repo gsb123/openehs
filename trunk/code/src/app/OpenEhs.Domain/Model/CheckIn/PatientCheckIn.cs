@@ -19,7 +19,6 @@ namespace OpenEhs.Domain
         public virtual DateTime CheckInTime { get; set; }
         public virtual PCIType PatientType { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual PCIStatus PatientStatus { get; set; }
         public virtual DateTime CheckOutTime { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual Invoice Invoice { get; set; }
