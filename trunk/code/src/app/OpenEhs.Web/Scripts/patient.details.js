@@ -431,22 +431,21 @@ $(document).ready(function () {
             */
 
         var ul = document.getElementById("visitSearchResultsUL");
-        var li = document.createElement("li");
+            var li = document.createElement("li");
+
+            
+            var elements = new Array();
 
 
-        var elements = new Array();
+            for(var i=0;i<1;i++)
+                elements[i] = document.createElement("li");
 
-        for (var i = 0; i < 2; i++)
-        elements[i] = document.createElement("li");
+                //elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
 
-        elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
+            for(var i=0;i<1;i++)
+                li.appendChild(elements[i]);
 
-        elements[1].appendChild(document.createTextNode(result[0].Diagnosis));
-
-        for (var i = 0; i < 2; i++)
-        li.appendChild(elements[i]);
-
-        ul.appendChild(li);
+            ul.appendChild(li);
     }
 
     $(function () {
