@@ -379,6 +379,14 @@ namespace OpenEhs.Web.Models
 
         #endregion
 
+        public IList<Location> GetLocations
+        {
+            get
+            {
+                LocationRepository locations = new LocationRepository();
+                return locations.GetAll();
+            }
+        }
 
         #region Patient Methods
 
