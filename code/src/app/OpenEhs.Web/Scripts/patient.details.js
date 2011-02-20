@@ -2,7 +2,6 @@
 /// <reference path="jquery.validate.js" />
 
 
-
 $(document).ready(function () {
     // ------------------------------------------------- //
     //  Initialize jVerticalTabs Plugin                  //
@@ -24,21 +23,19 @@ $(document).ready(function () {
     });
 
     $("#EmergencyContactMoreInfoLink").click(function () {
-        $("#EmergencyContactMoreInfo").slideToggle("slow", function () {
-        });
+        $("#EmergencyContactMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#BasicMoreInfoLink").click(function () {
-        $("#BasicMoreInfo").slideToggle("slow", function () {
-        });
+        $("#BasicMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#newCheckInButton").button().click(function () {
-        
+
     });
 
     $("#editPatientInfoButton").button().click(function () {
-        
+
     });
 
 
@@ -46,8 +43,7 @@ $(document).ready(function () {
     //  Configure CKEditor on Patient Note               //
     // ------------------------------------------------- //
     var ckConfig = {
-        toolbar:
-        [
+        toolbar: [
             ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
             ["UIColor"]
         ],
@@ -75,13 +71,12 @@ $(document).ready(function () {
                     }, function (returnData) {
                         if (returnData.error == "false") {
                             $("#addAllergyDialog").dialog("close");
-                           var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id 
-                                                    + '"><div style="float: left;">' + returnData.allergy.Name 
-                                                    + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id 
-                                                    + '" type="button" value="Remove" /></div></li>';
+                            var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
                             console.log(newAllergy);
                             $("#allergyList").append(newAllergy);
-                            $("#allergy_" + returnData.allergy.Id).fadeIn("normal",function(){/*TODO Add remove button listener to new li's remove button*/}); 
+                            $("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
+                                $(this).find(".allergyRemove").button().click(removeOnClick)
+                            });
                         } else {
                             $("#addAllergyDialog .error").html(returnData.status);
                         }
@@ -99,7 +94,7 @@ $(document).ready(function () {
 
     $("#addAllergyForm").validate();
 
-    $("#addAllergyForm").submit(function(){
+    $("#addAllergyForm").submit(function () {
         return false;
     });
 
@@ -108,26 +103,30 @@ $(document).ready(function () {
         $("#addAllergyDialog").dialog("open")
     });
 
-    // Add remove function to every allergy remove button
-   $(".allergyRemove").button({
-        icons: {
-            primary: "ui-icon-closethick"
-        },
-        text: false
-    }).click(function () {
+    var removeOnClick = function () {
         $.post("/Patient/RemoveAllergy", {
             patientID: $("#patientId").val(),
             allergyID: $(this).attr("id")
         }, function (returnData) {
-            if(returnData.error == "false"){
-                $("#allergy_" + returnData.Id).fadeOut("normal", function() {
+            if (returnData.error == "false") {
+                $("#allergy_" + returnData.Id).fadeOut("normal", function () {
                     $(this).remove();
                 });
             } else {
-                
+
             }
         }, "json");
-    });
+    };
+
+    // Add remove function to every allergy remove button
+    $(".allergyRemove").button({
+        icons: {
+            primary: "ui-icon-closethick"
+        },
+        text: false
+    }).click(removeOnClick);
+
+
 
 
     // ------------------------------------------------- //
@@ -135,51 +134,44 @@ $(document).ready(function () {
     // ------------------------------------------------- //
 
     function processVitalsReturn(result) {
-        if(result.error=="false")
-        {
+        if (result.error == "false") {
             var table = document.getElementById("vitalsTable");
             var tr = document.createElement("tr");
 
             var elements = new Array();
 
-            for(var i=0;i<8;i++)
-                elements[i] = document.createElement("td");
-            
+            for (var i = 0; i < 8; i++)
+            elements[i] = document.createElement("td");
+
             elements[0].appendChild(document.createTextNode(result.date));
             elements[1].appendChild(document.createTextNode(result.type));
 
-            if(result.height!="0")
-                elements[2].appendChild(document.createTextNode(result.height));
+            if (result.height != "0") elements[2].appendChild(document.createTextNode(result.height));
             else
-                elements[2].appendChild(document.createTextNode("N/A"));
-                
-            if(result.weight!="0")
-                elements[3].appendChild(document.createTextNode(result.weight));
-            else
-                elements[3].appendChild(document.createTextNode("N/A"));
-            
-            if(result.temperater!="0")
-                elements[4].appendChild(document.createTextNode(result.temperature));
-            else
-                elements[4].appendChild(document.createTextNode("N/A"));
+            elements[2].appendChild(document.createTextNode("N/A"));
 
-            if(result.heartRate!="0")
-                elements[5].appendChild(document.createTextNode(result.heartRate));
+            if (result.weight != "0") elements[3].appendChild(document.createTextNode(result.weight));
             else
-                elements[5].appendChild(document.createTextNode("N/A"));
+            elements[3].appendChild(document.createTextNode("N/A"));
 
-            if(result.bpSystolic!="0")
-                elements[6].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
+            if (result.temperater != "0") elements[4].appendChild(document.createTextNode(result.temperature));
             else
-                elements[6].appendChild(document.createTextNode("N/A"));
+            elements[4].appendChild(document.createTextNode("N/A"));
 
-            if(result.respiratoryRate!="0")
-                elements[7].appendChild(document.createTextNode(result.respiratoryRate));
+            if (result.heartRate != "0") elements[5].appendChild(document.createTextNode(result.heartRate));
             else
-                elements[7].appendChild(document.createTextNode("N/A"));
+            elements[5].appendChild(document.createTextNode("N/A"));
 
-            for(var i=0;i<8;i++)
-                tr.appendChild(elements[i]);
+            if (result.bpSystolic != "0") elements[6].appendChild(document.createTextNode(result.bpSystolic + "/" + result.bpDiastolic));
+            else
+            elements[6].appendChild(document.createTextNode("N/A"));
+
+            if (result.respiratoryRate != "0") elements[7].appendChild(document.createTextNode(result.respiratoryRate));
+            else
+            elements[7].appendChild(document.createTextNode("N/A"));
+
+            for (var i = 0; i < 8; i++)
+            tr.appendChild(elements[i]);
 
             table.appendChild(tr);
 
@@ -192,9 +184,8 @@ $(document).ready(function () {
             $("#modal_vitalBpDiastolic").val("");
             $("#modal_vitalRespiratoryRate").val("");
 
-        }
-        else
-            alert ("Error");
+        } else
+        alert("Error");
     }
 
     $("#newVitalDialog").dialog({
@@ -204,9 +195,11 @@ $(document).ready(function () {
         modal: true,
         buttons: {
             "Save Vital": function () {
-                $.ajax({ type: "POST",
+                $.ajax({
+                    type: "POST",
                     url: "/Patient/AddVital",
-                    data: { patientID: $("#patientId").val(),
+                    data: {
+                        patientID: $("#patientId").val(),
                         height: $("#modal_vitalHeight").val(),
                         weight: $("#modal_vitalWeight").val(),
                         temperature: $("#modal_vitalTemperature").val(),
@@ -230,8 +223,7 @@ $(document).ready(function () {
             }
         },
 
-        close: function () {
-        }
+        close: function () {}
     });
     $(".vitalAddButton").button().click(function () {
         $("#newVitalDialog").dialog("open");
@@ -268,9 +260,9 @@ $(document).ready(function () {
         $("#diseaseDialog").dialog("open");
     });
 
-    $(".chronicDiseasesAddButton").button().click(function () { });
+    $(".chronicDiseasesAddButton").button().click(function () {});
 
-    $(".chronicDiseasesRemove").button().click(function () { });
+    $(".chronicDiseasesRemove").button().click(function () {});
 
 
     // ------------------------------------------------- //
@@ -280,11 +272,10 @@ $(document).ready(function () {
         $("#newMedicationDialog").dialog("open");
     });
 
-    $(".medicationPrintButton").button().click(function () { });
+    $(".medicationPrintButton").button().click(function () {});
 
     $("#rxInfoLink").click(function () {
-        $("#rxMoreInfo").slideToggle("slow", function () {
-        });
+        $("#rxMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#newMedicationDialog").dialog({
@@ -294,8 +285,7 @@ $(document).ready(function () {
         modal: true,
         buttons: {
             "Save Medication": function () {
-                $.post("/Patient/AddMedication",
-                {
+                $.post("/Patient/AddMedication", {
                     patientID: $("#patientId").val(),
                     name: $("#modal_medicationName").val(),
                     instructions: $("#modal_medicationInstructions").val(),
@@ -332,14 +322,12 @@ $(document).ready(function () {
     // ------------------------------------------------- //
     //  Setup Immunizations List Tab                      //
     // ------------------------------------------------- //
-
     $("#immunizationAddButton").button().click(function () {
         $("#newImmunizationDialog").dialog("open")
     });
 
     $("#immunizationInfoLink").click(function () {
-        $("#immunizationMoreInfo").slideToggle("slow", function () {
-        });
+        $("#immunizationMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#newImmunizationDialog").dialog({
@@ -349,8 +337,7 @@ $(document).ready(function () {
         modal: true,
         buttons: {
             "Save Immunization": function () {
-                $.post("/Patient/AddImmunization",
-                {
+                $.post("/Patient/AddImmunization", {
                     patientID: $("#patientId").val(),
                     vaccinetype: $("#modal_immunizationVaccineType").val(),
                     dateadministered: $("#modal_immunizationDateAdministered").val(),
@@ -371,49 +358,45 @@ $(document).ready(function () {
     // ------------------------------------------------- //
     //  Setup Visit History List Tab                     //
     // ------------------------------------------------- //
-
-     $("#visitNoteLink").click(function () {
-        $("#visitNoteMoreInfo").slideToggle("slow", function () {
-        });
+    $("#visitNoteLink").click(function () {
+        $("#visitNoteMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#visitVitalsLink").click(function () {
-        $("#visitVitalsMoreInfo").slideToggle("slow", function () {
-        });
+        $("#visitVitalsMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#visitPastLink").click(function () {
-        $("#visitPastMoreInfo").slideToggle("slow", function () {
-        });
+        $("#visitPastMoreInfo").slideToggle("slow", function () {});
     });
 
     $("#visitVitalsLinkSearch").click(function () {
-        $("#visitVitalsMoreInfoSearch").slideToggle("slow", function () {
-        });
+        $("#visitVitalsMoreInfoSearch").slideToggle("slow", function () {});
     });
 
     $("#visitNoteLinkSearch").click(function () {
-        $("#visitNoteMoreInfoSearch").slideToggle("slow", function () {
-        });
+        $("#visitNoteMoreInfoSearch").slideToggle("slow", function () {});
     });
 
     $("#visitHistorySearchButton").button().click(function () {
-        $.ajax({ type: "POST",
-                    url: "/Patient/SearchVisit",
-                    data: { patientID: $("#patientId").val(),
-                        from: $("#from").val(),
-                        to: $("#to").val()
-                    },
-                    success: function (response) {
-                        addSearchRow(response);
-                    },
-                    dataType: "json"
-                });
+        $.ajax({
+            type: "POST",
+            url: "/Patient/SearchVisit",
+            data: {
+                patientID: $("#patientId").val(),
+                from: $("#from").val(),
+                to: $("#to").val()
+            },
+            success: function (response) {
+                addSearchRow(response);
+            },
+            dataType: "json"
+        });
 
     });
 
     function addSearchRow(result) {
-    /*
+/*
         alert(result.length);
         for (var i = 0; i < result.length; i++)
         {
@@ -428,7 +411,7 @@ $(document).ready(function () {
             }
         }
         */
-        /*
+/*
         var table = document.getElementById("visitSearchResults");
             var tr = document.createElement("tr");
 
@@ -447,41 +430,39 @@ $(document).ready(function () {
             table.appendChild(tr);
             */
 
-            var ul = document.getElementById("visitSearchResultsUL");
-            var li = document.createElement("li");
+        var ul = document.getElementById("visitSearchResultsUL");
+        var li = document.createElement("li");
 
-            
-            var elements = new Array();
 
-            for(var i=0;i<2;i++)
-                elements[i] = document.createElement("li");
+        var elements = new Array();
 
-                elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
+        for (var i = 0; i < 2; i++)
+        elements[i] = document.createElement("li");
 
-                elements[1].appendChild(document.createTextNode(result[0].Diagnosis));
+        elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
 
-            for(var i=0;i<2;i++)
-                li.appendChild(elements[i]);
+        elements[1].appendChild(document.createTextNode(result[0].Diagnosis));
 
-            ul.appendChild(li);
+        for (var i = 0; i < 2; i++)
+        li.appendChild(elements[i]);
+
+        ul.appendChild(li);
     }
 
-    $(function() {
-		var dates = $( "#from, #to" ).datepicker({
-			defaultDate: "+1w",
-			changeMonth: true,
-			numberOfMonths: 3,
-			onSelect: function( selectedDate ) {
-				var option = this.id == "from" ? "minDate" : "maxDate",
-					instance = $( this ).data( "datepicker" );
-					date = $.datepicker.parseDate(
-						instance.settings.dateFormat ||
-						$.datepicker._defaults.dateFormat,
-						selectedDate, instance.settings );
-				dates.not( this ).datepicker( "option", option, date );
-			}
-		});
-	});
+    $(function () {
+        var dates = $("#from, #to").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 3,
+            onSelect: function (selectedDate) {
+                var option = this.id == "from" ? "minDate" : "maxDate",
+                    instance = $(this).data("datepicker");
+                date = $.datepicker.parseDate(
+                instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+                dates.not(this).datepicker("option", option, date);
+            }
+        });
+    });
 
 
 });
