@@ -586,3 +586,43 @@ margin-bottom: 10px;
     color: #00f;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+#visitVitalsLink1
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#visitVitalsMoreInfo1
+{
+    clear: both;
+    display: none;
+}
+
+#vitalHistory1
+{
+    font-size: 10px;
+}
+
+#visitHistorySearchList li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+}

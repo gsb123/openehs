@@ -405,7 +405,21 @@ $(document).ready(function () {
                 to: $("#to").val()
             },
             success: function (response) {
-                addSearchRow(response);
+                //addSearchRow(response);
+
+                for (var i = 0; i < 1; i++)
+                {
+                for(var x = 0; x < response[i].Vitals.length; x++)
+                {
+
+                    var vital = response[i].Vitals[x];
+
+                    var searchResult = '<ul id="visitHistorySearchList"><li class="group"><div style="float: left;"><b>Visit Date: </b>' + response[0].date + '</div><br /><div style="float: left;"><b>Diagnosis: </b>' + response[0].Diagnosis + '</div><br />     <div><div><b>' + "Vitals:" + '</b></div></div><div><table id="vitalHistory1" class="vitalsHist"><thead><tr><th>' + "Time" + '</th><th>' + "Type" + '</th><th>' + "Height(cm)" + '</th><th>' + "Weight(kg)" + '</th><th>' + "Temperature(&deg;C)" + '</th><th>' + "Heart Rate(bpm)" + '</th><th>' + "Blood Pressure(mmHg)" + '</th><th>' + "Respiratory Rate(Hz)" + '</th></tr></thead><tbody><tr><td>' + vital.Time + '</td><td>' + vital.Type + '</td><td>' + vital.Height + '</td><td>' + vital.Weight + '</td><td>' + vital.Temperature + '</td><td>' + vital.HeartRate + '</td><td>' + vital.BpSystolic + "/" + vital.BpDiastolic + '</td><td>' + vital.RespiratoryRate + '</td></tr></tbody></table><div><b>' + "Notes: " + '</b>' + "This is where notes go!" + '</div></li></ul>';
+                    //console.log(searchResult);
+                    $("#visitHistorySearchList").replaceWith(searchResult);
+                }
+                }
+
             },
             dataType: "json"
         });
@@ -428,41 +442,6 @@ $(document).ready(function () {
             }
         }
         */
-/*
-        var table = document.getElementById("visitSearchResults");
-            var tr = document.createElement("tr");
-
-            var elements = new Array();
-
-            for(var i=0;i<2;i++)
-                elements[i] = document.createElement("td");
-            
-                elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
-
-                elements[1].appendChild(document.createTextNode(result[0].Diagnosis));
-
-            for(var i=0;i<2;i++)
-                tr.appendChild(elements[i]);
-
-            table.appendChild(tr);
-            */
-
-        var ul = document.getElementById("visitSearchResultsUL");
-            var li = document.createElement("li");
-
-            
-            var elements = new Array();
-
-
-            for(var i=0;i<1;i++)
-                elements[i] = document.createElement("li");
-
-                //elements[0].appendChild(document.createTextNode(result[0].CheckInTime));
-
-            for(var i=0;i<1;i++)
-                li.appendChild(elements[i]);
-
-            ul.appendChild(li);
     }
 
     $(function () {
