@@ -260,11 +260,11 @@ fieldset
     list-style: none;
     background-color: #eee;
     border: 1px solid #aaa;
-    width: 600px;
     padding: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    margin-left: 40px; 
 }
 
 #visitSearchResultsUL li
@@ -607,7 +607,7 @@ margin-bottom: 10px;
     display: none;
 }
 
-#vitalHistory1
+#vitalHistory1 td
 {
     font-size: 10px;
 }
@@ -622,9 +622,15 @@ margin-bottom: 10px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px; 
+    margin-left: 40px;
 }
 
 #visitHistorySearchList td
+{
+    border: 1px solid #ccc;
+}
+
+#visitHistoryList td
 {
     border: 1px solid #ccc;
 }
