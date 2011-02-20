@@ -29,9 +29,15 @@
 	margin-left: 10px;
 }
 
+#InvoiceTitle
+{
+    height: 55px;
+    line-height: 55px;
+}
+
 #InvoiceTitle > h1
 {
-	font-size: 2.4em;
+	font-size: 3.2em;
 	float: left;
 	margin: 2px 0px 0px 0px;
 }
@@ -44,7 +50,7 @@
 
 #InvoiceTotal
 {
-	font-size: 2.4em;
+	font-size: 3.2em;
 	float: left;
 	margin: 2px 20px 0px 0px;
 }
@@ -69,35 +75,54 @@
 #InvoiceHeader
 {
 	margin-top: 25px;
+	margin-bottom: 30px;
 }
 
 #InvoiceBillTo
 {
 	float: left;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 }
 
 #InvoiceBillTo fieldset
 {
 	width: 300px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 10px 20px;
+}
+
+#InvoiceBillTo fieldset legend
+{
+    font-size: 1.4em;
 }
 
 #InvoiceBillTo ul
 {
-	font-size: 1.4em;
+	font-size: 1.6em;
 	list-style: none;
 	padding-left: 0px;
 }
 
+#InvoiceBillTo ul li
+{
+    margin: 2px 0px;
+}
+
 #InvoiceHeaderInformation
 {
+    border: 1px solid gray;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 	font-size: 1.4em;
 	float: right;
+	margin-top: 7px;
 }
 
 #InvoiceHeaderInformation table
 {
+    border: none;
 	text-align: right;
 	border-collapse: collapse;
 }
