@@ -319,7 +319,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     vitalsList.Add(new
                     {
-                        Time = vitals.Time,
+                        Time = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"),
                         Type = vitals.Type,
                         Height = vitals.Height,
                         Weight = vitals.Weight,
