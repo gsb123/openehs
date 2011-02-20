@@ -80,7 +80,8 @@ $(document).ready(function () {
                                                     + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id 
                                                     + '" type="button" value="Remove" /></div></li>';
                             console.log(newAllergy);
-                            $("#allergyList").append(newAllergy).fadeIn("normal",function(){/*TODO Add remove listener to new li's remove button*/}); 
+                            $("#allergyList").append(newAllergy);
+                            $("#allergy_" + returnData.allergy.Id).fadeIn("normal",function(){/*TODO Add remove button listener to new li's remove button*/}); 
                         } else {
                             $("#addAllergyDialog .error").html(returnData.status);
                         }
