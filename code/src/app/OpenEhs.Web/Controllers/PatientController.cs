@@ -344,8 +344,9 @@ namespace OpenEhs.Web.Controllers
                 {
                     vitalsList.Add(new
                     {
-                        Time = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"),
-                        Type = vitals.Type,
+                        Time = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"), 
+                        //vitals.Type,
+                        type = Enum.GetName(typeof(VitalsType), vitals.Type),
                         Height = vitals.Height,
                         Weight = vitals.Weight,
                         Temperature = vitals.Temperature,
