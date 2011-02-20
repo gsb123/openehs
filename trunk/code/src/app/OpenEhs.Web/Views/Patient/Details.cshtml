@@ -84,6 +84,12 @@
                     <input type="radio" id="checkinType1" name="modal_checkinType" value="0" /><label for="checkinType1">Outpatient</label>
                     <input type="radio" id="checkinType2" name="modal_checkinType" value="1" /><label for="checkinType2">Inpatient</label>
                 </div>
+                <ul>
+                @foreach (var location in Model.GetLocations)
+                {
+                    <li>@location.Department</li>
+                }
+                </ul>
             </form>
         </fieldset>
     </div>

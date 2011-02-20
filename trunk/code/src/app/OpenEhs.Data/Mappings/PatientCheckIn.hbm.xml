@@ -42,10 +42,7 @@
       <one-to-many class="Vitals" />
     </bag>
 
-    <one-to-one name="Locations"
-                constrained="true"
-                foreign-key="none"
-                class="Location" />
+    <many-to-one name="Location" column="LocationID" unique="true" cascade="all" />
 
   </class>
   

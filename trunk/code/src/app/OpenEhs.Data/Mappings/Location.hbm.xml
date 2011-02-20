@@ -10,12 +10,10 @@
     <property name="Department" not-null="true" length="20" />
     <property name="RoomNumber" not-null="true" length="10" />
 
-
-    <many-to-one name="PatientCheckIns"
-                 class="PatientCheckIn"
-                 unique="true"
-                 column="PatientCheckInID" />
-
+    <bag name="PatientCheckIns" table="PatientCheckIn" cascade="all">
+      <key column="LocationID" />
+      <one-to-many class="PatientCheckIn" />
+    </bag>
 
   </class>
 </hibernate-mapping>
