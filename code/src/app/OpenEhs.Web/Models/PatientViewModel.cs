@@ -377,8 +377,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        #endregion
-
         public IList<Location> GetLocations
         {
             get
@@ -387,6 +385,18 @@ namespace OpenEhs.Web.Models
                 return locations.GetAll();
             }
         }
+
+        public IList<Staff> GetActivePhysicians
+        {
+            get
+            {
+                StaffRepository staff = new StaffRepository();
+                return staff.FindByType(StaffType.Physician);
+            }
+        }
+        #endregion
+
+        
 
         #region Patient Methods
 
