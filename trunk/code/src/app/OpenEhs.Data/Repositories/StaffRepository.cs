@@ -27,7 +27,7 @@ namespace OpenEhs.Data
         }
         public Staff Get(int id)
         {
-            throw new NotImplementedException();
+            return Session.Get<Staff>(id);
         }
 
         public IList<Staff> GetAll()

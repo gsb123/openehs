@@ -49,7 +49,7 @@ namespace OpenEhs.Web.Controllers
             //If the search field is empty then return all results
             if (string.IsNullOrEmpty(searchCriteria))
                 return View(new PatientRepository().GetAll());
-            
+
             IEnumerable<Patient> patients = new List<Patient>();
 
             //Check if the search criteria contains a Date of Birth
@@ -208,8 +208,10 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
-        public JsonResult AddVital() {
-            try {
+        public JsonResult AddVital()
+        {
+            try
+            {
                 //Get current patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
@@ -217,13 +219,13 @@ namespace OpenEhs.Web.Controllers
 
                 //Get current open patient checkin 
                 var query = from checkin in patient.PatientCheckIns
-                            where checkin.CheckOutTime == new DateTime(1,1,1,0,0,0)
-                            select checkin; 
+                            where checkin.CheckOutTime == new DateTime(1, 1, 1, 0, 0, 0)
+                            select checkin;
 
                 //Create new vitals object and add appropriate parameters 
                 Vitals vitals = new Vitals();
                 vitals.PatientCheckIn = query.First<PatientCheckIn>();
-                if (Request.Form["height"]!="")
+                if (Request.Form["height"] != "")
                     vitals.Height = double.Parse(Request.Form["height"]);
                 if (Request.Form["weight"] != "")
                     vitals.Weight = double.Parse(Request.Form["weight"]);
@@ -249,7 +251,8 @@ namespace OpenEhs.Web.Controllers
                 patient.PatientCheckIns[0].Vitals.Add(vitals);
 
                 //Return results as JSON
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Successfully added vital.",
                     date = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"),
@@ -262,8 +265,11 @@ namespace OpenEhs.Web.Controllers
                     temperature = vitals.Temperature,
                     type = Enum.GetName(typeof(VitalsType), vitals.Type)
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
@@ -272,22 +278,46 @@ namespace OpenEhs.Web.Controllers
 
         public JsonResult AddCheckIn()
         {
-            //Get patient object
-            int patientID = int.Parse(Request.Form["patientID"]);
-            PatientRepository patientRepo = new PatientRepository();
-            var patient = patientRepo.Get(patientID);
+            try
+            {
+                //Get patient object
+                int patientID = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientID);
 
-            PatientCheckIn checkin = new PatientCheckIn();
-            checkin.Patient = patient;
-            checkin.CheckInTime = DateTime.Now;
-            checkin.PatientType = (PCIType)Enum.Parse(typeof(PCIType), Request.Form["patientType"]);
+                //Get Staff Object
+                int staffId = int.Parse(Request.Form["staffID"]);
+                StaffRepository staffRepo = new StaffRepository();
+                var staff = staffRepo.Get(staffId);
 
-            Invoice invoice = new Invoice();
-            invoice.PatientCheckIn = checkin;
+                //Get Location Object
+                int locationId = int.Parse(Request.Form["locationID"]);
+                LocationRepository locationRepo = new LocationRepository();
+                var location = locationRepo.Get(locationId);
 
-            return Json(new {
-                error = false
-        });
+                //Build Patient Object
+                PatientCheckIn checkin = new PatientCheckIn();
+                checkin.Patient = patient;
+                checkin.CheckInTime = DateTime.Now;
+                checkin.PatientType = (PCIType)Enum.Parse(typeof(PCIType), Request.Form["patientType"]);
+
+                //Build Invoice Object
+                Invoice invoice = new Invoice();
+                invoice.PatientCheckIn = checkin;
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = e.Message
+                });
+            }
         }
 
         public JsonResult SearchVisit()
@@ -300,8 +330,8 @@ namespace OpenEhs.Web.Controllers
             DateTime toDate = DateTime.Parse(Request.Form["to"]);
 
             var query = from checkin in patient.PatientCheckIns
-                       where checkin.CheckInTime >= fromDate && checkin.CheckInTime <= toDate
-                       select checkin;
+                        where checkin.CheckInTime >= fromDate && checkin.CheckInTime <= toDate
+                        select checkin;
 
             var resultSet = new List<object>();
             var jsonResult = new JsonResult();
@@ -329,10 +359,10 @@ namespace OpenEhs.Web.Controllers
                 resultSet.Add(new
                                   {
                                       //TODO: Need to fix how the time is...
-                                      date = result.CheckInTime.ToString("MM/dd/yyyy HH:mm:ss"), 
+                                      date = result.CheckInTime.ToString("MM/dd/yyyy HH:mm:ss"),
                                       result.Diagnosis,
                                       Vitals = vitalsList
-                });
+                                  });
             }
 
             jsonResult.Data = resultSet;

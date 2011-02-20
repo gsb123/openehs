@@ -64,7 +64,21 @@ $(document).ready(function () {
         width: 375,
         modal: true,
         buttons: {
-            "Check In": function () {},
+            "Check In": function () {
+            $.ajax({
+                type: "POST",
+                url: "/Patient/AddCheckIn",
+                data: {
+                    patientID: $("#patientId").val(),
+                    PatientType: $('input:radio[name="modal_checkinType"]:checked').val(),
+                    staffId: $('select.location option:selected').val()
+                },
+                success: function(response) {
+                    alert("Success!");
+                },
+                dataType: "json"
+            });
+            },
             Cancel: function() {
                 $(this).dialog("close");
             }
