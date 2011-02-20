@@ -49,11 +49,11 @@ namespace OpenEhs.Web
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Localization Code - Forcing default to en-GB and changing the necessary items 
             //                     (i.e. currency symbol, etc.).
-            var culture = new CultureInfo("en-gb", false);
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
-            Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencySymbol = "GH₵";
-            Thread.CurrentThread.CurrentUICulture.DateTimeFormat.DateSeparator = "-";
+            //var culture = new CultureInfo("en-gb", false);
+            //Thread.CurrentThread.CurrentCulture = culture;
+            //Thread.CurrentThread.CurrentUICulture = culture;
+            //Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencySymbol = "GH₵";
+            //Thread.CurrentThread.CurrentUICulture.DateTimeFormat.DateSeparator = "-";
             ////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
