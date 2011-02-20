@@ -1940,6 +1940,24 @@ null
 
 CALL sp_insertStaff
 (
+'6666 N 8888 E',
+'',
+'Ogden',
+'Ut',
+'USA',
+'TJimmy',
+'Password',
+'A',
+'Jimmy',
+'',
+'Tom',
+'801-895-7885',
+0,
+null
+);
+
+CALL sp_insertStaff
+(
 '1965 S 1275 E',
 '',
 'Ogden',
