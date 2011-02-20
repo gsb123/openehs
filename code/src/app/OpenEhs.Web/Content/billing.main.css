@@ -8,7 +8,7 @@
 	font-family: Segoe, Sans-Serif;
 	font-size: 3.2em;
 	width: 710px;
-   height: 45px;
+	height: 45px;
 }
 
 #CreateNewBillingButton
@@ -139,4 +139,10 @@
 {
 	width: 15%;
 	text-align: right;
+}
+
+#invoiceId
+{
+	width: 0px;
+	visibility: hidden;
 }

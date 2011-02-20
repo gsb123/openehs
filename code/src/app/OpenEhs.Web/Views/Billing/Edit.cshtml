@@ -110,7 +110,11 @@
             @Html.TextBox("invoiceId",Model.Id)
             <input type="submit" value="New Product" title="New Product" />
         }
-        
+        @using (Html.BeginForm("AddServiceLineItem", "Billing", FormMethod.Get))
+        {
+            @Html.TextBox("invoiceId",Model.Id)
+            <input type="submit" value="New Service" title="New Service" />
+        }
         </div>
 
 </div>
