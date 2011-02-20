@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Threading;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using OpenEhs.Data;
@@ -43,6 +45,16 @@ namespace OpenEhs.Web
         {
             if (!UnitOfWork.IsStarted)
                 UnitOfWork.Start();
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Localization Code - Forcing default to en-GB and changing the necessary items 
+            //                     (i.e. currency symbol, etc.).
+            var culture = new CultureInfo("en-gb", false);
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencySymbol = "GH₵";
+            Thread.CurrentThread.CurrentUICulture.DateTimeFormat.DateSeparator = "-";
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
         protected void Application_EndRequest()
