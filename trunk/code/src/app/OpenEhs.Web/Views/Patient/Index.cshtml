@@ -19,6 +19,12 @@
             });
 
             $("#patients-tab").addClass("current");
+
+            // Set focus on the search box on load.
+            $("#PatientSearchTextBox").focus();
+
+            // Zebra stripe the recently accessed list.
+            $("#RecentlyAccessedList tbody tr:odd").addClass("striped");
         });
     </script>
 }

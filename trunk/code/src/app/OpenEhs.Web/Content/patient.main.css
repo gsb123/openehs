@@ -1,6 +1,12 @@
-﻿#Actions
+﻿h2, h3
 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+#Actions
+{
+    margin-top: 30px;
+    margin-bottom: 45px;
 }
 
 #Actions input
@@ -53,7 +59,7 @@
 
 #RecentlyAccessedList table tr:hover
 {
-    background-color: #eee;
+    background-color: #c0e0ff;
 }
 
 #RecentlyAccessedList table td
