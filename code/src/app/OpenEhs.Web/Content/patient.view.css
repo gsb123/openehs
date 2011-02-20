@@ -82,11 +82,13 @@
 
 #patientViewHeader 
 {
+    height: 50px;
     border: 1px solid #aaa;
     background-color: #eee;
     clear: both;
+    line-height: 50px;
     margin-left: 170px;
-    margin-bottom: -5px;
+    margin-bottom: 0px;
     padding-left: 28px;
     -moz-border-radius: 3px;
     border-radius: 3px;
