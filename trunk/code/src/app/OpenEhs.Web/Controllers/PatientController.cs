@@ -313,7 +313,8 @@ namespace OpenEhs.Web.Controllers
 
                 resultSet.Add(new
                                   {
-                                      result.CheckInTime, 
+                                      //TODO: Need to fix how the time is...
+                                      date = result.CheckInTime.ToString("MM/dd/yyyy HH:mm:ss"), 
                                       result.Diagnosis,
                                       Vitals = vitalsList
                 });
