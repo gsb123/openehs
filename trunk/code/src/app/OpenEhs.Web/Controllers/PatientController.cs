@@ -270,6 +270,26 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
+        public JsonResult AddCheckIn()
+        {
+            //Get patient object
+            int patientID = int.Parse(Request.Form["patientID"]);
+            PatientRepository patientRepo = new PatientRepository();
+            var patient = patientRepo.Get(patientID);
+
+            PatientCheckIn checkin = new PatientCheckIn();
+            checkin.Patient = patient;
+            checkin.CheckInTime = DateTime.Now;
+            checkin.PatientType = (PCIType)Enum.Parse(typeof(PCIType), Request.Form["patientType"]);
+
+            Invoice invoice = new Invoice();
+            invoice.PatientCheckIn = checkin;
+
+            return Json(new {
+                error = false
+        });
+        }
+
         public JsonResult SearchVisit()
         {
             int patientID = int.Parse(Request.Form["patientID"]);
