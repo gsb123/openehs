@@ -1672,6 +1672,93 @@ null,
 
 #--------
 
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
+'1111 W. 10th Dr.',
+'',
+'Riverdale',
+'Ut',
+'USA'
+);
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
+'12478 S Place Rd.',
+'',
+'Ogden',
+'Ut',
+'USA'
+);
+
+INSERT INTO EmergencyContact
+(
+FirstName,
+LastName,
+PhoneNumber,
+Relationship,
+AddressID
+)
+VALUES
+(
+'Katie',
+'Perry',
+'4586547878',
+3,
+7
+);
+
+INSERT INTO Patient
+(
+FirstName,
+MiddleName,
+LastName,
+DateOfBirth,
+Gender,
+PhoneNumber,
+AddressID,
+BloodType,
+TribeRace,
+Religion,
+PatientNote,
+OldPhysicalRecordNumb,
+EmergencyContactID
+)
+VALUES
+(
+'Hans',
+'',
+'Kirkibe',
+'1999-02-10',
+'Male',
+'8019995265',
+8,
+'O-',
+'white',
+'N/A',
+null,
+null,
+4
+);
+
+
+#--------
+
 
 CALL sp_insertProblem
 (
