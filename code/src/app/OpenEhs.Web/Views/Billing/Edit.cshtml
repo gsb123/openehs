@@ -105,9 +105,12 @@
         </tbody>
     </table>
         <div id="LineItemActionButtons">
-            <button name="NewLineItemButton" id="NewLineItemButton">
-                @Html.ActionLink("New Service", "Edit", Model.Id, new { id = "NewLineItem" })
-            </button>
+        @using (Html.BeginForm("AddProductLineItem", "Billing", FormMethod.Get))
+        {
+            @Html.TextBox("invoiceId",Model.Id)
+            <input type="submit" value="New Product" title="New Product" />
+        }
+        
         </div>
 
 </div>

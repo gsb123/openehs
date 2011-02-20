@@ -2,7 +2,7 @@
  * Billing View Models
  * Peter Litster (aholibamah@gmail.com)
  * 17-Feb-2011
- */ 
+ */
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace OpenEhs.Web.Models
 
     public class BillingViewModel
     {
-        
+
         private Invoice _invoice;
         private Payment _payment;
 
@@ -77,7 +77,7 @@ namespace OpenEhs.Web.Models
         {
             get { return _invoice.PatientCheckIn.Patient.Address; }
         }
-        
+
         [Required]
         [DisplayName("Invoice ID")]
         public int Id
@@ -87,7 +87,7 @@ namespace OpenEhs.Web.Models
                 return _invoice.Id;
             }
         }
-        
+
         [Required]
         [DisplayName("Total")]
         public decimal Total
@@ -140,7 +140,7 @@ namespace OpenEhs.Web.Models
                 _payment.CashAmount = value;
             }
         }
-        
+
         #endregion
 
 
@@ -187,7 +187,7 @@ namespace OpenEhs.Web.Models
 
     public class BillingEditViewModel
     {
-                
+
         private Invoice _invoice;
         private Payment _payment;
 
@@ -245,7 +245,7 @@ namespace OpenEhs.Web.Models
         {
             get { return _invoice.PatientCheckIn.Patient.Address; }
         }
-        
+
         [Required]
         [DisplayName("Invoice ID")]
         public int Id
@@ -255,7 +255,7 @@ namespace OpenEhs.Web.Models
                 return _invoice.Id;
             }
         }
-        
+
         [Required]
         [DisplayName("Total")]
         public decimal Total
@@ -364,6 +364,17 @@ namespace OpenEhs.Web.Models
             lineItem.Product = new Product();
             lineItem.Quantity = 1;
             _invoice.Items.Add(lineItem);
+        }
+
+        public void Save()
+        {
+            var repo = new InvoiceRepository();
+            repo.Add(_invoice);
+            foreach (InvoiceItem lineItem in _invoice.Items)
+            {
+                repo.AddLineItem(lineItem);
+            }
+            new PaymentRepository().Add(_payment);
         }
 
         #endregion
