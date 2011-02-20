@@ -58,7 +58,6 @@
     <Compile Include="Model\Billing\InvoiceItem.cs" />
     <Compile Include="Model\Billing\Payment.cs" />
     <Compile Include="Model\CheckIn\PatientCheckIn.cs" />
-    <Compile Include="Model\CheckIn\PCIStatus.cs" />
     <Compile Include="Model\CheckIn\PCIType.cs" />
     <Compile Include="Model\User\User.cs" />
     <Compile Include="Model\Note\Note.cs" />

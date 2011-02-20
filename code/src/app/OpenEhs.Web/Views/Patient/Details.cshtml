@@ -76,4 +76,12 @@
         @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
+    <div id="newCheckinModal" title="Check In Patient @Model.FirstName @Model.LastName">
+        <fieldset>
+            <legend>Enter Checkin Information</legend>
+            <form id="addCheckin" action="">
+                
+            </form>
+        </fieldset>
+    </div>
 </div>

@@ -29,7 +29,6 @@
                 foreign-key="none"
                 class="Invoice" />
     
-    <property name="PatientStatus" not-null="true" />
     <property name="IsActive" not-null="true" />
 
     <bag name="Surgeries" table="Surgery" cascade="all">
