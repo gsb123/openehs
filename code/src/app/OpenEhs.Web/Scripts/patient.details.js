@@ -31,7 +31,7 @@ $(document).ready(function () {
     });
 
     $("#newCheckInButton").button().click(function () {
-
+        $("#newCheckinModal").dialog("open")
     });
 
     $("#editPatientInfoButton").button().click(function () {
@@ -53,7 +53,20 @@ $(document).ready(function () {
 
     $("#patientNoteTextBox").ckeditor(ckConfig);
 
-
+     // ------------------------------------------------- //
+    //  Setup Check In Modal                                //
+    // ------------------------------------------------- //
+    $("#newCheckinModal").dialog({
+        autoOpen: false,
+        height: 225,
+        width: 375,
+        modal: true,
+        buttons: {
+            "Check In": function () {},
+            Cancel: function() {}
+            },
+        close: function() {}
+        });
     // ------------------------------------------------- //
     //  Setup Allergy Tab                                //
     // ------------------------------------------------- //
