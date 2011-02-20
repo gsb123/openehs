@@ -25,9 +25,9 @@
 }
 <div id="patientViewHeader" class="group">
     @if (Model.MiddleName != String.Empty) {
-        <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName)</h2>
+        <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h2>
     } else {
-        <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName)</h2>
+        <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h2>
     }
     <h2 style="margin-left: 20px; font-weight: normal;">
         Age: @Model.Age</h2>
