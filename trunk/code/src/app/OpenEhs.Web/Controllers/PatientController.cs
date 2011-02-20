@@ -344,7 +344,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     vitalsList.Add(new
                     {
-                        Time = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"), 
+                        Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"), 
                         //vitals.Type,
                         type = Enum.GetName(typeof(VitalsType), vitals.Type),
                         Height = vitals.Height,
@@ -360,7 +360,7 @@ namespace OpenEhs.Web.Controllers
                 resultSet.Add(new
                                   {
                                       //TODO: Need to fix how the time is...
-                                      date = result.CheckInTime.ToString("MM/dd/yyyy HH:mm:ss"),
+                                      date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
                                       result.Diagnosis,
                                       Vitals = vitalsList
                                   });
