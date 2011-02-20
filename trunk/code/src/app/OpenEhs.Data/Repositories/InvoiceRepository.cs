@@ -96,19 +96,24 @@ namespace OpenEhs.Data
             string q = String.Format("from Invoice where PatientCheckIn.Patient = select * from Patient where Id = {0}", PatientId);
             IQuery query = Session.CreateQuery(q);
             return query.List<Invoice>();
-            /*
-            ICriteria criteriaBase = Session.CreateCriteria(typeof(Patient));
-            SimpleExpression simpleBase = NHibernate.Criterion.Expression.Eq("Id", PatientId);
+        }
 
-            ICriteria criteria = Session.CreateCriteria(typeof(Invoice));
-            SimpleExpression sim1 = NHibernate.Criterion.Expression.Eq("Patient.Id" ,PatientId);
-            criteria.Add(sim1);
-            Order order = Order.Desc("Total");
-            criteria.AddOrder(order);
-            return criteria.List<Invoice>();
+        /// <summary>
+        /// Adds an InvoiceItem to the database.
+        /// </summary>
+        /// <param name="lineItem">The item to be added.</param>
+        public void AddLineItem(InvoiceItem lineItem)
+        {
+            Session.Save(lineItem);
+        }
 
-            throw new NotImplementedException();
-             */
+        /// <summary>
+        /// Removes an InvoiceItem from the database.
+        /// </summary>
+        /// <param name="lineItem">the InvoiceItem to be removed.</param>
+        public void RemoveLineItem(InvoiceItem lineItem)
+        {
+            Session.Delete(lineItem);
         }
 
         #endregion

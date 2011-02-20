@@ -1578,7 +1578,7 @@ VALUES
 'AB',
 'white',
 'N/A',
-'Is a chronic lier!',
+'Is a chronic liar!',
 null,
 2
 );
@@ -2582,6 +2582,23 @@ VALUES
 140,
 70,
 12,
+1,
+1
+);
+
+INSERT INTO Invoice
+(
+InvoiceID,
+Total,
+`Date`,
+PatientCheckInID,
+IsActive
+)
+VALUES
+(
+1,
+0.00,
+'2010-12-05 01:10:30',
 1,
 1
 );

@@ -59,8 +59,13 @@ namespace OpenEhs.Web.Controllers
 
         //
         // GET: /Invoice/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id=1)
         {
+            if (id < 1 || id > new InvoiceRepository().GetAll().Count)
+            {
+                id = 1;
+            }
+
             var invoice = new BillingEditViewModel(id);
 
             return View(invoice);
@@ -74,40 +79,13 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                invoice.Save();
 
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View(invoice);
-            }
-        }
-
-        public JsonResult AddLineItem()
-        {
-            try {
-                int invoiceId = int.Parse(Request.Form["invoiceID"]);
-                string LineItemName = Request.Form["LineItemName"];
-
-                var billing = new BillingEditViewModel(invoiceId);
-                InvoiceItem lineItem = new InvoiceItem();
-                lineItem.Product.Name= LineItemName;
-                lineItem.Quantity = 1;
-                lineItem.IsActive = true;
-                billing.LineItems.Add(lineItem);
-
-                return Json(new {
-                    error = "false",
-                    status = "Added line item: " + LineItemName + " successfully",
-                    lineItem = lineItem
-                });
-            } catch (Exception e) {
-                return Json(new {
-                    error = "true",
-                    status = "Unable to add line item successfully",
-                    errorMessage = e.Message
-                });
             }
         }
 
@@ -135,6 +113,21 @@ namespace OpenEhs.Web.Controllers
             {
                 return View();
             }
+        }
+
+        
+        public RedirectResult AddProductLineItem(int invoiceId)
+        {
+            InvoiceItem lineItem = new InvoiceItem();
+            lineItem.Invoice = new InvoiceRepository().Get(invoiceId);
+            lineItem.IsActive = true;
+            lineItem.Product = new ProductRepository().Get(1);
+            lineItem.Quantity = 1;
+
+            new InvoiceRepository().AddLineItem(lineItem);
+            //RedirectToAction("Edit", "Billing");
+            //return Edit(invoiceId);
+            return new RedirectResult("/Billing/Edit/" + invoiceId);
         }
 
         /*
