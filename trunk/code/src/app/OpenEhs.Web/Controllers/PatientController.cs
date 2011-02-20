@@ -136,7 +136,6 @@ namespace OpenEhs.Web.Controllers
                 Allergy allergy = new Allergy();
                 allergy.Name = allergyName;
                 patient.Allergies.Add(allergy);
-
                 return Json(new
                 {
                     error = "false",
