@@ -22,10 +22,10 @@
       <many-to-many column="SurgeryID" class="Surgery" />
     </bag>
 
-    <many-to-one name="PatientCheckIns"
-                 class="PatientCheckIn"
-                 unique="true"
-                 column="PatientCheckInID" />
+    <bag name="PatientCheckIns" table="PatientCheckIn" cascade="none" lazy="false">
+      <key column="StaffID" />
+      <one-to-many class="PatientCheckIn" />
+    </bag>
     
   </class>
 </hibernate-mapping>
