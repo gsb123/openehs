@@ -423,7 +423,8 @@ $(document).ready(function () {
                 //Code for date pick
                 for(var i = 0; i < response.length; i++)
                 {
-                    var select = '<table><thead><tr><th>' + responce[0].Date + '</th>    </tr></thead><tbody></tbody></table>';
+                    var select = '<table id="selectSearchTable"><thead><tr><th>' + "Visit Date" + '</th>    </tr></thead><tbody><tr><td>' + response[0].date + '</td></tr></tbody></table>';
+                    $("#selectSearchTable").replaceWith(select);
                 } 
 
 
