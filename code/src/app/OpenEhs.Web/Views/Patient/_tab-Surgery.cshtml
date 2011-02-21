@@ -1,2 +1,80 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
 
+<div id="surgeryHeader" class="group">
+    <h2 id="surgery">
+        New Surgery
+    </h2>
+</div>
+
+<div>
+    <fieldset class="group">
+        <legend>Surgery Staff</legend>
+        
+        <label><b>
+            Description:
+        </b></label>
+      
+        <label id="staffName"><b>
+            Staff Member: 
+        </b></label>
+
+        <br />
+
+        <label>Surgeon:</label>
+
+        <select name="surgeonSelect" id="modal_GetStaff">
+            @foreach (var staff in Model.GetStaff)
+            {
+                <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
+            }
+        </select><br />
+
+        <label>Surgeon Assistant:</label>
+
+        <select name="surgeonAssistantSelect" id="modal_GetStaff">
+            @foreach (var staff in Model.GetStaff)
+            {
+                <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
+            }
+        </select><br />
+
+        <label>Anaesthetist:</label>
+
+        <select name="anaesthetistSelect" id="modal_GetStaff">
+            @foreach (var staff in Model.GetStaff)
+            {
+                <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
+            }
+        </select><br />
+
+        <label>Anaesthetist Assistant:</label>
+
+        <select name="anaesthetistAssistantSelect" id="modal_GetStaff">
+            @foreach (var staff in Model.GetStaff)
+            {
+                <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
+            }
+        </select><br />
+
+        <label>Nurse:</label>
+
+        <select name="nurseSelect" id="modal_GetStaff">
+            @foreach (var staff in Model.GetStaff)
+            {
+                <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
+            }
+        </select><br />
+
+        <label>Consultant:</label>
+
+        <select name="consultantSelect" id="modal_GetStaff">
+            @foreach (var staff in Model.GetStaff)
+            {
+                <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
+            }
+        </select><br />
+
+       
+
+    </fieldset>
+</div>
