@@ -1,5 +1,6 @@
 ﻿/// <reference path="jquery-1.4.4.js" />
 /// <reference path="jquery.validate.js" />
+/// <reference path="jquery.ui.js" />
 
 
 $(document).ready(function () {
@@ -400,7 +401,7 @@ $(document).ready(function () {
 
 
     // ------------------------------------------------- //
-    //  Setup Prescription List Tab                      //
+    //  Setup Rx List Tab                                //
     // ------------------------------------------------- //
     $(".medicationAddButton").button().click(function () {
         $("#newMedicationDialog").dialog("open");
@@ -412,49 +413,58 @@ $(document).ready(function () {
         $("#rxMoreInfo").slideToggle("slow", function () {});
     });
 
+    $("#addRxForm").validate({
+        errorLabelContainer: $("#newMedicationDialog .modalErrorContainer"),
+        wrapper: "li",
+        messages: {
+            name: "A medication name is required",
+            instructions: "Instructions are required",
+            startdate: "A start date is required",
+            expdate: "An expiration date is required"
+        }
+    });
+
     $("#newMedicationDialog").dialog({
         autoOpen: false,
-        height: 400,
-        width: 400,
+        height: 300,
+        width: 350,
         modal: true,
         buttons: {
             "Save Medication": function () {
-                $.post("/Patient/AddMedication", {
-                    patientID: $("#patientId").val(),
-                    name: $("#modal_medicationName").val(),
-                    instructions: $("#modal_medicationInstructions").val(),
-                    startdate: $("#startDatePicker").val(),
-                    expdate: $("#expDatePicker").val()
-
-                });
-                $(this).dialog("close");
-
+                if ($("#addRxForm").valid()) {
+                    $.post("/Patient/AddMedication", {
+                        patientID: $("#patientId").val(),
+                        name: $("#modal_medicationName").val(),
+                        instructions: $("#modal_medicationInstructions").val(),
+                        startdate: $("#startDatePicker").val(),
+                        expdate: $("#expDatePicker").val()
+                    });
+                    $(this).dialog("close");
+                }
             },
-            Cancel: function () {
+            Cancel: function () {                
                 $(this).dialog("close");
             }
         },
         close: function () {
-            allFields.removeClass("ui-state-error");
+            $("#addRxForm .error").remove();
+                $('#addRxForm').each (function(){
+                    this.reset();
+            });
         }
     });
 
-    $("#RxStartDatePicker").datepicker({
+    $("#addRxForm .datepicker").datepicker({
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
         buttonImageOnly: true,
         changeYear: true
-    });
-
-    $("#RxExpDatePicker").datepicker({
-        showOn: "button",
-        buttonImage: "/Content/themes/base/images/calendar.png",
-        buttonImageOnly: true,
-        changeYear: true
+    }).focus(function(){
+        $(this).datepicker("show");
     });
 
     // ------------------------------------------------- //
-    //  Setup Immunizations List Tab                      //
+    //  Setup Immunizations List Tab                     //
     // ------------------------------------------------- //
     $("#immunizationAddButton").button().click(function () {
         $("#newImmunizationDialog").dialog("open")
