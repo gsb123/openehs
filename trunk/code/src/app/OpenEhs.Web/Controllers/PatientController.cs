@@ -295,19 +295,24 @@ namespace OpenEhs.Web.Controllers
                 LocationRepository locationRepo = new LocationRepository();
                 var location = locationRepo.Get(locationId);
 
-                //Build Patient Object
+                //Build Check In Object
                 PatientCheckIn checkin = new PatientCheckIn();
                 checkin.Patient = patient;
                 checkin.CheckInTime = DateTime.Now;
                 checkin.PatientType = (PCIType)Enum.Parse(typeof(PCIType), Request.Form["patientType"]);
+                checkin.AttendingStaff = staff;
+                checkin.Location = location;
 
                 //Build Invoice Object
                 Invoice invoice = new Invoice();
                 invoice.PatientCheckIn = checkin;
+                checkin.Invoice = invoice; 
+
+                patient.PatientCheckIns.Add(checkin);
 
                 return Json(new
                 {
-                    error = false
+                    error = "false"
                 });
             }
             catch (Exception e)

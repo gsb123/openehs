@@ -55,8 +55,8 @@ $(document).ready(function () {
 
     $("#patientNoteTextBox").ckeditor(ckConfig);
 
-     // ------------------------------------------------- //
-    //  Setup Check In Modal                                //
+    // ------------------------------------------------- //
+    //  Setup Check In Modal                             //
     // ------------------------------------------------- //
     $("#newCheckinModal").dialog({
         autoOpen: false,
@@ -71,9 +71,12 @@ $(document).ready(function () {
                 data: {
                     patientID: $("#patientId").val(),
                     PatientType: $('input:radio[name="modal_checkinType"]:checked').val(),
-                    staffId: $('select.location option:selected').val()
+                    staffId: $("select[name='staff'] option:selected").val(),
+                    locationId: $("select[name='location'] option:selected").val()
                 },
                 success: function(response) {
+                    $("#newCheckInButton").hide();
+                    $("#newCheckinModal").dialog("close");
                     alert("Success!");
                 },
                 dataType: "json"
