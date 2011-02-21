@@ -624,7 +624,7 @@ $(document).ready(function () {
 
     $("#surgeryNoteTextBox").ckeditor(ckConfig);
 
-     $("#submitSurgery").button().click(function () {
+         $("#submitSurgery").button().click(function () {
          $.ajax({
                 type: "POST",
                 url: "/Patient/AddSurgery",
@@ -640,7 +640,7 @@ $(document).ready(function () {
                     starTime: $("#surgeryStartTime").val()
                 },
                 success: function(response) {
-                    
+                    alert ("Submitted");
                 },
                 dataType: "json"
             });

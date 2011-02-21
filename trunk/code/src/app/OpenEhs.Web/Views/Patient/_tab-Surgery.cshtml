@@ -1,142 +1,104 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
-<form>
 <div id="surgeryHeader" class="group">
     <h2 id="surgery">
         New Surgery
     </h2>
 </div>
-
 <br />
-
 <div id="SurgeryStaff">
     <fieldset class="group" id="surgeryStaffFieldSet">
         <legend>Surgery Staff</legend>
-        
-        <label><b>
-            Description:
-        </b></label>
-      
-        <label id="staffName"><b>
-            Staff Member: 
-        </b></label>
-
+        <label>
+            <b>Description: </b>
+        </label>
+        <label id="staffName">
+            <b>Staff Member: </b>
+        </label>
         <br />
-
-        <label>Surgeon:</label>
-
+        <label>
+            Surgeon:</label>
         <select name="surgeonSelect" id="modal_GetStaffSurgeon">
-            
-            <option>Select Staff...</option>
-            
+            <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
         </select><br />
-
-        <label>Surgeon Assistant:</label>
-
+        <label>
+            Surgeon Assistant:</label>
         <select name="surgeonAssistantSelect" id="modal_GetStaffSurgeonAssistant">
-
             <option>Select Staff...</option>
-
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
         </select><br />
-
-        <label>Anaesthetist:</label>
-
+        <label>
+            Anaesthetist:</label>
         <select name="anaesthetistSelect" id="modal_GetStaffAnaesthetist">
-
             <option>Select Staff...</option>
-
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
         </select><br />
-
-        <label>Anaesthetist Assistant:</label>
-
+        <label>
+            Anaesthetist Assistant:</label>
         <select name="anaesthetistAssistantSelect" id="modal_GetStaffAnaesthetistAssistant">
-
             <option>Select Staff...</option>
-
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
         </select><br />
-
-        <label>Nurse:</label>
-
+        <label>
+            Nurse:</label>
         <select name="nurseSelect" id="modal_GetStaffNurse">
-
             <option>Select Staff...</option>
-
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
         </select><br />
-
-        <label>Consultant:</label>
-
+        <label>
+            Consultant:</label>
         <select name="consultantSelect" id="modal_GetStaffConsultant">
-
             <option>Select Staff...</option>
-
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
         </select>
     </fieldset>
-
     <br />
-
     <fieldset>
         <legend>Surgery Time</legend>
-
-        <label><b>Start Time</b></label>
-
-        <label id="surgeryEndTimeLable"><b>End Time</b></label><br />
-
+        <label>
+            <b>Start Time</b></label>
+        <label id="surgeryEndTimeLable">
+            <b>End Time</b></label><br />
         <input id="surgeryStartTime" />
         <input id="surgeryEndTime" />
     </fieldset>
-
     <br />
-
     <fieldset>
         <legend>Theatre</legend>
-
-        <label>Theatre #:</label>
-        
+        <label>
+            Theatre #:</label>
         <select name="theatreNumber" id="modal_GetSurgeryLocation">
             <option>Select Theatre...</option>
-
             @foreach (var loc in Model.GetLocations)
             {
                 <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
             }
-
         </select>
-
     </fieldset>
-
-    <button id="submitSurgery">Complete Surgery</button>
-
+    <button id="submitSurgery">
+        Complete Surgery</button>
 </div>
-
 <div id="SurgeryNotes">
-    <label for="surgeryNoteTextBox"><b>Surgery Notes</b></label>
+    <label for="surgeryNoteTextBox">
+        <b>Surgery Notes</b></label>
     <textarea rows="30" cols="20" name="surgeryNoteTextBox" id="surgeryNoteTextBox">Surgery Notes...</textarea>
 </div>
-
-</form>
-
-
 <!-- <button id="submitSurgery">Complete Surgery</button> -->
