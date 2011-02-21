@@ -293,7 +293,7 @@ $(document).ready(function () {
     $("#newVitalDialog").dialog({
         autoOpen: false,
         height: 400,
-        width: 400,
+        width: 500,
         modal: true,
         buttons: {
             "Save Vital": function () {
