@@ -65,6 +65,7 @@
 <div id="BasicInformationNotes">
     <div id="isActivePatient">
         @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive, "Active")
+        <button id="printButton">Print Barcode</button>
     </div>
     <label for="patientNoteTextBox">Notes</label>
     <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.Note</textarea>
