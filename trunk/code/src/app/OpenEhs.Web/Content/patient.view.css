@@ -161,6 +161,12 @@ legend
     clear: both;
 }
 
+#surgeryHeader
+{
+	padding-right: 10px;
+    clear: both;
+}
+
 #chronicDiseasesHeader input
 {
     margin-top: 15px;
@@ -706,4 +712,14 @@ margin-bottom: 10px;
 #selectSearchTable td
 {
     border: 1px solid #ccc;
+}
+
+#staffName
+{
+    margin-left: 100px;
+}
+
+#modal_GetStaff
+{
+    margin-left: 120px;
 }

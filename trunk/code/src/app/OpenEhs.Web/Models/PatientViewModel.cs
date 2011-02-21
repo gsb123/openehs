@@ -405,6 +405,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Staff> GetStaff
+        {
+            get
+            {
+                StaffRepository staffMembers = new StaffRepository();
+                return staffMembers.GetAll();
+            }
+        }
+
         public IList<Staff> GetActivePhysicians
         {
             get
