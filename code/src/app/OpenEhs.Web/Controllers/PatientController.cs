@@ -219,7 +219,7 @@ namespace OpenEhs.Web.Controllers
 
                 //Get current open patient checkin 
                 var query = from checkin in patient.PatientCheckIns
-                            where checkin.CheckOutTime == new DateTime(1, 1, 1, 0, 0, 0)
+                            where checkin.CheckOutTime == DateTime.MinValue
                             select checkin;
 
                 //Create new vitals object and add appropriate parameters 
@@ -334,7 +334,7 @@ namespace OpenEhs.Web.Controllers
                 var patient = patientRepo.Get(patientID);
 
                 var query = from checkin in patient.PatientCheckIns
-                            where checkin.CheckOutTime == new DateTime(1, 1, 1, 0, 0, 0)
+                            where checkin.CheckOutTime == DateTime.MinValue
                             select checkin;
                 
                 
