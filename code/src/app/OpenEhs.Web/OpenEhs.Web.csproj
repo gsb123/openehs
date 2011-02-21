@@ -321,9 +321,12 @@
     <Content Include="Scripts\ckedit\skins\kama\skin.js" />
     <Content Include="Scripts\ckedit\skins\kama\templates.css" />
     <Content Include="Scripts\ckedit\themes\default\theme.js" />
+    <Content Include="Scripts\PrintLabelPatient.js" />
+    <Content Include="Scripts\DYMO.Label.Framework.1.0.beta.js" />
     <Content Include="Scripts\jquery-jvert-tabs-1.1.4.js" />
     <Content Include="Scripts\jquery.ui.datepicker-en-GB.js" />
     <Content Include="Scripts\patient.details.js" />
+    <Content Include="Scripts\PrintLabelCreate.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
