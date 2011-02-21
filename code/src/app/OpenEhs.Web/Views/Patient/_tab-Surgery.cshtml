@@ -1,5 +1,5 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
-
+<form>
 <div id="surgeryHeader" class="group">
     <h2 id="surgery">
         New Surgery
@@ -94,8 +94,47 @@
             }
         </select>
     </fieldset>
+
+    <br />
+
+    <fieldset>
+        <legend>Surgery Time</legend>
+
+        <label><b>Start Time</b></label>
+
+        <label id="surgeryEndTimeLable"><b>End Time</b></label><br />
+
+        <input id="surgeryStartTime" />
+        <input id="surgeryEndTime" />
+    </fieldset>
+
+    <br />
+
+    <fieldset>
+        <legend>Theatre</legend>
+
+        <label>Theatre #:</label>
+        
+        <select name="theatreNumber" id="modal_GetSurgeryLocation">
+            <option>Select Theatre...</option>
+
+            @foreach (var loc in Model.GetLocations)
+            {
+                <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
+            }
+
+        </select>
+
+    </fieldset>
+
 </div>
+
 <div id="SurgeryNotes">
     <label for="surgeryNoteTextBox"><b>Surgery Notes</b></label>
     <textarea rows="30" cols="20" name="surgeryNoteTextBox" id="surgeryNoteTextBox">Surgery Notes...</textarea>
 </div>
+
+</form>
+
+
+<!-- <button id="submitSurgery">Complete Surgery</button> -->
