@@ -637,7 +637,7 @@ $(document).ready(function () {
                     nurse: $("select[name='nurseSelect'] option:selected").val(),
                     consultant: $("select[name='consultantSelect'] option:selected").val(),
                     surgeryNote: $("#surgeryNoteTextBox").val(),
-                    starTime: 
+                    starTime: $("#surgeryStartTime").val()
                 },
                 success: function(response) {
                     
