@@ -8,6 +8,63 @@ legend
     font-size: 1.2em;
 }
 
+.allergyRemove
+{
+	padding: 5px; 
+	font-size: 14px; 
+	margin: 3px 10px 3px 0px;
+}
+
+.chronicDiseasesRemove
+{
+	padding: 5px; 
+	font-size: 14px; 
+	margin: 3px 10px 3px 0px;
+}
+
+.column {
+    float: left;
+    margin-right: 20px;
+}
+
+.modal-label {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    padding: 2px;
+    text-align: right;
+    width: 75px;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.modal-input {
+    padding: 4px;
+    border: solid 1px #777777;
+    width: 125px;
+    margin-bottom: 5px;
+}
+
+.modal-input .long {
+    width: 200px;
+}
+
+.modal-input .datepicker {
+    margin-right: 5px;
+}
+
+.modalErrorContainer {
+    padding: 5px 20px 5px 20px;
+    margin-right: 40px;
+    margin-bottom: 5px;
+}
+
+.modalErrorContainer li {
+    list-style-type: circle;
+    color: #FF0000;
+}
+
 #newCheckInButton
 {
     height: 40px;
@@ -48,29 +105,6 @@ legend
     border-left-width: medium;
     border-right-width: medium;
     border-top-width: medium;
-}
-
-.allergyRemove
-{
-	padding: 5px; 
-	font-size: 14px; 
-	margin: 3px 10px 3px 0px;
-}
-
-.chronicDiseasesRemove
-{
-	padding: 5px; 
-	font-size: 14px; 
-	margin: 3px 10px 3px 0px;
-}
-
-.column {
-    float: left;
-    margin-right: 20px;
-}
-
-.modal-label {
-    width: 100px;
 }
 
 #BasicInformationColumn {
