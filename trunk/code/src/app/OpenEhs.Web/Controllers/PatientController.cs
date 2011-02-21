@@ -416,5 +416,41 @@ namespace OpenEhs.Web.Controllers {
 
             return jsonResult;
         }
+
+        public JsonResult AddSurgery()
+        {
+            try
+            {
+                //Get patient object
+                int patientID = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientID);
+
+                //Get current open patient checkin 
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
+
+                //Build surgery object
+                Surgery surgery = new Surgery();
+
+                //Add to checkin
+                openCheckIn.Surgeries.Add(surgery);
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = e.Message
+                });
+            }
+        }
     }
 }
