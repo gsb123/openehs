@@ -599,5 +599,20 @@ $(document).ready(function () {
         });
     });
 
+    // ------------------------------------------------- //
+    //  Setup Surgery Tab                                //
+    // ------------------------------------------------- //
+
+    var ckConfig = {
+        toolbar: [
+            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
+            ["UIColor"]
+        ],
+        extraPlugins: "autogrow",
+        autoGrow_maxHeight: 800
+    };
+
+    $("#surgeryNoteTextBox").ckeditor(ckConfig);
+
 
 });
