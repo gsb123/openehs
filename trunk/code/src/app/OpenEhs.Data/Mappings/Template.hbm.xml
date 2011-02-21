@@ -7,8 +7,8 @@
     <id name="Id" column="TemplateID" >
       <generator class="native" />
     </id>
-    <property name="TemplateBody" not-null="true" />
-    <one-to-one name="TemplateCategory" class="TemplateCategory" />
+    <property name="Body" column="TemplateBody" not-null="true" />
+    <one-to-one name="Category" class="TemplateCategory" />
     <one-to-one name="Staff" class="Staff" />
     <property name="IsActive" not-null="true" />
   </class>

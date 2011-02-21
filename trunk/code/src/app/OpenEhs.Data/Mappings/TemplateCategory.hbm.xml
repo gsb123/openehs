@@ -7,7 +7,7 @@
     <id name="Id" column="TemplateCategoryID">
       <generator class="native" />
     </id>
-    <property name="TemplateCategoryName" not-null="true" length="30" />
-    <property name="TemplateCategoryDescription" not-null="false" />
+    <property name="Name" column="TemplateCategoryName" not-null="true" length="30" />
+    <property name="Description" column="TemplateCategoryDescription" not-null="false" />
   </class>
 </hibernate-mapping>
