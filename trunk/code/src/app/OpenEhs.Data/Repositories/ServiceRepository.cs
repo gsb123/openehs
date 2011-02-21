@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using NHibernate;
+using NHibernate.Criterion;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
@@ -43,12 +44,18 @@ namespace OpenEhs.Data
 
         public IList<Service> GetActiveServices()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Service>()
+                .Add(Restrictions.Eq("IsActive", true));
+
+            return criteria.List<Service>();
         }
 
         public IList<Service> GetInactiveServices()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Service>()
+                .Add(Restrictions.Eq("IsActive", false));
+
+            return criteria.List<Service>();
         }
 
         public IList<Service> GetByCategory(Category category)
