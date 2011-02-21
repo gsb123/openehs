@@ -33,11 +33,6 @@ namespace OpenEhs.Data
             Session.Save(entity);
         }
 
-        public void Update(Patient entity)
-        {
-            Session.SaveOrUpdate(entity);
-            //Session.Update(entity);
-        }
         public void Remove(Patient entity)
         {
             Session.Delete(entity);

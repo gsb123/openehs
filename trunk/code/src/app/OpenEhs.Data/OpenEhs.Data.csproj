@@ -76,7 +76,6 @@
     <Compile Include="Common\IUnitOfWorkImplementor.cs" />
     <Compile Include="Common\Local.cs" />
     <Compile Include="Interfaces\ICategoryRepository.cs" />
-    <Compile Include="Interfaces\IEmergencyContactRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IPatientRepository.cs" />
@@ -87,7 +86,6 @@
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
-    <Compile Include="Repositories\EmergencyContactRepository.cs" />
     <Compile Include="Repositories\PaymentRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
