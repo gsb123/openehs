@@ -52,7 +52,6 @@ $(document).ready(function () {
                         $("#newCheckInButton").hide();
                         $("#checkOutButton").show();
                     }
-                    alert ("Success!"); 
                 },
                 dataType: "json"
             });
