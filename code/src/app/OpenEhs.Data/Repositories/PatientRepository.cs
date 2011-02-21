@@ -47,42 +47,42 @@ namespace OpenEhs.Data
 
         public IList<Patient> FindByPhoneNumber(string phoneNumber)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("PhoneNumber", phoneNumber));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("PhoneNumber", "%" + phoneNumber + "%"));
 
             return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByFirstName(string firstName)
-        {     
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("FirstName", firstName));
+        {
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("FirstName", "%" + firstName + "%"));
 
             return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByMiddleName(string middleName)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("MiddleName", middleName));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("MiddleName", "%" + middleName + "%"));
 
             return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByLastName(string lastName)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("LastName", lastName));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("LastName", "%" + lastName + "%"));
 
             return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByDateOfBirth(DateTime dateOfBirth)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("DateOfBirth", dateOfBirth));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("DateOfBirth", "%" + dateOfBirth + "%"));
 
             return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByOldPhysicalRecord(int number)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("OldPhysicalRecordNumber", number));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("OldPhysicalRecordNumber", "%" + number + "%"));
 
             return criteria.List<Patient>();
         }
