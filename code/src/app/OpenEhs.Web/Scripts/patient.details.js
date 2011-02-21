@@ -52,6 +52,10 @@ $(document).ready(function () {
                         $("#newCheckInButton").hide();
                         $("#checkOutButton").show();
                     }
+                    else
+                    {
+                        $("#vitalAddButton").button("disable");
+                    }
                 },
                 dataType: "json"
             });
@@ -108,6 +112,7 @@ $(document).ready(function () {
                     $("#newCheckInButton").hide();
                     $("#newCheckinModal").dialog("close");
                     $("#checkOutButton").show();
+                    $("#vitalAddButton").button("enable");
                 },
                 dataType: "json"
             });
@@ -140,6 +145,7 @@ $(document).ready(function () {
                     $("#checkOutButton").hide();
                     $("#checkOutModal").dialog("close");
                     $("#newCheckInButton").show();
+                    $("#vitalAddButton").button("disable");
                 },
                 dataType: "json"
             });
@@ -324,6 +330,7 @@ $(document).ready(function () {
     $(".vitalAddButton").button().click(function () {
         $("#newVitalDialog").dialog("open");
     });
+
 
 
     // ------------------------------------------------- //
