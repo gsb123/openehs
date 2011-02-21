@@ -649,4 +649,10 @@ margin-bottom: 10px;
 #selectSearchTable
 {
     margin-left: 40px;
+    font-size: 10px;
+}
+
+#selectSearchTable td
+{
+    border: 1px solid #ccc;
 }
