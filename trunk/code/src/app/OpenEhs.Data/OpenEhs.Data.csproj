@@ -149,7 +149,9 @@
     <EmbeddedResource Include="Mappings\Service.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Surgery.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Surgery.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\TemplateCategory.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

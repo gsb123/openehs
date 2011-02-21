@@ -624,5 +624,26 @@ $(document).ready(function () {
 
     $("#surgeryNoteTextBox").ckeditor(ckConfig);
 
+     $("#submitSurgery").button().click(function () {
+         $.ajax({
+                type: "POST",
+                url: "/Patient/AddSurgery",
+                data: {
+                    patientID: $("#patientId").val(),
+                    surgeon: $("select[name='surgeonSelect'] option:selected").val(),
+                    surgeonAssistant: $("select[name='surgeonAssistantSelect'] option:selected").val(),
+                    anaesthetist: $("select[name='anaesthetistSelect'] option:selected").val(),
+                    anaesthetistAssistant: $("select[name='anaesthetistAssistantSelect'] option:selected").val(),
+                    nurse: $("select[name='nurseSelect'] option:selected").val(),
+                    consultant: $("select[name='consultantSelect'] option:selected").val(),
+                    surgeryNote: $("#surgeryNoteTextBox").val(),
+                    starTime: 
+                },
+                success: function(response) {
+                    
+                },
+                dataType: "json"
+            });
+    });
 
 });
