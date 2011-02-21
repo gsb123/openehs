@@ -10,7 +10,7 @@ legend
 
 #newCheckInButton
 {
-    height: 25px;
+    height: 40px;
     width: 95px;
     float: right; 
     margin-right: 10px; 
@@ -24,7 +24,21 @@ legend
 
 #editPatientInfoButton
 {
-    height: 25px;
+    height: 40px;
+    width: 95px;
+    float: right; 
+    margin-right: 10px; 
+    font-size: 10px;
+    font-weight: bold;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-right-width: medium;
+    border-top-width: medium;
+}
+
+#checkOutButton
+{
+    height: 40px;
     width: 95px;
     float: right; 
     margin-right: 10px; 
@@ -151,6 +165,9 @@ legend
 {
     margin-top: 15px;
     float: right;
+    height: 35;
+    width: 60px;
+    font-size: 15px;
 }
 
 #chronicDiseasesHeader h2
@@ -177,12 +194,18 @@ legend
 {
     margin-top: 15px;
     float: right;
+    height: 35;
+    width: 60px;
+    font-size: 15px;
 }
 
 #allergyHeader input
 {
     margin-top: 15px;
     float: right;
+    height: 35;
+    width: 60px;
+    font-size: 15px;
 }
 
 #selectAction
@@ -194,6 +217,9 @@ legend
 {
     margin-top: 15px;
     float: right;
+    height: 35;
+    width: 60px;
+    font-size: 15px;
 }
 
 #noteTextBox
@@ -244,6 +270,7 @@ fieldset
     height: 50px;
     line-height: 50px;
 	padding-left: 10px;
+	margin-left: 15px;
 }
 
 #allergyList li
@@ -259,6 +286,7 @@ fieldset
     height: 50px;
     line-height: 50px;
 	padding-left: 10px;
+	margin-left: 15px;
 }
 
 #visitHistoryList li
@@ -317,6 +345,7 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 40px;
 }
 
 #MedicationListTwo li
@@ -330,6 +359,7 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 40px;
 }
 
 #MedicationListThree li
@@ -343,6 +373,7 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 40px;
 }
 
 #MedicationListFour li
@@ -356,6 +387,7 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 40px;
 }
 
 #immunizationHeader
@@ -374,6 +406,18 @@ fieldset
     margin-top: 15px;
     float: right;
     margin-right: 11px;
+    height: 35;
+    width: 60px;
+    font-size: 15px;
+}
+
+#BasicInformationNotes button
+{
+    margin-left: 35px;
+	clear: both;
+	height: 30px;
+	width: 150px;
+	font-size: 18px;
 }
 
 #immunizationListOne li
@@ -387,6 +431,7 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 40px;
 }
 
 #immunizationListTwo li
@@ -400,6 +445,7 @@ fieldset
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 40px;
 }
 
 #visitHistoryHeader
@@ -631,6 +677,11 @@ margin-bottom: 10px;
 }
 
 #visitHistoryList td
+{
+    border: 1px solid #ccc;
+}
+
+#vitalsTable td
 {
     border: 1px solid #ccc;
 }
