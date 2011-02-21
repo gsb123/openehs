@@ -13,6 +13,9 @@
     <property name="RoomNumber" />
     <property name="Comments" />
 
+    <property name="ScheduleStartTime" />
+    <property name="CaseType" />
+
     <!--Many-to-many mapping: Staff-->
     <bag name="Staff" table="SurgeryStaff" cascade="none" lazy="false">
       <key column="StaffID" />

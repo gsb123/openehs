@@ -46,6 +46,8 @@
     <Compile Include="Model\Patient\PatientImmunization.cs" />
     <Compile Include="Model\Patient\PatientProblem.cs" />
     <Compile Include="Model\Patient\Problem.cs" />
+    <Compile Include="Model\Surgery\CaseType.cs" />
+    <Compile Include="Model\Surgery\StaffRole.cs" />
     <Compile Include="Model\Surgery\SurgeryStaff.cs" />
     <Compile Include="Model\Templates\TemplateCategory.cs" />
     <Compile Include="Model\Vitals\BloodPressure.cs" />
