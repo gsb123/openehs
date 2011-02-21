@@ -107,6 +107,7 @@ $(document).ready(function () {
                 success: function(response) {
                     $("#newCheckInButton").hide();
                     $("#newCheckinModal").dialog("close");
+                    $("#checkOutButton").show();
                 },
                 dataType: "json"
             });
@@ -127,17 +128,18 @@ $(document).ready(function () {
         width: 375,
         modal: true,
         buttons: {
-            "Check In": function () {
+            "Check Out": function () {
             $.ajax({
                 type: "POST",
                 url: "/Patient/CheckOut",
                 data: {
                     patientID: $("#patientId").val(),
-                    diagnosis: $("#diagnosis").val()
+                    diagnosis: $("#modal_checkOutDiagnosis").val()
                 },
                 success: function(response) {
-                    $("#newCheckInButton").hide();
-                    $("#newCheckinModal").dialog("close");
+                    $("#checkOutButton").hide();
+                    $("#checkOutModal").dialog("close");
+                    $("#newCheckInButton").show();
                 },
                 dataType: "json"
             });
