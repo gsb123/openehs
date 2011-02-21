@@ -10,6 +10,7 @@
 
     <property name="Staff" not-null="true" />
     <property name="Surgery" not-null="false" />
+    <property name="StaffRoles" not-null="false" />
 
   </class>
 </hibernate-mapping>

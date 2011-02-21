@@ -459,7 +459,7 @@ $(document).ready(function () {
                 //Outputs the dates between the selected dates
                 for(var i = 0; i < response.length; i++)
                 {
-                    var select = '<tr><td><input id="searchThisVisit" type="button" value="' + response[i].date + '" /></td></tr>';
+                    var select = '<tr><td><input class="visitDateButton" type="button" value="' + response[i].date + '" /></td></tr>';
                     $("#selectSearchTable").append(select);
                 } 
 
