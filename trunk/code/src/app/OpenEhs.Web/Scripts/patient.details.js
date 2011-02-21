@@ -297,27 +297,29 @@ $(document).ready(function () {
         modal: true,
         buttons: {
             "Save Vital": function () {
-                $.ajax({
-                    type: "POST",
-                    url: "/Patient/AddVital",
-                    data: {
-                        patientID: $("#patientId").val(),
-                        height: $("#modal_vitalHeight").val(),
-                        weight: $("#modal_vitalWeight").val(),
-                        temperature: $("#modal_vitalTemperature").val(),
-                        heartRate: $("#modal_vitalHeartRate").val(),
-                        BpSystolic: $("#modal_vitalBpSystolic").val(),
-                        BpDiastolic: $("#modal_vitalBpDiastolic").val(),
-                        respiratoryRate: $("#modal_vitalRespiratoryRate").val(),
-                        type: $('input:radio[name=modal_vitalsType]:checked').val()
-                    },
-                    success: function (response) {
-                        $("#newVitalDialog").dialog("close");
-                        processVitalsReturn(response);
-                    },
-                    dataType: "json"
-                });
-
+                if($("#addVitals").valid())
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Patient/AddVital",
+                        data: {
+                            patientID: $("#patientId").val(),
+                            height: $("#modal_vitalHeight").val(),
+                            weight: $("#modal_vitalWeight").val(),
+                            temperature: $("#modal_vitalTemperature").val(),
+                            heartRate: $("#modal_vitalHeartRate").val(),
+                            BpSystolic: $("#modal_vitalBpSystolic").val(),
+                            BpDiastolic: $("#modal_vitalBpDiastolic").val(),
+                            respiratoryRate: $("#modal_vitalRespiratoryRate").val(),
+                            type: $('input:radio[name=modal_vitalsType]:checked').val()
+                        },
+                        success: function (response) {
+                            $("#newVitalDialog").dialog("close");
+                            processVitalsReturn(response);
+                        },
+                        dataType: "json"
+                    });
+                }
             },
 
             Cancel: function () {
@@ -331,6 +333,35 @@ $(document).ready(function () {
         $("#newVitalDialog").dialog("open");
     });
 
+
+    $("#addVitals").validate({
+        rules: {
+            modal_vitalHeight: {
+                number: true
+            },
+            modal_vitalWeight: {
+                number: true
+            },
+            modal_vitalTemperature: {
+                number: true
+            },
+            modal_vitalHeartRate: {
+                number: true
+            },
+            modal_vitalBpSystolic: {
+                number: true
+            },
+            modal_vitalBpDiastolic: {
+                number: true
+            },
+            modal_vitalRespiratoryRate: {
+                number: true
+            },
+            modal_vitalsType: {
+                required: true
+            }
+        }
+    });
 
 
     // ------------------------------------------------- //
