@@ -46,5 +46,13 @@ namespace OpenEhs.Data
 
             return criteria.List<User>();
         }
+
+        public User Get(string username)
+        {
+            ICriteria criteria = Session.CreateCriteria<User>()
+                                        .Add(Restrictions.Eq("Username", username));
+
+            return criteria.UniqueResult<User>();
+        }
     }
 }

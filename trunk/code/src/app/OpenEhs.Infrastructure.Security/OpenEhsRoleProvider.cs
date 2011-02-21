@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Security;
+using OpenEhs.Data;
 
 namespace OpenEhs.Infrastructure.Security
 {
@@ -12,7 +14,12 @@ namespace OpenEhs.Infrastructure.Security
 
         public override string[] GetRolesForUser(string username)
         {
-            throw new NotImplementedException();
+            var userRepository = new UserRepository();
+            var user = userRepository.Get(username);
+
+            var roles = user.Roles.Select(role => role.Name).ToList();
+
+            return roles.ToArray();
         }
 
         public override void CreateRole(string roleName)
