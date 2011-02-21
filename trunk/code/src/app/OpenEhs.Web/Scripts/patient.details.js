@@ -420,15 +420,20 @@ $(document).ready(function () {
             },
             success: function (response) {
                 //addSearchRow(response);
+
+                alert(response.length);
+
                 //Code for date pick
                 for(var i = 0; i < response.length; i++)
                 {
                     var select = '<table id="selectSearchTable"><thead><tr><th>' + "Visit Date" + '</th>    </tr></thead><tbody><tr><td>' + response[0].date + '</td></tr></tbody></table>';
-                    $("#selectSearchTable").replaceWith(select);
+                    $("#selectSearchTable").add(select);
                 } 
 
+                
 
-                //Code fore table
+
+                //Code fore table (DO NOT DELETE)
                 /*
                 for (var i = 0; i < 1; i++)
                 {

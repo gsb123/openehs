@@ -340,11 +340,43 @@ namespace OpenEhs.Web.Controllers
             {
                 IList<object> vitalsList = new List<object>();
 
+                resultSet.Add(new
+                                  {
+                                      //TODO: Need to fix how the time is...
+                                      date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss")
+                                  });
+            }
+
+            jsonResult.Data = resultSet;
+
+            return jsonResult;
+        }
+
+        public JsonResult SelectVisit()
+        {
+            int patientID = int.Parse(Request.Form["patientID"]);
+            PatientRepository patientRepo = new PatientRepository();
+            var patient = patientRepo.Get(patientID);
+
+            DateTime fromDate = DateTime.Parse(Request.Form["from"]);
+            DateTime toDate = DateTime.Parse(Request.Form["to"]);
+
+            var query = from checkin in patient.PatientCheckIns
+                        where checkin.CheckInTime >= fromDate && checkin.CheckInTime <= toDate
+                        select checkin;
+
+            var resultSet = new List<object>();
+            var jsonResult = new JsonResult();
+
+            foreach (var result in query)
+            {
+                IList<object> vitalsList = new List<object>();
+
                 foreach (var vitals in result.Vitals)
                 {
                     vitalsList.Add(new
                     {
-                        Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"), 
+                        Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"),
                         //vitals.Type,
                         type = Enum.GetName(typeof(VitalsType), vitals.Type),
                         Height = vitals.Height,
@@ -358,12 +390,12 @@ namespace OpenEhs.Web.Controllers
                 }
 
                 resultSet.Add(new
-                                  {
-                                      //TODO: Need to fix how the time is...
-                                      date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
-                                      result.Diagnosis,
-                                      Vitals = vitalsList
-                                  });
+                {
+                    //TODO: Need to fix how the time is...
+                    date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                    result.Diagnosis,
+                    Vitals = vitalsList
+                });
             }
 
             jsonResult.Data = resultSet;
