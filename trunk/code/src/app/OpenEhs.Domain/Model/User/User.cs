@@ -32,6 +32,8 @@ namespace OpenEhs.Domain
         public virtual int FailedPasswordAttemptCount { get; set; }
         public virtual bool IsApproved { get; set; }
         public virtual bool IsActive { get; set; }
+
+        public virtual Staff Staff { get; set; }
         
         #endregion
 
