@@ -171,3 +171,10 @@
 	width: 0px;
 	visibility: hidden;
 }
+
+.HiddenText
+{
+	width:0px;
+	visibility: hidden;
+	height:0px;
+}
