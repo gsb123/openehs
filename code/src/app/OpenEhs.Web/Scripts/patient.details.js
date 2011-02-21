@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     $("#vitalsRadio").buttonset();
 
-     $("#checkinRadio").buttonset();
+    $("#checkinRadio").buttonset();
 
     // ------------------------------------------------- //
     //  Setup Basic Tab                                  //
@@ -30,6 +30,33 @@ $(document).ready(function () {
 
     $("#BasicMoreInfoLink").click(function () {
         $("#BasicMoreInfo").slideToggle("slow", function () {});
+    });
+
+    $("#checkOutButton").button();
+    $("#checkOutButton").hide();
+
+    $("#newCheckInButton").button({
+        create: function(event,ui) 
+        {   
+            $.ajax({
+                type: "POST",
+                url: "/Patient/GetCurrentCheckin",
+                data: 
+                {
+                    patientID: $("#patientId").val()
+                },
+                success: function (response) 
+                {
+                    if(response.checkin!="null")
+                    {
+                        $("#newCheckInButton").hide();
+                        $("#checkOutButton").show();
+                    }
+                    alert ("Success!"); 
+                },
+                dataType: "json"
+            });
+        }
     });
 
     $("#newCheckInButton").button().click(function () {
