@@ -447,8 +447,8 @@ $(document).ready(function () {
             }
         },
         close: function () {
-            $("#addRxForm .error").remove();
-                $('#addRxForm').each (function(){
+            $("#newMedicationDialog .modalErrorContainer").hide();
+            $('#addRxForm').each (function(){
                     this.reset();
             });
         }
