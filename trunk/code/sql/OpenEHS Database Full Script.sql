@@ -169,7 +169,7 @@ CREATE TABLE FeedChart
 (
 FeedChartID             int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
 PatientCheckInID        int             NOT NULL,
-FeddTime                timestamp       NOT NULL                    DEFAULT NOW(),
+FeedTime                timestamp       NOT NULL                    DEFAULT NOW(),
 FeedType                varchar(30)     NULL,
 Amountffered            float           NULL,
 AmountTaken             float           NULL,
@@ -326,14 +326,17 @@ CREATE TABLE Surgery
     EndTime                     datetime                NULL,
     RoomNumber                  int                 NULL,
     Comments                    text                NULL,
-    PatientCheckInID          int                 NOT NULL
+    PatientCheckInID          int                 NOT NULL,
+    CaseType                    bit                 NOT NULL,
+    ScheduleStartTime           datetime            NOT NULL
 );
 
 CREATE TABLE SurgeryStaff
 (
     SurgeryStaffID              int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     StaffID                     int                 NOT NULL,
-    SurgeryID                   int                 NOT NULL
+    SurgeryID                   int                 NOT NULL,
+    Role                        int                 NOT NULL
 );
 
 CREATE TABLE Note
