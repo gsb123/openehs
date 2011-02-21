@@ -355,6 +355,25 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public PatientCheckIn GetOpenCheckin
+        {
+            get
+            {
+                try
+                {
+                    var query = from checkin in PatientCheckIns
+                                where checkin.CheckOutTime == DateTime.MinValue
+                                select checkin;
+
+                    return query.First<PatientCheckIn>();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
         public IList<PatientCheckIn> SearchCheckIns
         {
             get

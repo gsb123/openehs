@@ -221,10 +221,11 @@ namespace OpenEhs.Web.Controllers
                 var query = from checkin in patient.PatientCheckIns
                             where checkin.CheckOutTime == DateTime.MinValue
                             select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
 
                 //Create new vitals object and add appropriate parameters 
                 Vitals vitals = new Vitals();
-                vitals.PatientCheckIn = query.First<PatientCheckIn>();
+                vitals.PatientCheckIn = openCheckIn;
                 if (Request.Form["height"] != "")
                     vitals.Height = double.Parse(Request.Form["height"]);
                 if (Request.Form["weight"] != "")
@@ -244,11 +245,10 @@ namespace OpenEhs.Web.Controllers
                     vitals.Temperature = float.Parse(Request.Form["Temperature"]);
                 vitals.Type = (VitalsType)Enum.Parse(typeof(VitalsType), Request.Form["type"]);
                 vitals.Time = DateTime.Now;
-                //vitals.PatientCheckIn = patient.PatientCheckIns[0];
                 vitals.IsActive = true;
 
                 //Add new vitals object to patient
-                patient.PatientCheckIns[0].Vitals.Add(vitals);
+                openCheckIn.Vitals.Add(vitals);
 
                 //Return results as JSON
                 return Json(new
