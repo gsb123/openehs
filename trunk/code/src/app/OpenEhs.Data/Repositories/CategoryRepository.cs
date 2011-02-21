@@ -29,12 +29,12 @@ namespace OpenEhs.Data
 
         public void Add(Category entity)
         {
-            throw new NotImplementedException();
+            Session.Save(entity);
         }
 
         public void Remove(Category entity)
         {
-            throw new NotImplementedException();
+            Session.Delete(entity);
         }
     }
 }
