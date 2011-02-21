@@ -796,4 +796,37 @@ margin-bottom: 10px;
 #SurgeryNotes
 {
     float: left;
+    margin-left: 10px;
+    width: 390px;
+}
+
+#surgeryEndTimeLable
+{
+    margin-left: 100px;
+}
+
+#surgeryStartTime
+{
+    width: 100px;
+}
+
+#surgeryEndTime
+{
+    width: 100px;
+    margin-left: 50px;
+}
+
+#modal_GetSurgeryLocation
+{
+    width: 140px;
+    margin-left: 15px;
+}
+
+#submitSurgery
+{
+    float: right;
+    margin-right: 65px;
+    margin-top: 15px;
+    width: 250px;
+    font-size: 20px;
 }
