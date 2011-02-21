@@ -87,7 +87,10 @@ namespace OpenEhs.Data
 
         public Staff FindByUser(User user)
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Staff>()
+                .Add(Restrictions.Eq("UserId", user.Id));
+
+            return criteria.UniqueResult<Staff>();
         }
     }
 }

@@ -754,8 +754,12 @@ margin-bottom: 10px;
     width: 300px;
 }
 
-#surgeryNotes
+#SurgeryStaff
 {
-    width: 300px;
-    float: right;
+	float: left;
+}
+
+#SurgeryNotes
+{
+    float: left;
 }
