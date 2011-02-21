@@ -2,30 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using NHibernate;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
     public class TemplateRepository : ITemplateRepository
     {
+        private ISession Session
+        {
+            get { return UnitOfWork.CurrentSession; }
+        }
+
         public Template Get(int id)
         {
-            throw new NotImplementedException();
+            return Session.Get<Template>(id);
         }
 
         public IList<Template> GetAll()
         {
-            throw new NotImplementedException();
+            var criteria = Session.CreateCriteria<Template>();
+            return criteria.List<Template>();
         }
 
         public void Add(Template entity)
         {
-            throw new NotImplementedException();
+            Session.Save(entity);
         }
 
         public void Remove(Template entity)
         {
-            throw new NotImplementedException();
+            Session.Delete(entity);
         }
 
         public IList<Template> GetAllSurgeryTemplates()

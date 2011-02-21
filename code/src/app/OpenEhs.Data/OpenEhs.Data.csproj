@@ -165,7 +165,9 @@
     <EmbeddedResource Include="Mappings\Staff.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Template.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Template.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Membership\User.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
