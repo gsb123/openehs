@@ -325,6 +325,37 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
+        public JsonResult CheckOut()
+        {
+            try
+            {
+                int patientId = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientId);
+
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+
+                PatientCheckIn checkIn = query.First<PatientCheckIn>();
+                checkIn.CheckOutTime = DateTime.Now;
+                checkIn.Diagnosis = Request.Form["diagnosis"];
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = e.Message
+                });
+            }
+        }
+
         public JsonResult GetCurrentCheckin()
         {
             try {
