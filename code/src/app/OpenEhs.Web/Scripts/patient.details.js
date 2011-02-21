@@ -408,6 +408,10 @@ $(document).ready(function () {
         $("#visitVitalsMoreInfoSearch").slideToggle("slow", function () {});
     });
 
+     $("#searchThisVisit").click(function () {
+        alert("test");
+     });
+
     $("#visitNoteLinkSearch").click(function () {
         $("#visitNoteMoreInfoSearch").slideToggle("slow", function () {});
     });
@@ -426,15 +430,12 @@ $(document).ready(function () {
 
                 alert(response.length);
 
-                //Code for date pick
+                //Outputs the dates between the selected dates
                 for(var i = 0; i < response.length; i++)
                 {
-                    var select = '<table id="selectSearchTable"><thead><tr><th>' + "Visit Date" + '</th>    </tr></thead><tbody><tr><td>' + response[0].date + '</td></tr></tbody></table>';
-                    $("#selectSearchTable").add(select);
+                    var select = '<tr><th>' + "Visit Date" + '</th></tr></thead><tbody><tr><td><input id="searchThisVisit" type="button" value="' + response[i].date + '" /></td></tr>';
+                    $("#selectSearchTable").append(select);
                 } 
-
-                
-
 
                 //Code fore table (DO NOT DELETE)
                 /*
