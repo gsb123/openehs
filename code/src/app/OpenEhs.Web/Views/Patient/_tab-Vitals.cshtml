@@ -44,10 +44,8 @@
             </form>
         </fieldset>
     </div>
-
     <br />
     <br />
-
     <div id="vitalsTableDiv">
         <table id="vitalsTable">
             <thead>
@@ -79,8 +77,8 @@
                 </tr>
             </thead>
             <tbody>
-            @if (Model.GetOpenCheckin != null)
-            {
+                @if (Model.GetOpenCheckin != null)
+                {
                     foreach (var vital in Model.GetOpenCheckin.Vitals)
                     {
                     <tr>
@@ -129,7 +127,7 @@
                             }
                         </td>
                         <td class="vitalBloodPressureColumn">
-                            @if (vital.BloodPressure!=null)
+                            @if (vital.BloodPressure != null)
                             {
                                 @vital.BloodPressure
                             }
@@ -150,7 +148,7 @@
                         </td>
                     </tr>
                     }
-            }
+                }
             </tbody>
         </table>
     </div>
