@@ -521,6 +521,45 @@ namespace OpenEhs.Web.Controllers {
 
         #endregion
 
+        #region Medication
+
+        public JsonResult AddMedication() {
+            try {
+                int patientId = int.Parse(Request.Form["patientID"]);
+                string medicationName = Request.Form["name"];
+                string medicationInstructions = Request.Form["instructions"];
+                DateTime startDate = DateTime.Parse(Request.Form["startDate"]);
+                DateTime expDate = DateTime.Parse(Request.Form["expDate"]);
+
+
+                PatientRepository repo = new PatientRepository();
+                var patient = repo.Get(patientId);
+                Medication medication = new Medication();
+                medication.Name = medicationName;
+                medication.Instruction = medicationInstructions;
+                medication.StartDate = startDate;
+                medication.ExpDate = expDate;
+
+                patient.Medications.Add(medication);
+
+                UnitOfWork.CurrentSession.Flush();
+
+                return Json(new {
+                    error = "false",
+                    status = "Added medication: " + medication.Name + " successfully",
+                    medication = medication
+                });
+            } catch (Exception e) {
+                return Json(new {
+                    error = "true",
+                    status = "Unable to add medication successfully",
+                    errorMessage = e.Message
+                });
+            }
+        }
+
+        #endregion
+
         #endregion
     }
 }
