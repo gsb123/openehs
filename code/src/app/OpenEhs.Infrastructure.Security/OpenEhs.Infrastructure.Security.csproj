@@ -48,6 +48,16 @@
     <Compile Include="OpenEhsRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenEhs.Data\OpenEhs.Data.csproj">
+      <Project>{7501A878-FBE8-444D-9884-B4237DF11207}</Project>
+      <Name>OpenEhs.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenEhs.Domain\OpenEhs.Domain.csproj">
+      <Project>{9F0827C4-FFAE-4B13-9736-012A13662D90}</Project>
+      <Name>OpenEhs.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

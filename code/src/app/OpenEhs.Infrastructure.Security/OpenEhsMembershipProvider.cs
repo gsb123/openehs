@@ -8,6 +8,8 @@
 
 using System;
 using System.Web.Security;
+using OpenEhs.Data;
+using OpenEhs.Domain;
 
 namespace OpenEhs.Infrastructure.Security
 {
@@ -15,7 +17,9 @@ namespace OpenEhs.Infrastructure.Security
     {
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new NotImplementedException();
+            var repo = new UserRepository();
+            status = MembershipCreateStatus.UserRejected;
+            return null;
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)

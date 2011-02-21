@@ -459,7 +459,7 @@ $(document).ready(function () {
                 //Outputs the dates between the selected dates
                 for(var i = 0; i < response.length; i++)
                 {
-                    var select = '<tr><th>' + "Visit Date" + '</th></tr></thead><tbody><tr><td><input id="searchThisVisit" type="button" value="' + response[i].date + '" /></td></tr>';
+                    var select = '<tr><td><input id="searchThisVisit" type="button" value="' + response[i].date + '" /></td></tr>';
                     $("#selectSearchTable").append(select);
                 } 
 
@@ -484,6 +484,13 @@ $(document).ready(function () {
         });
 
     });
+
+    ////////////////////
+    // Your method sir.
+    $(".visitDateButton").live("click", function () {
+        alert("Patient Id: " + $("#patientId").val() + ", Visit Date: " + $(this).val());
+    });
+
 
     function addSearchRow(result) {
 /*
