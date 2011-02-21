@@ -230,13 +230,14 @@ namespace OpenEhs.Web.Controllers
                     vitals.Height = double.Parse(Request.Form["height"]);
                 if (Request.Form["weight"] != "")
                     vitals.Weight = double.Parse(Request.Form["weight"]);
+
+                BloodPressure bp = new BloodPressure();
                 if (Request.Form["BpDiastolic"] != "" && Request.Form["BpSystolic"] != "")
                 {
-                    BloodPressure bp = new BloodPressure();
                     bp.Diastolic = int.Parse(Request.Form["BpDiastolic"]);
-                    bp.Systolic = int.Parse(Request.Form["BpSystolic"]);
-                    vitals.BloodPressure = bp;
+                    bp.Systolic = int.Parse(Request.Form["BpSystolic"]);  
                 }
+                vitals.BloodPressure = bp;
                 if (Request.Form["HeartRate"] != "")
                     vitals.HeartRate = int.Parse(Request.Form["HeartRate"]);
                 if (Request.Form["RespiratoryRate"] != "")
