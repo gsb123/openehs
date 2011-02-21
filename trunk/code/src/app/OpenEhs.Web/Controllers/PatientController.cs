@@ -244,7 +244,7 @@ namespace OpenEhs.Web.Controllers
                     vitals.Temperature = float.Parse(Request.Form["Temperature"]);
                 vitals.Type = (VitalsType)Enum.Parse(typeof(VitalsType), Request.Form["type"]);
                 vitals.Time = DateTime.Now;
-                vitals.PatientCheckIn = patient.PatientCheckIns[0];
+                //vitals.PatientCheckIn = patient.PatientCheckIns[0];
                 vitals.IsActive = true;
 
                 //Add new vitals object to patient
@@ -306,7 +306,7 @@ namespace OpenEhs.Web.Controllers
                 //Build Invoice Object
                 Invoice invoice = new Invoice();
                 invoice.PatientCheckIn = checkin;
-                checkin.Invoice = invoice; 
+                checkin.Invoice = invoice;
 
                 patient.PatientCheckIns.Add(checkin);
 
@@ -325,6 +325,47 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
+        public JsonResult GetCurrentCheckin()
+        {
+            try {
+                //Get patient object
+                int patientID = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientID);
+
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == new DateTime(1, 1, 1, 0, 0, 0)
+                            select checkin;
+                
+                
+                if (query.Count<PatientCheckIn>() > 0)
+                {
+                    PatientCheckIn checkIn = query.First<PatientCheckIn>();
+                    return Json(new
+                    {
+                        error = "false",
+                        checkin = checkIn.Id
+                    });
+                }
+                else
+                {
+                    
+                    return Json(new
+                    {
+                        error="false",
+                        checkin = "null"
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = e.Message
+                });
+            }
+        }
         public JsonResult SearchVisit()
         {
             int patientID = int.Parse(Request.Form["patientID"]);
