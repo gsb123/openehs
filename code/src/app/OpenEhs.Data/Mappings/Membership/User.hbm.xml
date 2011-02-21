@@ -20,5 +20,16 @@
     <property name="FailedPasswordAttemptCount" not-null="true" />
     <property name="IsApproved" not-null="true" />
     <property name="IsActive" not-null="true" />
+
+    <bag name="Roles" table="Role" cascade="all">
+      <key column="UserId" />
+      <one-to-many class="Role" />
+    </bag>
+
+    <one-to-one name="Staff"
+                constrained="true"
+                foreign-key="none"
+                class="Staff" />
+    
   </class>
 </hibernate-mapping>

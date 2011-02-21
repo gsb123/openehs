@@ -14,7 +14,6 @@
     <property name="StaffType" not-null="true" />
     <property name="LicenseNumber" not-null="false" length="20" />
     <one-to-one name="Address" class="Address" />
-    <one-to-one name="User" class="User" />
     <property name="IsActive" not-null="true" />
 
     <bag name="Surgery" table="SurgeryStaff" cascade="none" lazy="false">
@@ -26,6 +25,11 @@
       <key column="StaffID" />
       <one-to-many class="PatientCheckIn" />
     </bag>
+
+    <many-to-one name="User"
+                 class="User"
+                 unique="true"
+                 column="UserID" />
     
   </class>
 </hibernate-mapping>
