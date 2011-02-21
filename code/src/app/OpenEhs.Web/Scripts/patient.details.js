@@ -436,8 +436,8 @@ $(document).ready(function () {
                         patientID: $("#patientId").val(),
                         name: $("#modal_medicationName").val(),
                         instructions: $("#modal_medicationInstructions").val(),
-                        startdate: $("#startDatePicker").val(),
-                        expdate: $("#expDatePicker").val()
+                        startDate: $("#RxStartDatePicker").val(),
+                        expDate: $("#RxExpDatePicker").val()
                     });
                     $(this).dialog("close");
                 }
