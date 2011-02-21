@@ -13,7 +13,7 @@ namespace OpenEhs.Data
 {
     public interface IStaffRepository : IRepository<Staff>
     {
-        IList<Staff> FindByName(string name);
+        IList<Staff> FindByName(string firstName, string middleName, string lastName);
         IList<Staff> FindByPhoneNumber(string phoneNumber);
         IList<Staff> FindByType(StaffType type);
         IList<Staff> GetAllInactive();

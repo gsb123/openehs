@@ -32,43 +32,59 @@ namespace OpenEhs.Data
 
         public IList<Staff> GetAll()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Staff>();
+            return criteria.List<Staff>();
         }
 
         public void Add(Staff entity)
         {
-            throw new NotImplementedException();
+            Session.Save(entity);
         }
 
         public void Remove(Staff entity)
         {
-            throw new NotImplementedException();
+            Session.Delete(entity);
         }
 
-        public IList<Staff> FindByName(string name)
+        public IList<Staff> FindByName(string firstName, string middleName, string lastName)
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Staff>()
+                                        .Add(Restrictions.Like("FirstName", firstName + "%"))
+                                        .Add(Restrictions.Like("MiddleName", middleName + "%"))
+                                        .Add(Restrictions.Like("LastName", lastName + "%"));
+
+            return criteria.List<Staff>();
         }
 
         public IList<Staff> FindByPhoneNumber(string phoneNumber)
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Staff>()
+                                        .Add(Restrictions.Like("PhoneNumber", phoneNumber + "%"));
+
+            return criteria.List<Staff>();
         }
 
         public IList<Staff> FindByType(StaffType staffType)
         {
             ICriteria criteria = Session.CreateCriteria<Staff>().Add(Restrictions.Eq("StaffType",staffType));
+
             return criteria.List<Staff>();
         }
 
         public IList<Staff> GetAllInactive()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Staff>()
+                                        .Add(Restrictions.Eq("IsActive", false));
+
+            return criteria.List<Staff>();
         }
 
         public IList<Staff> GetAllActive()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<Staff>()
+                                        .Add(Restrictions.Eq("IsActive", true));
+
+            return criteria.List<Staff>();
         }
 
         public Staff FindByUser(User user)
