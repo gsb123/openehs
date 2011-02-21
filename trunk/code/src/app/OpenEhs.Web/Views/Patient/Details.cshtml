@@ -52,7 +52,11 @@
 			<li><a href="#patientView-Immunizations">Immunizations</a></li>
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
             <li><a href="#patientView-Allergies">Allergies</a></li>
+            <li><a href="#patientView-Notes">Notes</a></li>
+            <li><a href="#patientView-Charting">Charting</a></li>
+            <li><a href="#patientView-Surgery">Surgery</a></li>
             <li><a href="#patientView-VisitHistory">Visit History</a></li>
+            <li><a href="#patientView-PMH">PMH</a></li>
         </ul>
     </div>
     <div>
@@ -74,8 +78,20 @@
         <div id="#patientView-Allergy">
             @Html.Partial("_tab-Allergy", Model)
         </div>
+        <div id="#patientView-Notes">
+            @Html.Partial("_tab-Notes", Model)
+        </div>
+        <div id="#patientView-Charting">
+            @Html.Partial("_tab-Charting", Model)
+        </div>
+        <div id="#patientView-Surgery">
+            @Html.Partial("_tab-Surgery", Model)
+        </div>
         <div id="#patientView-VisitHistory">
             @Html.Partial("_tab-VisitHistory", Model)
+        </div>
+        <div id="#patientView-PMH">
+            @Html.Partial("_tab-PMH", Model)
         </div>
     </div>
     <p>
