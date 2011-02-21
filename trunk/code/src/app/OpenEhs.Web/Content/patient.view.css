@@ -719,7 +719,43 @@ margin-bottom: 10px;
     margin-left: 100px;
 }
 
-#modal_GetStaff
+#modal_GetStaffSurgeon
 {
     margin-left: 120px;
+}
+
+#modal_GetStaffSurgeonAssistant
+{
+    margin-left: 66px;
+}
+
+#modal_GetStaffAnaesthetist
+{
+    margin-left: 99px;
+}
+
+#modal_GetStaffAnaesthetistAssistant
+{
+    margin-left: 45px;
+}
+
+#modal_GetStaffNurse
+{
+    margin-left: 133px;
+}
+
+#modal_GetStaffConsultant
+{
+    margin-left: 107px;
+}
+
+#surgeryStaffFieldSet
+{
+    width: 300px;
+}
+
+#surgeryNotes
+{
+    width: 300px;
+    float: right;
 }

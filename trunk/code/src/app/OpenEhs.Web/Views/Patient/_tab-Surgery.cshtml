@@ -6,8 +6,10 @@
     </h2>
 </div>
 
+<br />
+
 <div>
-    <fieldset class="group">
+    <fieldset class="group" id="surgeryStaffFieldSet">
         <legend>Surgery Staff</legend>
         
         <label><b>
@@ -22,7 +24,10 @@
 
         <label>Surgeon:</label>
 
-        <select name="surgeonSelect" id="modal_GetStaff">
+        <select name="surgeonSelect" id="modal_GetStaffSurgeon">
+            
+            <option>Select Staff...</option>
+            
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -31,7 +36,10 @@
 
         <label>Surgeon Assistant:</label>
 
-        <select name="surgeonAssistantSelect" id="modal_GetStaff">
+        <select name="surgeonAssistantSelect" id="modal_GetStaffSurgeonAssistant">
+
+            <option>Select Staff...</option>
+
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -40,7 +48,10 @@
 
         <label>Anaesthetist:</label>
 
-        <select name="anaesthetistSelect" id="modal_GetStaff">
+        <select name="anaesthetistSelect" id="modal_GetStaffAnaesthetist">
+
+            <option>Select Staff...</option>
+
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -49,7 +60,10 @@
 
         <label>Anaesthetist Assistant:</label>
 
-        <select name="anaesthetistAssistantSelect" id="modal_GetStaff">
+        <select name="anaesthetistAssistantSelect" id="modal_GetStaffAnaesthetistAssistant">
+
+            <option>Select Staff...</option>
+
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -58,7 +72,10 @@
 
         <label>Nurse:</label>
 
-        <select name="nurseSelect" id="modal_GetStaff">
+        <select name="nurseSelect" id="modal_GetStaffNurse">
+
+            <option>Select Staff...</option>
+
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -67,14 +84,21 @@
 
         <label>Consultant:</label>
 
-        <select name="consultantSelect" id="modal_GetStaff">
+        <select name="consultantSelect" id="modal_GetStaffConsultant">
+
+            <option>Select Staff...</option>
+
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
-        </select><br />
-
-       
+        </select>
 
     </fieldset>
+
+    <div id="surgeryNotes">
+        <label for="surgeryNoteTextBox"><b>Surgery Notes</b></label>
+        <textarea rows="30" cols="20" name="surgeryNoteTextBox" id="surgeryNoteTextBox">Surgery Notes...</textarea>
+    </div>
+
 </div>
