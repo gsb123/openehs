@@ -80,7 +80,6 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 invoice.Save();
-
                 return RedirectToAction("Index");
             }
             catch
@@ -138,6 +137,23 @@ namespace OpenEhs.Web.Controllers
 
             new InvoiceRepository().AddLineItem(lineItem);
             return new RedirectResult("/Billing/Edit/" + invoiceId);
+        }
+
+        public RedirectResult SaveLineItem(int itemId, int productId, int serviceId, int quantity)
+        {
+            InvoiceItem lineItem = new InvoiceRepository().GetItem(itemId);
+            if (serviceId == 0)
+            {
+                lineItem.Product = new ProductRepository().Get(productId);
+            }
+            if (productId == 0)
+            {
+                lineItem.Service = new ServiceRepository().Get(serviceId);
+            }
+            lineItem.Quantity = quantity;
+            new InvoiceRepository().AddLineItem(lineItem);
+
+            return new RedirectResult("/Billing/Edit/" + lineItem.Invoice.Id);
         }
 
         /*

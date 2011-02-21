@@ -66,6 +66,19 @@ namespace OpenEhs.Data
             return LineItems;
         }
 
+        public InvoiceItem GetItem(int itemId)
+        {
+            IList<InvoiceItem> lineItems = GetAllItems();
+            for (int i = 0; i < lineItems.Count; i++)
+            {
+                if (lineItems[i].Id == itemId)
+                {
+                    return lineItems[i];
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// Adds an Invoice to the Repository.
         /// </summary>
@@ -104,7 +117,7 @@ namespace OpenEhs.Data
         /// <param name="lineItem">The item to be added.</param>
         public void AddLineItem(InvoiceItem lineItem)
         {
-            Session.Save(lineItem);
+            Session.SaveOrUpdate(lineItem);
         }
 
         /// <summary>
