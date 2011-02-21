@@ -17,7 +17,7 @@
     <property name="CaseType" />
 
     <!--Many-to-many mapping: Staff-->
-    <bag name="SurgeryStaff" table="SurgeryStaff" cascade="none" lazy="false">
+    <bag name="Staff" table="SurgeryStaff" cascade="none" lazy="false">
       <key column="StaffID" />
       <many-to-many column="SurgeryID" class="Staff" />
     </bag>
