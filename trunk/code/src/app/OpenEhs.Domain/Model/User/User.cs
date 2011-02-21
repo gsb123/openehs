@@ -35,5 +35,18 @@ namespace OpenEhs.Domain
         
         #endregion
 
+
+        public User()
+        {}
+
+        public User(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved)
+        {
+            Username = username;
+            Password = password;
+            EmailAddress = email;
+            PasswordQuestion = passwordQuestion;
+            PasswordAnswer = passwordAnswer;
+            IsApproved = isApproved;
+        }
     }
 }

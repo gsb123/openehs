@@ -392,6 +392,10 @@
       <Project>{9F0827C4-FFAE-4B13-9736-012A13662D90}</Project>
       <Name>OpenEhs.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenEhs.Infrastructure.Security\OpenEhs.Infrastructure.Security.csproj">
+      <Project>{7FA944BF-57F8-4D8D-B02A-9F4E4D9CA7D5}</Project>
+      <Name>OpenEhs.Infrastructure.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Patient\Create.cshtml" />

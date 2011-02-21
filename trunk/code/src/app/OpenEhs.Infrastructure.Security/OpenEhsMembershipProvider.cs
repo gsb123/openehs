@@ -17,9 +17,7 @@ namespace OpenEhs.Infrastructure.Security
     {
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            var repo = new UserRepository();
-            status = MembershipCreateStatus.UserRejected;
-            return null;
+            throw new NotImplementedException();
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
@@ -49,7 +47,10 @@ namespace OpenEhs.Infrastructure.Security
 
         public override bool ValidateUser(string username, string password)
         {
-            throw new NotImplementedException();
+            var userRepository = new UserRepository();
+            var users = userRepository.Find(username, password);
+
+            return users.Count != 0;
         }
 
         public override bool UnlockUser(string userName)

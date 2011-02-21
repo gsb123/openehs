@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NHibernate;
+using NHibernate.Criterion;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
@@ -22,7 +23,9 @@ namespace OpenEhs.Data
 
         public IList<User> GetAll()
         {
-            throw new NotImplementedException();
+            ICriteria criteria = Session.CreateCriteria<User>();
+
+            return criteria.List<User>();
         }
 
         public void Add(User entity)
@@ -33,6 +36,15 @@ namespace OpenEhs.Data
         public void Remove(User entity)
         {
             Session.Delete(entity);
+        }
+
+        public IList<User> Find(string username, string password)
+        {
+            ICriteria criteria = Session.CreateCriteria<User>()
+                                        .Add(Restrictions.Eq("Username", username))
+                                        .Add(Restrictions.Eq("Password", password));
+
+            return criteria.List<User>();
         }
     }
 }
