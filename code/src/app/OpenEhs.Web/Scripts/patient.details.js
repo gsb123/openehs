@@ -62,6 +62,10 @@ $(document).ready(function () {
         $("#newCheckinModal").dialog("open")
     });
 
+    $("#checkOutButton").button().click(function () {
+        $("#checkOutModal").dialog("open")
+    });
+
     $("#editPatientInfoButton").button().click(function () {
 
     });
@@ -103,7 +107,37 @@ $(document).ready(function () {
                 success: function(response) {
                     $("#newCheckInButton").hide();
                     $("#newCheckinModal").dialog("close");
-                    alert("Success!");
+                },
+                dataType: "json"
+            });
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        },
+        close: function() {}
+        });
+
+    // ------------------------------------------------- //
+    //  Setup Check Out Modal                             //
+    // ------------------------------------------------- //
+    $("#checkOutModal").dialog({
+        autoOpen: false,
+        height: 225,
+        width: 375,
+        modal: true,
+        buttons: {
+            "Check In": function () {
+            $.ajax({
+                type: "POST",
+                url: "/Patient/CheckOut",
+                data: {
+                    patientID: $("#patientId").val(),
+                    diagnosis: $("#diagnosis").val()
+                },
+                success: function(response) {
+                    $("#newCheckInButton").hide();
+                    $("#newCheckinModal").dialog("close");
                 },
                 dataType: "json"
             });
