@@ -100,17 +100,17 @@ namespace OpenEhs.Infrastructure.Security
 
         public override bool EnablePasswordRetrieval
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override bool EnablePasswordReset
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override string ApplicationName
@@ -131,17 +131,17 @@ namespace OpenEhs.Infrastructure.Security
 
         public override bool RequiresUniqueEmail
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override MembershipPasswordFormat PasswordFormat
         {
-            get { throw new NotImplementedException(); }
+            get { return MembershipPasswordFormat.Hashed; }
         }
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new NotImplementedException(); }
+            get { return 6; }
         }
 
         public override int MinRequiredNonAlphanumericCharacters
