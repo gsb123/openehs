@@ -32,9 +32,12 @@ $(function () {
 
 
 
-    $("#intakeSliderInfoLink").click(function () {
-        $("#intakeSliderMoreInfo").slideToggle("slow", function () { });
+    $("#suctionSliderInfoLink").click(function () {
+        $("#suctionSliderMoreInfo").slideToggle("slow", function () { });
     });
+
+
+
 
     $("#outputSliderInfoLink").click(function () {
         $("#outputSliderMoreInfo").slideToggle("slow", function () { });
