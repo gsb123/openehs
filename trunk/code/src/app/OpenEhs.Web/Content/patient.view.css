@@ -846,11 +846,10 @@ margin-bottom: 10px;
 
 #chartingHeader input
 {
-    margin-top: 15px;
-    float: right;
     height: 35;
     width: 60px;
     font-size: 15px;
+    margin-bottom: 20px;
 }
 
 
