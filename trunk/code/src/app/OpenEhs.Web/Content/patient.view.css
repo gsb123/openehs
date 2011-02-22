@@ -863,7 +863,7 @@ margin-bottom: 10px;
     height: 35;
     width: 60px;
     font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #intakeAddButton
@@ -871,7 +871,7 @@ margin-bottom: 10px;
     height: 35;
     width: 90px;
     font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #suctionAddButton
@@ -879,7 +879,7 @@ margin-bottom: 10px;
     height: 35;
     width: 110px;
     font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #urineAddButton
@@ -887,7 +887,7 @@ margin-bottom: 10px;
     height: 35;
     width: 110px;
     font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #stoolAddButton
@@ -895,7 +895,7 @@ margin-bottom: 10px;
     height: 35;
     width: 110px;
     font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #Suction
@@ -928,7 +928,7 @@ margin-bottom: 10px;
 {
     color: #00f;
     cursor: pointer;
-    margin: 10px 0px 5px 0px;
+    margin: 1px 0px 5px 0px;
     font-size: 15px;
 }
 
@@ -967,11 +967,22 @@ margin-bottom: 10px;
 {
     color: #00f;
     cursor: pointer;
-    margin: 10px 0px 5px 0px;
+    margin: 1px 0px 5px 0px;
     font-size: 15px;
 }
 
+#intakeSliderMoreInfo
+{
+    display: none;
+}
 
+#intakeSliderInfoLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 1px 0px 5px 0px;
+    font-size: 15px;
+}
 
 
 
