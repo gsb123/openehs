@@ -665,4 +665,6 @@ $(document).ready(function () {
 
     $("#surgeryStartTime").timepicker({});
 
+    $("#surgeryRadio").buttonset();
+
 });
