@@ -1,6 +1,6 @@
-@import url("reset.css") screen;
-@import url("elements.css") screen;
-@import url("hacks.css") screen;
+@import url("../reset.css") screen;
+@import url("../elements.css") screen;
+@import url("../hacks.css") screen;
 
 label {
     display: block;
