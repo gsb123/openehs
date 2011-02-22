@@ -321,7 +321,6 @@ CREATE TABLE Vitals
 CREATE TABLE Surgery
 (
     SurgeryID                   int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    SurgeryType                 text                NOT NULL,
     StartTime                   datetime                NOT NULL,
     EndTime                     datetime                NULL,
     LocationID                  int                 NULL,
