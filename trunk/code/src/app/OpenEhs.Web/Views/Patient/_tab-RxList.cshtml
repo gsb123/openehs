@@ -54,17 +54,14 @@
         <ul id="MedicationListTwo">
             @foreach (var medication in Model.CurrentMedications) {
                 <li class="group">
-                    <div style="float: left;">
+                    <div>
                         <b>Name: </b>@medication.Name
                     </div>
-                    <br />
-                    <div style="float: left;">
+                    <div>
                         <b>Instructions: </b>@medication.Instruction</div>
-                    <br />
-                    <div style="float: left;">
+                    <div>
                         <b>Start Date: </b>@medication.StartDate</div>
-                    <br />
-                    <div style="float: left;">
+                    <div>
                         <b>Exp Date: </b>@medication.ExpDate</div>
                 </li>
             }
