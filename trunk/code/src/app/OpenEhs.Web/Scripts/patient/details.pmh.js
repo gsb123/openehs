@@ -5,4 +5,17 @@
 
 $(function () {
 
+
+    $("#surgeryLink").click(function () {
+        $("#surgeryInfo").slideToggle("slow", function () { });
+    });
+
+    $("#noteLink").click(function () {
+        $("#noteInfo").slideToggle("slow", function () { });
+    });
+
+    $("#staffLink").click(function () {
+        $("#staffInfo").slideToggle("slow", function () { });
+    });
+
 });

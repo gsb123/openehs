@@ -861,7 +861,7 @@ margin-bottom: 10px;
 #feedAddButton
 {
     height: 35;
-    width: 60px;
+    width: 75px;
     font-size: 15px;
     margin-bottom: 10px;
 }
@@ -982,6 +982,64 @@ margin-bottom: 10px;
     cursor: pointer;
     margin: 1px 0px 5px 0px;
     font-size: 15px;
+}
+
+.pmhHistoryList li
+{
+    font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 40px; 
+    width: 650px;
+}
+
+.surgeryInfo
+{
+    display: none;
+}
+
+.surgeryLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 1px 0px 5px 0px;
+    font-size: 12px;
+}
+
+.noteInfo
+{
+    display: none;
+}
+
+.noteLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 1px 0px 5px 0px;
+    font-size: 12px;
+}
+
+.staffInfo
+{
+    display: none;
+}
+
+.staffLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 1px 0px 5px 0px;
+    font-size: 12px;
+}
+
+.staffMargin
+{
+	margin-left: 20px;
 }
 
 
