@@ -524,18 +524,18 @@ namespace OpenEhs.Web.Controllers
 
                 //Surgery Staff Repository
                 StaffRepository staffRepo = new StaffRepository();
-
-                if (Request.Form["surgeryNote"] != "")
-                    surgery.Comments = "";
+                surgery.Comments = "";
 
                 LocationRepository locationRepo = new LocationRepository();
-                surgery.Location = locationRepo.Get(int.Parse(Request.Form["theaterNumber"]));
+                surgery.Location = locationRepo.Get(int.Parse(Request.Form["theatreNumber"]));
 
                 surgery.StartTime = DateTime.Parse(Request.Form["startTime"]);
                 surgery.EndTime = DateTime.Parse(Request.Form["endTime"]);
 
                 //Add to checkin
                 openCheckIn.Surgeries.Add(surgery);
+                surgery.CheckIn = openCheckIn;
+                UnitOfWork.CurrentSession.Flush();
 
                 //Surgeon
                 if (Request.Form["surgeon"] != "")
