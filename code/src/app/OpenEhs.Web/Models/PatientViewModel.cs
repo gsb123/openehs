@@ -390,7 +390,8 @@ namespace OpenEhs.Web.Models
             get
             {
                 var visitsTopOne = (from sci in PatientCheckIns
-                                   select sci).Take(1) ;
+                                    orderby sci.Id descending 
+                                   select sci).Take(1);
 
                 return visitsTopOne.ToList();
             }

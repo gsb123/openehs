@@ -50,6 +50,10 @@ $(function () {
         $("#feedSliderMoreInfo").slideToggle("slow", function () { });
     });
 
+    $("#intakeSliderInfoLink").click(function () {
+        $("#intakeSliderMoreInfo").slideToggle("slow", function () { });
+    });
+
 
 
 
