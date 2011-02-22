@@ -541,7 +541,9 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["surgeon"] != "")
                 {
                     SurgeryStaff surgeon = new SurgeryStaff();
-                    surgeon.Staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
+                    Staff staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
+                    surgeon.Staff = staff;
+                    staff.Surgery.Add(surgery);
                     surgeon.StaffRoles = StaffRole.Surgeon;
                     surgeon.Surgery = surgery;
                     surgery.Staff.Add(surgeon);
