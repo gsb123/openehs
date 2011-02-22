@@ -23,7 +23,6 @@ namespace OpenEhs.Domain
         public virtual string Comments { get; set; }
         public virtual IList<SurgeryStaff> Staff { get; set; }
         public virtual CaseType CaseType { get; set; }
-        public virtual DateTime ScheduleStartTime { get; set; }
 
         #endregion
 

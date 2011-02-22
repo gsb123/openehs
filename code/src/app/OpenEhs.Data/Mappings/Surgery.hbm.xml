@@ -12,8 +12,6 @@
     <property name="EndTime" />
     <many-to-one name="Location" column="LocationID" unique="true" cascade="all" />
     <property name="Comments" />
-
-    <property name="ScheduleStartTime" />
     <property name="CaseType" />
 
     <!--Many-to-many mapping: Staff-->

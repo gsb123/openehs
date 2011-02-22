@@ -423,16 +423,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<int> GetCaseType
-        {
-            get
-            {
-                var test = Enum.GetValues(typeof (CaseType)).Cast<CaseType>();
-
-                return test;
-            }
-        }
-
         #endregion
 
         
