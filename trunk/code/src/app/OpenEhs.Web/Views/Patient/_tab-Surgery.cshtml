@@ -82,16 +82,30 @@
     </fieldset>
     <br />
     <fieldset>
-        <legend>Theatre</legend>
+        <legend>Surgery Details</legend>
         <label>
-            Theatre #:</label>
+            Theatre #:
+        </label>
         <select name="theatreNumber" id="modal_GetSurgeryLocation">
             <option>Select Theatre...</option>
             @foreach (var loc in Model.GetLocations)
             {
                 <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
             }
-        </select>
+        </select><br />
+
+        <label>
+            Case Type:
+        </label>
+
+        <select name="caseType" id="modal_GetCaseType">
+            <option>Select Theatre...</option>
+            @foreach (var caseType in Model.GetCaseType)
+            {
+                <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
+            }
+        </select><br />
+
     </fieldset>
     <button id="submitSurgery">
         Complete Surgery</button>
