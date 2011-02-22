@@ -7,7 +7,6 @@
     <id name="Id" column="SurgeryID">
       <generator class="native" />
     </id>
-    <property name="SurgeryType" />
     <property name="StartTime" />
     <property name="EndTime" />
     <many-to-one name="Location" column="LocationID" unique="true" cascade="all" />
