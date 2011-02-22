@@ -82,11 +82,13 @@ namespace OpenEhs.Web.Controllers
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                MembershipCreateStatus createStatus = MembershipService.CreateUser(model.UserName, model.Password, model.Email);
+                // TODO: Add user name as first parameter.
+                MembershipCreateStatus createStatus = MembershipService.CreateUser("", model.Password, model.Email);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
+                    // TODO: Add user name as first parameter.
+                    FormsService.SignIn("", false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else
