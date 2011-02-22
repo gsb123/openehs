@@ -47,8 +47,7 @@
     <br />
     @if (Model.CurrentMedications.Count == 0) {
         <ul id="MedicationListOne">
-            <li style="float: left;">There are no recorded current medications for this patient.
-            </li>
+            <li>There are no recorded current medications for this patient.</li>
         </ul>
     } else {
         <ul id="MedicationListTwo">
@@ -60,9 +59,9 @@
                     <div>
                         <b>Instructions: </b>@medication.Instruction</div>
                     <div>
-                        <b>Start Date: </b>@medication.StartDate</div>
+                        <b>Start Date: </b>@medication.StartDate.Date.ToString("MM/dd/yyyy")</div>
                     <div>
-                        <b>Exp Date: </b>@medication.ExpDate</div>
+                        <b>Exp Date: </b>@medication.ExpDate.Date.ToString("MM/dd/yyyy")</div>
                 </li>
             }
         </ul>
@@ -80,12 +79,11 @@
             <ul id="MedicationListFour">
                 @foreach (var medication in Model.PastMedications) {
                     <li class="group">
-                        <div style="float: left;">
+                        <div>
                             <b>Name: </b>@medication.Name
                         </div>
-                        <br />
-                        <div style="float: left;">
-                            <b>Exp Date: </b>@medication.ExpDate</div>
+                        <div>
+                            <b>Exp Date: </b>@medication.ExpDate.Date.ToString("MM/dd/yyyy")</div>
                     </li>
                 }
             </ul>
