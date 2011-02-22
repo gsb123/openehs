@@ -586,9 +586,8 @@ namespace OpenEhs.Web.Controllers
                     surgeon.Staff = staff;
                     surgeon.Surgery = surgery;
                     surgeon.Role = StaffRole.Surgeon;
-                    surgeon.Surgery = surgery;
-                    surgery.Staff.Add(surgeon);
                 }
+                /*
                 //Surgeon Assistant
                 if (Request.Form["surgeonAssistant"] != "")
                 {
@@ -635,7 +634,7 @@ namespace OpenEhs.Web.Controllers
                     //surgery.Staff.Add(consultant);
                 }
 
-                
+                */
 
                 return Json(new
                 {
