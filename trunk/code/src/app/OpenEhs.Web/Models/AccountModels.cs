@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
+using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Models
 {
@@ -39,22 +40,51 @@ namespace OpenEhs.Web.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-//        [Display(Name = "Remember me?")]
-//        public bool RememberMe { get; set; }
     }
 
 
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Middle Name")]
+        public string MiddleName { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Title")]
+        public StaffType Title { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email address")]
+        [Display(Name = "Email Address")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Street 1")]
+        public string Street1 { get; set; }
+
+        [Display(Name = "Street 2")]
+        public string Street2 { get; set; }
+
+        [Display(Name = "Street 3")]
+        public string Street3 { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string Region { get; set; }
+
+        [Required]
+        public string Country { get; set; }
 
         [Required]
         [ValidatePasswordLength]
@@ -63,7 +93,7 @@ namespace OpenEhs.Web.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
