@@ -316,6 +316,7 @@ namespace OpenEhs.Web.Controllers
                 checkin.PatientType = (PCIType)Enum.Parse(typeof(PCIType), Request.Form["patientType"]);
                 checkin.AttendingStaff = staff;
                 checkin.Location = location;
+                checkin.IsActive = true;
 
                 //Build Invoice Object
                 Invoice invoice = new Invoice();
@@ -543,7 +544,7 @@ namespace OpenEhs.Web.Controllers
                     SurgeryStaff surgeon = new SurgeryStaff();
                     Staff staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
                     surgeon.Staff = staff;
-                    staff.Surgery.Add(surgery);
+                    surgeon.Surgery = surgery;
                     surgeon.Role = StaffRole.Surgeon;
                     surgeon.Surgery = surgery;
                     surgery.Staff.Add(surgeon);
@@ -553,45 +554,45 @@ namespace OpenEhs.Web.Controllers
                 {
                     SurgeryStaff surgeonAssistant = new SurgeryStaff();
                     surgeonAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["surgeonAssistant"]));
-                    surgeonAssistant.Role = StaffRole.SurgeonAssistant;
+                    //surgeonAssistant.Role = StaffRole.SurgeonAssistant;
                     surgeonAssistant.Surgery = surgery;
-                    surgery.Staff.Add(surgeonAssistant);
+                    //surgery.Staff.Add(surgeonAssistant);
                 }
                 //Anaesthetist
                 if (Request.Form["anaesthetist"] != "")
                 {
                     SurgeryStaff anaesthetist = new SurgeryStaff();
                     anaesthetist.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetist"]));
-                    anaesthetist.Role = StaffRole.Anaesthetist;
+                    //anaesthetist.Role = StaffRole.Anaesthetist;
                     anaesthetist.Surgery = surgery;
-                    surgery.Staff.Add(anaesthetist);
+                    //surgery.Staff.Add(anaesthetist);
                 }
                 //Anaesthetist Assistant
                 if (Request.Form["anaesthetistAssistant"] != "")
                 {
                     SurgeryStaff anaesthetistAssistant = new SurgeryStaff();
                     anaesthetistAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetistAssistant"]));
-                    anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
+                    //anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
                     anaesthetistAssistant.Surgery = surgery;
-                    surgery.Staff.Add(anaesthetistAssistant);
+                    //surgery.Staff.Add(anaesthetistAssistant);
                 }
                 //Nurse
                 if (Request.Form["nurse"] != "")
                 {
                     SurgeryStaff nurse = new SurgeryStaff();
                     nurse.Staff = staffRepo.Get(int.Parse(Request.Form["nurse"]));
-                    nurse.Role = StaffRole.Nurse;
+                    //nurse.Role = StaffRole.Nurse;
                     nurse.Surgery = surgery;
-                    surgery.Staff.Add(nurse);
+                    //surgery.Staff.Add(nurse);
                 }
                 //Consultant
                 if (Request.Form["consultant"] != "")
                 {
                     SurgeryStaff consultant = new SurgeryStaff();
                     consultant.Staff = staffRepo.Get(int.Parse(Request.Form["consultant"]));
-                    consultant.Role = StaffRole.Consultant;
+                    //consultant.Role = StaffRole.Consultant;
                     consultant.Surgery = surgery;
-                    surgery.Staff.Add(consultant);
+                    //surgery.Staff.Add(consultant);
                 }
 
                 
