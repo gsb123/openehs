@@ -1,6 +1,7 @@
 ﻿/// <reference path="jquery-1.4.4.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.ui.js" />
+/// <reference path="jquery-jvert-tabs-1.1.4.js" />
 
 
 $(document).ready(function () {
@@ -175,7 +176,6 @@ $(document).ready(function () {
                         if (returnData.error == "false") {
                             $("#addAllergyDialog").dialog("close");
                             var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
-                            console.log(newAllergy);
                             $("#allergyList").append(newAllergy);
                             $("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
                                 $(this).find(".allergyRemove").button().click(removeOnClick)
@@ -446,6 +446,12 @@ $(document).ready(function () {
                 $(this).dialog("close");
             }
         },
+        success: function(response){
+            $("#MedicationListOne").hide();
+            var newMedication = '<li class="group"><div><b>Name: </b>' + response.medication.name  + '</div><div><b>Instructions: </b>' + response.medication.instructions + '</div><div><b>Start Date: </b>' + response.medication.startDate + '</div><div><b>Exp Date: </b>' + response.medication.expDate + '</div></li>';
+            sonsole.log(newMedication);
+            $("#MedicationListTwo").append(newMedication);
+        },
         close: function () {
             $("#newMedicationDialog .modalErrorContainer").hide();
             $('#addRxForm').each (function(){
@@ -641,6 +647,7 @@ $(document).ready(function () {
                     theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
                     caseType: $("input:radio[name='modal_caseType']:checked").val(),
                     theatreNumber: $("select[name='theatreNumber'] option:selected").val(),
+                    theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
                     caseType: $("select[name='caseType'] option:selected").val()
                 },
                 success: function(response) {

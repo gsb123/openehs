@@ -632,8 +632,8 @@ namespace OpenEhs.Web.Controllers
                 medication.Instruction = medicationInstructions;
                 medication.StartDate = startDate;
                 medication.ExpDate = expDate;
+                medication.Patient = patient;
 
-                
                 patient.Medications.Add(medication);
 
                 UnitOfWork.CurrentSession.Flush();
@@ -645,10 +645,10 @@ namespace OpenEhs.Web.Controllers
                     // Need this fix for circular reference error
                     medication = new {
                         id = medication.Id,
-                        instruction = medication.Instruction,
+                        instructions = medication.Instruction,
                         name = medication.Name,
-                        startDate = medication.StartDate,
-                        expDate = medication.ExpDate
+                        startDate = medication.StartDate.Date.ToString("dd/MM/yyyy"),
+                        expDate = medication.ExpDate.Date.ToString("dd/MM/yyyy")
                     }
                 });
             }
