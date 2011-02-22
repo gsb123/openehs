@@ -87,7 +87,7 @@
             Theatre #:
         </label>
         <select name="theatreNumber" id="modal_GetSurgeryLocation">
-            <option>Select Theatre...</option>
+            <option value="">Select Theatre...</option>
             @foreach (var loc in Model.GetLocations)
             {
                 <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
