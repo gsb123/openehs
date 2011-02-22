@@ -73,7 +73,7 @@ namespace OpenEhs.Web.Controllers
         public ActionResult Register()
         {
             ViewBag.PasswordLength = MembershipService.MinPasswordLength;
-            return View();
+            return View(new RegisterModel());
         }
 
         [HttpPost]

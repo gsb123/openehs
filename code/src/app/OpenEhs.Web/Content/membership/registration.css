@@ -1,6 +1,6 @@
-@import url("reset.css") screen;
-@import url("elements.css") screen;
-@import url("hacks.css") screen;
+@import url("../reset.css") screen;
+@import url("../elements.css") screen;
+@import url("../hacks.css") screen;
 
 #container {
     width: 600px;
@@ -40,6 +40,8 @@ legend {
 
 label {
     display: block;
+    font-size: 1.6em;
+    margin-bottom: 3px;
 }
 
 ul li {
@@ -60,4 +62,11 @@ ul li {
     -moz-box-shadow: 0 0 20px #ccc;
     -webkit-box-shadow: 0 0 20px #ccc;
     padding: 30px 50px;
+}
+
+#generatedUsername 
+{
+    font-size: 3.2em;
+    text-align: center;
+    margin: 20px 0 30px 0;
 }

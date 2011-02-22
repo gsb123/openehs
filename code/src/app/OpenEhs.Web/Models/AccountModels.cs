@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using OpenEhs.Domain;
@@ -58,6 +59,17 @@ namespace OpenEhs.Web.Models
         [Required]
         [Display(Name = "Title")]
         public StaffType Title { get; set; }
+
+        public SelectList StaffTypes
+        {
+            get
+            {
+                var types = from StaffType s in Enum.GetValues(typeof (StaffType))
+                            select new {ID = s, Name = s.ToString()};
+
+                return new SelectList(types, "ID", "Name");
+            }
+        }
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }

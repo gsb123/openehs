@@ -116,12 +116,12 @@
     <Content Include="Content\jvert-tabs\images\ClosedTabBackground.png" />
     <Content Include="Content\jvert-tabs\images\ClosedTabBackgroundHover.png" />
     <Content Include="Content\jvert-tabs\jquery-jvert-tabs-1.1.4.css" />
-    <Content Include="Content\login.css" />
+    <Content Include="Content\membership\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\patient.main.css" />
     <Content Include="Content\patient.view.css" />
-    <Content Include="Content\registration.css" />
+    <Content Include="Content\membership\registration.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\themes\base\images\calendar.png" />
     <Content Include="Content\typography.css" />
