@@ -327,8 +327,7 @@ CREATE TABLE Surgery
     LocationID                  int                 NULL,
     Comments                    text                NULL,
     PatientCheckInID          int                 NOT NULL,
-    CaseType                    bit                 NOT NULL,
-    ScheduleStartTime           datetime            NOT NULL
+    CaseType                    bit                 NOT NULL
 );
 
 CREATE TABLE SurgeryStaff
