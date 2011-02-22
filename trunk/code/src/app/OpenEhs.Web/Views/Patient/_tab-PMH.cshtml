@@ -6,19 +6,37 @@
     </h2>
 </div>
 
+<ul>
+	@foreach (var checkin in Model.PatientCheckIns)
+            {
+                foreach (var surgery in checkin.Surgeries)
+				{
+					foreach(var staff in surgery.Staff)
+					{
+						<li>@staff.Id</li>
+					}
+					}
+					}
+</ul>
+
 <br />
 
 <div>
 	<ul class="pmhHistoryList">
+		@foreach (var checkin in Model.PatientCheckIns)
+            {
+                foreach (var surgery in checkin.Surgeries)
+				{
 		<li>
-			<div style="float: left;"><b>Surgery Date: </b>pmh.StartTime</div><br />
-			<div style="float: left;"><b>Case Type: </b>pmh.CaseType</div><br />
+			<div style="float: left;"><b>Surgery Date: </b>@surgery.StartTime</div><br />
+			<div style="float: left;"><b>Case Type: </b>@surgery.CaseType</div><br />
 
 			 <div id="surgeryLink" class="surgeryLink">
 	                Surgery Details...
              </div>
              <div id="surgeryInfo" class="surgeryInfo">
-				<div><b>Details: </b>??????????????</div>
+				<div><b>Start Time: </b>@surgery.StartTime</div>
+				<div><b>End Time: </b>@surgery.EndTime</div>
 			 </div>
 
 
@@ -42,5 +60,7 @@
 				<div class="staffMargin">Consultant: <b>Jimmy John</b></div>
 			 </div>
 		</li>
+		}
+		}
 	</ul>
 </div>
