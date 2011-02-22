@@ -522,12 +522,13 @@ namespace OpenEhs.Web.Controllers
                             select checkin;
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
 
-
                 //Surgery Staff Repository
                 StaffRepository staffRepo = new StaffRepository();
 
                 if (Request.Form["surgeryNote"] != "")
                     surgery.Comments = "";
+
+                LocationRepository locationrepo = new LocationRepository();
 
                 surgery.StartTime = DateTime.Parse(Request.Form["startTime"]);
                 surgery.EndTime = DateTime.Parse(Request.Form["endTime"]);
