@@ -1,12 +1,50 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
 
-<div id="chartingHeader" class="group">
+<div class="group">
     <h2 id="Charting">
         Charting</h2>
 </div>
 
-<div>
+<div id="chartingHeader">
     <fieldset>
-        <legend>asdfasdf</legend>
+        <legend>FeedChart</legend>
+
+        <input class="feedAddButton" id="feedAddButton" name="feedAddButton"
+        type="button" value="Print" />
+
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Feed Type
+                    </th>
+                    <th>
+                        Amount Offered
+                    </th>
+                    <th>
+                        Amount Taken
+                    </th>
+                    <th>
+                        Vomit
+                    </th>
+                    <th>
+                        Urine
+                    </th>
+                    <th>
+                        Stool
+                    </th>
+                    <th>
+                        Comments
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
     </fieldset>
 </div>
