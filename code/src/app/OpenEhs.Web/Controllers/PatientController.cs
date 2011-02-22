@@ -544,7 +544,7 @@ namespace OpenEhs.Web.Controllers
                     Staff staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
                     surgeon.Staff = staff;
                     staff.Surgery.Add(surgery);
-                    surgeon.StaffRoles = StaffRole.Surgeon;
+                    surgeon.Role = StaffRole.Surgeon;
                     surgeon.Surgery = surgery;
                     surgery.Staff.Add(surgeon);
                 }
@@ -553,7 +553,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     SurgeryStaff surgeonAssistant = new SurgeryStaff();
                     surgeonAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["surgeonAssistant"]));
-                    surgeonAssistant.StaffRoles = StaffRole.SurgeonAssistant;
+                    surgeonAssistant.Role = StaffRole.SurgeonAssistant;
                     surgeonAssistant.Surgery = surgery;
                     surgery.Staff.Add(surgeonAssistant);
                 }
@@ -562,7 +562,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     SurgeryStaff anaesthetist = new SurgeryStaff();
                     anaesthetist.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetist"]));
-                    anaesthetist.StaffRoles = StaffRole.Anaesthetist;
+                    anaesthetist.Role = StaffRole.Anaesthetist;
                     anaesthetist.Surgery = surgery;
                     surgery.Staff.Add(anaesthetist);
                 }
@@ -571,7 +571,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     SurgeryStaff anaesthetistAssistant = new SurgeryStaff();
                     anaesthetistAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetistAssistant"]));
-                    anaesthetistAssistant.StaffRoles = StaffRole.AnaesthetistAssistant;
+                    anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
                     anaesthetistAssistant.Surgery = surgery;
                     surgery.Staff.Add(anaesthetistAssistant);
                 }
@@ -580,7 +580,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     SurgeryStaff nurse = new SurgeryStaff();
                     nurse.Staff = staffRepo.Get(int.Parse(Request.Form["nurse"]));
-                    nurse.StaffRoles = StaffRole.Nurse;
+                    nurse.Role = StaffRole.Nurse;
                     nurse.Surgery = surgery;
                     surgery.Staff.Add(nurse);
                 }
@@ -589,7 +589,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     SurgeryStaff consultant = new SurgeryStaff();
                     consultant.Staff = staffRepo.Get(int.Parse(Request.Form["consultant"]));
-                    consultant.StaffRoles = StaffRole.Consultant;
+                    consultant.Role = StaffRole.Consultant;
                     consultant.Surgery = surgery;
                     surgery.Staff.Add(consultant);
                 }
