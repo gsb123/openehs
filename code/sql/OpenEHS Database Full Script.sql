@@ -2676,3 +2676,105 @@ VALUES
     "2011-02-21 00:00:00"
 );
 
+INSERT INTO Surgery
+(
+StartTime,
+EndTime,
+LocationID,
+Comments,
+PatientCheckInID,
+CaseType
+)
+VALUES
+(
+NOW(),
+NOW(),
+2,
+'Test surgery 1',
+1,
+0
+);
+
+INSERT INTO Surgery
+(
+StartTime,
+EndTime,
+LocationID,
+Comments,
+PatientCheckInID,
+CaseType
+)
+VALUES
+(
+NOW(),
+NOW(),
+1,
+'Test surgery 2',
+2,
+1
+);
+
+INSERT INTO SurgeryStaff
+(
+StaffID,
+SurgeryID,
+Role
+)
+VALUES
+(
+1,
+1,
+0
+);
+
+INSERT INTO SurgeryStaff
+(
+StaffID,
+SurgeryID,
+Role
+)
+VALUES
+(
+2,
+1,
+1
+);
+
+INSERT INTO SurgeryStaff
+(
+StaffID,
+SurgeryID,
+Role
+)
+VALUES
+(
+3,
+1,
+2
+);
+
+INSERT INTO SurgeryStaff
+(
+StaffID,
+SurgeryID,
+Role
+)
+VALUES
+(
+3,
+2,
+0
+);
+
+INSERT INTO SurgeryStaff
+(
+StaffID,
+SurgeryID,
+Role
+)
+VALUES
+(
+1,
+2,
+4
+);
