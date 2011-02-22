@@ -171,8 +171,8 @@ FeedChartID             int             AUTO_INCREMENT              PRIMARY KEY 
 PatientCheckInID        int             NOT NULL,
 FeedTime                timestamp       NOT NULL                    DEFAULT NOW(),
 FeedType                varchar(30)     NULL,
-AmountOffered            float           NULL,
-AmountTaken             float           NULL,
+AmountOffered            varchar(20)           NULL,
+AmountTaken             varchar(20)           NULL,
 Vomit                   varchar(20)     NULL,
 Urine                   varchar(20)     NULL,
 Stool                   varchar(20)     NULL,
@@ -2777,4 +2777,54 @@ VALUES
 1,
 2,
 4
+);
+
+INSERT INTO FeedChart
+(
+PatientCheckInID,
+FeedTime,
+FeedType,
+AmountOffered,
+AmountTaken,
+Vomit,
+Urine,
+Stool,
+Comments
+)
+VALUES
+(
+1,
+NOW(),
+'Dinner',
+'6 oz. Steak',
+'4 oz.',
+'No Idea',
+'No Idea',
+'No Idea',
+'I really have no idea what they put in these charts'
+);
+
+INSERT INTO FeedChart
+(
+PatientCheckInID,
+FeedTime,
+FeedType,
+AmountOffered,
+AmountTaken,
+Vomit,
+Urine,
+Stool,
+Comments
+)
+VALUES
+(
+1,
+NOW(),
+'Breakfast',
+'Hash Browns',
+'1 lb.',
+'All over',
+'On the plant',
+'In his pants',
+'I really have no idea what they put in these charts'
 );
