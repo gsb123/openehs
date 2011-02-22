@@ -14,7 +14,7 @@
  *      Go to my sql.com and download the 5.2+ community server and workbench
  * 
  * Run Script:
- *      See .txt file in SQL folder
+ *      See "First Time Run Instructions.txt" file in SQL folder
  *
  * IsActive:
  *      In every table there is a field 'IsActive', this field is used to determin
@@ -368,7 +368,7 @@ CREATE TABLE Role
 (
     RoleID                      int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     `Name`                      varchar(30)         NOT NULL,
-    Description                 varchar(130)        NULL,
+    Description                 varchar(255)        NULL,
     DateCreated                 timestamp           NOT NULL                DEFAULT NOW()
 );
 
@@ -2607,3 +2607,72 @@ VALUES
 1,
 1
 );
+
+/*****************************************************
+    Role Test Data
+*****************************************************/
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Sysop",
+    "The system administrator. An individual in the I.T. department.",
+    "2011-02-21 00:00:00"
+);
+
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Physician",
+    "A person who is legally qualified to practice medicine; doctor of medicine.",
+    "2011-02-21 00:00:00"
+);
+
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Medical Assistant",
+    "Otherwise known as a nurse, is the person trained to care for the sick or infirm.",
+    "2011-02-21 00:00:00"
+);
+
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Cashier",
+    "An employee who collects payment for products and services provided by the hospital.",
+    "2011-02-21 00:00:00"
+);
+
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Administrator",
+    "A person who fulfills the hopsital's business needs. Files paperwork, deals with billing issues, and manages the overall operation of the hospital.",
+    "2011-02-21 00:00:00"
+);
+
