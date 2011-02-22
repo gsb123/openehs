@@ -530,6 +530,7 @@ namespace OpenEhs.Web.Controllers
                     surgery.Comments = "";
 
                 surgery.StartTime = DateTime.Parse(Request.Form["startTime"]);
+                surgery.EndTime = DateTime.Parse(Request.Form["endTime"]);
 
                 //Add to checkin
                 openCheckIn.Surgeries.Add(surgery);
