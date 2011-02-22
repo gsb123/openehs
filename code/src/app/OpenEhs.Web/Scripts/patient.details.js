@@ -449,7 +449,7 @@ $(document).ready(function () {
         success: function(response){
             $("#MedicationListOne").hide();
             var newMedication = '<li class="group"><div><b>Name: </b>' + response.medication.name  + '</div><div><b>Instructions: </b>' + response.medication.instructions + '</div><div><b>Start Date: </b>' + response.medication.startDate + '</div><div><b>Exp Date: </b>' + response.medication.expDate + '</div></li>';
-            sonsole.log(newMedication);
+            console.log(newMedication);
             $("#MedicationListTwo").append(newMedication);
         },
         close: function () {
