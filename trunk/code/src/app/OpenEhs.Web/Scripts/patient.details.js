@@ -644,7 +644,7 @@ $(document).ready(function () {
                     surgeryNote: $("#surgeryNoteTextBox").val(),
                     startTime: $("#surgeryStartTime").val(),
                     endTime: $("#surgeryEndTime").val(),
-                    theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
+                    theatreNumber: $("select[name='theatreNumber'] option:selected").val(),
                     caseType: $("input:radio[name='modal_caseType']:checked").val()
                 },
                 success: function(response) {
