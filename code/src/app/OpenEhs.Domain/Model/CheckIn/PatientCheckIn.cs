@@ -27,7 +27,6 @@ namespace OpenEhs.Domain
         public virtual string Diagnosis { get; set; }
         public virtual Location Location { get; set; }
         public virtual Staff AttendingStaff { get; set; }
-
         #endregion
 
     }
