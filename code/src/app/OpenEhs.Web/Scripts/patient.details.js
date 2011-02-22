@@ -674,4 +674,12 @@ $(document).ready(function () {
 
     $("#surgeryRadio").buttonset();
 
+    // ------------------------------------------------- //
+    //  Setup Charting Tab                                //
+    // ------------------------------------------------- //
+
+    $("#feedAddButton").button().click(function () {
+        alert("Blah");
+    });
+
 });
