@@ -1,79 +1,18 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
-
 <div class="group">
     <h2 id="Charting">
         Charting</h2>
 </div>
-
 <br />
-
 <div>
     <fieldset>
         <legend>Feed Chart</legend>
-
-        <input class="feedAddButton" id="feedAddButton" name="feedAddButton"
-        type="button" value="Add Feed" />
-
-         <div id="feedSliderInfoLink">
-                    Feed Details...
-         </div>
-         <div id="feedSliderMoreInfo">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        Time
-                    </th>
-                    <th>
-                        Feed Type
-                    </th>
-                    <th>
-                        Amount Offered
-                    </th>
-                    <th>
-                        Amount Taken
-                    </th>
-                    <th>
-                        Vomit
-                    </th>
-                    <th>
-                        Urine
-                    </th>
-                    <th>
-                        Stool
-                    </th>
-                    <th>
-                        Comments
-                    </th>
-                </tr>
-            </thead>
-        </table>
-
+        <input class="feedAddButton" id="feedAddButton" name="feedAddButton" type="button"
+            value="Add Feed" />
+        <div id="feedSliderInfoLink">
+            Feed Details...
         </div>
-
-    </fieldset>
-
-    <br />
-    <br />
-
-    <fieldset>
-        <legend>Fluid Chart</legend>
-
-        <fieldset>
-            <legend>InTake</legend>
-
-            <input class="intakeAddButton" id="intakeAddButton" name="intakeAddButton"
-                type="button" value="Add Intake" />
-
-            <div id="intakeSliderInfoLink">
-                    Feed Details...
-            </div>
-            <div id="intakeSliderMoreInfo">
-
+        <div id="feedSliderMoreInfo">
             <table>
                 <thead>
                     <tr>
@@ -81,39 +20,76 @@
                             Date
                         </th>
                         <th>
-                            Kind of Fluid
+                            Time
                         </th>
                         <th>
-                            Amount
+                            Feed Type
+                        </th>
+                        <th>
+                            Amount Offered
+                        </th>
+                        <th>
+                            Amount Taken
+                        </th>
+                        <th>
+                            Vomit
+                        </th>
+                        <th>
+                            Urine
+                        </th>
+                        <th>
+                            Stool
+                        </th>
+                        <th>
+                            Comments
                         </th>
                     </tr>
                 </thead>
             </table>
-
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <legend>Fluid Chart</legend>
+        <fieldset>
+            <legend>InTake</legend>
+            <input class="intakeAddButton" id="intakeAddButton" name="intakeAddButton" type="button"
+                value="Add Intake" />
+            <div id="intakeSliderInfoLink">
+                Feed Details...
             </div>
-
+            <div id="intakeSliderMoreInfo">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Kind of Fluid
+                            </th>
+                            <th>
+                                Amount
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </fieldset>
-
         <br />
-
         <fieldset>
             <legend>OutPut</legend>
-
-            <input class="suctionAddButton" id="suctionAddButton" name="suctionAddButton"
-                type="button" value="Chart Suction" />
-
-            <input class="urineAddButton" id="urineAddButton" name="urineAddButton"
-                type="button" value="Chart Urine" />
-
-            <input class="stoolAddButton" id="stoolAddButton" name="stoolAddButton"
-                type="button" value="Chart Stool" />
-
-
-                <div id="suctionSliderInfoLink">
-                    Suction Details...
-                </div>
-                <div id="suctionSliderMoreInfo">
-
+            <input class="suctionAddButton" id="suctionAddButton" name="suctionAddButton" type="button"
+                value="Chart Suction" />
+            <input class="urineAddButton" id="urineAddButton" name="urineAddButton" type="button"
+                value="Chart Urine" />
+            <input class="stoolAddButton" id="stoolAddButton" name="stoolAddButton" type="button"
+                value="Chart Stool" />
+            <div id="suctionSliderInfoLink">
+                Suction Details...
+            </div>
+            <div id="suctionSliderMoreInfo">
                 <table id="Suction">
                     <thead>
                         <tr class="bottomRow">
@@ -134,14 +110,11 @@
                         </tr>
                     </thead>
                 </table>
-
-                </div>
-
-                <div id="urineSliderInfoLink">
-                    Urine Details...
-                </div>
-                <div id="urineSliderMoreInfo">
-
+            </div>
+            <div id="urineSliderInfoLink">
+                Urine Details...
+            </div>
+            <div id="urineSliderMoreInfo">
                 <table id="Urine">
                     <thead>
                         <tr class="bottomRow">
@@ -159,14 +132,11 @@
                         </tr>
                     </thead>
                 </table>
-
-                </div>
-
-                 <div id="stoolSliderInfoLink">
-                    Stool Details...
-                </div>
-                <div id="stoolSliderMoreInfo">
-
+            </div>
+            <div id="stoolSliderInfoLink">
+                Stool Details...
+            </div>
+            <div id="stoolSliderMoreInfo">
                 <table id="Stool">
                     <thead>
                         <tr class="bottomRow">
@@ -187,10 +157,57 @@
                         </tr>
                     </thead>
                 </table>
-
-                </div>
-
+            </div>
         </fieldset>
-
     </fieldset>
+</div>
+
+<div id="addFeedDialog" title="Add New Feed Chart for @Model.FirstName @Model.LastName">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="addRxForm" action="">
+    <fieldset>
+        <div class="modal-label">
+            Feed Type:
+        </div>
+        <div>
+            <input type="text" name="feedtype" id="modal_feedtype" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Amount Offered:
+        </div>
+        <div>
+            <input type="text" name="amountoffered" id="modal_amountoffered" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Amount Taken:
+        </div>
+        <div>
+            <input type="text" name="amounttaken" id="model_amounttaken" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Vomit:
+        </div>
+        <div>
+            <input type="text" name="vomit" id="model_voimt" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Urine:
+        </div>
+        <div>
+            <input type="text" name="urine" id="model_urine" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Stool:
+        </div>
+        <div>
+            <input type="text" name="stool" id="model_stool" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Comments:
+        </div>
+        <div>
+            <input type="text" name="comments" id="model_comments" class="required modal-input text ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
 </div>

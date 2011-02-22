@@ -44,6 +44,11 @@
 
     <many-to-one name="Location" column="LocationID" unique="true" cascade="all" />
 
+    <bag name="FeedChart" table="FeedChart" cascade="all">
+      <key column="PatientCheckInId" />
+      <one-to-many class="FeedChart" />
+    </bag>
+
   </class>
   
 </hibernate-mapping>

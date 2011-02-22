@@ -13,8 +13,8 @@ namespace OpenEhs.Domain
         public virtual PatientCheckIn PatientCheckIn { get; set; }
         public virtual DateTime FeedTime { get; set; }
         public virtual string FeedType { get; set; }
-        public virtual float AmountOffered { get; set; }
-        public virtual float AmountTaken { get; set; }
+        public virtual string AmountOffered { get; set; }
+        public virtual string AmountTaken { get; set; }
         public virtual string Vomit { get; set; }
         public virtual string Urine { get; set; }
         public virtual string Stool { get; set; }

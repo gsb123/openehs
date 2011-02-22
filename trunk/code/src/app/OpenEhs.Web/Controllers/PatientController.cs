@@ -163,6 +163,75 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region FeedChart
+
+        public JsonResult AddFeed()
+        {
+            try
+            {
+                int patientId = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientId);
+
+                //Get current open patient checkin 
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
+
+                //Create new feed chart object and add appropriate parameters 
+                FeedChart feedchart = new FeedChart();
+
+                feedchart.PatientCheckIn = openCheckIn;
+
+                feedchart.FeedTime = DateTime.Now;
+
+                string feedType = Request.Form["feedType"];
+                feedchart.FeedType = feedType;
+
+                string amountOffered = Request.Form["amountOffered"];
+                feedchart.AmountOffered = amountOffered;
+
+                string amountTaken = Request.Form["amountTaken"];
+                feedchart.AmountTaken = amountTaken;
+
+                string vomit = Request.Form["vomit"];
+                feedchart.Vomit = vomit;
+
+                string urine = Request.Form["urine"];
+                feedchart.Urine = urine;
+
+                string stool = Request.Form["stool"];
+                feedchart.Stool = stool;
+
+                string comments = Request.Form["comments"];
+                feedchart.Comments = comments;
+
+
+                //Add new vitals object to patient
+                openCheckIn.FeedChart.Add(feedchart);
+
+                //Return results as JSON
+                return Json(new
+                {
+                    error = "false",
+                    status = "Successfully added chart."
+                });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = "Unable to add feed chart successfully",
+                    errorMessage = e.Message
+                });
+            }
+        }
+
+        #endregion
+
         #region Allergy
 
         public JsonResult AddAllergy()

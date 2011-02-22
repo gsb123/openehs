@@ -6,18 +6,9 @@
     </h2>
 </div>
 
-<ul>
-	@foreach (var checkin in Model.PatientCheckIns)
-            {
-                foreach (var surgery in checkin.Surgeries)
-				{
-					foreach(var staff in surgery.Staff)
-					{
-						<li>@staff.Id</li>
-					}
-					}
-					}
-</ul>
+<br />
+
+<p id="recentHeader">Recent Visits</p>
 
 <br />
 
