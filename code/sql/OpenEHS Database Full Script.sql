@@ -171,7 +171,7 @@ FeedChartID             int             AUTO_INCREMENT              PRIMARY KEY 
 PatientCheckInID        int             NOT NULL,
 FeedTime                timestamp       NOT NULL                    DEFAULT NOW(),
 FeedType                varchar(30)     NULL,
-Amountffered            float           NULL,
+AmountOffered            float           NULL,
 AmountTaken             float           NULL,
 Vomit                   varchar(20)     NULL,
 Urine                   varchar(20)     NULL,
