@@ -28,24 +28,20 @@
                         <h3>Basic Information</h3>
                         <ul>
                             <li>
-                                <label for="firstNameTextbox">First Name</label>
-                                <input type="text" id="firstNameTextbox" name="firstNameTextbox" tabindex="1" />
+                                @Html.LabelFor(m => m.FirstName)
+                                @Html.TextBoxFor(m => m.FirstName, new { @id = "firstNameTextbox" })
                             </li>
                             <li>
-                                <label for="middleNameTextbox">Middle Name</label>
-                                <input type="text" id="middleNameTextbox" name="middleNameTextbox" tabindex="2" />
+                                @Html.LabelFor(m => m.MiddleName)
+                                @Html.TextBoxFor(m => m.MiddleName, new { @id = "middleNameTextbox" })
                             </li>
                             <li>
-                                <label for="lastNameTextbox">Last Name</label>
-                                <input type="text" id="lastNameTextbox" name="lastNameTextbox" tabindex="3" />
+                                @Html.LabelFor(m => m.LastName)
+                                @Html.TextBoxFor(m => m.LastName, new { @id = "lastNameTextbox" })
                             </li>
                             <li>
-                                <label for="titleDropdown">Title</label>
-                                <select name="titleDropdown" id="titleDropdown" tabindex="4">
-                                    <option>Receptionist</option>
-                                    <option>Nurse</option>
-                                    <option>Physician</option>
-                                </select>
+                                @Html.LabelFor(m => m.Title)
+                                @Html.DropDownListFor(m => m.Title, new { @id = "titleDropdown" })
                             </li>
                         </ul>
                     </div>
@@ -53,8 +49,12 @@
                         <h3>Contact Information</h3>
                         <ul>
                             <li>
-                                <label for="phoneNumberTextbox">Phone Number</label>
-                                <input type="text" id="phoneNumberTextbox" name="phoneNumberTextbox" tabindex="" />
+                                @Html.LabelFor(m => m.PhoneNumber)
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @id = "phoneNumberTextBox" })
+                            </li>
+                            <li>
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, new { @id = "emailAddressTextBox" })
                             </li>
                         </ul>
                         <fieldset>
