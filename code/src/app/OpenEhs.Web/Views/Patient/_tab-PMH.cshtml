@@ -1,2 +1,46 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
 
+<div id="pmhHeader" class="group">
+    <h2 id="pmh">
+        Past Medical History
+    </h2>
+</div>
+
+<br />
+
+<div>
+	<ul class="pmhHistoryList">
+		<li>
+			<div style="float: left;"><b>Surgery Date: </b>??????????????</div><br />
+			<div style="float: left;"><b>Case Type: </b>??????????????</div><br />
+
+			 <div id="surgeryLink" class="surgeryLink">
+	                Surgery Details...
+             </div>
+             <div id="surgeryInfo" class="surgeryInfo">
+				<div><b>Details: </b>??????????????</div>
+			 </div>
+
+
+			 <div id="noteLink" class="noteLink">
+	                Note Details...
+             </div>
+             <div id="noteInfo" class="noteInfo">
+				<div><b>Notes: </b>??????????????</div>
+			 </div>
+
+			 <div id="staffLink" class="staffLink">
+	                Staff Details...
+             </div>
+             <div id="staffInfo" class="staffInfo">
+				<div><b>Surgery Staff: </b></div>
+				<div class="staffMargin">Surgeon: <b>Ryan Olson</b></div>
+				<div class="staffMargin">Surgeon Assistant: <b>Cameorn Harp</b></div>
+				<div class="staffMargin">Anaesthetist: <b>Matt Kimber</b></div>
+				<div class="staffMargin">Anaesthetist Assistant: <b>Tommy Joe</b></div>
+				<div class="staffMargin">Nurse: <b>Keri Holly</b></div>
+				<div class="staffMargin">Consultant: <b>Jimmy John</b></div>
+			 </div>
+		</li>
+	</ul>
+</div>
