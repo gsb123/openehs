@@ -324,7 +324,7 @@ CREATE TABLE Surgery
     SurgeryType                 text                NOT NULL,
     StartTime                   datetime                NOT NULL,
     EndTime                     datetime                NULL,
-    RoomNumber                  int                 NULL,
+    LocationID                  int                 NULL,
     Comments                    text                NULL,
     PatientCheckInID          int                 NOT NULL,
     CaseType                    bit                 NOT NULL,
@@ -466,6 +466,10 @@ FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 ALTER TABLE Surgery
 ADD CONSTRAINT FK_SurgeryMustHavePatientCheckInID
 FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
+
+ALTER TABLE Surgery
+ADD CONSTRAINT FK_SurgeryMustHaveLocationID
+FOREIGN KEY (LocationID) REFERENCES Location(LocationID);
 
 ALTER TABLE SurgeryStaff
 ADD CONSTRAINT FK_SurgeryStaffMustHaveStaffID
