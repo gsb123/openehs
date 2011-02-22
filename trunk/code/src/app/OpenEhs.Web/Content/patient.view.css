@@ -39,6 +39,18 @@ legend
     font-size: 1.2em;
 }
 
+.modal-label-long {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    text-align: right;
+    width: 150px;
+    font-size: 1.2em;
+}
+
 .modal-input {
     font-size: 1.2em;
     padding: 4px;
