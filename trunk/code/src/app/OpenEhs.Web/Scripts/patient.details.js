@@ -621,7 +621,6 @@ $(document).ready(function () {
         extraPlugins: "autogrow",
         autoGrow_maxHeight: 800
     };
-
     $("#surgeryNoteTextBox").ckeditor(ckConfig);
 
          $("#submitSurgery").button().click(function () {
@@ -640,7 +639,7 @@ $(document).ready(function () {
                     startTime: $("#surgeryStartTime").val(),
                     endTime: $("#surgeryEndTime").val(),
                     theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
-                    caseType: $("select[name='caseType'] option:selected").val()
+                    caseType: $("input:radio[name='modal_caseType']:checked").val()
                 },
                 success: function(response) {
                     alert ("Submitted");
