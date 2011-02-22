@@ -29,12 +29,28 @@ $(function () {
         alert("Blah");
     });
 
+    
+
 
 
 
     $("#suctionSliderInfoLink").click(function () {
         $("#suctionSliderMoreInfo").slideToggle("slow", function () { });
     });
+
+    $("#urineSliderInfoLink").click(function () {
+        $("#urineSliderMoreInfo").slideToggle("slow", function () { });
+    });
+
+    $("#stoolSliderInfoLink").click(function () {
+        $("#stoolSliderMoreInfo").slideToggle("slow", function () { });
+    });
+
+    $("#feedSliderInfoLink").click(function () {
+        $("#feedSliderMoreInfo").slideToggle("slow", function () { });
+    });
+
+
 
 
 
