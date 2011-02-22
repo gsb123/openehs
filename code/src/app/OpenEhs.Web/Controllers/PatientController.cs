@@ -528,7 +528,8 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["surgeryNote"] != "")
                     surgery.Comments = "";
 
-                LocationRepository locationrepo = new LocationRepository();
+                LocationRepository locationRepo = new LocationRepository();
+                surgery.Location = locationRepo.Get(int.Parse(Request.Form["theaterNumber"]));
 
                 surgery.StartTime = DateTime.Parse(Request.Form["startTime"]);
                 surgery.EndTime = DateTime.Parse(Request.Form["endTime"]);

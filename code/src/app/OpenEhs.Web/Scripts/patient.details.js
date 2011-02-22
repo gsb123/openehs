@@ -638,7 +638,9 @@ $(document).ready(function () {
                     consultant: $("select[name='consultantSelect'] option:selected").val(),
                     surgeryNote: $("#surgeryNoteTextBox").val(),
                     startTime: $("#surgeryStartTime").val(),
-                    endTime: $("#surgeryEndTime").val()
+                    endTime: $("#surgeryEndTime").val(),
+                    theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
+                    caseType: $("select[name='caseType'] option:selected").val()
                 },
                 success: function(response) {
                     alert ("Submitted");
