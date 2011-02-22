@@ -4,82 +4,9 @@
 }
 @section head
 {
-
-    <link rel="stylesheet" type="text/css" href="~/Content/jquery-ui-1.8.2.custom.css" />  
-    <style type="text/css">
-			#demoWrapper {
-				padding : 1em;
-				width : 500px;
-				border-style: solid;
-			}
-
-
-			#demoNavigation {
-				margin-top : 0.5em;
-				margin-right : 1em;
-				text-align: right;
-			}
-			
-			#data {
-				font-size : 0.7em;
-			}
-
-			input {
-				margin-right: 0.1em;
-				margin-bottom: 0.5em;
-			}
-
-			.input_field_25em {
-				width: 2.5em;
-			}
-
-			.input_field_3em {
-				width: 3em;
-			}
-
-			.input_field_35em {
-				width: 3.5em;
-			}
-
-			.input_field_12em {
-				width: 12em;
-			}
-
-			label {
-				margin-bottom: 0.2em;
-				font-weight: bold;
-				font-size: 0.8em;
-			}
-
-			.step span {
-				float: right;
-				font-weight: bold;
-				padding-right: 0.8em;
-			}
-
-			label.error {
-				color: red;
-				font-size: 0.8em;
-				margin-left : 0.5em;
-			}
-
-
-			.navigation_button {
-				width : 70px;
-			}
-			
-			#data {
-					overflow : auto;
-			}
-		</style>
-
     <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-
     <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#patients-tab").addClass("current");
@@ -87,7 +14,6 @@
     </script>
 }
 <h2>
-
     Create</h2>
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)

@@ -137,6 +137,7 @@
     <Content Include="images\openehs.logo.big.png" />
     <Content Include="images\openehs.logo.png" />
     <Content Include="images\selected.menuitem.arrow.png" />
+    <Content Include="Scripts\bbq.js" />
     <Content Include="Scripts\billing.js" />
     <Content Include="Scripts\ckedit\adapters\jquery.js" />
     <Content Include="Scripts\ckedit\ckeditor.js" />
