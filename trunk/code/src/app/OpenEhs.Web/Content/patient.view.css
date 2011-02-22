@@ -906,13 +906,11 @@ margin-bottom: 10px;
 #Urine
 {
     text-align: center;
-    margin-top: 30px;
 }
 
 #Stool
 {
     text-align: center;
-    margin-top: 30px;
 }
 
 .bottomRow
@@ -921,12 +919,55 @@ margin-bottom: 10px;
     border-bottom-style: solid;
 }
 
+#suctionSliderMoreInfo
+{
+    display: none;
+}
+
 #suctionSliderInfoLink
 {
-    clear: both;
     color: #00f;
     cursor: pointer;
-    margin: 10px 0px 5px 10px;
+    margin: 10px 0px 5px 0px;
+    font-size: 15px;
+}
+
+#urineSliderMoreInfo
+{
+    display: none;
+}
+
+#urineSliderInfoLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 0px;
+    font-size: 15px;
+}
+
+#stoolSliderMoreInfo
+{
+    display: none;
+}
+
+#stoolSliderInfoLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 0px;
+    font-size: 15px;
+}
+
+#feedSliderMoreInfo
+{
+    display: none;
+}
+
+#feedSliderInfoLink
+{
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 0px;
     font-size: 15px;
 }
 
