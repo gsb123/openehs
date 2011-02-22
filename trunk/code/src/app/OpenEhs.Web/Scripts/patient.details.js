@@ -438,6 +438,17 @@ $(document).ready(function () {
                         instructions: $("#modal_medicationInstructions").val(),
                         startDate: $("#RxStartDatePicker").val(),
                         expDate: $("#RxExpDatePicker").val()
+                    }, function(response) {
+                         if (response.error == "false") {
+                             $("#MedicationListOne").hide();
+                             $("#addRxForm").dialog("close");
+                            var newMedication = '<li id="medication_' + response.medication.id + '" class="group" style="display:none"><div><b>Name: </b>' + response.medication.name  + '</div><div><b>Instructions: </b>' + response.medication.instructions + '</div><div><b>Start Date: </b>' + response.medication.startDate + '</div><div><b>Exp Date: </b>' + response.medication.expDate + '</div></li>';
+                            console.log(newMedication);
+                            $("#MedicationListTwo").append(newMedication);
+                            $("#medication_" + response.medication.id).fadeIn("normal", function () {});
+                        } else {
+                            alert("Error adding medication");
+                        }
                     });
                     $(this).dialog("close");
                 }
@@ -445,12 +456,6 @@ $(document).ready(function () {
             Cancel: function () {                
                 $(this).dialog("close");
             }
-        },
-        success: function(response){
-            $("#MedicationListOne").hide();
-            var newMedication = '<li class="group"><div><b>Name: </b>' + response.medication.name  + '</div><div><b>Instructions: </b>' + response.medication.instructions + '</div><div><b>Start Date: </b>' + response.medication.startDate + '</div><div><b>Exp Date: </b>' + response.medication.expDate + '</div></li>';
-            console.log(newMedication);
-            $("#MedicationListTwo").append(newMedication);
         },
         close: function () {
             $("#newMedicationDialog .modalErrorContainer").hide();
