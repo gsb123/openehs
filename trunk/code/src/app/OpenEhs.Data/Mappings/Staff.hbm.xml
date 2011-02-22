@@ -18,7 +18,7 @@
 
     <bag name="Surgery" table="SurgeryStaff" cascade="none" lazy="false">
       <key column="StaffID" />
-      <many-to-many column="SurgeryID" class="Surgery" />
+      <one-to-many class="SurgeryStaff" />
     </bag>
 
     <bag name="PatientCheckIns" table="PatientCheckIn" cascade="none" lazy="false">

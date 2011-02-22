@@ -16,8 +16,8 @@
 
     <!--Many-to-many mapping: Staff-->
     <bag name="Staff" table="SurgeryStaff" cascade="none" lazy="false">
-      <key column="StaffID" />
-      <many-to-many column="SurgeryID" class="Staff" />
+      <key column="SurgeryID" />
+      <one-to-many class="SurgeryStaff" />
     </bag>
     
   </class>

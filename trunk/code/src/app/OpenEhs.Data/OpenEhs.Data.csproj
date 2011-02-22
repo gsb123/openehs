@@ -121,7 +121,9 @@
     <Content Include="Mappings\PatientProblem.hbm.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mappings\SurgeryStaff.hbm.xml" />
+    <EmbeddedResource Include="Mappings\SurgeryStaff.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\PatientCheckIn.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

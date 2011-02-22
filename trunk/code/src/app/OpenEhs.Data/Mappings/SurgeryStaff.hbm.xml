@@ -8,9 +8,17 @@
       <generator class="native" />
     </id>
 
-    <property name="Staff" not-null="true" />
-    <property name="Surgery" not-null="true" />
     <property name="Role" not-null="true" />
+
+    <many-to-one name="Staff"
+                 class="Staff"
+                 unique="true"
+                 column="StaffID" />
+
+    <many-to-one name="Surgery"
+                 class="Surgery"
+                 unique="true"
+                 column="SurgeryID" />
 
   </class>
 </hibernate-mapping>
