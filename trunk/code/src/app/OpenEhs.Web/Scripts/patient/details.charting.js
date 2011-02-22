@@ -17,9 +17,20 @@ $(function () {
         alert("Blah");
     });
 
-    $("#outakeAddButton").button().click(function () {
+    $("#suctionAddButton").button().click(function () {
         alert("Blah");
     });
+
+    $("#urineAddButton").button().click(function () {
+        alert("Blah");
+    });
+
+    $("#stoolAddButton").button().click(function () {
+        alert("Blah");
+    });
+
+
+
 
     $("#intakeSliderInfoLink").click(function () {
         $("#intakeSliderMoreInfo").slideToggle("slow", function () { });
