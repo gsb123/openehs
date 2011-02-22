@@ -909,6 +909,15 @@ margin-bottom: 10px;
     border-bottom-style: solid;
 }
 
+#suctionSliderInfoLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 10px;
+    font-size: 15px;
+}
+
 
 
 
