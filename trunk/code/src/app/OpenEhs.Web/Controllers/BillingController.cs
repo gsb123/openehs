@@ -59,7 +59,7 @@ namespace OpenEhs.Web.Controllers
 
         //
         // GET: /Invoice/Edit/5
-        public ActionResult Edit(int id=1)
+        public ActionResult Edit(int id = 1)
         {
             if (id < 1 || id > new InvoiceRepository().GetAll().Count)
             {
@@ -114,7 +114,7 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
-        
+
         public RedirectResult AddProductLineItem(int invoiceId)
         {
             InvoiceItem lineItem = new InvoiceItem();
@@ -127,16 +127,35 @@ namespace OpenEhs.Web.Controllers
             return new RedirectResult("/Billing/Edit/" + invoiceId);
         }
 
-        public RedirectResult AddServiceLineItem(int invoiceId)
+        public ActionResult Service(int invoiceId)
         {
-            InvoiceItem lineItem = new InvoiceItem();
-            lineItem.Invoice = new InvoiceRepository().Get(invoiceId);
-            lineItem.IsActive = true;
+            var lineItem = new InvoiceItem();
+            var repo = new InvoiceRepository();
             lineItem.Service = new ServiceRepository().Get(1);
-            lineItem.Quantity = 1;
+            lineItem.Invoice = repo.Get(invoiceId);
+            lineItem.IsActive = true;
+            repo.AddLineItem(lineItem);
+            
 
-            new InvoiceRepository().AddLineItem(lineItem);
-            return new RedirectResult("/Billing/Edit/" + invoiceId);
+            return View(lineItem);
+        }
+
+        [HttpPost]
+        public ActionResult Service(InvoiceItem lineItem)
+        {
+            //add save code here?
+            try
+            {
+                BillingEditViewModel invoice = new BillingEditViewModel(lineItem.Invoice.Id);
+                invoice.Save();
+                return RedirectToAction("Edit");
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+
         }
 
         public RedirectResult SaveLineItem(int itemId, int productId, int serviceId, int quantity)

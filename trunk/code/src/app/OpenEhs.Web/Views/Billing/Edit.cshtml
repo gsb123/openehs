@@ -92,8 +92,12 @@
                 <th class="TotalColumn">
                     Total
                 </th>
-                <th class="SaveColumn">Save</th>
-                <th class="DeleteColumn">Delete</th>
+                <th class="SaveColumn">
+                    Save
+                </th>
+                <th class="DeleteColumn">
+                    Delete
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -115,8 +119,10 @@
                     <td class="TotalColumn">
                         GH&#x20B5;@item.Total
                     </td>
-                    <td class="SaveColumn"></td>
-                    <td class="DeleteColumn"></td>
+                    <td class="SaveColumn">
+                    </td>
+                    <td class="DeleteColumn">
+                    </td>
                 </tr>
                 }
                 else if (item.Product != null)
@@ -124,19 +130,27 @@
                     using (Html.BeginForm("SaveLineItem", "Billing", FormMethod.Get))
                     {
                 <tr>
-                        <td class="DescriptionColumn">@Html.DropDownListFor(model => item.Product.Id, new SelectList(Model.Products, "Id", "Name", item.Product.Id), new { @id = "productId" })</td>
-                        <td class="UnitColumn">@item.Product.Unit</td>
-                        <td class="PriceColumn">GH&#x20B5;@item.Product.Price</td>
-                        <td class="QuantityColumn">@Html.EditorFor(model => item.Quantity, new { @id = "quantity" })</td>
-                        <td class="TotalColumn">GH&#x20B5;@item.Total</td>
-                        <td class="SaveColumn">
+                    <td class="DescriptionColumn">@Html.DropDownListFor(model => item.Product.Id, new SelectList(Model.Products, "Id", "Name", item.Product.Id), new { @id = "productId" })
+                    </td>
+                    <td class="UnitColumn">@item.Product.Unit
+                    </td>
+                    <td class="PriceColumn">
+                        GH&#x20B5;@item.Product.Price
+                    </td>
+                    <td class="QuantityColumn">@Html.EditorFor(model => item.Quantity, new { @id = "quantity" })
+                    </td>
+                    <td class="TotalColumn">
+                        GH&#x20B5;@item.Total
+                    </td>
+                    <td class="SaveColumn">
                         <div class="HiddenText">
-                        @Html.TextBox("itemId", item.Id)
-                        @Html.TextBox("serviceId", 0)
-                        </div>            
+                            @Html.TextBox("itemId", item.Id)
+                            @Html.TextBox("serviceId", 0)
+                        </div>
                         <input type="submit" value="Save" title="save" />
-                        </td>
-                        <td class="DeleteColumn"></td>
+                    </td>
+                    <td class="DeleteColumn">
+                    </td>
                 </tr>
                     }
                 }
@@ -149,7 +163,7 @@
             @Html.TextBox("invoiceId", Model.Id)
             <input type="submit" value="New Product" title="New Product" />
         }
-        @using (Html.BeginForm("AddServiceLineItem", "Billing", FormMethod.Get))
+        @using (Html.BeginForm("Service", "Billing", FormMethod.Get))
         {
             @Html.TextBox("invoiceId", Model.Id)
             <input type="submit" value="New Service" title="New Service" />
