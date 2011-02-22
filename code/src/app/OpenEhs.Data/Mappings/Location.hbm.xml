@@ -14,6 +14,10 @@
       <key column="LocationID" />
       <one-to-many class="PatientCheckIn" />
     </bag>
+    <bag name="Surgeries" table="Surgery" cascade="all">
+      <key column="LocationID" />
+      <one-to-many class="Surgery" />
+    </bag>
 
   </class>
 </hibernate-mapping>

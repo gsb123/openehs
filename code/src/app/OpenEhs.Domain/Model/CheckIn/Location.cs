@@ -16,5 +16,6 @@ namespace OpenEhs.Domain
         public virtual string Department { get; set; }
         public virtual string RoomNumber { get; set; }
         public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }
+        public virtual IList<Surgery> Surgeries { get; set; }
     }
 }

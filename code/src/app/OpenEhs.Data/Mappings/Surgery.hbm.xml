@@ -10,7 +10,7 @@
     <property name="SurgeryType" />
     <property name="StartTime" />
     <property name="EndTime" />
-    <property name="RoomNumber" />
+    <many-to-one name="Location" column="LocationID" unique="true" cascade="all" />
     <property name="Comments" />
 
     <property name="ScheduleStartTime" />

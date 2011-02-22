@@ -17,7 +17,7 @@ namespace OpenEhs.Domain
 
         public virtual int Id { get; private set; }
         public virtual string SurgeryType { get; set; }
-        public virtual int RoomNumber { get; set; }
+        public virtual Location Location { get; set; }
         public virtual DateTime StartTime { get; set; }
         public virtual DateTime EndTime { get; set; }
         public virtual string Comments { get; set; }
