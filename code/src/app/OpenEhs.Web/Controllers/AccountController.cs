@@ -35,7 +35,7 @@ namespace OpenEhs.Web.Controllers
             {
                 if (MembershipService.ValidateUser(model.UserName, model.Password))
                 {
-                    FormsService.SignIn(model.UserName, model.RememberMe);
+                    FormsService.SignIn(model.UserName, false);
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);

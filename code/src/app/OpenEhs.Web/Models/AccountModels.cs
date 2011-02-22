@@ -40,8 +40,8 @@ namespace OpenEhs.Web.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+//        [Display(Name = "Remember me?")]
+//        public bool RememberMe { get; set; }
     }
 
 
@@ -79,7 +79,6 @@ namespace OpenEhs.Web.Models
     public interface IMembershipService
     {
         int MinPasswordLength { get; }
-
         bool ValidateUser(string userName, string password);
         MembershipCreateStatus CreateUser(string userName, string password, string email);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
@@ -88,6 +87,7 @@ namespace OpenEhs.Web.Models
     public class AccountMembershipService : IMembershipService
     {
         private readonly MembershipProvider _provider;
+
 
         public AccountMembershipService()
             : this(null)
