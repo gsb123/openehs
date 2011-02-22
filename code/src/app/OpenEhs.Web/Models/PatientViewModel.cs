@@ -422,6 +422,17 @@ namespace OpenEhs.Web.Models
                 return staff.FindByType(StaffType.Physician);
             }
         }
+
+        public IList<int> GetCaseType
+        {
+            get
+            {
+                var test = Enum.GetValues(typeof (CaseType)).Cast<CaseType>();
+
+                return test;
+            }
+        }
+
         #endregion
 
         
