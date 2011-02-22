@@ -1,61 +1,109 @@
 ﻿@model OpenEhs.Web.Models.RegisterModel
 
 @{
-    ViewBag.Title = "Register";
+    Layout = null;
 }
 
-<h2>Create a New Account</h2>
-<p>
-    Use the form below to create a new account. 
-</p>
-<p>
-    Passwords are required to be a minimum of @ViewBag.PasswordLength characters in length.
-</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OpenEHS - User Registration</title>
 
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+        <link href="@Url.Content("~/Content/registration.css")" rel="stylesheet" type="text/css" />
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
-    <div>
-        <fieldset>
-            <legend>Account Information</legend>
-
-            <div class="editor-label">
-                @Html.LabelFor(m => m.UserName)
+        <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="logo">
+                <img src="@Url.Content("~/images/openehs.logo.big.png")" alt="OpenEHS" />
             </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
+            <h2>Register</h2>
+            <div id="registration" class="group">
+                @using (Html.BeginForm())
+                {
+                    <div id="basicInformation" class="step">
+                        <h3>Basic Information</h3>
+                        <ul>
+                            <li>
+                                <label for="firstNameTextbox">First Name</label>
+                                <input type="text" id="firstNameTextbox" name="firstNameTextbox" tabindex="1" />
+                            </li>
+                            <li>
+                                <label for="middleNameTextbox">Middle Name</label>
+                                <input type="text" id="middleNameTextbox" name="middleNameTextbox" tabindex="2" />
+                            </li>
+                            <li>
+                                <label for="lastNameTextbox">Last Name</label>
+                                <input type="text" id="lastNameTextbox" name="lastNameTextbox" tabindex="3" />
+                            </li>
+                            <li>
+                                <label for="titleDropdown">Title</label>
+                                <select name="titleDropdown" id="titleDropdown" tabindex="4">
+                                    <option>Receptionist</option>
+                                    <option>Nurse</option>
+                                    <option>Physician</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="contactInformation" class="step">
+                        <h3>Contact Information</h3>
+                        <ul>
+                            <li>
+                                <label for="phoneNumberTextbox">Phone Number</label>
+                                <input type="text" id="phoneNumberTextbox" name="phoneNumberTextbox" tabindex="" />
+                            </li>
+                        </ul>
+                        <fieldset>
+                            <legend>Address</legend>
+                            <ul>
+                                <li>
+                                    <label for="street1Textbox">Street 1</label>
+                                    <input type="text" id="street1Textbox" name="street1Textbox" tabindex="" />
+                                </li>
+                                <li>
+                                    <label for="street2Textbox">Street 2</label>
+                                    <input type="text" id="street2Textbox" name="street2Textbox" tabindex="" />
+                                </li>
+                                <li>
+                                    <label for="cityTextbox">City</label>
+                                    <input type="text" id="cityTextbox" name="cityTextbox" tabindex="" />
+                                </li>
+                                <li>
+                                    <label for="regionTextbox">Region</label>
+                                    <input type="text" id="regionTextbox" name="regionTextbox" tabindex="" />
+                                </li>
+                                <li>
+                                    <label for="countryDropdown">Country</label>
+                                    <select name="countryDropdown" id="countryDropdown">
+                                        <option value="GHA">Ghana</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div id="credentialsInformation" class="step">
+                        <h3>User Credentials</h3>
+                        <ul>
+                            <li>
+                                <label>Username</label>
+                                <div id="generatedUsername">matthewkimber</div>
+                            </li>
+                            <li>
+                                <label for="passwordTextbox">Password</label>
+                                <input type="password" id="passwordTextbox" name="passwordTextbox" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="registrationNavigation">
+                        <input class="navigation_button" id="back" value="Back" type="reset" />
+                        <input class="navigation_button" id="next" value="Next" type="submit" />
+                    </div>
+                }
             </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Email)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(m => m.Email)
-                @Html.ValidationMessageFor(m => m.Email)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Password)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(m => m.ConfirmPassword)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.ConfirmPassword)
-                @Html.ValidationMessageFor(m => m.ConfirmPassword)
-            </div>
-
-            <p>
-                <input type="submit" value="Register" />
-            </p>
-        </fieldset>
-    </div>
-}
+        </div>
+    </body>
+</html>
