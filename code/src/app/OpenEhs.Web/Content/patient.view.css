@@ -862,7 +862,23 @@ margin-bottom: 10px;
     margin-bottom: 20px;
 }
 
-#outakeAddButton
+#suctionAddButton
+{
+    height: 35;
+    width: 110px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#urineAddButton
+{
+    height: 35;
+    width: 110px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#stoolAddButton
 {
     height: 35;
     width: 110px;
@@ -893,24 +909,6 @@ margin-bottom: 10px;
     border-bottom-style: solid;
 }
 
-
-#intakeSliderInfoLink
-{
-    clear: both;
-    color: #00f;
-    cursor: pointer;
-    margin: 10px 0px 5px 5px;
-    font-size: 15px;
-}
-
-#outputSliderInfoLink
-{
-    clear: both;
-    color: #00f;
-    cursor: pointer;
-    margin: 10px 0px 5px 5px;
-    font-size: 15px;
-}
 
 
 
