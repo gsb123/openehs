@@ -126,6 +126,43 @@ namespace OpenEhs.Web.Controllers
 
         #region AJAX Methods
 
+        #region CreatePatient
+
+        public JsonResult CreatePatient() {
+            Patient patient = new Patient();
+            patient.IsActive = true;
+
+            patient.FirstName = Request.Form["firstName"];
+            patient.MiddleName = Request.Form["middleName"];
+            patient.LastName = Request.Form["lastName"];
+            patient.DateOfBirth = DateTime.Parse(Request.Form["DoB"]);
+            patient.Gender = Request.Form["gender"];
+            patient.PhoneNumber = Request.Form["phoneNumber"];
+
+            // Address
+            patient.Address.IsActive = true;
+            patient.Address.Street1 = Request.Form["address_street1"];
+            patient.Address.Street2 = Request.Form["address_street2"];
+            patient.Address.City = Request.Form["address_"];
+            patient.Address.Region = Request.Form["address_"];
+            patient.Address.Country = Request.Form["address_"];
+
+            patient.BloodType = Request.Form["bloodType"];
+            patient.TribeRace = Request.Form["tribeRace"];
+            patient.Religion = Request.Form["religion"];
+            patient.Note = Request.Form["note"];
+            patient.OldPhysicalRecordNumber = int.Parse(Request.Form["oldPhysicalRecordNumber"]);
+
+            EmergencyContact emergencyContact = new EmergencyContact();
+            emergencyContact.IsActive = true;
+            emergencyContact.FirstName = Request.Form["emergency_firstName"];
+                       
+
+            return null;
+        }
+
+        #endregion
+
         #region Allergy
 
         public JsonResult AddAllergy()
@@ -137,9 +174,12 @@ namespace OpenEhs.Web.Controllers
 
                 PatientRepository repo = new PatientRepository();
                 var patient = repo.Get(patientId);
+
                 Allergy allergy = new Allergy();
+                allergy.IsActive = true;
                 allergy.Name = allergyName;
                 patient.Allergies.Add(allergy);
+
                 UnitOfWork.CurrentSession.Flush();
 
                 return Json(new
@@ -625,7 +665,6 @@ namespace OpenEhs.Web.Controllers
                 string medicationInstructions = Request.Form["instructions"];
                 DateTime startDate = DateTime.Parse(Request.Form["startDate"]);
                 DateTime expDate = DateTime.Parse(Request.Form["expDate"]);
-
 
                 PatientRepository repo = new PatientRepository();
                 var patient = repo.Get(patientId);
