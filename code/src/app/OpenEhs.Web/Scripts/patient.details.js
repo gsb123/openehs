@@ -684,4 +684,12 @@ $(document).ready(function () {
         alert("Blah");
     });
 
+    $("#intakeAddButton").button().click(function () {
+        alert("Blah");
+    });
+
+    $("#outakeAddButton").button().click(function () {
+        alert("Blah");
+    });
+
 });
