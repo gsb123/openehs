@@ -20,4 +20,13 @@ $(function () {
     $("#outakeAddButton").button().click(function () {
         alert("Blah");
     });
+
+    $("#intakeSliderInfoLink").click(function () {
+        $("#intakeSliderMoreInfo").slideToggle("slow", function () { });
+    });
+
+    $("#outputSliderInfoLink").click(function () {
+        $("#outputSliderMoreInfo").slideToggle("slow", function () { });
+    });
+
 });
