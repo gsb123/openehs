@@ -4,13 +4,13 @@
                    namespace="OpenEhs.Domain">
 
   <class name="SurgeryStaff" table="SurgeryStaff">
-    <id name="Id" column="PatientProblemID">
+    <id name="Id" column="SurgeryStaffID">
       <generator class="native" />
     </id>
 
     <property name="Staff" not-null="true" />
-    <property name="Surgery" not-null="false" />
-    <property name="StaffRoles" not-null="false" />
+    <property name="Surgery" not-null="true" />
+    <property name="Role" not-null="true" />
 
   </class>
 </hibernate-mapping>
