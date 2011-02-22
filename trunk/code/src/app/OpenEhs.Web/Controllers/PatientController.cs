@@ -535,6 +535,7 @@ namespace OpenEhs.Web.Controllers
                 //Add to checkin
                 openCheckIn.Surgeries.Add(surgery);
                 surgery.CheckIn = openCheckIn;
+                surgery.CaseType = (CaseType)Enum.Parse(typeof(CaseType), Request.Form["caseType"]);
                 UnitOfWork.CurrentSession.Flush();
 
                 //Surgeon
