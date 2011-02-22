@@ -632,6 +632,7 @@ namespace OpenEhs.Web.Controllers
                 medication.StartDate = startDate;
                 medication.ExpDate = expDate;
 
+                
                 patient.Medications.Add(medication);
 
                 UnitOfWork.CurrentSession.Flush();
@@ -640,7 +641,14 @@ namespace OpenEhs.Web.Controllers
                 {
                     error = "false",
                     status = "Added medication: " + medication.Name + " successfully",
-                    medication = medication
+                    // Need this fix for circular reference error
+                    medication = new {
+                        id = medication.Id,
+                        instruction = medication.Instruction,
+                        name = medication.Name,
+                        startDate = medication.StartDate,
+                        expDate = medication.ExpDate
+                    }
                 });
             }
             catch (Exception e)

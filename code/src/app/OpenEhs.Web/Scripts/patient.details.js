@@ -639,7 +639,9 @@ $(document).ready(function () {
                     startTime: $("#surgeryStartTime").val(),
                     endTime: $("#surgeryEndTime").val(),
                     theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
-                    caseType: $("input:radio[name='modal_caseType']:checked").val()
+                    caseType: $("input:radio[name='modal_caseType']:checked").val(),
+                    theaterNumber: $("select[name='theaterNumber'] option:selected").val(),
+                    caseType: $("select[name='caseType'] option:selected").val()
                 },
                 success: function(response) {
                     alert ("Submitted");
