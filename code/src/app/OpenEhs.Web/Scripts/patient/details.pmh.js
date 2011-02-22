@@ -18,4 +18,8 @@ $(function () {
         $(".staffInfo").slideToggle("slow", function () { });
     });
 
+    $(".visitDateButton").click(function () {
+        alert("PatientID: " + $("#patientId").val());
+    });
+
 });
