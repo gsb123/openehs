@@ -75,6 +75,7 @@
     <Compile Include="Repositories\CategoryRepositoryTests.cs" />
     <Compile Include="Repositories\PatientRepositoryTest.cs" />
     <Compile Include="Repositories\ProductRepositoryTests.cs" />
+    <Compile Include="Repositories\UserRepositoryTests.cs" />
     <Compile Include="Unit of Work\LocalDataTests.cs" />
     <Compile Include="Unit of Work\UnitOfWorkFactoryTests.cs" />
     <Compile Include="Unit of Work\UnitOfWorkTests.cs" />
