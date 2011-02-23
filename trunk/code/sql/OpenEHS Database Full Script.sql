@@ -324,7 +324,6 @@ CREATE TABLE Surgery
     StartTime                   datetime                NOT NULL,
     EndTime                     datetime                NULL,
     LocationID                  int                 NULL,
-    Comments                    text                NULL,
     PatientCheckInID          int                 NOT NULL,
     CaseType                    bit                 NOT NULL
 );
@@ -2697,7 +2696,6 @@ INSERT INTO Surgery
 StartTime,
 EndTime,
 LocationID,
-Comments,
 PatientCheckInID,
 CaseType
 )
@@ -2706,7 +2704,6 @@ VALUES
 NOW(),
 NOW(),
 2,
-'Test surgery 1',
 1,
 0
 );
@@ -2716,7 +2713,6 @@ INSERT INTO Surgery
 StartTime,
 EndTime,
 LocationID,
-Comments,
 PatientCheckInID,
 CaseType
 )
@@ -2725,7 +2721,6 @@ VALUES
 NOW(),
 NOW(),
 1,
-'Test surgery 2',
 2,
 1
 );
