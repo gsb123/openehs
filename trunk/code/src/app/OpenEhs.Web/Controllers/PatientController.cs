@@ -154,9 +154,14 @@ namespace OpenEhs.Web.Controllers
             patient.OldPhysicalRecordNumber = int.Parse(Request.Form["oldPhysicalRecordNumber"]);
 
             EmergencyContact emergencyContact = new EmergencyContact();
+            //Relationship relationship = new Relationship();
+            
             emergencyContact.IsActive = true;
             emergencyContact.FirstName = Request.Form["emergency_firstName"];
-                       
+            emergencyContact.LastName = Request.Form["emergency_lastname"];
+            //emergencyContact.Relationship = Request.Form["emergency_relationship"];
+            emergencyContact.PhoneNumber = Request.Form["emergency_phonenumber"];
+
 
             return null;
         }
