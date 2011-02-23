@@ -1496,7 +1496,8 @@ VALUES
 'AB+',
 'white',
 'lDS',
-'This is a test note for a patient,
+'This is a test note for a patient',
+null,
 1
 );
 
