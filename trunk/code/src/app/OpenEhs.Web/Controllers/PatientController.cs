@@ -589,7 +589,6 @@ namespace OpenEhs.Web.Controllers {
 
                 //Surgery Staff Repository
                 StaffRepository staffRepo = new StaffRepository();
-                surgery.Comments = "";
 
                 LocationRepository locationRepo = new LocationRepository();
                 surgery.Location = locationRepo.Get(int.Parse(Request.Form["theatreNumber"]));

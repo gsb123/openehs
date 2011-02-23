@@ -12,13 +12,22 @@
 
 <br />
 
-<div>
+<div id="selectVisitDiv">
 	
+	<select style="width: 250px; height: 40px; font-size: 25px; padding: 3px; background: none repeat scroll 0% 0% #FFFFCC;" name="visitPick">
+		<option value="">Select Visit...</option>
+		@foreach (var pastVisit in Model.PatientCheckIns)
+		{
+			<option value="@pastVisit.Id">@pastVisit.CheckInTime.ToString("dd/MM/yyyy")</option>
+		}
+	</select>
+
+	<input id="submitSelectButton" name="submitSelectButton" type="button" value="Submit" /> 
 
 </div>
 
 
-
+<p id="summaryTitle">Visit Summary</p>
 
 
 
