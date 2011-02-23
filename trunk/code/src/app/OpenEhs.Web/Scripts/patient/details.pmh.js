@@ -47,11 +47,6 @@ $(function () {
 
     });
 
-    //$("#submitSelectButton").button().click(function () {
-        //alert($("select[name='visitPick'] option:selected").val());
-
-    //});
-
     $(".visitVitalsLink").click(function () {
         $(".visitVitalsMoreInfo").slideToggle("slow", function () { });
     });
