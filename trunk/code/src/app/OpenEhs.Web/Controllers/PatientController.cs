@@ -611,17 +611,16 @@ namespace OpenEhs.Web.Controllers
             return jsonResult;
         }
 
-        public JsonResult SelectVisit()
+        public JsonResult SelectVisitList() 
         {
             int patientID = int.Parse(Request.Form["patientID"]);
             PatientRepository patientRepo = new PatientRepository();
             var patient = patientRepo.Get(patientID);
 
-            DateTime fromDate = DateTime.Parse(Request.Form["from"]);
-            DateTime toDate = DateTime.Parse(Request.Form["to"]);
+            int checkInID = int.Parse(Request.Form["checkInID"]);
 
             var query = from checkin in patient.PatientCheckIns
-                        where checkin.CheckInTime >= fromDate && checkin.CheckInTime <= toDate
+                        where checkin.Id == checkInID
                         select checkin;
 
             var resultSet = new List<object>();
@@ -629,11 +628,10 @@ namespace OpenEhs.Web.Controllers
 
             foreach (var result in query)
             {
-                IList<object> vitalsList = new List<object>();
+                IList<object> visitList = new List<object>();
 
-                foreach (var vitals in result.Vitals)
-                {
-                    vitalsList.Add(new
+                foreach (var vitals in result.Vitals) {
+                    visitList.Add(new
                     {
                         Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"),
                         //vitals.Type,
@@ -650,10 +648,9 @@ namespace OpenEhs.Web.Controllers
 
                 resultSet.Add(new
                 {
-                    //TODO: Need to fix how the time is...
                     date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
                     result.Diagnosis,
-                    Vitals = vitalsList
+                    Vitals = visitList
                 });
             }
 
