@@ -1,0 +1,145 @@
+﻿#adminLeft
+{
+    float: left;
+    margin-top: 50px;
+}
+
+#adminMiddle
+{
+    float: left;
+    margin-top: 50px;
+}
+
+#adminRight
+{
+    float: left;
+    margin-top: 50px;
+}
+
+.setFieldSetWidth
+{
+    width: 200px;
+    margin-left: 20px;
+}
+
+#fsLeftMargin
+{
+    margin-left: 119px;
+}
+
+.legendTextSize
+{
+    font-size: 18px;
+}
+
+.legendTextSizeBackup
+{
+    font-size: 16px;
+}
+
+#addUser
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#editUser
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#deleteUser
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#addProduct
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#editProduct
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#deleteProduct
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#editTemplate
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#deleteTemplate
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#fsDatabaseBackup
+{
+    margin-left: 119px;
+    margin-top: 40px;
+    float: left;
+    width: 680px;
+}
+
+#databaseLeft
+{
+    float: left;
+    margin-top: 10px;
+}
+
+#databaseMiddle
+{
+    float: left;
+    margin-top: 10px;
+}
+
+#databaseRight
+{
+    float: left;
+    margin-top: 10px;
+}
+
+.backupButtons
+{
+    width: 120px;
+    font-size: 15px;
+}
