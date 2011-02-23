@@ -602,6 +602,22 @@ namespace OpenEhs.Web.Models
             return false;
         }
 
+        /// <summary>
+        /// Get the ID for the invoice on the current PatientCheckIn (not checked out)
+        /// </summary>
+        /// <returns>The Id of the Invoice.</returns>
+        public int GetCheckedInInvoiceId() 
+        {
+            foreach (var checkin in _patient.PatientCheckIns)
+            {
+                if (checkin.CheckOutTime == null)
+                {
+                    return checkin.Invoice.Id;
+                }
+            }
+            return 0;
+        }
+
         #endregion
 
     }
