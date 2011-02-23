@@ -554,7 +554,6 @@ namespace OpenEhs.Web.Controllers
 
                 resultSet.Add(new
                 {
-                    //TODO: Need to fix how the time is...
                     date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss")
                 });
             }
