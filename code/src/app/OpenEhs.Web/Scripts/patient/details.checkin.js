@@ -7,6 +7,43 @@ $(function () {
     // ------------------------------------------------- //
     //  Setup Check In Modal                             //
     // ------------------------------------------------- //
+
+    //Set up correct tabs.
+    $.ajax({
+        type: "POST",
+        url: "/Patient/GetCurrentCheckin",
+        data: {
+            patientID: $("#patientId").val()
+        },
+        success: function (response) {
+            if (response.checkin != "null") {
+                $("#newCheckInButton").hide();
+                $("#checkOutButton").show();
+            }
+            else {
+                $("#vitalAddButton").button("disable");
+                $("#submitSurgery").button("disable");
+                $("#feedAddButton").button("disable");
+                $("#intakeAddButton").button("disable");
+                $("#suctionAddButton").button("disable");
+                $("#urineAddButton").button("disable");
+                $("#stoolAddButton").button("disable");
+                $('#modal_GetStaffSurgeon').attr('disabled', true);
+                $('#modal_GetStaffSurgeonAssistant').attr('disabled', true);
+                $('#modal_GetStaffAnaesthetist').attr('disabled', true);
+                $('#modal_GetStaffAnaesthetistAssistant').attr('disabled', true);
+                $('#modal_GetStaffNurse').attr('disabled', true);
+                $('#modal_GetStaffConsultant').attr('disabled', true);
+                $('#surgeryStartTime').attr('disabled', true);
+                $('#surgeryEndTime').attr('disabled', true);
+                $('#modal_GetSurgeryLocation').attr('disabled', true);
+                $('#caseType1').attr('disabled', true);
+                $('#caseType2').attr('disabled', true);
+            }
+        },
+        dataType: "json"
+    });
+
     $("#newCheckinModal").dialog({
         autoOpen: false,
         height: 225,
@@ -28,6 +65,23 @@ $(function () {
                         $("#newCheckinModal").dialog("close");
                         $("#checkOutButton").show();
                         $("#vitalAddButton").button("enable");
+                        $("#submitSurgery").button("enable");
+                        $("#feedAddButton").button("enable");
+                        $("#intakeAddButton").button("enable");
+                        $("#suctionAddButton").button("enable");
+                        $("#urineAddButton").button("enable");
+                        $("#stoolAddButton").button("enable");
+                        $('#modal_GetStaffSurgeon').attr('disabled', false);
+                        $('#modal_GetStaffSurgeonAssistant').attr('disabled', false);
+                        $('#modal_GetStaffAnaesthetist').attr('disabled', false);
+                        $('#modal_GetStaffAnaesthetistAssistant').attr('disabled', false);
+                        $('#modal_GetStaffNurse').attr('disabled', false);
+                        $('#modal_GetStaffConsultant').attr('disabled', false);
+                        $('#surgeryStartTime').attr('disabled', false);
+                        $('#surgeryEndTime').attr('disabled', false);
+                        $('#modal_GetSurgeryLocation').attr('disabled', false);
+                        $('#caseType1').attr('disabled', false);
+                        $('#caseType2').attr('disabled', false);
                     },
                     dataType: "json"
                 });

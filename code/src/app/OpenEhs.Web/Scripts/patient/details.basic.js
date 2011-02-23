@@ -24,7 +24,7 @@ $(function () {
 
     $("#checkOutButton").button();
     $("#checkOutButton").hide();
-
+    /*
     $("#newCheckInButton").button({
         create: function (event, ui) {
             $.ajax({
@@ -47,7 +47,7 @@ $(function () {
             });
         }
     });
-
+    */
     $("#newCheckInButton").button().click(function () {
         $("#newCheckinModal").dialog("open")
     });
