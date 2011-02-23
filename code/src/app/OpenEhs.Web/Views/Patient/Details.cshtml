@@ -126,10 +126,6 @@
             @Html.Partial("_tab-Billing", Model)
         </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
     <div id="newCheckinModal" title="Check In Patient @Model.FirstName @Model.LastName">
         <fieldset>
             <legend>Enter Checkin Information</legend>
