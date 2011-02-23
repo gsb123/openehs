@@ -21,7 +21,6 @@ $(function () {
                 anaesthetistAssistant: $("select[name='anaesthetistAssistantSelect'] option:selected").val(),
                 nurse: $("select[name='nurseSelect'] option:selected").val(),
                 consultant: $("select[name='consultantSelect'] option:selected").val(),
-                surgeryNote: $("#surgeryNoteTextBox").val(),
                 startTime: $("#surgeryStartTime").val(),
                 endTime: $("#surgeryEndTime").val(),
                 theatreNumber: $("select[name='theatreNumber'] option:selected").val(),
