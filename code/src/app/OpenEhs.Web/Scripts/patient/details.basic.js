@@ -30,10 +30,9 @@ $(function () {
             $.ajax({
                 type: "POST",
                 url: "/Patient/GetCurrentCheckin",
-                data:
-                    {
-                        patientID: $("#patientId").val()
-                    },
+                data: {
+                    patientID: $("#patientId").val()
+                },
                 success: function (response) {
                     if (response.checkin != "null") {
                         $("#newCheckInButton").hide();
@@ -49,11 +48,11 @@ $(function () {
     });
     */
     $("#newCheckInButton").button().click(function () {
-        $("#newCheckinModal").dialog("open")
+        $("#newCheckinModal").dialog("open");
     });
 
     $("#checkOutButton").button().click(function () {
-        $("#checkOutModal").dialog("open")
+        $("#checkOutModal").dialog("open");
     });
 
     $("#editPatientInfoButton").button().click(function () {
