@@ -7,10 +7,12 @@
       <generator class="native" />
     </id>
     <property name="Name" not-null="true" length="30" />
-    <property name="Description" not-null="false" length="130" />
+    <property name="Description" not-null="false" length="255" />
     <property name="DateCreated" not-null="true" />
 
-    <many-to-one name="User" column="UserID" unique="true" cascade="all" />
-
+    <bag name="Users" table="UserRole" inverse="true">
+      <key column="RoleID" />
+      <many-to-many class="User" column="UserID" />
+    </bag>
   </class>
 </hibernate-mapping>

@@ -21,11 +21,11 @@
     <property name="IsApproved" not-null="true" />
     <property name="IsActive" not-null="true" />
 
-    <bag name="Roles" table="Role" cascade="all">
-      <key column="UserId" />
-      <one-to-many class="Role" />
+    <bag name="Roles" table="UserRole">
+      <key column="UserID" />
+      <many-to-many class="Role" column="RoleID" />
     </bag>
-
+    
     <one-to-one name="Staff"
                 constrained="true"
                 foreign-key="none"

@@ -6,11 +6,14 @@
  * Author: Matthew Kimber (matthew.kimber@gmail.com)
  *****************************************************************************/
 
+using System.Collections.Generic;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
     public interface IUserRepository : IRepository<User>
     {
+        User Get(string username);
+        IList<User> Find(string username, string password);
     }
 }
