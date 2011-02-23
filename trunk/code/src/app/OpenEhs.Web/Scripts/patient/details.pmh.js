@@ -25,21 +25,24 @@ $(function () {
             },
             success: function (response) {
 
+                var checkin = response[0];
+                var htmlOutput = "<div id=\"replaceDIV\"><b>Visit Date: </b>" + checkin.date +
+                    "<br /><b>Testing: </b>" + checkin.Diagnosis +
+                    "<br /><b>Vitals: </b><br />" +
+                    "<table class=\"detailsTables\"><thead><tr><th>Time</th><th>Type</th></tr></thead><tbody>";
 
-                for (var i = 0; i < 1; i++) {
-                    for (var x = 0; x < response[i].Vitals.length; x++) {
+                for (var x = 0; x < checkin.Vitals.length; x++) {
 
-                        var vital = response[i].Vitals[x];
+                    var vital = checkin.Vitals[x];
 
-                        var searchResult = '<div id="replaceDIV"><b>' + "Visit Date: " + '</b>' + response[0].date +
-                        '<br /><b>' + "Testing: " + '</b>' + response[0].Diagnosis + '</div>';
+                    htmlOutput += "<tr><td>" + vital.Time + "</td><td>" + vital.type + "</td></tr>";
 
-                        //console.log(searchResult);
-                        $("#replaceDIV").replaceWith(searchResult);
-                    }
+                    //console.log(searchResult);
                 }
 
+                htmlOutput += "</tbody></table></div>";
 
+                $("#replaceDIV").replaceWith(htmlOutput);
             },
             dataType: "json"
         });
