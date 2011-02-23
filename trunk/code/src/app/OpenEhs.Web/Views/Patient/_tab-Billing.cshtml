@@ -1,0 +1,25 @@
+﻿@model OpenEhs.Web.Models.PatientViewModel
+<div id="billingHeader" class="group">
+    <h2 id="Billing">
+        Billing</h2>
+    <input id="invoiceAddButton" name="invoiceAddButton" type="button" value="Add" />
+</div>
+<div>
+    <ul id="invoiceList">
+        @foreach (var invoice in Model.Invoices) {
+            <li class="group" id="@string.Format("{0}{1}", "billing_", invoice.Id)">
+                <div style="float: left;">@invoice.Date</div>
+                <div style="float: right;">@invoice.Total</div>
+            </li>
+        }
+    </ul>
+</div>
+<div id="addInvoiceDialog" title="Add Invoice for @Model.FirstName @Model.LastName">
+    <form id="addInvoiceForm" action="">
+        <fieldset>
+            <label for="name" class="modal-label">
+                Invoice Name:</label>
+            <input type="text" name="name" id="addInvoiceName" class="text required ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
+</div>

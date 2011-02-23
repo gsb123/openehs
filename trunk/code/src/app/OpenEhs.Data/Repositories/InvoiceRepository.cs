@@ -106,9 +106,16 @@ namespace OpenEhs.Data
         /// <returns>IList of Invoices for the given PatientId.</returns>
         public IList<Invoice> FindByPatientId(int PatientId)
         {
-            string q = String.Format("from Invoice where PatientCheckIn.Patient = select * from Patient where Id = {0}", PatientId);
-            IQuery query = Session.CreateQuery(q);
-            return query.List<Invoice>();
+            IList<Invoice> invoices = GetAll();
+            IList<Invoice> returnInvoices = new List<Invoice>();
+            for (int i = 0; i < invoices.Count;i++)
+            {
+                if (invoices[i].PatientCheckIn.Patient.Id == PatientId)
+                {
+                    returnInvoices.Add(invoices[i]);
+                }
+            }
+            return returnInvoices;
         }
 
         /// <summary>

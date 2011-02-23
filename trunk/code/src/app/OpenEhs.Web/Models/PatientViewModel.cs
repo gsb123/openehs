@@ -424,6 +424,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Invoice> Invoices
+        {
+            get
+            {
+                InvoiceRepository repo = new InvoiceRepository();
+                return repo.FindByPatientId(this._patient.Id);
+            }
+        }
+
         #endregion
 
         

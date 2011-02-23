@@ -85,6 +85,7 @@
             <li><a href="#patientView-Surgery">New Surgery</a></li>
             <li><a href="#patientView-VisitHistory">Visit History</a></li>
             <li><a href="#patientView-PMH">PMH</a></li>
+            <li><a href="#patientView-Billing">Billing</a></li>
         </ul>
     </div>
     <div>
@@ -120,6 +121,9 @@
         </div>
         <div id="#patientView-PMH">
             @Html.Partial("_tab-PMH", Model)
+        </div>
+        <div id="#patientView-Billing">
+            @Html.Partial("_tab-Billing", Model)
         </div>
     </div>
     <p>
