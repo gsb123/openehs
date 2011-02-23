@@ -9,16 +9,6 @@ $(function () {
     //  Setup Surgery Tab                                //
     // ------------------------------------------------- //
 
-    var ckConfig = {
-        toolbar: [
-            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
-            ["UIColor"]
-        ],
-        extraPlugins: "autogrow",
-        autoGrow_maxHeight: 800
-    };
-    $("#surgeryNoteTextBox").ckeditor(ckConfig);
-
     $("#submitSurgery").button().click(function () {
         $.ajax({
             type: "POST",
@@ -43,17 +33,6 @@ $(function () {
             dataType: "json"
         });
     });
-
-    var ckConfig = {
-        toolbar: [
-            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
-            ["UIColor"]
-        ],
-        extraPlugins: "autogrow",
-        autoGrow_maxHeight: 800
-    };
-
-    $("#surgeryNoteTextBox").ckeditor(ckConfig);
 
     $("#surgeryEndTime").timepicker({});
 
