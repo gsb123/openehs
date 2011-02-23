@@ -14,79 +14,40 @@
     </script>
 }
 <h2>
-    Create</h2>
-<fieldset>
-    <legend>Patient</legend>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.FirstName)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.FirstName)
-        @Html.ValidationMessageFor(model => model.FirstName)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.MiddleName)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.MiddleName)
-        @Html.ValidationMessageFor(model => model.MiddleName)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.LastName)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.LastName)
-        @Html.ValidationMessageFor(model => model.LastName)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.DateOfBirth)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.DateOfBirth)
-        @Html.ValidationMessageFor(model => model.DateOfBirth)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.PhoneNumber)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.PhoneNumber)
-        @Html.ValidationMessageFor(model => model.PhoneNumber)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.BloodType)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.BloodType)
-        @Html.ValidationMessageFor(model => model.BloodType)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.TribeRace)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.TribeRace)
-        @Html.ValidationMessageFor(model => model.TribeRace)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Religion)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Religion)
-        @Html.ValidationMessageFor(model => model.Religion)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.OldPhysicalRecordNumber)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.OldPhysicalRecordNumber)
-        @Html.ValidationMessageFor(model => model.OldPhysicalRecordNumber)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.IsActive)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.IsActive)
-        @Html.ValidationMessageFor(model => model.IsActive)
-    </div>
+    Create Patient</h2>
+    <fieldset>
+        <div class="modal-label">
+            First Name:
+        </div>
+        <div>
+            <input type="text" name="p_firstName" id="p_firstName" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Middle Name:
+        </div>
+        <div>
+            <input type="text" name="p_middleName" id="p_middleName" class="modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label">
+            Last Name:
+        </div>
+        <div>
+            <input type="text" name="p_lastName" id="p_lastName" class="modal-input text ui-widget-content ui-corner-all" />
+        </div>   
+        <div class="modal-label">
+            Date of Birth:
+        </div>
+        <div>
+            <input type="text" name="p_dob" id="p_dob" class="modal-input text ui-widget-content ui-corner-all" />
+        </div>   
+        <div class="modal-label">
+            Gender:
+        </div>
+        <div>
+            <input type="text" name="p_gender" id="p_gender" class="modal-input text ui-widget-content ui-corner-all" />
+        </div>                 
+        
+         
     <p>
         <input type="submit" value="Create" />
     </p>
