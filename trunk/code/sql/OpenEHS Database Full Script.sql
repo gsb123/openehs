@@ -2839,3 +2839,111 @@ NOW(),
 'In his pants',
 'I really have no idea what they put in these charts'
 );
+
+INSERT INTO InvoiceItem
+(
+InvoiceID,
+ProductID,
+ServiceID,
+Quantity
+)
+VALUES
+(
+1,
+2,
+null,
+2
+);
+
+INSERT INTO InvoiceItem
+(
+InvoiceID,
+ProductID,
+ServiceID,
+Quantity
+)
+VALUES
+(
+1,
+null,
+1,
+1
+);
+
+INSERT INTO InvoiceItem
+(
+InvoiceID,
+ProductID,
+ServiceID,
+Quantity
+)
+VALUES
+(
+1,
+4,
+null,
+42
+);
+
+INSERT INTO Invoice
+(
+InvoiceID,
+Total,
+`Date`,
+PatientCheckInID,
+IsActive
+)
+VALUES
+(
+2,
+0.00,
+'2011-02-05 01:15:12',
+2,
+1
+);
+
+INSERT INTO InvoiceItem
+(
+InvoiceID,
+ProductID,
+ServiceID,
+Quantity
+)
+VALUES
+(
+2,
+5,
+null,
+12
+);
+
+INSERT INTO InvoiceItem
+(
+InvoiceID,
+ProductID,
+ServiceID,
+Quantity
+)
+VALUES
+(
+2,
+6,
+null,
+13
+);
+
+INSERT INTO InvoiceItem
+(
+InvoiceID,
+ProductID,
+ServiceID,
+Quantity
+)
+VALUES
+(
+2,
+null,
+1,
+1
+);
+
