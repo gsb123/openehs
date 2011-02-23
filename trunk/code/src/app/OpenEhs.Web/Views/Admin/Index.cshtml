@@ -3,6 +3,8 @@
 }
 @section head
 {
+    <link href="@Url.Content("~/Content/admin.css")" rel="Stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/admin.js")" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#admin-tab").addClass("current");
@@ -12,3 +14,113 @@
 
 <h2>Administration</h2>
 
+<div id="adminLeft">
+
+    <fieldset id="fsLeftMargin" class="setFieldSetWidth">
+        <legend class="legendTextSize">Manage Users</legend>
+
+        <input id="addUser" type="button" value="Add User" />
+
+        <br />
+
+        <input id="editUser" type="button" value="Edit User" />
+
+        <br />
+
+        <input id="deleteUser" type="button" value="Delete User" />
+
+    </fieldset>
+
+</div>
+
+<div id="adminMiddle">
+
+    <fieldset class="setFieldSetWidth">
+        <legend class="legendTextSize">Manage Products</legend>
+
+        <input id="addProduct" type="button" value="Add Product" />
+
+        <br />
+
+        <input id="editProduct" type="button" value="Edit Product" />
+
+        <br />
+
+        <input id="deleteProduct" type="button" value="Delete Product" />
+
+    </fieldset>
+
+</div>
+
+<div id="adminRight">
+
+    <fieldset class="setFieldSetWidth">
+        <legend class="legendTextSize">Manage Templates</legend>
+
+        <input id="editTemplate" type="button" value="Edit Template" />
+
+        <br />
+
+        <input id="deleteTemplate" type="button" value="Delete Template" />
+
+    </fieldset>
+
+</div>
+
+<div>
+
+    <fieldset id="fsDatabaseBackup">
+        <legend class="legendTextSize">Database Backup</legend>
+
+        <div id="databaseLeft">
+            <fieldset>
+                <legend class="legendTextSizeBackup">User</legend>
+
+                <input id="backupUser" class="backupButtons" type="button" value="Backup" />
+
+            </fieldset>
+
+            <fieldset>
+                <legend class="legendTextSizeBackup">Templates</legend>
+
+                <input id="backupTemplates" class="backupButtons" type="button" value="Backup" />
+
+            </fieldset>
+        </div>
+
+        <div id="databaseMiddle">
+            <fieldset>
+                <legend class="legendTextSizeBackup">Patients</legend>
+
+                <input id="backupPatients" class="backupButtons" type="button" value="Backup" />
+
+            </fieldset>
+
+            <fieldset>
+                <legend class="legendTextSizeBackup">Billing</legend>
+
+                <input id="backupBilling" class="backupButtons" type="button" value="Backup" />
+
+            </fieldset>
+        </div>
+
+        <div id="databaseRight">
+            <fieldset>
+                <legend class="legendTextSizeBackup">Products</legend>
+
+                <input id="backupProducts" class="backupButtons" type="button" value="Backup" />
+
+            </fieldset>
+
+            <fieldset>
+                <legend class="legendTextSizeBackup">Checkins</legend>
+
+                <input id="backupCheckins" class="backupButtons" type="button" value="Backup" />
+
+            </fieldset>
+        </div>
+
+
+    </fieldset>
+
+</div>

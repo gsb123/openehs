@@ -108,6 +108,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin.css" />
     <Content Include="Content\billing.main.css" />
     <Content Include="Content\elements.css" />
     <Content Include="Content\footer.css" />
@@ -138,6 +139,7 @@
     <Content Include="images\openehs.logo.big.png" />
     <Content Include="images\openehs.logo.png" />
     <Content Include="images\selected.menuitem.arrow.png" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bbq.js" />
     <Content Include="Scripts\billing.js" />
     <Content Include="Scripts\ckedit\adapters\jquery.js" />
