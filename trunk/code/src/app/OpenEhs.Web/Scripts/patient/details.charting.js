@@ -66,15 +66,15 @@ $(function () {
 
     $("#addFeedDialog").dialog({
         autoOpen: false,
-        height: 225,
-        width: 375,
+        height: 370,
+        width: 450,
         modal: true,
         buttons: {
             "Add Allergy": function () {
                     $.post("/Patient/AddFeed", {
                         patientID: $("#patientId").val(),
                         feedType: $("#model_feedtype").val(),
-                        amountOffered: $("#model_ammountoffered").val(),
+                        amountOffered: $("#model_amountoffered").val(),
                         amountTaken: $("#model_amounttaken").val(),
                         vomit: $("#model_vomit").val(),
                         urine: $("#model_urine").val(),
@@ -88,7 +88,19 @@ $(function () {
                             //$("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
                             //    $(this).find(".allergyRemove").button().click(removeOnClick)
                             //};
+
+                            //Reset form
+                            $("#model_feedtype").val("");
+                            $("#model_amountoffered").val("");
+                            $("#model_amounttaken").val("");
+                            $("#model_vomit").val("");
+                            $("#model_urine").val("");
+                            $("#model_stool").val("");
+                            $("#model_comments").val("");
+
+                            //Show that im working
                             alert("you are here");
+
                         } else {
                             $("#addFeedDialog .error").html(returnData.status);
                         }
