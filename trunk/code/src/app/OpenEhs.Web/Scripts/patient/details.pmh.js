@@ -26,23 +26,25 @@ $(function () {
             success: function (response) {
 
                 var checkin = response[0];
-                var htmlOutput = "<div id=\"replaceDIV\"><b>Visit Date: </b>" + checkin.date +
-                    "<br /><b>Testing: </b>" + checkin.Diagnosis +
-                    "<br /><b>Vitals: </b><br />" +
-                    "<table class=\"detailsTables\"><thead><tr><th>Time</th><th>Type</th></tr></thead><tbody>";
+                var htmlOutput = "<div id=\"replaceDIV\"><ul class=\"visitSummaryList\"><li><p class=\"visitSummaryHeader\"><u>Encounter</u></p><b>Visit Date: </b>" + checkin.date +
+                    "<br /><b>Diagnosis: </b>" + checkin.Diagnosis +
+                    "<br /><b>Attending Staff: </b>" + checkin.firstName + ", " + checkin.lastName +
+                    "<br /><b>Recorded Vitals: </b><br />" +
+                    "<table class=\"detailsTables\"><thead><tr><th>Time</th><th>Type</th><th>Height(cm)</th><th>Weight(kg)</th><th>Temp(&deg;C)</th><th>HR(bpm)</th><th>BP(mmHg)</th><th>RR(Hz)</th></tr></thead><tbody>";
 
                 for (var x = 0; x < checkin.Vitals.length; x++) {
 
                     var vital = checkin.Vitals[x];
 
-                    htmlOutput += "<tr><td>" + vital.Time + "</td><td>" + vital.type + "</td></tr>";
-
-                    //console.log(searchResult);
+                    htmlOutput += "<tr><td>" + vital.Time + "</td><td>" + vital.type + "</td><td>" + vital.Height + "</td><td>" + vital.Weight + "</td><td>" + vital.Temperature + "</td><td>" + vital.HeartRate + "</td><td>" + vital.BpDiastolic + "/" + vital.BpSystolic + "</td><td>" + vital.RespiratoryRate + "</td></tr>";
                 }
 
-                htmlOutput += "</tbody></table></div>";
+                htmlOutput += "</tbody></table>";
+
+                htmlOutput += "<b>Notes: </b><br />This is where all the notes will go when mappings work...</li></ul></div>"
 
                 $("#replaceDIV").replaceWith(htmlOutput);
+                //Need to add surgery right under encounter stuff... Also ask matt if I can call another POST right here!
             },
             dataType: "json"
         });
