@@ -38,6 +38,6 @@ $(function () {
 
     $("#surgeryStartTime").timepicker({});
 
-    $("#surgeryRadio").buttonset();
+    $("#caseTypeRadio").buttonset();
 
 });
