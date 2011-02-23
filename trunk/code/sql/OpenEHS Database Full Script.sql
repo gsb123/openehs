@@ -1496,8 +1496,7 @@ VALUES
 'AB+',
 'white',
 'lDS',
-'This patient smells very bad. Also watch out if you talk to close to his face he will spit on you.',
-1102547,
+'This is a test note for a patient,
 1
 );
 
@@ -1582,7 +1581,7 @@ VALUES
 'AB',
 'white',
 'N/A',
-'Is a chronic liar!',
+'Another test note comes here',
 null,
 2
 );
