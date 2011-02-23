@@ -25,20 +25,20 @@ $(function () {
             },
             success: function (response) {
 
-                
-                for (var i = 0; i < 1; i++)
-                {
-                for(var x = 0; x < response[i].Vitals.length; x++)
-                {
 
-                var vital = response[i].Vitals[x];
+                for (var i = 0; i < 1; i++) {
+                    for (var x = 0; x < response[i].Vitals.length; x++) {
 
-                var searchResult = '<div id="replaceDIV"><b>' + "Visit Date: " + '</b>' + response[0].date + '</div>';
-                //console.log(searchResult);
-                $("#replaceDIV").replaceWith(searchResult);
+                        var vital = response[i].Vitals[x];
+
+                        var searchResult = '<div id="replaceDIV"><b>' + "Visit Date: " + '</b>' + response[0].date +
+                        '<br /><b>' + "Testing: " + '</b>' + response[0].Diagnosis + '</div>';
+
+                        //console.log(searchResult);
+                        $("#replaceDIV").replaceWith(searchResult);
+                    }
                 }
-                }
-              
+
 
             },
             dataType: "json"
