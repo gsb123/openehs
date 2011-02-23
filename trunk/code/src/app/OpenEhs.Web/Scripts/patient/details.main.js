@@ -3,7 +3,7 @@
 /// <reference path="../jquery.ui.js" />
 /// <reference path="../jquery-jvert-tabs-1.1.4.js" />
 
-$(function(){
+$(function () {
     // ------------------------------------------------- //
     //  Initialize jVerticalTabs Plugin                  //
     // ------------------------------------------------- //
