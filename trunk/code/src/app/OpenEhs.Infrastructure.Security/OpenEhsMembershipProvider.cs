@@ -7,6 +7,7 @@
  *****************************************************************************/
 
 using System;
+using System.Configuration.Provider;
 using System.Web.Security;
 using OpenEhs.Data;
 using OpenEhs.Domain;
@@ -15,9 +16,108 @@ namespace OpenEhs.Infrastructure.Security
 {
     public class OpenEhsMembershipProvider : MembershipProvider
     {
+        #region Fields
+
+        private readonly IUserRepository _userRepository;
+
+        #endregion
+
+
+        #region Properties
+
+        public override string ApplicationName
+        {
+            get
+            {
+                return System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath;
+            }
+            set {}
+        }
+
+        public override bool EnablePasswordRetrieval
+        {
+            get { return false; }
+        }
+
+        public override bool EnablePasswordReset
+        {
+            get { return false; }
+        }
+
+        public override bool RequiresQuestionAndAnswer
+        {
+            get { return false; }
+        }
+
+        public override int MaxInvalidPasswordAttempts
+        {
+            get { return 10; }
+        }
+
+        public override int PasswordAttemptWindow
+        {
+            get { return 30; }
+        }
+
+        public override bool RequiresUniqueEmail
+        {
+            get { return false; }
+        }
+
+        public override MembershipPasswordFormat PasswordFormat
+        {
+            get { return MembershipPasswordFormat.Hashed; }
+        }
+
+        public override int MinRequiredPasswordLength
+        {
+            get { return 6; }
+        }
+
+        public override int MinRequiredNonAlphanumericCharacters
+        {
+            get { return 0; }
+        }
+
+        public override string PasswordStrengthRegularExpression
+        {
+            get { return @"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})"; }
+        }
+
+        #endregion
+
+
+        #region Constructor
+
+        public OpenEhsMembershipProvider()
+        {
+            _userRepository = new UserRepository();
+        }
+
+        #endregion
+
+
+        #region Methods
+
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new NotImplementedException();
+            var user = new User(username, password, email, passwordQuestion, passwordAnswer, isApproved);
+
+            status = MembershipCreateStatus.Success;
+
+            return new MembershipUser("OpenEhsMembershipProvider", 
+                                      user.Username, 
+                                      null, 
+                                      user.EmailAddress,
+                                      user.PasswordQuestion, 
+                                      String.Empty, 
+                                      user.IsApproved, 
+                                      user.IsLockedOut,
+                                      user.DateCreated, 
+                                      user.LastLogin, 
+                                      DateTime.Now, 
+                                      DateTime.Now, 
+                                      user.LastLockout);
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
@@ -42,20 +142,33 @@ namespace OpenEhs.Infrastructure.Security
 
         public override void UpdateUser(MembershipUser user)
         {
-            throw new NotImplementedException();
+            var existing = _userRepository.Get(user.UserName);
+
+            if (existing == null)
+                throw new ProviderException("That user does not exist.");
+
+            existing.Username = user.UserName;
+            existing.EmailAddress = user.Email;
+            existing.PasswordQuestion = user.PasswordQuestion;
+            existing.IsApproved = user.IsApproved;
+            existing.IsLockedOut = user.IsLockedOut;
+            existing.LastLockout = user.LastLockoutDate;
+            existing.LastLogin = user.LastLoginDate;
+            existing.IsOnline = user.IsOnline;
         }
 
         public override bool ValidateUser(string username, string password)
         {
-            var userRepository = new UserRepository();
-            var users = userRepository.Find(username, password);
-
+            var users = _userRepository.Find(username, password);
             return users.Count != 0;
         }
 
         public override bool UnlockUser(string userName)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Get(userName);
+            user.IsLockedOut = false;
+
+            return true;
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
@@ -65,7 +178,13 @@ namespace OpenEhs.Infrastructure.Security
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Get(username);
+
+            if (user == null)
+                throw new ProviderException("The specified user does not exist.");
+
+            user.IsOnline = userIsOnline;
+            return TransformUser(user);
         }
 
         public override string GetUserNameByEmail(string email)
@@ -98,60 +217,28 @@ namespace OpenEhs.Infrastructure.Security
             throw new NotImplementedException();
         }
 
-        public override bool EnablePasswordRetrieval
+
+        #region Private Methods
+
+        private static MembershipUser TransformUser(User user)
         {
-            get { return false; }
+            return new MembershipUser("OpenEhsMembershipProvider",
+                                      user.Username,
+                                      null,
+                                      user.EmailAddress,
+                                      user.PasswordQuestion,
+                                      String.Empty,
+                                      user.IsApproved,
+                                      user.IsLockedOut,
+                                      user.DateCreated,
+                                      user.LastLogin,
+                                      DateTime.Now,
+                                      DateTime.MinValue,
+                                      user.LastLockout);
         }
 
-        public override bool EnablePasswordReset
-        {
-            get { return false; }
-        }
+        #endregion
 
-        public override bool RequiresQuestionAndAnswer
-        {
-            get { return false; }
-        }
-
-        public override string ApplicationName
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        public override int MaxInvalidPasswordAttempts
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override int PasswordAttemptWindow
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override bool RequiresUniqueEmail
-        {
-            get { return false; }
-        }
-
-        public override MembershipPasswordFormat PasswordFormat
-        {
-            get { return MembershipPasswordFormat.Hashed; }
-        }
-
-        public override int MinRequiredPasswordLength
-        {
-            get { return 6; }
-        }
-
-        public override int MinRequiredNonAlphanumericCharacters
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override string PasswordStrengthRegularExpression
-        {
-            get { throw new NotImplementedException(); }
-        }
+        #endregion
     }
 }

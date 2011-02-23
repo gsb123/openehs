@@ -12,5 +12,6 @@ namespace OpenEhs.Data
 {
     public interface IRoleRepository : IRepository<Role>
     {
+        Role Get(string name);
     }
 }

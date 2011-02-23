@@ -20,6 +20,14 @@ namespace OpenEhs.Data
             return Session.Get<User>(id);
         }
 
+        public User Get(string username)
+        {
+            ICriteria criteria = Session.CreateCriteria<User>()
+                                        .Add(Restrictions.Eq("Username", username));
+
+            return criteria.UniqueResult<User>();
+        }
+
         public IList<User> GetAll()
         {
             ICriteria criteria = Session.CreateCriteria<User>();
@@ -44,14 +52,6 @@ namespace OpenEhs.Data
                                         .Add(Restrictions.Eq("Password", password));
 
             return criteria.List<User>();
-        }
-
-        public User Get(string username)
-        {
-            ICriteria criteria = Session.CreateCriteria<User>()
-                                        .Add(Restrictions.Eq("Username", username));
-
-            return criteria.UniqueResult<User>();
         }
     }
 }

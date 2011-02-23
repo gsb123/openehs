@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
 using OpenEhs.Domain;
@@ -21,7 +20,7 @@ namespace OpenEhs.Data
         public Role Get(string name)
         {
             ICriteria criteria = Session.CreateCriteria<Role>()
-                .Add(Restrictions.Like("Name", name + "%"));
+                .Add(Restrictions.Eq("Name", name));
 
             return criteria.UniqueResult<Role>();
         }

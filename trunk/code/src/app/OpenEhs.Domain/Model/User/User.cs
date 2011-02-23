@@ -32,23 +32,27 @@ namespace OpenEhs.Domain
         public virtual int FailedPasswordAttemptCount { get; set; }
         public virtual bool IsApproved { get; set; }
         public virtual bool IsActive { get; set; }
-
         public virtual Staff Staff { get; set; }
         
         #endregion
 
 
+        #region Constructor
+
         public User()
+            : this(String.Empty, String.Empty, String.Empty, String.Empty, String.Empty, false)
         {}
 
-        public User(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved)
+        public User(string username, string password, string emailAddress, string passwordQuestion, string passwordAnswer, bool isApproved)
         {
             Username = username;
             Password = password;
-            EmailAddress = email;
+            EmailAddress = emailAddress;
             PasswordQuestion = passwordQuestion;
             PasswordAnswer = passwordAnswer;
             IsApproved = isApproved;
         }
+
+        #endregion
     }
 }
