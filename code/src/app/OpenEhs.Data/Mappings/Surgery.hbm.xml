@@ -10,7 +10,6 @@
     <property name="StartTime" />
     <property name="EndTime" />
     <many-to-one name="Location" column="LocationID" unique="true" cascade="all" />
-    <property name="Comments" />
     <property name="CaseType" />
     <many-to-one name="CheckIn" column="PatientCheckInID" unique="true" cascade="all" />
 

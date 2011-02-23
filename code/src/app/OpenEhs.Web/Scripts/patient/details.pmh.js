@@ -18,8 +18,9 @@ $(function () {
         $(".staffInfo").slideToggle("slow", function () { });
     });
 
-    $(".visitDateButton").click(function () {
-        alert("PatientID: " + $("#patientId").val());
-    });
+    $("#submitSelectButton").button().click(function () {
+        alert($("select[name='visitPick'] option:selected").val());
 
+       
+    });
 });
