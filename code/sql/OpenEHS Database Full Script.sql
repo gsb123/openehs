@@ -2946,3 +2946,41 @@ null,
 1
 );
 
+INSERT INTO Payment
+(
+CashAmount,
+PaymentDate,
+InvoiceID
+)
+VALUES
+(
+5.20,
+'2011-02-23 01:15:12',
+1
+);
+
+INSERT INTO Payment
+(
+CashAmount,
+PaymentDate,
+InvoiceID
+)
+VALUES
+(
+42.85,
+'2011-02-23 01:16:12',
+1
+);
+
+INSERT INTO Payment
+(
+CashAmount,
+PaymentDate,
+InvoiceID
+)
+VALUES
+(
+15.00,
+'2011-02-23 01:15:13',
+2
+);

@@ -1170,8 +1170,35 @@ margin-bottom: 10px;
 }
 
 
+#AddInvoiceItemFieldSet
+{
+    width: 300px;
+}
 
+#AddInvoiceItem
+{
+	float: left;
+}
 
+#selection
+{
+    margin-left: 100px;
+}
+
+#modal_GetProduct
+{
+    margin-left: 140px;
+}
+
+#modal_GetService
+{
+    margin-left: 125px;
+}
+
+#modal_GetQuantity
+{
+    margin-left: 117px;
+}
 
 
 

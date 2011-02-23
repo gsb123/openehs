@@ -433,6 +433,24 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [DisplayName("Products")]
+        public IList<Product> Products
+        {
+            get
+            {
+                return new ProductRepository().GetAll();
+            }
+        }
+
+        [DisplayName("Services")]
+        public IList<Service> Services
+        {
+            get
+            {
+                return new ServiceRepository().GetAll();
+            }
+        }
+
         #endregion
 
         
