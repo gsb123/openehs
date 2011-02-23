@@ -7,6 +7,22 @@ $(function () {
     // ------------------------------------------------- //
     //  Setup Allergy Tab                                //
     // ------------------------------------------------- //
+
+    var removeOnClick = function () {
+        $.post("/Patient/RemoveAllergy", {
+            patientID: $("#patientId").val(),
+            allergyID: $(this).attr("id")
+        }, function (returnData) {
+            if (returnData.error == "false") {
+                $("#allergy_" + returnData.Id).fadeOut("normal", function () {
+                    $(this).remove();
+                });
+            } else {
+                alert("Error while adding allergy");
+            }
+        }, "json");
+    };
+
     $("#addAllergyDialog").dialog({
         autoOpen: false,
         height: 225,
@@ -37,7 +53,7 @@ $(function () {
             }
         },
         close: function () {
-
+            
         }
     });
 
@@ -46,38 +62,15 @@ $(function () {
     $("#addAllergyForm").submit(function () {
         return false;
     });
-
-    /// <reference path="jquery-1.4.4.js" />
-    /// <reference path="jquery.validate.js" />
-    /// <reference path="jquery.ui.js" />
-    /// <reference path="jquery-jvert-tabs-1.1.4.js" />
-
-    $(function () {
-        $("#allergyAddButton").button().click(function () {
-            $("#addAllergyDialog").dialog("open")
-        });
-
-        var removeOnClick = function () {
-            $.post("/Patient/RemoveAllergy", {
-                patientID: $("#patientId").val(),
-                allergyID: $(this).attr("id")
-            }, function (returnData) {
-                if (returnData.error == "false") {
-                    $("#allergy_" + returnData.Id).fadeOut("normal", function () {
-                        $(this).remove();
-                    });
-                } else {
-
-                }
-            }, "json");
-        };
-
-        // Add remove function to every allergy remove button
-        $(".allergyRemove").button({
-            icons: {
-                primary: "ui-icon-closethick"
-            },
-            text: false
-        }).click(removeOnClick);
+    $("#allergyAddButton").button().click(function () {
+        $("#addAllergyDialog").dialog("open")
     });
+
+    // Add remove function to every allergy remove button
+    $(".allergyRemove").button({
+        icons: {
+            primary: "ui-icon-closethick"
+        },
+        text: false
+    }).click(removeOnClick);
 });
