@@ -75,14 +75,14 @@ namespace OpenEhs.Data
 
         public IList<Patient> FindByDateOfBirth(DateTime dateOfBirth)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("DateOfBirth", "%" + dateOfBirth + "%"));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("DateOfBirth", dateOfBirth));
 
             return criteria.List<Patient>();
         }
 
         public IList<Patient> FindByOldPhysicalRecord(int number)
         {
-            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("OldPhysicalRecordNumber", "%" + number + "%"));
+            ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Like("OldPhysicalRecordNumber", "%" + number.ToString() + "%"));
 
             return criteria.List<Patient>();
         }
