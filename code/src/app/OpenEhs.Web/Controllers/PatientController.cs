@@ -445,6 +445,16 @@ namespace OpenEhs.Web.Controllers {
                 checkIn.CheckOutTime = DateTime.Now;
                 checkIn.Diagnosis = Request.Form["diagnosis"];
 
+                var surgeryQuery = from surgery in checkIn.Surgeries
+                            where surgery.EndTime == DateTime.MinValue
+                            select surgery;
+
+                if(surgeryQuery.Count<Surgery>() >0)
+                {
+                    Surgery openSurgery = surgeryQuery.First<Surgery>();
+                    openSurgery.EndTime = DateTime.Now;
+                }
+
                 return Json(new {
                     error = "false"
                 });
