@@ -2676,6 +2676,22 @@ VALUES
     "2011-02-21 00:00:00"
 );
 
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Surgeon",
+    "A physician who specializes in surgery.",
+    "2011-02-21 00:00:00"
+);
+
+/*****************************************************
+    Surgery Test Data
+*****************************************************/
 INSERT INTO Surgery
 (
 StartTime,
