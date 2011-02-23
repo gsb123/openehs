@@ -350,6 +350,7 @@ fieldset
     margin-bottom: 10px;
     margin-left: 40px; 
     width: 650px;
+    margin-top: 50px;
 }
 
 #visitSearchResultsUL li
@@ -1024,6 +1025,32 @@ margin-bottom: 10px;
     font-size: 12px;
 }
 
+.visitNoteLink
+{
+	color: #00f;
+    cursor: pointer;
+    margin: 1px 0px 5px 0px;
+    font-size: 12px;
+}
+
+.visitNoteMoreInfo
+{
+	display: none;
+}
+
+.visitVitalsLink
+{
+	color: #00f;
+    cursor: pointer;
+    margin: 1px 0px 5px 0px;
+    font-size: 12px;
+}
+
+.visitVitalsMoreInfo
+{
+	display: none;
+}
+
 .staffInfo
 {
     display: none;
@@ -1129,7 +1156,10 @@ margin-bottom: 10px;
 
 #summaryTitle
 {
-	margin-left: 450px;
+	margin-left: 310px;
+	margin-top: 50px;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 
