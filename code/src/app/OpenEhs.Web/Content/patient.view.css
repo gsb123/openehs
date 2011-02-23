@@ -1166,8 +1166,8 @@ margin-bottom: 10px;
 	margin-top: 50px;
 	font-size: 20px;
 	font-weight: bold;
-	font-style: italic;
 	font-family: cursive;
+	margin-left: 20;
 }
 
 #replaceDIV
@@ -1216,7 +1216,23 @@ margin-bottom: 10px;
     margin-left: 117px;
 }
 
+.visitSummaryList
+{
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px; 
+    width: 650px;
+}
 
+.visitSummaryHeader
+{
+    text-align: center;
+}
 
 
 

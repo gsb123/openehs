@@ -654,6 +654,8 @@ namespace OpenEhs.Web.Controllers
                     {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
                         result.Diagnosis,
+                        firstName = result.AttendingStaff.FirstName,
+                        lastName =  result.AttendingStaff.LastName,
                         Vitals = visitList
                     });
                 }
