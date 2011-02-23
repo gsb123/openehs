@@ -27,7 +27,7 @@
         <label>
             Surgeon Assistant:</label>
         <select name="surgeonAssistantSelect" id="modal_GetStaffSurgeonAssistant">
-            <option>Select Staff...</option>
+            <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -36,7 +36,7 @@
         <label>
             Anaesthetist:</label>
         <select name="anaesthetistSelect" id="modal_GetStaffAnaesthetist">
-            <option>Select Staff...</option>
+            <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -45,7 +45,7 @@
         <label>
             Anaesthetist Assistant:</label>
         <select name="anaesthetistAssistantSelect" id="modal_GetStaffAnaesthetistAssistant">
-            <option>Select Staff...</option>
+            <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -54,7 +54,7 @@
         <label>
             Nurse:</label>
         <select name="nurseSelect" id="modal_GetStaffNurse">
-            <option>Select Staff...</option>
+            <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
@@ -63,7 +63,7 @@
         <label>
             Consultant:</label>
         <select name="consultantSelect" id="modal_GetStaffConsultant">
-            <option>Select Staff...</option>
+            <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
