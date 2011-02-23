@@ -11,6 +11,7 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers {
     public class PatientController : Controller {
+        #region ActionResults
 
         // GET: /Patient/
         public ActionResult Index() {
@@ -112,7 +113,9 @@ namespace OpenEhs.Web.Controllers {
             return View(patients);  //Return the merged result set with no duplicates
         }
 
-        #region AJAX Methods
+        #endregion
+
+        #region JsonResults
 
         #region CreatePatient
 
