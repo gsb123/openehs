@@ -651,6 +651,8 @@ namespace OpenEhs.Web.Controllers
                 surgery.CheckIn = openCheckIn;
                 surgery.CaseType = (CaseType)Enum.Parse(typeof(CaseType), Request.Form["caseType"]);
 
+                UnitOfWork.CurrentSession.Flush();
+
                 //Surgeon
                 if (Request.Form["surgeon"] != "")
                 {
@@ -659,6 +661,7 @@ namespace OpenEhs.Web.Controllers
                     surgeon.Staff = staff;
                     surgeon.Surgery = surgery;
                     surgeon.Role = StaffRole.Surgeon;
+                    UnitOfWork.CurrentSession.Flush();
                 }
                 /*
                 //Surgeon Assistant
