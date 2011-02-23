@@ -1156,14 +1156,18 @@ margin-bottom: 10px;
 
 #summaryTitle
 {
-	margin-left: 310px;
 	margin-top: 50px;
 	font-size: 20px;
 	font-weight: bold;
+	font-style: italic;
+	font-family: cursive;
 }
 
-
-
+#replaceDIV
+{
+	margin-top: 30px;
+	font-size: 18px;
+}
 
 
 
