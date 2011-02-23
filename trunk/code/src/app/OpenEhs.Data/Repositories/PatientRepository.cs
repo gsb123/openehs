@@ -87,7 +87,7 @@ namespace OpenEhs.Data
             return criteria.List<Patient>();
         }
 
-        public IList<Patient> FindByPatientID(int number)
+        public IList<Patient> FindByPatientId(int number)
         {
             ICriteria criteria = Session.CreateCriteria<Patient>().Add(Restrictions.Eq("Id", number));
 

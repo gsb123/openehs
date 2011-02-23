@@ -86,7 +86,7 @@ namespace OpenEhs.Web.Controllers
             if (m.Success)
             {
                 //Find any patients with a matching ID
-                IList<Patient> idPatients = new PatientRepository().FindByPatientID(Convert.ToInt32(m.ToString()));
+                IList<Patient> idPatients = new PatientRepository().FindByPatientId(Convert.ToInt32(m.ToString()));
 
                 patients = patients.Union<Patient>(idPatients); //Add them to the result set
             }
@@ -158,7 +158,7 @@ namespace OpenEhs.Web.Controllers
 
                 try
                 {
-                    patient.OldPhysicalRecordNumber = int.Parse(Request.Form["oldPhysicalRecordNumber"]);
+                    patient.OldPhysicalRecordNumber = Request.Form["oldPhysicalRecordNumber"];
                 }
                 catch (ArgumentNullException)
                 {

@@ -193,7 +193,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Old Physical Record Number")]
-        public int OldPhysicalRecordNumber
+        public string OldPhysicalRecordNumber
         {
             get
             {
