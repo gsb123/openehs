@@ -611,52 +611,66 @@ namespace OpenEhs.Web.Controllers
             return jsonResult;
         }
 
-        public JsonResult SelectVisitList() 
+        public JsonResult SearchVisitList()
         {
-            int patientID = int.Parse(Request.Form["patientID"]);
-            PatientRepository patientRepo = new PatientRepository();
-            var patient = patientRepo.Get(patientID);
-
-            int checkInID = int.Parse(Request.Form["checkInID"]);
-
-            var query = from checkin in patient.PatientCheckIns
-                        where checkin.Id == checkInID
-                        select checkin;
-
-            var resultSet = new List<object>();
-            var jsonResult = new JsonResult();
-
-            foreach (var result in query)
+            try
             {
-                IList<object> visitList = new List<object>();
 
-                foreach (var vitals in result.Vitals) {
-                    visitList.Add(new
+                int patientID = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientID);
+
+                int checkInID = int.Parse(Request.Form["checkInID"]);
+
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.Id == checkInID
+                            select checkin;
+
+                var resultSet = new List<object>();
+                var jsonResult = new JsonResult();
+
+                foreach (var result in query)
+                {
+                    IList<object> visitList = new List<object>();
+
+                    foreach (var vitals in result.Vitals)
                     {
-                        Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"),
-                        //vitals.Type,
-                        type = Enum.GetName(typeof(VitalsType), vitals.Type),
-                        Height = vitals.Height,
-                        Weight = vitals.Weight,
-                        Temperature = vitals.Temperature,
-                        HeartRate = vitals.HeartRate,
-                        BpDiastolic = vitals.BloodPressure.Diastolic,
-                        BpSystolic = vitals.BloodPressure.Systolic,
-                        RespiratoryRate = vitals.RespiratoryRate
+                        visitList.Add(new
+                        {
+                            Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"),
+                            //vitals.Type,
+                            type = Enum.GetName(typeof(VitalsType), vitals.Type),
+                            Height = vitals.Height,
+                            Weight = vitals.Weight,
+                            Temperature = vitals.Temperature,
+                            HeartRate = vitals.HeartRate,
+                            BpDiastolic = vitals.BloodPressure.Diastolic,
+                            BpSystolic = vitals.BloodPressure.Systolic,
+                            RespiratoryRate = vitals.RespiratoryRate
+                        });
+                    }
+
+                    resultSet.Add(new
+                    {
+                        date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                        result.Diagnosis,
+                        Vitals = visitList
                     });
                 }
 
-                resultSet.Add(new
+                jsonResult.Data = resultSet;
+
+                return jsonResult;
+            }
+            catch (Exception e)
+            {
+                return Json(new
                 {
-                    date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
-                    result.Diagnosis,
-                    Vitals = visitList
+                    error = "true",
+                    status = "Unable to fetch list successfully",
+                    errorMessage = e.Message
                 });
             }
-
-            jsonResult.Data = resultSet;
-
-            return jsonResult;
         }
 
         #endregion
