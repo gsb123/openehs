@@ -153,6 +153,29 @@ namespace OpenEhs.Web.Controllers
             
         }
 
+        public JsonResult RemoveProduct()
+        {
+            try
+            {
+                ProductRepository productRepo = new ProductRepository();
+                Product product = productRepo.Get(int.Parse(Request.Form["ProductId"]));
+                product.IsActive = false;
+                UnitOfWork.CurrentSession.Flush();
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
         #endregion
 
         #endregion
