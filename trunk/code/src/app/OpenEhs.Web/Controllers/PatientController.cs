@@ -251,14 +251,22 @@ namespace OpenEhs.Web.Controllers
                 feedchart.Comments = comments;
 
 
-                //Add new vitals object to patient
+                //Add new feed chart object to patient
                 openCheckIn.FeedChart.Add(feedchart);
 
                 //Return results as JSON
                 return Json(new
                 {
                     error = "false",
-                    status = "Successfully added chart."
+                    status = "Successfully added chart.",
+                    Date =feedchart.FeedTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                    feedchart.FeedType,
+                    feedchart.AmountOffered,
+                    feedchart.AmountTaken,
+                    feedchart.Vomit,
+                    feedchart.Urine,
+                    feedchart.Stool,
+                    feedchart.Comments
                 });
 
             }
@@ -268,6 +276,122 @@ namespace OpenEhs.Web.Controllers
                 {
                     error = "true",
                     status = "Unable to add feed chart successfully",
+                    errorMessage = e.Message
+                });
+            }
+        }
+
+        public JsonResult AddIntake()
+        {
+            try
+            {
+                int patientId = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientId);
+
+                //Get current open patient checkin 
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
+
+                //Create new intake chart object and add appropriate parameters 
+                IntakeChart intakechart = new IntakeChart();
+
+                intakechart.PatientCheckIn = openCheckIn;
+
+                intakechart.ChartTime = DateTime.Now;
+
+                string kindoffluid = Request.Form["kindoffluid"];
+                intakechart.KindOfFluid = kindoffluid;
+
+                string amount = Request.Form["amount"];
+                intakechart.Amount = amount;
+
+                //Add new intake object to patient
+                openCheckIn.IntakeChart.Add(intakechart);
+
+                //Return results as JSON
+                return Json(new
+                {
+                    error = "false",
+                    status = "Successfully added chart.",
+                    Date = intakechart.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                    intakechart.KindOfFluid,
+                    intakechart.Amount
+                });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = "Unable to add intake chart successfully",
+                    errorMessage = e.Message
+                });
+            }
+        }
+
+        public JsonResult AddOutput()
+        {
+            try
+            {
+                int patientId = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientId);
+
+                //Get current open patient checkin 
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
+
+                //Create new intake chart object and add appropriate parameters 
+                OutputChart outputchart = new OutputChart();
+
+                outputchart.PatientCheckIn = openCheckIn;
+
+                outputchart.ChartTime = DateTime.Now;
+
+                string ngAmount = Request.Form["ngAmount"];
+                outputchart.NGSuctionAmount = ngAmount;
+
+                string ngColor = Request.Form["ngColor"];
+                outputchart.NGSuctionColor = ngColor;
+
+                string urineAmount = Request.Form["urineAmount"];
+                outputchart.UrineAmount = urineAmount;
+
+                string stoolAmount = Request.Form["stoolAmount"];
+                outputchart.StoolAmount = stoolAmount;
+
+                string stoolColor = Request.Form["stoolColor"];
+                outputchart.StoolColor = stoolColor;
+
+                //Add new output object to patient
+                openCheckIn.OutputChart.Add(outputchart);
+
+                //Return results as JSON
+                return Json(new
+                {
+                    error = "false",
+                    status = "Successfully added chart.",
+                    Date = outputchart.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                    outputchart.NGSuctionAmount,
+                    outputchart.NGSuctionColor,
+                    outputchart.UrineAmount,
+                    outputchart.StoolAmount,
+                    outputchart.StoolColor
+                });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = "Unable to add intake chart successfully",
                     errorMessage = e.Message
                 });
             }

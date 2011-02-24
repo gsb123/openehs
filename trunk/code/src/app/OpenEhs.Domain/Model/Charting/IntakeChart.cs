@@ -5,15 +5,15 @@ using System.Text;
 
 namespace OpenEhs.Domain
 {
-    public class FluidChart
+    public class IntakeChart : IEntity
     {
         #region Properties
 
         public virtual int Id { get; private set; }
+        public virtual DateTime ChartTime { get; set; }
+        public virtual string KindOfFluid { get; set; }
+        public virtual string Amount { get; set; }
         public virtual PatientCheckIn PatientCheckIn { get; set; }
-        public virtual DateTime CheckTime { get; set; }
-        public virtual Output Outputs { get; set; }
-        public virtual Intake Intakes { get; set; }
 
         #endregion
     }

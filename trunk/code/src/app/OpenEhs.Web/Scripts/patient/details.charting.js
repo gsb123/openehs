@@ -10,101 +10,55 @@ $(function () {
     // ------------------------------------------------- //
 
     //$("#feedAddButton").button().click(function () {
-        //alert("Blah");
+    //alert("Blah");
     //});
 
     $("#intakeAddButton").button().click(function () {
-        alert("Blah");
+        $("#addIntakeDialog").dialog("open");
     });
 
     $("#suctionAddButton").button().click(function () {
-        alert("Blah");
+        $("#addOutputDialog").dialog("open");
     });
 
-    $("#urineAddButton").button().click(function () {
-        alert("Blah");
-    });
-
-    $("#stoolAddButton").button().click(function () {
-        alert("Blah");
-    });
-
-    
-
-
-
-
-    $("#suctionSliderInfoLink").click(function () {
-        $("#suctionSliderMoreInfo").slideToggle("slow", function () { });
-    });
-
-    $("#urineSliderInfoLink").click(function () {
-        $("#urineSliderMoreInfo").slideToggle("slow", function () { });
-    });
-
-    $("#stoolSliderInfoLink").click(function () {
-        $("#stoolSliderMoreInfo").slideToggle("slow", function () { });
-    });
-
-    $("#feedSliderInfoLink").click(function () {
-        $("#feedSliderMoreInfo").slideToggle("slow", function () { });
-    });
-
-    $("#intakeSliderInfoLink").click(function () {
-        $("#intakeSliderMoreInfo").slideToggle("slow", function () { });
-    });
-
-
-
-
-
-
-    $("#outputSliderInfoLink").click(function () {
-        $("#outputSliderMoreInfo").slideToggle("slow", function () { });
-    });
-
-
-    $("#addFeedDialog").dialog({
+    $("#addIntakeDialog").dialog({
         autoOpen: false,
-        height: 370,
+        height: 220,
         width: 450,
         modal: true,
         buttons: {
-            "Add Allergy": function () {
-                    $.post("/Patient/AddFeed", {
-                        patientID: $("#patientId").val(),
-                        feedType: $("#model_feedtype").val(),
-                        amountOffered: $("#model_amountoffered").val(),
-                        amountTaken: $("#model_amounttaken").val(),
-                        vomit: $("#model_vomit").val(),
-                        urine: $("#model_urine").val(),
-                        stool: $("#model_stool").val(),
-                        comments: $("#model_comments").val()
-                    }, function (returnData) {
-                        if (returnData.error == "false") {
-                            $("#addFeedDialog").dialog("close");
-                            //var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
-                            //$("#allergyList").append(newAllergy);
-                            //$("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
-                            //    $(this).find(".allergyRemove").button().click(removeOnClick)
-                            //};
+            "Add Intake": function () {
+                $.post("/Patient/AddIntake", {
+                    patientID: $("#patientId").val(),
+                    kindoffluid: $("#model_kindoffeed").val(),
+                    amount: $("#model_amount").val()
+                }, function (result) {
+                    if (result.error == "false") {
+                        $("#addIntakeDialog").dialog("close");
 
-                            //Reset form
-                            $("#model_feedtype").val("");
-                            $("#model_amountoffered").val("");
-                            $("#model_amounttaken").val("");
-                            $("#model_vomit").val("");
-                            $("#model_urine").val("");
-                            $("#model_stool").val("");
-                            $("#model_comments").val("");
+                        var table = document.getElementById("intakeTable");
+                        var tr = document.createElement("tr");
 
-                            //Show that im working
-                            alert("you are here");
+                        var elements = new Array();
 
-                        } else {
-                            $("#addFeedDialog .error").html(returnData.status);
-                        }
-                    }, "json");
+                        for (var i = 0; i < 3; i++)
+                            elements[i] = document.createElement("td");
+
+                        elements[0].appendChild(document.createTextNode(result.Date));
+                        elements[1].appendChild(document.createTextNode(result.KindOfFluid));
+                        elements[2].appendChild(document.createTextNode(result.Amount));
+
+                        for (var i = 0; i < 3; i++)
+                            tr.appendChild(elements[i]);
+
+                        table.appendChild(tr);
+
+                        //Reset form
+                        $("#model_kindoffeed").val("");
+                        $("#model_amount").val("");
+
+                    }
+                }, "json");
             },
             Cancel: function () {
                 $(this).dialog("close");
@@ -114,6 +68,126 @@ $(function () {
 
         }
     });
+
+    $("#addFeedDialog").dialog({
+        autoOpen: false,
+        height: 370,
+        width: 450,
+        modal: true,
+        buttons: {
+            "Add Feed": function () {
+                $.post("/Patient/AddFeed", {
+                    patientID: $("#patientId").val(),
+                    feedType: $("#model_feedtype").val(),
+                    amountOffered: $("#model_amountoffered").val(),
+                    amountTaken: $("#model_amounttaken").val(),
+                    vomit: $("#model_vomit").val(),
+                    urine: $("#model_urine").val(),
+                    stool: $("#model_stool").val(),
+                    comments: $("#model_comments").val()
+                }, function (result) {
+                    if (result.error == "false") {
+                        $("#addFeedDialog").dialog("close");
+
+                        var table = document.getElementById("detailsTables");
+                        var tr = document.createElement("tr");
+
+                        var elements = new Array();
+
+                        for (var i = 0; i < 8; i++)
+                            elements[i] = document.createElement("td");
+
+                        elements[0].appendChild(document.createTextNode(result.Date));
+                        elements[1].appendChild(document.createTextNode(result.FeedType));
+                        elements[2].appendChild(document.createTextNode(result.AmountOffered));
+                        elements[3].appendChild(document.createTextNode(result.AmountTaken));
+                        elements[4].appendChild(document.createTextNode(result.Vomit));
+                        elements[5].appendChild(document.createTextNode(result.Urine));
+                        elements[6].appendChild(document.createTextNode(result.Stool));
+                        elements[7].appendChild(document.createTextNode(result.Comments));
+
+                        for (var i = 0; i < 8; i++)
+                            tr.appendChild(elements[i]);
+
+                        table.appendChild(tr);
+
+                        //Reset form
+                        $("#model_feedtype").val("");
+                        $("#model_amountoffered").val("");
+                        $("#model_amounttaken").val("");
+                        $("#model_vomit").val("");
+                        $("#model_urine").val("");
+                        $("#model_stool").val("");
+                        $("#model_comments").val("");
+                    }
+                }, "json");
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
+    });
+
+
+    $("#addOutputDialog").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 450,
+        modal: true,
+        buttons: {
+            "Add Output": function () {
+                $.post("/Patient/AddOutput", {
+                    patientID: $("#patientId").val(),
+                    ngAmount: $("#model_ngAmount").val(),
+                    ngColor: $("#model_ngColour").val(),
+                    urineAmount: $("#model_urineAmount").val(),
+                    stoolAmount: $("#model_stoolAmount").val(),
+                    stoolColor: $("#model_stoolColour").val()
+                }, function (result) {
+                    if (result.error == "false") {
+                        $("#addOutputDialog").dialog("close");
+
+                        var table = document.getElementById("outputSuctionTable");
+                        var tr = document.createElement("tr");
+
+                        var elements = new Array();
+
+                        for (var i = 0; i < 6; i++)
+                            elements[i] = document.createElement("td");
+
+                        elements[0].appendChild(document.createTextNode(result.Date));
+                        elements[1].appendChild(document.createTextNode(result.NGSuctionAmount));
+                        elements[2].appendChild(document.createTextNode(result.NGSuctionColor));
+                        elements[3].appendChild(document.createTextNode(result.UrineAmount));
+                        elements[4].appendChild(document.createTextNode(result.StoolAmount));
+                        elements[5].appendChild(document.createTextNode(result.StoolColor));
+
+                        for (var i = 0; i < 6; i++)
+                            tr.appendChild(elements[i]);
+
+                        table.appendChild(tr);
+
+                        //Reset form
+                        $("#model_ngAmount").val("");
+                        $("#model_ngColour").val("");
+                        $("#model_urineAmount").val("");
+                        $("#model_stoolAmount").val("");
+                        $("#model_stoolColour").val("");
+                    }
+                }, "json");
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
+    });
+
 
     $("#addFeedForm").submit(function () {
         return false;

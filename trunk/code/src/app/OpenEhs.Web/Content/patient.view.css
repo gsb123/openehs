@@ -955,71 +955,6 @@ margin-bottom: 10px;
     border-bottom-style: solid;
 }
 
-#suctionSliderMoreInfo
-{
-    display: none;
-}
-
-#suctionSliderInfoLink
-{
-    color: #00f;
-    cursor: pointer;
-    margin: 1px 0px 5px 0px;
-    font-size: 15px;
-}
-
-#urineSliderMoreInfo
-{
-    display: none;
-}
-
-#urineSliderInfoLink
-{
-    color: #00f;
-    cursor: pointer;
-    margin: 10px 0px 5px 0px;
-    font-size: 15px;
-}
-
-#stoolSliderMoreInfo
-{
-    display: none;
-}
-
-#stoolSliderInfoLink
-{
-    color: #00f;
-    cursor: pointer;
-    margin: 10px 0px 5px 0px;
-    font-size: 15px;
-}
-
-#feedSliderMoreInfo
-{
-    display: none;
-}
-
-#feedSliderInfoLink
-{
-    color: #00f;
-    cursor: pointer;
-    margin: 1px 0px 5px 0px;
-    font-size: 15px;
-}
-
-#intakeSliderMoreInfo
-{
-    display: none;
-}
-
-#intakeSliderInfoLink
-{
-    color: #00f;
-    cursor: pointer;
-    margin: 1px 0px 5px 0px;
-    font-size: 15px;
-}
-
 .pmhHistoryList li
 {
     font-size: 1.2em;
@@ -1204,12 +1139,24 @@ margin-bottom: 10px;
 	font-size: 18px;
 }
 
-.detailsTables
+#feedChartReplace
 {
-	font-size: 10px;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+#intakeChartReplace
+{
+    margin-top: 10px;
+	font-size: 18px;
 }
 
 .detailsTables td
+{
+	border: 1px solid #ccc;
+}
+
+.intakeTable td
 {
 	border: 1px solid #ccc;
 }
@@ -1274,4 +1221,9 @@ margin-bottom: 10px;
 {
 	width: 330px;
 	background: #FFFFCC;
+}
+
+.outputTopRow
+{
+    text-align: center;
 }
