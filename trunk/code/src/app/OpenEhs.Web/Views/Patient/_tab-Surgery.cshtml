@@ -17,7 +17,7 @@
         <br />
         <label>
             Surgeon:</label>
-        <select name="surgeonSelect" id="modal_GetStaffSurgeon">
+        <select name="surgeonSelect" id="modal_GetStaffSurgeon" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
@@ -26,7 +26,7 @@
         </select><br />
         <label>
             Surgeon Assistant:</label>
-        <select name="surgeonAssistantSelect" id="modal_GetStaffSurgeonAssistant">
+        <select name="surgeonAssistantSelect" id="modal_GetStaffSurgeonAssistant" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
@@ -35,7 +35,7 @@
         </select><br />
         <label>
             Anaesthetist:</label>
-        <select name="anaesthetistSelect" id="modal_GetStaffAnaesthetist">
+        <select name="anaesthetistSelect" id="modal_GetStaffAnaesthetist" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
@@ -44,7 +44,7 @@
         </select><br />
         <label>
             Anaesthetist Assistant:</label>
-        <select name="anaesthetistAssistantSelect" id="modal_GetStaffAnaesthetistAssistant">
+        <select name="anaesthetistAssistantSelect" id="modal_GetStaffAnaesthetistAssistant" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
@@ -53,7 +53,7 @@
         </select><br />
         <label>
             Nurse:</label>
-        <select name="nurseSelect" id="modal_GetStaffNurse">
+        <select name="nurseSelect" id="modal_GetStaffNurse" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
@@ -62,7 +62,7 @@
         </select><br />
         <label>
             Consultant:</label>
-        <select name="consultantSelect" id="modal_GetStaffConsultant">
+        <select name="consultantSelect" id="modal_GetStaffConsultant" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
             @foreach (var staff in Model.GetStaff)
             {
@@ -77,8 +77,8 @@
             <b>Start Time</b></label>
         <label id="surgeryEndTimeLable">
             <b>End Time</b></label><br />
-        <input id="surgeryStartTime" />
-        <input id="surgeryEndTime" />
+        <input id="surgeryStartTime" class="selectBackgroundColor" />
+        <input id="surgeryEndTime" class="selectBackgroundColor" />
     </fieldset>
     <br />
     <fieldset>
@@ -86,16 +86,20 @@
         <label>
             Theatre #:
         </label>
-        <select name="theatreNumber" id="modal_GetSurgeryLocation">
+        <select name="theatreNumber" id="modal_GetSurgeryLocation" class="selectBackgroundColor">
             <option value="">Select Theatre...</option>
             @foreach (var loc in Model.GetLocations)
             {
                 <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
             }
         </select><br />
-        <label>
-            Case Type:</label>
+        
+		<br />
+
         <div id="caseTypeRadio">
+
+		<label>Case Type:&nbsp &nbsp</label>
+
             <input type="radio" id="caseType1" name="modal_caseType" value="0" /><label for="caseType1">Emergency</label>
             <input type="radio" id="caseType2" name="modal_caseType" value="1" /><label for="caseType2">Elective</label>
         </div>
@@ -111,6 +115,17 @@
 		<input id="autoCompleteTemplate">
 
 	</fieldset>
+
+</div>
+
+<div id="SurgeryNotes">
+		<label for="surgeryNoteTextBox" id="surgeryNoteLable"><b>Surgery Notes</b></label>
+		<textarea rows="30" cols="20" name="surgeryNoteTextBox" id="surgeryNoteTextBox">Surgery Notes...</textarea>
+</div>
+
+<div id="surgeryCompleteDIV">
+
+	<input id="templateCheckBox" type="checkbox" name="saveTemplate" value="saveAsTemplate"> Save As Template<br>
 
 	<button id="submitSurgery">
         Complete Surgery

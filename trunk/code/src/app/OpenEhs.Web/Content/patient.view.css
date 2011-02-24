@@ -812,6 +812,21 @@ margin-bottom: 10px;
     float: left;
     margin-left: 10px;
     width: 390px;
+    margin-top: 15px;
+}
+
+#surgeryCompleteDIV
+{
+	float: left;
+    margin-left: 10px;
+    width: 390px;
+    margin-top: 20px;
+}
+
+#surgeryNoteLable
+{
+	font-size: 15px;
+	margin-bottom: 8px;
 }
 
 #SurgeryNoteTemp
@@ -819,6 +834,17 @@ margin-bottom: 10px;
 	float: left;
 	width: 390px;
 	margin-left: 10px;
+}
+
+#templateCheckBox
+{
+	margin-top: 1px;
+	margin-left: 140px;
+}
+
+.selectBackgroundColor
+{
+	background: #FFFFCC;
 }
 
 #surgeryEndTimeLable
@@ -845,8 +871,8 @@ margin-bottom: 10px;
 
 #submitSurgery
 {
-    float: right;
-    margin-right: 45px;
+    float: left;
+    margin-left: 70px;
     margin-top: 15px;
     width: 250px;
     font-size: 20px;
@@ -1234,15 +1260,16 @@ margin-bottom: 10px;
     text-align: center;
 }
 
-
-
-
-
-
-
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
 .ui-timepicker-div dl{ text-align: left; }
 .ui-timepicker-div dl dt{ height: 25px; }
 .ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; 
+.ui-timepicker-div td { font-size: 90%; }
+
+
+#autoCompleteTemplate
+{
+	width: 330px;
+	background: #FFFFCC;
+}

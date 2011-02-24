@@ -37,6 +37,35 @@ $(function () {
         alert("Delete template button");
     });
 
+    $("#addService").button().click(function () {
+        alert("Add service button");
+    });
+
+    $("#editService").button().click(function () {
+        alert("Edit service button");
+    });
+
+    $("#deleteService").button().click(function () {
+        alert("Delete service button");
+    });
+
+    $("#addLocation").button().click(function () {
+        alert("Add location button");
+    });
+
+    $("#deleteLocation").button().click(function () {
+        alert("Delete location button");
+    });
+
+    $("#addCategory").button().click(function () {
+        alert("Add category button");
+    });
+
+    $("#deleteCategory").button().click(function () {
+        alert("Delete category button");
+    });
+
+
     $(".backupDatabase").button().click(function () {
         alert("Backup database");
     });
