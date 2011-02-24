@@ -344,7 +344,6 @@
     <Content Include="Scripts\patient\details.notes.js" />
     <Content Include="Scripts\patient\details.rxList.js" />
     <Content Include="Scripts\patient\details.surgery.js" />
-    <Content Include="Scripts\patient\details.visitHistory.js" />
     <Content Include="Scripts\patient\details.vitals.js" />
     <Content Include="Scripts\patient\details.immunizations.js" />
     <Content Include="Scripts\PrintLabelPatient.js" />
@@ -486,7 +485,6 @@
     <Content Include="Views\Billing\Details.cshtml" />
     <Content Include="Views\Billing\Create.cshtml" />
     <Content Include="Views\Patient\_tab-Demographics.cshtml" />
-    <Content Include="Views\Patient\_tab-VisitHistory.cshtml" />
     <Content Include="Views\Patient\_tab-Allergy.cshtml" />
     <Content Include="Views\Patient\_tab-ChronicDiseases.cshtml" />
     <Content Include="Views\Patient\_tab-Vitals.cshtml" />
