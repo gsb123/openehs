@@ -44,6 +44,16 @@ namespace OpenEhs.Data
             Session.Delete(entity);
         }
 
+        public Boolean UserExists(string username)
+        {
+            ICriteria criteria = Session.CreateCriteria<Staff>().Add(Restrictions.Eq("Username",username));
+            Staff staff = criteria.UniqueResult<Staff>();
+            if (staff == null)
+                return false;
+            else
+                return true; 
+        }
+
         public IList<Staff> FindByName(string firstName, string middleName, string lastName)
         {
             ICriteria criteria = Session.CreateCriteria<Staff>()
