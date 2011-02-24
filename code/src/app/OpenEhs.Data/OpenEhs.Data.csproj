@@ -115,6 +115,8 @@
     <EmbeddedResource Include="Mappings\Immunization.hbm.xml" />
     <EmbeddedResource Include="Mappings\Location.hbm.xml" />
     <EmbeddedResource Include="Mappings\FeedChart.hbm.xml" />
+    <EmbeddedResource Include="Mappings\IntakeChart.hbm.xml" />
+    <EmbeddedResource Include="Mappings\OutputChart.hbm.xml" />
     <Content Include="Mappings\PatientAllergy.hbm.xml">
       <SubType>Designer</SubType>
     </Content>

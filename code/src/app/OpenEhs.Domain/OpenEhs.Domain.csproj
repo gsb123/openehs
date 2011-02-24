@@ -38,9 +38,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Charting\FluidChart.cs" />
-    <Compile Include="Model\Charting\Intake.cs" />
-    <Compile Include="Model\Charting\Output.cs" />
+    <Compile Include="Model\Charting\IntakeChart.cs" />
+    <Compile Include="Model\Charting\OutputChart.cs" />
     <Compile Include="Model\CheckIn\Location.cs" />
     <Compile Include="Model\Common Interfaces\IEntity.cs" />
     <Compile Include="Model\Charting\FeedChart.cs" />

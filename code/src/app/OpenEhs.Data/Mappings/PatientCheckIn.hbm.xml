@@ -49,6 +49,16 @@
       <one-to-many class="FeedChart" />
     </bag>
 
+    <bag name="IntakeChart" table="IntakeChart" cascade="all">
+      <key column="PatientCheckInId" />
+      <one-to-many class="IntakeChart" />
+    </bag>
+
+    <bag name="OutputChart" table="OutputChart" cascade="all">
+      <key column="PatientCheckInId" />
+      <one-to-many class="OutputChart" />
+    </bag>
+
   </class>
   
 </hibernate-mapping>
