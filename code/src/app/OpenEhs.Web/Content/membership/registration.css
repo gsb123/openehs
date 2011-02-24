@@ -8,6 +8,11 @@
     text-align: left;
 }
 
+.navigation_button 
+{
+	padding: 5px 25px;
+}
+
 h2 {
     margin-bottom: 15px;
 }
