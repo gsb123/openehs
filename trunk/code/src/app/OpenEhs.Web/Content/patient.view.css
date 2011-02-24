@@ -86,6 +86,7 @@ legend
     border-left-width: medium;
     border-right-width: medium;
     border-top-width: medium;
+    background: #19FF19;
 }
 
 #editPatientInfoButton
@@ -114,6 +115,7 @@ legend
     border-left-width: medium;
     border-right-width: medium;
     border-top-width: medium;
+    background: #FF1919;
 }
 
 #BasicInformationColumn {
