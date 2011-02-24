@@ -71,55 +71,14 @@
 
     <fieldset id="fsDatabaseBackup">
         <legend class="legendTextSize">Database Backup</legend>
+        
+		<input type="button" name="backupDatabase" title="backupDatabase" class="backupDatabase" />
 
-        <div id="databaseLeft">
-            <fieldset>
-                <legend class="legendTextSizeBackup">User</legend>
+		<input type="button" name="restoreDatabase" title="restoreDatabase" class="restoreDatabase" />
 
-                <input id="backupUser" class="backupButtons" type="button" value="Backup" />
+		<!-- This way is total hack on how to space this out but oh well... Dont have much time to mess with it! -->
 
-            </fieldset>
-
-            <fieldset>
-                <legend class="legendTextSizeBackup">Templates</legend>
-
-                <input id="backupTemplates" class="backupButtons" type="button" value="Backup" />
-
-            </fieldset>
-        </div>
-
-        <div id="databaseMiddle">
-            <fieldset>
-                <legend class="legendTextSizeBackup">Patients</legend>
-
-                <input id="backupPatients" class="backupButtons" type="button" value="Backup" />
-
-            </fieldset>
-
-            <fieldset>
-                <legend class="legendTextSizeBackup">Billing</legend>
-
-                <input id="backupBilling" class="backupButtons" type="button" value="Backup" />
-
-            </fieldset>
-        </div>
-
-        <div id="databaseRight">
-            <fieldset>
-                <legend class="legendTextSizeBackup">Products</legend>
-
-                <input id="backupProducts" class="backupButtons" type="button" value="Backup" />
-
-            </fieldset>
-
-            <fieldset>
-                <legend class="legendTextSizeBackup">Checkins</legend>
-
-                <input id="backupCheckins" class="backupButtons" type="button" value="Backup" />
-
-            </fieldset>
-        </div>
-
+		<p><b id="backupLable"><tt>Backup Database &nbsp &nbsp <spacer> Restore Database</tt></b></p>
 
     </fieldset>
 
