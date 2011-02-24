@@ -15,6 +15,8 @@ namespace OpenEhs.Web.Controllers
 
         #region JsonResults
 
+        #region UserMethods
+
         public JsonResult AddStaffMember()
         {
             try
@@ -44,7 +46,7 @@ namespace OpenEhs.Web.Controllers
                 address.IsActive = true;
                 staff.Address = address;
 
-                
+
 
                 //Build username
                 int i = 0;
@@ -95,12 +97,13 @@ namespace OpenEhs.Web.Controllers
 
         public JsonResult RemoveStaffMember()
         {
-            try{
+            try
+            {
 
                 StaffRepository staffRepo = new StaffRepository();
                 Staff staff = staffRepo.Get(int.Parse(Request.Form["StaffId"]));
                 staff.IsActive = false;
-                staff.User.IsActive = false; 
+                staff.User.IsActive = false;
                 UnitOfWork.CurrentSession.Flush();
 
                 return Json(new
@@ -115,6 +118,40 @@ namespace OpenEhs.Web.Controllers
                     error = true
                 });
             }
+        }
+
+        #endregion
+
+        #region ProductMethods
+
+        public JsonResult AddProduct()
+        {
+            try
+            {
+                CategoryRepository categoryRepo = new CategoryRepository();
+                Product product = new Product();
+                product.Name = Request.Form["Name"];
+                product.Unit = Request.Form["Unit"];
+                product.Category = categoryRepo.Get(int.Parse(Request.Form["CategoryId"]));
+                product.Price = Decimal.Parse(Request.Form["Price"]);
+                product.QuantityOnHand = int.Parse(Request.Form["QuantityOnHand"]);
+                //Product Counter?
+                product.IsActive = true;
+
+                return Json(new { 
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new { 
+                error = true
+            });
+            }
+            
+        }
+
+        #endregion
 
         #endregion
     }
