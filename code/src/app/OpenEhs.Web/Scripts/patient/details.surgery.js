@@ -39,4 +39,14 @@ $(function () {
 
     $("#caseTypeRadio").buttonset();
 
+    var ckConfig = {
+        toolbar: [
+            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
+            ["UIColor"]
+        ],
+        extraPlugins: "autogrow",
+        autoGrow_maxHeight: 800
+    };
+    $("#surgeryNoteTextBox").ckeditor(ckConfig);
+
 });

@@ -27,6 +27,22 @@
     margin-left: 119px;
 }
 
+#fsLeftMarginRowTwo
+{
+	margin-left: 119px;
+	margin-top: 20px;
+}
+
+#fsMiddleMarginRowTwo
+{
+	margin-top: 20px;
+}
+
+#fsRightMarginRowTwo
+{
+	margin-top: 20px;
+}
+
 .legendTextSize
 {
     font-size: 18px;
@@ -93,6 +109,34 @@
     margin-bottom: 10px;
 }
 
+#addService
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#editService
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#deleteService
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
 #editTemplate
 {
     margin-left: 25px;
@@ -112,6 +156,44 @@
     margin-bottom: 10px;
 }
 
+#addLocation
+{
+	margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#deleteLocation
+{
+	margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#addCategory
+{
+	margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#deleteCategory
+{
+	margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
 #fsDatabaseBackup
 {
     margin-left: 119px;
@@ -121,22 +203,13 @@
     height: 200px;
 }
 
-#databaseLeft
+#fsSystemLogs
 {
+    margin-left: 119px;
+    margin-top: 40px;
     float: left;
-    margin-top: 10px;
-}
-
-#databaseMiddle
-{
-    float: left;
-    margin-top: 10px;
-}
-
-#databaseRight
-{
-    float: left;
-    margin-top: 10px;
+    width: 680px;
+    height: 200px;
 }
 
 .backupButtons
