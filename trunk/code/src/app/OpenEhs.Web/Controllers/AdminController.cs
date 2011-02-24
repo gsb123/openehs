@@ -135,8 +135,10 @@ namespace OpenEhs.Web.Controllers
                 product.Category = categoryRepo.Get(int.Parse(Request.Form["CategoryId"]));
                 product.Price = Decimal.Parse(Request.Form["Price"]);
                 product.QuantityOnHand = int.Parse(Request.Form["QuantityOnHand"]);
-                //Product Counter?
+                product.Counter = 0;
                 product.IsActive = true;
+
+                UnitOfWork.CurrentSession.Flush();
 
                 return Json(new { 
                     error = false
