@@ -75,6 +75,8 @@ namespace OpenEhs.Web.Controllers
                 user.IsActive = true;
                 staff.User = user;
 
+                UnitOfWork.CurrentSession.Flush();
+
                 return Json(new
                 {
                     error = false,
@@ -90,6 +92,29 @@ namespace OpenEhs.Web.Controllers
                 });
             }
         }
+
+        public JsonResult RemoveStaffMember()
+        {
+            try{
+
+                StaffRepository staffRepo = new StaffRepository();
+                Staff staff = staffRepo.Get(int.Parse(Request.Form["StaffId"]));
+                staff.IsActive = false;
+                staff.User.IsActive = false; 
+                UnitOfWork.CurrentSession.Flush();
+
+                return Json(new
+                {
+                    error = false,
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
 
         #endregion
     }
