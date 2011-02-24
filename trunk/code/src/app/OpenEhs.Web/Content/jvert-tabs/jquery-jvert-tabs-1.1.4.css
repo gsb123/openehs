@@ -19,7 +19,6 @@
 	padding-bottom: 5px;
 	padding-top: 5px;
 	margin-bottom: 1px;
-	/* round corners do not work in IE */
 	-moz-border-radius-topleft: 3px;
 	-moz-border-radius-bottomleft: 3px;
 	-webkit-border-top-left-radius: 3px;
@@ -32,16 +31,26 @@
 }
 /* css for tab that is closed */
 .vtabs .vtabs-tab-column ul li.closed {
-	background-color: #bbbbbb;
 	border-right: 1px solid #777777;
-	background-image: url("images/ClosedTabBackground.png");
-	background-repeat:repeat-x;	
+    background: -moz-linear-gradient(top, #cecece, #b5b5b5);
+    background: -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    color-stop(0, #cecece),
+                    color-stop(1, #b5b5b5)
+                );
 }
 /* css for tab hover */	
 .vtabs .vtabs-tab-column ul li:hover {
-	background-color: #efefef;
-	background-image: url("images/ClosedTabBackgroundHover.png");
-	background-repeat:repeat-x;		
+    background: -moz-linear-gradient(top, #eee, #ccc);
+    background: -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    color-stop(0, #eee),
+                    color-stop(1, #ccc)
+                );
 }
 /* css for link on tab that's open */
 .vtabs .vtabs-tab-column ul li a.open, .vtabs .vtabs-tab-column ul li a.closed {
@@ -50,11 +59,13 @@
 	margin: 0px;
 	padding: 0px;
 	text-decoration: none;
-	color: #ff0084;
+	color: #47a5ff;
+	line-height: 20px;
 }
 /* css for link on tab that's closed */
 .vtabs .vtabs-tab-column ul li a.closed {
-	color: blue;
+	color: #333;
+	text-shadow: 0 1px 0 #ddd;
 }	
 .vtabs .vtabs-content-column {
 	padding: 0px;
