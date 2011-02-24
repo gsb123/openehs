@@ -179,30 +179,25 @@ Stool                   varchar(20)     NULL,
 Comments                text            NULL
 );
 
-CREATE TABLE Output
+CREATE TABLE OutputChart
 (
-OutputID            int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-NGSuctionAmount     float           NULL,
+OutputChartID            int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+ChartTime           timestamp       NOT NULL,
+NGSuctionAmount     varchar(20)           NULL,
 NGSuctionColor      varchar(15)     NULL,
-UrineAmount         float           NULL,
-StoolAmount         float           NULL,
-StoolColor          varchar(15)     NULL
+UrineAmount         varchar(20)           NULL,
+StoolAmount         varchar(20)           NULL,
+StoolColor          varchar(15)     NULL,
+PatientCheckInID        int             NOT NULL
 );
 
-CREATE TABLE Intake
+CREATE TABLE IntakeChart
 (
-InTakeID            int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-IntakeType          varchar(30)     NULL,
-IntakeAmount        float           NULL
-);
-
-CREATE TABLE FluidChart
-(
-FluidChartID                int             AUTO_INCREMENT              PRIMARY KEY         NOT NULL,
-PatientCheckInID            int             NOT NULL,
-CheckTime                   timestamp       NOT NULL,
-OutputID                    int             NULL,
-IntakeID                    int             NULL
+InTakeChartID            int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+ChartTime           timestamp       NOT NULL,
+KindOfFluid          varchar(30)     NULL,
+Amount        varchar(20)           NULL,
+PatientCheckInID        int             NOT NULL
 );
 
 CREATE TABLE Invoice
@@ -420,17 +415,13 @@ ALTER TABLE FeedChart
 ADD CONSTRAINT FK_FeedChartMustHavePatientCheckInID
 FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
-ALTER TABLE FluidChart
-ADD CONSTRAINT FK_FluidChartMustHavePatientCheckInID
+ALTER TABLE IntakeChart
+ADD CONSTRAINT FK_IntakeChartMustHavePatientCheckInID
 FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
-ALTER TABLE FluidChart
-ADD CONSTRAINT FK_FluidChartMustHaveOutputID
-FOREIGN KEY (OutputID) REFERENCES Output(OutputID);
-
-ALTER TABLE FluidChart
-ADD CONSTRAINT FK_FluidChartMustHaveIntakeID
-FOREIGN KEY (IntakeID) REFERENCES Intake(IntakeID);
+ALTER TABLE OutputChart
+ADD CONSTRAINT FK_OutputChartMustHavePatientCheckInID
+FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
 ALTER TABLE Invoice
 ADD CONSTRAINT FK_InvoiceMustHavePatientCheckInID
