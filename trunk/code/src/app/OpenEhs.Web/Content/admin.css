@@ -118,6 +118,7 @@
     margin-top: 40px;
     float: left;
     width: 680px;
+    height: 200px;
 }
 
 #databaseLeft
@@ -142,4 +143,41 @@
 {
     width: 120px;
     font-size: 15px;
+}
+
+input.backupDatabase {
+    background-image: url('/images/common/icons/Database-Backup.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    vertical-align: middle;
+    margin-left: 150px;
+}
+
+input.restoreDatabase {
+    background-image: url('/images/common/icons/Database-Restore.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    vertical-align: middle;
+    margin-left: 80px;
+}
+
+#backupLable
+{
+	font-size: 18px;
+	margin-left: 140px;
+}
+
+#restoreLable
+{
+	font-size: 18px;
+	margin-left: 380px;
+	float: left;
 }

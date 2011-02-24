@@ -37,28 +37,12 @@ $(function () {
         alert("Delete template button");
     });
 
-    $("#backupUser").button().click(function () {
-        alert("Backup user button");
+    $(".backupDatabase").button().click(function () {
+        alert("Backup database");
     });
 
-    $("#backupTemplates").button().click(function () {
-        alert("Backup templates button");
-    });
-
-    $("#backupPatients").button().click(function () {
-        alert("Backup patients button");
-    });
-
-    $("#backupBilling").button().click(function () {
-        alert("Backup billing button");
-    });
-
-    $("#backupProducts").button().click(function () {
-        alert("Backup products button");
-    });
-
-    $("#backupCheckins").button().click(function () {
-        alert("Backup checkins button");
+    $(".restoreDatabase").button().click(function () {
+        alert("Restore database");
     });
 
 });

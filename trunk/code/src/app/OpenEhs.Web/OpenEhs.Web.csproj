@@ -134,6 +134,8 @@
     <Content Include="images\button.highlight.png" />
     <Content Include="images\common\icons\16x16\Delete.png" />
     <Content Include="images\common\icons\24x24\Delete.png" />
+    <Content Include="images\common\icons\Database-Backup.png" />
+    <Content Include="images\common\icons\Database-Restore.png" />
     <Content Include="images\crumbs.gif" />
     <Content Include="images\main.background.png" />
     <Content Include="images\openehs.logo.big.png" />
