@@ -90,6 +90,7 @@ Religion                    varchar(30)         NULL,
 PatientNote                 longtext            NULL,
 OldPhysicalRecordNumb       int                 Null,
 EmergencyContactID          int                 NULL,
+DateOfDeath                 datetime            NULL,
 IsActive                    bit(1)              NOT NULL                DEFAULT 1
 ) AUTO_INCREMENT= 100000;
 
@@ -162,6 +163,7 @@ CheckOutTime                datetime       NULL,
 Diagnosis                   text            NULL,
 LocationID                  int             NOT NULL,
 StaffID                     int             NULL,
+Dead                        bit             NULL                        DEFAULT 1,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
 
@@ -268,7 +270,6 @@ CREATE TABLE `User`
     PasswordAnswer              varchar(50)         NULL,
     DateCreated                 timestamp           NOT NULL                DEFAULT NOW(),
     LastLogin                   datetime            NULL,
-    LastActivity                datetime            NULL,
     IsOnline                    bit(1)              NOT NULL                DEFAULT 0,
     IpAddress                   varchar(20)         NULL,
     IsLockedOut                 bit(1)              NOT NULL                DEFAULT 0,
@@ -2389,6 +2390,61 @@ VALUE
 (
 'WARD',
 '210'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'1'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'2'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'3'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'4'
+);
+
+INSERT INTO Location
+(
+Department,
+RoomNumber
+)
+VALUE
+(
+'WARD',
+'5'
 );
 
 INSERT INTO Location
