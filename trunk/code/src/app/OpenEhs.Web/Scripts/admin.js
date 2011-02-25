@@ -58,7 +58,7 @@ $(function () {
     });
 
     $("#addCategory").button().click(function () {
-        alert("Add category button");
+        $("#addCategoryDialog").dialog("open");
     });
 
     $("#deleteCategory").button().click(function () {
@@ -178,7 +178,35 @@ $("#addLocationDialog").dialog({
                 RoomNumber: $("#model_addroomnumber").val()
             }, function (result) {
                 if (result.error == "false") {
-                    $("#editProductDialog").dialog("close");
+                    $("#addLocationDialog").dialog("close");
+
+                    alert("good result");
+
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+
+    }
+});
+
+$("#addCategoryDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Add Category": function () {
+            $.post("/Admin/AddCategory", {
+                Name: $("#model_model_categoryname").val(),
+                Description: $("#model_categorydescription").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#addCategoryDialog").dialog("close");
 
                     alert("good result");
 

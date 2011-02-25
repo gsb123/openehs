@@ -207,6 +207,35 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region AddCategory
+
+        public JsonResult AdCategory()
+        {
+            try
+            {
+                Category cata = new Category();
+
+                cata.Name = Request.Form["Name"];
+                cata.Description = Request.Form["Description"];
+
+                UnitOfWork.CurrentSession.Flush();
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        #endregion
+
         #endregion
     }
 }
