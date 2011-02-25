@@ -24,29 +24,9 @@ $(function () {
 
     $("#checkOutButton").button();
     $("#checkOutButton").hide();
-    /*
-    $("#newCheckInButton").button({
-        create: function (event, ui) {
-            $.ajax({
-                type: "POST",
-                url: "/Patient/GetCurrentCheckin",
-                data: {
-                    patientID: $("#patientId").val()
-                },
-                success: function (response) {
-                    if (response.checkin != "null") {
-                        $("#newCheckInButton").hide();
-                        $("#checkOutButton").show();
-                    }
-                    else {
-                        $("#vitalAddButton").button("disable");
-                    }
-                },
-                dataType: "json"
-            });
-        }
-    });
-    */
+
+    $("#timeOfDeath").timepicker({});
+
     $("#newCheckInButton").button().click(function () {
         $("#newCheckinModal").dialog("open");
     });
