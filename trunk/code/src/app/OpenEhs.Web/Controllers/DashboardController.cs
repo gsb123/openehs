@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Data;
@@ -9,6 +10,13 @@ namespace OpenEhs.Web.Controllers
 {
     public class DashboardController : Controller
     {
+        private IPatientRepository _patientRepository;
+
+        public DashboardController()
+        {
+            _patientRepository = new PatientRepository();
+        }
+
         //
         // GET: /Dashboard/
 
@@ -23,16 +31,12 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
-                PatientRepository patientRepo = new PatientRepository();
+                var patients = _patientRepository.GetAll();
+                var checkedInPatients = (from patient in patients
+                                         from checkin in patient.PatientCheckIns
+                                         where checkin.CheckOutTime == DateTime.MinValue
+                                         select patient).ToList();
 
-
-                /*
-                var result = from checkin in PatientCheckIns
-                             where CheckOutTime == DateTime.MinValue
-                             select checkin;
-                */
-
-              
                 return Json(new
                 {
                     error = "false",
