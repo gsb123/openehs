@@ -94,5 +94,16 @@ namespace OpenEhs.Data
 
             return criteria.List<Patient>();
         }
+
+        public IList<Patient> FindByLocation(Location location)
+        {
+            var patientCriteria = Session.CreateCriteria<Patient>()
+                .CreateCriteria("PatientCheckIns")
+                .Add(Restrictions.Eq("CheckOutTime", DateTime.MinValue))
+                .CreateCriteria("Location")
+                .Add(Restrictions.Eq("Department", location.Department));
+
+            return patientCriteria.List<Patient>();
+        }
     }
 }

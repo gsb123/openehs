@@ -35,7 +35,7 @@ namespace OpenEhs.Web.Models
                                 where checkin.CheckOutTime == DateTime.MinValue
                                 select checkin;
 
-                    return query.First<PatientCheckIn>();
+                    return query.First();
                 }
                 catch (Exception e)
                 {
@@ -48,8 +48,17 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                LocationRepository locations = new LocationRepository();
+                var locations = new LocationRepository();
                 return locations.GetAll();
+            }
+        }
+
+        public IList<Patient> PatientsInMyWard
+        {
+            get 
+            { 
+                var repo = new PatientRepository();
+                return repo.FindByLocation(new Location { Department = "WARD" });
             }
         }
     }
