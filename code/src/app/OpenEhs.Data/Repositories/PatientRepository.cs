@@ -23,6 +23,7 @@ namespace OpenEhs.Data
                 return UnitOfWork.CurrentSession;
             }
         }
+
         public Patient Get(int id)
         {
             return Session.Get<Patient>(id);
@@ -93,6 +94,5 @@ namespace OpenEhs.Data
 
             return criteria.List<Patient>();
         }
-
     }
 }

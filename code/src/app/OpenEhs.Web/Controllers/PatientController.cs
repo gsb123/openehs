@@ -589,7 +589,7 @@ namespace OpenEhs.Web.Controllers
                 PatientCheckIn checkin = new PatientCheckIn();
                 checkin.Patient = patient;
                 checkin.CheckInTime = DateTime.Now;
-                checkin.PatientType = (PCIType)Enum.Parse(typeof(PCIType), Request.Form["patientType"]);
+                checkin.PatientType = (PatientCheckinType)Enum.Parse(typeof(PatientCheckinType), Request.Form["patientType"]);
                 checkin.AttendingStaff = staff;
                 checkin.Location = location;
                 checkin.IsActive = true;
