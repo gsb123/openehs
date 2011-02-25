@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -9,7 +10,9 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new DashboardViewModel();
+
+            return View(viewModel);
         }
 
     }
