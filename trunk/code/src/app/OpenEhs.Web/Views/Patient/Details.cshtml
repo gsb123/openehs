@@ -45,14 +45,7 @@
 }
 <ul id="crumbs">
     <li>@Html.ActionLink("Search", "Index")</li>
-    @if (Model.MiddleName != String.Empty)
-    {
-    <li>@String.Format("Patient: {2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</li>
-    }
-    else
-    {
-    <li>@String.Format("Patient: {1}, {0}", Model.FirstName, Model.LastName.ToUpper())</li>
-    }
+    <li>Patient</li>
 </ul>
 <div id="patientViewHeader" class="group">
     @if (Model.MiddleName != String.Empty) {
