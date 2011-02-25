@@ -178,6 +178,35 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region LocationMethods
+
+        public JsonResult AddLocation()
+        {
+            try
+            {
+                Location loc = new Location();
+
+                loc.Department = Request.Form["Department"];
+                loc.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
+
+                UnitOfWork.CurrentSession.Flush();
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        #endregion
+
         #endregion
     }
 }

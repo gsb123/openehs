@@ -172,10 +172,10 @@ $("#addLocationDialog").dialog({
     width: 420,
     modal: true,
     buttons: {
-        "Edit Product": function () {
-            $.post("/Admin/EditProduct", {
-                //ProductId: $("#model_selectprod").val(),
-                
+        "Add Location": function () {
+            $.post("/Admin/AddLocation", {
+                Department: $("#model_departmentname").val(),
+                RoomNumber: $("#model_addroomnumber").val()
             }, function (result) {
                 if (result.error == "false") {
                     $("#editProductDialog").dialog("close");
