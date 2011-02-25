@@ -23,7 +23,7 @@ $(function () {
                 for (var i = 0; i < 1; i++)
                     elements[i] = document.createElement("td");
 
-                elements[0].appendChild(document.createTextNode(response.PatientID));
+                elements[0].appendChild(document.createTextNode(response.Department));
 
 
                 for (var i = 0; i < 1; i++)

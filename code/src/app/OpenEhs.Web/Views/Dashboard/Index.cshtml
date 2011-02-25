@@ -90,7 +90,7 @@
 
 			@foreach (var loc in Model.GetLocations)
             {
-                <option value="@loc.Id">@loc.Department, @loc.RoomNumber</option>
+                <option value="@loc.Department">@loc.Department</option>
             }
 		</select>
 
@@ -119,6 +119,7 @@
 	</fieldset>
 
 </div>
+
 <ul>
 @foreach (var patient in Model.PatientsInMyWard)
 {
