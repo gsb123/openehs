@@ -18,15 +18,15 @@ $(function () {
     });
 
     $("#addProduct").button().click(function () {
-        alert("Add product button");
+        $("#addProductDialog").dialog("open");
     });
 
     $("#editProduct").button().click(function () {
-        alert("Edit product button");
+         $("#editProductDialog").dialog("open");
     });
 
     $("#deleteProduct").button().click(function () {
-        alert("Delete product button");
+        $("#removeProductDialog").dialog("open");
     });
 
     $("#editTemplate").button().click(function () {
@@ -50,7 +50,7 @@ $(function () {
     });
 
     $("#addLocation").button().click(function () {
-        alert("Add location button");
+        $("#addLocationDialog").dialog("open");
     });
 
     $("#deleteLocation").button().click(function () {
@@ -73,5 +73,126 @@ $(function () {
     $(".restoreDatabase").button().click(function () {
         alert("Restore database");
     });
+
+    $("#addProductDialog").dialog({
+    autoOpen: false,
+    height: 260,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Add Product": function () {
+            $.post("/Admin/AddProduct", {
+                Name: $("#model_name").val(),
+                Unit: $("#model_unit").val(),
+                CategoryId: $("#model_categoryid").val(),
+                Price: $("#model_price").val(),
+                QuantityOnHand: $("#model_quantityonhand").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#addProductDialog").dialog("close");
+
+
+                alert("good result");
+
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+
+    }
+});
+
+$("#removeProductDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Remove Product": function () {
+            $.post("/Admin/RemoveProduct", {
+                ProductId: $("#model_prodname").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#addProductDialog").dialog("close");
+
+
+                    alert("good result");
+
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+
+    }
+});
+
+$("#editProductDialog").dialog({
+    autoOpen: false,
+    height: 250,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Product": function () {
+            $.post("/Admin/EditProduct", {
+                ProductId: $("#model_selectprod").val(),
+                Name: $("#model_editprodname").val(),
+                Unit: $("#model_editprodunit").val(),
+                CategoryId: $("#model_editprodcategory").val(),
+                Price: $("#model_editprodprice").val(),
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#editProductDialog").dialog("close");
+
+
+                    alert("good result");
+
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+
+    }
+});
+
+$("#addLocationDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Product": function () {
+            $.post("/Admin/EditProduct", {
+                //ProductId: $("#model_selectprod").val(),
+                
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#editProductDialog").dialog("close");
+
+                    alert("good result");
+
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+
+    }
+});
+
 
 });

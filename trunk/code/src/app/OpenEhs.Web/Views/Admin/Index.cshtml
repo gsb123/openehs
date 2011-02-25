@@ -131,3 +131,138 @@
 	</fieldset
 
 </div>
+
+<div id="addProductDialog" title="Add New Product">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="addProductForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Name:
+        </div>
+        <div>
+            <input type="text" name="name" id="model_name" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="modal-label-long">
+            Unit:
+        </div>
+        <div>
+            <input type="text" name="unit" id="model_unit" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Category:
+        </div>
+        <div>
+            <input type="text" name="categoryid" id="model_categoryid" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Price:
+        </div>
+        <div>
+            <input type="text" name="price" id="model_price" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Quantity:
+        </div>
+        <div>
+            <input type="text" name="quantityonhand" id="model_quantityonhand" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="removeProductDialog" title="Remove Product">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="removeProductForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Name:
+        </div>
+        <div>
+            <input type="text" name="prodname" id="model_prodname" class="required modal-input text ui-widget-content ui-corner-all" />
+
+			<!--
+			<select name="productSelect" id="model_productSelect">
+            <option value="">Select Product...</option>
+            foreach (var prod in Model.ListProducts)
+            {
+                <option value="prod.Id">prod.Name</option>
+            }
+        </select>
+		-->
+
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="editProductDialog" title="Edit Product">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="editProductForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Search Product:
+        </div>
+        <div>
+            <input type="text" name="selectprod" id="model_selectprod" class="required modal-input text ui-widget-content ui-corner-all" />
+
+			<!--
+			<select name="productSelect" id="model_productSelect">
+            <option value="">Select Product...</option>
+            foreach (var prod in Model.ListProducts)
+            {
+                <option value="prod.Id">prod.Name</option>
+            }
+        </select>
+		-->
+        </div>
+		 <div class="modal-label-long">
+            Name:
+        </div>
+		<div>
+            <input type="text" name="editprodname" id="model_editprodname" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Unit:
+        </div>
+		<div>
+            <input type="text" name="editprodunit" id="model_editprodunit" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Category:
+        </div>
+		<div>
+            <input type="text" name="editprodcategory" id="model_editprodcategory" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Price:
+        </div>
+		<div>
+            <input type="text" name="editprodprice" id="model_editprodprice" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="addLocationDialog" title="Add Location">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="addLocationForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Department:
+        </div>
+        <div>
+            <input type="text" name="departmentname" id="model_departmentname" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Room Number:
+        </div>
+        <div>
+            <input type="text" name="addroomnumber" id="model_addroomnumber" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>

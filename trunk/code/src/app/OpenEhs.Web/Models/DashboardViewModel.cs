@@ -25,6 +25,7 @@ namespace OpenEhs.Web.Models
             }
         }
 
+
         public PatientCheckIn GetOpenCheckin
         {
             get
@@ -58,7 +59,7 @@ namespace OpenEhs.Web.Models
             get 
             { 
                 var repo = new PatientRepository();
-                return repo.FindByLocation(new Location { Department = "WARD" });
+                return repo.FindByLocation(new Location { Department = "WARD 1" });
             }
         }
     }

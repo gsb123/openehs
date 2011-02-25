@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -31,20 +32,27 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
-                int loc = int.Parse(Request.Form["loc"]);
+                Location loc = new Location();
+                PatientRepository patientRepo = new PatientRepository();
+                
 
-                var patients = _patientRepository.GetAll();
+                string department = Request.Form["loc"];
+                loc.Department = department;
 
-                var checkedInPatients = (from patient in patients
-                                         from checkin in patient.PatientCheckIns
-                                         where checkin.CheckOutTime == DateTime.MinValue && checkin.Location.Id == loc
-                                         select patient).ToList();
+                var myLocation = new Location { Department = department };
+
+                var list = patientRepo.FindByLocation(myLocation);
+
+                var resultList = from test in list
+                                 select test;
 
                 return Json(new
                 {
                     error = "false",
                     status = "Successfully.",
-                    checkedInPatients
+                    //loc.Department
+                    //list
+                    //resultList
                 });
 
             }
@@ -52,7 +60,8 @@ namespace OpenEhs.Web.Controllers
             {
                 return Json(new
                 {
-                    error = "true"
+                    error = "true",
+                    status = "Didnt work"
                 });
             }
         }
