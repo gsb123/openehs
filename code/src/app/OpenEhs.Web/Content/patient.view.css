@@ -1227,3 +1227,29 @@ margin-bottom: 10px;
 {
     text-align: center;
 }
+
+#Notes
+{
+    float: left;
+    margin-left: 23px;
+    width: 700px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#templateOptions
+{
+	width: 500px;
+	margin-left: 100px;
+}
+
+#autocompleteNotes
+{
+	width: 150px;
+	background: #FFFFCC;
+}
+
+#templateNoteCheckBox
+{
+	margin-left: 180px;
+}

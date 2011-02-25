@@ -1,2 +1,29 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
 
+<div id="noteHeader" class="group">
+    <h2 id="note">
+        Notes
+    </h2>
+</div>
+
+<div id="Notes">
+		<label for="NotesTextBox" id="surgeryNoteLable"><b>Encounter Notes</b></label>
+		<textarea rows="30" cols="20" name="NotesTextBox" id="NotesTextBox"></textarea>
+</div>
+
+<div>
+
+	<fieldset id="templateOptions">
+		<legend>Template Options</legend>
+
+		<p style="margin-left: 100px;">
+			<b>Select from pre-written:</b> &nbsp 
+
+			<input id="autocompleteNotes" />
+		</p>
+
+		<input id="templateNoteCheckBox" type="checkbox" name="saveNoteTemplate" value="saveAsNoteTemplate"> Save As New Template<br>
+
+	</fieldset>
+
+</div>

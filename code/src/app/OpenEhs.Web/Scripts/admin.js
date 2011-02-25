@@ -92,6 +92,12 @@ $(function () {
                     $("#addProductDialog").dialog("close");
 
 
+                    $("#model_name").val("");
+                    $("#model_unit").val("");
+                    $("#model_categoryid").val("");
+                    $("#model_price").val("");
+                    $("#model_quantityonhand").val("");
+
                 alert("good result");
 
                 }
@@ -117,10 +123,12 @@ $("#removeProductDialog").dialog({
                 ProductId: $("#model_prodname").val()
             }, function (result) {
                 if (result.error == "false") {
-                    $("#addProductDialog").dialog("close");
+                    $("#removeProductDialog").dialog("close");
 
 
                     alert("good result");
+
+                    ProductId: $("#model_prodname").val("");
 
                 }
             }, "json");
@@ -154,6 +162,10 @@ $("#editProductDialog").dialog({
 
                     alert("good result");
 
+                    $("#model_editprodname").val("");
+                    $("#model_editprodunit").val("");
+                    $("#model_editprodcategory").val("");
+                    $("#model_editprodprice").val("");
                 }
             }, "json");
         },
@@ -182,6 +194,8 @@ $("#addLocationDialog").dialog({
 
                     alert("good result");
 
+                    $("#model_departmentname").val("");
+                    $("#model_addroomnumber").val("");
                 }
             }, "json");
         },
@@ -210,6 +224,8 @@ $("#addCategoryDialog").dialog({
 
                     alert("good result");
 
+                    $("#model_model_categoryname").val("");
+                    $("#model_categorydescription").val("");
                 }
             }, "json");
         },
