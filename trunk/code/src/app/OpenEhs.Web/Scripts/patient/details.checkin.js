@@ -108,7 +108,9 @@ $(function () {
                     url: "/Patient/CheckOut",
                     data: {
                         patientID: $("#patientId").val(),
-                        diagnosis: $("#modal_checkOutDiagnosis").val()
+                        diagnosis: $("#modal_checkOutDiagnosis").val(),
+                        deceased: $("#modal_death:checked").val(),
+                        timeOfDeath: $("#modal_TimeOfDeath").val()
                     },
                     success: function (response) {
                         $("#checkOutButton").hide();

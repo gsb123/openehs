@@ -632,6 +632,13 @@ namespace OpenEhs.Web.Controllers
                 checkIn.CheckOutTime = DateTime.Now;
                 checkIn.Diagnosis = Request.Form["diagnosis"];
 
+                if (Request.Form["deceased"] == "on")
+                {
+                    checkIn.Dead = true;
+                    checkIn.TimeOfDeath = DateTime.Parse(Request.Form["timeOfDeath"]);
+                    patient.DateOfBirth = DateTime.Parse(Request.Form["timeOfDeath"]);
+                }
+
                 var surgeryQuery = from surgery in checkIn.Surgeries
                                    where surgery.EndTime == DateTime.MinValue
                                    select surgery;
