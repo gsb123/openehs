@@ -9,4 +9,5 @@ CKEDITOR.editorConfig = function (config) {
     config.removePlugins = "elementspath";
     config.resize_dir = "vertical";
     config.toolbarCanCollapse = false;
+    config.htmlEncodeOutput = true;
 };
