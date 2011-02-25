@@ -31,16 +31,20 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
+                int loc = int.Parse(Request.Form["loc"]);
+
                 var patients = _patientRepository.GetAll();
+
                 var checkedInPatients = (from patient in patients
                                          from checkin in patient.PatientCheckIns
-                                         where checkin.CheckOutTime == DateTime.MinValue
+                                         where checkin.CheckOutTime == DateTime.MinValue && checkin.Location.Id == loc
                                          select patient).ToList();
 
                 return Json(new
                 {
                     error = "false",
                     status = "Successfully.",
+                    checkedInPatients
                 });
 
             }
