@@ -119,3 +119,9 @@
 	</fieldset>
 
 </div>
+<ul>
+@foreach (var patient in Model.PatientsInMyWard)
+{
+    <li>@patient.FirstName</li>
+}
+</ul>
