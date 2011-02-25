@@ -28,6 +28,31 @@
         	font-size: 1.6em;
         	line-height: 1.5em;
         }
+
+		#openCheckIns
+		{
+			width: 500px;
+			margin-left: 220px;
+		}
+
+		#openCheckIns fieldset
+		{
+			border-width: medium;
+		}
+
+		#openCheckIns fieldset legend
+		{
+			font-size: 15px;
+			font-weight: bold;
+		}
+
+		#openCheckInSelect
+		{
+			background: #FFFFCC;
+			margin-top: 5px;
+		}
+
+
     </style>
 }
 
@@ -38,4 +63,19 @@
         is provided for <em>testing purposes only</em> and should not be used for the management
         of a medical facility in its current state.
     </p>
+</div>
+
+<div id="openCheckIns">
+
+	<fieldset>
+		<legend>Open Checkins</legend>
+
+		<p>Select a Location</p>
+
+		<select id="openCheckInSelect">
+			<option>Select Location...</option>
+		</select>
+
+	</fieldset>
+
 </div>
