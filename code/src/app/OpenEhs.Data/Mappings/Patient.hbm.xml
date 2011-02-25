@@ -21,6 +21,7 @@
     <property name="Religion" not-null="false" length="30" />
     <property name="Note" column="PatientNote" not-null="false" />
     <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
+    <property name="DateOfDeath" column="DateOfDeath" not-null="false" />
     <property name="IsActive" not-null="true" />
 
     <many-to-one name="EmergencyContact" column="EmergencyContactID" unique="true" cascade="all" />
