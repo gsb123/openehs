@@ -25,7 +25,7 @@ $(function () {
     $("#checkOutButton").button();
     $("#checkOutButton").hide();
 
-    $("#timeOfDeath").timepicker({});
+    $("#modal_TimeOfDeath").timepicker({});
 
     $("#newCheckInButton").button().click(function () {
         $("#newCheckinModal").dialog("open");
