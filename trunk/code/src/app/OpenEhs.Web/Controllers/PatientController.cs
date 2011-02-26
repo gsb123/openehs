@@ -600,6 +600,7 @@ namespace OpenEhs.Web.Controllers
                 checkin.Invoice = invoice;
 
                 patient.PatientCheckIns.Add(checkin);
+                new InvoiceRepository().Add(invoice);
 
                 return Json(new
                 {
@@ -971,6 +972,78 @@ namespace OpenEhs.Web.Controllers
                 });
             }
         }
+
+        #endregion
+
+        #region Billing
+
+        public JsonResult AddInvoiceItem()
+        {
+            try
+            {
+                //Build Line Item objects
+                InvoiceItem lineItem = new InvoiceItem();
+
+                //Get patient object
+                int patientID = int.Parse(Request.Form["patientID"]);
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientID);
+
+                //Get current open patient checkin 
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
+
+                //Invoice Repository
+                InvoiceRepository invoiceRepo = new InvoiceRepository();
+
+                //Product Repository
+                ProductRepository productRepo = new ProductRepository();
+
+                //Service Repository
+                ServiceRepository serviceRepo = new ServiceRepository();
+
+                //Quantity
+                if (Request.Form["quantity"] != "")
+                {
+                    lineItem.Quantity = int.Parse(Request.Form["quantity"]);
+                    lineItem.Invoice = openCheckIn.Invoice;
+                    lineItem.IsActive = true;
+
+                    //Product
+                    if (Request.Form["product"] != "")
+                    {
+                        lineItem.Product = productRepo.Get(int.Parse(Request.Form["product"]));
+                        lineItem.Service = null;
+                        invoiceRepo.AddLineItem(lineItem);
+                        UnitOfWork.CurrentSession.Flush();
+                    }
+                    else if (Request.Form["service"] != "")
+                    {
+                        lineItem.Service = serviceRepo.Get(int.Parse(Request.Form["service"]));
+                        lineItem.Product = null;
+                        invoiceRepo.AddLineItem(lineItem);
+                        UnitOfWork.CurrentSession.Flush();
+                    }
+                }
+
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = "true",
+                    status = e.Message
+                });
+            }
+        }
+
 
         #endregion
 
