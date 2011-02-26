@@ -194,6 +194,7 @@ namespace OpenEhs.Web.Controllers
 
                 loc.Department = Request.Form["Department"];
                 loc.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
+                loc.IsActive = true;
 
                 LocationRepository locationRepo = new LocationRepository();
                 locationRepo.Add(loc);
@@ -236,18 +237,42 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
-        #region AddCategory
+        #region CategoryMethods
 
-        public JsonResult AdCategory()
+        public JsonResult AddCategory()
         {
             try
             {
+                CategoryRepository categoryRepo = new CategoryRepository();
                 Category cata = new Category();
 
                 cata.Name = Request.Form["Name"];
                 cata.Description = Request.Form["Description"];
 
-                UnitOfWork.CurrentSession.Flush();
+                categoryRepo.Add(cata);
+                
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        public JsonResult DeleteCategory()
+        {
+            try
+            {
+                CategoryRepository categoryRepo = new CategoryRepository();
+                Category category = categoryRepo.Get(int.Parse(Request.Form["CategoeryId"]));
+                category.IsActive = false;
 
                 return Json(new
                 {
@@ -264,6 +289,83 @@ namespace OpenEhs.Web.Controllers
         }
 
         #endregion
+
+        #region ServiceMethods
+
+        public JsonResult AddService()
+        {
+            try
+            {
+                ServiceRepository serviceRepo = new ServiceRepository();
+
+                Service service = new Service();
+                service.IsActive = true;
+                service.Name = Request.Form["Name"];
+                service.Price = decimal.Parse(Request.Form["Price"]);
+
+                serviceRepo.Add(service);
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        public JsonResult EditService()
+        {
+            try
+            {
+                ServiceRepository serviceRepo = new ServiceRepository();
+                Service service = serviceRepo.Get(int.Parse(Request.Form["serviceId"]));
+                service.Name = Request.Form["Name"];
+                service.Price = decimal.Parse(Request.Form["Price"]);
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        public JsonResult DeleteService()
+        {
+            try
+            {
+                ServiceRepository serviceRepo = new ServiceRepository(); 
+                Service service = serviceRepo.Get(int.Parse(Request.Form["ServiceID"]));
+                service.IsActive = false;
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        #endregion
+
 
         #endregion
     }
