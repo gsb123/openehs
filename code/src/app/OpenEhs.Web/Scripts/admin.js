@@ -38,15 +38,15 @@ $(function () {
     });
 
     $("#addService").button().click(function () {
-        alert("Add service button");
+        $("#addServiceDialog").dialog("open");
     });
 
     $("#editService").button().click(function () {
-        alert("Edit service button");
+        $("#editServiceDialog").dialog("open");
     });
 
     $("#deleteService").button().click(function () {
-        alert("Delete service button");
+        $("#deleteServiceDialog").dialog("open");
     });
 
     $("#addLocation").button().click(function () {
@@ -54,7 +54,7 @@ $(function () {
     });
 
     $("#deleteLocation").button().click(function () {
-        alert("Delete location button");
+        $("#deleteLocationDialog").dialog("open");
     });
 
     $("#addCategory").button().click(function () {
@@ -62,7 +62,7 @@ $(function () {
     });
 
     $("#deleteCategory").button().click(function () {
-        alert("Delete category button");
+        $("#deleteCategoryDialog").dialog("open");
     });
 
 
@@ -98,8 +98,6 @@ $(function () {
                     $("#model_price").val("");
                     $("#model_quantityonhand").val("");
 
-                alert("good result");
-
                 }
             }, "json");
         },
@@ -124,9 +122,6 @@ $("#removeProductDialog").dialog({
             }, function (result) {
                 if (result.error == "false") {
                     $("#removeProductDialog").dialog("close");
-
-
-                    alert("good result");
 
                     ProductId: $("#model_prodname").val("");
 
@@ -159,9 +154,6 @@ $("#editProductDialog").dialog({
                 if (result.error == "false") {
                     $("#editProductDialog").dialog("close");
 
-
-                    alert("good result");
-
                     $("#model_editprodname").val("");
                     $("#model_editprodunit").val("");
                     $("#model_editprodcategory").val("");
@@ -192,8 +184,6 @@ $("#addLocationDialog").dialog({
                 if (result.error == "false") {
                     $("#addLocationDialog").dialog("close");
 
-                    alert("good result");
-
                     $("#model_departmentname").val("");
                     $("#model_addroomnumber").val("");
                 }
@@ -222,8 +212,6 @@ $("#addCategoryDialog").dialog({
                 if (result.error == "false") {
                     $("#addCategoryDialog").dialog("close");
 
-                    alert("good result");
-
                     $("#model_model_categoryname").val("");
                     $("#model_categorydescription").val("");
                 }
@@ -235,6 +223,140 @@ $("#addCategoryDialog").dialog({
     },
     close: function () {
 
+    }
+});
+
+$("#deleteLocationDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Location": function () {
+            $.post("/Admin/DeleteLocation", {
+                Department: $("#model_departmentRoom").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#deleteLocationDialog").dialog("close");
+
+                    $("#model_departmentRoom").val("");
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#addServiceDialog").dialog({
+    autoOpen: false,
+    height: 160,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Add Service": function () {
+            $.post("/Admin/AddService", {
+                Name: $("#model_servicename").val(),
+                Cost: $("#model_servicecost").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#addServiceDialog").dialog("close");
+
+                    $("#model_servicename").val("");
+                    $("#model_servicecost").val("")
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#editServiceDialog").dialog({
+    autoOpen: false,
+    height: 170,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Service": function () {
+            $.post("/Admin/EditService", {
+                Service: $("#model_editService").val(),
+                Cost: $("#model_editservicecost").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#editServiceDialog").dialog("close");
+
+                    $("#model_editService").val("");
+                    $("#model_editservicecost").val("");
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#deleteServiceDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Service": function () {
+            $.post("/Admin/DeleteService", {
+                Service: $("#model_deleteService").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#deleteServiceDialog").dialog("close");
+
+                    $("#model_deleteService").val("");
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#deleteCategoryDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Category": function () {
+            $.post("/Admin/DeleteCategory", {
+                Service: $("#model_deleteCategory").val()
+            }, function (result) {
+                if (result.error == "false") {
+                    $("#deleteCategoryDialog").dialog("close");
+
+                    $("#model_deleteCategory").val("");
+                }
+            }, "json");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
     }
 });
 
