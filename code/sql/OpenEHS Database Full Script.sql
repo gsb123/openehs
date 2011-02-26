@@ -150,7 +150,7 @@ CREATE TABLE Location
 (
 LocationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Department          varchar(20)     NOT NULL,
-RoomNumber          varchar(10)     NOT NULL
+RoomNumber          int              NOT NULL
 );
 
 CREATE TABLE PatientCheckIn
@@ -2378,8 +2378,8 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'112'
+'WARD 1',
+1
 );
 
 INSERT INTO Location
@@ -2389,8 +2389,8 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'210'
+'WARD 2',
+1
 );
 
 INSERT INTO Location
@@ -2400,8 +2400,8 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'1'
+'WARD 3',
+1
 );
 
 INSERT INTO Location
@@ -2411,8 +2411,8 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'2'
+'WARD 4',
+2
 );
 
 INSERT INTO Location
@@ -2422,8 +2422,8 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'3'
+'WARD 5',
+3
 );
 
 INSERT INTO Location
@@ -2433,8 +2433,8 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'4'
+'WARD 6',
+4
 );
 
 INSERT INTO Location
@@ -2444,20 +2444,10 @@ RoomNumber
 )
 VALUE
 (
-'WARD',
-'5'
+'WARD 7',
+5
 );
 
-INSERT INTO Location
-(
-Department,
-RoomNumber
-)
-VALUE
-(
-'WARD',
-'100'
-);
 
 
 INSERT INTO PatientCheckIn
