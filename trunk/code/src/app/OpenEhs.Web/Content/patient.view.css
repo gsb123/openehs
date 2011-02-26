@@ -1284,3 +1284,8 @@ margin-bottom: 10px;
     clear: both;
     display: none;
 }
+
+#centerForOutputChart
+{
+	text-align: center;
+}
