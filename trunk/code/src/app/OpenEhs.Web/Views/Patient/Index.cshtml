@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OpenEhs.Domain.Patient>
+﻿@model OpenEhs.Web.Models.PatientSearchViewModel
 @{
     ViewBag.Title = "OpenEHS - Patients";
 }
@@ -42,7 +42,28 @@
     </div>
 </div>
 <h3>
-    Recently Accessed List
+    @if (string.IsNullOrEmpty(Model.SearchTerm))
+    {
+        <text>Recently Accessed List</text>
+    }
+    else
+    {
+        string searchTerms = "";
+        string[] terms = Model.SearchTerm.Split('|');
+        foreach (string term in terms)
+        {
+            if (!string.IsNullOrEmpty(term))
+            {
+                if (!string.IsNullOrEmpty(searchTerms))
+                {
+                    searchTerms += ", ";
+                }
+                searchTerms += string.Format("\"{0}\"", term);
+            }
+        }
+        
+        <text> Showing search results for matches on: @searchTerms </text>
+    }
 </h3>
 <div id="RecentlyAccessedList">
     <table>
@@ -60,7 +81,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach (var patient in Model) 
+        @foreach (var patient in Model.Patients) 
 	    {
             <tr>
                 <td class="IdColumn">

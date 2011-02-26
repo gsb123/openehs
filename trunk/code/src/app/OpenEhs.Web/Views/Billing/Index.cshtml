@@ -17,16 +17,15 @@
 
 <h2>Billing</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<div id="Actions" class="ui-widget">
+<div id="Actions" class="group">
     @Html.ActionLink("New Billing", "Create", null, new { id = "CreateNewBillingButton" })
-	<div style="float: right">
-		<input id="tags" />
-		<button name="Search" id="SearchBillingButton">Search</button>
-	</div>
+    <div id="Search" class="group">
+        @using (Html.BeginForm("Index", "Billing"))
+        {
+            <input type="text" name="BillingSearchTextBox" id="BillingSearchTextBox" />
+            <button name="Search" id="SearchBillingButton">Search</button>
+        }
+    </div>
 </div>
 
 <table>

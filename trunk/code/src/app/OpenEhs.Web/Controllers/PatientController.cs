@@ -18,9 +18,9 @@ namespace OpenEhs.Web.Controllers
         // GET: /Patient/
         public ActionResult Index()
         {
-            var patients = new PatientRepository().GetAll();
+            var psvModel = new PatientSearchViewModel(new PatientRepository().GetAll());
 
-            return View(patients);
+            return View(psvModel);
         }
 
         public ActionResult Create()
@@ -52,6 +52,7 @@ namespace OpenEhs.Web.Controllers
                 return View(new PatientRepository().GetAll());
 
             IEnumerable<Patient> patients = new List<Patient>();
+            string searchTerms = null;
 
             //Check if the search criteria contains a Date of Birth
             Regex dobRegEx = new Regex(@"(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})|(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))|(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})");
@@ -64,6 +65,10 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirth(dob);    //Find any patients with this DOB
 
                 patients = patients.Union<Patient>(dobPatients); //Add them to the result set
+                
+                //If there are results that matched then show this in the search criteria
+                if(dobPatients.Count != 0)
+                    searchTerms += string.Format("{0}|", m.ToString());
             }
 
             //Check if the search criteria contains a Phone Number
@@ -78,6 +83,10 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(formattedPhoneNumber);
 
                 patients = patients.Union<Patient>(phonePatients);  //Add them to the result set
+
+                //If there are results that matched then show this in the search criteria
+                if (phonePatients.Count != 0)
+                    searchTerms += string.Format("{0}|", m.ToString());
             }
 
             //Check if the search criteria contains a Patient ID (6 character numeric string)
@@ -89,6 +98,10 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> idPatients = new PatientRepository().FindByPatientId(Convert.ToInt32(m.ToString()));
 
                 patients = patients.Union<Patient>(idPatients); //Add them to the result set
+
+                //If there are results that matched then show this in the search criteria
+                if (idPatients.Count != 0)
+                    searchTerms += string.Format("{0}|", m.ToString());
             }
 
             //Check if the search criteria contains a Patient ID (6 character numeric string)
@@ -100,6 +113,10 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(Convert.ToInt32(m.ToString()));
 
                 patients = patients.Union<Patient>(physicalIdPatients); //Add them to the result set
+
+                //If there are results that matched then show this in the search criteria
+                if (physicalIdPatients.Count != 0)
+                    searchTerms += string.Format("{0}|", m.ToString());
             }
 
             //Check if the search criteria contains a Patient name
@@ -114,15 +131,30 @@ namespace OpenEhs.Web.Controllers
                     IList<Patient> namePatients = new PatientRepository().FindByFirstName(m.ToString());
                     patients = patients.Union<Patient>(namePatients); //Add them to the result set
 
+                    //If there are results that matched then show this in the search criteria
+                    if (namePatients.Count != 0)
+                        searchTerms += string.Format("{0}|", m.ToString());
+
                     namePatients = new PatientRepository().FindByMiddleName(m.ToString());
                     patients = patients.Union<Patient>(namePatients); //Add them to the result set
 
+                    //If there are results that matched then show this in the search criteria
+                    if (namePatients.Count != 0)
+                        searchTerms += string.Format("{0}|", m.ToString());
+
                     namePatients = new PatientRepository().FindByLastName(m.ToString());
                     patients = patients.Union<Patient>(namePatients); //Add them to the result set
+
+                    //If there are results that matched then show this in the search criteria
+                    if (namePatients.Count != 0)
+                        searchTerms += string.Format("{0}|", m.ToString());
                 }
             }
 
-            return View(patients);  //Return the merged result set with no duplicates
+            //var viewModel = new PatientSearchViewModel { Patients = new List<Patient>(patients), SearchTerm = "Test" };
+            var psvModel = new PatientSearchViewModel(patients, searchTerms);
+
+            return View(psvModel);  //Return the merged result set with no duplicates
         }
 
         #endregion
@@ -600,7 +632,7 @@ namespace OpenEhs.Web.Controllers
                 checkin.Invoice = invoice;
 
                 patient.PatientCheckIns.Add(checkin);
-                //new InvoiceRepository().Add(invoice);
+                new InvoiceRepository().Add(invoice);
 
                 return Json(new
                 {
