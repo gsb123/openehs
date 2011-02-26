@@ -1138,6 +1138,11 @@ margin-bottom: 10px;
 	font-size: 18px;
 }
 
+.detailsTables
+{
+	font-size: 10px;
+}
+
 .detailsTables td
 {
 	border: 1px solid #ccc;
