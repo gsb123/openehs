@@ -193,7 +193,7 @@ namespace OpenEhs.Web.Controllers
                 Location loc = new Location();
 
                 loc.Department = Request.Form["Department"];
-                loc.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
+                loc.RoomNumber = Request.Form["RoomNumber"];
                 loc.IsActive = true;
 
                 LocationRepository locationRepo = new LocationRepository();
