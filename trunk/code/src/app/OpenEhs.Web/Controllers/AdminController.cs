@@ -131,6 +131,8 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 CategoryRepository categoryRepo = new CategoryRepository();
+                ProductRepository productRepo = new ProductRepository();
+
                 Product product = new Product();
                 product.Name = Request.Form["Name"];
                 product.Unit = Request.Form["Unit"];
@@ -140,7 +142,7 @@ namespace OpenEhs.Web.Controllers
                 product.Counter = 0;
                 product.IsActive = true;
 
-                UnitOfWork.CurrentSession.Flush();
+                productRepo.Add(product);
 
                 return Json(new { 
                     error = false
@@ -191,7 +193,8 @@ namespace OpenEhs.Web.Controllers
                 loc.Department = Request.Form["Department"];
                 loc.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
 
-                UnitOfWork.CurrentSession.Flush();
+                LocationRepository locationRepo = new LocationRepository();
+                locationRepo.Add(loc);
 
                 return Json(new
                 {
