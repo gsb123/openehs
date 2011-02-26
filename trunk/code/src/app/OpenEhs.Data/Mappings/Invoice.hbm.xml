@@ -13,9 +13,7 @@
     <many-to-one name="PatientCheckIn"
                  class="PatientCheckIn"
                  unique="true"
-                 column="PatientCheckInID" />    
-    
-    
+                 column="PatientCheckInID" />
     
     <property name="IsActive" not-null="true" />
 

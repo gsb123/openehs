@@ -2,7 +2,6 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
-  
   <class name="PatientCheckIn" table="PatientCheckIn" >
     <id name="Id" column="PatientCheckInID">
       <generator class="native" />
@@ -10,25 +9,19 @@
     <property name="CheckInTime" not-null="true" />
     <property name="PatientType" not-null="true" />
     <property name="CheckOutTime" not-null="false" />
-    
-    
-
     <property name="Diagnosis" not-null="false" />
-
-    <property name="Dead" not-null="false" />
-
     <property name="TimeOfDeath" not-null="false" />
 
-
-    <one-to-one name="AttendingStaff"
+    <one-to-one name="AttendingStaff" 
+                cascade="save-update"
                 constrained="true"
                 foreign-key="none"
                 class="Staff" />
     
-
     <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
 
-    <one-to-one name="Invoice" 
+    <one-to-one name="Invoice"
+                cascade="all"
                 constrained="true"
                 foreign-key="none"
                 class="Invoice" />
@@ -39,7 +32,6 @@
       <key column="PatientCheckInID" />
       <one-to-many class="Surgery" />
     </bag>
-
 
     <bag name="Vitals" table="Vitals" cascade="all">
       <key column="PatientCheckInId" />
@@ -62,7 +54,5 @@
       <key column="PatientCheckInId" />
       <one-to-many class="OutputChart" />
     </bag>
-
   </class>
-  
 </hibernate-mapping>

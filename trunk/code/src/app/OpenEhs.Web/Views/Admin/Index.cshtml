@@ -1,4 +1,5 @@
-﻿@{
+﻿@model OpenEhs.Web.Models.AdminViewModel
+@{
     ViewBag.Title = "OpenEHS - Administration";
 }
 @section head
@@ -182,15 +183,13 @@
         <div>
             <input type="text" name="prodname" id="model_prodname" class="required modal-input text ui-widget-content ui-corner-all" />
 
-			<!--
 			<select name="productSelect" id="model_productSelect">
             <option value="">Select Product...</option>
-            foreach (var prod in Model.ListProducts)
+            @foreach (var prod in Model.Products)
             {
-                <option value="prod.Id">prod.Name</option>
+                <option value="@prod.Id">@prod.Name</option>
             }
-        </select>
-		-->
+            </select>
 		
 
         </div>

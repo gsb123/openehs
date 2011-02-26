@@ -27,13 +27,11 @@ namespace OpenEhs.Domain
         public virtual string Diagnosis { get; set; }
         public virtual Location Location { get; set; }
         public virtual Staff AttendingStaff { get; set; }
-        public virtual bool Dead { get; set; } // NOTE: Isn't this a little redundant? We already have the TimeOfDeath field.
         public virtual DateTime TimeOfDeath { get; set; }
         public virtual IList<FeedChart> FeedChart { get; set; }
         public virtual IList<IntakeChart> IntakeChart { get; set; }
         public virtual IList<OutputChart> OutputChart { get; set; }
 
         #endregion
-
     }
 }

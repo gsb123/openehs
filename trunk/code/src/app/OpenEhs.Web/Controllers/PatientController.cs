@@ -635,7 +635,6 @@ namespace OpenEhs.Web.Controllers
 
                 if (Request.Form["deceased"] == "on")
                 {
-                    checkIn.Dead = true;
                     checkIn.TimeOfDeath = DateTime.Parse(Request.Form["timeOfDeath"]);
                     patient.DateOfBirth = DateTime.Parse(Request.Form["timeOfDeath"]);
                 }
