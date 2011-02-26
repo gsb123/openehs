@@ -3,6 +3,7 @@ using OpenEhs.Domain;
 using System;
 using System.Web.Security;
 using OpenEhs.Data;
+using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -10,7 +11,8 @@ namespace OpenEhs.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new AdminViewModel();
+            return View(viewModel);
         }
 
         #region JsonResults
