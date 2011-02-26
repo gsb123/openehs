@@ -8,7 +8,7 @@
       <generator class="native" />
     </id>
     <property name="Department" not-null="true" length="20" />
-    <property name="RoomNumber" not-null="true" length="10" />
+    <property name="RoomNumber" not-null="true" length="15" />
     <property name="IsActive" not-null="true" />
 
     <bag name="PatientCheckIns" table="PatientCheckIn" cascade="all">
