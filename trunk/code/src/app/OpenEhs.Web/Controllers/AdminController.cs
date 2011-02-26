@@ -144,17 +144,19 @@ namespace OpenEhs.Web.Controllers
 
                 productRepo.Add(product);
 
-                return Json(new { 
+                return Json(new
+                {
                     error = false
                 });
             }
             catch
             {
-                return Json(new { 
-                error = true
-            });
+                return Json(new
+                {
+                    error = true
+                });
             }
-            
+
         }
 
         public JsonResult RemoveProduct()
@@ -195,6 +197,28 @@ namespace OpenEhs.Web.Controllers
 
                 LocationRepository locationRepo = new LocationRepository();
                 locationRepo.Add(loc);
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        public JsonResult DeleteLocation()
+        {
+            try
+            {
+                LocationRepository locationRepo = new LocationRepository();
+                Location location = locationRepo.Get(int.Parse(Request.Form["LocationId"]));
+                location.IsActive = false;
 
                 return Json(new
                 {

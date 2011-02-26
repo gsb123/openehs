@@ -17,5 +17,6 @@ namespace OpenEhs.Domain
         public virtual int RoomNumber { get; set; }
         public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }
         public virtual IList<Surgery> Surgeries { get; set; }
+        public virtual bool IsActive { get; set; }
     }
 }
