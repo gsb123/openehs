@@ -150,7 +150,8 @@ CREATE TABLE Location
 (
 LocationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Department          varchar(20)     NOT NULL,
-RoomNumber          int              NOT NULL
+RoomNumber          int              NOT NULL,
+IsActice            bit                 NOT NULL            DEFAULT 1
 );
 
 CREATE TABLE PatientCheckIn
@@ -3023,4 +3024,54 @@ VALUES
 15.00,
 '2011-02-23 01:15:13',
 2
+);
+
+INSERT INTO FeedChart
+(
+PatientCheckInID,
+FeedTime,
+FeedType,
+AmountOffered,
+AmountTaken,
+Vomit,
+Urine,
+Stool,
+Comments   
+)
+VALUES
+(
+1,
+NOW(),
+'Blah',
+'Blah',
+'Blah',
+'Blah',
+'Blah',
+'Blah',
+'Blah'
+);
+
+INSERT INTO FeedChart
+(
+PatientCheckInID,
+FeedTime,
+FeedType,
+AmountOffered,
+AmountTaken,
+Vomit,
+Urine,
+Stool,
+Comments   
+)
+VALUES
+(
+2,
+NOW(),
+'Boaring',
+'Boaring',
+'Boaring',
+'Boaring',
+'Boaring',
+'Boaring',
+'Boaring'
 );
