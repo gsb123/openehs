@@ -208,15 +208,15 @@
         <div>
             <input type="text" name="selectprod" id="model_selectprod" class="required modal-input text ui-widget-content ui-corner-all" />
 
-			<!--
+	
 			<select name="productSelect" id="model_productSelect">
             <option value="">Select Product...</option>
-            foreach (var prod in Model.ListProducts)
+            @foreach (var prod in Model.Products)
             {
-                <option value="prod.Id">prod.Name</option>
+                <option value="@prod.Id">@prod.Name</option>
             }
         </select>
-		-->
+
         </div>
 		 <div class="modal-label-long">
             Name:

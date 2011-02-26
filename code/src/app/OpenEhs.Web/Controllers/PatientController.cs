@@ -291,7 +291,7 @@ namespace OpenEhs.Web.Controllers
                 {
                     error = "false",
                     status = "Successfully added chart.",
-                    Date =feedchart.FeedTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                    Date = feedchart.FeedTime.ToString("dd/MM/yyyy HH:mm:ss"),
                     feedchart.FeedType,
                     feedchart.AmountOffered,
                     feedchart.AmountTaken,
@@ -813,13 +813,31 @@ namespace OpenEhs.Web.Controllers
                         });
                     }
 
+                    IList<object> feedList = new List<object>();
+
+                    foreach (var a in result.FeedChart)
+                    {
+                        feedList.Add(new
+                        {
+                            Time = a.FeedTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                            Type = a.FeedType,
+                            AmountOffered = a.AmountOffered,
+                            AmountTaken = a.AmountTaken,
+                            Vomit = a.Vomit,
+                            Urine = a.Urine,
+                            Stool = a.Stool,
+                            Comments = a.Comments
+                        });
+                    }
+
                     resultSet.Add(new
                     {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
                         result.Diagnosis,
                         firstName = result.AttendingStaff.FirstName,
-                        lastName =  result.AttendingStaff.LastName,
-                        Vitals = visitList
+                        lastName = result.AttendingStaff.LastName,
+                        Vitals = visitList,
+                        FeedChart = feedList
                     });
                 }
 
@@ -827,13 +845,14 @@ namespace OpenEhs.Web.Controllers
 
                 return jsonResult;
             }
+
             catch (Exception e)
             {
                 return Json(new
                 {
                     error = "true",
-                    status = "Unable to fetch list successfully",
-                    errorMessage = e.Message
+                    status = "Unable to fetch list successfully"
+                    //errorMessage = e.Message
                 });
             }
         }

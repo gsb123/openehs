@@ -43,7 +43,27 @@ $(function () {
 
                 htmlOutput += "<b>Notes: </b><br />This is where all the notes will go when mappings work...";
 
-                htmlOutput += "<div><b>Charting</b></div>";
+                htmlOutput += "<div id=\"pmhChartLink\"><b>Charting...</b></div><div id=\"pmhChartInfo\">";
+
+                htmlOutput += "Feed Chart:";
+
+                htmlOutput += "<table class=\"detailsTables\"><thead><tr><th>Date and Time</th><th>Feed Type</th>" +
+                            "<th>Amount Offered</th><th>Amount Taken</th><th>Vomit</th><th>Urine</th><th>Stool</th><th>Comments</th></tr></thead>";
+
+                for (var w = 0; w < checkin.FeedChart.length; w++) {
+
+                    var feed = checkin.FeedChart[w];
+
+                    htmlOutput += "<tr><td>" + feed.Time + "</td><td>" + feed.Type + "</td><td>" + feed.AmountOffered + "</td><td>" + feed.AmountTaken + "</td><td>" + feed.Vomit + "</td><td>" + feed.Urine + "</td><td>" + feed.Stool + "</td><td>" + feed.Comments + "</td></tr>";
+
+                }
+
+                htmlOutput += "</table>Output Chart:";
+
+                htmlOutput += "<table class=\"detailsTables\" id=\"centerForOutputChart\"><thead><th colspan=\"3\">N.G. Suction</th><th colspan=\"1\">Urine</th><th colspan=\"2\">Stool</th><thead><thead><tr><th>Date and Time</th><th>Amount</th>" +
+                            "<th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead>";
+
+                htmlOutput += "</table></div>"
 
                 htmlOutput += "</li></ul></div>";
 
@@ -55,12 +75,9 @@ $(function () {
 
     });
 
-    $(".visitVitalsLink").click(function () {
-        $(".visitVitalsMoreInfo").slideToggle("slow", function () { });
+    $("#pmhChartLink").live('click', function () {
+        $("#pmhChartInfo").slideToggle("slow", function () { });
     });
 
-    $(".visitNoteLink").click(function () {
-        $(".visitNoteMoreInfo").slideToggle("slow", function () { });
-    });
 
 });
