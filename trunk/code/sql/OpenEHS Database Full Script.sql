@@ -151,7 +151,7 @@ CREATE TABLE Location
 LocationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Department          varchar(20)     NOT NULL,
 RoomNumber          int              NOT NULL,
-IsActice            bit                 NOT NULL            DEFAULT 1
+IsActive            bit                 NOT NULL            DEFAULT 1
 );
 
 CREATE TABLE PatientCheckIn
