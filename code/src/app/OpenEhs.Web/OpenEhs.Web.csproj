@@ -107,6 +107,7 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\BillingViewModels.cs" />
     <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\PatientSearchViewModel.cs" />
     <Compile Include="Models\PatientViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
