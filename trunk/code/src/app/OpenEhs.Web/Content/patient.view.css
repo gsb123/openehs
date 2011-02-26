@@ -565,19 +565,6 @@ fieldset
     display: none;
 }
 
-#visitNoteLink
-{
-    clear: both;
-    color: #00f;
-    cursor: pointer;
-}
-
-#visitNoteMoreInfo
-{
-    clear: both;
-    display: none;
-}
-
 #visitVitalsLink
 {
     clear: both;
@@ -1163,12 +1150,35 @@ margin-bottom: 10px;
 
 #AddInvoiceItemFieldSet
 {
-    width: 300px;
+    width: 225px;
+}
+
+#showLineItemsFS
+{
+	width: 300px;
+}
+
+.billingSelects
+{
+	width: 130px;
+}
+
+#showLineItems
+{
+	float: left;
+	margin-left: 50px;
+	margin-top: 20px;
 }
 
 #AddInvoiceItem
 {
 	float: left;
+	margin-top: 20px;
+}
+
+#submitInvoiceItem
+{
+	margin-left: 80px;
 }
 
 #selection
@@ -1178,17 +1188,17 @@ margin-bottom: 10px;
 
 #modal_GetProduct
 {
-    margin-left: 140px;
+    margin-left: 40px;
 }
 
 #modal_GetService
 {
-    margin-left: 125px;
+    margin-left: 42px;
 }
 
 #modal_GetQuantity
 {
-    margin-left: 117px;
+    margin-left: 38px;
 }
 
 .visitSummaryList
@@ -1252,4 +1262,17 @@ margin-bottom: 10px;
 #templateNoteCheckBox
 {
 	margin-left: 180px;
+}
+
+#pmhChartLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#pmhChartInfo
+{
+    clear: both;
+    display: none;
 }

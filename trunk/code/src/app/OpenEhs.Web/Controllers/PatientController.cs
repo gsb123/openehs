@@ -600,7 +600,7 @@ namespace OpenEhs.Web.Controllers
                 checkin.Invoice = invoice;
 
                 patient.PatientCheckIns.Add(checkin);
-                new InvoiceRepository().Add(invoice);
+                //new InvoiceRepository().Add(invoice);
 
                 return Json(new
                 {
