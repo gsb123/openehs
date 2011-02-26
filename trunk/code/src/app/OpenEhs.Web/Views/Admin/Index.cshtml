@@ -154,7 +154,13 @@
             Category:
         </div>
         <div>
-            <input type="text" name="categoryid" id="model_categoryid" class="required modal-input text ui-widget-content ui-corner-all" />
+			<select name="addProductSelect" id="model_categoryid" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Category...</option>
+            @foreach (var cat in Model.Categories)
+            {
+                <option value="@cat.Id">@cat.Name</option>
+            }
+            </select>
         </div>
 		<div class="modal-label-long">
             Price:
@@ -181,17 +187,13 @@
             Name:
         </div>
         <div>
-            <input type="text" name="prodname" id="model_prodname" class="required modal-input text ui-widget-content ui-corner-all" />
-
-			<select name="productSelect" id="model_productSelect">
+			<select name="removeProductSelect" id="model_prodname" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Product...</option>
             @foreach (var prod in Model.Products)
             {
                 <option value="@prod.Id">@prod.Name</option>
             }
             </select>
-		
-
         </div>
     </fieldset>
     </form>
@@ -206,17 +208,13 @@
             Search Product:
         </div>
         <div>
-            <input type="text" name="selectprod" id="model_selectprod" class="required modal-input text ui-widget-content ui-corner-all" />
-
-	
-			<select name="productSelect" id="model_productSelect">
+			<select name="editProductSelect" id="model_productSelect" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Product...</option>
             @foreach (var prod in Model.Products)
             {
                 <option value="@prod.Id">@prod.Name</option>
             }
         </select>
-
         </div>
 		 <div class="modal-label-long">
             Name:
@@ -283,6 +281,117 @@
         </div>
         <div>
             <input type="text" name="categorydescription" id="model_categorydescription" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteLocationDialog" title="Delete Category">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteLocationForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Location:
+        </div>
+        <div>
+			<select name="delectLocationSelect" id="model_departmentRoom" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Location...</option>
+            @foreach (var loc in Model.Locations)
+            {
+                <option value="@loc.Id">@loc.Department, Room: @loc.RoomNumber</option>
+            }
+            </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="addServiceDialog" title="Add Service">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="addServiceForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Name:
+        </div>
+        <div>
+            <input type="text" name="servicename" id="model_servicename" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Cost:
+        </div>
+        <div>
+            <input type="text" name="servicecost" id="model_servicecost" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="editServiceDialog" title="Edit Service">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="editServiceForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Service:
+        </div>
+        <div>
+            <select name="editServiceSelect" id="model_editService" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Service...</option>
+            @foreach (var service in Model.Services)
+            {
+                <option value="@service.Id">@service.Name</option>
+            }
+            </select>
+        </div>
+		<div class="modal-label-long">
+            Cost:
+        </div>
+        <div>
+            <input type="text" name="servicecost" id="model_editservicecost" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteServiceDialog" title="Delete Service">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteServiceForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Service:
+        </div>
+        <div>
+            <select name="deleteServiceSelect" id="model_deleteService" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Service...</option>
+            @foreach (var service in Model.Services)
+            {
+                <option value="@service.Id">@service.Name</option>
+            }
+            </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteCategoryDialog" title="Delete Category">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteCategoryForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Category:
+        </div>
+        <div>
+            <select name="deleteCategorySelect" id="model_deleteCategory" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Service...</option>
+            @foreach (var cat in Model.Categories)
+            {
+                <option value="@cat.Id">@cat.Name</option>
+            }
+            </select>
         </div>
     </fieldset>
     </form>
