@@ -604,7 +604,8 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
-                    error = "false"
+                    error = "false",
+                message = checkin
                 });
             }
             catch (Exception e)
