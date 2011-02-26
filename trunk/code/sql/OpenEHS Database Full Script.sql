@@ -150,7 +150,7 @@ CREATE TABLE Location
 (
 LocationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Department          varchar(20)     NOT NULL,
-RoomNumber          int              NOT NULL,
+RoomNumber          varchar(15)     NOT NULL,
 IsActive            bit                 NOT NULL            DEFAULT 1
 );
 
