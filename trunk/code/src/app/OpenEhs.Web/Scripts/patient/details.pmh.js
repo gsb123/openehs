@@ -41,7 +41,11 @@ $(function () {
 
                 htmlOutput += "</tbody></table>";
 
-                htmlOutput += "<b>Notes: </b><br />This is where all the notes will go when mappings work...</li></ul></div>"
+                htmlOutput += "<b>Notes: </b><br />This is where all the notes will go when mappings work...";
+
+                htmlOutput += "<div><b>Charting</b></div>";
+
+                htmlOutput += "</li></ul></div>";
 
                 $("#replaceDIV").replaceWith(htmlOutput);
                 //Need to add surgery right under encounter stuff... Also ask matt if I can call another POST right here!
