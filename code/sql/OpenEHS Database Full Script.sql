@@ -188,10 +188,10 @@ CREATE TABLE OutputChart
 OutputChartID            int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 ChartTime           timestamp       NOT NULL,
 NGSuctionAmount     varchar(20)           NULL,
-NGSuctionColor      varchar(15)     NULL,
+NGSuctionColor      varchar(30)     NULL,
 UrineAmount         varchar(20)           NULL,
 StoolAmount         varchar(20)           NULL,
-StoolColor          varchar(15)     NULL,
+StoolColor          varchar(30)     NULL,
 PatientCheckInID        int             NOT NULL
 );
 
@@ -334,6 +334,12 @@ CREATE TABLE SurgeryStaff
     Role                        int                 NOT NULL
 );
 
+CREATE TABLE NoteTemplateCategory
+(
+    NoteTemplateCategoryID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    TemplateCategoryName        varchar(30)         NOT NULL
+);
+
 CREATE TABLE Note
 (
     NoteID                      int                 AUTO_INCREMENT          PRIMARY KEY                      NOT NULL,
@@ -341,22 +347,17 @@ CREATE TABLE Note
     Body                        longtext            NOT NULL,
     DateCreated                 timestamp           NOT NULL                DEFAULT CURRENT_TIMESTAMP,
     StaffID                     int                 NOT NULL,
+    NoteTemplateCategoryID          int                 NOT NULL,
     PatientCheckInID          int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
-);
-
-CREATE TABLE TemplateCategory
-(
-    TemplateCategoryID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    TemplateCategoryName        varchar(30)         NOT NULL,
-    TemplateCategoryDescription text                NULL
 );
 
 CREATE TABLE Template
 (
     TemplateID                  int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+    Title                       varchar(150)        NOT NULL,
     TemplateBody                longtext            NOT NULL,
-    TemplateCategoryID          int                 NOT NULL,
+    NoteTemplateCategoryID          int                 NOT NULL,
     StaffID                     int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
@@ -487,8 +488,8 @@ ADD CONSTRAINT TemplateMustHaveStaffID
 FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
 
 ALTER TABLE Template
-ADD CONSTRAINT TemplateMustHaveTemplateCategoryID
-FOREIGN KEY (TemplateCategoryID) REFERENCES TemplateCategory(TemplateCategoryID);
+ADD CONSTRAINT TemplateMustHaveNoteTemplateCategoryID
+FOREIGN KEY (NoteTemplateCategoryID) REFERENCES NoteTemplateCategory(NoteTemplateCategoryID);
 
 ALTER TABLE Product
 ADD CONSTRAINT ProductMustHaveCategoryID
@@ -1042,141 +1043,6 @@ WHERE InvoiceID = i_InvoiceID;
 
 END ||
 DELIMITER ;
-
-#--------------insert into Note Table--------------
-/************************************
-* sp_insertNote inserts into the
-* Note table.
-************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertNote
-(
-IN i_Title              varchar(50),
-IN i_Body               text,
-IN i_DateCreated        timestamp,
-IN i_staffFN            varchar(30),
-IN i_staffLN            varchar(30),
-IN i_PatientCheckInID int
-)
-
-BEGIN
-
-DECLARE _staffID int;
-
-SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-INSERT INTO Note
-(
-Title,
-Body,
-DateCreated,
-StaffID,
-PatientEncounterID
-)
-VALUES
-(
-i_Title,
-i_Body,
-i_DateCreated,
-_StaffID,
-i_PatientEncounterID
-);
-
-END ||
-DELIMITER ;
-
-#--------------insert into TemplateCategory Table--------------
-/******************************************
-* sp_insertTemplateCategory inserts into the
-* TemplateCategory table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertTemplateCategory
-(
-IN i_TCName         text,
-IN i_TCDescription  text
-)
-
-BEGIN
-
-INSERT INTO TemplateCategory
-(
-TemplateCategoryName,
-TemplateCategoryDescription
-)
-VALUES
-(
-i_TCName,
-i_TCDescription
-);
-
-END ||
-DELIMITER ;
-
-#--------------insert into Template Table--------------
-/******************************************
-* sp_insertTemplate inserts into the
-* Template table.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_insertTemplate
-(
-IN i_TemplateBody           text,
-IN i_TemplateCategoryID     int,
-IN i_StaffID                int
-#IN i_staffFN            varchar(30),
-#IN i_staffLN            varchar(30)
-)
-
-BEGIN
-
-#DECLARE _staffID int;
-
-#SELECT StaffID FROM Staff WHERE FirstName LIKE i_staffFN && LastName LIKE i_staffLN INTO _staffID;
-
-INSERT INTO Template
-(
-TemplateBody,
-TemplateCategoryID,
-StaffID
-#StaffID
-)
-VALUES
-(
-i_TemplateBody,
-i_TemplateCategoryID,
-i_StaffID
-#_staffID
-);
-
-END ||
-DELIMITER ;
-
-#--------------Delete Template Table--------------
-/******************************************
-* sp_deleteTemplate updates the
-* Template table by changing IsActive to 0.
-******************************************/
-
-DELIMITER |
-CREATE PROCEDURE sp_delectTemplate
-(
-IN i_TemplateID     int,
-IN i_StaffID        int
-)
-
-BEGIN
-
-UPDATE Template SET
-IsActive = 0
-WHERE TemplateID = i_Template && StaffID = i_StaffID;
-
-END ||
-DELIMITER ;
-
 
 
 #--------------insert into Surgery Table--------------
@@ -2100,39 +1966,6 @@ CALL sp_insertService
 'test service',
 22.50
 );
-
-CALL sp_insertTemplateCategory
-(
-'Diagnosis',
-NULL
-);
-
-CALL sp_insertTemplateCategory
-(
-'Surgery',
-NULL
-);
-
-CALL sp_insertTemplateCategory
-(
-'General Note',
-NULL
-);
-
-CALL sp_insertTemplate
-(
-'Test diagnosis for Staff 1',
-1,
-1
-);
-
-CALL sp_insertTemplate
-(
-'Test diagnosis for Staff 2',
-1,
-2
-);
-
 
 INSERT INTO Immunization
 (
@@ -3129,4 +2962,46 @@ NOW(),
 'Boaring',
 'Boaring',
 'Boaring'
+);
+
+INSERT INTO OutputChart
+(
+ChartTime,
+NGSuctionAmount,
+NGSuctionColor,
+UrineAmount,
+StoolAmount,
+StoolColor,
+PatientCheckInID
+)
+VALUES
+(
+NOW(),
+'20 cc.',
+'Brown',
+'2 oz.',
+'1 lb.',
+'Red',
+1
+);
+
+INSERT INTO OutputChart
+(
+ChartTime,
+NGSuctionAmount,
+NGSuctionColor,
+UrineAmount,
+StoolAmount,
+StoolColor,
+PatientCheckInID
+)
+VALUES
+(
+NOW(),
+'2 cc.',
+'Green',
+'2 oz.',
+'2 lb.',
+'Yellow and brown',
+2
 );
