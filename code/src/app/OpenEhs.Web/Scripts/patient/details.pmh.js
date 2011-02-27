@@ -63,7 +63,15 @@ $(function () {
                 htmlOutput += "<table class=\"detailsTables\" id=\"centerForOutputChart\"><thead><th colspan=\"3\">N.G. Suction</th><th colspan=\"1\">Urine</th><th colspan=\"2\">Stool</th><thead><thead><tr><th>Date and Time</th><th>Amount</th>" +
                             "<th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead>";
 
-                htmlOutput += "</table></div>"
+                for (var z = 0; z < checkin.OutputChart.length; z++) {
+
+                    var out = checkin.OutputChart[z];
+
+                    htmlOutput += "<tr><td>" + out.Time + "</td><td>" + out.NGSuctionAmount + "</td><td>" + out.NGSuctionColor + "</td><td>" + out.UrineAmount + "</td><td>" + out.StoolAmount + "</td><td>" + out.StoolColor + "</td></tr>";
+
+                }
+
+                htmlOutput += "</table></div>";
 
                 htmlOutput += "</li></ul></div>";
 

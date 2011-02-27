@@ -830,6 +830,21 @@ namespace OpenEhs.Web.Controllers
                         });
                     }
 
+                    IList<object> outputList = new List<object>();
+
+                    foreach (var b in result.OutputChart)
+                    {
+                        outputList.Add(new
+                        {
+                            Time = b.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                            b.NGSuctionAmount,
+                            b.NGSuctionColor,
+                            b.UrineAmount,
+                            b.StoolAmount,
+                            b.StoolColor
+                        });
+                    }
+
                     resultSet.Add(new
                     {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -837,7 +852,8 @@ namespace OpenEhs.Web.Controllers
                         firstName = result.AttendingStaff.FirstName,
                         lastName = result.AttendingStaff.LastName,
                         Vitals = visitList,
-                        FeedChart = feedList
+                        FeedChart = feedList,
+                        OutputChart = outputList
                     });
                 }
 
