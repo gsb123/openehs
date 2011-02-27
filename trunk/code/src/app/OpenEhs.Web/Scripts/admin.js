@@ -102,6 +102,11 @@ $(function () {
             }, "json");
         },
         Cancel: function () {
+                    $("#model_name").val("");
+                    $("#model_unit").val("");
+                    $("#model_categoryid").val("");
+                    $("#model_price").val("");
+                    $("#model_quantityonhand").val("");
             $(this).dialog("close");
         }
     },
@@ -129,6 +134,7 @@ $("#removeProductDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+            $("#model_prodname").val("");
             $(this).dialog("close");
         }
     },
@@ -162,6 +168,12 @@ $("#editProductDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+                    $("#model_editprodname").val("");
+                    $("#model_editprodunit").val("");
+                    $("#model_editprodcategory").val("");
+                    $("#model_editprodprice").val("");
+                    $("#model_productSelect").val("");
+                    $("#model_cataProdSelect").val("");
             $(this).dialog("close");
         }
     },
@@ -190,6 +202,8 @@ $("#addLocationDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+                    $("#model_departmentname").val("");
+                    $("#model_addroomnumber").val("");
             $(this).dialog("close");
         }
     },
@@ -212,12 +226,16 @@ $("#addCategoryDialog").dialog({
                 if (result.error == "false") {
                     $("#addCategoryDialog").dialog("close");
 
+                    $("#model_categoryname").val("");
                     $("#model_model_categoryname").val("");
                     $("#model_categorydescription").val("");
                 }
             }, "json");
         },
         Cancel: function () {
+                    $("#model_model_categoryname").val("");
+                    $("#model_categoryname").val("");
+                    $("#model_categorydescription").val("");
             $(this).dialog("close");
         }
     },
@@ -244,6 +262,7 @@ $("#deleteLocationDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+            $("#model_departmentRoom").val("");
             $(this).dialog("close");
         }
     },
@@ -267,11 +286,13 @@ $("#addServiceDialog").dialog({
                     $("#addServiceDialog").dialog("close");
 
                     $("#model_servicename").val("");
-                    $("#model_servicecost").val("")
+                    $("#model_servicecost").val("");
                 }
             }, "json");
         },
         Cancel: function () {
+                $("#model_servicename").val("");
+                $("#model_servicecost").val("");
             $(this).dialog("close");
         }
     },
@@ -300,6 +321,8 @@ $("#editServiceDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+                    $("#model_editService").val("");
+                    $("#model_editservicecost").val("");
             $(this).dialog("close");
         }
     },
@@ -326,6 +349,7 @@ $("#deleteServiceDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+            $("#model_deleteService").val("");
             $(this).dialog("close");
         }
     },
@@ -352,6 +376,7 @@ $("#deleteCategoryDialog").dialog({
             }, "json");
         },
         Cancel: function () {
+            $("#model_deleteCategory").val("");
             $(this).dialog("close");
         }
     },
