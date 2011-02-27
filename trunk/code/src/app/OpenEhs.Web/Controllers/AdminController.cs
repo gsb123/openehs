@@ -289,7 +289,7 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 CategoryRepository categoryRepo = new CategoryRepository();
-                Category category = categoryRepo.Get(int.Parse(Request.Form["CategoeryId"]));
+                Category category = categoryRepo.Get(int.Parse(Request.Form["Category"]));
                 category.IsActive = false;
 
                 return Json(new
@@ -319,7 +319,7 @@ namespace OpenEhs.Web.Controllers
                 Service service = new Service();
                 service.IsActive = true;
                 service.Name = Request.Form["Name"];
-                service.Price = decimal.Parse(Request.Form["Price"]);
+                service.Price = decimal.Parse(Request.Form["Cost"]);
 
                 serviceRepo.Add(service);
 
@@ -342,9 +342,8 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 ServiceRepository serviceRepo = new ServiceRepository();
-                Service service = serviceRepo.Get(int.Parse(Request.Form["serviceId"]));
-                service.Name = Request.Form["Name"];
-                service.Price = decimal.Parse(Request.Form["Price"]);
+                Service service = serviceRepo.Get(int.Parse(Request.Form["Service"]));
+                service.Price = decimal.Parse(Request.Form["Cost"]);
 
                 return Json(new
                 {

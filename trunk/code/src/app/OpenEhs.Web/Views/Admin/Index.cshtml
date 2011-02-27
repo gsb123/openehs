@@ -156,7 +156,7 @@
         <div>
 			<select name="addProductSelect" id="model_categoryid" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Category...</option>
-            @foreach (var cat in Model.Categories)
+            @foreach (var cat in Model.ActiveCategories)
             {
                 <option value="@cat.Id">@cat.Name</option>
             }
@@ -189,7 +189,7 @@
         <div>
 			<select name="removeProductSelect" id="model_prodname" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Product...</option>
-            @foreach (var prod in Model.Products)
+            @foreach (var prod in Model.ActiveProducts)
             {
                 <option value="@prod.Id">@prod.Name</option>
             }
@@ -210,7 +210,7 @@
         <div>
 			<select name="editProductSelect" id="model_productSelect" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Product...</option>
-            @foreach (var prod in Model.Products)
+            @foreach (var prod in Model.ActiveProducts)
             {
                 <option value="@prod.Id">@prod.Name</option>
             }
@@ -297,7 +297,7 @@
         <div>
 			<select name="delectLocationSelect" id="model_departmentRoom" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Location...</option>
-            @foreach (var loc in Model.Locations)
+            @foreach (var loc in Model.ActiveLocations)
             {
                 <option value="@loc.Id">@loc.Department, Room: @loc.RoomNumber</option>
             }
@@ -339,7 +339,7 @@
         <div>
             <select name="editServiceSelect" id="model_editService" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Service...</option>
-            @foreach (var service in Model.Services)
+            @foreach (var service in Model.ActiveServices)
             {
                 <option value="@service.Id">@service.Name</option>
             }
@@ -366,7 +366,7 @@
         <div>
             <select name="deleteServiceSelect" id="model_deleteService" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Service...</option>
-            @foreach (var service in Model.Services)
+            @foreach (var service in Model.ActiveServices)
             {
                 <option value="@service.Id">@service.Name</option>
             }
@@ -387,7 +387,7 @@
         <div>
             <select name="deleteCategorySelect" id="model_deleteCategory" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Service...</option>
-            @foreach (var cat in Model.Categories)
+            @foreach (var cat in Model.ActiveCategories)
             {
                 <option value="@cat.Id">@cat.Name</option>
             }
