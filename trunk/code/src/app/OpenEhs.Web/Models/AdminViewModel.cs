@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OpenEhs.Data;
 using OpenEhs.Domain;
 
@@ -23,7 +24,12 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                return _productRepository.GetAll();
+
+                var prod = from activeProd in Products
+                           where activeProd.IsActive == true
+                           select activeProd;
+
+                return prod.ToList();
             }
         }
 
