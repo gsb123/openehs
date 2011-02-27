@@ -50,6 +50,11 @@
       <one-to-many class="IntakeChart" />
     </bag>
 
+    <bag name="Notes" table="Note" cascade="all">
+      <key column="PatientCheckInId" />
+      <one-to-many class="Note" />
+    </bag>
+
     <bag name="OutputChart" table="OutputChart" cascade="all">
       <key column="PatientCheckInId" />
       <one-to-many class="OutputChart" />
