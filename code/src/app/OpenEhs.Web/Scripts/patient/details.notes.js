@@ -15,8 +15,35 @@ $(function () {
     $("#NotesTextBox").ckeditor(ckConfig);
 
     $("#submitNoteButton").button().click(function () {
-        //$("#submitNoteDialog").dialog("open");
-        alert("Note button clicked")
+        $("#newNoteDialog").dialog("open");
+    });
+
+    $("#newNoteDialog").dialog({
+        autoOpen: false,
+        height: 470,
+        width: 490,
+        modal: true,
+        buttons: {
+            "Submit Note": function () {
+                $.post("/Patient/AddNote", {
+                    patientID: $("#patientId").val(),
+                    NoteBody: $("#NotesTextBox").val()
+                }, function (result) {
+                    $("#submitNoteDialog").dialog("close");
+
+                    $("#NotesTextBox").val("");
+
+                }, "json");
+            },
+            Cancel: function () {
+                $("#NotesTextBox").val("");
+
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
     });
 
 });
