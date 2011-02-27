@@ -24,6 +24,14 @@ namespace OpenEhs.Web.Models
         {
             get
             {
+                return _productRepository.GetAll();
+            }
+        }
+
+        public IList<Product> ActiveProducts
+        {
+            get
+            {
 
                 var prod = from activeProd in Products
                            where activeProd.IsActive == true
