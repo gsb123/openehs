@@ -365,7 +365,7 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 ServiceRepository serviceRepo = new ServiceRepository(); 
-                Service service = serviceRepo.Get(int.Parse(Request.Form["ServiceID"]));
+                Service service = serviceRepo.Get(int.Parse(Request.Form["Service"]));
                 service.IsActive = false;
 
                 return Json(new
