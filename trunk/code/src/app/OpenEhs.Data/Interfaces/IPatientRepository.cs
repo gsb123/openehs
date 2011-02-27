@@ -20,6 +20,6 @@ namespace OpenEhs.Data
         IList<Patient> FindByMiddleName(string name);
         IList<Patient> FindByLastName(string name);
         IList<Patient> FindByDateOfBirth(DateTime dateOfBirth);
-        IList<Patient> FindByOldPhysicalRecord(int number);
+        IList<Patient> FindByOldPhysicalRecord(string number);
     }
 }
