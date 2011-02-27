@@ -1111,6 +1111,47 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region Notes
+
+        public JsonResult AddNote()
+        {
+            try
+            {
+                PatientRepository patientRepo = new PatientRepository();
+                Patient patient = patientRepo.Get(int.Parse(Request.Form["PatientId"]));
+
+                Note note = new Note();
+
+                var query = from checkin in patient.PatientCheckIns
+                            where checkin.CheckOutTime == DateTime.MinValue
+                            select checkin;
+                PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
+                note.Author = openCheckIn.AttendingStaff;
+                note.DateCreated = DateTime.Now;
+                note.Body = Request.Form["NoteBody"];
+                note.PatientCheckIns = openCheckIn;
+                note.IsActive = true;
+
+                openCheckIn.Notes.Add(note);
+
+
+                return Json(new
+                {
+                    NoteBody = note.Body,
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        #endregion
+
         #endregion
     }
 }
