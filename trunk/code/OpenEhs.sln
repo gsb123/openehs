@@ -27,6 +27,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Infrastructure.Secu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEhs.Web", "src\app\OpenEhs.Web\OpenEhs.Web.csproj", "{0D8E6BC1-5D8F-4900-9845-772A3FAC193C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9526FF88-CF30-45E1-A888-52B9A386BB46}"
+	ProjectSection(SolutionItems) = preProject
+		sql\OpenEHS Database Full Script.sql = sql\OpenEHS Database Full Script.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

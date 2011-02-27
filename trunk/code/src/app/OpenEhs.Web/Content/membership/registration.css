@@ -80,3 +80,18 @@ ul li {
 {
     margin-top: 30px;
 }
+
+#firstNameTextbox 
+{
+	width: 250px;
+}
+
+#middleNameTextbox
+{
+	width: 250px;
+}
+
+#lastNameTextbox
+{
+	width: 250px;
+}
