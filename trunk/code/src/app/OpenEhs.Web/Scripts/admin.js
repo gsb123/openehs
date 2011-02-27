@@ -206,7 +206,7 @@ $("#addCategoryDialog").dialog({
     buttons: {
         "Add Category": function () {
             $.post("/Admin/AddCategory", {
-                Name: $("#model_model_categoryname").val(),
+                Name: $("#model_categoryname").val(),
                 Description: $("#model_categorydescription").val()
             }, function (result) {
                 if (result.error == "false") {
