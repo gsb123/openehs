@@ -46,4 +46,11 @@ $(function () {
         }
     });
 
+
+    $("#templateNoteCheckBox").live('click', function () {
+        var htmlOutput = '<div><br />Template Title:<br /><input id="templateTitle"></div>';
+
+        $("#addTempTitleDIV").replaceWith(htmlOutput);
+    });
+
 });
