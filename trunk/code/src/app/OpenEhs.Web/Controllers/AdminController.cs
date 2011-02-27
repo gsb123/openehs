@@ -163,6 +163,13 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
+                ProductRepository productRepo = new ProductRepository();
+                CategoryRepository categoryRepo = new CategoryRepository();
+                Product product = productRepo.Get(int.Parse(Request.Form["ProductId"]));
+                product.Name = Request.Form["Name"];
+                product.Unit = Request.Form["Unit"];
+                product.Category = categoryRepo.Get(int.Parse(Request.Form["CategoryId"]));
+                product.Price = decimal.Parse(Request.Form["Price"]);
                 return Json(new
                 {
                     error = false
@@ -236,7 +243,7 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 LocationRepository locationRepo = new LocationRepository();
-                Location location = locationRepo.Get(int.Parse(Request.Form["LocationId"]));
+                Location location = locationRepo.Get(int.Parse(Request.Form["Department"]));
                 location.IsActive = false;
 
                 return Json(new
@@ -265,10 +272,11 @@ namespace OpenEhs.Web.Controllers
                 Category cata = new Category();
 
                 cata.Name = Request.Form["Name"];
+                cata.IsActive = true;
                 cata.Description = Request.Form["Description"];
+                cata.DateCreated = DateTime.Now;
 
                 categoryRepo.Add(cata);
-                
 
                 return Json(new
                 {
