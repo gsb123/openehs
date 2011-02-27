@@ -165,7 +165,6 @@ CheckOutTime                datetime       NULL,
 Diagnosis                   text            NULL,
 LocationID                  int             NOT NULL,
 StaffID                     int             NULL,
-Dead                        bit             NULL                        DEFAULT 1,
 TimeOfDeath                 datetime        NULL,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
