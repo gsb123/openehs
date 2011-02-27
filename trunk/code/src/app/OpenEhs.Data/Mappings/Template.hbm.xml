@@ -8,8 +8,8 @@
       <generator class="native" />
     </id>
     <property name="Body" column="TemplateBody" not-null="true" />
-    <one-to-one name="NoteTemplateCategory" class="NoteTemplateCategory" />
-    <one-to-one name="Staff" class="Staff" />
+
+    <many-to-one name="NoteTemplateCategory" column="NoteTemplateCategoryID" unique="true" cascade="all" />
 
     <property name="Title" not-null="true" />
     

@@ -8,5 +8,11 @@
       <generator class="native" />
     </id>
     <property name="Name" column="TemplateCategoryName" not-null="true" length="30" />
+
+    <bag name="Templates" table="Template" cascade="all">
+      <key column="NoteTemplateCategoryId" />
+      <one-to-many class="Template" />
+    </bag>
+    
   </class>
 </hibernate-mapping>
