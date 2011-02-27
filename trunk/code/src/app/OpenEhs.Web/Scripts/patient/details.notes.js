@@ -20,8 +20,8 @@ $(function () {
 
     $("#newNoteDialog").dialog({
         autoOpen: false,
-        height: 470,
-        width: 490,
+        height: 600,
+        width: 710,
         modal: true,
         buttons: {
             "Submit Note": function () {

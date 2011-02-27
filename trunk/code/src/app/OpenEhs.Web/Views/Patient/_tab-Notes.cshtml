@@ -4,26 +4,18 @@
     <h2 id="notes">
         Notes
     </h2>
-    <input id="submitNoteButton" name="submitNoteButton" type="button" value="Submit" />
-
-
+    <input id="submitNoteButton" name="submitNoteButton" type="button" value="Add Note" />
 </div>
 
 
 <div>
 
-	<fieldset id="templateOptions">
-		<legend>Template Options</legend>
+	<ul id="submittedNoteList">
+        
+            <li>This is where the notes will go once submitted</li>
+       
+    </ul>
 
-		<p style="margin-left: 100px;">
-			<b>Select from pre-written:</b> &nbsp 
-
-			<input id="autocompleteNotes" />
-		</p>
-
-		<input id="templateNoteCheckBox" type="checkbox" name="saveNoteTemplate" value="saveAsNoteTemplate"> Save As New Template<br>
-
-	</fieldset>
 
 </div>
 
@@ -38,6 +30,27 @@
 				<label for="NotesTextBox" id="surgeryNoteLable"><b>Notes</b></label>
 				<textarea rows="30" cols="20" name="NotesTextBox" id="NotesTextBox"></textarea>
 			</div>
+
+	<fieldset id="templateOptions">
+		<legend>Template Options</legend>
+
+		<p style="margin-left: 150px;">
+			<b>Select from pre-written:</b> 
+		</p>
+
+		<select id="prewrittenNoteSelect" name="prewrittenNoteBox">
+
+			<option>Select Template...</option>
+
+			
+		</select>
+
+		<br />
+
+		<input id="templateNoteCheckBox" type="checkbox" name="saveNoteTemplate" value="Save As New Template" />
+		<label id="labelTempCheckBox">Save As New Template</label>
+
+	</fieldset>
     </fieldset>
     </form>
 </div>
