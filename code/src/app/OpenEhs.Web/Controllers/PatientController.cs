@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using OpenEhs.Data;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
+using System.Web;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -1112,12 +1113,12 @@ namespace OpenEhs.Web.Controllers
         #endregion
 
         #region Notes
-
         public JsonResult AddNote()
         {
             try
             {
                 PatientRepository patientRepo = new PatientRepository();
+                
                 Patient patient = patientRepo.Get(int.Parse(Request.Form["PatientId"]));
 
                 Note note = new Note();
@@ -1128,10 +1129,11 @@ namespace OpenEhs.Web.Controllers
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
                 note.Author = openCheckIn.AttendingStaff;
                 note.DateCreated = DateTime.Now;
-                note.Body = Request.Form["NoteBody"];
+                note.Body = HttpUtility.UrlDecode(Request.Form["NoteBody"],System.Text.Encoding.Default);
                 note.PatientCheckIns = openCheckIn;
+                note.Title = "";
                 note.IsActive = true;
-
+                
                 openCheckIn.Notes.Add(note);
 
 

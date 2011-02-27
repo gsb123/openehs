@@ -28,6 +28,7 @@ $(function () {
                 $("#suctionAddButton").button("disable");
                 $("#urineAddButton").button("disable");
                 $("#stoolAddButton").button("disable");
+                $("#submitNoteButton").button("disable");
                 $('#modal_GetStaffSurgeon').attr('disabled', true);
                 $('#modal_GetStaffSurgeonAssistant').attr('disabled', true);
                 $('#modal_GetStaffAnaesthetist').attr('disabled', true);
@@ -65,6 +66,7 @@ $(function () {
                         $("#newCheckinModal").dialog("close");
                         $("#checkOutButton").show();
                         $("#vitalAddButton").button("enable");
+                        $("#submitNoteButton").button("enable");
                         $("#submitSurgery").button("enable");
                         $("#feedAddButton").button("enable");
                         $("#intakeAddButton").button("enable");
