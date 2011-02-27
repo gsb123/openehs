@@ -27,7 +27,8 @@ $(function () {
             "Submit Note": function () {
                 $.post("/Patient/AddNote", {
                     patientID: $("#patientId").val(),
-                    NoteBody: escape($("#NotesTextBox").val())
+                    NoteBody: escape($("#NotesTextBox").val()),
+                    TemplateTitle: $("#templateTitle").val()
                 }, function (result) {
                     $("#submitNoteDialog").dialog("close");
 
