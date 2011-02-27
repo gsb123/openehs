@@ -1,13 +1,14 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using OpenEhs.Data;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
     public class AccountController : Controller
     {
-
+        private IUserRepository _userRepository;
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 
@@ -17,6 +18,11 @@ namespace OpenEhs.Web.Controllers
             if (MembershipService == null) { MembershipService = new AccountMembershipService(); }
 
             base.Initialize(requestContext);
+        }
+
+        public AccountController()
+        {
+            _userRepository = new UserRepository();
         }
 
         // **************************************
@@ -104,7 +110,9 @@ namespace OpenEhs.Web.Controllers
 
         public JsonResult CheckForUsernameAvailability(string username)
         {
-            return Json(new {username = username});
+            username = username.ToLower();
+            var isAvailable = _userRepository.CheckForUsernameAvailability(username);
+            return Json(new {requestedUsername = username});
         }
 
         // **************************************

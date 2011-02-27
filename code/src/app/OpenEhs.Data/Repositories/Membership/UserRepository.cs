@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
 using OpenEhs.Domain;
@@ -52,6 +53,19 @@ namespace OpenEhs.Data
                                         .Add(Restrictions.Eq("Password", password));
 
             return criteria.List<User>();
+        }
+
+        public bool CheckForUsernameAvailability(string username)
+        {
+            ICriteria criteria = Session.CreateCriteria<User>()
+                .Add(Restrictions.Eq("Username", username));
+
+            if (criteria.UniqueResult<User>() == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

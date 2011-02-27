@@ -25,23 +25,14 @@ $(function () {
     });
 
     function CheckForUsernameAvailability(username) {
-        //        $.ajax({
-        //            type: "POST",
-        //            url: "/Account/CheckForUsernameAvailability",
-        //            data: "username=" + username,
-        //            success: function (msg) {
-        //                alert(msg + " is available!");
-        //            }
-        //        });
-
-        alert("I got here.");
+        var paramData = { "username": username };
 
         $.post("/Account/CheckForUsernameAvailability",
-                username,
+                paramData,
                 function (data) {
-                    alert("Is available!");
-                    $("#Username").val(data.username);
-                    $("#generatedUsername").html(data.username);
+                    alert("Is available! (" + data.requestedUsername + ")");
+                    $("#Username").val(data.requestedUsername);
+                    $("#generatedUsername").html(data.requestedUsername);
                 },
                 "json"
         );
