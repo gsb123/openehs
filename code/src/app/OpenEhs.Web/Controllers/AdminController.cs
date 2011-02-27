@@ -159,6 +159,24 @@ namespace OpenEhs.Web.Controllers
 
         }
 
+        public JsonResult EditProduct()
+        {
+            try
+            {
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
         public JsonResult RemoveProduct()
         {
             try

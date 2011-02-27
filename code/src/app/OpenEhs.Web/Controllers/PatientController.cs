@@ -881,12 +881,17 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
-                //Build surgery objects
+                //Repositories
+                PatientRepository patientRepo = new PatientRepository();
+                StaffRepository staffRepo = new StaffRepository();
+                LocationRepository locationRepo = new LocationRepository();
+                SurgeryStaffRepository ssRepo = new SurgeryStaffRepository();
+
+                //Build new objects
                 Surgery surgery = new Surgery();
 
                 //Get patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
-                PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientID);
 
                 //Get current open patient checkin 
@@ -895,10 +900,6 @@ namespace OpenEhs.Web.Controllers
                             select checkin;
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
 
-                //Surgery Staff Repository
-                StaffRepository staffRepo = new StaffRepository();
-
-                LocationRepository locationRepo = new LocationRepository();
                 surgery.Location = locationRepo.Get(int.Parse(Request.Form["theatreNumber"]));
 
                 surgery.StartTime = DateTime.Parse(Request.Form["startTime"]);
@@ -914,62 +915,59 @@ namespace OpenEhs.Web.Controllers
                 //Surgeon
                 if (Request.Form["surgeon"] != "")
                 {
-                    Staff staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
-
                     SurgeryStaff surgeon = new SurgeryStaff();
-                    surgeon.Staff = staff;
+                    surgeon.Staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
                     surgeon.Surgery = surgery;
                     surgeon.Role = StaffRole.Surgeon;
-                    UnitOfWork.CurrentSession.Flush();
+                    ssRepo.Add(surgeon);
                 }
-                /*
+                
                 //Surgeon Assistant
                 if (Request.Form["surgeonAssistant"] != "")
                 {
                     SurgeryStaff surgeonAssistant = new SurgeryStaff();
                     surgeonAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["surgeonAssistant"]));
-                    //surgeonAssistant.Role = StaffRole.SurgeonAssistant;
                     surgeonAssistant.Surgery = surgery;
-                    //surgery.Staff.Add(surgeonAssistant);
+                    surgeonAssistant.Role = StaffRole.SurgeonAssistant;
+                    ssRepo.Add(surgeonAssistant);
+                    
                 }
                 //Anaesthetist
                 if (Request.Form["anaesthetist"] != "")
                 {
                     SurgeryStaff anaesthetist = new SurgeryStaff();
                     anaesthetist.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetist"]));
-                    //anaesthetist.Role = StaffRole.Anaesthetist;
+                    anaesthetist.Role = StaffRole.Anaesthetist;
                     anaesthetist.Surgery = surgery;
-                    //surgery.Staff.Add(anaesthetist);
+                    ssRepo.Add(anaesthetist);
                 }
                 //Anaesthetist Assistant
                 if (Request.Form["anaesthetistAssistant"] != "")
                 {
                     SurgeryStaff anaesthetistAssistant = new SurgeryStaff();
                     anaesthetistAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetistAssistant"]));
-                    //anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
+                    anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
                     anaesthetistAssistant.Surgery = surgery;
-                    //surgery.Staff.Add(anaesthetistAssistant);
+                    ssRepo.Add(anaesthetistAssistant);
                 }
                 //Nurse
                 if (Request.Form["nurse"] != "")
                 {
                     SurgeryStaff nurse = new SurgeryStaff();
                     nurse.Staff = staffRepo.Get(int.Parse(Request.Form["nurse"]));
-                    //nurse.Role = StaffRole.Nurse;
+                    nurse.Role = StaffRole.Nurse;
                     nurse.Surgery = surgery;
-                    //surgery.Staff.Add(nurse);
+                    ssRepo.Add(nurse);
                 }
                 //Consultant
                 if (Request.Form["consultant"] != "")
                 {
                     SurgeryStaff consultant = new SurgeryStaff();
                     consultant.Staff = staffRepo.Get(int.Parse(Request.Form["consultant"]));
-                    //consultant.Role = StaffRole.Consultant;
+                    consultant.Role = StaffRole.Consultant;
                     consultant.Surgery = surgery;
-                    //surgery.Staff.Add(consultant);
+                    ssRepo.Add(consultant);
                 }
-
-                */
 
                 return Json(new
                 {
