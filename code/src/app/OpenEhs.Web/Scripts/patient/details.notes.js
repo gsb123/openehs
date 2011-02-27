@@ -14,4 +14,9 @@ $(function () {
     };
     $("#NotesTextBox").ckeditor(ckConfig);
 
+    $("#submitNoteButton").button().click(function () {
+        //$("#submitNoteDialog").dialog("open");
+        alert("Note button clicked")
+    });
+
 });

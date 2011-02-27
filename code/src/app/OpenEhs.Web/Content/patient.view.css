@@ -452,6 +452,27 @@ fieldset
 	clear: both;
 }
 
+#noteHeader
+{
+	padding-left: 10px;
+	clear: both;
+}
+
+#noteHeader h2
+{
+	float: left;
+}
+
+#noteHeader input
+{
+	margin-top: 15px;
+    float: right;
+    margin-right: 11px;
+    height: 35;
+    width: 60px;
+    font-size: 15px;
+}
+
 #immunizationHeader h2
 {
     float: left;
