@@ -97,6 +97,8 @@ namespace OpenEhs.Web.Models
         [Required]
         public string Country { get; set; }
 
+        public string Username { get; set; }
+
         [Required]
         [ValidatePasswordLength]
         [DataType(DataType.Password)]

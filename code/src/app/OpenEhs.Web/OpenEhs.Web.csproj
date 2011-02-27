@@ -345,6 +345,8 @@
     <Content Include="Scripts\ckedit\skins\kama\templates.css" />
     <Content Include="Scripts\ckedit\themes\default\theme.js" />
     <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\jquery-ui-1.8.5.custom.min.js" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.form.wizard-3.0.4.js" />
     <Content Include="Scripts\jquery.form.wizard-3.0.4.min.js" />
     <Content Include="Scripts\jquery.ui.timepicker.js" />

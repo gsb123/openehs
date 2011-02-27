@@ -62,20 +62,23 @@
 					</th>
 				</tr>
 			</thead>
-            @foreach (OpenEhs.Domain.InvoiceItem lineItem in Model.CurrentInvoice.Items)
+            @if (Model.CurrentInvoice != null)
             {
-                <tr>
-                    <td>@if (lineItem.Product == null)
-                        {
-                            @lineItem.Service.Name
-                        }else{
-                            @lineItem.Product.Name
-                        }
-                    </td>
-                    <td>
-                        @lineItem.Quantity
-                    </td>
-                </tr>
+                foreach (var lineItem in Model.CurrentInvoice.Items)
+                {
+                    <tr>
+                        <td>@if (lineItem.Product == null)
+                            {
+                                @lineItem.Service.Name
+                            }else{
+                                @lineItem.Product.Name
+                            }
+                        </td>
+                        <td>
+                            @lineItem.Quantity
+                        </td>
+                    </tr>
+                }
             }
 		</table>
 

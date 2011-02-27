@@ -83,13 +83,13 @@ namespace OpenEhs.Web.Controllers
             {
                 // Attempt to register the user
                 // TODO: Add user name as first parameter.
-                MembershipCreateStatus createStatus = MembershipService.CreateUser("", model.Password, model.Email);
+                MembershipCreateStatus createStatus = MembershipService.CreateUser(model.Username, model.Password, model.Email);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     // TODO: Add user name as first parameter.
-                    FormsService.SignIn("", false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    FormsService.SignIn(model.Username, false);
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
@@ -100,6 +100,11 @@ namespace OpenEhs.Web.Controllers
             // If we got this far, something failed, redisplay form
             ViewBag.PasswordLength = MembershipService.MinPasswordLength;
             return View(model);
+        }
+
+        public JsonResult CheckForUsernameAvailability(string username)
+        {
+            return Json(new {username = username});
         }
 
         // **************************************
@@ -142,6 +147,5 @@ namespace OpenEhs.Web.Controllers
         {
             return View();
         }
-
     }
 }

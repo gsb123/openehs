@@ -622,13 +622,15 @@ namespace OpenEhs.Web.Models
         {
             get
             {
-                foreach (PatientCheckIn pci in PatientCheckIns)
+                foreach (var pci in PatientCheckIns)
                 {
                     if (pci.CheckOutTime == DateTime.MinValue)
                     {
-                        return new InvoiceRepository().Get(pci.Invoice.Id);
+                        //return new InvoiceRepository().Get(pci.Invoice.Id);
+                        return pci.Invoice;
                     }
                 }
+
                 return null;
             }
         }
