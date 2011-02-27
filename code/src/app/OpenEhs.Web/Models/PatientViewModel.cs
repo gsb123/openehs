@@ -42,7 +42,7 @@ namespace OpenEhs.Web.Models
             }
             set
             {
-                _patient.FirstName= value;
+                _patient.FirstName = value;
             }
         }
 
@@ -127,7 +127,7 @@ namespace OpenEhs.Web.Models
 
         [DisplayName("Emergency Contact")]
         public EmergencyContact EmergencyContact
-        { 
+        {
             get
             {
                 return _patient.EmergencyContact;
@@ -281,7 +281,7 @@ namespace OpenEhs.Web.Models
             {
                 _patient.Immunizations = value;
             }
-        }    
+        }
 
         [DisplayName("Medications")]
         public IList<Medication> Medications
@@ -301,8 +301,8 @@ namespace OpenEhs.Web.Models
             get
             {
                 var currentMeds = from med in Medications
-                where med.ExpDate >= DateTime.Now
-                select med;
+                                  where med.ExpDate >= DateTime.Now
+                                  select med;
 
                 return currentMeds.ToList();
             }
@@ -313,14 +313,14 @@ namespace OpenEhs.Web.Models
             get
             {
                 var pastMeds = from med in Medications
-                                  where med.ExpDate <= DateTime.Now
-                                  select med;
+                               where med.ExpDate <= DateTime.Now
+                               select med;
 
                 return pastMeds.ToList();
             }
         }
 
-        public  IList<Immunization> TenImmunization
+        public IList<Immunization> TenImmunization
         {
             get
             {
@@ -379,7 +379,7 @@ namespace OpenEhs.Web.Models
             get
             {
                 var searchVisits = from sci in PatientCheckIns
-                             select sci;
+                                   select sci;
 
                 return searchVisits.ToList();
             }
@@ -390,8 +390,8 @@ namespace OpenEhs.Web.Models
             get
             {
                 var visitsTopOne = (from sci in PatientCheckIns
-                                    orderby sci.Id descending 
-                                   select sci).Take(1);
+                                    orderby sci.Id descending
+                                    select sci).Take(1);
 
                 return visitsTopOne.ToList();
             }
@@ -453,7 +453,7 @@ namespace OpenEhs.Web.Models
 
         #endregion
 
-        
+
 
         #region Patient Methods
 
@@ -474,7 +474,7 @@ namespace OpenEhs.Web.Models
         /// <returns>If the encounter was successfully removed</returns>
         public bool RemoveEncounter(int encounterId)
         {
-            foreach(PatientCheckIn checkIn in PatientCheckIns)
+            foreach (PatientCheckIn checkIn in PatientCheckIns)
             {
                 if (checkIn.Id == encounterId)
                 {
@@ -606,7 +606,7 @@ namespace OpenEhs.Web.Models
         /// Get the ID for the invoice on the current PatientCheckIn (not checked out)
         /// </summary>
         /// <returns>The Id of the Invoice.</returns>
-        public int GetCheckedInInvoiceId() 
+        public int GetCheckedInInvoiceId()
         {
             foreach (var checkin in _patient.PatientCheckIns)
             {
@@ -616,6 +616,21 @@ namespace OpenEhs.Web.Models
                 }
             }
             return 0;
+        }
+
+        public Invoice CurrentInvoice
+        {
+            get
+            {
+                foreach (PatientCheckIn pci in PatientCheckIns)
+                {
+                    if (pci.CheckOutTime == DateTime.MinValue)
+                    {
+                        return new InvoiceRepository().Get(pci.Invoice.Id);
+                    }
+                }
+                return null;
+            }
         }
 
         #endregion
