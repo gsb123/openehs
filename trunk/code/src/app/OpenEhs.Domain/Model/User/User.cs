@@ -26,6 +26,7 @@ namespace OpenEhs.Domain
         public virtual DateTime DateCreated { get; set; }
         public virtual DateTime LastLogin { get; set; }
         public virtual DateTime LastActivity { get; set; }
+        public virtual DateTime LastPasswordChange { get; set; }
         public virtual bool IsOnline { get; set; }
         public virtual string IpAddress { get; set; }
         public virtual bool IsLockedOut { get; set; }

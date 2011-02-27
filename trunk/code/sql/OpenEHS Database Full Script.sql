@@ -272,6 +272,7 @@ CREATE TABLE `User`
     DateCreated                 timestamp           NOT NULL                DEFAULT NOW(),
     LastLogin                   datetime            NULL,
     LastActivity                datetime            NULL,
+    LastPasswordChange          datetime            NULL,
     IsOnline                    bit(1)              NOT NULL                DEFAULT 0,
     IpAddress                   varchar(20)         NULL,
     IsLockedOut                 bit(1)              NOT NULL                DEFAULT 0,

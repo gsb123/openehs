@@ -15,6 +15,7 @@
     <property name="DateCreated" not-null="true" />
     <property name="LastLogin" not-null="false" />
     <property name="LastActivity" not-null="false" />
+    <property name="LastPasswordChange" not-null="false" />
     <property name="IsOnline" not-null="true" />
     <property name="IpAddress" not-null="false" length="20" />
     <property name="IsLockedOut" not-null="true" />

@@ -69,7 +69,7 @@ namespace OpenEhs.Web.Controllers
         {
             FormsService.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
 
         // **************************************

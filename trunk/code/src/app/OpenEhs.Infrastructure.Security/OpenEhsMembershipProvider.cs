@@ -115,8 +115,8 @@ namespace OpenEhs.Infrastructure.Security
                                       user.IsLockedOut,
                                       user.DateCreated, 
                                       user.LastLogin, 
-                                      DateTime.Now, 
-                                      DateTime.Now, 
+                                      user.LastActivity, 
+                                      user.LastPasswordChange, 
                                       user.LastLockout);
         }
 
