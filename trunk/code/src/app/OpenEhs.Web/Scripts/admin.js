@@ -88,7 +88,6 @@ $(function () {
                 Price: $("#model_price").val(),
                 QuantityOnHand: $("#model_quantityonhand").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#addProductDialog").dialog("close");
 
 
@@ -98,7 +97,6 @@ $(function () {
                     $("#model_price").val("");
                     $("#model_quantityonhand").val("");
 
-                }
             }, "json");
         },
         Cancel: function () {
@@ -125,12 +123,12 @@ $("#removeProductDialog").dialog({
             $.post("/Admin/RemoveProduct", {
                 ProductId: $("#model_prodname").val()
             }, function (result) {
-                if (result.error == "false") {
+                
                     $("#removeProductDialog").dialog("close");
 
                     ProductId: $("#model_prodname").val("");
 
-                }
+                
             }, "json");
         },
         Cancel: function () {
@@ -157,14 +155,12 @@ $("#editProductDialog").dialog({
                 CategoryId: $("#model_cataProdSelect").val(),
                 Price: $("#model_editprodprice").val(),
             }, function (result) {
-                if (result.error == "false") {
                     $("#editProductDialog").dialog("close");
 
                     $("#model_editprodname").val("");
                     $("#model_editprodunit").val("");
                     $("#model_editprodcategory").val("");
                     $("#model_editprodprice").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -193,12 +189,10 @@ $("#addLocationDialog").dialog({
                 Department: $("#model_departmentname").val(),
                 RoomNumber: $("#model_addroomnumber").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#addLocationDialog").dialog("close");
 
                     $("#model_departmentname").val("");
                     $("#model_addroomnumber").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -223,13 +217,12 @@ $("#addCategoryDialog").dialog({
                 Name: $("#model_categoryname").val(),
                 Description: $("#model_categorydescription").val()
             }, function (result) {
-                if (result.error == "false") {
+
                     $("#addCategoryDialog").dialog("close");
 
                     $("#model_categoryname").val("");
                     $("#model_model_categoryname").val("");
                     $("#model_categorydescription").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -254,11 +247,9 @@ $("#deleteLocationDialog").dialog({
             $.post("/Admin/DeleteLocation", {
                 Department: $("#model_departmentRoom").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#deleteLocationDialog").dialog("close");
 
                     $("#model_departmentRoom").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -282,12 +273,10 @@ $("#addServiceDialog").dialog({
                 Name: $("#model_servicename").val(),
                 Cost: $("#model_servicecost").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#addServiceDialog").dialog("close");
 
                     $("#model_servicename").val("");
                     $("#model_servicecost").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -312,12 +301,10 @@ $("#editServiceDialog").dialog({
                 Service: $("#model_editService").val(),
                 Cost: $("#model_editservicecost").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#editServiceDialog").dialog("close");
 
                     $("#model_editService").val("");
                     $("#model_editservicecost").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -341,11 +328,9 @@ $("#deleteServiceDialog").dialog({
             $.post("/Admin/DeleteService", {
                 Service: $("#model_deleteService").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#deleteServiceDialog").dialog("close");
 
                     $("#model_deleteService").val("");
-                }
             }, "json");
         },
         Cancel: function () {
@@ -368,11 +353,9 @@ $("#deleteCategoryDialog").dialog({
             $.post("/Admin/DeleteCategory", {
                 Category: $("#model_deleteCategory").val()
             }, function (result) {
-                if (result.error == "false") {
                     $("#deleteCategoryDialog").dialog("close");
 
                     $("#model_deleteCategory").val("");
-                }
             }, "json");
         },
         Cancel: function () {
