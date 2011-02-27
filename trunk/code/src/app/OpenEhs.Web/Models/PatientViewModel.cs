@@ -626,7 +626,6 @@ namespace OpenEhs.Web.Models
                 {
                     if (pci.CheckOutTime == DateTime.MinValue)
                     {
-                        //return new InvoiceRepository().Get(pci.Invoice.Id);
                         return pci.Invoice;
                     }
                 }
