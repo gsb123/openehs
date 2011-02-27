@@ -342,7 +342,7 @@ $("#deleteCategoryDialog").dialog({
     buttons: {
         "Delete Category": function () {
             $.post("/Admin/DeleteCategory", {
-                Service: $("#model_deleteCategory").val()
+                Category: $("#model_deleteCategory").val()
             }, function (result) {
                 if (result.error == "false") {
                     $("#deleteCategoryDialog").dialog("close");
