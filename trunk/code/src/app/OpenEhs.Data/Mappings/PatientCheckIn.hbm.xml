@@ -12,11 +12,11 @@
     <property name="Diagnosis" not-null="false" />
     <property name="TimeOfDeath" not-null="false" />
 
-    <one-to-one name="AttendingStaff" 
-                cascade="save-update"
-                constrained="true"
-                foreign-key="none"
-                class="Staff" />
+    <many-to-one name="AttendingStaff"
+                 class="Staff"
+                 column="StaffID"
+                 cascade="save-update"
+                 unique="true" />
     
     <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
 
