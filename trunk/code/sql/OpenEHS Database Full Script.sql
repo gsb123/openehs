@@ -2452,94 +2452,102 @@ VALUE
 
 INSERT INTO PatientCheckIn
 (
-CheckinTime,
-PatientType,
-PatientID,
-CheckOutTime,
-Diagnosis,
-LocationID,
-StaffID,
-IsActive
+    CheckinTime,
+    PatientType,
+    PatientID,
+    InvoiceID,
+    CheckOutTime,
+    Diagnosis,
+    LocationID,
+    StaffID,
+    IsActive
 )
 VALUE
 (
-NOW(),
-1,
-100000,
-NOW(),
-'Smelly Feet',
-1,
-1,
-1
+    NOW(),
+    1,
+    100000,
+    1,
+    NOW(),
+    'Smelly Feet',
+    1,
+    1,
+    1
 );
 
 INSERT INTO PatientCheckIn
 (
-CheckinTime,
-PatientType,
-PatientID,
-CheckOutTime,
-Diagnosis,
-LocationID,
-StaffID,
-IsActive
+    CheckinTime,
+    PatientType,
+    PatientID,
+    InvoiceID,
+    CheckOutTime,
+    Diagnosis,
+    LocationID,
+    StaffID,
+    IsActive
 )
 VALUE
 (
-'2011-01-05 12:45:10',
-2,
-100000,
-NOW(),
-'Hyperlipidemia',
-2,
-2,
-1
+    '2011-01-05 12:45:10',
+    2,
+    100000,
+    2,
+    NOW(),
+    'Hyperlipidemia',
+    2,
+    2,
+    1
 );
 
 INSERT INTO PatientCheckIn
 (
-CheckinTime,
-PatientType,
-PatientID,
-CheckOutTime,
-Diagnosis,
-LocationID,
-StaffID,
-IsActive
+    CheckinTime,
+    PatientType,
+    PatientID,
+    InvoiceID,
+    CheckOutTime,
+    Diagnosis,
+    LocationID,
+    StaffID,
+    IsActive
 )
 VALUE
 (
-NOW(),
-2,
-100001,
-NOW(),
-'Finger Fungus',
-2,
-2,
-1
+    NOW(),
+    2,
+    100001,
+    3,
+    NOW(),
+    'Finger Fungus',
+    2,
+    2,
+    1
 );
 
 INSERT INTO PatientCheckIn
 (
-CheckinTime,
-PatientType,
-PatientID,
-CheckOutTime,
-Diagnosis,
-LocationID,
-StaffID,
-IsActive
+    CheckinTime,
+    PatientType,
+    PatientID,
+    InvoiceID,
+    CheckOutTime,
+    Diagnosis,
+    LocationID,
+    StaffID,
+    IsActive
 )
 VALUE
 (
-NOW(),
-3,
-100002,
-NOW(),
-'GOHNAHIFASURFALAIDS',
-2,
-2,
-1
+    NOW(),
+    3,
+    100002,
+    4,
+    NOW(),
+    'GOHNAHIFASURFALAIDS',
+    2,
+    2,
+    1
 );
 
 INSERT INTO Vitals
@@ -2631,19 +2639,54 @@ VALUES
 
 INSERT INTO Invoice
 (
-InvoiceID,
-Total,
-`Date`,
-/*PatientCheckInID,*/
-IsActive
+    Total,
+    `Date`,
+    IsActive
 )
 VALUES
 (
-1,
-0.00,
-'2010-12-05 01:10:30',
-/*1,*/
-1
+    0.00,
+    '2010-12-05 01:10:30',
+    1
+);
+
+INSERT INTO Invoice
+(
+    Total,
+    `Date`,
+    IsActive
+)
+VALUES
+(
+   0.00,
+   '2010-02-02 03:12:10',
+   1
+);
+
+INSERT INTO Invoice
+(
+    Total,
+    `Date`,
+    IsActive
+)
+VALUES
+(
+   0.00,
+   '2011-01-02 12:12:10',
+   1
+);
+
+INSERT INTO Invoice
+(
+    Total,
+    `Date`,
+    IsActive
+)
+VALUES
+(
+   0.00,
+   '2011-02-22 19:11:45',
+   1
 );
 
 /*****************************************************
@@ -2881,109 +2924,122 @@ NOW(),
 
 INSERT INTO InvoiceItem
 (
-InvoiceID,
-ProductID,
-ServiceID,
-Quantity
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
 )
 VALUES
 (
-1,
-2,
-null,
-2
+    1,
+    2,
+    null,
+    2
 );
 
 INSERT INTO InvoiceItem
 (
-InvoiceID,
-ProductID,
-ServiceID,
-Quantity
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
 )
 VALUES
 (
-1,
-null,
-1,
-1
+    1,
+    null,
+    1,
+    1
 );
 
 INSERT INTO InvoiceItem
 (
-InvoiceID,
-ProductID,
-ServiceID,
-Quantity
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
 )
 VALUES
 (
-1,
-4,
-null,
-42
-);
-
-INSERT INTO Invoice
-(
-InvoiceID,
-Total,
-`Date`,
-/*PatientCheckInID,*/
-IsActive
-)
-VALUES
-(
-2,
-0.00,
-'2011-02-05 01:15:12',
-2,
-1
+    1,
+    4,
+    null,
+    42
 );
 
 INSERT INTO InvoiceItem
 (
-InvoiceID,
-ProductID,
-ServiceID,
-Quantity
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
 )
 VALUES
 (
-2,
-5,
-null,
-12
+    2,
+    5,
+    null,
+    12
 );
 
 INSERT INTO InvoiceItem
 (
-InvoiceID,
-ProductID,
-ServiceID,
-Quantity
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
 )
 VALUES
 (
-2,
-6,
-null,
-13
+    2,
+    6,
+    null,
+    13
 );
 
 INSERT INTO InvoiceItem
 (
-InvoiceID,
-ProductID,
-ServiceID,
-Quantity
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
 )
 VALUES
 (
-2,
-null,
-1,
-1
+    2,
+    null,
+    1,
+    1
+);
+
+INSERT INTO InvoiceItem
+(
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
+)
+VALUES
+(
+    3,
+    null,
+    1,
+    1
+);
+
+INSERT INTO InvoiceItem
+(
+    InvoiceID,
+    ProductID,
+    ServiceID,
+    Quantity
+)
+VALUES
+(
+    4,
+    2,
+    null,
+    1
 );
 
 INSERT INTO Payment
