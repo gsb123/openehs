@@ -1338,3 +1338,19 @@ margin-bottom: 10px;
 {
 	margin-top: 20px;
 }
+
+#templateTitleFS
+{
+	width: 200px;
+	margin-left: 155px;
+}
+
+#templateTitle
+{
+	width: 190px;
+}
+
+#templateNoteCheckBox
+{
+	margin-bottom: 5px;
+}
