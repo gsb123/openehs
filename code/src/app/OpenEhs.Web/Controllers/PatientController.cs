@@ -14,12 +14,18 @@ namespace OpenEhs.Web.Controllers
 {
     public class PatientController : Controller
     {
+        private string dateRegExpression = @"(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})|(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))|(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})";
+        private string phoneRegExpression = @"\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})";
+        private string patientIDRegExpression = @"[0-9]{6}";
+        private string physicalIDRegExpression = @"[0-9]{6,10}";
+        private string nameRegExpression = @"[a-zA-Z]+";
+
         #region ActionResults
 
         // GET: /Patient/
         public ActionResult Index()
         {
-            var psvModel = new PatientSearchViewModel(new PatientRepository().GetAll());
+            var psvModel = new PatientSearchViewModel(new PatientRepository().GetTop25());
 
             return View(psvModel);
         }
@@ -48,15 +54,15 @@ namespace OpenEhs.Web.Controllers
         {
             string searchCriteria = values["PatientSearchTextBox"];    //Get the value entered in the 'Search' field
 
-            //If the search field is empty then return all results
+            //If the search field is empty then return the top 25 default results
             if (string.IsNullOrEmpty(searchCriteria))
-                return View(new PatientRepository().GetAll());
+                return View(new PatientSearchViewModel(new PatientRepository().GetTop25()));
 
             IEnumerable<Patient> patients = new List<Patient>();
             string searchTerms = null;
 
             //Check if the search criteria contains a Date of Birth
-            Regex dobRegEx = new Regex(@"(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})|(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))|(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})");
+            Regex dobRegEx = new Regex(this.dateRegExpression);
             Match m = dobRegEx.Match(searchCriteria);
             if (m.Success)
             {
@@ -73,7 +79,7 @@ namespace OpenEhs.Web.Controllers
             }
 
             //Check if the search criteria contains a Phone Number
-            Regex phoneRegEx = new Regex(@"\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})"); //Check for phone number
+            Regex phoneRegEx = new Regex(this.phoneRegExpression); //Check for phone number
             m = phoneRegEx.Match(searchCriteria); //Check if the search string matches the phone number
             if (m.Success)
             {
@@ -91,7 +97,7 @@ namespace OpenEhs.Web.Controllers
             }
 
             //Check if the search criteria contains a Patient ID (6 character numeric string)
-            Regex idRegEx = new Regex(@"[0-9]{6}"); //Check for Patient ID number
+            Regex idRegEx = new Regex(this.patientIDRegExpression); //Check for Patient ID number
             m = idRegEx.Match(searchCriteria);  //Check if the search string contains the Patient ID
             if (m.Success)
             {
@@ -106,12 +112,12 @@ namespace OpenEhs.Web.Controllers
             }
 
             //Check if the search criteria contains a Patient ID (6 character numeric string)
-            Regex physicalIdRegEx = new Regex(@"[0-9]{6,10}"); //Check for Patient ID number
+            Regex physicalIdRegEx = new Regex(this.physicalIDRegExpression); //Check for Patient ID number
             m = physicalIdRegEx.Match(searchCriteria);  //Check if the search string contains the Patient ID
             if (m.Success)
             {
                 //Find any patients with a matching ID
-                IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(Convert.ToInt32(m.ToString()));
+                IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(m.ToString());
 
                 patients = patients.Union<Patient>(physicalIdPatients); //Add them to the result set
 
@@ -121,7 +127,7 @@ namespace OpenEhs.Web.Controllers
             }
 
             //Check if the search criteria contains a Patient name
-            Regex nameRegEx = new Regex(@"[a-zA-Z]+"); //Check for Patient name
+            Regex nameRegEx = new Regex(this.nameRegExpression); //Check for Patient name
             string[] names = searchCriteria.Split(' ');
             foreach (string name in names)
             {
@@ -152,7 +158,6 @@ namespace OpenEhs.Web.Controllers
                 }
             }
 
-            //var viewModel = new PatientSearchViewModel { Patients = new List<Patient>(patients), SearchTerm = "Test" };
             var psvModel = new PatientSearchViewModel(patients, searchTerms);
 
             return View(psvModel);  //Return the merged result set with no duplicates
@@ -1169,6 +1174,114 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region PatientSearch
+
+        public JsonResult AutoCompleteSuggestions(string term)
+        {
+            List<string> suggestions = new List<string>();
+
+            try
+            {
+                //Parse the DOB to English (en) Great Britain (GB) format 'DD/MM/YYYY' for Ghana
+                DateTime dob = DateTime.Parse(term, new CultureInfo("en-GB"));
+                IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirth(dob);    //Find any patients with this DOB
+                foreach (Patient patient in dobPatients)
+                {
+                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.DateOfBirth.ToShortDateString(), patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e)
+            { }
+
+            try
+            {
+                IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirthPiece(term);    //Find any patients with this DOB
+                foreach (Patient patient in dobPatients)
+                {
+                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.DateOfBirth.ToShortDateString(), patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e)
+            { }
+
+
+            try
+            {
+                //Find any patients with this Phone Number
+                IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(term);
+                foreach (Patient patient in phonePatients)
+                {
+                    string phoneNo = string.Format("{0} {1} {2}", patient.PhoneNumber.Substring(0, 3), patient.PhoneNumber.Substring(3, 3), patient.PhoneNumber.Substring(6, 4));
+                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", phoneNo, patient.LastName, patient.FirstName, patient.MiddleName));
+                }
+            }
+            catch (Exception e)
+            {}
+
+            try
+            {
+                //Find any patients with a matching ID
+                IList<Patient> idPatients = new PatientRepository().FindByPatientIdPiece(term);
+                foreach (Patient patient in idPatients)
+                {
+                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName));
+                }
+            }
+            catch (Exception e)
+            {}
+
+            try
+            {
+                //Find any patients with a matching ID
+                IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(term);
+                foreach (Patient patient in physicalIdPatients)
+                {
+                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.OldPhysicalRecordNumber, patient.LastName, patient.FirstName, patient.MiddleName));
+                }
+            }
+            catch (Exception e)
+            {}
+
+            try
+            {
+                //Find any patients with a matching name
+                IList<Patient> firstNamePatients = new PatientRepository().FindByFirstName(term);
+                foreach (Patient patient in firstNamePatients)
+                {
+                    suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
+                }
+            }
+            catch (Exception e)
+            {}
+
+            try
+            {
+                IList<Patient> middleNamePatients = new PatientRepository().FindByMiddleName(term);
+                foreach (Patient patient in middleNamePatients)
+                {
+                    suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
+                }
+            }
+            catch (Exception e)
+            {}
+
+            try
+            {
+                IList<Patient> lastNamePatients = new PatientRepository().FindByLastName(term);
+                foreach (Patient patient in lastNamePatients)
+                {
+                    suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
+                }
+            }
+            catch (Exception e)
+            {}
+            
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
+
+        #endregion
+
     }
 }
