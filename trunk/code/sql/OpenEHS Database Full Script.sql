@@ -160,6 +160,7 @@ PatientCheckInID            int             AUTO_INCREMENT              PRIMARY 
 CheckinTime                 datetime       NOT NULL,
 PatientType                 tinyint         NOT NULL,
 PatientID                   int             NOT NULL,
+InvoiceID                   int             NOT NULL,
 CheckOutTime                datetime       NULL,
 Diagnosis                   text            NULL,
 LocationID                  int             NOT NULL,
@@ -209,7 +210,6 @@ CREATE TABLE Invoice
 InvoiceID               int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Total                   decimal(6,2)    NOT NULL                DEFAULT 0.00,
 `Date`                  timestamp       NOT NULL                DEFAULT CURRENT_TIMESTAMP,
-PatientCheckInID        int             NOT NULL,
 IsActive                bit(1)          NOT NULL                DEFAULT 1
 );
 
@@ -427,9 +427,9 @@ ALTER TABLE OutputChart
 ADD CONSTRAINT FK_OutputChartMustHavePatientCheckInID
 FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
-ALTER TABLE Invoice
+/*ALTER TABLE Invoice
 ADD CONSTRAINT FK_InvoiceMustHavePatientCheckInID
-FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
+FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);*/
 
 ALTER TABLE InvoiceItem
 ADD CONSTRAINT FK_InvoiceItemMustHaveInvoiceID
@@ -2635,7 +2635,7 @@ INSERT INTO Invoice
 InvoiceID,
 Total,
 `Date`,
-PatientCheckInID,
+/*PatientCheckInID,*/
 IsActive
 )
 VALUES
@@ -2643,7 +2643,7 @@ VALUES
 1,
 0.00,
 '2010-12-05 01:10:30',
-1,
+/*1,*/
 1
 );
 
@@ -2930,7 +2930,7 @@ INSERT INTO Invoice
 InvoiceID,
 Total,
 `Date`,
-PatientCheckInID,
+/*PatientCheckInID,*/
 IsActive
 )
 VALUES
