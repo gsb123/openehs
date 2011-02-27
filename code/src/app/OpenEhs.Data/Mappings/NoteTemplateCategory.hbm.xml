@@ -3,11 +3,10 @@
                    assembly="OpenEhs.Domain"
                    namespace="OpenEhs.Domain">
 
-  <class name="TemplateCategory" table="TemplateCategory">
-    <id name="Id" column="TemplateCategoryID">
+  <class name="NoteTemplateCategory" table="NoteTemplateCategory">
+    <id name="Id" column="NoteTemplateCategoryID">
       <generator class="native" />
     </id>
     <property name="Name" column="TemplateCategoryName" not-null="true" length="30" />
-    <property name="Description" column="TemplateCategoryDescription" not-null="false" />
   </class>
 </hibernate-mapping>
