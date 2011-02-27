@@ -7,10 +7,10 @@ namespace OpenEhs.Web.Models
 {
     public class AdminViewModel
     {
-        private IProductRepository _productRepository;
-        private ICategoryRepository _categoryRepository;
-        private ILocationRepository _locationRepository;
-        private IServiceRepository _serviceRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly ILocationRepository _locationRepository;
+        private readonly IServiceRepository _serviceRepository;
 
         public AdminViewModel()
         {
@@ -49,6 +49,18 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Category> ActiveCategories
+        {
+            get
+            {
+                var cat = from activeCat in Categories
+                          where activeCat.IsActive == true
+                          select activeCat;
+
+                return cat.ToList();
+            }
+        }
+
         public IList<Location> Locations
         {
             get
@@ -57,11 +69,35 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Location> ActiveLocations
+        {
+            get
+            {
+                var loc = from activeLoc in Locations
+                          where activeLoc.IsActive == true
+                          select activeLoc;
+
+                return loc.ToList();
+            }
+        }
+
         public IList<Service> Services
         {
             get
             {
                 return _serviceRepository.GetAll();
+            }
+        }
+
+        public IList<Service> ActiveServices
+        {
+            get
+            {
+                var ser = from activeSer in Services
+                          where activeSer.IsActive == true
+                          select activeSer;
+
+                return ser.ToList();
             }
         }
     }
