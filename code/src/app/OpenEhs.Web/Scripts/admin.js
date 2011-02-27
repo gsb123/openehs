@@ -145,10 +145,10 @@ $("#editProductDialog").dialog({
     buttons: {
         "Edit Product": function () {
             $.post("/Admin/EditProduct", {
-                ProductId: $("#model_selectprod").val(),
+                ProductId: $("#model_productSelect").val(),
                 Name: $("#model_editprodname").val(),
                 Unit: $("#model_editprodunit").val(),
-                CategoryId: $("#model_editprodcategory").val(),
+                CategoryId: $("#model_cataProdSelect").val(),
                 Price: $("#model_editprodprice").val(),
             }, function (result) {
                 if (result.error == "false") {

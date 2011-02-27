@@ -232,7 +232,13 @@
             Category:
         </div>
 		<div>
-            <input type="text" name="editprodcategory" id="model_editprodcategory" class="required modal-input text ui-widget-content ui-corner-all" />
+            <select name="editProductSelect" id="model_cataProdSelect" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Product...</option>
+            @foreach (var cat in Model.ActiveCategories)
+            {
+                <option value="@cat.Id">@cat.Name</option>
+            }
+        </select>
         </div>
 		<div class="modal-label-long">
             Price:
