@@ -336,19 +336,19 @@ CREATE TABLE SurgeryStaff
 
 CREATE TABLE NoteTemplateCategory
 (
-    NoteTemplateCategoryID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    TemplateCategoryName        varchar(30)         NOT NULL
+    NoteTemplateCategoryID          int                 AUTO_INCREMENT          PRIMARY KEY      NOT NULL,
+    TemplateCategoryName            varchar(30)         NOT NULL
 );
 
 CREATE TABLE Note
 (
     NoteID                      int                 AUTO_INCREMENT          PRIMARY KEY                      NOT NULL,
-    Title                       varchar(30)         NOT NULL,
+    Title                       varchar(30)         NULL,
     Body                        longtext            NOT NULL,
     DateCreated                 timestamp           NOT NULL                DEFAULT CURRENT_TIMESTAMP,
     StaffID                     int                 NOT NULL,
-    NoteTemplateCategoryID          int                 NOT NULL,
-    PatientCheckInID          int                 NOT NULL,
+    NoteTemplateCategoryID      int                 NULL,
+    PatientCheckInID            int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
@@ -357,7 +357,7 @@ CREATE TABLE Template
     TemplateID                  int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
     Title                       varchar(150)        NOT NULL,
     TemplateBody                longtext            NOT NULL,
-    NoteTemplateCategoryID          int                 NOT NULL,
+    NoteTemplateCategoryID      int                 NOT NULL,
     StaffID                     int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
