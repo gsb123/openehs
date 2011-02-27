@@ -1133,8 +1133,23 @@ namespace OpenEhs.Web.Controllers
                 note.PatientCheckIns = openCheckIn;
                 note.Title = "";
                 note.IsActive = true;
-                
                 openCheckIn.Notes.Add(note);
+
+                if (Request.Form["TemplateTitle"] != null)
+                {
+                    TemplateRepository templateRepo = new TemplateRepository();
+                    NoteTemplateRepository noteRepo = new NoteTemplateRepository();
+                    NoteTemplateCategory noteCat = noteRepo.Get(1);
+                    Template template = new Template();
+                    template.Title = Request.Form["TemplateTitle"];
+                    template.Staff = openCheckIn.AttendingStaff;
+                    template.Body = note.Body;
+                    template.IsActive = true;
+                    template.NoteTemplateCategory = noteCat;
+                    templateRepo.Add(template);
+                }
+                
+                
 
 
                 return Json(new
