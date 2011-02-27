@@ -10,10 +10,9 @@
     
     <property name="Date" not-null="true" />
 
-    <many-to-one name="PatientCheckIn"
-                 class="PatientCheckIn"
-                 unique="true"
-                 column="PatientCheckInID" />
+    <one-to-one name="PatientCheckIn"
+                class="PatientCheckIn"
+                property-ref="Invoice" />
     
     <property name="IsActive" not-null="true" />
 

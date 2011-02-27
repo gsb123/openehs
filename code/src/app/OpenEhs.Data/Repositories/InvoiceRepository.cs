@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OpenEhs.Domain;
 using NHibernate;
 
@@ -48,24 +47,6 @@ namespace OpenEhs.Data
             return criteria.List<InvoiceItem>();
         }
 
-        /// <summary>
-        /// Gets a list of the InvoiceItems related to a specific Invoice.
-        /// </summary>
-        /// <param name="invoice">The Invoice to return the InvoiceItems from.</param>
-        /// <returns>A List of InvoiceItems for invoice.</returns>
-        public IList<InvoiceItem> GetItemsFor(int InvoiceId)
-        {
-            IList<InvoiceItem> LineItems = GetAllItems();
-            for (int i = 0; i < LineItems.Count; i++)
-            {
-                if (LineItems[i].Invoice.Id != InvoiceId)
-                {
-                    LineItems.Remove(LineItems[i]);
-                }
-            }
-            return LineItems;
-        }
-
         public InvoiceItem GetItem(int itemId)
         {
             IList<InvoiceItem> lineItems = GetAllItems();
@@ -85,7 +66,6 @@ namespace OpenEhs.Data
         /// <param name="entity">The Invoice to add to the Repository.</param>
         public void Add(Invoice entity)
         {
-            //is this correct? I copied the ProductRepository.
             Session.Save(entity);
         }
 
@@ -95,7 +75,6 @@ namespace OpenEhs.Data
         /// <param name="entity">The Invoice to remove from the Repository.</param>
         public void Remove(Invoice entity)
         {
-            //is this correct? I copied the ProductRepository again.
             Session.Delete(entity);
         }
 
