@@ -469,7 +469,7 @@ fieldset
     float: right;
     margin-right: 11px;
     height: 35;
-    width: 60px;
+    width: 70px;
     font-size: 15px;
 }
 
@@ -1271,15 +1271,15 @@ margin-bottom: 10px;
 {
     float: left;
     margin-left: 23px;
-    width: 400px;
-    margin-top: 15px;
+    width: 600px;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 
 #templateOptions
 {
-	width: 500px;
-	margin-left: 100px;
+	width: 550px;
+	margin-left: 26px;
 }
 
 #autocompleteNotes
@@ -1290,7 +1290,9 @@ margin-bottom: 10px;
 
 #templateNoteCheckBox
 {
-	margin-left: 180px;
+	float: left;
+	margin-left: 210px;
+	margin-top: 10px;
 }
 
 #pmhChartLink
@@ -1309,4 +1311,25 @@ margin-bottom: 10px;
 #centerForOutputChart
 {
 	text-align: center;
+}
+
+#prewrittenNoteSelect
+{
+	margin-left: 150px;
+	width: 250px;
+}
+
+#submittedNoteList
+{
+	font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    margin-top: 50px;
 }
