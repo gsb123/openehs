@@ -8,8 +8,11 @@
       <generator class="native" />
     </id>
     <property name="Body" column="TemplateBody" not-null="true" />
-    <one-to-one name="Category" class="TemplateCategory" />
+    <one-to-one name="NoteTemplateCategory" class="NoteTemplateCategory" />
     <one-to-one name="Staff" class="Staff" />
+
+    <property name="Title" not-null="true" />
+    
     <property name="IsActive" not-null="true" />
   </class>
 </hibernate-mapping>

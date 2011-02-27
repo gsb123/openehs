@@ -52,7 +52,7 @@
     <Compile Include="Model\Surgery\CaseType.cs" />
     <Compile Include="Model\Surgery\StaffRole.cs" />
     <Compile Include="Model\Surgery\SurgeryStaff.cs" />
-    <Compile Include="Model\Templates\TemplateCategory.cs" />
+    <Compile Include="Model\Templates\NoteTemplateCategory.cs" />
     <Compile Include="Model\Vitals\BloodPressure.cs" />
     <Compile Include="Model\Vitals\BloodPressureCategory.cs" />
     <Compile Include="Model\Product\Category.cs" />
