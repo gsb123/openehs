@@ -30,14 +30,23 @@ $(function () {
                     NoteBody: escape($("#NotesTextBox").val()),
                     TemplateTitle: $("#templateTitle").val()
                 }, function (result) {
-                    $("#submitNoteDialog").dialog("close");
+                    $("#newNoteDialog").dialog("close");
+
+
+                    var output = result.NoteBody + '<br />';
+                    $("#submittedNoteList").append(output);
+                    //TODO: NEED TO MAKE THIS RESPOND TO THE BULLETS AND OTHER INPUTS
+
 
                     $("#NotesTextBox").val("");
+                    $("#templateTitle").val("");
 
                 }, "json");
             },
             Cancel: function () {
                 $("#NotesTextBox").val("");
+                $("#templateTitle").val("");
+
 
                 $(this).dialog("close");
             }
@@ -49,9 +58,13 @@ $(function () {
 
 
     $("#templateNoteCheckBox").live('click', function () {
-        var htmlOutput = '<div><br />Template Title:<br /><input id="templateTitle"></div>';
+        var htmlOutput = '<div><br /><br /><fieldset id="templateTitleFS"><b>Template Title:</b><br /><input id="templateTitle"></fieldset></div>';
 
         $("#addTempTitleDIV").replaceWith(htmlOutput);
+    });
+
+    $("#templateNoteCheckBox").button().click(function () {
+
     });
 
 });
