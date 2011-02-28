@@ -21,14 +21,14 @@ namespace OpenEhs.Web.Models
     {
 
         private Invoice _invoice;
-        private Payment _payment;
+        private List<Payment> _payments;
 
         #region Billing
 
         public BillingViewModel(int InvoiceId)
         {
             _invoice = new InvoiceRepository().Get(InvoiceId);
-            _payment = new PaymentRepository().GetPaymentFor(InvoiceId);
+            _payments = new PaymentRepository().GetPaymentsFor(InvoiceId);
         }
 
         [Required]
@@ -128,16 +128,26 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [DisplayName("Payment Amount")]
-        public decimal PaymentAmount
+        [DisplayName("Payment Total")]
+        public decimal PaymentTotal
         {
             get
             {
-                return _payment.CashAmount;
+                decimal tot = 0;
+                foreach (Payment payment in _payments)
+                {
+                    tot += payment.CashAmount;
+                }
+                return tot;
             }
-            set
+        }
+
+        [DisplayName("Payments")]
+        public IList<Payment> Payments
+        {
+            get
             {
-                _payment.CashAmount = value;
+                return _payments;
             }
         }
 
@@ -189,14 +199,14 @@ namespace OpenEhs.Web.Models
     {
 
         private Invoice _invoice;
-        private Payment _payment;
+        private List<Payment> _payments;
 
         #region Billing
 
         public BillingEditViewModel(int InvoiceId)
         {
             _invoice = new InvoiceRepository().Get(InvoiceId);
-            _payment = new PaymentRepository().GetPaymentFor(InvoiceId);
+            _payments = new PaymentRepository().GetPaymentsFor(InvoiceId);
         }
 
         [Required]
@@ -296,19 +306,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [DisplayName("Payment Amount")]
-        public decimal PaymentAmount
-        {
-            get
-            {
-                return _payment.CashAmount;
-            }
-            set
-            {
-                _payment.CashAmount = value;
-            }
-        }
-
         [DisplayName("Products")]
         public IList<Product> Products
         {
@@ -324,6 +321,28 @@ namespace OpenEhs.Web.Models
             get
             {
                 return new ServiceRepository().GetAll();
+            }
+        }
+
+        [DisplayName("Payment Total")]
+        public decimal PaymentTotal
+        {
+            get
+            {
+                decimal tot = 0;
+                foreach (Payment payment in _payments)
+                {
+                    tot += payment.CashAmount;
+                }
+                return tot;
+            }
+        }
+
+        public IList<Payment> Payments
+        {
+            get
+            {
+                return _payments;
             }
         }
 
@@ -374,7 +393,10 @@ namespace OpenEhs.Web.Models
             {
                 repo.AddLineItem(lineItem);
             }
-            new PaymentRepository().Add(_payment);
+            foreach (Payment payment in _payments)
+            {
+                new PaymentRepository().Add(payment);
+            }
         }
 
         #endregion

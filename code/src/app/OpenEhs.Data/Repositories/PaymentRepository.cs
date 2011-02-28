@@ -42,19 +42,19 @@ namespace OpenEhs.Data
         /// </summary>
         /// <param name="invoice">The Invoice to return the Payment from.</param>
         /// <returns>A List of Payments for invoice.</returns>
-        public Payment GetPaymentFor(int InvoiceId)
+        public List<Payment> GetPaymentsFor(int InvoiceId)
         {
-            IList<Payment> payments = GetAll();
-            Payment payment = new Payment();
+            IList<Payment> allPayments = GetAll();
+            List<Payment> payments = new List<Payment>();
 
-            for (int i = 0; i < payments.Count; i++)
+            for (int i = 0; i < allPayments.Count; i++)
             {
-                if (payments[i].Invoice.Id == InvoiceId)
+                if (allPayments[i].Invoice.Id == InvoiceId)
                 {
-                    payment = payments[i];
+                    payments.Add(allPayments[i]);
                 }
             }
-            return payment;
+            return payments;
         }
 
         /// <summary>

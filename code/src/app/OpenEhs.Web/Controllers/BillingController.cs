@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 using OpenEhs.Data;
-using System;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -54,37 +53,6 @@ namespace OpenEhs.Web.Controllers
             catch
             {
                 return View();
-            }
-        }
-
-        //
-        // GET: /Invoice/Edit/5
-        public ActionResult Edit(int id = 1)
-        {
-            if (id < 1 || id > new InvoiceRepository().GetAll().Count)
-            {
-                id = 1;
-            }
-
-            var invoice = new BillingEditViewModel(id);
-
-            return View(invoice);
-        }
-
-        //
-        // POST: /Invoice/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(BillingEditViewModel invoice)
-        {
-            try
-            {
-                invoice.Save();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(invoice);
             }
         }
 
@@ -154,7 +122,6 @@ namespace OpenEhs.Web.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
 
         }
 
