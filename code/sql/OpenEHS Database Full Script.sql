@@ -122,7 +122,6 @@ CREATE TABLE Immunization
 (
 ImmunizationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 VaccineType             text            NOT NULL,
-DateAdministered        datetime        NOT NULL,
 Comments                text            NULL
 );
 
@@ -130,6 +129,7 @@ CREATE TABLE PatientImmunization
 (
 PatientImmunizationID       int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 PatientID                   int             NOT NULL,
+DateAdministered            datetime        NOT NULL,
 ImmunizationID              int             NOT NULL
 );
 
