@@ -33,9 +33,9 @@ $(function () {
         buttons: {
             "Save Immunization": function () {
                 if ($("#addImmunizationForm").valid()) {
-                    $.post("/Patient/AddImmunization", {
+                    $.post("/Patient/AddImmunizationToPatient", {
                         patientID: $("#patientId").val(),
-                        name: $("#modal_immName").val(),
+                        vaccineType: $("#modal_immName").val(),
                         dateAdministered: $("#modal_immAdministered").val()
                     }, function (response) {
                         if (response.error == "false") {
