@@ -34,7 +34,7 @@
             <p style="margin-left: 150px;">
                 <b>Select from pre-written:</b>
             </p>
-            <select id="prewrittenNoteSelect" name="prewrittenNoteBox">
+            <select id="prewrittenNoteSelect" name="prewrittenNoteBox" onchange="populateNote(this.value)">
                 <option value="">Select Template...</option>
                 @if (Model.CurrentUser != null)
                 {

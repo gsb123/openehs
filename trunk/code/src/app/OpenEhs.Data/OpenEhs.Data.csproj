@@ -64,14 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAllergyRepository.cs" />
     <Compile Include="Interfaces\ILocationRepository.cs" />
     <Compile Include="Interfaces\INoteTemplateRepository.cs" />
+    <Compile Include="Interfaces\IPatientAllergyRepository.cs" />
     <Compile Include="Interfaces\IPatientImmunizationRepository.cs" />
     <Compile Include="Interfaces\IServiceRepository.cs" />
     <Compile Include="Interfaces\IInvoiceRepository.cs" />
     <Compile Include="Interfaces\IPaymentRepository.cs" />
     <Compile Include="Interfaces\ISurgeryStaffRepository.cs" />
     <Compile Include="MySqlUtilities.cs" />
+    <Compile Include="Repositories\AllergyRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Common\GenericTransaction.cs" />
     <Compile Include="Common\IGenericTransaction.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Repositories\ImmunizationRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\NoteTemplateRepository.cs" />
+    <Compile Include="Repositories\PatientAllergyRepository.cs" />
     <Compile Include="Repositories\PatientImmunizationRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />

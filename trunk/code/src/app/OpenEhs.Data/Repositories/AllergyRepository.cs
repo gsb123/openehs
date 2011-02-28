@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using NHibernate;
+using OpenEhs.Domain;
+
+namespace OpenEhs.Data
+{
+    public class AllergyRepository : IAllergyRepository
+    {
+        private ISession Session
+        {
+            get
+            {
+                return UnitOfWork.CurrentSession;
+            }
+        }
+        public Allergy Get(int id)
+        {
+            return Session.Get<Allergy>(id);
+        }
+        public IList<Allergy> GetAll()
+        {
+            ICriteria criteria = Session.CreateCriteria<Allergy>();
+            return criteria.List<Allergy>();
+        }
+        public void Add(Allergy entity)
+        {
+            Session.Save(entity);
+        }
+        public void Remove(Allergy entity)
+        {
+            Session.Delete(entity);
+        }
+    }
+}
