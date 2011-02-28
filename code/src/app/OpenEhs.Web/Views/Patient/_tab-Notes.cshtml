@@ -1,62 +1,56 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
-
 <div id="noteHeader" class="group">
     <h2 id="notes">
         Notes
     </h2>
     <input id="submitNoteButton" name="submitNoteButton" type="button" value="Add Note" />
 </div>
-
-
 <div>
-	<ul id="submittedNoteList">
-    @if (Model.GetOpenCheckin != null)
-    {
-        foreach (var note in Model.GetOpenCheckin.Notes)
+    <ul id="submittedNoteList">
+        @if (Model.GetOpenCheckin != null)
         {
-			<li>@HttpUtility.HtmlDecode(note.Body)</li><br />
+            foreach (var note in Model.GetOpenCheckin.Notes)
+            {
+            <li>@HttpUtility.HtmlDecode(note.Body)</li><br />
+            }
         }
-    }
     </ul>
 </div>
-
 <div id="newNoteDialog" title="New Note">
     <ul class="modalErrorContainer" style="display: none">
     </ul>
+    
     <form id="newNoteForm" action="">
     <fieldset>
         <div class="modal-label-long">
         </div>
-			<div id="Notes">
-				<label for="NotesTextBox" id="surgeryNoteLable"><b>Notes</b></label>
-				<textarea rows="30" cols="20" name="NotesTextBox" id="NotesTextBox"></textarea>
-			</div>
-
-	<fieldset id="templateOptions">
-		<legend>Template Options</legend>
-
-		<p style="margin-left: 150px;">
-			<b>Select from pre-written:</b> 
-		</p>
-
-		<select id="prewrittenNoteSelect" name="prewrittenNoteBox">
-
-			<option>Select Template...</option>
-
-			
-		</select>
-
-		<br />
-
-		<input id="templateNoteCheckBox" type="button" name="saveNoteTemplate" value="Save As New Template" />
-
-		<!-- Do not delete the div -->
-		<div id="addTempTitleDIV">
-			<!-- Used to add a text box in notes -->
-
-		</div>
-
-	</fieldset>
+        <div id="Notes">
+            <label for="NotesTextBox" id="surgeryNoteLable">
+                <b>Notes</b></label>
+            <textarea rows="30" cols="20" name="NotesTextBox" id="NotesTextBox"></textarea>
+        </div>
+        <fieldset id="templateOptions">
+            <legend>Template Options</legend>
+            <p style="margin-left: 150px;">
+                <b>Select from pre-written:</b>
+            </p>
+            <select id="prewrittenNoteSelect" name="prewrittenNoteBox">
+                <option value="">Select Template...</option>
+                @if (Model.CurrentUser != null)
+                {
+                    foreach (var template in Model.CurrentUser.Staff.Templates)
+                    {
+                    <option value="@template.Id">@template.Title</option>
+                    }
+                }
+            </select>
+            <br />
+            <input id="templateNoteCheckBox" type="button" name="saveNoteTemplate" value="Save As New Template" />
+            <!-- Do not delete the div -->
+            <div id="addTempTitleDIV">
+                <!-- Used to add a text box in notes -->
+            </div>
+        </fieldset>
     </fieldset>
     </form>
 </div>

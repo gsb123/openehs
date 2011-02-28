@@ -1004,6 +1004,11 @@ namespace OpenEhs.Web.Controllers {
         public JsonResult AddNote() {
             try {
                 PatientRepository patientRepo = new PatientRepository();
+                StaffRepository staffRepo = new StaffRepository();
+                Staff staff = new Staff();
+
+                if (Request.Form["StaffId"] != "")
+                    staff = staffRepo.Get(int.Parse(Request.Form["StaffId"]));
 
                 Patient patient = patientRepo.Get(int.Parse(Request.Form["PatientId"]));
 
@@ -1013,7 +1018,7 @@ namespace OpenEhs.Web.Controllers {
                             where checkin.CheckOutTime == DateTime.MinValue
                             select checkin;
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
-                note.Author = openCheckIn.AttendingStaff;
+                note.Author = staff;
                 note.DateCreated = DateTime.Now;
                 note.Body = HttpUtility.UrlDecode(Request.Form["NoteBody"], System.Text.Encoding.Default);
                 note.PatientCheckIns = openCheckIn;
@@ -1028,7 +1033,7 @@ namespace OpenEhs.Web.Controllers {
                     NoteTemplateCategory noteCat = noteRepo.Get(1);
                     Template template = new Template();
                     template.Title = Request.Form["TemplateTitle"];
-                    template.Staff = openCheckIn.AttendingStaff;
+                    template.Staff = staff;
                     template.Body = note.Body;
                     template.IsActive = true;
                     template.NoteTemplateCategory = noteCat;

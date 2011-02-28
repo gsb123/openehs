@@ -65,6 +65,10 @@
 </div>
 <div id="patientView">
     @Html.HiddenFor(model => model.PatientId, new { @id = "patientId" })
+    @if (Model.CurrentUser != null)
+    {
+        @Html.HiddenFor(model => model.CurrentUser.Staff.Id, new { @id = "staffId" });
+    }
     <div>
         <ul>
             <li><a href="#patientView-Demographics">Demographics</a></li>
