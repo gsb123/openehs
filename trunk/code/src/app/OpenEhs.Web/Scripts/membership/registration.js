@@ -19,7 +19,7 @@ $(function () {
     });
 
     function onSuccess(data) {
-        alert("okay, here I am.");
+        $("#registrationForm").hide("fast");
         window.location = "/Dashboard";
     }
 

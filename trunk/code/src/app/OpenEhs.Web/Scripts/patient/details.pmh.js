@@ -60,8 +60,8 @@ $(function () {
 
                 htmlOutput += "</table>Output Chart:";
 
-                htmlOutput += "<table class=\"detailsTables\" id=\"centerForOutputChart\"><thead><th colspan=\"3\">N.G. Suction</th><th colspan=\"1\">Urine</th><th colspan=\"2\">Stool</th><thead><thead><tr><th>Date and Time</th><th>Amount</th>" +
-                            "<th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead><tbody>";
+                htmlOutput += "<table class=\"detailsTables\" id=\"centerForOutputChart\" border=\"1\"><thead><tr><th></th><th colspan=\"2\">N.G. Suction</th>" +
+                              "<th>Urine</th><th colspan=\"2\">Stool</th></tr><tr><th>Date and Time</th><th>Amount</th><th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead><tbody>";
 
                 for (var z = 0; z < checkin.OutputChart.length; z++) {
 
