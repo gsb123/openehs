@@ -6,6 +6,10 @@
 $(function () {
 
 
+    $(".CreateNewPatientButton").button().click(function () {
+        $("#createPatientDialog").dialog("open");
+    });
+
     function postCreatePatient() {
         /// <summary>
         /// Posts all the data necessary for creating a new patient from the new patient wizard
