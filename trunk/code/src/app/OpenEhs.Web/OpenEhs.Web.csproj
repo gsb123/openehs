@@ -135,6 +135,7 @@
     <Content Include="Content\membership\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\navigation.css" />
+    <Content Include="Content\patient.create.css" />
     <Content Include="Content\patient.main.css" />
     <Content Include="Content\patient.view.css" />
     <Content Include="Content\membership\registration.css" />

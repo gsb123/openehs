@@ -1,0 +1,35 @@
+﻿.form-label {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    text-align: right;
+    width: 100px;
+    font-size: 1.2em;
+}
+
+.form-label-long {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    text-align: right;
+    width: 150px;
+    font-size: 1.2em;
+}
+
+.form-input {
+    font-size: 1.2em;
+    padding: 4px;
+    border: solid 1px #777777;
+    width: 125px;
+    margin-bottom: 5px;
+}
+
+.form-input .datepicker {
+    margin-right: 5px;
+}
