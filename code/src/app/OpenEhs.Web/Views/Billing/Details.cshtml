@@ -16,7 +16,6 @@
                 .button()
                 .click(function () {
                     $("#addPaymentDialog").dialog("open")
-
                 })
                 .next()
                     .button({
@@ -36,34 +35,28 @@
             $("#InvoiceLineItems tbody tr:odd").addClass("striped");
         });
 
+        $("#addPayment").button().click(function () {
+            $("#addPaymentDialog").dialog("open");
+        });
+
         $("#addPaymentDialog").dialog({
             autoOpen: false,
-            height: 225,
-            width: 375,
+            height: 160,
+            width: 420,
             modal: true,
             buttons: {
                 "Add Payment": function () {
-                    if ($("#addPaymentForm").valid()) {
-                        $.post("/Billing/AddPayment", {
-                            invoiceID: $("#invoiceId").val(),
-                            amount: $("#addPaymentAmount").val()
-                        }, function (returnData) {
-                            if (returnData.error == "false") {
-                                $("#addPaymentDialog").dialog("close");
-                                //copied text, may come back to this part
-                                /*var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
-                                $("#allergyList").append(newAllergy);
-                                $("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
-                                $(this).find(".allergyRemove").button().click(removeOnClick)
-                                });*/
-                            } else {
-                                $("#addPaymentDialog .error").html(returnData.status);
-                            }
-                        }, "json");
-                    }
+                    $.post("/Billing/AddPayment", {
+                        Name: $("#model_servicename").val(),
+                        Cost: $("#model_paymentamount").val()
+                    }, function (result) {
+                        $("#addPaymentDialog").dialog("close");
 
+                        $("#model_paymentamount").val("");
+                    }, "json");
                 },
                 Cancel: function () {
+                    $("#model_paymentamount").val("");
                     $(this).dialog("close");
                 }
             },
@@ -227,12 +220,18 @@
     </table>
 </div>
 <h2 style="text-align: right">@String.Format("Total Paid: {0:c}", Model.PaymentTotal)</h2>
-<div id="addPaymentDialog" title="Add Payment for @Model.PatientFirstName @Model.PatientLastName">
+
+<div id="addPaymentDialog" title="Add Service">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
     <form id="addPaymentForm" action="">
     <fieldset>
-        <label for="amount" class="modal-label">
-            Amount:</label>
-        <input type="text" name="amount" id="addPaymentAmount" class="text required ui-widget-content ui-corner-all" />
+		<div class="modal-label-long">
+            Amount:
+        </div>
+        <div>
+            <input type="text" name="PaymentAmount" id="model_paymentamount" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
     </fieldset>
     </form>
 </div>
