@@ -1973,169 +1973,169 @@ CALL sp_insertService
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'DTP - Diphtheria, tetanus toxoids, and whole cell pertussis',
-NOW(),
 null
 );
 
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'IPV - Poliovirus vaccine, inactivated',
-NOW(),
 null
 );
 
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'Hep B - 3 dose schedule',
-NOW(),
 null
 );
 
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'YellowFevor',
-'2009-08-07 00:00:00',
 null
 );
 
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'TwinRix',
-'2010-10-15 00:00:00',
 null
 );
 
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'YellowFevor',
-'2002-01-16 00:00:00',
 null
 );
 
 INSERT INTO Immunization
 (
 VaccineType,
-DateAdministered,
 Comments
 )
 VALUES
 (
 'Flu Shot',
-'2000-01-05 00:00:00',
 null
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100000,
-1
+1,
+NOW()
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100000,
-3
+3,
+NOW()
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100001,
-2
+2,
+'2011-01-14 00:00:00'
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100000,
-4
+4,
+'2000-01-14 00:00:00'
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100000,
-5
+5,
+'2005-01-14 00:00:00'
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100001,
-6
+6,
+'2009-01-14 00:00:00'
 );
 
 INSERT INTO PatientImmunization
 (
 PatientID,
-ImmunizationID
+ImmunizationID,
+DateAdministered
 )
 VALUES
 (
 100000,
-7
+7,
+'2011-01-14 00:00:00'
 );
 
 INSERT INTO Medication
