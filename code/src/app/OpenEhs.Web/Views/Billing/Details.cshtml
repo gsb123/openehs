@@ -139,7 +139,7 @@
 <h2 style="text-align: right">@String.Format("Total Charges: {0:c}", Model.Total)</h2>
 <!-- List the payments here.-->
 <div id="InvoiceLineItems">
-    <table>
+    <table id="PaymentsTable">
         <caption style="text-align: left; font-size: x-large">
             Payments</caption>
         <thead>
@@ -174,7 +174,7 @@
     <form id="addPaymentForm" action="">
     <fieldset>
         <div>
-            <input style="visibility: hidden" type="text" value="@Model.Id" name="PaymentInvoiceID" id="ID" class="modal-input text ui-widget-content ui-corner-all" />
+            <input style="visibility: hidden" type="text" value="@Model.Id" name="PaymentInvoiceID" id="PaymentInvoiceID" class="modal-input text ui-widget-content ui-corner-all" />
         </div>
 		<div class="modal-label-long">
             Amount:

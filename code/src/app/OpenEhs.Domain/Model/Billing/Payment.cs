@@ -20,7 +20,7 @@ namespace OpenEhs.Domain
         public virtual int Id { get; private set; }
         public virtual decimal CashAmount { get; set; }
         public virtual DateTime PaymentDate { get; set; }
-        public virtual Invoice InvoiceID { get; set; }
+        //public virtual Invoice InvoiceID { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual Invoice Invoice { get; set; }
 

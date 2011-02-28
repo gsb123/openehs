@@ -151,8 +151,9 @@ namespace OpenEhs.Web.Controllers
 
                 Payment payment = new Payment();
                 payment.IsActive = true;
-                payment.Invoice = new InvoiceRepository().Get(int.Parse(Request.Form["InvoiceId"]));
                 payment.CashAmount = decimal.Parse(Request.Form["Amount"]);
+                payment.Invoice = new InvoiceRepository().Get(int.Parse(Request.Form["InvoiceId"]));
+                payment.PaymentDate = DateTime.Now;
 
                 paymentRepo.Add(payment);
 
