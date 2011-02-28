@@ -25,7 +25,7 @@
                         }
                     })
                     .click(function () {
-                        alert("Menu!");
+                        alert("Menu!?");
                     })
                     .parent()
                         .buttonset();
@@ -35,9 +35,9 @@
             $("#InvoiceLineItems tbody tr:odd").addClass("striped");
         });
 
-        $("#addPayment").button().click(function () {
-            $("#addPaymentDialog").dialog("open");
-        });
+//        $("#addPayment").button().click(function () {
+//            $("#addPaymentDialog").dialog("open");
+//        });
 
         $("#addPaymentDialog").dialog({
             autoOpen: false,
@@ -47,8 +47,8 @@
             buttons: {
                 "Add Payment": function () {
                     $.post("/Billing/AddPayment", {
-                        Name: $("#model_servicename").val(),
-                        Cost: $("#model_paymentamount").val()
+                        InvoiceId: $("#PaymentInvoiceID").val(),
+                        Amount: $("#model_paymentamount").val()
                     }, function (result) {
                         $("#addPaymentDialog").dialog("close");
 
@@ -226,6 +226,9 @@
     </ul>
     <form id="addPaymentForm" action="">
     <fieldset>
+        <div>
+            <input style="visibility: hidden" type="text" value="@Model.Id" name="PaymentInvoiceID" id="ID" class="modal-input text ui-widget-content ui-corner-all" />
+        </div>
 		<div class="modal-label-long">
             Amount:
         </div>

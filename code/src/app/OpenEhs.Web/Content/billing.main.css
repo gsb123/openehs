@@ -178,3 +178,55 @@
 	visibility: hidden;
 	height:0px;
 }
+
+#addProduct
+{
+    margin-left: 25px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.modal-label {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    text-align: right;
+    width: 100px;
+    font-size: 1.2em;
+}
+
+.modal-label-long {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    text-align: right;
+    width: 150px;
+    font-size: 1.2em;
+}
+
+.modal-input {
+    font-size: 1.2em;
+    padding: 4px;
+    border: solid 1px #777777;
+    width: 125px;
+    margin-bottom: 5px;
+}
+
+.modalErrorContainer {
+    padding: 5px 20px 5px 20px;
+    margin-right: 40px;
+    margin-bottom: 5px;
+}
+
+.modalErrorContainer li {
+    list-style-type: circle;
+    color: #FF0000;
+}
