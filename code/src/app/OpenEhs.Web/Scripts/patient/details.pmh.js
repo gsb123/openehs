@@ -75,7 +75,6 @@ $(function () {
 
                 htmlOutput += "<table class=\"detailsTables\"><thead><tr><th>Date and Time</th><th>Kind Of Fluid</th><th>Amount</th></tr></thead><tbody>";
 
-
                 for (var b = 0; b < checkin.IntakeChart.length; b++) {
 
                     var intake = checkin.IntakeChart[b];
