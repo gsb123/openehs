@@ -11,12 +11,17 @@ $(function () {
         validationEnabled: true,
         focusFirstInput: true,
         formOptions: {
-            success: function (data) { $(location).attr("href", "/dashboard"); },
-            beforeSubmit: function (data) { $("#data").html("data sent to the server: " + $.param(data)); },
+            success: onSuccess,
+            beforeSubmit: function (data) { },
             dataType: 'json',
             resetForm: true
         }
     });
+
+    function onSuccess(data) {
+        alert("okay, here I am.");
+        window.location = "/Dashboard";
+    }
 
     $("#lastNameTextbox").blur(function () {
         if ($("#firstNameTextbox").val() != "") {

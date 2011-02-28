@@ -140,6 +140,12 @@ namespace OpenEhs.Web.Controllers
                     _staffRepository.Add(staff);
 
                     FormsService.SignIn(staff.User.Username, false);
+
+                    if (Request.IsAjaxRequest())
+                    {
+                        return Json(new {success = true});
+                    }
+
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
