@@ -11,7 +11,7 @@ $(function () {
         validationEnabled: true,
         focusFirstInput: true,
         formOptions: {
-            success: function (data) { $("#status").fadeTo(500, 1, function () { $(this).html("You are now registered!").fadeTo(5000, 0); }) },
+            success: function (data) { $(location).attr("href", "/dashboard"); },
             beforeSubmit: function (data) { $("#data").html("data sent to the server: " + $.param(data)); },
             dataType: 'json',
             resetForm: true
@@ -30,7 +30,6 @@ $(function () {
         $.post("/Account/CheckForUsernameAvailability",
                 paramData,
                 function (data) {
-                    alert("Is available! (" + data.requestedUsername + ")");
                     $("#Username").val(data.requestedUsername);
                     $("#generatedUsername").html(data.requestedUsername);
                 },

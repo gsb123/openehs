@@ -101,23 +101,25 @@ namespace OpenEhs.Infrastructure.Security
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            var user = new User(username, password, email, passwordQuestion, passwordAnswer, isApproved);
+            var user = new MembershipUser("OpenEhsMembershipProvider", username, null, email, passwordQuestion, "", false, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.MinValue);
 
-            status = MembershipCreateStatus.Success;
+            if (_userRepository.CheckForUsernameAvailability(username))
+            {
+                status = MembershipCreateStatus.Success;
+            }
+            else
+            {
+                status = MembershipCreateStatus.DuplicateUserName;
+                return user;
+            }
 
-            return new MembershipUser("OpenEhsMembershipProvider", 
-                                      user.Username, 
-                                      null, 
-                                      user.EmailAddress,
-                                      user.PasswordQuestion, 
-                                      String.Empty, 
-                                      user.IsApproved, 
-                                      user.IsLockedOut,
-                                      user.DateCreated, 
-                                      user.LastLogin, 
-                                      user.LastActivity, 
-                                      user.LastPasswordChange, 
-                                      user.LastLockout);
+            if (password.Length < MinRequiredPasswordLength)
+            {
+                status = MembershipCreateStatus.InvalidPassword;
+                return user;
+            }
+
+            return user;
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
@@ -217,6 +219,11 @@ namespace OpenEhs.Infrastructure.Security
             throw new NotImplementedException();
         }
 
+        public bool UsernameExists(string username)
+        {
+            return _userRepository.CheckForUsernameAvailability(username);
+        }
+
 
         #region Private Methods
 
@@ -232,8 +239,8 @@ namespace OpenEhs.Infrastructure.Security
                                       user.IsLockedOut,
                                       user.DateCreated,
                                       user.LastLogin,
-                                      DateTime.Now,
-                                      DateTime.MinValue,
+                                      user.LastActivity,
+                                      user.LastPasswordChange,
                                       user.LastLockout);
         }
 

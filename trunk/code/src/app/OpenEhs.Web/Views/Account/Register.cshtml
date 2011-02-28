@@ -39,6 +39,10 @@
                                 @Html.LabelFor(m => m.Title)
                                 @Html.DropDownListFor(m => m.Title, Model.StaffTypes, new { @id = "titleDropdown" })
                             </li>
+                            <li>
+                                @Html.LabelFor(m => m.LicenseNumber)
+                                @Html.TextBoxFor(m => m.LicenseNumber, new { @id = "licenseNumberTextbox" })
+                            </li>
                         </ul>
                     </div>
                     <div id="contactInformation" class="step">
@@ -63,10 +67,6 @@
                                 <li>
                                     @Html.LabelFor(m => m.Street2)
                                     @Html.TextBoxFor(m => m.Street2, new { @id = "street2Textbox" })
-                                </li>
-                                <li>
-                                    @Html.LabelFor(m => m.Street3)
-                                    @Html.TextBoxFor(m => m.Street3, new { @id = "street3Textbox" })
                                 </li>
                                 <li>
                                     @Html.LabelFor(m => m.City)

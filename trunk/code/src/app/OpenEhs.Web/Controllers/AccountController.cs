@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using OpenEhs.Data;
+using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
@@ -9,6 +11,7 @@ namespace OpenEhs.Web.Controllers
     public class AccountController : Controller
     {
         private IUserRepository _userRepository;
+        private IStaffRepository _staffRepository;
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 
@@ -23,6 +26,7 @@ namespace OpenEhs.Web.Controllers
         public AccountController()
         {
             _userRepository = new UserRepository();
+            _staffRepository = new StaffRepository();
         }
 
         // **************************************
@@ -88,13 +92,54 @@ namespace OpenEhs.Web.Controllers
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                // TODO: Add user name as first parameter.
-                MembershipCreateStatus createStatus = MembershipService.CreateUser(model.Username, model.Password, model.Email);
+                MembershipCreateStatus createStatus = MembershipService.CreateUser(model.Username, model.Password,
+                                                                                   model.Email);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    // TODO: Add user name as first parameter.
-                    FormsService.SignIn(model.Username, false);
+                    var staff = new Staff
+                                    {
+                                        FirstName = model.FirstName,
+                                        MiddleName = model.MiddleName,
+                                        LastName = model.LastName,
+                                        StaffType = model.Title,
+                                        LicenseNumber = model.LicenseNumber,
+                                        PhoneNumber = model.PhoneNumber,
+                                        Address = new Address
+                                                      {
+                                                          Street1 = model.Street1,
+                                                          Street2 = model.Street2,
+                                                          City = model.City,
+                                                          Region = model.Region,
+                                                          Country = model.Country,
+                                                          IsActive = true
+                                                      },
+                                        User = new User
+                                                   {
+                                                       Username = model.Username,
+                                                       Password = model.Password,
+                                                       EmailAddress = model.Email,
+                                                       LastActivity = DateTime.Now,
+                                                       LastLogin = DateTime.Now,
+                                                       DateCreated = DateTime.Now,
+                                                       PasswordQuestion = String.Empty,
+                                                       PasswordAnswer = String.Empty,
+                                                       LastPasswordChange = DateTime.MinValue,
+                                                       LastLockout = DateTime.MinValue,
+                                                       ApplicationName = "/",
+                                                       IpAddress = Request.ServerVariables["REMOTE_ADDR"],
+                                                       IsActive = true,
+                                                       IsApproved = false,
+                                                       IsLockedOut = false,
+                                                       IsOnline = true,
+                                                       FailedPasswordAttemptCount = 0
+                                                   }
+                                    };
+
+
+                    _staffRepository.Add(staff);
+
+                    FormsService.SignIn(staff.User.Username, false);
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
@@ -105,6 +150,7 @@ namespace OpenEhs.Web.Controllers
 
             // If we got this far, something failed, redisplay form
             ViewBag.PasswordLength = MembershipService.MinPasswordLength;
+
             return View(model);
         }
 
