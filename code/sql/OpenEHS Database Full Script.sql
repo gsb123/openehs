@@ -3008,3 +3008,63 @@ NOW(),
 'Yellow and brown',
 2
 );
+
+INSERT INTO IntakeChart
+(
+ChartTime,
+KindOfFluid,
+Amount,
+PatientCheckInID
+)
+VALUES
+(
+NOW(),
+'Dr. Pepper',
+'32 oz.',
+1
+);
+
+INSERT INTO IntakeChart
+(
+ChartTime,
+KindOfFluid,
+Amount,
+PatientCheckInID
+)
+VALUES
+(
+NOW(),
+'Apple Juice',
+'32 oz.',
+1
+);
+
+INSERT INTO IntakeChart
+(
+ChartTime,
+KindOfFluid,
+Amount,
+PatientCheckInID
+)
+VALUES
+(
+NOW(),
+'Pepto',
+'2 oz.',
+2
+);
+
+INSERT INTO IntakeChart
+(
+ChartTime,
+KindOfFluid,
+Amount,
+PatientCheckInID
+)
+VALUES
+(
+NOW(),
+'Orange Juice',
+'32 oz.',
+2
+);
