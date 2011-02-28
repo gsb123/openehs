@@ -32,7 +32,8 @@ $(function () {
                 $.post("/Patient/AddNote", {
                     patientID: $("#patientId").val(),
                     NoteBody: escape($("#NotesTextBox").val()),
-                    TemplateTitle: $("#templateTitle").val()
+                    TemplateTitle: $("#templateTitle").val(),
+                    StaffId: $("#staffId").val()
                 }, function (result) {
                     $("#newNoteDialog").dialog("close");
 
