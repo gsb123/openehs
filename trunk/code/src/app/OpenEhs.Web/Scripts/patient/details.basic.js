@@ -44,7 +44,7 @@ $(function () {
     // ------------------------------------------------- //
     var ckConfig = {
         toolbar: [
-            ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-"],
+            ["Bold", "Italic", "-"],
             ["UIColor"]
         ],
         extraPlugins: "autogrow",
