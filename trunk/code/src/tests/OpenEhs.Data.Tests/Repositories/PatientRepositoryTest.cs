@@ -40,7 +40,7 @@ namespace OpenEhs.Data.Tests.Repositories
                                   Allergies = new List<Allergy> {new Allergy {Name = "Peanut Butter"}},
                                   DateOfBirth = new DateTime(1980, 03, 17),
                                   BloodType = "O+",
-                                  Gender = Gender.Male.ToString(),
+                                  Gender = Gender.Male,
                                   FirstName = "Matthew",
                                   MiddleName = "Scott",
                                   LastName = "Kimber",
