@@ -41,24 +41,42 @@ $(document).ready(function () {
                     Amount: $("#model_paymentamount").val()
                 }, function (result) {
                     $("#addPaymentDialog").dialog("close");
-                    var table = document.getElementById("PaymentsTable");
-                    var tr = document.createElement("tr");
 
-                    var elements = new Array();
+                    if (result.error) {
+                        alert(result.message);
+                        $("#model_paymentamount").val("");
+                    } else {
+                        var table = document.getElementById("PaymentsTable");
+                        var tr = document.createElement("tr");
 
-                    for (var i = 0; i < 2; i++)
-                        elements[i] = document.createElement("td");
+                        var elements = new Array();
 
-                    elements[0].appendChild(document.createTextNode(result.Date));
-                    elements[1].appendChild(document.createTextNode(result.Amount));
+                        for (var i = 0; i < 2; i++)
+                            elements[i] = document.createElement("td");
 
-                    for (var i = 0; i < 2; i++)
-                        tr.appendChild(elements[i]);
+                        elements[0].appendChild(document.createTextNode(result.Date));
+                        elements[1].appendChild(document.createTextNode(result.Amount));
+                        elements[1].setAttribute('style', 'text-align: right');
 
-                    table.appendChild(tr);
+                        for (var i = 0; i < 2; i++)
+                            tr.appendChild(elements[i]);
 
+                        table.appendChild(tr);
 
-                    $("#model_paymentamount").val("");
+                        htmlOutput = "<h1 id=\"InvoiceTotal\">";
+                        htmlOutput += "Balance: ";
+                        htmlOutput += result.Balance;
+                        htmlOutput += "</h1>"
+                        $("#InvoiceTotal").replaceWith(htmlOutput);
+
+                        htmlOutput = "<h2 id=\"PaymentTotal\" style=\"text-align: right\">";
+                        htmlOutput += "Total Paid: ";
+                        htmlOutput += result.Payments;
+                        htmlOutput += "</h2>";
+                        $("#PaymentTotal").replaceWith(htmlOutput);
+
+                        $("#model_paymentamount").val("");
+                    }
                 }, "json");
             },
             Cancel: function () {
