@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\ILocationRepository.cs" />
     <Compile Include="Interfaces\INoteTemplateRepository.cs" />
+    <Compile Include="Interfaces\IPatientImmunizationRepository.cs" />
     <Compile Include="Interfaces\IServiceRepository.cs" />
     <Compile Include="Interfaces\IInvoiceRepository.cs" />
     <Compile Include="Interfaces\IPaymentRepository.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\NoteTemplateRepository.cs" />
+    <Compile Include="Repositories\PatientImmunizationRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="Repositories\PaymentRepository.cs" />
