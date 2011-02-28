@@ -88,6 +88,8 @@
     <Compile Include="Interfaces\ITemplateRepository.cs" />
     <Compile Include="Interfaces\Membership\IRoleRepository.cs" />
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
+    <Compile Include="Interfaces\IImmunizationRepository.cs" />
+    <Compile Include="Repositories\ImmunizationRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\NoteTemplateRepository.cs" />
     <Compile Include="Repositories\PatientImmunizationRepository.cs" />
