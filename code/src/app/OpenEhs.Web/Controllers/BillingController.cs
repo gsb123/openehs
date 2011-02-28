@@ -153,10 +153,10 @@ namespace OpenEhs.Web.Controllers
                 payment.IsActive = true;
                 payment.CashAmount = decimal.Parse(Request.Form["Amount"]);
                 payment.Invoice = new InvoiceRepository().Get(int.Parse(Request.Form["InvoiceId"]));
-                BillingViewModel billz = new BillingViewModel(payment.Invoice.Id);
+                BillingViewModel billing = new BillingViewModel(payment.Invoice.Id);
                 payment.PaymentDate = DateTime.Now;
 
-                if (payment.CashAmount > billz.Total - billz.PaymentTotal)
+                if (payment.CashAmount > billing.Total - billing.PaymentTotal)
                 {
                     return Json(new { 
                         error = true, 
@@ -172,8 +172,8 @@ namespace OpenEhs.Web.Controllers
                     error = false,
                     Date = payment.PaymentDate.ToString(),
                     Amount = payment.CashAmount.ToString("c"),
-                    Balance = String.Format("{0:c}", billz.Total - billz.PaymentTotal),
-                    Payments = String.Format("{0:c}", billz.PaymentTotal)
+                    Balance = String.Format("{0:c}", billing.Total - billing.PaymentTotal - payment.CashAmount),
+                    Payments = String.Format("{0:c}", billing.PaymentTotal + payment.CashAmount)
                 });
             }
             catch(Exception e)
