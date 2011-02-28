@@ -26,6 +26,11 @@
       <one-to-many class="PatientCheckIn" />
     </bag>
 
+    <bag name="Templates" table="Template" cascade="all" lazy="false">
+      <key column="StaffID" />
+      <one-to-many class="Template" />
+    </bag>
+
     <many-to-one name="User"
                  class="User"
                  unique="true"
