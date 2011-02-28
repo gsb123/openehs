@@ -20,6 +20,7 @@ namespace OpenEhs.Domain
         public virtual string LastName { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual StaffType StaffType { get; set; }
+        public virtual IList<Template> Templates { get; set; }
         public virtual string LicenseNumber { get; set; }
         public virtual Address Address { get; set; }
         public virtual User User { get; set; }

@@ -37,7 +37,7 @@ namespace OpenEhs.Web
             RegisterRoutes(RouteTable.Routes);
 
 #if DEBUG
-            //HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
 #endif
         }
 
