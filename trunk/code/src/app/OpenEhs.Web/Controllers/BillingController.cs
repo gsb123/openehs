@@ -142,6 +142,34 @@ namespace OpenEhs.Web.Controllers
             return new RedirectResult("/Billing/Edit/" + lineItem.Invoice.Id);
         }
 
+
+        public JsonResult AddPayment()
+        {
+            try
+            {
+                PaymentRepository paymentRepo = new PaymentRepository();
+
+                Payment payment = new Payment();
+                payment.IsActive = true;
+                payment.Invoice = new InvoiceRepository().Get(int.Parse(Request.Form["InvoiceId"]));
+                payment.CashAmount = decimal.Parse(Request.Form["Amount"]);
+
+                paymentRepo.Add(payment);
+
+                return Json(new
+                {
+                    error = false
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
         /*
         //Trying to get search box to work
         public JsonResult InvoiceSearch()
