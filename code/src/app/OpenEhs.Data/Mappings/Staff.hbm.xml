@@ -13,7 +13,13 @@
     <property name="PhoneNumber" not-null="true" length="20" />
     <property name="StaffType" not-null="true" />
     <property name="LicenseNumber" not-null="false" length="20" />
-    <one-to-one name="Address" class="Address" />
+
+    <many-to-one name="Address"
+                 class="Address"
+                 column="AddressID"
+                 cascade="all"
+                 unique="true" />
+    
     <property name="IsActive" not-null="true" />
 
     <bag name="Surgery" table="SurgeryStaff" cascade="none" lazy="false">
@@ -33,8 +39,9 @@
 
     <many-to-one name="User"
                  class="User"
-                 unique="true"
-                 column="UserID" />
+                 column="UserID"
+                 cascade="all"
+                 unique="true" />
     
   </class>
 </hibernate-mapping>

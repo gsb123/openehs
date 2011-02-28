@@ -23,6 +23,7 @@ namespace OpenEhs.Data
                 return UnitOfWork.CurrentSession;
             }
         }
+
         public Staff Get(int id)
         {
             return Session.Get<Staff>(id);
@@ -47,7 +48,7 @@ namespace OpenEhs.Data
         public Boolean UserExists(string username)
         {
             ICriteria criteria = Session.CreateCriteria<Staff>().Add(Restrictions.Eq("Username",username));
-            Staff staff = criteria.UniqueResult<Staff>();
+            var staff = criteria.UniqueResult<Staff>();
             if (staff == null)
                 return false;
             else
@@ -74,7 +75,7 @@ namespace OpenEhs.Data
 
         public IList<Staff> FindByType(StaffType staffType)
         {
-            ICriteria criteria = Session.CreateCriteria<Staff>().Add(Restrictions.Eq("StaffType",staffType));
+            ICriteria criteria = Session.CreateCriteria<Staff>().Add(Restrictions.Eq("StaffType", staffType));
 
             return criteria.List<Staff>();
         }

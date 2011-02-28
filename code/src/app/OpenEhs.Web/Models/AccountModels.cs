@@ -71,6 +71,9 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [Display(Name = "License No.")]
+        public string LicenseNumber { get; set; }
+
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
@@ -84,9 +87,6 @@ namespace OpenEhs.Web.Models
 
         [Display(Name = "Street 2")]
         public string Street2 { get; set; }
-
-        [Display(Name = "Street 3")]
-        public string Street3 { get; set; }
 
         [Required]
         public string City { get; set; }
@@ -158,14 +158,16 @@ namespace OpenEhs.Web.Models
             return _provider.ValidateUser(userName, password);
         }
 
-        public MembershipCreateStatus CreateUser(string userName, string password, string email)
+        public MembershipCreateStatus CreateUser(string username, string password, string email)
         {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
+            if (String.IsNullOrEmpty(username)) throw new ArgumentException("Value cannot be null or empty.", "userName");
             if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
             if (String.IsNullOrEmpty(email)) throw new ArgumentException("Value cannot be null or empty.", "email");
 
             MembershipCreateStatus status;
-            _provider.CreateUser(userName, password, email, null, null, true, null, out status);
+
+            _provider.CreateUser(username, password, email, null, null, false, null, out status);
+
             return status;
         }
 
