@@ -27,7 +27,21 @@ $(function () {
                 caseType: $("input:radio[name='modal_caseType']:checked").val()
             },
             success: function (response) {
-                alert("Submitted");
+                alert("Surgery Submitted");
+
+
+                $("#modal_GetStaffSurgeon").val(""),
+                $("#modal_GetStaffSurgeonAssistant").val(""),
+                $("#modal_GetStaffAnaesthetist").val(""),
+                $("#modal_GetStaffAnaesthetistAssistant").val(""),
+                $("#modal_GetStaffNurse").val(""),
+                $("#modal_GetStaffConsultant").val(""),
+                $("#surgeryStartTime").val(""),
+                $("#surgeryEndTime").val(""),
+                $("#modal_GetSurgeryLocation").val(""),
+                $("#caseType1").val(""),
+                $("#caseType2").val("")
+
             },
             dataType: "json"
         });

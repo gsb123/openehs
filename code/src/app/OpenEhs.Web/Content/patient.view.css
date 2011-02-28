@@ -1159,12 +1159,13 @@ margin-bottom: 10px;
 	font-size: 18px;
 }
 
-.detailsTables
+.detailsTable
 {
-	font-size: 10px;
+	font-size: 8px;
+	width: 210px;
 }
 
-.detailsTables td
+.detailsTable td
 {
 	border: 1px solid #ccc;
 }
@@ -1181,7 +1182,7 @@ margin-bottom: 10px;
 
 #showLineItemsFS
 {
-	width: 300px;
+	width: 210px;
 }
 
 .billingSelects
