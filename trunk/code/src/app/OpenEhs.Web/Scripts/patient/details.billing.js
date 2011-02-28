@@ -15,9 +15,9 @@ $(function () {
             url: "/Patient/AddInvoiceItem",
             data: {
                 patientID: $("#patientId").val(),
-                product: $("select[name='productSelect'] option:selected").val(),
-                service: $("select[name='serviceSelect'] option:selected").val(),
-                quantity: $("select[name='quantitySelect'] option:selected").val()
+                product: $("#modal_GetProduct").val(),
+                service: $("#modal_GetService").val(),
+                quantity: $("#modal_GetQuantity").val()
             },
             success: function (response) {
                 var table = document.getElementById("detailsTable");
@@ -36,9 +36,9 @@ $(function () {
 
                 table.appendChild(tr);
 
-                $("select[name='productSelect'] option:selected").val("");
-                $("select[name='serviceSelect'] option:selected").val("");
-                $("select[name='quantitySelect'] option:selected").val("");
+                product: $("#modal_GetProduct").val("");
+                service: $("#modal_GetService").val("");
+                quantity: $("#modal_GetQuantity").val("");
             },
             dataType: "json"
         });
