@@ -15,6 +15,8 @@
             $("#PayInFullButton")
                 .button()
                 .click(function () {
+                    $("#addPaymentDialog").dialog("open")
+
                 })
                 .next()
                     .button({
@@ -33,6 +35,43 @@
 
             $("#InvoiceLineItems tbody tr:odd").addClass("striped");
         });
+
+        $("#addPaymentDialog").dialog({
+            autoOpen: false,
+            height: 225,
+            width: 375,
+            modal: true,
+            buttons: {
+                "Add Payment": function () {
+                    if ($("#addPaymentForm").valid()) {
+                        $.post("/Billing/AddPayment", {
+                            invoiceID: $("#invoiceId").val(),
+                            amount: $("#addPaymentAmount").val()
+                        }, function (returnData) {
+                            if (returnData.error == "false") {
+                                $("#addPaymentDialog").dialog("close");
+                                //copied text, may come back to this part
+                                /*var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
+                                $("#allergyList").append(newAllergy);
+                                $("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
+                                $(this).find(".allergyRemove").button().click(removeOnClick)
+                                });*/
+                            } else {
+                                $("#addPaymentDialog .error").html(returnData.status);
+                            }
+                        }, "json");
+                    }
+
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            },
+            close: function () {
+
+            }
+        });
+
     </script>
 }
 <p>
@@ -42,7 +81,7 @@
     <h1>
         Invoice</h1>
     <div id="TotalAndPayment" class="group">
-        <h1 id="InvoiceTotal">@String.Format("Remaining Charges: {0:c}", Model.Total - Model.PaymentTotal)</h1>
+        <h1 id="InvoiceTotal">@String.Format("Balance: {0:c}", Model.Total - Model.PaymentTotal)</h1>
         <div id="PaymentActionButtons">
             <button name="PayInFullButton" id="PayInFullButton">
                 Pay</button>
@@ -94,10 +133,10 @@
         </table>
     </div>
 </div>
-
 <div id="InvoiceLineItems">
     <table>
-    <caption style="font-size:x-large">Resources Used</caption>
+        <caption style="text-align: left; font-size: x-large">
+            Line Items</caption>
         <thead>
             <tr>
                 <th class="DescriptionColumn">
@@ -157,12 +196,12 @@
         </tbody>
     </table>
 </div>
-<h2 style="text-align:right">@String.Format("Total Charges: {0:c}", Model.Total)</h2>
-
+<h2 style="text-align: right">@String.Format("Total Charges: {0:c}", Model.Total)</h2>
 <!-- List the payments here.-->
 <div id="InvoiceLineItems">
     <table>
-    <caption style="font-size:x-large">Payments</caption>
+        <caption style="text-align: left; font-size: x-large">
+            Payments</caption>
         <thead>
             <tr>
                 <th class="DescriptionColumn">
@@ -187,4 +226,13 @@
         </tbody>
     </table>
 </div>
-<h2 style="text-align:right">@String.Format("Total Paid: {0:c}", Model.PaymentTotal)</h2>
+<h2 style="text-align: right">@String.Format("Total Paid: {0:c}", Model.PaymentTotal)</h2>
+<div id="addPaymentDialog" title="Add Payment for @Model.PatientFirstName @Model.PatientLastName">
+    <form id="addPaymentForm" action="">
+    <fieldset>
+        <label for="amount" class="modal-label">
+            Amount:</label>
+        <input type="text" name="amount" id="addPaymentAmount" class="text required ui-widget-content ui-corner-all" />
+    </fieldset>
+    </form>
+</div>
