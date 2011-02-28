@@ -1134,7 +1134,7 @@ namespace OpenEhs.Web.Controllers
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
                 note.Author = openCheckIn.AttendingStaff;
                 note.DateCreated = DateTime.Now;
-                note.Body = HttpUtility.UrlDecode(Request.Form["NoteBody"],System.Text.Encoding.Default);
+                note.Body = HttpUtility.HtmlEncode(Request.Form["NoteBody"]);
                 note.PatientCheckIns = openCheckIn;
                 note.Title = "";
                 note.Type = NoteType.General;

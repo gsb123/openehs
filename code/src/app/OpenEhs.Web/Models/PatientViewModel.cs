@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System;
 using System.Collections.Generic;
 using OpenEhs.Data;
+using System.Web;
 
 namespace OpenEhs.Web.Models
 {
@@ -635,6 +636,14 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public User CurrentUser
+        {
+            get
+            {
+                UserRepository userRepo = new UserRepository();
+                return userRepo.Get(HttpContext.Current.User.Identity.Name);
+            }
+        }
         #endregion
 
     }
