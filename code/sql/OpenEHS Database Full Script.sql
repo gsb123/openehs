@@ -346,6 +346,7 @@ CREATE TABLE Note
 (
     NoteID                      int                 AUTO_INCREMENT          PRIMARY KEY                      NOT NULL,
     Title                       varchar(30)         NULL,
+    `Type`                      varchar(20)         NOT NULL,
     Body                        longtext            NOT NULL,
     DateCreated                 timestamp           NOT NULL                DEFAULT CURRENT_TIMESTAMP,
     StaffID                     int                 NOT NULL,
