@@ -10,6 +10,7 @@
     <property name="Title" not-null="false" length="30"/>
     <property name="Body" not-null="true" />
     <property name="DateCreated" not-null="true" />
+    <property name="Type" not-null="true" />
 
 
 
