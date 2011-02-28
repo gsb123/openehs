@@ -1137,6 +1137,7 @@ namespace OpenEhs.Web.Controllers
                 note.Body = HttpUtility.UrlDecode(Request.Form["NoteBody"],System.Text.Encoding.Default);
                 note.PatientCheckIns = openCheckIn;
                 note.Title = "";
+                note.Type = NoteType.General;
                 note.IsActive = true;
                 openCheckIn.Notes.Add(note);
 
