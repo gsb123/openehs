@@ -38,7 +38,7 @@
 
     <bag name="Immunizations" table="PatientImmunization" cascade="all" lazy="false">
       <key column="PatientID" />
-      <many-to-many column="ImmunizationID" class="Immunization" />
+      <one-to-many class="PatientImmunization" />
     </bag>
 
     <bag name="PatientCheckIns" table="PatientCheckIn" cascade="all">

@@ -126,7 +126,7 @@
     <Content Include="Mappings\PatientAllergy.hbm.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Mappings\PatientImmunization.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PatientImmunization.hbm.xml" />
     <Content Include="Mappings\PatientProblem.hbm.xml">
       <SubType>Designer</SubType>
     </Content>

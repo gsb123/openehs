@@ -11,20 +11,22 @@
     </p>
     <br />
     <ul id="immunizationListOne">
-        @if (Model.TenYearImmunization.Count == 0) {
+    <!--
+        if (Model.TenYearImmunization.Count == 0) {
             <li id="noImmunizations">Patient does not have any current recorded immunizations.</li>
         } else {
             foreach (var shots in Model.TenYearImmunization) {
             <li class="group">
                 <div>
-                    <b>Vaccine Type: </b>@shots.VaccineType
+                    <b>Vaccine Type: </b>shots.VaccineType
                 </div>
                 <div>
-                    <b>Date Administered: </b>@shots.DateAdministered
+                    <b>Date Administered: </b>shots.DateAdministered
                 </div>
             </li>
             }
         }
+        -->
     </ul>
 </div>
 <div id="immunizationInfoLink">
@@ -32,19 +34,21 @@
 </div>
 <div id="immunizationMoreInfo">
     <ul id="immunizationListTwo">
-        @if (Model.PriorImmunization.Count == 0) {
+    <!--
+        if (Model.PriorImmunization.Count == 0) {
             <li>Patient does not have any prior 10 year immunizations.</li>
         } else {
             foreach (var shots in Model.PriorImmunization) {
             <li class="group">
                 <div style="float: left;">
-                    <b>Vaccine Type: </b>@shots.VaccineType</div>
+                    <b>Vaccine Type: </b>shots.VaccineType</div>
                 <br />
                 <div style="float: left;">
-                    <b>Date Administered: </b>@shots.DateAdministered</div>
+                    <b>Date Administered: </b>shots.DateAdministered</div>
             </li>
             }
         }
+        -->
     </ul>
 </div>
 <!-- Modal Dialog -->

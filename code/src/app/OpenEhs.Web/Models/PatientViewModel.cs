@@ -271,7 +271,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Immunizations")]
-        public IList<Immunization> Immunizations
+        public IList<PatientImmunization> Immunizations
         {
             get
             {
@@ -319,8 +319,8 @@ namespace OpenEhs.Web.Models
                 return pastMeds.ToList();
             }
         }
-
-        public IList<Immunization> TenImmunization
+        /*
+        public IList<PatientImmunization> TenImmunization
         {
             get
             {
@@ -331,19 +331,19 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<Immunization> PriorImmunization
+        public IList<PatientImmunization> PriorImmunization
         {
             get
             {
                 var valShots = from immun in Immunizations
-                               where immun.DateAdministered <= DateTime.Now.AddYears(-10)
+                               where immun.Immunization.DateAdministered <= DateTime.Now.AddYears(-10)
                                select immun;
 
                 return valShots.ToList();
             }
         }
 
-        public IList<Immunization> TenYearImmunization
+        public IList<PatientImmunization> TenYearImmunization
         {
             get
             {
@@ -354,7 +354,7 @@ namespace OpenEhs.Web.Models
                 return valShots.ToList();
             }
         }
-
+        */
         public PatientCheckIn GetOpenCheckin
         {
             get
@@ -544,12 +544,12 @@ namespace OpenEhs.Web.Models
             return false;
         }
 
-        public void AddImmunization(Immunization immunization)
+        public void AddImmunization(PatientImmunization immunization)
         {
             Immunizations.Add(immunization);
         }
 
-        public void RemoveImmunization(Immunization immunization)
+        public void RemoveImmunization(PatientImmunization immunization)
         {
             Immunizations.Remove(immunization);
         }
@@ -561,7 +561,7 @@ namespace OpenEhs.Web.Models
         /// <returns>If the immunization was successfully removed</returns>
         public bool RemoveImmunization(int immunizationId)
         {
-            foreach (Immunization immunization in Immunizations)
+            foreach (PatientImmunization immunization in Immunizations)
             {
                 if (immunization.Id == immunizationId)
                 {
