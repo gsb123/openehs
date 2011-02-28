@@ -10,8 +10,9 @@ namespace OpenEhs.Domain
         #region Fields
 
         public virtual int Id { get; private set; }
-        public virtual int Patient { get; set; }
-        public virtual int Immunization { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual Immunization Immunization { get; set; }
+        public virtual DateTime DateAdministered { get; set; }
 
         #endregion
     }
