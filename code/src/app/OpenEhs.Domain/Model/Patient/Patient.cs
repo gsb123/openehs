@@ -28,7 +28,7 @@ namespace OpenEhs.Domain
                 return age.Days/365;
             }
         }
-        public virtual string Gender { get; set; }
+        public virtual Gender Gender { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual EmergencyContact EmergencyContact { get; set; }
         public virtual Address Address { get; set; }

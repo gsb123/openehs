@@ -1,0 +1,202 @@
+﻿@model OpenEhs.Web.Models.PatientViewModel
+@{
+    ViewBag.Title = "Create";
+}
+@section head
+{
+    <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.wizard-3.0.4.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bbq.js")"type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/patient/create.main.js")"type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#patients-tab").addClass("current");
+        });
+    </script>
+
+    <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/patient.create.css")" rel="Stylesheet" type="text/css" />
+}
+<div id="createPatientDialog">
+    <h2>
+        Create Patient</h2>
+    @using (Html.BeginForm("CreatePatient", "Patient", null, FormMethod.Post, new { id = "createPatientForm", @class = "bbq", })) {
+        <fieldset class="step" id="first">
+            <div id="firstNameDiv">
+                <div class="modal-label">
+                    First Name:
+                </div>
+                <div>
+                    <input type="text" name="p_firstName" id="p_firstName" class="required form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="MiddleNameDiv">
+                <div class="modal-label">
+                    Middle Name:
+                </div>
+                <div>
+                    <input type="text" name="p_middleName" id="p_middleName" class="form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="LastNameDiv">
+                <div class="modal-label">
+                    Last Name:
+                </div>
+                <div>
+                    <input type="text" name="p_lastName" id="p_lastName" class="required form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="dobDiv">
+                <div class="modal-label">
+                    Date of Birth:
+                </div>
+                <div>
+                    <input type="text" name="p_dob" id="p_dob" class="required form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="GenderDiv">
+                <div class="modal-label">
+                    Gender:
+                </div>
+                <div>
+                    Male:<input type="radio" name="p_gender" id="p_gender_male" value="male" class="required form-input text ui-widget-content ui-corner-all" />
+                    Female:<input type="radio" name="p_gender" id="p_gender_female" value="female" class="required form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="PhoneNumberDiv">
+                <div class="modal-label">
+                    Phone Number:
+                </div>
+                <div>
+                    <input type="text" name="p_phoneNumber" id="p_phoneNumber" class="form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="BloodType">
+                <div class="modal-label">
+                    Blood Type:
+                </div>
+                <div>
+                    <input type="text" name="p_bloodType" id="p_bloodType" class="form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="raceDiv">
+                <div class="modal-label">
+                    Tribe/Race:
+                </div>
+                <div>
+                    <input type="text" name="p_tribeRace" id="p_tribeRace" class="form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+            <div id="relgionDiv">
+                <div class="modal-label">
+                    Religion:
+                </div>
+                <div>
+                    <input type="text" name="p_religion" id="p_religion" class="form-input text ui-widget-content ui-corner-all" />
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="step" id="second">
+            <h2>
+                Patient Address</h2>
+            <div class="form-label">
+                Street 1:
+            </div>
+            <div>
+                <input type="text" name="p_address_street1" id="p_address_street1" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Street 2:
+            </div>
+            <div>
+                <input type="text" name="p_address_street2" id="p_address_street2" class="form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                City:
+            </div>
+            <div>
+                <input type="text" name="p_address_City" id="p_address_City" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Region:
+            </div>
+            <div>
+                <input type="text" name="p_address_Region" id="p_address_Region" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Country:
+            </div>
+            <div>
+                <input type="text" name="p_address_Country" id="p_address_Country" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+        </fieldset>          
+        <fieldset class="step" id="third">
+            <h2>
+                Emergency Contact</h2>
+            <div class="form-label">
+                First Name:
+            </div>
+            <div>
+                <input type="text" name="emergency_firstName" id="emergency_firstName" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Last Name:
+            </div>
+            <div>
+                <input type="text" name="emergency_lastname" id="emergency_lastname" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Relationship:
+            </div>
+            <div>
+                <input type="text" name="emergency_relationship" id="emergency_relationship" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Phone Number:
+            </div>
+            <div>
+                <input type="text" name="emergency_phonenumber" id="emergency_phonenumber" class="required form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Street 1:
+            </div>
+            <div>
+                <input type="text" name="ec_address_street1" id="ec_address_street1" class="form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Street 2:
+            </div>
+            <div>
+                <input type="text" name="ec_address_street2" id="ec_address_street2" class="form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                City:
+            </div>
+            <div>
+                <input type="text" name="ec_address_City" id="ec_address_City" class="form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Region:
+            </div>
+            <div>
+                <input type="text" name="ec_address_Region" id="ec_address_Region" class="form-input text ui-widget-content ui-corner-all" />
+            </div>
+            <div class="form-label">
+                Country:
+            </div>
+            <div>
+                <input type="text" name="ec_address_Country" id="ec_address_Country" class="form-input text ui-widget-content ui-corner-all" />
+            </div>
+        </fieldset>
+        <div id="navigation">
+            <input class="navigation_button" id="back" value="Back" type="reset" />
+            <input class="navigation_button" id="next" value="Next" type="submit" />
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,202 +1,270 @@
-﻿@model OpenEhs.Web.Models.PatientViewModel
+﻿@model OpenEhs.Web.Models.CreatePatientViewModel
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "New Patient";
 }
 @section head
 {
-    <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.form.wizard-3.0.4.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/bbq.js")"type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/patient/create.main.js")"type="text/javascript"></script>
+        <style type="text/css">
+            .fieldGroup 
+            {
+                float: left;
+                margin: 5px 10px;
+            }
+            
+            #GenderRadio label
+            {
+                display: inline;
+            }
+            
+            #newPatientContainer
+            {
+                width: 650px;
+                margin: 0 auto;
+            }
+            
+            label
+            {
+                display: block;
+                font-size: 1.4em;
+            }
+            
+            input
+            {
+                font-size: 1.4em;
+            }
+            
+            legend
+            {
+                font-size: 1.4em;
+            }
+            
+            fieldset
+            {
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+            }
+            
+            select
+            {
+                font-size: 1.4em;
+            }
+            
+            h2, h3
+            {
+                margin-bottom: 10px;
+            }
+            
+            #DateOfBirth
+            {
+                width: 100px;
+            }
+            
+            #FirstName, #MiddleName, #LastName, #EcFirstName, #EcLastName
+            {
+                width: 170px;
+            }
+            
+            #Street1, #Street2, #EcStreet1, #EcStreet2
+            {
+                width: 550px;
+            }
+            
+            #basicInformation, #emergencyContactInformation
+            {
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#patients-tab").addClass("current");
-        });
-    </script>
+            }
+            
+            #newPatientContainer form 
+            {
+                padding: 10px 20px;
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                -moz-box-shadow: 0px 0px 20px #ccc;
+                -webkit-box-shadow: 0px 0px 20px #ccc;
+            }
+            
+            .navigation_button 
+            {
+                padding: 5px 10px;
+            }
+            
+            #createPatientNavigation
+            {
+                float: right;
+                margin-top: 10px;
+            }            
+        </style>
 
-    <link href="@Url.Content("~/Content/patient.css")" rel="Stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/patient.create.css")" rel="Stylesheet" type="text/css" />
+
+        <script src="@Url.Content("~/Scripts/bbq.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery-ui-1.8.5.custom.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.form.wizard-3.0.4.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui.datepicker-en-GB.js")" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#DateOfBirth").datepicker({
+                    showOn: "button",
+                    buttonImage: "/Content/themes/base/images/calendar.png",
+                    buttonImageOnly: true,
+                    changeYear: true,
+                    yearRange: "1900:2011"
+                });
+
+                $("#newPatientContainer form").formwizard({
+                    formPluginEnabled: true,
+                    validationEnabled: true,
+                    focusFirstInput: true,
+                    disableUIStyles: true,
+                    formOptions: {
+                        success: function (data) { alert("Success!"); },
+                        beforeSubmit: function (data) { alert("Before submit!"); },
+                        dataType: "json",
+                        resetForm: true
+                    }
+                });
+            });
+        </script>
 }
-<div id="createPatientDialog">
-    <h2>
-        Create Patient</h2>
-    @using (Html.BeginForm("CreatePatient", "Patient", null, FormMethod.Post, new { id = "createPatientForm", @class = "bbq", })) {
-        <fieldset class="step" id="first">
-            <div id="firstNameDiv">
-                <div class="modal-label">
-                    First Name:
+
+<div id="newPatientContainer" class="group">
+    <h2>New Patient</h2>
+    @using (Html.BeginForm("Create", "Patient", FormMethod.Post, new { @id = "createPatientForm", @class = "group" }))
+    {
+        <div id="basicInformation" class="step">
+            <h3>Basic Information</h3>
+            <div class="group">
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName)
                 </div>
-                <div>
-                    <input type="text" name="p_firstName" id="p_firstName" class="required form-input text ui-widget-content ui-corner-all" />
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.MiddleName)
+                    @Html.TextBoxFor(m => m.MiddleName)
                 </div>
-            </div>
-            <div id="MiddleNameDiv">
-                <div class="modal-label">
-                    Middle Name:
-                </div>
-                <div>
-                    <input type="text" name="p_middleName" id="p_middleName" class="form-input text ui-widget-content ui-corner-all" />
-                </div>
-            </div>
-            <div id="LastNameDiv">
-                <div class="modal-label">
-                    Last Name:
-                </div>
-                <div>
-                    <input type="text" name="p_lastName" id="p_lastName" class="required form-input text ui-widget-content ui-corner-all" />
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName)
                 </div>
             </div>
-            <div id="dobDiv">
-                <div class="modal-label">
-                    Date of Birth:
+            <div class="group">
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.DateOfBirth)
+                    @Html.EditorFor(m => m.DateOfBirth)
                 </div>
-                <div>
-                    <input type="text" name="p_dob" id="p_dob" class="required form-input text ui-widget-content ui-corner-all" />
-                </div>
-            </div>
-            <div id="GenderDiv">
-                <div class="modal-label">
-                    Gender:
-                </div>
-                <div>
-                    Male:<input type="radio" name="p_gender" id="p_gender_male" value="male" class="required form-input text ui-widget-content ui-corner-all" />
-                    Female:<input type="radio" name="p_gender" id="p_gender_female" value="female" class="required form-input text ui-widget-content ui-corner-all" />
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Gender)
+                    <div id="GenderRadio">
+                        @Html.RadioButtonFor(m => m.Gender, "Male", new { @id = "MaleGenderRadio" })
+                        @Html.Label("MaleGenderRadio", "Male")
+                        @Html.RadioButtonFor(m => m.Gender, "Female", new { @id = "FemaleGenderRadio" })
+                        @Html.Label("FemaleGenderRadio", "Female")
+                    </div>
                 </div>
             </div>
-            <div id="PhoneNumberDiv">
-                <div class="modal-label">
-                    Phone Number:
+            <div class="group">
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.PhoneNumber)
+                    @Html.TextBoxFor(m => m.PhoneNumber)
                 </div>
-                <div>
-                    <input type="text" name="p_phoneNumber" id="p_phoneNumber" class="form-input text ui-widget-content ui-corner-all" />
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.TribeRace)
+                    @Html.TextBoxFor(m => m.TribeRace)
                 </div>
-            </div>
-            <div id="BloodType">
-                <div class="modal-label">
-                    Blood Type:
-                </div>
-                <div>
-                    <input type="text" name="p_bloodType" id="p_bloodType" class="form-input text ui-widget-content ui-corner-all" />
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Religion)
+                    @Html.TextBoxFor(m => m.Religion)
                 </div>
             </div>
-            <div id="raceDiv">
-                <div class="modal-label">
-                    Tribe/Race:
+            <fieldset>
+                <legend>Address</legend>
+                <div class="group">
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.Street1)
+                        @Html.TextBoxFor(m => m.Street1)
+                    </div>
                 </div>
-                <div>
-                    <input type="text" name="p_tribeRace" id="p_tribeRace" class="form-input text ui-widget-content ui-corner-all" />
+                <div class="group">
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.Street2)
+                        @Html.TextBoxFor(m => m.Street2)
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.City)
+                        @Html.TextBoxFor(m => m.City)
+                    </div>
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.Region)
+                        @Html.TextBoxFor(m => m.Region)
+                    </div>
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.Country)
+                        @Html.DropDownListFor(m => m.Country, new SelectList(new[] { "Ghana" }))
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div id="emergencyContactInformation" class="step">
+            <h3>Emergency Contact</h3>
+            <div class="group">
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.EcFirstName)
+                    @Html.TextBoxFor(m => m.EcFirstName)
+                </div>
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.EcLastName)
+                    @Html.TextBoxFor(m => m.EcLastName)
                 </div>
             </div>
-            <div id="relgionDiv">
-                <div class="modal-label">
-                    Religion:
+            <div class="group">
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.EcPhoneNumber)
+                    @Html.TextBoxFor(m => m.EcPhoneNumber)
                 </div>
-                <div>
-                    <input type="text" name="p_religion" id="p_religion" class="form-input text ui-widget-content ui-corner-all" />
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.EcRelationship)
+                    @Html.DropDownListFor(m => m.EcRelationship, Model.Relationships)
                 </div>
             </div>
-        </fieldset>
-        <fieldset class="step" id="second">
-            <h2>
-                Patient Address</h2>
-            <div class="form-label">
-                Street 1:
-            </div>
-            <div>
-                <input type="text" name="p_address_street1" id="p_address_street1" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Street 2:
-            </div>
-            <div>
-                <input type="text" name="p_address_street2" id="p_address_street2" class="form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                City:
-            </div>
-            <div>
-                <input type="text" name="p_address_City" id="p_address_City" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Region:
-            </div>
-            <div>
-                <input type="text" name="p_address_Region" id="p_address_Region" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Country:
-            </div>
-            <div>
-                <input type="text" name="p_address_Country" id="p_address_Country" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-        </fieldset>          
-        <fieldset class="step" id="third">
-            <h2>
-                Emergency Contact</h2>
-            <div class="form-label">
-                First Name:
-            </div>
-            <div>
-                <input type="text" name="emergency_firstName" id="emergency_firstName" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Last Name:
-            </div>
-            <div>
-                <input type="text" name="emergency_lastname" id="emergency_lastname" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Relationship:
-            </div>
-            <div>
-                <input type="text" name="emergency_relationship" id="emergency_relationship" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Phone Number:
-            </div>
-            <div>
-                <input type="text" name="emergency_phonenumber" id="emergency_phonenumber" class="required form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Street 1:
-            </div>
-            <div>
-                <input type="text" name="ec_address_street1" id="ec_address_street1" class="form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Street 2:
-            </div>
-            <div>
-                <input type="text" name="ec_address_street2" id="ec_address_street2" class="form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                City:
-            </div>
-            <div>
-                <input type="text" name="ec_address_City" id="ec_address_City" class="form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Region:
-            </div>
-            <div>
-                <input type="text" name="ec_address_Region" id="ec_address_Region" class="form-input text ui-widget-content ui-corner-all" />
-            </div>
-            <div class="form-label">
-                Country:
-            </div>
-            <div>
-                <input type="text" name="ec_address_Country" id="ec_address_Country" class="form-input text ui-widget-content ui-corner-all" />
-            </div>
-        </fieldset>
-        <div id="navigation">
+            <fieldset>
+                <legend>Address</legend>
+                <div class="group">
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.EcStreet1)
+                        @Html.TextBoxFor(m => m.EcStreet1)
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.EcStreet2)
+                        @Html.TextBoxFor(m => m.EcStreet2)
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.EcCity)
+                        @Html.TextBoxFor(m => m.EcCity)
+                    </div>
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.EcRegion)
+                        @Html.TextBoxFor(m => m.EcRegion)
+                    </div>
+                    <div class="fieldGroup group">
+                        @Html.LabelFor(m => m.EcCountry)
+                        @Html.DropDownListFor(m => m.EcCountry, new SelectList(new[] { "Ghana" }))
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div id="createPatientNavigation">
             <input class="navigation_button" id="back" value="Back" type="reset" />
             <input class="navigation_button" id="next" value="Next" type="submit" />
-        </div>
+        </div>    
     }
-</div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

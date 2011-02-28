@@ -100,7 +100,7 @@ namespace OpenEhs.Web.Models
 
         [Required]
         [DisplayName("Gender")]
-        public string Gender
+        public Gender Gender
         {
             get
             {
