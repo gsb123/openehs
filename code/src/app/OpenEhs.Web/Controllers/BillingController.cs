@@ -153,22 +153,35 @@ namespace OpenEhs.Web.Controllers
                 payment.IsActive = true;
                 payment.CashAmount = decimal.Parse(Request.Form["Amount"]);
                 payment.Invoice = new InvoiceRepository().Get(int.Parse(Request.Form["InvoiceId"]));
+                BillingViewModel billz = new BillingViewModel(payment.Invoice.Id);
                 payment.PaymentDate = DateTime.Now;
 
+                if (payment.CashAmount > billz.Total - billz.PaymentTotal)
+                {
+                    return Json(new { 
+                        error = true, 
+                        message = "Please do not pay more than is owed." 
+                    });
+                }
+
                 paymentRepo.Add(payment);
+
 
                 return Json(new
                 {
                     error = false,
                     Date = payment.PaymentDate.ToString(),
-                    Amount = payment.CashAmount.ToString("c")
+                    Amount = payment.CashAmount.ToString("c"),
+                    Balance = String.Format("{0:c}", billz.Total - billz.PaymentTotal),
+                    Payments = String.Format("{0:c}", billz.PaymentTotal)
                 });
             }
-            catch
+            catch(Exception e)
             {
                 return Json(new
                 {
-                    error = true
+                    error = true,
+                    message = e.Message
                 });
             }
         }
