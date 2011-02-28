@@ -301,3 +301,12 @@ input.restoreDatabase {
     list-style-type: circle;
     color: #FF0000;
 }
+
+#inventoryFS
+{
+	margin-left: 119px;
+    margin-top: 40px;
+    float: left;
+    width: 680px;
+    height: 100px;
+}
