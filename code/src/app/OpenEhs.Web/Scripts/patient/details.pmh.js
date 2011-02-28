@@ -61,7 +61,7 @@ $(function () {
                 htmlOutput += "</table>Output Chart:";
 
                 htmlOutput += "<table class=\"detailsTables\" id=\"centerForOutputChart\"><thead><th colspan=\"3\">N.G. Suction</th><th colspan=\"1\">Urine</th><th colspan=\"2\">Stool</th><thead><thead><tr><th>Date and Time</th><th>Amount</th>" +
-                            "<th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead>";
+                            "<th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead><tbody>";
 
                 for (var z = 0; z < checkin.OutputChart.length; z++) {
 
@@ -71,7 +71,22 @@ $(function () {
 
                 }
 
-                htmlOutput += "</table></div>";
+                htmlOutput += "</tbody></table>Intake Chart:";
+
+                htmlOutput += "<table class=\"detailsTables\"><thead><tr><th>Date and Time</th><th>Kind Of Fluid</th><th>Amount</th></tr></thead><tbody>";
+
+
+                for (var b = 0; b < checkin.IntakeChart.length; b++) {
+
+                    var intake = checkin.IntakeChart[b];
+
+                    htmlOutput += "<tr><td>" + intake.Time + "</td><td>" + intake.KindOfFluid + "</td><td>" + intake.Amount + "</td></tr>";
+
+                }
+
+                htmlOutput += "</tbody></table>";
+
+                htmlOutput += "</div>";
 
                 htmlOutput += "</li></ul></div>";
 
