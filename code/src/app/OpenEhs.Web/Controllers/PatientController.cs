@@ -758,7 +758,7 @@ namespace OpenEhs.Web.Controllers {
 
                     foreach (var c in result.IntakeChart)
                     {
-                        outputList.Add(new
+                        intakeList.Add(new
                         {
                             Time = c.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
                             c.ChartTime,
