@@ -51,7 +51,7 @@
 	<fieldset id="showLineItemsFS">
 		<legend>Current Line Items</legend>
         <br />
-		<table id="detailsTables" class="detailsTables">
+		<table id="detailsTable" class="detailsTable">
 			<thead>
 				<tr>
 					<th>
@@ -62,24 +62,6 @@
 					</th>
 				</tr>
 			</thead>
-            @if (Model.CurrentInvoice != null)
-            {
-                foreach (var lineItem in Model.CurrentInvoice.Items)
-                {
-                    <tr>
-                        <td>@if (lineItem.Product == null)
-                            {
-                                @lineItem.Service.Name
-                            }else{
-                                @lineItem.Product.Name
-                            }
-                        </td>
-                        <td>
-                            @lineItem.Quantity
-                        </td>
-                    </tr>
-                }
-            }
 		</table>
 
 	</fieldset>
