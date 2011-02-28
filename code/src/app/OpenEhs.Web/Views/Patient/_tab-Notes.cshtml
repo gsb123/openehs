@@ -10,7 +10,10 @@
 
 <div>
 	<ul id="submittedNoteList">
-       <li></li>
+       @foreach(var note in Model.GetOpenCheckin.Notes)
+	   {
+			<li>@HttpUtility.HtmlDecode(note.Body)</li>
+	   }
     </ul>
 </div>
 
