@@ -754,6 +754,19 @@ namespace OpenEhs.Web.Controllers {
                         });
                     }
 
+                    IList<object> intakeList = new List<object>();
+
+                    foreach (var c in result.IntakeChart)
+                    {
+                        outputList.Add(new
+                        {
+                            Time = c.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                            c.ChartTime,
+                            c.KindOfFluid,
+                            c.Amount
+                        });
+                    }
+
                     resultSet.Add(new {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
                         result.Diagnosis,
@@ -761,7 +774,8 @@ namespace OpenEhs.Web.Controllers {
                         lastName = result.AttendingStaff.LastName,
                         Vitals = visitList,
                         FeedChart = feedList,
-                        OutputChart = outputList
+                        OutputChart = outputList,
+                        IntakeChart = intakeList
                     });
                 }
 

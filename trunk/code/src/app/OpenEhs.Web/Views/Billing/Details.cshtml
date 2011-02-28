@@ -11,59 +11,6 @@
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/billing.js")" type="text/javascript"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#PayInFullButton")
-                .button()
-                .click(function () {
-                    $("#addPaymentDialog").dialog("open")
-                })
-                .next()
-                    .button({
-                        text: false,
-                        icons: {
-                            primary: "ui-icon-triangle-1-s"
-                        }
-                    })
-                    .click(function () {
-                        alert("Menu!?");
-                    })
-                    .parent()
-                        .buttonset();
-
-            $("#billing-tab").addClass("current");
-
-            $("#InvoiceLineItems tbody tr:odd").addClass("striped");
-        });
-
-//        $("#addPayment").button().click(function () {
-//            $("#addPaymentDialog").dialog("open");
-//        });
-
-        $("#addPaymentDialog").dialog({
-            autoOpen: false,
-            height: 160,
-            width: 420,
-            modal: true,
-            buttons: {
-                "Add Payment": function () {
-                    $.post("/Billing/AddPayment", {
-                        InvoiceId: $("#PaymentInvoiceID").val(),
-                        Amount: $("#model_paymentamount").val()
-                    }, function (result) {
-                        $("#addPaymentDialog").dialog("close");
-
-                        $("#model_paymentamount").val("");
-                    }, "json");
-                },
-                Cancel: function () {
-                    $("#model_paymentamount").val("");
-                    $(this).dialog("close");
-                }
-            },
-            close: function () {
-
-            }
-        });
 
     </script>
 }
@@ -221,7 +168,7 @@
 </div>
 <h2 style="text-align: right">@String.Format("Total Paid: {0:c}", Model.PaymentTotal)</h2>
 
-<div id="addPaymentDialog" title="Add Service">
+<div id="addPaymentDialog" title="Add Payment">
     <ul class="modalErrorContainer" style="display: none">
     </ul>
     <form id="addPaymentForm" action="">

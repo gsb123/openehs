@@ -13,7 +13,6 @@ $(function () {
                 loc: $("select[name='loactionBox'] option:selected").val()
             },
             success: function (response) {
-                alert("success");
 
                 var table = document.getElementById("searchCheckinResult");
                 var tr = document.createElement("tr");
