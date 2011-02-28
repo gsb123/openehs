@@ -29,53 +29,49 @@ $(document).ready(function () {
                     .buttonset();
 
 
-                $("#addPaymentDialog").dialog({
-                    autoOpen: false,
-                    height: 200,
-                    width: 420,
-                    modal: true,
-                    buttons: {
-                        "Add Payment": function () {
-                            $.post("/Billing/AddPayment", {
-                                InvoiceId: $("#PaymentInvoiceID").val(),
-                                Amount: $("#model_paymentamount").val()
-                            }, function (result) {
-                                $("#addPaymentDialog").dialog("close");
-                                //<tr><td class="DescriptionColumn">@payment.PaymentDate</td><td class="PriceColumn">GH&#x20B5;@payment.CashAmount</td></tr>
-                                                        var table = document.getElementById("PaymentsTable");
-                        var tr = document.createElement("tr");
+    $("#addPaymentDialog").dialog({
+        autoOpen: false,
+        height: 200,
+        width: 420,
+        modal: true,
+        buttons: {
+            "Add Payment": function () {
+                $.post("/Billing/AddPayment", {
+                    InvoiceId: $("#PaymentInvoiceID").val(),
+                    Amount: $("#model_paymentamount").val()
+                }, function (result) {
+                    $("#addPaymentDialog").dialog("close");
+                    var table = document.getElementById("PaymentsTable");
+                    var tr = document.createElement("tr");
 
-                        var elements = new Array();
+                    var elements = new Array();
 
-                        for (var i = 0; i < 2; i++)
-                            elements[i] = document.createElement("td");
+                    for (var i = 0; i < 2; i++)
+                        elements[i] = document.createElement("td");
 
-                        elements[0].appendChild(document.createTextNode(result.Name));
-                        elements[1].appendChild(document.createTextNode(result.));
+                    elements[0].appendChild(document.createTextNode(result.Date));
+                    elements[1].appendChild(document.createTextNode(result.Amount));
 
-                        for (var i = 0; i < 2; i++)
-                            tr.appendChild(elements[i]);
+                    for (var i = 0; i < 2; i++)
+                        tr.appendChild(elements[i]);
 
-                        table.appendChild(tr);
+                    table.appendChild(tr);
 
-                            $("#allergyList").append(newAllergy);
-                            $("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
-                                $(this).find(".allergyRemove").button().click(removeOnClick)
 
-                                $("#model_paymentamount").val("");
-                            }, "json");
-                        },
-                        Cancel: function () {
-                            $("#model_paymentamount").val("");
-                            $(this).dialog("close");
-                        }
-                    },
-                    close: function () {
+                    $("#model_paymentamount").val("");
+                }, "json");
+            },
+            Cancel: function () {
+                $("#model_paymentamount").val("");
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
 
-                    }
-                });
+        }
+    });
 
-//                $("#PayInFullButton").button().click(function () {
-//                    $("#addPaymentDialog").dialog("open");
-//                });
+    //                $("#PayInFullButton").button().click(function () {
+    //                    $("#addPaymentDialog").dialog("open");
+    //                });
 });

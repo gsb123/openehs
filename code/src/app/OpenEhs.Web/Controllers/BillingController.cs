@@ -159,7 +159,9 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
-                    error = false
+                    error = false,
+                    Date = payment.PaymentDate.ToString(),
+                    Amount = payment.CashAmount.ToString("c")
                 });
             }
             catch
