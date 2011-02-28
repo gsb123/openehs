@@ -977,11 +977,25 @@ namespace OpenEhs.Web.Controllers {
                         lineItem.Service = null;
                         invoiceRepo.AddLineItem(lineItem);
                         UnitOfWork.CurrentSession.Flush();
-                    } else if (Request.Form["service"] != "") {
+                        return Json(new
+                        {
+                            error = "false",
+                            Name = lineItem.Product.Name,
+                            Quantity = lineItem.Quantity
+                        });
+                    }
+                    else if (Request.Form["service"] != "")
+                    {
                         lineItem.Service = serviceRepo.Get(int.Parse(Request.Form["service"]));
                         lineItem.Product = null;
                         invoiceRepo.AddLineItem(lineItem);
                         UnitOfWork.CurrentSession.Flush();
+                        return Json(new
+                        {
+                            error = "false",
+                            Name = lineItem.Service.Name,
+                            Quantity = lineItem.Quantity
+                        });
                     }
                 }
 

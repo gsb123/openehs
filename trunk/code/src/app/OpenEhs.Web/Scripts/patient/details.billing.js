@@ -20,7 +20,21 @@ $(function () {
                 quantity: $("select[name='quantitySelect'] option:selected").val()
             },
             success: function (response) {
-                alert("Submitted");
+                var table = document.getElementById("detailsTable");
+                        var tr = document.createElement("tr");
+
+                        var elements = new Array();
+
+                        for (var i = 0; i < 2; i++)
+                            elements[i] = document.createElement("td");
+
+                        elements[0].appendChild(document.createTextNode(result.Name));
+                        elements[1].appendChild(document.createTextNode(result.Quantity));
+
+                        for (var i = 0; i < 2; i++)
+                            tr.appendChild(elements[i]);
+
+                        table.appendChild(tr);
             },
             dataType: "json"
         });
