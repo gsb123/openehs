@@ -21,7 +21,16 @@
         <fieldset>
             <label for="name" class="modal-label">
                 Allergy Name:</label>
-            <input type="text" name="name" id="addAllergyName" class="text required ui-widget-content ui-corner-all" />
+            @*<input type="text" name="name" id="addAllergyName" class="text required ui-widget-content ui-corner-all" />*@
+
+			<select name="removeProductSelect" id="addAllergyName" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Product...</option>
+            @foreach (var all in Model.Allergies)
+            {
+                <option value="@all.Id">@all.Name</option>
+            }
+            </select>
+
         </fieldset>
     </form>
 </div>

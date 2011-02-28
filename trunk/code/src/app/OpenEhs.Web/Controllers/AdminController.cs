@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using OpenEhs.Domain;
 using System;
 using System.Web.Security;
@@ -200,6 +201,72 @@ namespace OpenEhs.Web.Controllers
             }
             catch
             {
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        public JsonResult ProductList()
+        {
+            try
+            {
+                int productID = int.Parse(Request.Form["ID"]);
+                ProductRepository productRepo = new ProductRepository();
+                var product = productRepo.Get(productID);
+
+                var resultSet = new List<object>();
+                var jsonResult = new JsonResult();
+
+                resultSet.Add(new
+                {
+                    error = false,
+                    Name = product.Name,
+                    Unit = product.Unit,
+                    Category = product.Category.Name,
+                    Price = product.Price,
+                    Quantity = product.QuantityOnHand
+                });
+
+                jsonResult.Data = resultSet;
+
+                return jsonResult;
+            }
+            catch (Exception)
+            {
+
+                return Json(new
+                {
+                    error = true
+                });
+            }
+        }
+
+        public JsonResult ServiceList()
+        {
+            try
+            {
+                int serviceID = int.Parse(Request.Form["ID"]);
+                ServiceRepository serviceRepo = new ServiceRepository();
+                var service = serviceRepo.Get(serviceID);
+
+                var resultSet = new List<object>();
+                var jsonResult = new JsonResult();
+
+                resultSet.Add(new
+                {
+                    error = false,
+                    Price = service.Price
+                });
+
+                jsonResult.Data = resultSet;
+
+                return jsonResult;
+            }
+            catch (Exception)
+            {
+
                 return Json(new
                 {
                     error = true
