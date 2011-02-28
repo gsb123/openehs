@@ -30,7 +30,7 @@ $(function () {
                     "<br /><b>Diagnosis: </b>" + checkin.Diagnosis +
                     "<br /><b>Attending Staff: </b>" + checkin.firstName + ", " + checkin.lastName +
                     "<br /><b>Recorded Vitals: </b><br />" +
-                    "<table class=\"detailsTables\"><thead><tr><th>Time</th><th>Type</th><th>Height(cm)</th><th>Weight(kg)</th><th>Temp(&deg;C)</th><th>HR(bpm)</th><th>BP(mmHg)</th><th>RR(Hz)</th></tr></thead><tbody>";
+                    "<table class=\"detailsTable\"><thead><tr><th>Time</th><th>Type</th><th>Height(cm)</th><th>Weight(kg)</th><th>Temp(&deg;C)</th><th>HR(bpm)</th><th>BP(mmHg)</th><th>RR(Hz)</th></tr></thead><tbody>";
 
                 for (var x = 0; x < checkin.Vitals.length; x++) {
 
@@ -47,7 +47,7 @@ $(function () {
 
                 htmlOutput += "Feed Chart:";
 
-                htmlOutput += "<table class=\"detailsTables\"><thead><tr><th>Date and Time</th><th>Feed Type</th>" +
+                htmlOutput += "<table class=\"detailsTable\"><thead><tr><th>Date and Time</th><th>Feed Type</th>" +
                             "<th>Amount Offered</th><th>Amount Taken</th><th>Vomit</th><th>Urine</th><th>Stool</th><th>Comments</th></tr></thead>";
 
                 for (var w = 0; w < checkin.FeedChart.length; w++) {
@@ -60,7 +60,7 @@ $(function () {
 
                 htmlOutput += "</table>Output Chart:";
 
-                htmlOutput += "<table class=\"detailsTables\" id=\"centerForOutputChart\" border=\"1\"><thead><tr><th></th><th colspan=\"2\">N.G. Suction</th>" +
+                htmlOutput += "<table class=\"detailsTable\" id=\"centerForOutputChart\" border=\"1\"><thead><tr><th></th><th colspan=\"2\">N.G. Suction</th>" +
                               "<th>Urine</th><th colspan=\"2\">Stool</th></tr><tr><th>Date and Time</th><th>Amount</th><th>Colour</th><th>Amount</th><th>Amount</th><th>Colour</th></tr></thead><tbody>";
 
                 for (var z = 0; z < checkin.OutputChart.length; z++) {
@@ -73,7 +73,7 @@ $(function () {
 
                 htmlOutput += "</tbody></table>Intake Chart:";
 
-                htmlOutput += "<table class=\"detailsTables\"><thead><tr><th>Date and Time</th><th>Kind Of Fluid</th><th>Amount</th></tr></thead><tbody>";
+                htmlOutput += "<table class=\"detailsTable\"><thead><tr><th>Date and Time</th><th>Kind Of Fluid</th><th>Amount</th></tr></thead><tbody>";
 
                 for (var b = 0; b < checkin.IntakeChart.length; b++) {
 
@@ -89,7 +89,24 @@ $(function () {
 
                 htmlOutput += "<div id=\"pmhSurgeryLink\"><b>Surgery...</b></div><div id=\"pmhSurgeryInfo\">";
 
-                htmlOutput += "</div>"
+                htmlOutput += "<b>Start Time:</b><br />";
+
+                htmlOutput += "<b>End Time:</b><br />";
+
+                htmlOutput += "<b>Case Type:</b><br />";
+
+                htmlOutput += "<b>Surgery Staff:</b><br />";
+
+                htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Surgeon:</b><br />";
+                htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Surgeon Assistant:</b><br />";
+                htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Anaesthetist:</b><br />";
+                htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Anaesthetist Assistant:</b><br />";
+                htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Nurse:</b><br />";
+                htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Consultant:</b><br />";
+
+                htmlOutput += "<b>Notes:</b><br />";
+
+                htmlOutput += "</div>";
 
                 htmlOutput += "</li></ul></div>";
 
@@ -100,6 +117,7 @@ $(function () {
         });
 
     });
+
 
     $("#pmhChartLink").live('click', function () {
         $("#pmhChartInfo").slideToggle("slow", function () { });

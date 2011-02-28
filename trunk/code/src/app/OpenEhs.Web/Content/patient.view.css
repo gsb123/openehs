@@ -86,7 +86,7 @@ legend
     border-left-width: medium;
     border-right-width: medium;
     border-top-width: medium;
-    background: #19FF19;
+    background: -moz-linear-gradient(top,  #004C00,  #B2E0B2);
 }
 
 #editPatientInfoButton
@@ -116,6 +116,7 @@ legend
     border-right-width: medium;
     border-top-width: medium;
     background: #FF1919;
+    background: -moz-linear-gradient(top,  #990000,  #FFB2B2);
 }
 
 #BasicInformationColumn {
@@ -1297,6 +1298,19 @@ margin-bottom: 10px;
 }
 
 #pmhChartLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#pmhSurgeryInfo
+{
+    clear: both;
+    display: none;
+}
+
+#pmhSurgeryLink
 {
     clear: both;
     color: #00f;
