@@ -1231,7 +1231,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirth(dob);    //Find any patients with this DOB
                 foreach (Patient patient in dobPatients)
                 {
-                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.DateOfBirth.ToShortDateString(), patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
             }
             catch (Exception e) { }
@@ -1241,7 +1241,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirthPiece(term);    //Find any patients with this DOB
                 foreach (Patient patient in dobPatients)
                 {
-                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.DateOfBirth.ToShortDateString(), patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
             }
             catch (Exception e) { }
@@ -1254,7 +1254,7 @@ namespace OpenEhs.Web.Controllers
                 foreach (Patient patient in phonePatients)
                 {
                     string phoneNo = string.Format("{0} {1} {2}", patient.PhoneNumber.Substring(0, 3), patient.PhoneNumber.Substring(3, 3), patient.PhoneNumber.Substring(6, 4));
-                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", phoneNo, patient.LastName, patient.FirstName, patient.MiddleName));
+                    suggestions.Add(string.Format("{5} - [{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString(), phoneNo));
                 }
             }
             catch (Exception e) { }
@@ -1265,7 +1265,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> idPatients = new PatientRepository().FindByPatientIdPiece(term);
                 foreach (Patient patient in idPatients)
                 {
-                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName));
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
             }
             catch (Exception e) { }
@@ -1276,7 +1276,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(term);
                 foreach (Patient patient in physicalIdPatients)
                 {
-                    suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.OldPhysicalRecordNumber, patient.LastName, patient.FirstName, patient.MiddleName));
+                    suggestions.Add(string.Format("{5} - [{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString(), patient.OldPhysicalRecordNumber));
                 }
             }
             catch (Exception e) { }
@@ -1287,7 +1287,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> firstNamePatients = new PatientRepository().FindByFirstName(term);
                 foreach (Patient patient in firstNamePatients)
                 {
-                    suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
             }
             catch (Exception e) { }
@@ -1297,7 +1297,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> middleNamePatients = new PatientRepository().FindByMiddleName(term);
                 foreach (Patient patient in middleNamePatients)
                 {
-                    suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
             }
             catch (Exception e) { }
@@ -1307,7 +1307,7 @@ namespace OpenEhs.Web.Controllers
                 IList<Patient> lastNamePatients = new PatientRepository().FindByLastName(term);
                 foreach (Patient patient in lastNamePatients)
                 {
-                    suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
+                    suggestions.Add(string.Format("[{0}] - {1}, {2} {3} - {4}", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
             }
             catch (Exception e) { }
