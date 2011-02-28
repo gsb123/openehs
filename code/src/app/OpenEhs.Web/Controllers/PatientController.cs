@@ -980,8 +980,9 @@ namespace OpenEhs.Web.Controllers {
                         return Json(new
                         {
                             error = "false",
-                            Name = lineItem.Product.Name,
-                            Quantity = lineItem.Quantity
+                            lineItem.Product.Name,
+                            lineItem.Quantity
+
                         });
                     }
                     else if (Request.Form["service"] != "")
@@ -993,8 +994,8 @@ namespace OpenEhs.Web.Controllers {
                         return Json(new
                         {
                             error = "false",
-                            Name = lineItem.Service.Name,
-                            Quantity = lineItem.Quantity
+                            lineItem.Service.Name,
+                            lineItem.Quantity
                         });
                     }
                 }

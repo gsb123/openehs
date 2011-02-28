@@ -87,6 +87,10 @@ $(function () {
 
                 htmlOutput += "</div>";
 
+                htmlOutput += "<div id=\"pmhSurgeryLink\"><b>Surgery...</b></div><div id=\"pmhSurgeryInfo\">";
+
+                htmlOutput += "</div>"
+
                 htmlOutput += "</li></ul></div>";
 
                 $("#replaceDIV").replaceWith(htmlOutput);
@@ -99,6 +103,10 @@ $(function () {
 
     $("#pmhChartLink").live('click', function () {
         $("#pmhChartInfo").slideToggle("slow", function () { });
+    });
+
+    $("#pmhSurgeryLink").live('click', function () {
+        $("#pmhSurgeryInfo").slideToggle("slow", function () { });
     });
 
 

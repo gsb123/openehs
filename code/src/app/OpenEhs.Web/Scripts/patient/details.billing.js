@@ -21,20 +21,24 @@ $(function () {
             },
             success: function (response) {
                 var table = document.getElementById("detailsTable");
-                        var tr = document.createElement("tr");
+                var tr = document.createElement("tr");
 
-                        var elements = new Array();
+                var elements = new Array();
 
-                        for (var i = 0; i < 2; i++)
-                            elements[i] = document.createElement("td");
+                for (var i = 0; i < 2; i++)
+                    elements[i] = document.createElement("td");
 
-                        elements[0].appendChild(document.createTextNode(result.Name));
-                        elements[1].appendChild(document.createTextNode(result.Quantity));
+                elements[0].appendChild(document.createTextNode(response.Name));
+                elements[1].appendChild(document.createTextNode(response.Quantity));
 
-                        for (var i = 0; i < 2; i++)
-                            tr.appendChild(elements[i]);
+                for (var i = 0; i < 2; i++)
+                    tr.appendChild(elements[i]);
 
-                        table.appendChild(tr);
+                table.appendChild(tr);
+
+                $("select[name='productSelect'] option:selected").val("");
+                $("select[name='serviceSelect'] option:selected").val("");
+                $("select[name='quantitySelect'] option:selected").val("");
             },
             dataType: "json"
         });
