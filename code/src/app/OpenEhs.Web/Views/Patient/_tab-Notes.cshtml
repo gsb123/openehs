@@ -10,10 +10,13 @@
 
 <div>
 	<ul id="submittedNoteList">
-       @foreach(var note in Model.GetOpenCheckin.Notes)
-	   {
+    @if (Model.GetOpenCheckin != null)
+    {
+        foreach (var note in Model.GetOpenCheckin.Notes)
+        {
 			<li>@HttpUtility.HtmlDecode(note.Body)</li><br />
-	   }
+        }
+    }
     </ul>
 </div>
 
