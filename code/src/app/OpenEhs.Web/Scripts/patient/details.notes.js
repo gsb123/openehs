@@ -40,6 +40,8 @@ $(function () {
 
                     var output = result.NoteBody + '<br />';
                     $("#submittedNoteList").append(output);
+
+                    $("#prewrittenNoteSelect").append('<option value="' + result.templateId + '" >' + result.templateTitle + '</option>');
                     //TODO: NEED TO MAKE THIS RESPOND TO THE BULLETS AND OTHER INPUTS
 
 
