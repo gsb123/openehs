@@ -310,3 +310,21 @@ input.restoreDatabase {
     width: 680px;
     height: 100px;
 }
+
+#AddInventory
+{
+	margin-left: 150px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}
+
+#EditInventory
+{
+	margin-left: 70px;
+    width: 150px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 18px;
+}

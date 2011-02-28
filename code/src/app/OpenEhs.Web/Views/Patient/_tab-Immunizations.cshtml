@@ -61,13 +61,36 @@
             Vaccine Type:
         </div>
         <div>
-            <input type="text" name="name" id="modal_immName" class="required modal-input text ui-widget-content ui-corner-all" />
+            @*<input type="text" name="name" id="modal_immName" class="required modal-input text ui-widget-content ui-corner-all" />*@
+
+			<select name="immunizationSelect" id="immunizationSelect" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">SelectImmunization...</option>
+            @foreach (var all in Model.AllImmunizations)
+            {
+                <option value="@all.Id">@all.VaccineType</option>
+            }
+            </select>
         </div>
         <div class="modal-label-long">
             Date Administered:
         </div>
         <div>
             <input type="text" name="dateAdministered" id="modal_immAdministered" class="required modal-input text ui-widget-content ui-corner-all datepicker" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="createImmunizationDialog" title="Add New Immunization">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="createImmunizationDialog" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Vaccine Type:
+        </div>
+        <div>
+            <input type="text" name="name" id="modal_immName" class="required modal-input text ui-widget-content ui-corner-all" />
         </div>
     </fieldset>
     </form>

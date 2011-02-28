@@ -417,6 +417,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Immunization> AllImmunizations
+        {
+            get
+            {
+                ImmunizationRepository immun = new ImmunizationRepository();
+                return immun.GetAll();
+            }
+        }
+
         public IList<Staff> GetActivePhysicians
         {
             get

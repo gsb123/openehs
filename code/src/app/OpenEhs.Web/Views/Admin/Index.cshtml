@@ -110,6 +110,9 @@
 	<fieldset id="inventoryFS">
 		<legend class="legendTextSize">Inventory</legend>
 
+		<input id="AddInventory" type="button" value="Add Inventory" />
+
+		<input id="EditInventory" type="button" value="Edit Inventory" />
 
 	</fieldset>
 </div>
@@ -408,6 +411,60 @@
                 <option value="@cat.Id">@cat.Name</option>
             }
             </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="AddInventoryDialog" title="Add Inventory">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="addInventoryForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Product:
+        </div>
+        <div>
+            <select name="selectinventorySelect" id="model_selectedinventoryprod" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Catagory...</option>
+            @foreach (var prod in Model.ActiveProducts)
+            {
+                <option value="@prod.Id">@prod.Name</option>
+            }
+            </select>
+        </div>
+		<div class="modal-label-long">
+            Quantity:
+        </div>
+        <div>
+            <input type="text" name="inventoryquantity" id="model_inventoryquantity" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="EditInventoryDialog" title="Add Inventory">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="EditInventoryForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Product:
+        </div>
+        <div>
+            <select name="selectinventorySelect" id="model_selectededitinventoryprod" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Catagory...</option>
+            @foreach (var prod in Model.ActiveProducts)
+            {
+                <option value="@prod.Id">@prod.Name</option>
+            }
+            </select>
+        </div>
+		<div class="modal-label-long">
+            Adjust Quantity:
+        </div>
+        <div>
+            <input type="text" name="inventoryeditquantity" id="model_inventoryeditquantity" class="required modal-input text ui-widget-content ui-corner-all" />
         </div>
     </fieldset>
     </form>

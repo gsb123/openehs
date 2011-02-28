@@ -65,6 +65,14 @@ $(function () {
         $("#deleteCategoryDialog").dialog("open");
     });
 
+    $("#AddInventory").button().click(function () {
+        $("#AddInventoryDialog").dialog("open");
+    });
+
+    $("#EditInventory").button().click(function () {
+        $("#EditInventoryDialog").dialog("open");
+    });
+
 
     $(".backupDatabase").button().click(function () {
         alert("Backup database");
@@ -72,6 +80,18 @@ $(function () {
 
     $(".restoreDatabase").button().click(function () {
         alert("Restore database");
+    });
+
+    //Live listener for the select change
+    $("#model_selectededitinventoryprod").live('change', function () {
+        $.post("/Admin/ProductList", {
+                ID: $("#model_selectededitinventoryprod").val()
+            }, function (result) {
+                    var productQuan = result[0];
+
+                    $("#model_inventoryeditquantity").val(productQuan.Quantity);
+
+            }, "json");
     });
 
     $("#addProductDialog").dialog({
@@ -177,6 +197,21 @@ $("#editProductDialog").dialog({
 
     }
 });
+
+//Live listener for the select change for prod
+    $("#model_productSelect").live('change', function () {
+        $.post("/Admin/ProductList", {
+                ID: $("#model_productSelect").val()
+            }, function (result) {
+                    var product = result[0];
+
+                    $("#model_editprodname").val(product.Name);
+                    $("#model_editprodunit").val(product.Unit);
+                    $("#model_cataProdSelect").val(product.Category);
+                    $("#model_editprodprice").val(product.Price);
+
+            }, "json");
+    });
 
 $("#addLocationDialog").dialog({
     autoOpen: false,
@@ -318,6 +353,19 @@ $("#editServiceDialog").dialog({
     }
 });
 
+//Live listener for the select change for service
+$("#model_editService").live('change', function () {
+        $.post("/Admin/ServiceList", {
+                ID: $("#model_editService").val()
+            }, function (result) {
+                    var serviceQuan = result[0];
+
+                    $("#model_editservicecost").val(serviceQuan.Price);
+
+            }, "json");
+    });
+
+
 $("#deleteServiceDialog").dialog({
     autoOpen: false,
     height: 150,
@@ -368,5 +416,61 @@ $("#deleteCategoryDialog").dialog({
     }
 });
 
+
+$("#AddInventoryDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Add Inventory": function () {
+            $.post("/Admin/AddInventory", {
+                Product: $("#model_selectedinventoryprod").val(),
+                Quantity: $("#model_inventoryquantity").val()
+            }, function (result) {
+                    $("#AddInventoryDialog").dialog("close");
+
+                    $("#model_selectedinventoryprod").val("");
+                    $("#model_inventoryquantity").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_selectedinventoryprod").val("");
+            $("#model_inventoryquantity").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#EditInventoryDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Inventory": function () {
+            $.post("/Admin/EditInventory", {
+                Product: $("#model_selectededitinventoryprod").val(),
+                Quantity: $("#model_inventoryeditquantity").val()
+            }, function (result) {
+                    $("#AddInventoryDialog").dialog("close");
+
+                    $("#model_selectededitinventoryprod").val("");
+                    $("#model_inventoryeditquantity").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_selectededitinventoryprod").val("");
+            $("#model_inventoryeditquantity").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
 
 });

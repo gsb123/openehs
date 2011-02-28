@@ -31,6 +31,9 @@ $(function () {
         width: 400,
         modal: true,
         buttons: {
+            "Create New Immunization": function () {
+                $("#createImmunizationDialog").dialog("open");
+            },
             "Save Immunization": function () {
                 if ($("#addImmunizationForm").valid()) {
                     $.post("/Patient/AddImmunizationToPatient", {
@@ -60,6 +63,35 @@ $(function () {
             $('#addImmunizationForm').each(function () {
                 this.reset();
             });
+        }
+    });
+
+    $("#createImmunizationDialog").dialog({
+        autoOpen: false,
+        height: 170,
+        width: 420,
+        modal: true,
+        buttons: {
+            "Add Immunization": function () {
+                $.post("/Patient/AddNewImmunization", {
+                    VaccieType: $("#modal_immName").val()
+                }, function (result) {
+
+
+                    VaccieType: $("#modal_immName").val("");
+                    $("#createImmunizationDialog").dialog("close");
+
+                }, "json");
+            },
+            Cancel: function () {
+                VaccieType: $("#modal_immName").val("");
+
+
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
         }
     });
 

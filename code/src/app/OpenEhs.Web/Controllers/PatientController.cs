@@ -1234,6 +1234,32 @@ namespace OpenEhs.Web.Controllers {
                 });
             }
         }
+
+        public JsonResult AddNewImmunization()
+        {
+            try
+            {
+                Immunization immun = new Immunization();
+
+                string VaccineName = Request.Form["VaccieType"];
+                immun.VaccineType = VaccineName;
+
+                 UnitOfWork.CurrentSession.Flush();
+
+                 return Json(new
+                 {
+                     error = "false"
+                 });
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
         #endregion
         #endregion
 
