@@ -23,6 +23,7 @@ namespace OpenEhs.Domain
         public virtual NoteTemplateCategory NoteTemplateCategory { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual PatientCheckIn PatientCheckIns { get; set; }
+        public virtual NoteType Type { get; set; }
 
         #endregion
 
