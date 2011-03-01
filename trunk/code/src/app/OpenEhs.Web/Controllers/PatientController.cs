@@ -1401,7 +1401,8 @@ namespace OpenEhs.Web.Controllers
                     error = "false",
                     status = "Added immunization: " + pImmunization.Immunization.VaccineType + " to patient successfully",
                     immunization = pImmunization.Immunization.VaccineType,
-                    dateAdmin = pImmunization.DateAdministered.ToString("dd/MM/yyyy")
+                    dateAdmin = pImmunization.DateAdministered.ToString("dd/MM/yyyy"),
+                    id = pImmunization.Id
                 });
             }
             catch (Exception e)
