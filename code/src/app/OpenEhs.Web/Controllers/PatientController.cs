@@ -224,71 +224,15 @@ namespace OpenEhs.Web.Controllers
 
             _patientRepository.Add(patient);
 
+            if (Request.IsAjaxRequest())
+            {
+                // *************************
+                // You can return JSON here.
+                // *************************
+            }
+
             return View(model);
         }
-
-        //        public JsonResult CreatePatient() {
-        //            try {
-        //                var patient = new Patient();
-        //                patient.IsActive = true;
-        //
-        //                patient.FirstName = Request.Form["p_firstName"];
-        //                patient.MiddleName = Request.Form["p_middleName"];
-        //                patient.LastName = Request.Form["p_lastName"];
-        //                patient.DateOfBirth = DateTime.Parse(Request.Form["p_dob"]);
-        //                patient.Gender = Request.Form["p_gender"];
-        //                patient.PhoneNumber = Request.Form["p_phoneNumber"];
-        //                patient.BloodType = Request.Form["p_bloodType"];
-        //                patient.TribeRace = Request.Form["p_tribeRace"];
-        //                patient.Religion = Request.Form["p_religion"];
-        //
-        // Address
-        //                patient.Address.IsActive = true;
-        //                patient.Address.Street1 = Request.Form["p_address_street1"];
-        //                patient.Address.Street2 = Request.Form["p_address_street2"];
-        //                patient.Address.City = Request.Form["p_address_City"];
-        //                patient.Address.Region = Request.Form["p_address_Region"];
-        //                patient.Address.Country = Request.Form["p_address_Country"];
-        //
-        //                try {
-        //                    patient.OldPhysicalRecordNumber = Request.Form["oldPhysicalRecordNumber"];
-        //                } catch (ArgumentNullException) {
-        // No op
-        //                }
-        //
-        //                patient.EmergencyContact.IsActive = true;
-        //                patient.EmergencyContact.FirstName = Request.Form["emergency_firstName"];
-        //                patient.EmergencyContact.LastName = Request.Form["emergency_lastname"];
-        //
-        //                try {
-        //                    patient.EmergencyContact.Relationship = (Relationship)int.Parse(Request.Form["emergency_relationship"]);
-        //                } catch (ArgumentNullException) {
-        //                    var e = new ArgumentNullException("A relationship must be selected for the emergency contact");
-        //                    throw e;
-        //                }
-        //
-        //                patient.EmergencyContact.PhoneNumber = Request.Form["emergency_phonenumber"];
-        //
-        //                patient.EmergencyContact.Address.IsActive = true;
-        //                patient.EmergencyContact.Address.Street1 = Request.Form["ec_address_street1"];
-        //                patient.EmergencyContact.Address.Street2 = Request.Form["ec_address_street2"];
-        //                patient.EmergencyContact.Address.City = Request.Form["ec_address_City"];
-        //                patient.EmergencyContact.Address.Region = Request.Form["ec_address_Region"];
-        //                patient.EmergencyContact.Address.Country = Request.Form["ec_address_Country"];
-        //
-        //                return Json(new {
-        //                    error = "false",
-        //                    status = "Created new patient successfully",
-        //                    patient = patient
-        //                });
-        //            } catch (Exception e) {
-        //                return Json(new {
-        //                    error = "true",
-        //                    status = "Error while creating new patient.",
-        //                    errorMessage = e.Message
-        //                });
-        //            }
-        //        }
 
         #endregion
 
