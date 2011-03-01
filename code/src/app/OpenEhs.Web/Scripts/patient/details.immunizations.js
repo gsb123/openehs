@@ -42,12 +42,12 @@ $(function () {
                         dateAdministered: $("#modal_immAdministered").val()
                     }, function (response) {
                         if (response.error == "false") {
-                            $("#noImmunizations").fadeOut();
+
                             $("#newImmunizationDialog").dialog("close");
-                            var newImmunization = '<li id="immunization_' + response.id + '" class="group" style="display:none"><div><b>Vaccine Type: </b>' + response.immunization + '</div><div><b>Date Administered: </b>' + response.dateAdmin + '</div></li>';
+                            var newImmunization = '<li><div><b>Vaccine Type: </b>' + response.immunization + '</div><div><b>Date Administered: </b>' + response.dateAdmin + '</div></li>';
                             
                             $("#immunizationListOne").append(newImmunization);
-                            $("#immunization_" + response.immunization.id).fadeIn();
+
                         } else {
                             alert("Error adding immunization");
                         }

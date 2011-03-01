@@ -13,7 +13,12 @@
 
 
     <ul id="immunizationListOne">
-        @foreach(var immunization in Model.Immunizations)
+	@if (Model.TenYearImmunization.Count == 0) {
+            <li id="noImmunizations">Patient does not have any current recorded immunizations.</li>
+        } 
+		else 
+		{
+		foreach(var immunization in Model.TenYearImmunization)
 		{
 			<li>
 				<div>
@@ -23,6 +28,7 @@
 					<b>Date Administered: </b>@immunization.DateAdministered.ToString("dd/MM/yyyy")
 				</div>
 			</li>
+		}
 		}
     </ul>
 
@@ -34,23 +40,24 @@
 </div>
 <div id="immunizationMoreInfo">
     <ul id="immunizationListTwo">
-    <!--
-        if (Model.PriorImmunization.Count == 0) {
+        @if (Model.PriorImmunization.Count == 0) {
             <li>Patient does not have any prior 10 year immunizations.</li>
-        } else {
+        } 
+		else 
+		{
             foreach (var shots in Model.PriorImmunization) {
             <li class="group">
                 <div style="float: left;">
-                    <b>Vaccine Type: </b>shots.VaccineType</div>
+                    <b>Vaccine Type: </b>@shots.Immunization.VaccineType</div>
                 <br />
                 <div style="float: left;">
-                    <b>Date Administered: </b>shots.DateAdministered</div>
+                    <b>Date Administered: </b>@shots.DateAdministered.ToString("dd/MM/yyyy")</div>
             </li>
             }
         }
-        -->
     </ul>
 </div>
+
 <!-- Modal Dialog -->
 <div id="newImmunizationDialog" title="Add New Immunization for @Model.FirstName @Model.LastName">
     <ul class="modalErrorContainer" style="display: none">
@@ -64,7 +71,7 @@
             @*<input type="text" name="name" id="modal_immName" class="required modal-input text ui-widget-content ui-corner-all" />*@
 
 			<select name="immunizationSelect" id="immunizationSelect" class="required modal-input text ui-widget-content ui-corner-all">
-            <option value="">SelectImmunization...</option>
+            <option value="">Select...</option>
             @foreach (var all in Model.AllImmunizations)
             {
                 <option value="@all.Id">@all.VaccineType</option>
