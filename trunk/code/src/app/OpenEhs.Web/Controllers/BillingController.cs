@@ -16,8 +16,14 @@ namespace OpenEhs.Web.Controllers
         public ActionResult Index()
         {
             var invoices = new InvoiceRepository().GetAll();
+            var billings = new List<BillingViewModel>();
 
-            return View(invoices);
+            foreach (Invoice invoice in invoices)
+            {
+                billings.Add(new BillingViewModel(invoice.Id));
+            }
+
+            return View(billings);
         }
 
         //
