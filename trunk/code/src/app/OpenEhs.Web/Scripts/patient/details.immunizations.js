@@ -27,7 +27,7 @@ $(function () {
 
     $("#newImmunizationDialog").dialog({
         autoOpen: false,
-        height: 300,
+        height: 250,
         width: 400,
         modal: true,
         buttons: {
@@ -38,7 +38,7 @@ $(function () {
                 if ($("#addImmunizationForm").valid()) {
                     $.post("/Patient/AddImmunizationToPatient", {
                         patientID: $("#patientId").val(),
-                        vaccineType: $("#modal_immName").val(),
+                        vaccineType: $("#immunizationSelect").val(),
                         dateAdministered: $("#modal_immAdministered").val()
                     }, function (response) {
                         if (response.error == "false") {
@@ -74,10 +74,12 @@ $(function () {
         buttons: {
             "Add Immunization": function () {
                 $.post("/Patient/AddNewImmunization", {
-                    VaccieType: $("#modal_immName").val(),
-                    Comments: $("#vaccineComment").val()
+                    VaccieType: $("#modal_immName").val()
                 }, function (result) {
 
+
+                    //$("#prewrittenNoteSelect").append('<option value="' + result. + '" >' + result. + '</option>');
+                    $("#immunizationSelect").append('<option value="' + result.Id + '">' + result.VaccineType + '</option>');
 
                     VaccieType: $("#modal_immName").val("");
                     $("#createImmunizationDialog").dialog("close");

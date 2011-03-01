@@ -11,7 +11,6 @@ namespace OpenEhs.Domain
 
         public virtual int Id { get; private set; }
         public virtual string VaccineType { get; set; }
-        public virtual string Comments { get; set; }
         public virtual IList<PatientImmunization> Patients { get; set; }
 
         #endregion

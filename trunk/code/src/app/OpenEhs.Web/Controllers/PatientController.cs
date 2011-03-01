@@ -1219,7 +1219,7 @@ namespace OpenEhs.Web.Controllers {
                 pImmunization.Patient = patient;
                 patientImmunRepo.Add(pImmunization);
 
-                UnitOfWork.CurrentSession.Flush();
+                //UnitOfWork.CurrentSession.Flush();
 
                 return Json(new {
                     error = "false",
@@ -1240,22 +1240,17 @@ namespace OpenEhs.Web.Controllers {
             try
             {
                 ImmunizationRepository immunRepo = new ImmunizationRepository();
-
                 Immunization immun = new Immunization();
 
-                //string VaccineName = Request.Form["VaccieType"];
-                //immun.VaccineType = VaccineName;
-
                 immun.VaccineType = Request.Form["VaccieType"];
-                immun.Comments = Request.Form["Comments"];
 
                 immunRepo.Add(immun);
 
-                 //UnitOfWork.CurrentSession.Flush(););
-
                  return Json(new
                  {
-                     error = "false"
+                     error = "false",
+                     immun.Id,
+                     immun.VaccineType
                  });
             }
             catch (Exception)
