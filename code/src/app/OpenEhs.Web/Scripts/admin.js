@@ -73,6 +73,22 @@ $(function () {
         $("#EditInventoryDialog").dialog("open");
     });
 
+    $("#deleteAllergy").button().click(function () {
+        alert("Delete allergy button");
+    });
+
+    $("#editAllergy").button().click(function () {
+        alert("Edit allergy button");
+    });
+
+    $("#deleteImmunization").button().click(function () {
+        alert("Delete immunization button");
+    });
+
+    $("#editImmunization").button().click(function () {
+        alert("Edit immunization button");
+    });
+
 
     $(".backupDatabase").button().click(function () {
         alert("Backup database");
