@@ -31,7 +31,7 @@ $(function () {
             "Submit Note": function () {
                 $.post("/Patient/AddNote", {
                     patientID: $("#patientId").val(),
-                    NoteBody: escape($("#NotesTextBox").val()),
+                    NoteBody: $("#NotesTextBox").val(),
                     TemplateTitle: $("#templateTitle").val(),
                     StaffId: $("#staffId").val()
                 }, function (result) {

@@ -11,7 +11,7 @@
         {
             foreach (var note in Model.GetOpenCheckin.Notes)
             {
-            <li>@HttpUtility.HtmlDecode(note.Body)</li><br />
+            <li>@Html.Raw(note.Body)</li><br />
             }
         }
     </ul>
