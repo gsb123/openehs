@@ -274,7 +274,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Immunizations")]
-        public IList<PatientImmunization> PatientImmunizations
+        public IList<PatientImmunization> Immunizations
         {
             get
             {
