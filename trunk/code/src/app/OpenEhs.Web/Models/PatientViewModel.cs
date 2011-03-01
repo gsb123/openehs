@@ -260,10 +260,9 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        /*
 
         [DisplayName("Allergies")]
-        public IList<Allergy> Allergies
+        public IList<PatientAllergy> PatientAllergies
         {
             get
             {
@@ -274,7 +273,6 @@ namespace OpenEhs.Web.Models
                 _patient.Allergies = value;
             }
         }
-         */
 
         [DisplayName("Immunizations")]
         public IList<PatientImmunization> Immunizations
@@ -538,39 +536,6 @@ namespace OpenEhs.Web.Models
 
             return false;
         }
-
-        /*
-        public void AddAllergy(Allergy allergy)
-        {
-            Allergies.Add(allergy);
-        }
-
-        public void RemoveAllergy(Allergy allergy)
-        {
-            Allergies.Remove(allergy);
-        }
-         */
-
-        /*
-        /// <summary>
-        /// Remove the allergy by ID
-        /// </summary>
-        /// <param name="allergyId">ID of the allergy to remove</param>
-        /// <returns>If the allergy was successfully removed</returns>
-        public bool RemoveAllergy(int allergyId)
-        {
-            foreach (Allergy allergy in Allergies)
-            {
-                if (allergy.Id == allergyId)
-                {
-                    Allergies.Remove(allergy);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-         */
 
         public void AddImmunization(PatientImmunization immunization)
         {
