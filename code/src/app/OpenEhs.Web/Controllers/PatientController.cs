@@ -1071,6 +1071,8 @@ namespace OpenEhs.Web.Controllers {
         #endregion
 
         #region Notes
+        [HttpPost]
+        [ValidateInput(false)]
         public JsonResult AddNote() {
             try {
                 PatientRepository patientRepo = new PatientRepository();
@@ -1090,7 +1092,7 @@ namespace OpenEhs.Web.Controllers {
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
                 note.Author = staff;
                 note.DateCreated = DateTime.Now;
-                note.Body = HttpUtility.UrlDecode(Request.Form["NoteBody"], System.Text.Encoding.Default);
+                note.Body = Request.Form["NoteBody"]; //HttpUtility.UrlDecode(Request.Form["NoteBody"], System.Text.Encoding.Default);
                 note.PatientCheckIns = openCheckIn;
                 note.Title = "";
                 note.Type = NoteType.General;
