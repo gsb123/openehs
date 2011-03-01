@@ -260,6 +260,8 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        /*
+
         [DisplayName("Allergies")]
         public IList<Allergy> Allergies
         {
@@ -272,6 +274,7 @@ namespace OpenEhs.Web.Models
                 _patient.Allergies = value;
             }
         }
+         */
 
         [DisplayName("Immunizations")]
         public IList<PatientImmunization> Immunizations
@@ -427,6 +430,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Allergy> AllAllergies
+        {
+            get
+            {
+                AllergyRepository allergy = new AllergyRepository();
+                return allergy.GetAll();
+            }
+        }
+
         public IList<Staff> GetActivePhysicians
         {
             get
@@ -527,6 +539,7 @@ namespace OpenEhs.Web.Models
             return false;
         }
 
+        /*
         public void AddAllergy(Allergy allergy)
         {
             Allergies.Add(allergy);
@@ -536,7 +549,9 @@ namespace OpenEhs.Web.Models
         {
             Allergies.Remove(allergy);
         }
+         */
 
+        /*
         /// <summary>
         /// Remove the allergy by ID
         /// </summary>
@@ -555,6 +570,7 @@ namespace OpenEhs.Web.Models
 
             return false;
         }
+         */
 
         public void AddImmunization(PatientImmunization immunization)
         {

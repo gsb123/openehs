@@ -131,9 +131,9 @@
     <EmbeddedResource Include="Mappings\FeedChart.hbm.xml" />
     <EmbeddedResource Include="Mappings\IntakeChart.hbm.xml" />
     <EmbeddedResource Include="Mappings\OutputChart.hbm.xml" />
-    <Content Include="Mappings\PatientAllergy.hbm.xml">
+    <EmbeddedResource Include="Mappings\PatientAllergy.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\PatientImmunization.hbm.xml" />
     <Content Include="Mappings\PatientProblem.hbm.xml">
       <SubType>Designer</SubType>
