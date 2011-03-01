@@ -13,12 +13,10 @@
 
 
     <ul id="immunizationListOne">
-	<!--
-        foreach(var immun in Model.PatientImmunizations)
+        @foreach(var immunization in Model.Immunizations)
 		{
-			<li>immun.Immunization.VaccineType</li>
+			<li>@immunization.DateAdministered / @immunization.Immunization.VaccineType</li>
 		}
-		-->
     </ul>
 
 
