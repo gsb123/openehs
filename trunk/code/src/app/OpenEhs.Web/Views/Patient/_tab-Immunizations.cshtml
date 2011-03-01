@@ -15,7 +15,14 @@
     <ul id="immunizationListOne">
         @foreach(var immunization in Model.Immunizations)
 		{
-			<li>@immunization.DateAdministered / @immunization.Immunization.VaccineType</li>
+			<li>
+				<div>
+					<b>Vaccine Type: </b>@immunization.Immunization.VaccineType
+				</div>
+				<div>
+					<b>Date Administered: </b>@immunization.DateAdministered.ToString("dd/MM/yyyy")
+				</div>
+			</li>
 		}
     </ul>
 
