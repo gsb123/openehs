@@ -74,7 +74,8 @@ $(function () {
         buttons: {
             "Add Immunization": function () {
                 $.post("/Patient/AddNewImmunization", {
-                    VaccieType: $("#modal_immName").val()
+                    VaccieType: $("#modal_immName").val(),
+                    Comments: $("#vaccineComment").val()
                 }, function (result) {
 
 

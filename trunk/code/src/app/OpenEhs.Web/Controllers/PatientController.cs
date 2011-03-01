@@ -1239,12 +1239,19 @@ namespace OpenEhs.Web.Controllers {
         {
             try
             {
+                ImmunizationRepository immunRepo = new ImmunizationRepository();
+
                 Immunization immun = new Immunization();
 
-                string VaccineName = Request.Form["VaccieType"];
-                immun.VaccineType = VaccineName;
+                //string VaccineName = Request.Form["VaccieType"];
+                //immun.VaccineType = VaccineName;
 
-                 UnitOfWork.CurrentSession.Flush();
+                immun.VaccineType = Request.Form["VaccieType"];
+                immun.Comments = Request.Form["Comments"];
+
+                immunRepo.Add(immun);
+
+                 //UnitOfWork.CurrentSession.Flush(););
 
                  return Json(new
                  {
