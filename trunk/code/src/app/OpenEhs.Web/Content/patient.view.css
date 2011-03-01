@@ -8,13 +8,6 @@ legend
     font-size: 1.2em;
 }
 
-.allergyRemove
-{
-	padding: 5px; 
-	font-size: 14px; 
-	margin: 3px 10px 3px 0px;
-}
-
 .chronicDiseasesRemove
 {
 	padding: 5px; 
@@ -257,7 +250,6 @@ legend
     margin-top: 15px;
     float: right;
     height: 35;
-    width: 60px;
     font-size: 15px;
 }
 
@@ -326,6 +318,11 @@ fieldset
 	margin-left: 15px;
 }
 
+#ChronicDiseaseList
+{
+	margin-top: 40px;
+}
+
 #allergyList li
 {
     font-size: 1.4em;
@@ -340,6 +337,11 @@ fieldset
     line-height: 50px;
 	padding-left: 10px;
 	margin-left: 15px;
+}
+
+#allergyList
+{
+	margin-top: 40px;
 }
 
 #visitHistoryList li

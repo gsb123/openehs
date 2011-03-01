@@ -428,6 +428,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Problem> AllProblems
+        {
+            get
+            {
+                ProblemRepository probRepo = new ProblemRepository();
+                return probRepo.GetAll();
+            }
+        }
+
         public IList<Allergy> AllAllergies
         {
             get

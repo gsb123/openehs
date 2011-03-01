@@ -8,21 +8,6 @@ $(function () {
     //  Setup Allergy Tab                                //
     // ------------------------------------------------- //
 
-    var removeOnClick = function () {
-        $.post("/Patient/RemoveAllergy", {
-            patientID: $("#patientId").val(),
-            allergyID: $(this).attr("id")
-        }, function (returnData) {
-            if (returnData.error == "false") {
-                $("#allergy_" + returnData.Id).fadeOut("normal", function () {
-                    $(this).remove();
-                });
-            } else {
-                alert("Error while adding allergy");
-            }
-        }, "json");
-    };
-
     $("#addAllergyDialog").dialog({
         autoOpen: false,
         height: 170,
@@ -33,29 +18,26 @@ $(function () {
                 $("#createAllergyDialog").dialog("open");
             },
             "Add Allergy": function () {
-                    $.post("/Patient/AddAllergyToPatient", {
-                        patientId: $("#patientId").val(),
-                        allergyId: $("#addAllergyName").val()
-                    }, function (returnData) {
-                        if (returnData.error == "false") {
-                            $("#addAllergyDialog").dialog("close");
+                $.post("/Patient/AddAllergyToPatient", {
+                    patientId: $("#patientId").val(),
+                    allergyId: $("#addAllergyName").val()
+                }, function (returnData) {
+                    if (returnData.error == "false") {
+                        $("#addAllergyDialog").dialog("close");
 
-                            var newAllergy = '<li><div style="float: left;">' + returnData.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.Id + '" type="button" value="Remove" /></div></li>';
-                            $("#allergyList").append(newAllergy);
-                            //$("#allergy_" + returnData.Id).fadeIn("normal", function () {
-                                //$(this).find(".allergyRemove").button().click(removeOnClick)
-                            //});
-                        } else {
-                            $("#addAllergyDialog .error").html(returnData.status);
-                        }
-                    }, "json");
+                        var newAllergy = '<li><div style="float: left;">' + returnData.Name + '</div><div style="float: right;"></div></li>';
+                        $("#allergyList").append(newAllergy);
+                    } else {
+                        $("#addAllergyDialog .error").html(returnData.status);
+                    }
+                }, "json");
             },
             Cancel: function () {
                 $(this).dialog("close");
             }
         },
         close: function () {
-            
+
         }
     });
 
@@ -95,15 +77,24 @@ $(function () {
     $("#addAllergyForm").submit(function () {
         return false;
     });
+
     $("#allergyAddButton").button().click(function () {
         $("#addAllergyDialog").dialog("open")
     });
 
-    // Add remove function to every allergy remove button
-    $(".allergyRemove").button({
-        icons: {
-            primary: "ui-icon-closethick"
-        },
-        text: false
-    }).click(removeOnClick);
+    $("#allergyRemove").button().click(function () {
+        alert("remove this");
+        $.post("/Patient/RemoveAllergy", {
+            patientID: $("#patientId").val(),
+            allergyID: $("#allergyId").val()
+        }, function (returnData) {
+            if (returnData.error == "false") {
+               
+
+            } else {
+                $("#addAllergyDialog .error").html(returnData.status);
+            }
+        }, "json");
+    });
+
 });

@@ -489,10 +489,53 @@ namespace OpenEhs.Web.Controllers
                 });
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                
-                throw;
+
+                return Json(new
+                {
+                    error = "true",
+                    status = "Unable to add patient allergy!",
+                    errorMessage = e.Message
+                });
+            }
+        }
+
+        public JsonResult RemoveAllergy()
+        {
+            try
+            {
+                PatientAllergyRepository patientAllergyRepo = new PatientAllergyRepository();
+                PatientRepository patientRepo = new PatientRepository();
+                AllergyRepository allergyRepo = new AllergyRepository();
+
+                var patientId = patientRepo.Get(int.Parse(Request.Form["patientID"]));
+                var allergyId = allergyRepo.Get(int.Parse(Request.Form["allergyID"]));
+
+                PatientAllergy pa = new PatientAllergy();
+
+                pa.Allergy = allergyId;
+                pa.Patient = patientId;
+
+                patientAllergyRepo.Remove(pa);
+
+                //UnitOfWork.CurrentSession.Flush();
+
+                return Json(new
+                {
+                    error = "false",
+                    status = "Allergy Deleted"
+                });
+            }
+            catch (Exception e)
+            {
+
+                return Json(new
+                {
+                    error = "true",
+                    status = "Unable to remove patient allergy!",
+                    errorMessage = e.Message
+                });
             }
         }
 
@@ -1370,6 +1413,40 @@ namespace OpenEhs.Web.Controllers
         }
 
         #endregion
+
+        #region Chronic Diseases
+
+        public JsonResult CreateNewDisease()
+        {
+            try
+            {
+                ProblemRepository problemRepo = new ProblemRepository();
+                var problemName = Request.Form["DiseaseName"];
+
+                Problem problem = new Problem();
+
+                problem.ProblemName = problemName;
+
+                problemRepo.Add(problem);
+
+                return Json(new
+                {
+                    error = "false",
+                    Name = problem.ProblemName
+                });
+
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        #endregion
+
         #endregion
 
     }
