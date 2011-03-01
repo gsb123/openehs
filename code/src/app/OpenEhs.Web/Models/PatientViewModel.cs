@@ -323,18 +323,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<Immunization> CurrentImmunization
-        {
-            get
-            {
-                var shots = from immun in PatientImmunizations
-                               
-                               select immun;
-
-                return shots.ToList();
-            }
-        }
-
         /*
         public IList<PatientImmunization> TenImmunization
         {
