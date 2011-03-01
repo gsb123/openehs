@@ -323,7 +323,6 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        /*
         public IList<PatientImmunization> TenImmunization
         {
             get
@@ -340,7 +339,7 @@ namespace OpenEhs.Web.Models
             get
             {
                 var valShots = from immun in Immunizations
-                               where immun.Immunization.DateAdministered <= DateTime.Now.AddYears(-10)
+                               where immun.DateAdministered <= DateTime.Now.AddYears(-10)
                                select immun;
 
                 return valShots.ToList();
@@ -358,7 +357,6 @@ namespace OpenEhs.Web.Models
                 return valShots.ToList();
             }
         }
-        */
          
         public PatientCheckIn GetOpenCheckin
         {
