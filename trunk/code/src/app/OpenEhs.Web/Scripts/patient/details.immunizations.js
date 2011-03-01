@@ -44,7 +44,8 @@ $(function () {
                         if (response.error == "false") {
                             $("#noImmunizations").fadeOut();
                             $("#newImmunizationDialog").dialog("close");
-                            var newImmunization = '<li id="immunization_' + response.immunization.id + '" class="group" style="display:none"><div><b>Vaccine Type: </b>' + response.immunization.name + '</div><div><b>Date Administered: </b>' + response.immunization.dateAdministered + '</div></li>';
+                            var newImmunization = '<li id="immunization_' + response.id + '" class="group" style="display:none"><div><b>Vaccine Type: </b>' + response.immunization + '</div><div><b>Date Administered: </b>' + response.dateAdmin + '</div></li>';
+                            
                             $("#immunizationListOne").append(newImmunization);
                             $("#immunization_" + response.immunization.id).fadeIn();
                         } else {
