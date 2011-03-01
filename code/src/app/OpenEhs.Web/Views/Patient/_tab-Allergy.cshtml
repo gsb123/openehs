@@ -9,9 +9,6 @@
         @foreach (var allergy in Model.PatientAllergies) {
             <li class="group" id="string.Format("{0}{1}", "allergy_", @allergy.Id)">
                 <div style="float: left;">@allergy.Allergy.Name</div>
-                <div style="float: right;">
-                    <input class="allergyRemove" id="@allergy.Id" type="button" value="Remove" />
-                </div>
             </li>
         }
     </ul>

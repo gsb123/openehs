@@ -7,35 +7,75 @@ $(function () {
     // ------------------------------------------------- //
     //  Setup Chronic Diseases Tab                       //
     // ------------------------------------------------- //
-    $("#diseaseDialog").dialog({
+    $("#addProblemDialog").dialog({
         autoOpen: false,
-        height: 300,
-        width: 350,
+        height: 170,
+        width: 375,
         modal: true,
         buttons: {
-            "Save Disease": function () {
-                var bValid = true;
-                allFields.removeClass("ui-state-error");
+            "Create New Disease": function () {
+                $("#createDiseaseDialog").dialog("open");
+            },
+            "Add Disease": function () {
+                $.post("/Patient/AddDiseaseToPatient", {
+                    patientId: $("#patientId").val(),
+                    allergyId: $("#addDiseaseName").val()
+                }, function (returnData) {
+                    if (returnData.error == "false") {
+                        $("#addProblemDialog").dialog("close");
 
-                if (bValid) {
-                    $(this).dialog("close");
-                }
+                        var newAllergy = '<li><div style="float: left;">' + returnData.Name + '</div></li>';
+                        $("#allergyList").append(newAllergy);
+
+                    } else {
+                        $("#addProblemDialog .error").html(returnData.status);
+                    }
+                }, "json");
             },
             Cancel: function () {
                 $(this).dialog("close");
             }
         },
         close: function () {
-            allFields.removeClass("ui-state-error");
+
         }
     });
 
-    $(".diseaseEditButton").button().click(function () {
-        $("#diseaseDialog").dialog("open");
+    $("#createDiseaseDialog").dialog({
+        autoOpen: false,
+        height: 170,
+        width: 420,
+        modal: true,
+        buttons: {
+            "Add Disease": function () {
+                $.post("/Patient/CreateNewDisease", {
+                    DiseaseName: $("#modal_DiseaseName").val()
+                }, function (result) {
+
+                    //Need this code for later!!!
+                    $("#addDiseaseName").append('<option value="' + result.Id + '">' + result.Name + '</option>');
+
+                    $("#modal_DiseaseName").val("");
+                    $("#createDiseaseDialog").dialog("close");
+
+                }, "json");
+            },
+            Cancel: function () {
+                $("#modal_allergyName").val("");
+
+
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
     });
 
-    $(".chronicDiseasesAddButton").button().click(function () { });
+    $("#chronicDiseasesAddButton").button().click(function () {
+        $("#addProblemDialog").dialog("open")
+    });
 
-    $(".chronicDiseasesRemove").button().click(function () { });
+
 
 });
