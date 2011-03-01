@@ -36,6 +36,11 @@
       <one-to-many class="PatientImmunization" />
     </bag>
 
+    <bag name="Allergies" table="PatientAllergy" cascade="all" lazy="false">
+      <key column="PatientID" />
+      <one-to-many class="PatientAllergy" />
+    </bag>
+
     <bag name="PatientCheckIns" table="PatientCheckIn" cascade="all">
       <key column="PatientId" />
       <one-to-many class="PatientCheckIn" />

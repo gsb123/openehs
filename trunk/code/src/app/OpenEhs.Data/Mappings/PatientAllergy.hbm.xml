@@ -8,8 +8,8 @@
       <generator class="native" />
     </id>
 
-    <property name="Patient" not-null="true" />
-    <property name="Allergy" not-null="false" />
+    <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
+    <many-to-one name="Allergy" column="AllergyID" unique="true" cascade="all" />
 
   </class>
 </hibernate-mapping>

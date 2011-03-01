@@ -33,24 +33,22 @@ $(function () {
                 $("#createAllergyDialog").dialog("open");
             },
             "Add Allergy": function () {
-                if ($("#addAllergyForm").valid()) {
-                    $.post("/Patient/AddAllergy", {
-                        patientID: $("#patientId").val(),
-                        allergyName: $("#addAllergyName").val()
+                    $.post("/Patient/AddAllergyToPatient", {
+                        patientId: $("#patientId").val(),
+                        allergyId: $("#addAllergyName").val()
                     }, function (returnData) {
                         if (returnData.error == "false") {
                             $("#addAllergyDialog").dialog("close");
 
-                            //var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
-                            //$("#allergyList").append(newAllergy);
-                            //$("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
+                            var newAllergy = '<li><div style="float: left;">' + returnData.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.Id + '" type="button" value="Remove" /></div></li>';
+                            $("#allergyList").append(newAllergy);
+                            //$("#allergy_" + returnData.Id).fadeIn("normal", function () {
                                 //$(this).find(".allergyRemove").button().click(removeOnClick)
-                           // });
+                            //});
                         } else {
                             $("#addAllergyDialog .error").html(returnData.status);
                         }
                     }, "json");
-                }
             },
             Cancel: function () {
                 $(this).dialog("close");
