@@ -10,24 +10,19 @@
         <b>Immunizations within 10 years</b>
     </p>
     <br />
+
+
     <ul id="immunizationListOne">
-    <!--
-        if (Model.TenYearImmunization.Count == 0) {
-            <li id="noImmunizations">Patient does not have any current recorded immunizations.</li>
-        } else {
-            foreach (var shots in Model.TenYearImmunization) {
-            <li class="group">
-                <div>
-                    <b>Vaccine Type: </b>shots.VaccineType
-                </div>
-                <div>
-                    <b>Date Administered: </b>shots.DateAdministered
-                </div>
-            </li>
-            }
-        }
-        -->
+	<!--
+        foreach(var immun in Model.PatientImmunizations)
+		{
+			<li>immun.Immunization.VaccineType</li>
+		}
+		-->
     </ul>
+
+
+
 </div>
 <div id="immunizationInfoLink">
     Immunizations Prior to 10 years...

@@ -1219,6 +1219,7 @@ namespace OpenEhs.Web.Controllers {
                 PatientImmunization pImmunization = new PatientImmunization();
                 pImmunization.Immunization = immunRepo.Get(immunizationId);
                 pImmunization.Patient = patient;
+                pImmunization.DateAdministered = dateAdministered;
                 patientImmunRepo.Add(pImmunization);
 
                 //UnitOfWork.CurrentSession.Flush();
@@ -1226,7 +1227,8 @@ namespace OpenEhs.Web.Controllers {
                 return Json(new {
                     error = "false",
                     status = "Added immunization: " + pImmunization.Immunization.VaccineType + " to patient successfully",
-                    immunization = pImmunization.Immunization
+                    immunization = pImmunization.Immunization.VaccineType,
+                    dateAdmin = pImmunization.DateAdministered.ToString("dd/MM/yyyy HH:mm:ss")
                 });
             } catch (Exception e) {
                 return Json(new {

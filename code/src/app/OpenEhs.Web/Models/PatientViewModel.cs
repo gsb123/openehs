@@ -15,10 +15,12 @@ namespace OpenEhs.Web.Models
     {
         private Patient _patient;
         private Staff _staff;
+        private ImmunizationRepository _immunization;
 
         public PatientViewModel(int patientId)
         {
             _patient = new PatientRepository().Get(patientId);
+            _immunization = new ImmunizationRepository();
         }
 
         #region Patient Properties
@@ -272,7 +274,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Immunizations")]
-        public IList<PatientImmunization> Immunizations
+        public IList<PatientImmunization> PatientImmunizations
         {
             get
             {
@@ -321,6 +323,18 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<Immunization> CurrentImmunization
+        {
+            get
+            {
+                var shots = from immun in PatientImmunizations
+                               
+                               select immun;
+
+                return shots.ToList();
+            }
+        }
+
         /*
         public IList<PatientImmunization> TenImmunization
         {
@@ -357,6 +371,7 @@ namespace OpenEhs.Web.Models
             }
         }
         */
+         
         public PatientCheckIn GetOpenCheckin
         {
             get
