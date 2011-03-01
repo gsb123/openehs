@@ -115,12 +115,19 @@
     <Compile Include="Models\PatientSearchViewModel.cs" />
     <Compile Include="Models\PatientViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportContent\Reports.aspx.cs">
-      <DependentUpon>Reports.aspx</DependentUpon>
+    <Compile Include="ReportContent\DailyReports.aspx.cs">
+      <DependentUpon>DailyReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ReportContent\Reports.aspx.designer.cs">
-      <DependentUpon>Reports.aspx</DependentUpon>
+    <Compile Include="ReportContent\DailyReports.aspx.designer.cs">
+      <DependentUpon>DailyReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportContent\MonthlyReports.aspx.cs">
+      <DependentUpon>MonthlyReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportContent\MonthlyReports.aspx.designer.cs">
+      <DependentUpon>MonthlyReports.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +165,8 @@
     <Content Include="images\openehs.logo.big.png" />
     <Content Include="images\openehs.logo.png" />
     <Content Include="images\selected.menuitem.arrow.png" />
-    <Content Include="ReportContent\Reports.aspx" />
+    <Content Include="ReportContent\DailyReports.aspx" />
+    <Content Include="ReportContent\MonthlyReports.aspx" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bbq.js" />
     <Content Include="Scripts\billing.js" />
@@ -559,7 +567,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>37395</DevelopmentServerPort>
+          <DevelopmentServerPort>54707</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
