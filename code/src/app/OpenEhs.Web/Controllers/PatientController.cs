@@ -1205,7 +1205,7 @@ namespace OpenEhs.Web.Controllers {
         public JsonResult AddImmunizationToPatient() {
             try {
                 int patientId = int.Parse(Request.Form["patientID"]);
-                int immunizationId = int.Parse(Request.Form["immunizationId"]);
+                int immunizationId = int.Parse(Request.Form["vaccineType"]);
                 DateTime dateAdministered = DateTime.Parse(Request.Form["dateAdministered"]);
 
                 PatientRepository repo = new PatientRepository();
