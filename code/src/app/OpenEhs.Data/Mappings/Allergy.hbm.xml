@@ -9,6 +9,11 @@
     </id>
     <property name="Name" not-null="false" length="30" />
     <property name="IsActive" not-null="true" />
+
+    <bag name="Patients" table="PatientAllergy" cascade="none" lazy="false">
+      <key column="AllergyID" />
+      <one-to-many class="PatientAllergy" />
+    </bag>
     
   </class>
 </hibernate-mapping>

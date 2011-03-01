@@ -518,56 +518,37 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
-        public JsonResult RemoveAllergy()
+        public JsonResult AddAllergyToPatient()
         {
             try
             {
-                int patientId = int.Parse(Request.Form["patientID"]);
-                int allergyId = int.Parse(Request.Form["allergyID"]);
+                int patientId = int.Parse(Request.Form["PatientId"]);
+                int allergyId = int.Parse(Request.Form["AllergyId"]);
 
-                PatientRepository repo = new PatientRepository();
-                var patient = repo.Get(patientId);
-                string name = "";
-                bool found = false;
-                foreach (var allergy in patient.Allergies)
-                {
-                    if (allergyId == allergy.Id)
-                    {
-                        found = true;
-                        name = allergy.Name;
-                        patient.Allergies.Remove(allergy);
-                        break;
-                    }
-                }
+                PatientRepository patientRepo = new PatientRepository();
+                var patient = patientRepo.Get(patientId);
 
-                UnitOfWork.CurrentSession.Flush();
-                if (found)
-                {
-                    return Json(new
-                    {
-                        error = "false",
-                        status = "Removed allergy \"" + name + "\" successfully",
-                        Id = allergyId
-                    });
-                }
-                else
-                {
-                    return Json(new
-                    {
-                        error = "true",
-                        status = "Allergy not found, please refresh the page and try again",
-                        errorMessage = "Allergy with id: " + allergyId + " not found"
-                    });
-                }
-            }
-            catch (Exception e)
-            {
+                PatientAllergyRepository patientAllergyRepo = new PatientAllergyRepository();
+                AllergyRepository allergyRepo = new AllergyRepository();
+
+                PatientAllergy pallergy = new PatientAllergy();
+                pallergy.Allergy = allergyRepo.Get(allergyId);
+                pallergy.Patient = patient;
+                patientAllergyRepo.Add(pallergy);
+
                 return Json(new
                 {
-                    error = "true",
-                    status = "Unable to remove allergy",
-                    errorMessage = e.Message
+                    error = "false",
+                    status = "Added patient allergy successfully",
+                    ID = pallergy.Id,
+                    Name = pallergy.Allergy.Name
                 });
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
             }
         }
 
