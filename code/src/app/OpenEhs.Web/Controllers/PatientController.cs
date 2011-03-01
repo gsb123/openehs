@@ -487,28 +487,24 @@ namespace OpenEhs.Web.Controllers
 
         #region Allergy
 
-        public JsonResult AddAllergy()
+        public JsonResult CreateNewAllergy()
         {
             try
             {
-                int patientId = int.Parse(Request.Form["patientID"]);
-                string allergyName = Request.Form["allergyName"];
+                AllergyRepository allergy = new AllergyRepository();
+                Allergy newAllergy = new Allergy();
 
-                PatientRepository repo = new PatientRepository();
-                var patient = repo.Get(patientId);
+                newAllergy.Name = Request.Form["AllergyName"];
+                newAllergy.IsActive = true;
 
-                Allergy allergy = new Allergy();
-                allergy.IsActive = true;
-                allergy.Name = allergyName;
-                patient.Allergies.Add(allergy);
-
-                UnitOfWork.CurrentSession.Flush();
+                allergy.Add(newAllergy);
 
                 return Json(new
                 {
-                    error = "false",
-                    status = "Added allergy: " + allergyName + " successfully",
-                    allergy = allergy
+                    error = false,
+                    status = "Added new allergy successfully!",
+                    newAllergy.Id,
+                    newAllergy.Name
                 });
             }
             catch (Exception e)
@@ -516,7 +512,7 @@ namespace OpenEhs.Web.Controllers
                 return Json(new
                 {
                     error = "true",
-                    status = "Unable to add allergy successfully",
+                    status = "Unable to add allergy!",
                     errorMessage = e.Message
                 });
             }
@@ -1437,11 +1433,12 @@ namespace OpenEhs.Web.Controllers
                     immun.VaccineType
                 });
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return Json(new
                 {
-                    error = "true"
+                    error = "true",
+                    errorMessage = e.Message
                 });
             }
         }

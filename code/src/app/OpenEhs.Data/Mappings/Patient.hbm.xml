@@ -25,11 +25,6 @@
     <property name="IsActive" not-null="true" />
 
     <many-to-one name="EmergencyContact" column="EmergencyContactID" unique="true" cascade="all" />
-
-    <bag name="Allergies" table="PatientAllergy" cascade="all" lazy="false">
-      <key column="PatientID" />
-      <many-to-many column="AllergyID" class="Allergy" />
-    </bag>
     
     <bag name="Problems" table="PatientProblem" cascade="all" lazy="false">
       <key column="PatientID" />

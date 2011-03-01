@@ -68,20 +68,20 @@ $(function () {
         modal: true,
         buttons: {
             "Add Allergy": function () {
-                $.post("/Patient/AddNewAllergy", {
-                    AllergyName: $("#addAllergyName").val()
+                $.post("/Patient/CreateNewAllergy", {
+                    AllergyName: $("#modal_allergyName").val()
                 }, function (result) {
 
                     //Need this code for later!!!
-                    //$("#immunizationSelect").append('<option value="' + result.Id + '">' + result.VaccineType + '</option>');
+                    $("#addAllergyName").append('<option value="' + result.Id + '">' + result.Name + '</option>');
 
-                    $("#addAllergyName").val("");
-                    $("#createImmunizationDialog").dialog("close");
+                    $("#modal_allergyName").val("");
+                    $("#createAllergyDialog").dialog("close");
 
                 }, "json");
             },
             Cancel: function () {
-                $("#addAllergyName").val("");
+                $("#modal_allergyName").val("");
 
 
                 $(this).dialog("close");
