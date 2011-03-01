@@ -121,8 +121,7 @@ AllergyID                   int         NOT NULL
 CREATE TABLE Immunization
 (
 ImmunizationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-VaccineType             text            NOT NULL,
-Comments                text            NULL
+VaccineType             text            NOT NULL
 );
 
 CREATE TABLE PatientImmunization
@@ -1972,79 +1971,65 @@ CALL sp_insertService
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'DTP - Diphtheria, tetanus toxoids, and whole cell pertussis',
-null
+'DTP - Diphtheria, tetanus toxoids, and whole cell pertussis'
 );
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'IPV - Poliovirus vaccine, inactivated',
-null
+'IPV - Poliovirus vaccine, inactivated'
 );
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'Hep B - 3 dose schedule',
-null
+'Hep B - 3 dose schedule'
 );
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'YellowFevor',
-null
+'YellowFevor'
 );
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'TwinRix',
-null
+'TwinRix'
 );
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'YellowFevor',
-null
+'YellowFevor'
 );
 
 INSERT INTO Immunization
 (
-VaccineType,
-Comments
+VaccineType
 )
 VALUES
 (
-'Flu Shot',
-null
+'Flu Shot'
 );
 
 INSERT INTO PatientImmunization
