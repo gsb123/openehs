@@ -6,16 +6,14 @@
 </div>
 <div>
     <ul id="allergyList">
-	<!--
-        foreach (var allergy in Model.Allergies) {
-            <li class="group" id="string.Format("{0}{1}", "allergy_", allergy.Id)">
-                <div style="float: left;">allergy.Name</div>
+        @foreach (var allergy in Model.PatientAllergies) {
+            <li class="group" id="string.Format("{0}{1}", "allergy_", @allergy.Id)">
+                <div style="float: left;">@allergy.Allergy.Name</div>
                 <div style="float: right;">
-                    <input class="allergyRemove" id="allergy.Id" type="button" value="Remove" />
+                    <input class="allergyRemove" id="@allergy.Id" type="button" value="Remove" />
                 </div>
             </li>
         }
-		-->
     </ul>
 </div>
 <div id="addAllergyDialog" title="Add Allergy for @Model.FirstName @Model.LastName">
