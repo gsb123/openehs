@@ -44,10 +44,10 @@ $(function () {
                         if (response.error == "false") {
 
                             $("#newImmunizationDialog").dialog("close");
-                            var newImmunization = '<li><div><b>Vaccine Type: </b>' + response.immunization + '</div><div><b>Date Administered: </b>' + response.dateAdmin + '</div></li>';
-                            
-                            $("#immunizationListOne").append(newImmunization);
+                            var newImmunization = '<li  style="display:none;" id="immun_' + response.id + '"><div><b>Vaccine Type: </b>' + response.immunization + '</div><div><b>Date Administered: </b>' + response.dateAdmin + '</div></li>';
 
+                            $("#immunizationListOne").append(newImmunization);
+                            $("#immun_" + response.id).fadeIn("slow", function () { });
                         } else {
                             alert("Error adding immunization");
                         }
