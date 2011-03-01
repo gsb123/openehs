@@ -27,7 +27,7 @@ $(function () {
 
     $("#newImmunizationDialog").dialog({
         autoOpen: false,
-        height: 250,
+        height: 210,
         width: 400,
         modal: true,
         buttons: {

@@ -25,10 +25,13 @@ $(function () {
 
     $("#addAllergyDialog").dialog({
         autoOpen: false,
-        height: 225,
+        height: 170,
         width: 375,
         modal: true,
         buttons: {
+            "Create New Allergy": function () {
+                $("#createAllergyDialog").dialog("open");
+            },
             "Add Allergy": function () {
                 if ($("#addAllergyForm").valid()) {
                     $.post("/Patient/AddAllergy", {
@@ -37,11 +40,12 @@ $(function () {
                     }, function (returnData) {
                         if (returnData.error == "false") {
                             $("#addAllergyDialog").dialog("close");
-                            var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
-                            $("#allergyList").append(newAllergy);
-                            $("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
-                                $(this).find(".allergyRemove").button().click(removeOnClick)
-                            });
+
+                            //var newAllergy = '<li class="group" style="display:none" id="allergy_' + returnData.allergy.Id + '"><div style="float: left;">' + returnData.allergy.Name + '</div><div style="float: right;"><input class="allergyRemove" id="' + returnData.allergy.Id + '" type="button" value="Remove" /></div></li>';
+                            //$("#allergyList").append(newAllergy);
+                            //$("#allergy_" + returnData.allergy.Id).fadeIn("normal", function () {
+                                //$(this).find(".allergyRemove").button().click(removeOnClick)
+                           // });
                         } else {
                             $("#addAllergyDialog .error").html(returnData.status);
                         }
@@ -54,6 +58,37 @@ $(function () {
         },
         close: function () {
             
+        }
+    });
+
+    $("#createAllergyDialog").dialog({
+        autoOpen: false,
+        height: 170,
+        width: 420,
+        modal: true,
+        buttons: {
+            "Add Allergy": function () {
+                $.post("/Patient/AddNewAllergy", {
+                    AllergyName: $("#addAllergyName").val()
+                }, function (result) {
+
+                    //Need this code for later!!!
+                    //$("#immunizationSelect").append('<option value="' + result.Id + '">' + result.VaccineType + '</option>');
+
+                    $("#addAllergyName").val("");
+                    $("#createImmunizationDialog").dialog("close");
+
+                }, "json");
+            },
+            Cancel: function () {
+                $("#addAllergyName").val("");
+
+
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
         }
     });
 
