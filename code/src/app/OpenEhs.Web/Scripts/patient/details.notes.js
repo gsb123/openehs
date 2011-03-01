@@ -15,7 +15,13 @@ $(function () {
     };
     $("#NotesTextBox").ckeditor(ckConfig);
 
-
+    $("#prewrittenNoteSelect").live('change', function () {
+        $.post("/Patient/TemplateDetail", {
+            ID: $("#prewrittenNoteSelect").val()
+        }, function (result) {
+            $("textarea#NotesTextBox").val(result.body);
+        }, "json");
+    });
 
 
     $("#submitNoteButton").button().click(function () {

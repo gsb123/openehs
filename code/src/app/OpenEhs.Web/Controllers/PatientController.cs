@@ -11,11 +11,12 @@ using OpenEhs.Web.Models;
 using System.Web;
 
 
-namespace OpenEhs.Web.Controllers {
+namespace OpenEhs.Web.Controllers
+{
     public class PatientController : Controller
     {
         private IPatientRepository _patientRepository;
-        
+
         public PatientController()
         {
             _patientRepository = new PatientRepository();
@@ -34,17 +35,20 @@ namespace OpenEhs.Web.Controllers {
         #region ActionResults
 
         // GET: /Patient/
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
             var psvModel = new PatientSearchViewModel(new PatientRepository().GetTop25());
 
             return View(psvModel);
         }
 
-        public ActionResult Create() {
+        public ActionResult Create()
+        {
             return View(new CreatePatientViewModel());
         }
 
-        public ActionResult Details(int id) {
+        public ActionResult Details(int id)
+        {
             var patientViewModel = new PatientViewModel(id);
 
             HttpContext.Session["CurrentPatient"] = id;
@@ -58,7 +62,8 @@ namespace OpenEhs.Web.Controllers {
         /// <param name="values">Collection of values from the posted form</param>
         /// <returns>List of patients</returns>
         [HttpPost]
-        public ActionResult Index(FormCollection values) {
+        public ActionResult Index(FormCollection values)
+        {
             string searchCriteria = values["PatientSearchTextBox"];    //Get the value entered in the 'Search' field
 
             //If the search field is empty then return the top 25 default results
@@ -71,7 +76,8 @@ namespace OpenEhs.Web.Controllers {
             //Check if the search criteria contains a Date of Birth
             Regex dobRegEx = new Regex(this.dateRegExpression);
             Match m = dobRegEx.Match(searchCriteria);
-            if (m.Success) {
+            if (m.Success)
+            {
                 //Parse the DOB to English (en) Great Britain (GB) format 'DD/MM/YYYY' for Ghana
                 DateTime dob = DateTime.Parse(m.ToString(), new CultureInfo("en-GB"));
 
@@ -87,7 +93,8 @@ namespace OpenEhs.Web.Controllers {
             //Check if the search criteria contains a Phone Number
             Regex phoneRegEx = new Regex(this.phoneRegExpression); //Check for phone number
             m = phoneRegEx.Match(searchCriteria); //Check if the search string matches the phone number
-            if (m.Success) {
+            if (m.Success)
+            {
                 //Format the phone number to 'XXXXXXXXXX' format to search for it
                 string formattedPhoneNumber = phoneRegEx.Replace(m.ToString(), "$1$2$3");
 
@@ -104,7 +111,8 @@ namespace OpenEhs.Web.Controllers {
             //Check if the search criteria contains a Patient ID (6 character numeric string)
             Regex idRegEx = new Regex(this.patientIDRegExpression); //Check for Patient ID number
             m = idRegEx.Match(searchCriteria);  //Check if the search string contains the Patient ID
-            if (m.Success) {
+            if (m.Success)
+            {
                 //Find any patients with a matching ID
                 IList<Patient> idPatients = new PatientRepository().FindByPatientId(Convert.ToInt32(m.ToString()));
 
@@ -118,7 +126,8 @@ namespace OpenEhs.Web.Controllers {
             //Check if the search criteria contains a Patient ID (6 character numeric string)
             Regex physicalIdRegEx = new Regex(this.physicalIDRegExpression); //Check for Patient ID number
             m = physicalIdRegEx.Match(searchCriteria);  //Check if the search string contains the Patient ID
-            if (m.Success) {
+            if (m.Success)
+            {
                 //Find any patients with a matching ID
                 IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(m.ToString());
 
@@ -132,9 +141,11 @@ namespace OpenEhs.Web.Controllers {
             //Check if the search criteria contains a Patient name
             Regex nameRegEx = new Regex(this.nameRegExpression); //Check for Patient name
             string[] names = searchCriteria.Split(' ');
-            foreach (string name in names) {
+            foreach (string name in names)
+            {
                 m = nameRegEx.Match(name);  //Check if the search string contains a Patient name
-                if (m.Success) {
+                if (m.Success)
+                {
                     //Find any patients with a matching name
                     IList<Patient> namePatients = new PatientRepository().FindByFirstName(m.ToString());
                     patients = patients.Union<Patient>(namePatients); //Add them to the result set
@@ -216,75 +227,77 @@ namespace OpenEhs.Web.Controllers {
             return View(model);
         }
 
-//        public JsonResult CreatePatient() {
-//            try {
-//                var patient = new Patient();
-//                patient.IsActive = true;
-//
-//                patient.FirstName = Request.Form["p_firstName"];
-//                patient.MiddleName = Request.Form["p_middleName"];
-//                patient.LastName = Request.Form["p_lastName"];
-//                patient.DateOfBirth = DateTime.Parse(Request.Form["p_dob"]);
-//                patient.Gender = Request.Form["p_gender"];
-//                patient.PhoneNumber = Request.Form["p_phoneNumber"];
-//                patient.BloodType = Request.Form["p_bloodType"];
-//                patient.TribeRace = Request.Form["p_tribeRace"];
-//                patient.Religion = Request.Form["p_religion"];
-//
-                // Address
-//                patient.Address.IsActive = true;
-//                patient.Address.Street1 = Request.Form["p_address_street1"];
-//                patient.Address.Street2 = Request.Form["p_address_street2"];
-//                patient.Address.City = Request.Form["p_address_City"];
-//                patient.Address.Region = Request.Form["p_address_Region"];
-//                patient.Address.Country = Request.Form["p_address_Country"];
-//
-//                try {
-//                    patient.OldPhysicalRecordNumber = Request.Form["oldPhysicalRecordNumber"];
-//                } catch (ArgumentNullException) {
-                    // No op
-//                }
-//
-//                patient.EmergencyContact.IsActive = true;
-//                patient.EmergencyContact.FirstName = Request.Form["emergency_firstName"];
-//                patient.EmergencyContact.LastName = Request.Form["emergency_lastname"];
-//
-//                try {
-//                    patient.EmergencyContact.Relationship = (Relationship)int.Parse(Request.Form["emergency_relationship"]);
-//                } catch (ArgumentNullException) {
-//                    var e = new ArgumentNullException("A relationship must be selected for the emergency contact");
-//                    throw e;
-//                }
-//
-//                patient.EmergencyContact.PhoneNumber = Request.Form["emergency_phonenumber"];
-//
-//                patient.EmergencyContact.Address.IsActive = true;
-//                patient.EmergencyContact.Address.Street1 = Request.Form["ec_address_street1"];
-//                patient.EmergencyContact.Address.Street2 = Request.Form["ec_address_street2"];
-//                patient.EmergencyContact.Address.City = Request.Form["ec_address_City"];
-//                patient.EmergencyContact.Address.Region = Request.Form["ec_address_Region"];
-//                patient.EmergencyContact.Address.Country = Request.Form["ec_address_Country"];
-//
-//                return Json(new {
-//                    error = "false",
-//                    status = "Created new patient successfully",
-//                    patient = patient
-//                });
-//            } catch (Exception e) {
-//                return Json(new {
-//                    error = "true",
-//                    status = "Error while creating new patient.",
-//                    errorMessage = e.Message
-//                });
-//            }
-//        }
+        //        public JsonResult CreatePatient() {
+        //            try {
+        //                var patient = new Patient();
+        //                patient.IsActive = true;
+        //
+        //                patient.FirstName = Request.Form["p_firstName"];
+        //                patient.MiddleName = Request.Form["p_middleName"];
+        //                patient.LastName = Request.Form["p_lastName"];
+        //                patient.DateOfBirth = DateTime.Parse(Request.Form["p_dob"]);
+        //                patient.Gender = Request.Form["p_gender"];
+        //                patient.PhoneNumber = Request.Form["p_phoneNumber"];
+        //                patient.BloodType = Request.Form["p_bloodType"];
+        //                patient.TribeRace = Request.Form["p_tribeRace"];
+        //                patient.Religion = Request.Form["p_religion"];
+        //
+        // Address
+        //                patient.Address.IsActive = true;
+        //                patient.Address.Street1 = Request.Form["p_address_street1"];
+        //                patient.Address.Street2 = Request.Form["p_address_street2"];
+        //                patient.Address.City = Request.Form["p_address_City"];
+        //                patient.Address.Region = Request.Form["p_address_Region"];
+        //                patient.Address.Country = Request.Form["p_address_Country"];
+        //
+        //                try {
+        //                    patient.OldPhysicalRecordNumber = Request.Form["oldPhysicalRecordNumber"];
+        //                } catch (ArgumentNullException) {
+        // No op
+        //                }
+        //
+        //                patient.EmergencyContact.IsActive = true;
+        //                patient.EmergencyContact.FirstName = Request.Form["emergency_firstName"];
+        //                patient.EmergencyContact.LastName = Request.Form["emergency_lastname"];
+        //
+        //                try {
+        //                    patient.EmergencyContact.Relationship = (Relationship)int.Parse(Request.Form["emergency_relationship"]);
+        //                } catch (ArgumentNullException) {
+        //                    var e = new ArgumentNullException("A relationship must be selected for the emergency contact");
+        //                    throw e;
+        //                }
+        //
+        //                patient.EmergencyContact.PhoneNumber = Request.Form["emergency_phonenumber"];
+        //
+        //                patient.EmergencyContact.Address.IsActive = true;
+        //                patient.EmergencyContact.Address.Street1 = Request.Form["ec_address_street1"];
+        //                patient.EmergencyContact.Address.Street2 = Request.Form["ec_address_street2"];
+        //                patient.EmergencyContact.Address.City = Request.Form["ec_address_City"];
+        //                patient.EmergencyContact.Address.Region = Request.Form["ec_address_Region"];
+        //                patient.EmergencyContact.Address.Country = Request.Form["ec_address_Country"];
+        //
+        //                return Json(new {
+        //                    error = "false",
+        //                    status = "Created new patient successfully",
+        //                    patient = patient
+        //                });
+        //            } catch (Exception e) {
+        //                return Json(new {
+        //                    error = "true",
+        //                    status = "Error while creating new patient.",
+        //                    errorMessage = e.Message
+        //                });
+        //            }
+        //        }
 
         #endregion
 
         #region FeedChart
 
-        public JsonResult AddFeed() {
-            try {
+        public JsonResult AddFeed()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientId);
@@ -328,7 +341,8 @@ namespace OpenEhs.Web.Controllers {
                 openCheckIn.FeedChart.Add(feedchart);
 
                 //Return results as JSON
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Successfully added chart.",
                     Date = feedchart.FeedTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -341,8 +355,11 @@ namespace OpenEhs.Web.Controllers {
                     feedchart.Comments
                 });
 
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add feed chart successfully",
                     errorMessage = e.Message
@@ -350,8 +367,10 @@ namespace OpenEhs.Web.Controllers {
             }
         }
 
-        public JsonResult AddIntake() {
-            try {
+        public JsonResult AddIntake()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientId);
@@ -379,7 +398,8 @@ namespace OpenEhs.Web.Controllers {
                 openCheckIn.IntakeChart.Add(intakechart);
 
                 //Return results as JSON
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Successfully added chart.",
                     Date = intakechart.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -387,8 +407,11 @@ namespace OpenEhs.Web.Controllers {
                     intakechart.Amount
                 });
 
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add intake chart successfully",
                     errorMessage = e.Message
@@ -396,8 +419,10 @@ namespace OpenEhs.Web.Controllers {
             }
         }
 
-        public JsonResult AddOutput() {
-            try {
+        public JsonResult AddOutput()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientId);
@@ -434,7 +459,8 @@ namespace OpenEhs.Web.Controllers {
                 openCheckIn.OutputChart.Add(outputchart);
 
                 //Return results as JSON
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Successfully added chart.",
                     Date = outputchart.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -445,8 +471,11 @@ namespace OpenEhs.Web.Controllers {
                     outputchart.StoolColor
                 });
 
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add intake chart successfully",
                     errorMessage = e.Message
@@ -458,8 +487,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Allergy
 
-        public JsonResult AddAllergy() {
-            try {
+        public JsonResult AddAllergy()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 string allergyName = Request.Form["allergyName"];
 
@@ -473,13 +504,17 @@ namespace OpenEhs.Web.Controllers {
 
                 UnitOfWork.CurrentSession.Flush();
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Added allergy: " + allergyName + " successfully",
                     allergy = allergy
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add allergy successfully",
                     errorMessage = e.Message
@@ -487,8 +522,10 @@ namespace OpenEhs.Web.Controllers {
             }
         }
 
-        public JsonResult RemoveAllergy() {
-            try {
+        public JsonResult RemoveAllergy()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 int allergyId = int.Parse(Request.Form["allergyID"]);
 
@@ -496,8 +533,10 @@ namespace OpenEhs.Web.Controllers {
                 var patient = repo.Get(patientId);
                 string name = "";
                 bool found = false;
-                foreach (var allergy in patient.Allergies) {
-                    if (allergyId == allergy.Id) {
+                foreach (var allergy in patient.Allergies)
+                {
+                    if (allergyId == allergy.Id)
+                    {
                         found = true;
                         name = allergy.Name;
                         patient.Allergies.Remove(allergy);
@@ -506,21 +545,29 @@ namespace OpenEhs.Web.Controllers {
                 }
 
                 UnitOfWork.CurrentSession.Flush();
-                if (found) {
-                    return Json(new {
+                if (found)
+                {
+                    return Json(new
+                    {
                         error = "false",
                         status = "Removed allergy \"" + name + "\" successfully",
                         Id = allergyId
                     });
-                } else {
-                    return Json(new {
+                }
+                else
+                {
+                    return Json(new
+                    {
                         error = "true",
                         status = "Allergy not found, please refresh the page and try again",
                         errorMessage = "Allergy with id: " + allergyId + " not found"
                     });
                 }
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to remove allergy",
                     errorMessage = e.Message
@@ -532,8 +579,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Vitals
 
-        public JsonResult AddVital() {
-            try {
+        public JsonResult AddVital()
+        {
+            try
+            {
                 //Get current patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
@@ -554,7 +603,8 @@ namespace OpenEhs.Web.Controllers {
                     vitals.Weight = double.Parse(Request.Form["weight"]);
 
                 BloodPressure bp = new BloodPressure();
-                if (Request.Form["BpDiastolic"] != "" && Request.Form["BpSystolic"] != "") {
+                if (Request.Form["BpDiastolic"] != "" && Request.Form["BpSystolic"] != "")
+                {
                     bp.Diastolic = int.Parse(Request.Form["BpDiastolic"]);
                     bp.Systolic = int.Parse(Request.Form["BpSystolic"]);
                 }
@@ -573,7 +623,8 @@ namespace OpenEhs.Web.Controllers {
                 openCheckIn.Vitals.Add(vitals);
 
                 //Return results as JSON
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Successfully added vital.",
                     date = vitals.Time.ToString("MM/dd/yyyy HH:mm:ss"),
@@ -586,8 +637,11 @@ namespace OpenEhs.Web.Controllers {
                     temperature = vitals.Temperature,
                     type = Enum.GetName(typeof(VitalsType), vitals.Type)
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
@@ -598,8 +652,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Checkin/Checkout
 
-        public JsonResult AddCheckIn() {
-            try {
+        public JsonResult AddCheckIn()
+        {
+            try
+            {
                 //Get patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
@@ -632,19 +688,25 @@ namespace OpenEhs.Web.Controllers {
                 patient.PatientCheckIns.Add(checkin);
                 new InvoiceRepository().Add(invoice);
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false"
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
             }
         }
 
-        public JsonResult CheckOut() {
-            try {
+        public JsonResult CheckOut()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
                 var patient = patientRepo.Get(patientId);
@@ -657,7 +719,8 @@ namespace OpenEhs.Web.Controllers {
                 checkIn.CheckOutTime = DateTime.Now;
                 checkIn.Diagnosis = Request.Form["diagnosis"];
 
-                if (Request.Form["deceased"] == "on") {
+                if (Request.Form["deceased"] == "on")
+                {
                     checkIn.TimeOfDeath = DateTime.Parse(Request.Form["timeOfDeath"]);
                     patient.DateOfBirth = DateTime.Parse(Request.Form["timeOfDeath"]);
                 }
@@ -666,24 +729,31 @@ namespace OpenEhs.Web.Controllers {
                                    where surgery.EndTime == DateTime.MinValue
                                    select surgery;
 
-                if (surgeryQuery.Count<Surgery>() > 0) {
+                if (surgeryQuery.Count<Surgery>() > 0)
+                {
                     Surgery openSurgery = surgeryQuery.First<Surgery>();
                     openSurgery.EndTime = DateTime.Now;
                 }
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false"
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
             }
         }
 
-        public JsonResult GetCurrentCheckin() {
-            try {
+        public JsonResult GetCurrentCheckin()
+        {
+            try
+            {
                 //Get patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
@@ -694,21 +764,29 @@ namespace OpenEhs.Web.Controllers {
                             select checkin;
 
 
-                if (query.Count<PatientCheckIn>() > 0) {
+                if (query.Count<PatientCheckIn>() > 0)
+                {
                     PatientCheckIn checkIn = query.First<PatientCheckIn>();
-                    return Json(new {
+                    return Json(new
+                    {
                         error = "false",
                         checkin = checkIn.Id
                     });
-                } else {
+                }
+                else
+                {
 
-                    return Json(new {
+                    return Json(new
+                    {
                         error = "false",
                         checkin = "null"
                     });
                 }
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
@@ -719,7 +797,8 @@ namespace OpenEhs.Web.Controllers {
 
         #region Visit
 
-        public JsonResult SearchVisit() {
+        public JsonResult SearchVisit()
+        {
             int patientID = int.Parse(Request.Form["patientID"]);
             PatientRepository patientRepo = new PatientRepository();
             var patient = patientRepo.Get(patientID);
@@ -734,10 +813,12 @@ namespace OpenEhs.Web.Controllers {
             var resultSet = new List<object>();
             var jsonResult = new JsonResult();
 
-            foreach (var result in query) {
+            foreach (var result in query)
+            {
                 IList<object> vitalsList = new List<object>();
 
-                resultSet.Add(new {
+                resultSet.Add(new
+                {
                     date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss")
                 });
             }
@@ -747,8 +828,10 @@ namespace OpenEhs.Web.Controllers {
             return jsonResult;
         }
 
-        public JsonResult SearchVisitList() {
-            try {
+        public JsonResult SearchVisitList()
+        {
+            try
+            {
 
                 int patientID = int.Parse(Request.Form["patientID"]);
                 PatientRepository patientRepo = new PatientRepository();
@@ -763,11 +846,14 @@ namespace OpenEhs.Web.Controllers {
                 var resultSet = new List<object>();
                 var jsonResult = new JsonResult();
 
-                foreach (var result in query) {
+                foreach (var result in query)
+                {
                     IList<object> visitList = new List<object>();
 
-                    foreach (var vitals in result.Vitals) {
-                        visitList.Add(new {
+                    foreach (var vitals in result.Vitals)
+                    {
+                        visitList.Add(new
+                        {
                             Time = vitals.Time.ToString("dd/MM/yyyy HH:mm:ss"),
                             //vitals.Type,
                             type = Enum.GetName(typeof(VitalsType), vitals.Type),
@@ -783,8 +869,10 @@ namespace OpenEhs.Web.Controllers {
 
                     IList<object> feedList = new List<object>();
 
-                    foreach (var a in result.FeedChart) {
-                        feedList.Add(new {
+                    foreach (var a in result.FeedChart)
+                    {
+                        feedList.Add(new
+                        {
                             Time = a.FeedTime.ToString("dd/MM/yyyy HH:mm:ss"),
                             Type = a.FeedType,
                             AmountOffered = a.AmountOffered,
@@ -798,8 +886,10 @@ namespace OpenEhs.Web.Controllers {
 
                     IList<object> outputList = new List<object>();
 
-                    foreach (var b in result.OutputChart) {
-                        outputList.Add(new {
+                    foreach (var b in result.OutputChart)
+                    {
+                        outputList.Add(new
+                        {
                             Time = b.ChartTime.ToString("dd/MM/yyyy HH:mm:ss"),
                             b.NGSuctionAmount,
                             b.NGSuctionColor,
@@ -822,7 +912,8 @@ namespace OpenEhs.Web.Controllers {
                         });
                     }
 
-                    resultSet.Add(new {
+                    resultSet.Add(new
+                    {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
                         result.Diagnosis,
                         firstName = result.AttendingStaff.FirstName,
@@ -837,8 +928,11 @@ namespace OpenEhs.Web.Controllers {
                 jsonResult.Data = resultSet;
 
                 return jsonResult;
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to fetch list successfully"
                     //errorMessage = e.Message
@@ -850,8 +944,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Surgery
 
-        public JsonResult AddSurgery() {
-            try {
+        public JsonResult AddSurgery()
+        {
+            try
+            {
                 //Repositories
                 PatientRepository patientRepo = new PatientRepository();
                 StaffRepository staffRepo = new StaffRepository();
@@ -884,7 +980,8 @@ namespace OpenEhs.Web.Controllers {
                 UnitOfWork.CurrentSession.Flush();
 
                 //Surgeon
-                if (Request.Form["surgeon"] != "") {
+                if (Request.Form["surgeon"] != "")
+                {
                     SurgeryStaff surgeon = new SurgeryStaff();
                     surgeon.Staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
                     surgeon.Surgery = surgery;
@@ -893,7 +990,8 @@ namespace OpenEhs.Web.Controllers {
                 }
 
                 //Surgeon Assistant
-                if (Request.Form["surgeonAssistant"] != "") {
+                if (Request.Form["surgeonAssistant"] != "")
+                {
                     SurgeryStaff surgeonAssistant = new SurgeryStaff();
                     surgeonAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["surgeonAssistant"]));
                     surgeonAssistant.Surgery = surgery;
@@ -902,7 +1000,8 @@ namespace OpenEhs.Web.Controllers {
 
                 }
                 //Anaesthetist
-                if (Request.Form["anaesthetist"] != "") {
+                if (Request.Form["anaesthetist"] != "")
+                {
                     SurgeryStaff anaesthetist = new SurgeryStaff();
                     anaesthetist.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetist"]));
                     anaesthetist.Role = StaffRole.Anaesthetist;
@@ -910,7 +1009,8 @@ namespace OpenEhs.Web.Controllers {
                     ssRepo.Add(anaesthetist);
                 }
                 //Anaesthetist Assistant
-                if (Request.Form["anaesthetistAssistant"] != "") {
+                if (Request.Form["anaesthetistAssistant"] != "")
+                {
                     SurgeryStaff anaesthetistAssistant = new SurgeryStaff();
                     anaesthetistAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetistAssistant"]));
                     anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
@@ -918,7 +1018,8 @@ namespace OpenEhs.Web.Controllers {
                     ssRepo.Add(anaesthetistAssistant);
                 }
                 //Nurse
-                if (Request.Form["nurse"] != "") {
+                if (Request.Form["nurse"] != "")
+                {
                     SurgeryStaff nurse = new SurgeryStaff();
                     nurse.Staff = staffRepo.Get(int.Parse(Request.Form["nurse"]));
                     nurse.Role = StaffRole.Nurse;
@@ -926,7 +1027,8 @@ namespace OpenEhs.Web.Controllers {
                     ssRepo.Add(nurse);
                 }
                 //Consultant
-                if (Request.Form["consultant"] != "") {
+                if (Request.Form["consultant"] != "")
+                {
                     SurgeryStaff consultant = new SurgeryStaff();
                     consultant.Staff = staffRepo.Get(int.Parse(Request.Form["consultant"]));
                     consultant.Role = StaffRole.Consultant;
@@ -934,11 +1036,15 @@ namespace OpenEhs.Web.Controllers {
                     ssRepo.Add(consultant);
                 }
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false"
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
@@ -949,8 +1055,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Medication
 
-        public JsonResult AddMedication() {
-            try {
+        public JsonResult AddMedication()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 string medicationName = Request.Form["name"];
                 string medicationInstructions = Request.Form["instructions"];
@@ -970,11 +1078,13 @@ namespace OpenEhs.Web.Controllers {
 
                 UnitOfWork.CurrentSession.Flush();
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Added medication: " + medication.Name + " successfully",
                     // Need this fix for circular reference error
-                    medication = new {
+                    medication = new
+                    {
                         id = medication.Id,
                         instructions = medication.Instruction,
                         name = medication.Name,
@@ -982,8 +1092,11 @@ namespace OpenEhs.Web.Controllers {
                         expDate = medication.ExpDate.Date.ToString("dd/MM/yyyy")
                     }
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add medication successfully",
                     errorMessage = e.Message
@@ -995,8 +1108,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Billing
 
-        public JsonResult AddInvoiceItem() {
-            try {
+        public JsonResult AddInvoiceItem()
+        {
+            try
+            {
                 //Build Line Item objects
                 InvoiceItem lineItem = new InvoiceItem();
 
@@ -1021,13 +1136,15 @@ namespace OpenEhs.Web.Controllers {
                 ServiceRepository serviceRepo = new ServiceRepository();
 
                 //Quantity
-                if (Request.Form["quantity"] != "") {
+                if (Request.Form["quantity"] != "")
+                {
                     lineItem.Quantity = int.Parse(Request.Form["quantity"]);
                     lineItem.Invoice = openCheckIn.Invoice;
                     lineItem.IsActive = true;
 
                     //Product
-                    if (Request.Form["product"] != "") {
+                    if (Request.Form["product"] != "")
+                    {
                         lineItem.Product = productRepo.Get(int.Parse(Request.Form["product"]));
                         lineItem.Service = null;
                         invoiceRepo.AddLineItem(lineItem);
@@ -1056,11 +1173,15 @@ namespace OpenEhs.Web.Controllers {
                 }
 
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false"
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = e.Message
                 });
@@ -1073,8 +1194,10 @@ namespace OpenEhs.Web.Controllers {
         #region Notes
         [HttpPost]
         [ValidateInput(false)]
-        public JsonResult AddNote() {
-            try {
+        public JsonResult AddNote()
+        {
+            try
+            {
                 PatientRepository patientRepo = new PatientRepository();
                 StaffRepository staffRepo = new StaffRepository();
                 Staff staff = new Staff();
@@ -1099,7 +1222,8 @@ namespace OpenEhs.Web.Controllers {
                 note.IsActive = true;
                 openCheckIn.Notes.Add(note);
 
-                if (Request.Form["TemplateTitle"] != null) {
+                if (Request.Form["TemplateTitle"] != null)
+                {
                     TemplateRepository templateRepo = new TemplateRepository();
                     NoteTemplateRepository noteRepo = new NoteTemplateRepository();
                     NoteTemplateCategory noteCat = noteRepo.Get(1);
@@ -1115,87 +1239,137 @@ namespace OpenEhs.Web.Controllers {
 
 
 
-                return Json(new {
+                return Json(new
+                {
                     NoteBody = note.Body,
                     error = "false"
                 });
-            } catch {
-                return Json(new {
+            }
+            catch
+            {
+                return Json(new
+                {
                     error = "true"
                 });
             }
         }
 
+        public JsonResult TemplateDetail()
+        {
+            try
+            {
+                TemplateRepository templateRepo = new TemplateRepository();
+                Template template = templateRepo.Get(int.Parse(Request.Form["ID"]));
+                return Json(new
+                {
+                    body = template.Body,
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+
+        }
         #endregion
 
         #region PatientSearch
 
-        public JsonResult AutoCompleteSuggestions(string term) {
+        public JsonResult AutoCompleteSuggestions(string term)
+        {
             List<string> suggestions = new List<string>();
 
-            try {
+            try
+            {
                 //Parse the DOB to English (en) Great Britain (GB) format 'DD/MM/YYYY' for Ghana
                 DateTime dob = DateTime.Parse(term, new CultureInfo("en-GB"));
                 IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirth(dob);    //Find any patients with this DOB
-                foreach (Patient patient in dobPatients) {
+                foreach (Patient patient in dobPatients)
+                {
                     suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.DateOfBirth.ToShortDateString(), patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-            try {
+            try
+            {
                 IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirthPiece(term);    //Find any patients with this DOB
-                foreach (Patient patient in dobPatients) {
+                foreach (Patient patient in dobPatients)
+                {
                     suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.DateOfBirth.ToShortDateString(), patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
 
-            try {
+            try
+            {
                 //Find any patients with this Phone Number
                 IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(term);
-                foreach (Patient patient in phonePatients) {
+                foreach (Patient patient in phonePatients)
+                {
                     string phoneNo = string.Format("{0} {1} {2}", patient.PhoneNumber.Substring(0, 3), patient.PhoneNumber.Substring(3, 3), patient.PhoneNumber.Substring(6, 4));
                     suggestions.Add(string.Format("{0} - {1}, {2} {3}", phoneNo, patient.LastName, patient.FirstName, patient.MiddleName));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-            try {
+            try
+            {
                 //Find any patients with a matching ID
                 IList<Patient> idPatients = new PatientRepository().FindByPatientIdPiece(term);
-                foreach (Patient patient in idPatients) {
+                foreach (Patient patient in idPatients)
+                {
                     suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-            try {
+            try
+            {
                 //Find any patients with a matching ID
                 IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(term);
-                foreach (Patient patient in physicalIdPatients) {
+                foreach (Patient patient in physicalIdPatients)
+                {
                     suggestions.Add(string.Format("{0} - {1}, {2} {3}", patient.OldPhysicalRecordNumber, patient.LastName, patient.FirstName, patient.MiddleName));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-            try {
+            try
+            {
                 //Find any patients with a matching name
                 IList<Patient> firstNamePatients = new PatientRepository().FindByFirstName(term);
-                foreach (Patient patient in firstNamePatients) {
+                foreach (Patient patient in firstNamePatients)
+                {
                     suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-            try {
+            try
+            {
                 IList<Patient> middleNamePatients = new PatientRepository().FindByMiddleName(term);
-                foreach (Patient patient in middleNamePatients) {
+                foreach (Patient patient in middleNamePatients)
+                {
                     suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-            try {
+            try
+            {
                 IList<Patient> lastNamePatients = new PatientRepository().FindByLastName(term);
-                foreach (Patient patient in lastNamePatients) {
+                foreach (Patient patient in lastNamePatients)
+                {
                     suggestions.Add(string.Format("{0}, {1} {2}", patient.LastName, patient.FirstName, patient.MiddleName));
                 }
-            } catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
             return Json(suggestions, JsonRequestBehavior.AllowGet);
         }
@@ -1204,8 +1378,10 @@ namespace OpenEhs.Web.Controllers {
 
         #region Immunization
 
-        public JsonResult AddImmunizationToPatient() {
-            try {
+        public JsonResult AddImmunizationToPatient()
+        {
+            try
+            {
                 int patientId = int.Parse(Request.Form["patientID"]);
                 int immunizationId = int.Parse(Request.Form["vaccineType"]);
                 DateTime dateAdministered = DateTime.Parse(Request.Form["dateAdministered"]);
@@ -1224,14 +1400,18 @@ namespace OpenEhs.Web.Controllers {
 
                 //UnitOfWork.CurrentSession.Flush();
 
-                return Json(new {
+                return Json(new
+                {
                     error = "false",
                     status = "Added immunization: " + pImmunization.Immunization.VaccineType + " to patient successfully",
                     immunization = pImmunization.Immunization.VaccineType,
                     dateAdmin = pImmunization.DateAdministered.ToString("dd/MM/yyyy HH:mm:ss")
                 });
-            } catch (Exception e) {
-                return Json(new {
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
                     error = "true",
                     status = "Unable to add immunization successfully",
                     errorMessage = e.Message
@@ -1250,12 +1430,12 @@ namespace OpenEhs.Web.Controllers {
 
                 immunRepo.Add(immun);
 
-                 return Json(new
-                 {
-                     error = "false",
-                     immun.Id,
-                     immun.VaccineType
-                 });
+                return Json(new
+                {
+                    error = "false",
+                    immun.Id,
+                    immun.VaccineType
+                });
             }
             catch (Exception)
             {
