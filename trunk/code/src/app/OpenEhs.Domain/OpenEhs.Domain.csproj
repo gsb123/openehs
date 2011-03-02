@@ -48,6 +48,7 @@
     <Compile Include="Model\Patient\Medication.cs" />
     <Compile Include="Model\Patient\PatientAllergy.cs" />
     <Compile Include="Model\Patient\PatientImmunization.cs" />
+    <Compile Include="Model\Patient\PatientMedication.cs" />
     <Compile Include="Model\Patient\PatientProblem.cs" />
     <Compile Include="Model\Patient\Problem.cs" />
     <Compile Include="Model\Surgery\CaseType.cs" />

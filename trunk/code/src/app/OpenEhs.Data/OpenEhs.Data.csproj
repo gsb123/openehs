@@ -68,9 +68,11 @@
     <Compile Include="Common\PagedList.cs" />
     <Compile Include="Interfaces\IAllergyRepository.cs" />
     <Compile Include="Interfaces\ILocationRepository.cs" />
+    <Compile Include="Interfaces\IMedicationRepository.cs" />
     <Compile Include="Interfaces\INoteTemplateRepository.cs" />
     <Compile Include="Interfaces\IPatientAllergyRepository.cs" />
     <Compile Include="Interfaces\IPatientImmunizationRepository.cs" />
+    <Compile Include="Interfaces\IPatientMedicationRepository.cs" />
     <Compile Include="Interfaces\IPatientProblemRepository.cs" />
     <Compile Include="Interfaces\IProblemRepository.cs" />
     <Compile Include="Interfaces\IServiceRepository.cs" />
@@ -98,9 +100,11 @@
     <Compile Include="Interfaces\IImmunizationRepository.cs" />
     <Compile Include="Repositories\ImmunizationRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
+    <Compile Include="Repositories\MedicationRepository.cs" />
     <Compile Include="Repositories\NoteTemplateRepository.cs" />
     <Compile Include="Repositories\PatientAllergyRepository.cs" />
     <Compile Include="Repositories\PatientImmunizationRepository.cs" />
+    <Compile Include="Repositories\PatientMedicationRepositiry.cs" />
     <Compile Include="Repositories\PatientProblemRepository.cs" />
     <Compile Include="Repositories\ProblemRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
@@ -129,6 +133,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Mappings\PatientMedication.hbm.xml" />
     <EmbeddedResource Include="Mappings\Medication.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

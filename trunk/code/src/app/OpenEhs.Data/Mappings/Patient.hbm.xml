@@ -46,9 +46,9 @@
       <one-to-many class="PatientCheckIn" />
     </bag>
 
-    <bag name="Medications" table="Medication" cascade="all">
+    <bag name="Medications" table="PatientMedication" cascade="all" lazy="false">
       <key column="PatientID" />
-      <one-to-many class="Medication" />
+      <one-to-many class="PatientMedication" />
     </bag>
     
   </class>

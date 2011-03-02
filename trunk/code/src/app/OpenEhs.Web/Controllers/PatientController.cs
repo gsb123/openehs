@@ -1053,52 +1053,82 @@ namespace OpenEhs.Web.Controllers
 
         #region Medication
 
-        public JsonResult AddMedication()
+        public JsonResult CreateNewMedication()
         {
             try
             {
-                int patientId = int.Parse(Request.Form["patientID"]);
-                string medicationName = Request.Form["name"];
-                string medicationInstructions = Request.Form["instructions"];
-                DateTime startDate = DateTime.Parse(Request.Form["startDate"]);
-                DateTime expDate = DateTime.Parse(Request.Form["expDate"]);
+                Medication pMed = new Medication();
 
-                PatientRepository repo = new PatientRepository();
-                var patient = repo.Get(patientId);
-                Medication medication = new Medication();
-                medication.Name = medicationName;
-                medication.Instruction = medicationInstructions;
-                medication.StartDate = startDate;
-                medication.ExpDate = expDate;
-                medication.Patient = patient;
+                pMed.Name = Request.Form["MedicationName"];
+                pMed.Description = Request.Form["MedicationDescription"];
+                pMed.IsActive = true;
 
-                patient.Medications.Add(medication);
+                MedicationRepository medicationRepo = new MedicationRepository();
 
-                UnitOfWork.CurrentSession.Flush();
+                medicationRepo.Add(pMed);
 
                 return Json(new
-                {
-                    error = "false",
-                    status = "Added medication: " + medication.Name + " successfully",
-                    // Need this fix for circular reference error
-                    medication = new
-                    {
-                        id = medication.Id,
-                        instructions = medication.Instruction,
-                        name = medication.Name,
-                        startDate = medication.StartDate.Date.ToString("dd/MM/yyyy"),
-                        expDate = medication.ExpDate.Date.ToString("dd/MM/yyyy")
-                    }
-                });
+                                {
+                                    error = "false",
+                                    Name = pMed.Name,
+                                    Id = pMed.Id
+                                });
+
             }
             catch (Exception e)
             {
                 return Json(new
-                {
-                    error = "true",
-                    status = "Unable to add medication successfully",
-                    errorMessage = e.Message
-                });
+                                {
+                                    error = "true",
+                                    status = "Unable to add new medication successfully",
+                                    errorMessage = e.Message
+                                });
+            }
+        }
+
+        public JsonResult AddMedicationToPatient()
+        {
+            try
+            {
+                var patientId = int.Parse(Request.Form["patientID"]);
+                var Name = int.Parse(Request.Form["name"]);
+                var instructions = Request.Form["instructions"];
+                DateTime date = DateTime.Parse(Request.Form["expDate"]);
+
+                PatientRepository repo = new PatientRepository();
+                var patient = repo.Get(patientId);
+                PatientMedicationRepositiry pmr = new PatientMedicationRepositiry();
+                MedicationRepository medRepo = new MedicationRepository();
+
+                PatientMedication pMed = new PatientMedication();
+                pMed.Medication = medRepo.Get(Name);
+                pMed.Instruction = instructions;
+                pMed.StartDate = DateTime.Now;
+                pMed.ExpDate = date;
+                pMed.Patient = patient;
+
+                pmr.Add(pMed);
+
+                return Json(new
+                                {
+                                    error = "false",
+                                    id = pMed.Medication.Id,
+                                    name = pMed.Medication.Name,
+                                    instructions = pMed.Instruction,
+                                    startDate = pMed.StartDate.ToString("dd/MM/yyyy"),
+                                    expDate = pMed.ExpDate.ToString("dd/MM/yyyy")
+                                });
+
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                                {
+                                    error = "true",
+                                    status = "Unable to add medication to patient",
+                                    errorMessage = e.Message
+                                });
             }
         }
 
@@ -1373,7 +1403,6 @@ namespace OpenEhs.Web.Controllers
         }
 
         #endregion
-
 
         #region Immunization
 

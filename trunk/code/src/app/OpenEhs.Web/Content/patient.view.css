@@ -394,6 +394,20 @@ fieldset
     margin-right: 10px;
 }
 
+.MedicationList
+{
+	font-size: 1.2em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
 #MedicationListOne li
 {
     font-size: 1.2em;

@@ -17,19 +17,19 @@
             Name:
         </div>
         <div>
-            <input type="text" name="name" id="modal_medicationName" class="required modal-input text ui-widget-content ui-corner-all" />
+            <select name="medicationDropDownList" id="medicationDropDownList" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Medication...</option>
+            @foreach (var all in Model.AllMedications)
+            {
+                <option value="@all.Id">@all.Name</option>
+            }
+            </select>
         </div>
         <div class="modal-label">
             Instruction:
         </div>
         <div>
             <input type="text" name="instructions" id="modal_medicationInstructions" class="required modal-input text ui-widget-content ui-corner-all" />
-        </div>
-        <div class="modal-label">
-            Start Date:
-        </div>
-        <div>
-            <input type="text" name="startdate" id="RxStartDatePicker" class="required modal-input text ui-widget-content ui-corner-all datepicker" />
         </div>
         <div class="modal-label">
             Exp Date:
@@ -40,12 +40,39 @@
     </fieldset>
     </form>
 </div>
+
+<div id="createMedicationDialog" title="Add New Medication">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="createMedicationDialogForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Medication Name:
+        </div>
+        <div>
+            <input type="text" name="modal_medicationName" id="modal_medicationName" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+		<div class="modal-label-long">
+            Description:
+        </div>
+        <div>
+            <input type="text" name="medicationDescription" id="modal_medicationDescription" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+
+
 <div>
     <p id="rxTitle">
         <b>Current Medications </b>
     </p>
     <br />
-    @if (Model.CurrentMedications.Count == 0) {
+    
+
+
+	@if (Model.CurrentMedications.Count == 0) {
         <ul id="MedicationListOne">
             <li>There are no recorded current medications for this patient.</li>
         </ul>
@@ -54,7 +81,7 @@
             @foreach (var medication in Model.CurrentMedications) {
                 <li class="group">
                     <div>
-                        <b>Name: </b>@medication.Name
+                        <b>Name: </b>@medication.Medication.Name
                     </div>
                     <div>
                         <b>Instructions: </b>@medication.Instruction</div>
@@ -66,11 +93,27 @@
             }
         </ul>
     }
+
+
+
+
+
+
+
+
+
+
     <div id="rxInfoLink">
         Show Past Medications...
     </div>
     <div id="rxMoreInfo">
-        @if (Model.PastMedications.Count == 0) {
+        
+
+
+
+
+
+		@if (Model.PastMedications.Count == 0) {
             <ul id="MedicationListThree">
                 <li style="float: left;">There are no recorded past medications for this patient.
                 </li>
@@ -80,7 +123,7 @@
                 @foreach (var medication in Model.PastMedications) {
                     <li class="group">
                         <div>
-                            <b>Name: </b>@medication.Name
+                            <b>Name: </b>@medication.Medication.Name
                         </div>
                         <div>
                             <b>Exp Date: </b>@medication.ExpDate.Date.ToString("MM/dd/yyyy")</div>
@@ -88,5 +131,21 @@
                 }
             </ul>
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </div>
