@@ -691,7 +691,7 @@ $("#addTemplateCategoryDialog").dialog({
             $.post("/Admin/AddTemplateCategory", {
                 Template: $("#model_templateCategoryName").val()
             }, function (result) {
-                    $("#AddInventoryDialog").dialog("close");
+                    $("#addTemplateCategoryDialog").dialog("close");
 
                     $("#model_templateCategoryName").val("");
             }, "json");
