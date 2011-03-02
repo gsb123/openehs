@@ -67,8 +67,10 @@
                         <asp:Calendar ID="calendarDate" runat="server" 
                             onselectionchanged="calendarDate_SelectionChanged" Width="260px"></asp:Calendar>
                         <br />
-                        <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
-                Text="Generate Report" Width="260px" />
+                        <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" Text="Generate Report" Width="260px" />
+                        <br />
+                        <br />
+                        <a href="../Reports">Return to Reports</a>
                     </td>
                 </tr>
             </table>
