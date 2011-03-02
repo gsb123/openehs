@@ -22,6 +22,11 @@ namespace OpenEhs.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "UserAdminRoute",
+                "Admin/User/{action}/{id}",
+                new { controller = "User", action="Index", id = UrlParameter.Optional });
+
+            routes.MapRoute(
                 "PagedRoute",
                 "{controller}/{action}/Page{page}",
                 null,
