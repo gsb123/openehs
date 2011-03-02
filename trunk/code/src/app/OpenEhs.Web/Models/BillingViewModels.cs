@@ -22,10 +22,17 @@ namespace OpenEhs.Web.Models
 
         private Invoice _invoice;
         private List<Payment> _payments;
+        public string SearchTerm { get; set; }
 
         #region Billing
 
         public BillingViewModel(int InvoiceId)
+        {
+            _invoice = new InvoiceRepository().Get(InvoiceId);
+            _payments = new PaymentRepository().GetPaymentsFor(InvoiceId);
+        }
+
+        public BillingViewModel(int InvoiceId, string searchTerms)
         {
             _invoice = new InvoiceRepository().Get(InvoiceId);
             _payments = new PaymentRepository().GetPaymentsFor(InvoiceId);

@@ -56,6 +56,7 @@ namespace OpenEhs.Data
         {
             ICriteria criteria = Session.CreateCriteria<Patient>();
             criteria.SetMaxResults(25);
+            criteria.AddOrder(Order.Desc("Id"));
 
             return criteria.List<Patient>();
         }

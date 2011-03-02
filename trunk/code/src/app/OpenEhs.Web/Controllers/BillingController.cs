@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 using OpenEhs.Data;
+using System.Globalization;
 
 namespace OpenEhs.Web.Controllers
 {
@@ -15,7 +16,12 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Index()
         {
-            var invoices = new InvoiceRepository().GetAll();
+            return Top25();
+        }
+
+        private ActionResult Top25()
+        {
+            var invoices = new InvoiceRepository().GetTop25();
             var billings = new List<BillingViewModel>();
 
             foreach (Invoice invoice in invoices)
@@ -192,14 +198,128 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
-        /*
-        //Trying to get search box to work
-        public JsonResult InvoiceSearch()
-        {
-            //var search
+        #region PatientSearch
 
-            //return Json();
+        public JsonResult AutoCompleteSuggestions(string term)
+        {
+            List<string> suggestions = new List<string>();
+
+            try
+            {
+                //Parse the DOB to English (en) Great Britain (GB) format 'DD/MM/YYYY' for Ghana
+                DateTime dob = DateTime.Parse(term, new CultureInfo("en-GB"));
+                IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirth(dob);    //Find any patients with this DOB
+                foreach (Patient patient in dobPatients)
+                {
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                IList<Patient> dobPatients = new PatientRepository().FindByDateOfBirthPiece(term);    //Find any patients with this DOB
+                foreach (Patient patient in dobPatients)
+                {
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e) { }
+
+
+            try
+            {
+                //Find any patients with this Phone Number
+                IList<Patient> phonePatients = new PatientRepository().FindByPhoneNumber(term);
+                foreach (Patient patient in phonePatients)
+                {
+                    string phoneNo = string.Format("{0} {1} {2}", patient.PhoneNumber.Substring(0, 3), patient.PhoneNumber.Substring(3, 3), patient.PhoneNumber.Substring(6, 4));
+                    suggestions.Add(string.Format("{5} - [{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString(), phoneNo));
+                }
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                //Find any patients with a matching ID
+                IList<Patient> idPatients = new PatientRepository().FindByPatientIdPiece(term);
+                foreach (Patient patient in idPatients)
+                {
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                //Find any patients with a matching ID
+                IList<Patient> physicalIdPatients = new PatientRepository().FindByOldPhysicalRecord(term);
+                foreach (Patient patient in physicalIdPatients)
+                {
+                    suggestions.Add(string.Format("{5} - [{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString(), patient.OldPhysicalRecordNumber));
+                }
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                //Find any patients with a matching name
+                IList<Patient> firstNamePatients = new PatientRepository().FindByFirstName(term);
+                foreach (Patient patient in firstNamePatients)
+                {
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                IList<Patient> middleNamePatients = new PatientRepository().FindByMiddleName(term);
+                foreach (Patient patient in middleNamePatients)
+                {
+                    suggestions.Add(string.Format("[{0}] {1}, {2} {3} ({4})", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                IList<Patient> lastNamePatients = new PatientRepository().FindByLastName(term);
+                foreach (Patient patient in lastNamePatients)
+                {
+                    suggestions.Add(string.Format("[{0}] - {1}, {2} {3} - {4}", patient.Id, patient.LastName, patient.FirstName, patient.MiddleName, patient.DateOfBirth.ToShortDateString()));
+                }
+            }
+            catch (Exception e) { }
+
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
         }
-         */
+
+        #endregion
+
+        [HttpPost]
+        public ActionResult Index(FormCollection values)
+        {
+            string searchCriteria = values["BillingSearchTextBox"];    //Get the value entered in the 'Search' field
+
+            //If the search field is empty then return the top 25 default results
+            if (string.IsNullOrEmpty(searchCriteria))
+                return Top25();
+
+            string[] criteriaItems = searchCriteria.Split('[');
+            string[] criteriaItems2 = criteriaItems[1].Split(']');
+
+            //Get a list of invoices for this person
+            IList<Invoice> invoices = new InvoiceRepository().FindByPatientId(Convert.ToInt32(criteriaItems2[0]));
+
+            var billings = new List<BillingViewModel>();
+
+            foreach (Invoice invoice in invoices)
+            {
+                billings.Add(new BillingViewModel(invoice.Id, "test"));
+            }
+
+            return View(billings);
+        }
     }
 }

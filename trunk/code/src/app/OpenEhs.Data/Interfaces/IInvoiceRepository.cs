@@ -21,5 +21,6 @@ namespace OpenEhs.Data
         void Add(Invoice entity);
         void Remove(Invoice entity);
         IList<Invoice> FindByPatientId(int PatientId);
+        IList<Invoice> GetTop25();
     }
 }
