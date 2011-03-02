@@ -94,14 +94,22 @@ DateOfDeath                 datetime            NULL,
 IsActive                    bit(1)              NOT NULL                DEFAULT 1
 ) AUTO_INCREMENT= 100000;
 
+CREATE TABLE PatientMedication
+(
+PatientMedicationID         int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+Instruction                 text        NULL,
+StartDate                   datetime    NOT NULL,
+ExpDate                     datetime    NOT NULL,
+PatientID                   int         NOT NULL,
+MedicationID                int         NOT NULL
+);
+
 CREATE TABLE Medication
 (
-MedicationID        int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+MedicationID        int         AUTO_INCREMENT      PRIMARY KEY     NOT NULL,
 `Name`              text        NOT NULL,
-Instruction         text        NOT NULL,
-StartDate           datetime    NOT NULL,
-ExpDate             datetime    NOT NULL,
-PatientID           int         NOT NULL
+Description         text        NULL,
+IsActive            bit         NOT NULL
 );
 
 CREATE TABLE Allergy
@@ -505,9 +513,13 @@ ALTER TABLE PatientImmunization
 ADD CONSTRAINT PatientImmunizationMustHaveImmunizationID
 FOREIGN KEY (ImmunizationID) REFERENCES Immunization(ImmunizationID);
 
-ALTER TABLE Medication
-ADD CONSTRAINT MedicationMustHavePatientID
+ALTER TABLE PatientMedication
+ADD CONSTRAINT PatientMedicationMustHavePatientID
 FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
+
+ALTER TABLE PatientMedication
+ADD CONSTRAINT PatientMedicationMustHaveMedicationID
+FOREIGN KEY (MedicationID) REFERENCES Medication(MedicationID);
 
 #----------------------------------------------------------------------------------------------------------
 #-------------------------------------------------TRIGGERS-------------------------------------------------
@@ -1719,6 +1731,8 @@ VALUES
 'Morphine'
 );
 
+/*
+
 INSERT INTO PatientAllergy
 (
 PatientID,
@@ -1784,6 +1798,7 @@ VALUES
 100001,
 5
 );
+*/
 
 
 CALL sp_insertStaff
@@ -2121,75 +2136,6 @@ VALUES
 100000,
 7,
 '2011-01-14 00:00:00'
-);
-
-INSERT INTO Medication
-(
-`Name`,
-Instruction,
-StartDate,
-ExpDate,
-PatientID
-)
-VALUES
-(
-'Lisinopril oral tablet 10mg',
-'Qty 30 of 10mg, 1 every 4 hours. (6 refills)',
-NOW(),
-'2011-04-14 00:00:00',
-100000
-);
-
-INSERT INTO Medication
-(
-`Name`,
-Instruction,
-StartDate,
-ExpDate,
-PatientID
-)
-VALUES
-(
-'Metformin Hydrochlorid (metformin) oral tablet 500mg',
-'Whatever the directions are',
-'2007-10-01 00:00:00',
-'2008-05-10 00:00:00',
-100000
-);
-
-INSERT INTO Medication
-(
-`Name`,
-Instruction,
-StartDate,
-ExpDate,
-PatientID
-)
-VALUES
-(
-'Plavix oral tablet 1000mg',
-'Take when not feeling well',
-'2002-01-01 00:00:00',
-'2002-05-02 00:00:00',
-100000
-);
-
-
-INSERT INTO Medication
-(
-`Name`,
-Instruction,
-StartDate,
-ExpDate,
-PatientID
-)
-VALUES
-(
-'DOXYCYCL HYC oral tablet 100mg',
-'Take one tab by mouth twice daily',
-'2005-12-10 00:00:00',
-'2009-08-07 00:00:00',
-100001
 );
 
 INSERT INTO Location
