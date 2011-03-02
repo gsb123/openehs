@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NHibernate;
+using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
@@ -25,6 +26,11 @@ namespace OpenEhs.Data
             ICriteria criteria = Session.CreateCriteria<Category>();
 
             return criteria.List<Category>();
+        }
+
+        public PagedList<Category> GetPaged(int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
         }
 
         public void Add(Category entity)

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using OpenEhs.Data;
+using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Models
 {
     public class UserViewModel
     {
-        public IList<User> Users { get; set; }
+        public PagedList<User> Users { get; set; }
         public Role SelectedRole { get; set; }
 
         public SelectList Roles
@@ -25,7 +26,7 @@ namespace OpenEhs.Web.Models
 
         public string SearchTerm { get; set; }
 
-        public UserViewModel(IList<User> users)
+        public UserViewModel(PagedList<User> users)
         {
             Users = users;
         }

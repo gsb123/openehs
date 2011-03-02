@@ -16,112 +16,17 @@ namespace OpenEhs.Web.Controllers
             _userRepository = new UserRepository();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var users = _userRepository.GetAll();
+            var pageIndex = page ?? 1;
+            var users = _userRepository.GetPaged(pageIndex, 10);
 
             return View(new UserViewModel(users));
         }
 
-        public ActionResult GetUsersStartingWith(string id)
+        public ActionResult Details(int id)
         {
-            switch (id.ToUpper())
-            {
-                case "A":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "B":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "C":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "D":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "E":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "F":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "G":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "H":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "I":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "J":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "K":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "L":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "M":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "N":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "O":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "P":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "Q":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "R":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "S":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "T":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "U":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "V":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "W":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "X":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "Y":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                case "Z":
-                    return Content(TransformUserListToTable(_userRepository.GetByLastNameInitial(id)));
-                default:
-                    return Content("Oops! Couldn't load the page.");
-            }
-        }
-
-        private string TransformUserListToTable(IList<User> users)
-        {
-            var result = new StringBuilder();
-
-            result.Append("<table>");
-            result.Append("    <thead>");
-            result.Append("        <tr>");
-            result.Append("            <th class=\"usernameColumn\">Username</th>");
-            result.Append("            <th class=\"nameColumn\">Name</th>");
-            result.Append("            <th class=\"rolesColumn\">Roles</th>");
-            result.Append("            <th class=\"approvedColumn\">Approved</th>");
-            result.Append("        </tr>");
-            result.Append("    </thead>");
-            result.Append("    <tbody>");
-
-            foreach (var user in users)
-            {
-                result.Append("        <tr>");
-                result.AppendFormat("            <td class=\"usernameColumn\">{0}</td>", user.Username);
-                result.AppendFormat("            <td class=\"nameColumn\">{1}, {0}</td>", user.Staff.FirstName, user.Staff.LastName);
-                result.AppendFormat("            <td class=\"rolesColumn\">{0}</td>", RolesToString(user.Roles));
-                if (user.IsApproved)
-                {
-                    result.AppendFormat(
-                        "            <td class=\"approvedColumn\"><input type=\"checkbox\" name=\"IsApproved_{0}\" id=\"IsApproved_{0}\" checked /></td>", user.Id);
-                }
-                else
-                {
-                    result.AppendFormat(
-                        "            <td class=\"approvedColumn\"><input type=\"checkbox\" name=\"IsApproved_{0}\" id=\"IsApproved_{0}\" /></td>", user.Id);
-                }
-                result.Append("        </tr>");
-            }
-
-            result.Append("    </tbody");
-            result.Append("</table>");
-
-            return result.ToString();
+            return View();
         }
 
         private static string RolesToString(IList<Role> roles)

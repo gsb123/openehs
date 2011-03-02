@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
+using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
@@ -30,6 +31,11 @@ namespace OpenEhs.Data
         {
             ICriteria criteria = Session.CreateCriteria<Service>();
             return criteria.List<Service>();
+        }
+
+        public PagedList<Service> GetPaged(int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
         }
 
         public void Add(Service service)

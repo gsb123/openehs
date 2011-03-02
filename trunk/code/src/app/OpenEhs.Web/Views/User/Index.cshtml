@@ -27,6 +27,34 @@
             color: #aaa;
             font-style: italic;
         }
+        
+        #UserList
+        {
+        	width: 100%;
+        }
+        
+        .usernameColumn
+        {
+        }
+        
+        .nameColumn
+        {
+        }
+        
+        .rolesColumn
+        {
+        }
+        
+        .approvedColumn
+        {
+        	width: 50px;
+        	text-align: center;
+        }
+        
+        .striped
+        {
+        	background-color: #ccc;
+        }
     </style>
 
     <script type="text/javascript">
@@ -49,13 +77,7 @@
                 alert($("#SelectedRole option:selected").val() + " selected!");
             });
 
-            $("#alphabet").tabs({
-                ajaxOptions: {
-                    error: function (xhr, status, index, anchor) {
-                        $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible.");
-                    }
-                }
-            });
+            $("#UserList tr:odd").addCss("striped");
         });
     </script>
 }
@@ -68,35 +90,28 @@
     <input type="submit" name="NewUserButton" id="NewUserButton" value="New User" />
     @Html.DropDownListFor(m => m.SelectedRole, Model.Roles)
     @Html.TextBoxFor(m => m.SearchTerm)
-    <div id="alphabet">
-        <ul>
-            <li><a href="/User/GetUsersStartingWith/A"><span>A</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/B"><span>B</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/C"><span>C</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/D"><span>D</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/E"><span>E</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/F"><span>F</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/G"><span>G</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/H"><span>H</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/I"><span>I</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/J"><span>H</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/K"><span>K</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/L"><span>L</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/M"><span>M</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/N"><span>N</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/O"><span>O</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/P"><span>P</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/Q"><span>Q</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/R"><span>R</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/S"><span>S</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/T"><span>T</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/U"><span>U</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/V"><span>V</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/W"><span>W</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/X"><span>X</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/Y"><span>Y</span></a></li>
-            <li><a href="/User/GetUsersStartingWith/Z"><span>Z</span></a></li>
-        </ul>
-    </div>
 }
+
+    <table id="UserList">
+        <thead>
+            <tr>
+                <th class="usernameColumn">Username</th>
+                <th class="nameColumn">Name</th>
+                <th class="rolesColumn">Roles</th>
+                <th class="approvedColumn">Approved</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td class="usernameColumn">@Html.ActionLink(user.Username, "Details", new { Id = user.Id })</td>
+                <td class="nameColumn">@String.Format("{1}, {0}", user.Staff.FirstName, user.Staff.LastName)</td>
+                <td class="rolesColumn">@user.Roles.ToString()</td>
+                <td class="approvedColumn">@Html.CheckBox("approvedCheckbox", user.IsApproved)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    Page: @Html.PageLinks(Model.Users.PageIndex, Model.Users.PageCount, x => Url.Action("Index", new { page = x }))
 </div>

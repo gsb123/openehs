@@ -7,6 +7,7 @@
  *****************************************************************************/
 
 using System.Collections.Generic;
+using OpenEhs.Data.Common;
 
 namespace OpenEhs.Data
 {
@@ -14,6 +15,7 @@ namespace OpenEhs.Data
     {
         T Get(int id);
         IList<T> GetAll();
+        PagedList<T> GetPaged(int pageIndex, int pageSize);
         void Add(T entity);
         void Remove(T entity);
     }

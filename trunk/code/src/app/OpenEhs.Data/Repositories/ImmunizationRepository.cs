@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 using NHibernate;
 using NHibernate.Criterion;
@@ -26,6 +27,11 @@ namespace OpenEhs.Data {
         public IList<Immunization> GetAll() {
             ICriteria criteria = Session.CreateCriteria<Immunization>();
             return criteria.List<Immunization>();
+        }
+
+        public PagedList<Immunization> GetPaged(int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
         }
 
         public void Add(Immunization entity) {
