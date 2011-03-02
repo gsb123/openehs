@@ -29,12 +29,12 @@ $(function () {
         $("#removeProductDialog").dialog("open");
     });
 
-    $("#editTemplate").button().click(function () {
-        alert("Edit template button");
+    $("#addTemplateCategory").button().click(function () {
+        $("#addTemplateCategoryDialog").dialog("open");
     });
 
     $("#deleteTemplate").button().click(function () {
-        alert("Delete template button");
+        $("#deleteTemplateDialog").dialog("open");
     });
 
     $("#addService").button().click(function () {
@@ -86,7 +86,7 @@ $(function () {
     });
 
     $("#editImmunization").button().click(function () {
-        alert("Edit immunization button");
+        $("#editImmunizationDialog").dialog("open");
     });
 
     $("#deleteMedication").button().click(function () {
@@ -94,7 +94,7 @@ $(function () {
     });
 
     $("#editMedication").button().click(function () {
-        alert("Edit Medication button");
+        $("#editMedicationDialog").dialog("open");
     });
 
 
@@ -592,6 +592,112 @@ $("#editAllergyDialog").dialog({
         Cancel: function () {
             $("#model_selectededAllergyName").val("");
             $("#model_allergyEditName").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#editImmunizationDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Immunization": function () {
+            $.post("/Admin/EditImmunization", {
+                Immunization: $("#model_selectededImmunizationName").val(),
+                EditImmunization: $("#model_immunizationEditName").val()
+            }, function (result) {
+                    $("#editAllergyDialog").dialog("close");
+
+                    $("#model_selectededImmunizationName").val("");
+                    $("#model_immunizationEditName").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_selectededImmunizationName").val("");
+            $("#model_immunizationEditName").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#editMedicationDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Medication": function () {
+            $.post("/Admin/EditMedication", {
+                Medication: $("#model_selectededMedicationName").val(),
+                EditMedication: $("#model_medicationEditName").val()
+            }, function (result) {
+                    $("#editMedicationyDialog").dialog("close");
+
+                    $("#model_selectededMedicationName").val("");
+                    $("#model_medicationEditName").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_selectededMedicationName").val("");
+            $("#model_medicationEditName").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#deleteTemplateDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Template": function () {
+            $.post("/Admin/DeleteTemplate", {
+                Template: $("#model_deleteTemplate").val()
+            }, function (result) {
+                    $("#deleteTemplateDialog").dialog("close");
+
+                    $("#model_deleteTemplate").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_deleteTemplate").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#addTemplateCategoryDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Add Template Category": function () {
+            $.post("/Admin/AddTemplateCategory", {
+                Template: $("#model_templateCategoryName").val()
+            }, function (result) {
+                    $("#AddInventoryDialog").dialog("close");
+
+                    $("#model_templateCategoryName").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_templateCategoryName").val("");
             $(this).dialog("close");
         }
     },

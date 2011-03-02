@@ -137,19 +137,27 @@
     margin-bottom: 10px;
 }
 
-#editTemplate
+#addTemplateCategory
 {
-    margin-left: 25px;
-    width: 150px;
+    margin-left: 2px;
+    width: 200px;
     margin-top: 10px;
     height: 40px;
     font-size: 18px;
 }
 
-#deleteTemplate
+#editTemplateCategory
 {
     margin-left: 25px;
     width: 150px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#deleteTemplate
+{
+    margin-left: 14px;
+    width: 170px;
     margin-top: 10px;
     height: 40px;
     font-size: 18px;
