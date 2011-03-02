@@ -4,8 +4,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Inpatient & Outpatient Reports</title>
     <style type="text/css">
+        
+        #sections fieldset
+		{
+			border-width: medium;
+			width:600px;
+		}
+
+		#sections fieldset legend
+		{
+			font-size: 15px;
+			font-weight: bold;
+		}
+		
+		#sections
+		{
+			font-family:Sans-Serif;
+		}
+        
         .style1
         {
             width: 100%;
@@ -23,47 +41,43 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div id="sections">
 
-        &nbsp;Use the calenders below to select the starting and ending dates of the report.&nbsp; 
-        Click the &quot;Generate Reports&quot; button to generate and view ther reports.<br />
-        <table class="style1">
-            <tr>
-                <td class="style3" valign="top">
+        <h1>Inpatient & Outpatient Reports</h1>
+        <br />
 
-        Start Date:&nbsp;
+        <fieldset>
+        <legend>Date Selection</legend>
+        
+            <table class="style1">
+                <tr>
+                    <td class="style3" valign="top">
 
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                        ControlToValidate="txtStartDate" Display="Dynamic" 
-                        ErrorMessage="You must select a start date." ForeColor="Red" 
-                        ValidationGroup="date">*</asp:RequiredFieldValidator>
+                        Start Date:&nbsp;<asp:Label ID="txtStartDate" runat="server" ForeColor="Blue"></asp:Label>
+                                   &nbsp;<asp:Calendar ID="calendarStart" runat="server" 
+                            onselectionchanged="calendarStart_SelectionChanged" Width="260px"></asp:Calendar>
+                    </td>
+                    <td class="style3" valign="top">
+                            &nbsp;End Date:&nbsp;<asp:Label ID="txtEndState" runat="server" ForeColor="Blue"></asp:Label>
+                            &nbsp;<asp:Calendar ID="calendarEnd" runat="server" 
+                                                    onselectionchanged="calendarEnd_SelectionChanged" 
+                                Width="260px"></asp:Calendar>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style3" valign="top">
 
-        <asp:TextBox ID="txtStartDate" runat="server" BorderStyle="None" ReadOnly="True" 
-                        ValidationGroup="date"></asp:TextBox>
-                    <asp:Calendar ID="calendarStart" runat="server" 
-                        onselectionchanged="calendarStart_SelectionChanged"></asp:Calendar>
-                </td>
-                <td class="style3" valign="top">
-&nbsp;End Date:&nbsp;
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                        ControlToValidate="txtEndState" Display="Dynamic" 
-                        ErrorMessage="You must select an end date." ForeColor="Red" 
-                        ValidationGroup="date">*</asp:RequiredFieldValidator>
-        <asp:TextBox ID="txtEndState" runat="server" BorderStyle="None" ReadOnly="True" 
-                        ValidationGroup="date"></asp:TextBox>
-    
-                    <asp:Calendar ID="calendarEnd" runat="server" 
-                        onselectionchanged="calendarEnd_SelectionChanged"></asp:Calendar>
-                </td>
-                <td valign="top">
-                    <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
-            Text="Generate Reports" ValidationGroup="date" />
-                    <br />
-                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" 
-                        ValidationGroup="date" />
-                </td>
-            </tr>
-        </table>
+                        <br />
+                        <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
+                            Text="Generate Reports" Width="260px" />
+                    </td>
+                    <td class="style3" valign="top">
+                            &nbsp;</td>
+                </tr>
+            </table>
+        </fieldset>
+        <br />
+        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
     
