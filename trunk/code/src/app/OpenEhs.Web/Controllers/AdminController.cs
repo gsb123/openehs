@@ -654,6 +654,8 @@ namespace OpenEhs.Web.Controllers
                 ntRepo.Add(ntCategory);
 
                 return Json(new {
+                    ID = ntCategory.Id,
+                    Name = ntCategory.Name,
                     error = "false"
                 });
             }
