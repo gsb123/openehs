@@ -1456,6 +1456,7 @@ namespace OpenEhs.Web.Controllers
                 Immunization immun = new Immunization();
 
                 immun.VaccineType = Request.Form["VaccieType"];
+                immun.IsActive = true;
 
                 immunRepo.Add(immun);
 

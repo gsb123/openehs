@@ -6,7 +6,7 @@ using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
-    interface IPatientMedicationRepository : IRepository<PatientMedication>
+    public interface IPatientMedicationRepository : IRepository<PatientMedication>
     {
 
     }
