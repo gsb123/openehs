@@ -5,8 +5,8 @@
         #region Fields
 
         public virtual int Id { get; private set; }
-        public virtual int Problem { get; set; }
-        public virtual int Patient { get; set; }
+        public virtual Problem Problem { get; set; }
+        public virtual Patient Patient { get; set; }
 
         #endregion
     }

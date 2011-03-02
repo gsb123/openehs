@@ -41,7 +41,7 @@ namespace OpenEhs.Domain
         public virtual bool IsActive { get; set; }
 
         public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }
-        public virtual IList<Problem> Problems { get; set; }
+        public virtual IList<PatientProblem> Problems { get; set; }
         public virtual IList<PatientAllergy> Allergies { get; set; }
         public virtual IList<PatientImmunization> Immunizations { get; set; }
         public virtual IList<Medication> Medications { get; set; }

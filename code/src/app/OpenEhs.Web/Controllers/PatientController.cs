@@ -1445,6 +1445,43 @@ namespace OpenEhs.Web.Controllers
             }
         }
 
+        public JsonResult AddDiseaseToPatient()
+        {
+            try
+            {
+                var patientId = int.Parse(Request.Form["patientId"]);
+                var problemId = int.Parse(Request.Form["problemId"]);
+
+                PatientRepository repo = new PatientRepository();
+                var patient = repo.Get(patientId);
+
+                PatientProblemRepository patientProbRepo = new PatientProblemRepository();
+                ProblemRepository pRepo = new ProblemRepository();
+                PatientProblem pProblem = new PatientProblem();
+
+                pProblem.Problem = pRepo.Get(problemId);
+                pProblem.Patient = patient;
+
+                patientProbRepo.Add(pProblem);
+
+
+                return Json(new
+                {
+                    error = "false",
+                    Name = pProblem.Problem.ProblemName
+                });
+
+
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
         #endregion
 
         #endregion
