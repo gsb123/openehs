@@ -76,7 +76,7 @@
 	<fieldset id="fsMiddleMarginRowTwo" class="setFieldSetWidth">
         <legend class="legendTextSize">Manage Templates</legend>
 
-        <input id="editTemplate" type="button" value="Edit Template" />
+        <input id="addTemplateCategory" type="button" value="Add Template Category" />
 
         <br />
 
@@ -115,7 +115,7 @@
     </fieldset>
 
 	<fieldset id="fsRightMarginRowTwo" class="setFieldSetWidth">
-        <legend class="legendTextSize">Manage Category</legend>
+        <legend class="legendTextSize">Manage Product Category</legend>
 
         <input id="addCategory" type="button" value="Add Category" />
 
@@ -587,7 +587,97 @@
             Edit Allergy:
         </div>
         <div>
-            <input type="text" name="allergyEditName" id="model_allergyEditName" class="required modal-input text ui-widget-content ui-corner-all" />
+            <input type="text" name="immunizationEditName" id="model_immunizationEditName" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="editImmunizationDialog" title="Edit Immunization">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="EditImmunizationForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Immunization:
+        </div>
+        <div>
+            <select name="selectImmunizationSelect" id="model_selectededImmunizationName" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Immunization...</option>
+            @foreach (var all in Model.ActiveImmunizations)
+            {
+                <option value="@all.Id">@all.VaccineType</option>
+            }
+            </select>
+        </div>
+		<div class="modal-label-long">
+            Edit Immunization:
+        </div>
+        <div>
+            <input type="text" name="immunizationEditName" id="model_immunizationEditName" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="editMedicationDialog" title="Edit Medication">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="EditImmunizationForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Immunization:
+        </div>
+        <div>
+            <select name="selectMedicationSelect" id="model_selectededMedicationName" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Medication...</option>
+            @foreach (var all in Model.ActiveMedications)
+            {
+                <option value="@all.Id">@all.Name</option>
+            }
+            </select>
+        </div>
+		<div class="modal-label-long">
+            Edit Medication:
+        </div>
+        <div>
+            <input type="text" name="medicationEditName" id="model_medicationEditName" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteTemplateDialog" title="Delete Template">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteTemplateForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Template:
+        </div>
+        <div>
+            <select name="deleteTemplateSelect" id="model_deleteTemplate" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Template...</option>
+            @foreach (var all in Model.ActiveTemplates)
+            {
+                <option value="@all.Id">@all.Title</option>
+            }
+            </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="addTemplateCategoryDialog" title="Add Template">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="addTemplateForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Name:
+        </div>
+        <div>
+            <input type="text" name="templateCategoryName" id="model_templateCategoryName" class="required modal-input text ui-widget-content ui-corner-all" />
         </div>
     </fieldset>
     </form>

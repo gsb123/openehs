@@ -14,6 +14,7 @@ namespace OpenEhs.Web.Models
         private readonly IAllergyRepository _allergyRepository;
         private readonly IImmunizationRepository _immunizationRepository;
         private readonly IMedicationRepository _medicationRepository;
+        private readonly ITemplateRepository _templateRepository;
 
         public AdminViewModel()
         {
@@ -24,6 +25,7 @@ namespace OpenEhs.Web.Models
             _allergyRepository = new AllergyRepository();
             _immunizationRepository = new ImmunizationRepository();
             _medicationRepository = new MedicationRepository();
+            _templateRepository = new TemplateRepository();
         }
 
         public IList<Product> Products
@@ -144,6 +146,26 @@ namespace OpenEhs.Web.Models
                           select activeLoc;
 
                 return loc.ToList();
+            }
+        }
+
+        public IList<Template> Templates
+        {
+            get
+            {
+                return _templateRepository.GetAll();
+            }
+        }
+
+        public IList<Template> ActiveTemplates
+        {
+            get
+            {
+                var temp = from activeTemp in Templates
+                          where activeTemp.IsActive == true
+                          select activeTemp;
+
+                return temp.ToList();
             }
         }
 
