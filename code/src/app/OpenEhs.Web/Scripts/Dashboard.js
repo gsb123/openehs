@@ -13,22 +13,28 @@ $(function () {
                 loc: $("select[name='loactionBox'] option:selected").val()
             },
             success: function (response) {
-
                 var table = document.getElementById("searchCheckinResult");
-                var tr = document.createElement("tr");
+                var rows = table.getElementsByTagName("tr");
+                for (var i = rows.length - 1; i >= 0; i--) {
+                    table.deleteRow(i);
+                }
+                $.each(response.bob, function (index, Data) {
+                    var tr = document.createElement("tr");
 
-                var elements = new Array();
+                    var elements = new Array();
 
-                for (var i = 0; i < 1; i++)
-                    elements[i] = document.createElement("td");
+                    for (var i = 0; i < 2; i++)
+                        elements[i] = document.createElement("td");
 
-                elements[0].appendChild(document.createTextNode(response.Department));
+                    elements[0].appendChild(document.createTextNode(Data.ID));
+                    elements[1].appendChild(document.createTextNode(Data.Name));
 
 
-                for (var i = 0; i < 1; i++)
-                    tr.appendChild(elements[i]);
+                    for (var i = 0; i < 2; i++)
+                        tr.appendChild(elements[i]);
 
-                table.appendChild(tr);
+                    table.appendChild(tr);
+                });
 
             },
             dataType: "json"
