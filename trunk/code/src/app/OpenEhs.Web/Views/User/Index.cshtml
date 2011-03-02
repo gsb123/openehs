@@ -31,6 +31,7 @@
         #UserList
         {
         	width: 100%;
+        	font-size: 1.4em;
         }
         
         .usernameColumn
@@ -53,7 +54,7 @@
         
         .striped
         {
-        	background-color: #ccc;
+        	background-color: #eee;
         }
     </style>
 
@@ -77,7 +78,15 @@
                 alert($("#SelectedRole option:selected").val() + " selected!");
             });
 
-            $("#UserList tr:odd").addCss("striped");
+            $("#UserList tbody tr:odd").addClass("striped");
+
+            $("#UserList tbody tr").click(function () {
+                var href = $(this).find("a").attr("href");
+
+                if (href) {
+                    window.location = href;
+                }
+            });
         });
     </script>
 }

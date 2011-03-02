@@ -224,14 +224,7 @@ namespace OpenEhs.Web.Controllers
 
             _patientRepository.Add(patient);
 
-            if (Request.IsAjaxRequest())
-            {
-                // *************************
-                // You can return JSON here.
-                // *************************
-            }
-
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         #endregion
