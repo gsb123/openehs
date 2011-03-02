@@ -287,7 +287,7 @@ namespace OpenEhs.Web.Controllers
                 product.QuantityOnHand += int.Parse(Request.Form["Quantity"]);
                 return Json(new
                 {
-                    error = "true"
+                    error = "false"
                 });
             }
             catch
@@ -308,7 +308,7 @@ namespace OpenEhs.Web.Controllers
                 product.QuantityOnHand = int.Parse(Request.Form["Quantity"]);
                 return Json(new
                 {
-                    error = "true"
+                    error = "false"
                 });
             }
             catch
@@ -392,6 +392,8 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
+                    Id = cata.Id,
+                    Name = cata.Name,
                     error = false
                 });
             }
