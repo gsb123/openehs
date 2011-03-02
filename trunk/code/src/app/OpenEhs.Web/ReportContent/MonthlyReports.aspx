@@ -33,20 +33,34 @@
 
         Start Date:&nbsp;
 
-        <asp:TextBox ID="txtStartDate" runat="server" BorderStyle="None" ReadOnly="True"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                        ControlToValidate="txtStartDate" Display="Dynamic" 
+                        ErrorMessage="You must select a start date." ForeColor="Red" 
+                        ValidationGroup="date">*</asp:RequiredFieldValidator>
+
+        <asp:TextBox ID="txtStartDate" runat="server" BorderStyle="None" ReadOnly="True" 
+                        ValidationGroup="date"></asp:TextBox>
                     <asp:Calendar ID="calendarStart" runat="server" 
                         onselectionchanged="calendarStart_SelectionChanged"></asp:Calendar>
                 </td>
                 <td class="style3" valign="top">
 &nbsp;End Date:&nbsp;
-        <asp:TextBox ID="txtEndState" runat="server" BorderStyle="None" ReadOnly="True"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                        ControlToValidate="txtEndState" Display="Dynamic" 
+                        ErrorMessage="You must select an end date." ForeColor="Red" 
+                        ValidationGroup="date">*</asp:RequiredFieldValidator>
+        <asp:TextBox ID="txtEndState" runat="server" BorderStyle="None" ReadOnly="True" 
+                        ValidationGroup="date"></asp:TextBox>
     
                     <asp:Calendar ID="calendarEnd" runat="server" 
                         onselectionchanged="calendarEnd_SelectionChanged"></asp:Calendar>
                 </td>
                 <td valign="top">
                     <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
-            Text="Generate Reports" />
+            Text="Generate Reports" ValidationGroup="date" />
+                    <br />
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" 
+                        ValidationGroup="date" />
                 </td>
             </tr>
         </table>
@@ -56,7 +70,7 @@
         <table class="style1" border="1px">
             <tr>
                 <td colspan="7" style="text-align: center" bgcolor="#FFFFCC">
-                    B. IN-PATIENTS</td>
+                    IN-PATIENTS</td>
             </tr>
             <tr>
                 <td class="style2" rowspan="2">
@@ -243,7 +257,7 @@
     <table class="style1" border="1px">
         <tr>
             <td colspan="7" style="text-align: center" bgcolor="#FFFFCC">
-                A. OUT-PATIENTS</td>
+                OUT-PATIENTS</td>
         </tr>
         <tr>
             <td class="style2" rowspan="2">

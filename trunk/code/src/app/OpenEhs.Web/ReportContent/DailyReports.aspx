@@ -5,13 +5,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+            font-weight: 700;
+        }
+        .style2
+        {
+            width: 267px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
-&nbsp;<asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
+&nbsp;<table class="style1">
+            <tr>
+                <td class="style2" valign="top">
+                    Report Date:<asp:TextBox ID="txtDate" runat="server" BorderStyle="None" 
+                        ReadOnly="True"></asp:TextBox>
+                    <asp:Calendar ID="calendarDate" runat="server" 
+                        onselectionchanged="calendarDate_SelectionChanged"></asp:Calendar>
+                </td>
+                <td valign="top">
+                    <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
             Text="Generate Report" />
+                </td>
+            </tr>
+        </table>
         <br />
         <asp:GridView ID="gvAdmissions" runat="server" CellPadding="4" 
             ForeColor="#333333" GridLines="None">
