@@ -20,6 +20,9 @@
             <div id="registration" class="group">
                 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "registrationForm" }))
                 {
+                    <div>
+                         @Html.ValidationSummary(false)
+                    </div>
                     <div id="basicInformation" class="step">
                         <h3>Basic Information</h3>
                         <ul>

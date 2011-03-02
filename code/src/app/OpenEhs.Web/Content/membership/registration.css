@@ -8,9 +8,8 @@
     text-align: left;
 }
 
-.navigation_button 
-{
-	padding: 5px 25px;
+.navigation_button {
+    padding: 5px 25px;
 }
 
 h2 {
@@ -69,29 +68,58 @@ ul li {
     padding: 30px 50px;
 }
 
-#generatedUsername 
-{
+#generatedUsername {
     font-size: 3.2em;
     text-align: center;
     margin: 20px 0 30px 0;
 }
 
-#registrationNavigation
-{
+#registrationNavigation {
     margin-top: 30px;
 }
 
-#firstNameTextbox 
-{
-	width: 250px;
+#firstNameTextbox {
+    width: 250px;
 }
 
-#middleNameTextbox
-{
-	width: 250px;
+#middleNameTextbox {
+    width: 250px;
 }
 
-#lastNameTextbox
-{
-	width: 250px;
+#lastNameTextbox {
+    width: 250px;
+}
+
+#registrationForm input, #registrationForm select {
+    padding: 5px;
+    font-size: 1.7em;
+    margin: 5px 0px 2px 0px;
+}
+
+#registrationForm select {
+    margin: 5px;
+}
+
+#registrationForm input:focus {
+    -moz-box-shadow: 0 0 4px #47A5FF;
+    border: 1px solid #47A5FF;
+}
+.input-validation-error {
+    border: 1px solid #f00;
+}
+.input-validation-valid {
+    /* Optional: you can set whatever style you want */
+}
+.field-validation-error {
+    color: #f00;
+}
+.field-validation-valid {
+    display: none;
+}
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+.validation-summary-valid {
+    display: none;
 }
