@@ -32,19 +32,23 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
-                Location loc = new Location();
                 PatientRepository patientRepo = new PatientRepository();
                 
 
                 string department = Request.Form["loc"];
-                loc.Department = department;
 
-                var myLocation = new Location { Department = department };
+                var myLocation = new Location();
+                myLocation.Department = department;
 
                 var list = patientRepo.FindByLocation(myLocation);
 
-                var resultList = from test in list
-                                 select test;
+                //var resultList = from test in list select test;
+                var bob = new List<object>();
+
+                foreach (var patient in list)
+                {
+                    bob.Add(new {Name=patient.LastName +", " + patient.FirstName, ID=patient.Id });
+                }
 
                 return Json(new
                 {
@@ -53,7 +57,9 @@ namespace OpenEhs.Web.Controllers
                     //loc.Department
                     //list
                     //resultList
+                    bob
                 });
+                //return Json(list);
 
             }
             catch (Exception ex)
