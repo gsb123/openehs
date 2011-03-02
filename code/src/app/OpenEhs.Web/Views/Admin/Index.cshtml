@@ -125,6 +125,17 @@
 
     </fieldset>
 
+	<fieldset id="fsMiddleMarginRowTwo" class="setFieldSetWidth">
+		<legend class="legendTextSize">Manage Medications</legend>
+
+		<input id="editMedication" type="button" value="Edit Medication" />
+
+		<br />
+
+		<input id="deleteMedication" type="button" value="Delete Medication" />
+
+	</fieldset>
+
 </div>
 
 
@@ -465,7 +476,7 @@
     </form>
 </div>
 
-<div id="EditInventoryDialog" title="Add Inventory">
+<div id="EditInventoryDialog" title="Adjust Inventory">
     <ul class="modalErrorContainer" style="display: none">
     </ul>
     <form id="EditInventoryForm" action="">
@@ -487,6 +498,96 @@
         </div>
         <div>
             <input type="text" name="inventoryeditquantity" id="model_inventoryeditquantity" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteAllergyDialog" title="Delete Allergy">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteAllergyForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Category:
+        </div>
+        <div>
+            <select name="deleteAllergySelect" id="model_deleteAllergy" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Allergy...</option>
+            @foreach (var all in Model.ActiveAllergies)
+            {
+                <option value="@all.Id">@all.Name</option>
+            }
+            </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteImmunizationDialog" title="Delete Immunization">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteImmunizationForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Category:
+        </div>
+        <div>
+            <select name="deleteImmunizationSelect" id="model_deleteImmunization" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Immunization...</option>
+            @foreach (var all in Model.ActiveImmunizations)
+            {
+                <option value="@all.Id">@all.VaccineType</option>
+            }
+            </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="deleteMedicationDialog" title="Delete Medication">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="deleteMedicationForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Category:
+        </div>
+        <div>
+            <select name="deleteMedicationSelect" id="model_deleteMedication" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Medication...</option>
+            @foreach (var all in Model.ActiveMedications)
+            {
+                <option value="@all.Id">@all.Name</option>
+            }
+            </select>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<div id="editAllergyDialog" title="Edit Allergy">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="EditAllergyForm" action="">
+    <fieldset>
+        <div class="modal-label-long">
+            Allergy:
+        </div>
+        <div>
+            <select name="selectAllergySelect" id="model_selectededAllergyName" class="required modal-input text ui-widget-content ui-corner-all">
+            <option value="">Select Allergy...</option>
+            @foreach (var all in Model.ActiveAllergies)
+            {
+                <option value="@all.Id">@all.Name</option>
+            }
+            </select>
+        </div>
+		<div class="modal-label-long">
+            Edit Allergy:
+        </div>
+        <div>
+            <input type="text" name="allergyEditName" id="model_allergyEditName" class="required modal-input text ui-widget-content ui-corner-all" />
         </div>
     </fieldset>
     </form>

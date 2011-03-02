@@ -74,19 +74,27 @@ $(function () {
     });
 
     $("#deleteAllergy").button().click(function () {
-        alert("Delete allergy button");
+        $("#deleteAllergyDialog").dialog("open");
     });
 
     $("#editAllergy").button().click(function () {
-        alert("Edit allergy button");
+        $("#editAllergyDialog").dialog("open");
     });
 
     $("#deleteImmunization").button().click(function () {
-        alert("Delete immunization button");
+        $("#deleteImmunizationDialog").dialog("open");
     });
 
     $("#editImmunization").button().click(function () {
         alert("Edit immunization button");
+    });
+
+    $("#deleteMedication").button().click(function () {
+        $("#deleteMedicationDialog").dialog("open");
+    });
+
+    $("#editMedication").button().click(function () {
+        alert("Edit Medication button");
     });
 
 
@@ -488,5 +496,111 @@ $("#EditInventoryDialog").dialog({
         
     }
 });
+
+$("#deleteAllergyDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Allergy": function () {
+            $.post("/Admin/DeleteAllergy", {
+                Allergy: $("#model_deleteAllergy").val()
+            }, function (result) {
+                    $("#deleteAllergyDialog").dialog("close");
+
+                    $("#model_deleteAllergy").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_deleteAllergy").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#deleteImmunizationDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Immunization": function () {
+            $.post("/Admin/DeleteImmunization", {
+                Allergy: $("#model_deleteImmunization").val()
+            }, function (result) {
+                    $("#deleteImmunizationDialog").dialog("close");
+
+                    $("#model_deleteImmunization").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_deleteImmunization").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#deleteMedicationDialog").dialog({
+    autoOpen: false,
+    height: 150,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Delete Medication": function () {
+            $.post("/Admin/DeleteMedication", {
+                Allergy: $("#model_deleteMedication").val()
+            }, function (result) {
+                    $("#deleteMedicationDialog").dialog("close");
+
+                    $("#model_deleteMedication").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_deleteMedication").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+$("#editAllergyDialog").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 420,
+    modal: true,
+    buttons: {
+        "Edit Inventory": function () {
+            $.post("/Admin/EditAllergy", {
+                Allergy: $("#model_selectededAllergyName").val(),
+                EditAllergy: $("#model_allergyEditName").val()
+            }, function (result) {
+                    $("#AddInventoryDialog").dialog("close");
+
+                    $("#model_selectededAllergyName").val("");
+                    $("#model_allergyEditName").val("");
+            }, "json");
+        },
+        Cancel: function () {
+            $("#model_selectededAllergyName").val("");
+            $("#model_allergyEditName").val("");
+            $(this).dialog("close");
+        }
+    },
+    close: function () {
+        
+    }
+});
+
+
+
 
 });

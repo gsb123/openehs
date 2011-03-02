@@ -6,7 +6,7 @@ using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
-    interface IPatientAllergyRepository : IRepository<PatientAllergy>
+    public interface IPatientAllergyRepository : IRepository<PatientAllergy>
     {
     }
 }

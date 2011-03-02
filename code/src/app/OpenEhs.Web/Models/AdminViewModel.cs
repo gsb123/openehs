@@ -11,6 +11,9 @@ namespace OpenEhs.Web.Models
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILocationRepository _locationRepository;
         private readonly IServiceRepository _serviceRepository;
+        private readonly IAllergyRepository _allergyRepository;
+        private readonly IImmunizationRepository _immunizationRepository;
+        private readonly IMedicationRepository _medicationRepository;
 
         public AdminViewModel()
         {
@@ -18,6 +21,9 @@ namespace OpenEhs.Web.Models
             _categoryRepository = new CategoryRepository();
             _locationRepository = new LocationRepository();
             _serviceRepository = new ServiceRepository();
+            _allergyRepository = new AllergyRepository();
+            _immunizationRepository = new ImmunizationRepository();
+            _medicationRepository = new MedicationRepository();
         }
 
         public IList<Product> Products
@@ -58,6 +64,66 @@ namespace OpenEhs.Web.Models
                           select activeCat;
 
                 return cat.ToList();
+            }
+        }
+
+        public IList<Allergy> Allergies
+        {
+            get
+            {
+                return _allergyRepository.GetAll();
+            }
+        }
+
+        public IList<Allergy> ActiveAllergies
+        {
+            get
+            {
+                var allergy = from activeAll in Allergies
+                          where activeAll.IsActive == true
+                          select activeAll;
+
+                return allergy.ToList();
+            }
+        }
+
+        public IList<Immunization> Immunizations
+        {
+            get
+            {
+                return _immunizationRepository.GetAll();
+            }
+        }
+
+        public IList<Immunization> ActiveImmunizations
+        {
+            get
+            {
+                var immun = from activeImm in Immunizations
+                              where activeImm.IsActive == true
+                              select activeImm;
+
+                return immun.ToList();
+            }
+        }
+
+        public IList<Medication> Medications
+        {
+            get
+            {
+                return _medicationRepository.GetAll();
+            }
+        }
+
+        public IList<Medication> ActiveMedications
+        {
+            get
+            {
+                var med = from activeMed in Medications
+                            where activeMed.IsActive == true
+                            select activeMed;
+
+                return med.ToList();
             }
         }
 

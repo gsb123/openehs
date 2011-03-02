@@ -8,6 +8,7 @@
       <generator class="native" />
     </id>
     <property name="VaccineType" not-null="true" length="255" />
+    <property name="IsActive" not-null="true" />
 
     <bag name="Patients" table="PatientImmunization" cascade="none" lazy="false">
       <key column="ImmunizationID" />

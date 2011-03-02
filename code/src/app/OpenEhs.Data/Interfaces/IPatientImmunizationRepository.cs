@@ -5,7 +5,7 @@ using System.Text;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data {
-    interface IPatientImmunizationRepository : IRepository<PatientImmunization> {
+    public interface IPatientImmunizationRepository : IRepository<PatientImmunization> {
 
     }
 }

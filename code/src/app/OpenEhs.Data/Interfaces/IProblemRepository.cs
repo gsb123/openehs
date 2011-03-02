@@ -6,7 +6,7 @@ using OpenEhs.Domain;
 
 namespace OpenEhs.Data
 {
-    interface IProblemRepository : IRepository<Problem>
+    public interface IProblemRepository : IRepository<Problem>
     {
         
     }
