@@ -97,6 +97,20 @@ legend
     border-top-width: medium;
 }
 
+#savePatientInfoButton
+{
+    height: 40px;
+    width: 95px;
+    float: right; 
+    margin-right: 10px; 
+    font-size: 10px;
+    font-weight: bold;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-right-width: medium;
+    border-top-width: medium;
+}
+
 #checkOutButton
 {
     height: 40px;
