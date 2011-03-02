@@ -31,10 +31,6 @@ fieldset {
     -webkit-border-radius: 5px;
 }
 
-select {
-    font-size: 1.4em;
-}
-
 h2, h3 {
     margin-bottom: 10px;
 }
@@ -67,6 +63,9 @@ h2, h3 {
     padding: 5px;
     font-size: 1.7em;
     margin: 5px 0px 2px 0px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 #newPatientContainer select {
