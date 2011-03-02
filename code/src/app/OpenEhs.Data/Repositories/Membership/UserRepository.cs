@@ -67,5 +67,19 @@ namespace OpenEhs.Data
 
             return false;
         }
+
+        public IList<User> GetByLastNameInitial(string initial)
+        {
+            if (initial.Length != 1)
+            {
+                initial = initial.Substring(0, 1);
+            }
+
+            ICriteria criteria = Session.CreateCriteria<User>()
+                .CreateCriteria("Staff")
+                .Add(Restrictions.Like("LastName", initial, MatchMode.Start));
+
+            return criteria.List<User>();
+        }
     }
 }

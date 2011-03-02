@@ -16,5 +16,6 @@ namespace OpenEhs.Data
         User Get(string username);
         IList<User> Find(string username, string password);
         bool CheckForUsernameAvailability(string username);
+        IList<User> GetByLastNameInitial(string initial);
     }
 }
