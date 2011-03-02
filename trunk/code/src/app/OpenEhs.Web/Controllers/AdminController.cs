@@ -276,6 +276,51 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region InventoryMethods
+
+        public JsonResult AddInventory()
+        {
+            try
+            {
+                ProductRepository productRepo = new ProductRepository();
+                Product product = productRepo.Get(int.Parse(Request.Form["Product"]));
+                product.QuantityOnHand += int.Parse(Request.Form["Quantity"]);
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        public JsonResult EditInventory()
+        {
+            try
+            {
+                ProductRepository productRepo = new ProductRepository();
+                Product product = productRepo.Get(int.Parse(Request.Form["Product"]));
+                product.QuantityOnHand = int.Parse(Request.Form["Quantity"]);
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+        #endregion
+
         #region LocationMethods
 
         public JsonResult AddLocation()
