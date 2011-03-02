@@ -4,6 +4,9 @@
 /// <reference path="../jquery-jvert-tabs-1.1.4.js" />
 
 $(function () {
+    $("input[type=button]").button();
+    // Turns off autocomplete for all text inputs
+    $("input[type=text]").attr("autocomplete", "off");
     $("#DateOfBirth").datepicker({
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
@@ -20,12 +23,6 @@ $(function () {
         historyEnabled: true,
         validationEnabled: true,
         focusFirstInput: true,
-        disableUIStyles: true,
-        formOptions: {
-            success: function (data) { alert("Success!"); },
-            beforeSubmit: function (data) { alert("Before submit!"); },
-            dataType: "json",
-            resetForm: true
-        }
+        disableUIStyles: true
     });
 });
