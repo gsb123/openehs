@@ -22,6 +22,13 @@ namespace OpenEhs.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "PagedRoute",
+                "{controller}/{action}/Page{page}",
+                null,
+                new {page = @"\d+"}
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional } // Parameter defaults

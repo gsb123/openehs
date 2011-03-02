@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
+using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
@@ -27,6 +28,11 @@ namespace OpenEhs.Data
         public Patient Get(int id)
         {
             return Session.Get<Patient>(id);
+        }
+
+        public PagedList<Patient> GetPaged(int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
         }
 
         public void Add(Patient entity)

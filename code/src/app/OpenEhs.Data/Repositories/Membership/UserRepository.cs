@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
+using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Data
@@ -34,6 +35,19 @@ namespace OpenEhs.Data
             ICriteria criteria = Session.CreateCriteria<User>();
 
             return criteria.List<User>();
+        }
+
+        public PagedList<User> GetPaged(int pageIndex, int pageSize)
+        {
+            var rowCount = Session.CreateCriteria<User>()
+                .SetProjection(Projections.RowCount())
+                .FutureValue<Int32>();
+
+            ICriteria criteria = Session.CreateCriteria<User>()
+                .SetFirstResult((pageIndex - 1)*pageSize)
+                .SetMaxResults(pageSize);
+
+            return new PagedList<User>(criteria.List<User>(), pageSize, pageSize, rowCount.Value);
         }
 
         public void Add(User entity)
@@ -78,6 +92,16 @@ namespace OpenEhs.Data
             ICriteria criteria = Session.CreateCriteria<User>()
                 .CreateCriteria("Staff")
                 .Add(Restrictions.Like("LastName", initial, MatchMode.Start));
+
+            return criteria.List<User>();
+        }
+
+        public IList<User> GetByRole(Role role)
+        {
+            ICriteria criteria = Session.CreateCriteria<User>()
+                .CreateCriteria("Roles")
+                .Add(Restrictions.Eq("Id", role.Id))
+                .Add(Restrictions.Eq("Name", role.Name));
 
             return criteria.List<User>();
         }
