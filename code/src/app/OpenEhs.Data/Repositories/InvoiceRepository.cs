@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OpenEhs.Data.Common;
 using OpenEhs.Domain;
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace OpenEhs.Data
 {
@@ -41,6 +42,15 @@ namespace OpenEhs.Data
         public PagedList<Invoice> GetPaged(int pageIndex, int pageSize)
         {
             throw new NotImplementedException();
+        }
+
+        public IList<Invoice> GetTop25()
+        {
+            ICriteria criteria = Session.CreateCriteria<Invoice>();
+            criteria.SetMaxResults(25);
+            criteria.AddOrder(Order.Desc("Id"));
+
+            return criteria.List<Invoice>();
         }
 
         /// <summary>
@@ -92,6 +102,14 @@ namespace OpenEhs.Data
         /// <returns>IList of Invoices for the given PatientId.</returns>
         public IList<Invoice> FindByPatientId(int PatientId)
         {
+            //ICriteria criteria = Session.CreateCriteria<InvoiceItem>();
+            //criteria.AddOrder(Order.Desc(
+
+
+            //return criteria.List<InvoiceItem>();
+
+
+
             IList<Invoice> invoices = GetAll();
             IList<Invoice> returnInvoices = new List<Invoice>();
             for (int i = 0; i < invoices.Count;i++)
