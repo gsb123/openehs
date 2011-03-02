@@ -5,8 +5,15 @@
 
 $(function () {
     $("input[type=button]").button();
+
     // Turns off autocomplete for all text inputs
     $("input[type=text]").attr("autocomplete", "off");
+
+    $("#btnAge").click(function () {
+        alert("implement me!");
+        //TODO show some kind of UI that lets the user enter an age instead of a DoB
+    });
+
     $("#DateOfBirth").datepicker({
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
