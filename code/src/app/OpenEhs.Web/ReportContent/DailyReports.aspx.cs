@@ -29,6 +29,7 @@ namespace OpenEhs.Web.ReportContent
                 generateTotalAdmissions();
                 generateTotalDischarges();
                 generateTotalDeaths();
+                genereateRemainedAtMidnight();
                 generateDischargesList();
                 generateDeathsList();
                 lblError.Text = "";
@@ -101,7 +102,12 @@ namespace OpenEhs.Web.ReportContent
 
         private void genereateRemainedAtMidnight()
         {
-            string select = "";
+            string select = "SELECT COUNT(*) "+
+                                "FROM patientcheckin "+
+                                "WHERE CheckOutTime IS NULL " +
+                                    "AND DATE(CheckInTime) < DATE(@date)";
+            string date = txtDate.Text + " 23:59:59";
+            lblTotalAtMidnight.Text = summaryQuery(select, date);
         }
 
 

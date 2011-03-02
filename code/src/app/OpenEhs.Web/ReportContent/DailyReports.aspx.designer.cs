@@ -28,7 +28,7 @@ namespace OpenEhs.Web.ReportContent {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.Label txtDate;
         
         /// <summary>
         /// calendarDate control.
@@ -56,15 +56,6 @@ namespace OpenEhs.Web.ReportContent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
-        /// gvAdmissions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAdmissions;
         
         /// <summary>
         /// lblPrevDay control.
@@ -110,6 +101,15 @@ namespace OpenEhs.Web.ReportContent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotalAtMidnight;
+        
+        /// <summary>
+        /// gvAdmissions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvAdmissions;
         
         /// <summary>
         /// gvDischarge control.
