@@ -603,6 +603,11 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
+                NoteTemplateRepository ntRepo = new NoteTemplateRepository();
+                NoteTemplateCategory ntCategory = new NoteTemplateCategory();
+                ntCategory.Name = Request.Form["Template"];
+                ntRepo.Add(ntCategory);
+
                 return Json(new {
                     error = "false"
                 });
@@ -610,6 +615,26 @@ namespace OpenEhs.Web.Controllers
             catch
             {
                 return Json(new {
+                    error = "true"
+                });
+            }
+        }
+
+        public JsonResult DeleteTemplateCategory()
+        {
+            try
+            {
+                NoteTemplateRepository ntRepo = new NoteTemplateRepository();
+                ntRepo.Remove(ntRepo.Get(int.Parse(Request.Form["Template"])));
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
                     error = "true"
                 });
             }
