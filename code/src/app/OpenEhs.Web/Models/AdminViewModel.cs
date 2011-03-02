@@ -169,6 +169,26 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<NoteTemplateCategory> TemplateCategories
+        {
+            get
+            {
+                NoteTemplateRepository ntc = new NoteTemplateRepository();
+                return ntc.GetAll();
+            }
+        }
+
+        public IList<NoteTemplateCategory> AllTemplateCategories
+        {
+            get
+            {
+                var temp = from activeTemp in TemplateCategories
+                           select activeTemp;
+
+                return temp.ToList();
+            }
+        }
+
         public IList<Service> Services
         {
             get

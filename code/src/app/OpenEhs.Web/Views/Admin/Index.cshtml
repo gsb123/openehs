@@ -658,9 +658,9 @@
         <div>
             <select name="deleteTemplateSelect" id="model_deleteTemplate" class="required modal-input text ui-widget-content ui-corner-all">
             <option value="">Select Category...</option>
-            @foreach (var all in Model.ActiveTemplates)
+            @foreach (var all in Model.TemplateCategories)
             {
-                <option value="@all.Id">@all.Title</option>
+                <option value="@all.Id">@all.Name</option>
             }
             </select>
         </div>
