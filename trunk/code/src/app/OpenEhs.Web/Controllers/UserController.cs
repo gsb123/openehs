@@ -29,6 +29,12 @@ namespace OpenEhs.Web.Controllers
             return View(new UserDetailsViewModel(_userRepository.Get(id)));
         }
 
+        [HttpPost]
+        public ActionResult AddRole(FormCollection collection)
+        {
+            return Json(new { name = "Blah" });
+        }
+
         private static string RolesToString(IList<Role> roles)
         {
             var result = new StringBuilder();

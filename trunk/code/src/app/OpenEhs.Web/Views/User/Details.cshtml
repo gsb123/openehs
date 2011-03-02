@@ -1,5 +1,4 @@
 ﻿@model OpenEhs.Web.Models.UserDetailsViewModel
-
 @{
     ViewBag.Title = "OpenEHS - User Details";
 }
@@ -12,20 +11,49 @@
         	display: block;
         }
         
-        #ActionButtons
+        #UserActions
         {
-        	width: 500px;
+        	width: 550px;
         	margin: 0 auto;
         }
         
-        #ActionButtons div
+        #UserActions div
         {
         	float: right;
         }
         
+        #RoleActions
+        {
+            float: right;
+        }
+        
+        #RoleList
+        {
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            box-shadow: 0px 0px 10px #ccc;
+            -moz-box-shadow: 0px 0px 10px #ccc;
+            -webkit-box-shadow: 0px 0px 10px #ccc;
+            margin: 20px 0;
+            padding: 10px 20px;
+        }
+        
+        #RoleList h4
+        {
+            border-radius: 5px 5px 0 0;
+            -moz-border-radius: 5px 5px 0 0;
+            -webkit-border-radius: 5px 5px 0 0;
+        }
+    
         #tabs input
         {
         	font-size: 1.4em;
+        }
+        
+        #tabs button
+        {
+            font-size: 1.4em;
         }
         
         #tabs
@@ -41,26 +69,55 @@
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#tabs").tabs();
+
+            $("#AddRoleDialog").dialog({
+                autoOpen: false,
+                draggable: false,
+                height: 140,
+                modal: true,
+                title: "Add Role",
+                show: "slide"
+            });
         });
     </script>
 }
 <h2>User Details</h2>
 @using (Html.BeginForm())
 {
-<div id="tabs">
+<div id="tabs" class="group">
     <ul>
         <li><a href="#AccountTab">Account</a></li>
         <li><a href="#ContactInfoTab">Contact Info.</a></li>
     </ul>
-    <div id="AccountTab">
+    <div id="AccountTab" class="group">
         @Html.LabelFor(m => m.Username)
         @Html.TextBoxFor(m => m.Username)
         @Html.LabelFor(m => m.Password)
         @Html.TextBoxFor(m => m.Password)
+        <div id="RoleList" class="group">
+            <h4>Roles</h4>
+            @if (Model.Roles.Count > 0)
+            {
+            <ul>
+                @foreach (var role in Model.Roles)
+                {
+                <li>
+                    <div>@role.Name</div>
+                    <div><a href="#">X</a></div>
+                </li>
+                }
+            </ul>
+            }
+            <div id="RoleActions" class="group">
+                <button id="AddRoleButton" name="AddRoleButton">Add Role</button>
+            </div>
+            <div id="AddRoleDialog">
+            </div>
+        </div>
     </div>
-    <div id="ContactInfoTab">
+    <div id="ContactInfoTab" class="group">
         @Html.LabelFor(m => m.Staff.FirstName)
         @Html.TextBoxFor(m => m.Staff.FirstName)
         @Html.LabelFor(m => m.Staff.MiddleName)
@@ -81,12 +138,10 @@
             @Html.TextBoxFor(m => m.Staff.Address.City)
             @Html.LabelFor(m => m.Staff.Address.Region)
             @Html.TextBoxFor(m => m.Staff.Address.Region)
-            @Html.LabelFor(m => m.Staff.Address.Country)
-            @Html.TextBoxFor(m => m.Staff.Address.Country)
         </fieldset>
     </div>
 </div>
-<div id="ActionButtons">
+<div id="UserActions" class="group">
     <div>
         @Html.ActionLink("Cancel", "Index")
         <input type="submit" value="Save" />
