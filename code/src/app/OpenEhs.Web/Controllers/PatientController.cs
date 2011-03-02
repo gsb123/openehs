@@ -236,6 +236,47 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        [HttpPost]
+        [ValidateInput(false)]
+        public JsonResult EditPatient()
+        {
+            try
+            {
+                PatientRepository patientRepo = new PatientRepository();
+                Patient patient = patientRepo.Get(int.Parse(Request.Form["PatientId"]));
+                patient.FirstName = Request.Form["FirstName"];
+                patient.MiddleName = Request.Form["MiddleName"];
+                patient.LastName = Request.Form["LastName"];
+                patient.DateOfBirth = DateTime.Parse(Request.Form["DateOfBirth"]);
+                patient.PhoneNumber = Request.Form["PhoneNumber"];
+                patient.Address.Street1 = Request.Form["Address_Street1"];
+                patient.Address.Street2 = Request.Form["Address_Street2"];
+                patient.Address.City = Request.Form["Address_City"];
+                patient.Address.Region = Request.Form["Address_Region"];
+                patient.EmergencyContact.FirstName = Request.Form["EC_FirstName"];
+                patient.EmergencyContact.LastName = Request.Form["EC_LastName"];
+                patient.EmergencyContact.PhoneNumber = Request.Form["EC_PhoneNumber"];
+                patient.EmergencyContact.Address.Street1 = Request.Form["EC_Address_Street1"];
+                patient.EmergencyContact.Address.Street2 = Request.Form["EC_Address_Street2"];
+                patient.EmergencyContact.Address.City = Request.Form["EC_Address_City"];
+                patient.EmergencyContact.Address.Region = Request.Form["EC_Address_Region"];
+                patient.Note = Request.Form["Note"];
+                patient.IsActive = bool.Parse(Request.Form["IsActive"]);
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
         #region FeedChart
 
         public JsonResult AddFeed()
