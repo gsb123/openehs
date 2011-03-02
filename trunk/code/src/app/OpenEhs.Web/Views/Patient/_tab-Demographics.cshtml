@@ -5,68 +5,68 @@
         <div class="group">
             <div class="column">
                 @Html.LabelFor(model => model.PatientId)<br />
-                @Html.TextBoxFor(model => model.PatientId)<br />
+                @Html.TextBoxFor(model => model.PatientId, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.FirstName)<br />
-                @Html.TextBoxFor(model => model.FirstName)<br />
+                @Html.TextBoxFor(model => model.FirstName, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.MiddleName)<br />
-                @Html.TextBoxFor(model => model.MiddleName)<br />
+                @Html.TextBoxFor(model => model.MiddleName, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.LastName)<br />
-                @Html.TextBoxFor(model => model.LastName)<br />
+                @Html.TextBoxFor(model => model.LastName, new { disabled = "disabled" })<br />
             </div>
             <div class="column">
                 @Html.LabelFor(model => model.Gender, "Gender")<br />
                 <div id="GenderRadio">
-                    @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio" })
+                    @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio", disabled = "disabled" })
                     @Html.Label("MaleGenderRadio", "Male")
-                    @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio" })
+                    @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio", disabled = "disabled" })
                     @Html.Label("FemaleGenderRadio", "Female")
                 </div>
                 @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
-                @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth))<br />
+                @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth), new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.PhoneNumber)<br />
-                @Html.TextBoxFor(model => model.PhoneNumber)
+                @Html.TextBoxFor(model => model.PhoneNumber, new { disabled = "disabled" })
             </div>
         </div>
         <div id="BasicMoreInfoLink">
             Show Details...</div>
         <div id="BasicMoreInfo">
             @Html.LabelFor(model => model.Address.Street1)<br />
-            @Html.TextBoxFor(model => model.Address.Street1)<br />
+            @Html.TextBoxFor(model => model.Address.Street1, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.Address.Street2)<br />
-            @Html.TextBoxFor(model => model.Address.Street2)<br />
+            @Html.TextBoxFor(model => model.Address.Street2, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.Address.City)<br />
-            @Html.TextBoxFor(model => model.Address.City)<br />
+            @Html.TextBoxFor(model => model.Address.City, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.Address.Region)<br />
-            @Html.TextBoxFor(model => model.Address.Region)
+            @Html.TextBoxFor(model => model.Address.Region, new { disabled = "disabled" })
         </div>
     </fieldset>
     <fieldset>
         <legend>Emergency Contact</legend>
         @Html.LabelFor(model => model.EmergencyContact.FirstName)<br />
-        @Html.TextBoxFor(model => model.EmergencyContact.FirstName)<br />
+        @Html.TextBoxFor(model => model.EmergencyContact.FirstName, new { disabled = "disabled" })<br />
         @Html.LabelFor(model => model.EmergencyContact.LastName)<br />
-        @Html.TextBoxFor(model => model.EmergencyContact.LastName)<br />
+        @Html.TextBoxFor(model => model.EmergencyContact.LastName, new { disabled = "disabled" })<br />
         @Html.LabelFor(model => model.EmergencyContact.PhoneNumber)<br />
-        @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber)<br />
+        @Html.TextBoxFor(model => model.EmergencyContact.PhoneNumber, new { disabled = "disabled" })<br />
         <div id="EmergencyContactMoreInfoLink">
             Show Details...</div>
         <div id="EmergencyContactMoreInfo">
             @Html.LabelFor(model => model.EmergencyContact.Address.Street1)<br />
-            @Html.TextBoxFor(model => model.EmergencyContact.Address.Street1)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Street1, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.EmergencyContact.Address.Street2)<br />
-            @Html.TextBoxFor(model => model.EmergencyContact.Address.Street2)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Street2, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.EmergencyContact.Address.City)<br />
-            @Html.TextBoxFor(model => model.EmergencyContact.Address.City)<br />
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.City, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.EmergencyContact.Address.Region)<br />
-            @Html.TextBoxFor(model => model.EmergencyContact.Address.Region)
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Region, new { disabled = "disabled" })
         </div>
     </fieldset>
 </div>
 <div id="BasicInformationNotes">
     <div id="isActivePatient">
-        @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive, "Active")
+        @Html.CheckBoxFor(model => model.IsActive, new { disabled = "disabled" }) @Html.LabelFor(model => model.IsActive, "Active")
         <button id="printButton" class="printButton ui-button ui-widget ui-state-default ui-corner-all">Print Barcode</button>
     </div>
     <label for="patientNoteTextBox">Notes</label>
-    <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox">@Model.Note</textarea>
+    <textarea rows="30" cols="20" name="patientNoteTextBox" id="patientNoteTextBox" disabled="disabled">@Model.Note</textarea>
 </div>

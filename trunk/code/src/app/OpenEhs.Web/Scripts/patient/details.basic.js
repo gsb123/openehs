@@ -25,6 +25,85 @@ $(function () {
     $("#checkOutButton").button();
     $("#checkOutButton").hide();
 
+    $("#editPatientInfoButton").button().click(function () {
+        $("#FirstName").removeAttr("disabled");
+        $("#MiddleName").removeAttr("disabled");
+        $("#LastName").removeAttr("disabled");
+        $("#MaleGenderRadio").removeAttr("disabled");
+        $("#FemaleGenderRadio").removeAttr("disabled");
+        $("#DateOfBirth").removeAttr("disabled");
+        $("#PhoneNumber").removeAttr("disabled");
+        $("#Address_Street1").removeAttr("disabled");
+        $("#Address_Street2").removeAttr("disabled");
+        $("#Address_City").removeAttr("disabled");
+        $("#Address_Region").removeAttr("disabled");
+        $("#EmergencyContact_FirstName").removeAttr("disabled");
+        $("#EmergencyContact_LastName").removeAttr("disabled");
+        $("#EmergencyContact_PhoneNumber").removeAttr("disabled");
+        $("#EmergencyContact_Address_Street1").removeAttr("disabled");
+        $("#EmergencyContact_Address_Street2").removeAttr("disabled");
+        $("#EmergencyContact_Address_City").removeAttr("disabled");
+        $("#EmergencyContact_Address_Region").removeAttr("disabled");
+        $("#IsActive").removeAttr("disabled");
+        $("#editPatientInfoButton").hide();
+        $("#savePatientInfoButton").show();
+    });
+
+    $("#savePatientInfoButton").button().click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Patient/EditPatient",
+            data: {
+                PatientID: $("#patientId").val(),
+                FirstName: $("#FirstName").val(),
+                MiddleName: $("#MiddleName").val(),
+                LastName: $("#LastName").val(),
+                MaleGenderRadio: $("#MaleGenderRadio").val(),
+                FemaleGenderRadio: $("#FemaleGenderRadio").val(),
+                DateOfBirth: $("#DateOfBirth").val(),
+                PhoneNumber: $("#PhoneNumber").val(),
+                Address_Street1: $("#Address_Street1").val(),
+                Address_Street2: $("#Address_Street2").val(),
+                Address_City: $("#Address_City").val(),
+                Address_Region: $("#Address_Region").val(),
+                EC_FirstName: $("#EmergencyContact_FirstName").val(),
+                EC_LastName: $("#EmergencyContact_LastName").val(),
+                EC_PhoneNumber: $("#EmergencyContact_PhoneNumber").val(),
+                EC_Address_Street1: $("#EmergencyContact_Address_Street1").val(),
+                EC_Address_Street2: $("#EmergencyContact_Address_Street2").val(),
+                EC_Address_City: $("#EmergencyContact_Address_City").val(),
+                EC_Address_Region: $("#EmergencyContact_Address_Region").val(),
+                Note: $("#patientNoteTextBox").val(),
+                IsActive: $("#IsActive").val()
+            },
+            success: function (response) {
+                $("#FirstName").attr("disabled", "disabled");
+                $("#MiddleName").attr("disabled", "disabled");
+                $("#LastName").attr("disabled", "disabled");
+                $("#MaleGenderRadio").attr("disabled", "disabled");
+                $("#FemaleGenderRadio").attr("disabled", "disabled");
+                $("#DateOfBirth").attr("disabled", "disabled");
+                $("#PhoneNumber").attr("disabled", "disabled");
+                $("#Address_Street1").attr("disabled", "disabled");
+                $("#Address_Street2").attr("disabled", "disabled");
+                $("#Address_City").attr("disabled", "disabled");
+                $("#Address_Region").attr("disabled", "disabled");
+                $("#EmergencyContact_FirstName").attr("disabled", "disabled");
+                $("#EmergencyContact_LastName").attr("disabled", "disabled");
+                $("#EmergencyContact_PhoneNumber").attr("disabled", "disabled");
+                $("#EmergencyContact_Address_Street1").attr("disabled", "disabled");
+                $("#EmergencyContact_Address_Street2").attr("disabled", "disabled");
+                $("#EmergencyContact_Address_City").attr("disabled", "disabled");
+                $("#EmergencyContact_Address_Region").attr("disabled", "disabled");
+                $("#IsActive").attr("disabled", "disabled");
+                $("#savePatientInfoButton").hide();
+                $("#editPatientInfoButton").show();
+            },
+            dataType: "json"
+        });
+    });
+    $("#savePatientInfoButton").hide();
+
     $("#modal_TimeOfDeath").timepicker({});
 
     $("#newCheckInButton").button().click(function () {
@@ -33,10 +112,6 @@ $(function () {
 
     $("#checkOutButton").button().click(function () {
         $("#checkOutModal").dialog("open");
-    });
-
-    $("#editPatientInfoButton").button().click(function () {
-
     });
 
     // ------------------------------------------------- //
