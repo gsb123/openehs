@@ -28,6 +28,7 @@ $(function () {
                         $("#ChronicDiseaseList").append(newAllergy);
 
                         $("#addDiseaseName").val("");
+                        $("#addProblemDialog").dialog("close");
 
                     } else {
                         $("#addProblemDialog .error").html(returnData.status);
