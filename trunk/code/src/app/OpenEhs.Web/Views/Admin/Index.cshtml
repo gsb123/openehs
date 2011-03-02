@@ -115,7 +115,7 @@
     </fieldset>
 
 	<fieldset id="fsRightMarginRowTwo" class="setFieldSetWidth">
-        <legend class="legendTextSize">Manage Product Category</legend>
+        <legend class="legendTextSize">Manage Prod Category</legend>
 
         <input id="addCategory" type="button" value="Add Category" />
 
@@ -647,7 +647,7 @@
     </form>
 </div>
 
-<div id="deleteTemplateDialog" title="Delete Template">
+<div id="deleteTemplateCategoryDialog" title="Delete Template Category">
     <ul class="modalErrorContainer" style="display: none">
     </ul>
     <form id="deleteTemplateForm" action="">
@@ -657,7 +657,7 @@
         </div>
         <div>
             <select name="deleteTemplateSelect" id="model_deleteTemplate" class="required modal-input text ui-widget-content ui-corner-all">
-            <option value="">Select Template...</option>
+            <option value="">Select Category...</option>
             @foreach (var all in Model.ActiveTemplates)
             {
                 <option value="@all.Id">@all.Title</option>

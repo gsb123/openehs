@@ -34,7 +34,7 @@ $(function () {
     });
 
     $("#deleteTemplate").button().click(function () {
-        $("#deleteTemplateDialog").dialog("open");
+        $("#deleteTemplateCategoryDialog").dialog("open");
     });
 
     $("#addService").button().click(function () {
@@ -656,17 +656,17 @@ $("#editMedicationDialog").dialog({
     }
 });
 
-$("#deleteTemplateDialog").dialog({
+$("#deleteTemplateCategoryDialog").dialog({
     autoOpen: false,
     height: 150,
     width: 420,
     modal: true,
     buttons: {
         "Delete Template": function () {
-            $.post("/Admin/DeleteTemplate", {
+            $.post("/Admin/DeleteTemplateCategory", {
                 Template: $("#model_deleteTemplate").val()
             }, function (result) {
-                    $("#deleteTemplateDialog").dialog("close");
+                    $("#deleteTemplateCategoryDialog").dialog("close");
 
                     $("#model_deleteTemplate").val("");
             }, "json");
