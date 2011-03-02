@@ -26,7 +26,7 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            return View(new UserDetailsViewModel(_userRepository.Get(id)));
         }
 
         private static string RolesToString(IList<Role> roles)
