@@ -7,7 +7,7 @@
 
 $(function () {
     $("#registrationForm").formwizard({
-        formPluginEnabled: true,
+        formPluginEnabled: false,
         validationEnabled: true,
         focusFirstInput: true,
         formOptions: {
