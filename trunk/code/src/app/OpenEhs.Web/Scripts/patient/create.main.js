@@ -4,23 +4,28 @@
 /// <reference path="../jquery-jvert-tabs-1.1.4.js" />
 
 $(function () {
-    $("#createPatientForm").formwizard({
-        formPluginEnabled: true,
+    $("#DateOfBirth").datepicker({
+        showOn: "button",
+        buttonImage: "/Content/themes/base/images/calendar.png",
+        buttonImageOnly: true,
+        changeYear: true,
+        yearRange: "1900:@DateTime.Now.Year"
+
+    }).focus(function () {
+        $("#DateOfBirth").datepicker("show");
+    });
+
+    $("#newPatientContainer form").formwizard({
+        formPluginEnabled: false,
+        historyEnabled: true,
         validationEnabled: true,
         focusFirstInput: true,
+        disableUIStyles: true,
         formOptions: {
-            success: function (data) {
-                $("#status").fadeTo(500, 1, function () {
-                    $(this).html("You are now registered!").fadeTo(5000, 0);
-                })
-            },
-            beforeSubmit: function (data) {
-                $("#data").html("data sent to the server: " + $.param(data));
-            },
-            dataType: 'json',
+            success: function (data) { alert("Success!"); },
+            beforeSubmit: function (data) { alert("Before submit!"); },
+            dataType: "json",
             resetForm: true
         }
     });
-
-    $(".navigation_button").button();
 });
