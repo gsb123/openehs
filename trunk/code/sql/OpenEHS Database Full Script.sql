@@ -129,7 +129,8 @@ AllergyID                   int         NOT NULL
 CREATE TABLE Immunization
 (
 ImmunizationID          int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-VaccineType             text            NOT NULL
+VaccineType             text            NOT NULL,
+IsActive                bit             NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE PatientImmunization
