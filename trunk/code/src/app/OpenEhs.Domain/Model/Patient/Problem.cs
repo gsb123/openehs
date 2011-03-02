@@ -16,7 +16,7 @@ namespace OpenEhs.Domain
 
         public virtual int Id { get; private set; }
         public virtual string ProblemName { get; set; }
-        public virtual IList<Patient> Patients { get; set; }
+        public virtual IList<PatientProblem> Patients { get; set; }
 
         #endregion
 

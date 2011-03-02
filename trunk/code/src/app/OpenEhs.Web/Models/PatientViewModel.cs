@@ -248,7 +248,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Problems")]
-        public IList<Problem> Problems
+        public IList<PatientProblem> Problems
         {
             get
             {
@@ -517,6 +517,7 @@ namespace OpenEhs.Web.Models
             return false;
         }
 
+        /*
         public void AddProblem(Problem problem)
         {
             Problems.Add(problem);
@@ -545,6 +546,7 @@ namespace OpenEhs.Web.Models
 
             return false;
         }
+         */
 
         public void AddImmunization(PatientImmunization immunization)
         {

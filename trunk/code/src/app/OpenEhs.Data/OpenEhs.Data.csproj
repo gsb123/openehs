@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\INoteTemplateRepository.cs" />
     <Compile Include="Interfaces\IPatientAllergyRepository.cs" />
     <Compile Include="Interfaces\IPatientImmunizationRepository.cs" />
+    <Compile Include="Interfaces\IPatientProblemRepository.cs" />
     <Compile Include="Interfaces\IProblemRepository.cs" />
     <Compile Include="Interfaces\IServiceRepository.cs" />
     <Compile Include="Interfaces\IInvoiceRepository.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Repositories\NoteTemplateRepository.cs" />
     <Compile Include="Repositories\PatientAllergyRepository.cs" />
     <Compile Include="Repositories\PatientImmunizationRepository.cs" />
+    <Compile Include="Repositories\PatientProblemRepository.cs" />
     <Compile Include="Repositories\ProblemRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
@@ -137,9 +139,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\PatientImmunization.hbm.xml" />
-    <Content Include="Mappings\PatientProblem.hbm.xml">
+    <EmbeddedResource Include="Mappings\PatientProblem.hbm.xml">
       <SubType>Designer</SubType>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\SurgeryStaff.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -19,13 +19,15 @@ $(function () {
             "Add Disease": function () {
                 $.post("/Patient/AddDiseaseToPatient", {
                     patientId: $("#patientId").val(),
-                    allergyId: $("#addDiseaseName").val()
+                    problemId: $("#addDiseaseName").val()
                 }, function (returnData) {
                     if (returnData.error == "false") {
                         $("#addProblemDialog").dialog("close");
 
                         var newAllergy = '<li><div style="float: left;">' + returnData.Name + '</div></li>';
-                        $("#allergyList").append(newAllergy);
+                        $("#ChronicDiseaseList").append(newAllergy);
+
+                        $("#addDiseaseName").val("");
 
                     } else {
                         $("#addProblemDialog .error").html(returnData.status);
@@ -33,6 +35,7 @@ $(function () {
                 }, "json");
             },
             Cancel: function () {
+                $("#addDiseaseName").val("");
                 $(this).dialog("close");
             }
         },
@@ -61,8 +64,7 @@ $(function () {
                 }, "json");
             },
             Cancel: function () {
-                $("#modal_allergyName").val("");
-
+                $("#modal_DiseaseName").val("");
 
                 $(this).dialog("close");
             }

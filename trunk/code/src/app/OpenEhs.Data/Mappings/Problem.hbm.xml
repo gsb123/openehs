@@ -8,10 +8,10 @@
       <generator class="native" />
     </id>
     <property name="ProblemName" not-null="true" length="30" />
-    
+
     <bag name="Patients" table="PatientProblem" cascade="none" lazy="false">
       <key column="ProblemID" />
-      <many-to-many column="PatientID" class="Patient" />
+      <one-to-many class="PatientProblem" />
     </bag>
     
   </class>
