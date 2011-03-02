@@ -8,43 +8,43 @@ namespace OpenEhs.Web.Models
 {
     public class CreatePatientViewModel
     {
-        [Required]
+        [Required(ErrorMessage="Patient's First Name is required")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Patient's Last Name is required")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+        [Required(ErrorMessage="Patient's Date of Birth is required")]
+        [DataType(DataType.Date, ErrorMessage = "Patient's Last Name is required")]
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Patient's Gender is required")]
         public Gender Gender { get; set; }
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Street 1")]
+        [Required(ErrorMessage="Patient's Street Address is required")]
+        [Display(Name = "Address 1")]
         public string Street1 { get; set; }
 
-        [Display(Name = "Street 2")]
+        [Display(Name = "Address 2")]
         public string Street2 { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Patient's City is required")]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Patient's Region is required")]
         public string Region { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Patient's Country is required")]
         public string Country { get; set; }
 
         [Display(Name = "Blood Type")]
@@ -58,18 +58,18 @@ namespace OpenEhs.Web.Models
         [Display(Name = "Old Physical Number")]
         public string OldPhysicalRecordNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Emergency Contact's First Name is required")]
         [Display(Name = "First Name")]
         public string EcFirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Emergency Contact's Last Name is required")]
         [Display(Name = "Last Name")]
         public string EcLastName { get; set; }
 
         [Display(Name = "Phone Number")]
         public string EcPhoneNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Emergency Contact's Relationship with the patient is required")]
         [Display(Name = "Relationship")]
         public Relationship EcRelationship { get; set; }
 
