@@ -3,6 +3,93 @@
 @{
     ViewBag.Title = "OpenEHS - User Details";
 }
+@section head
+{
+    <style type="text/css">
+        label
+        {
+        	font-size: 1.4em;
+        	display: block;
+        }
+        
+        #ActionButtons
+        {
+        	width: 500px;
+        	margin: 0 auto;
+        }
+        
+        #ActionButtons div
+        {
+        	float: right;
+        }
+        
+        #tabs input
+        {
+        	font-size: 1.4em;
+        }
+        
+        #tabs
+        {
+        	width: 500px;
+        	margin: 0 auto;
+        }
+        
+        #tabs ul
+        {
+        	font-size: 1.2em;
+        }
+    </style>
 
-<h2>Details</h2>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#tabs").tabs();
+        });
+    </script>
+}
+<h2>User Details</h2>
+@using (Html.BeginForm())
+{
+<div id="tabs">
+    <ul>
+        <li><a href="#AccountTab">Account</a></li>
+        <li><a href="#ContactInfoTab">Contact Info.</a></li>
+    </ul>
+    <div id="AccountTab">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username)
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password)
+    </div>
+    <div id="ContactInfoTab">
+        @Html.LabelFor(m => m.Staff.FirstName)
+        @Html.TextBoxFor(m => m.Staff.FirstName)
+        @Html.LabelFor(m => m.Staff.MiddleName)
+        @Html.TextBoxFor(m => m.Staff.MiddleName)
+        @Html.LabelFor(m => m.Staff.LastName)
+        @Html.TextBoxFor(m => m.Staff.LastName)
+        @Html.LabelFor(m => m.Staff.PhoneNumber)
+        @Html.TextBoxFor(m => m.Staff.PhoneNumber)
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.TextBoxFor(m => m.EmailAddress)
+        <fieldset>
+            <legend>Address</legend>
+            @Html.LabelFor(m => m.Staff.Address.Street1)
+            @Html.TextBoxFor(m => m.Staff.Address.Street1)
+            @Html.LabelFor(m => m.Staff.Address.Street2)
+            @Html.TextBoxFor(m => m.Staff.Address.Street2)
+            @Html.LabelFor(m => m.Staff.Address.City)
+            @Html.TextBoxFor(m => m.Staff.Address.City)
+            @Html.LabelFor(m => m.Staff.Address.Region)
+            @Html.TextBoxFor(m => m.Staff.Address.Region)
+            @Html.LabelFor(m => m.Staff.Address.Country)
+            @Html.TextBoxFor(m => m.Staff.Address.Country)
+        </fieldset>
+    </div>
+</div>
+<div id="ActionButtons">
+    <div>
+        @Html.ActionLink("Cancel", "Index")
+        <input type="submit" value="Save" />
+    </div>
+</div>
+}
