@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace OpenEhs.Domain
 {
-    public class Role : IEntity
+    public class Role : IEntity, IComparable<Role>
     {
         #region Properties
 
@@ -70,5 +70,10 @@ namespace OpenEhs.Domain
         }
 
         #endregion
+
+        public virtual int CompareTo(Role other)
+        {
+            return Name.CompareTo(other.Name);
+        }
     }
 }
