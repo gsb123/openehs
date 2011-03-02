@@ -2,11 +2,14 @@
 @{
     ViewBag.Title = "Successfully created patient";
 }
-@section head {
+@section head 
+{
+    <script src="@Url.Content("~/Scripts/PrintLabelCreate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/DYMO.Label.Framework.1.0.beta.js")" type="text/javascript"></script>
 }
 <h2>
     Confirmation</h2>
 <div>
     Successfully created patient: @Model.FirstName @Model.LastName
 </div>
-<input type="button" value="Print Patient Id" />
+<input type="button" id="printButton" value="Print Patient Id" />
