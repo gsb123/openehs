@@ -73,8 +73,7 @@ h2, h3 {
     margin: 5px;
 }
 
-
-#newPatientContainer input:focus {
+#newPatientContainer input:not([type=button]):focus {
     -moz-box-shadow: 0 0 4px #47A5FF;
     border: 1px solid #47A5FF;
 }
@@ -85,6 +84,10 @@ h2, h3 {
 
 #createPatientNavigation {
     float: right;
+    margin-top: 10px;
+}
+
+#GenderRadio {
     margin-top: 10px;
 }
 

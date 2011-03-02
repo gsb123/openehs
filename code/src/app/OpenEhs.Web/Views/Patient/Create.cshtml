@@ -1,6 +1,6 @@
 ﻿@model OpenEhs.Web.Models.CreatePatientViewModel
 @{
-    ViewBag.Title = "New Patient";
+    ViewBag.Title = "OpenEHS - Create New Patient";
     HtmlHelper.ClientValidationEnabled = true;
     HtmlHelper.UnobtrusiveJavaScriptEnabled = true;   
 }
@@ -44,6 +44,7 @@
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.DateOfBirth)
                     @Html.EditorFor(m => m.DateOfBirth)
+                    <input type="button" id="btnAge" value="Age"/>
                 </div>
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.Gender)
@@ -53,6 +54,10 @@
                         @Html.RadioButtonFor(m => m.Gender, "Female", new { @id = "FemaleGenderRadio" })
                         @Html.Label("FemaleGenderRadio", "Female")
                     </div>
+                </div>
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.OldPhysicalRecordNumber)
+                    @Html.TextBoxFor(m => m.OldPhysicalRecordNumber)
                 </div>
             </div>
             <div class="group">
