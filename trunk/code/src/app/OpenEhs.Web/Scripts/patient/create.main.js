@@ -9,9 +9,25 @@ $(function () {
     // Turns off autocomplete for all text inputs
     $("input[type=text]").attr("autocomplete", "off");
 
-    $("#btnAge").click(function () {
-        alert("implement me!");
-        //TODO show some kind of UI that lets the user enter an age instead of a DoB
+    $("#ageDialog").dialog({
+        autoOpen: false,
+        height: 170,
+        width: 200,
+        modal: true,
+        buttons: {
+            "Calculate DoB": function () {
+                var date = new Date();
+                date.setFullYear(date.getFullYear - $("#modal_age").val());
+                $('#DateOfBirth').datepicker("setDate", date);
+                $(this).dialog("close");
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
     });
 
     $("#DateOfBirth").datepicker({
@@ -31,5 +47,9 @@ $(function () {
         validationEnabled: true,
         focusFirstInput: true,
         disableUIStyles: true
+    });
+
+    $("#btnAge").click(function () {
+        $("#ageDialog").dialog("open");
     });
 });

@@ -182,6 +182,13 @@ namespace OpenEhs.Web.Controllers
         #region CreatePatient
 
         [HttpPost]
+        public ActionResult Confirmation(int id) {
+
+            var patient = _patientRepository.Get(id);
+            return View(patient);
+        }
+
+        [HttpPost]
         public ActionResult Create(CreatePatientViewModel model)
         {
             var patient = new Patient
@@ -224,7 +231,9 @@ namespace OpenEhs.Web.Controllers
 
             _patientRepository.Add(patient);
 
-            return RedirectToAction("Index");
+            UnitOfWork.CurrentSession.Flush();
+
+            return RedirectToAction("Confirmation", new { id = patient.Id});
         }
 
         #endregion

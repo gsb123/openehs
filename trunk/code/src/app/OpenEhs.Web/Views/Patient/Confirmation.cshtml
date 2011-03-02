@@ -1,0 +1,12 @@
+﻿@model OpenEhs.Domain.Patient
+@{
+    ViewBag.Title = "Successfully created patient";
+}
+@section head {
+}
+<h2>
+    Confirmation</h2>
+<div>
+    Successfully created patient: @Model.FirstName @Model.LastName
+</div>
+<input type="button" value="Print Patient Id" />
