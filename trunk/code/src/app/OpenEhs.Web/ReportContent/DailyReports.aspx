@@ -15,6 +15,15 @@
         {
             width: 267px;
         }
+        .style3
+        {
+            font-size: x-large;
+        }
+        .style4
+        {
+            width: 100%;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -34,21 +43,95 @@
                 </td>
             </tr>
         </table>
+        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
         <br />
-        <asp:GridView ID="gvAdmissions" runat="server" CellPadding="4" 
-            ForeColor="#333333" GridLines="None">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-        </asp:GridView>
+        <table class="style4">
+            <tr>
+                <td>
+                    <strong><span class="style3">Daily Admissions Report</span></strong><asp:GridView 
+                        ID="gvAdmissions" runat="server" BackColor="White" BorderColor="#CCCCCC" 
+                        BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" 
+                        GridLines="Horizontal">
+                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                        <SortedDescendingHeaderStyle BackColor="#242121" />
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Remained Previous Day: 
+                    <asp:Label ID="lblPrevDay" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total Admission:
+                    <asp:Label ID="lblTotalAdmission" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total Discharges:
+                    <asp:Label ID="lblTotalDischarges" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total Deaths:
+                    <asp:Label ID="lblTotalDeaths" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Remained at Midnight:
+                    <asp:Label ID="lblTotalAtMidnight" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="style3">
+                    <br />
+                    Daily Discharges Report</span><asp:GridView ID="gvDischarge" runat="server" 
+                        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
+                        CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                        <SortedDescendingHeaderStyle BackColor="#242121" />
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="style3">
+                    <br />
+                    Deaths</span><asp:GridView ID="gvDeaths" runat="server" BackColor="White" 
+                        BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" 
+                        ForeColor="Black" GridLines="Horizontal">
+                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                        <SortedDescendingHeaderStyle BackColor="#242121" />
+                    </asp:GridView>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
     </div>
     </form>
 </body>

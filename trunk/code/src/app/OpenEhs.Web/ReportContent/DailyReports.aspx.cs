@@ -22,7 +22,26 @@ namespace OpenEhs.Web.ReportContent
 
         protected void btnGenerate_Click(object sender, EventArgs e)
         {
-            generateAdmissionsReport();
+            try
+            {
+                generateAdmissionsReport();
+                generateRemainPreviousDay();
+                generateTotalAdmissions();
+                generateTotalDischarges();
+                generateTotalDeaths();
+                generateDischargesList();
+                generateDeathsList();
+                lblError.Text = "";
+            }
+            catch(Exception message)
+            {
+                lblError.Text = message.ToString();
+            }
+        }
+
+        protected void calendarDate_SelectionChanged(object sender, EventArgs e)
+        {
+            txtDate.Text = calendarDate.SelectedDate.Year.ToString() + "-" + calendarDate.SelectedDate.Month.ToString() + "-" + calendarDate.SelectedDate.Day.ToString();
         }
 
         private void generateAdmissionsReport()
@@ -31,7 +50,7 @@ namespace OpenEhs.Web.ReportContent
                                         "FROM patient p, patientcheckin c, location l "+
                                         "WHERE p.PatientID = c.PatientID "+
                                             "AND c.LocationID = l.LocationID "+
-                                            "AND DATE(c.CheckinTime) = @date";
+                                            "AND DATE(c.CheckinTime) = @date;";
 
 
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -47,9 +66,107 @@ namespace OpenEhs.Web.ReportContent
             connection.Close();
         }
 
-        protected void calendarDate_SelectionChanged(object sender, EventArgs e)
+        private void generateRemainPreviousDay()
         {
-            txtDate.Text = calendarDate.SelectedDate.Year.ToString() + "-" + calendarDate.SelectedDate.Month.ToString() + "-" + calendarDate.SelectedDate.Day.ToString();
+            string select = "SELECT COUNT(*) "+
+                                "FROM patientcheckin "+
+                                "WHERE CheckOutTime IS NULL "+
+                                    "AND DATE(CheckInTime) < @date";
+            lblPrevDay.Text = summaryQuery(select, txtDate.Text);
+        }
+
+        private void generateTotalAdmissions()
+        {
+            string select = "SELECT COUNT(*) "+
+                                "FROM patientcheckin "+
+                                "WHERE DATE(CheckinTime) = @date";
+            lblTotalAdmission.Text = summaryQuery(select, txtDate.Text);
+        }
+
+        private void generateTotalDischarges()
+        {
+            string select = "SELECT COUNT(*) "+
+                                "FROM patientcheckin "+
+                                "WHERE DATE(CheckOutTime) = @date";
+            lblTotalDischarges.Text = summaryQuery(select, txtDate.Text);
+        }
+
+        private void generateTotalDeaths()
+        {
+            string select = "SELECT COUNT(*) " +
+                                "FROM patientcheckin "+
+                                "WHERE DATE(TimeOfDeath) = @date";
+            lblTotalDeaths.Text = summaryQuery(select, txtDate.Text);
+        }
+
+        private void genereateRemainedAtMidnight()
+        {
+            string select = "";
+        }
+
+
+
+        private void generateDischargesList()
+        {
+            string selectDischarges = "SELECT l.Department AS 'Department', p.LastName AS 'Last Name', p.FirstName AS 'First Name', (YEAR(CURDATE())-YEAR(p.DateOfBirth))-(RIGHT(CURDATE(),5)<RIGHT(p.DateOfBirth,5)) AS Age, IF(p.Gender = 0, \"Male\", \"Female\") AS 'Gender' "+
+                                    "FROM patient p, patientcheckin c, location l "+
+                                    "WHERE p.PatientID = c.PatientID "+
+                                        "AND c.LocationID = l.LocationID "+
+                                        "AND DATE(c.CheckOutTime) = @date;";
+
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string select = selectDischarges;
+            MySqlCommand command = new MySqlCommand(select, connection);
+            command.Parameters.AddWithValue("date", txtDate.Text);
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+
+            gvDischarge.DataSource = reader;
+            gvDischarge.DataBind();
+
+            connection.Close();
+        }
+
+        private void generateDeathsList()
+        {
+            string selectDeaths = "SELECT l.Department AS 'Department', p.LastName AS 'Last Name', p.FirstName AS 'First Name', (YEAR(CURDATE())-YEAR(p.DateOfBirth))-(RIGHT(CURDATE(),5)<RIGHT(p.DateOfBirth,5)) AS Age, IF(p.Gender = 0, \"Male\", \"Female\") AS 'Gender' "+
+                                    "FROM patient p, patientcheckin c, location l "+
+                                    "WHERE p.PatientID = c.PatientID "+
+                                        "AND c.LocationID = l.LocationID "+
+                                        "AND DATE(c.TimeOfDeath) = @date;";
+
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string select = selectDeaths;
+            MySqlCommand command = new MySqlCommand(select, connection);
+            command.Parameters.AddWithValue("date", txtDate.Text);
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+
+            gvDeaths.DataSource = reader;
+            gvDeaths.DataBind();
+
+            connection.Close();
+        }
+
+        private string summaryQuery(string selectStatement, string date)
+        {
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string select = selectStatement;
+            MySqlCommand command = new MySqlCommand(select, connection);
+            command.Parameters.AddWithValue("date", date);
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            DataTable tableReport = new DataTable();
+            tableReport.Load(reader);
+            connection.Close();
+            DataView dv1 = new DataView(tableReport);
+
+            if (dv1.Count > 0)
+                return dv1[0][0].ToString();
+            else
+                return "0";
         }
     }
 }
