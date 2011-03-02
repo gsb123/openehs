@@ -1,6 +1,0 @@
-For the printer to work, you must have the printer installed on your computer and also have the Dymo Label Software (DLS) installed.
-
-Follow these steps:
-1. Do not plug in the printer in yet.
-2. Install the DLS software; you should be prompted to plug in the printer during the installation.
-3. Install the LabelWriterDrivers-64x driver, if you are using a 64bit operating system.
