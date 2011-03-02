@@ -40,6 +40,8 @@ $(function () {
                 $('#modal_GetSurgeryLocation').attr('disabled', true);
                 $('#caseType1').attr('disabled', true);
                 $('#caseType2').attr('disabled', true);
+                $("#submitInvoiceItemService").button("disable");
+                $("#submitInvoiceItem").button("disable");
             }
         },
         dataType: "json"
@@ -84,6 +86,8 @@ $(function () {
                         $('#modal_GetSurgeryLocation').attr('disabled', false);
                         $('#caseType1').attr('disabled', false);
                         $('#caseType2').attr('disabled', false);
+                        $("#submitInvoiceItemService").button("enable");
+                        $("#submitInvoiceItem").button("enable");
                     },
                     dataType: "json"
                 });
@@ -119,6 +123,8 @@ $(function () {
                         $("#checkOutModal").dialog("close");
                         $("#newCheckInButton").show();
                         $("#vitalAddButton").button("disable");
+                        $("#submitInvoiceItemService").button("disable");
+                        $("#submitInvoiceItem").button("disable");
                     },
                     dataType: "json"
                 });
