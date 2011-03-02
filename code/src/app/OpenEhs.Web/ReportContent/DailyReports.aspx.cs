@@ -46,5 +46,10 @@ namespace OpenEhs.Web.ReportContent
             
             connection.Close();
         }
+
+        protected void calendarDate_SelectionChanged(object sender, EventArgs e)
+        {
+            txtDate.Text = calendarDate.SelectedDate.Year.ToString() + "-" + calendarDate.SelectedDate.Month.ToString() + "-" + calendarDate.SelectedDate.Day.ToString();
+        }
     }
 }
