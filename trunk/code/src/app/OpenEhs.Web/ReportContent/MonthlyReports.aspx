@@ -9,10 +9,15 @@
         .style1
         {
             width: 100%;
+            font-weight: 700;
         }
         .style2
         {
             text-align: center;
+        }
+        .style3
+        {
+            width: 260px;
         }
     </style>
 </head>
@@ -20,22 +25,38 @@
     <form id="form1" runat="server">
     <div>
 
-        Start Date:
+        &nbsp;Use the calenders below to select the starting and ending dates of the report.&nbsp; 
+        Click the &quot;Generate Reports&quot; button to generate and view ther reports.<br />
+        <table class="style1">
+            <tr>
+                <td class="style3" valign="top">
 
-        <asp:TextBox ID="txtStartDate" runat="server"></asp:TextBox>
-        &nbsp;
-        End Date:&nbsp;
-        <asp:TextBox ID="txtEndState" runat="server"></asp:TextBox>
+        Start Date:&nbsp;
+
+        <asp:TextBox ID="txtStartDate" runat="server" BorderStyle="None" ReadOnly="True"></asp:TextBox>
+                    <asp:Calendar ID="calendarStart" runat="server" 
+                        onselectionchanged="calendarStart_SelectionChanged"></asp:Calendar>
+                </td>
+                <td class="style3" valign="top">
+&nbsp;End Date:&nbsp;
+        <asp:TextBox ID="txtEndState" runat="server" BorderStyle="None" ReadOnly="True"></asp:TextBox>
     
-        &nbsp;<asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
+                    <asp:Calendar ID="calendarEnd" runat="server" 
+                        onselectionchanged="calendarEnd_SelectionChanged"></asp:Calendar>
+                </td>
+                <td valign="top">
+                    <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
             Text="Generate Reports" />
+                </td>
+            </tr>
+        </table>
         <br />
         <br />
     
         <table class="style1" border="1px">
             <tr>
                 <td colspan="7" style="text-align: center" bgcolor="#FFFFCC">
-                    B. IN-PATIENTSS</td>
+                    B. IN-PATIENTSSSSSSSSS</td>
             </tr>
             <tr>
                 <td class="style2" rowspan="2">

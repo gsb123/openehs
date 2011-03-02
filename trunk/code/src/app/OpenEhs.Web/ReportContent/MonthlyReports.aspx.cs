@@ -332,6 +332,14 @@ namespace OpenEhs.Web
                 return "0";
         }
 
+        protected void calendarStart_SelectionChanged(object sender, EventArgs e)
+        {
+            txtStartDate.Text = calendarStart.SelectedDate.Year.ToString() + "-" + calendarStart.SelectedDate.Month.ToString() + "-" + calendarStart.SelectedDate.Day.ToString();
+        }
 
+        protected void calendarEnd_SelectionChanged(object sender, EventArgs e)
+        {
+            txtEndState.Text = calendarEnd.SelectedDate.Year.ToString() + "-" + calendarEnd.SelectedDate.Month.ToString() + "-" + calendarEnd.SelectedDate.Day.ToString();
+        }
     }
 }
