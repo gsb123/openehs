@@ -56,5 +56,22 @@ namespace OpenEhs.Domain
         }
 
         #endregion
+
+        #region Methods
+        
+        public virtual void AddRole(Role role)
+        {
+            if (!Roles.Contains(role))
+                Roles.Add(role);
+            else
+                throw new ArgumentException("This user is already in that role.");
+        }
+
+        public virtual void RemoveRole(Role role)
+        {
+            Roles.Remove(role);
+        }
+
+        #endregion
     }
 }

@@ -10,10 +10,12 @@ namespace OpenEhs.Web.Controllers
     public class UserController : Controller
     {
         private IUserRepository _userRepository;
+        private IRoleRepository _roleRepository;
 
         public UserController()
         {
             _userRepository = new UserRepository();
+            _roleRepository = new RoleRepository();
         }
 
         public ActionResult Index(int? page)
@@ -26,12 +28,16 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
+            ViewBag.CurrentUserId = id;
             return View(new UserDetailsViewModel(_userRepository.Get(id)));
         }
 
         [HttpPost]
-        public ActionResult AddRole(FormCollection collection)
+        public ActionResult AddRole(int id)
         {
+            var roleToAdd = _roleRepository.Get(id);
+            var user = _userRepository.Get(ViewBag.CurrentUserId);
+
             return Json(new { name = "Blah" });
         }
 
