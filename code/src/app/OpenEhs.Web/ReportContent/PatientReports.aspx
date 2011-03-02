@@ -70,9 +70,14 @@
                         <br />
                         <asp:Button ID="btnGenerate" runat="server" onclick="btnGenerate_Click" 
                             Text="Generate Reports" Width="260px" />
+                            <br />
+                        <br />
+                            <a href="../Reports">Return to Reports</a>
                     </td>
                     <td class="style3" valign="top">
-                            &nbsp;</td>
+                            <br />
+                            
+                    </td>
                 </tr>
             </table>
         </fieldset>
