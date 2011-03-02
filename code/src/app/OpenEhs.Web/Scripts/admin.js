@@ -583,7 +583,7 @@ $("#editAllergyDialog").dialog({
                 Allergy: $("#model_selectededAllergyName").val(),
                 EditAllergy: $("#model_allergyEditName").val()
             }, function (result) {
-                    $("#AddInventoryDialog").dialog("close");
+                    $("#editAllergyDialog").dialog("close");
 
                     $("#model_selectededAllergyName").val("");
                     $("#model_allergyEditName").val("");
