@@ -44,7 +44,7 @@
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.DateOfBirth)
                     @Html.EditorFor(m => m.DateOfBirth)
-                    <input type="button" id="btnAge" value="Age"/>
+                    <input type="button" id="btnAge" value="Age" />
                 </div>
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.Gender)
@@ -162,4 +162,18 @@
             <input class="navigation_button" id="next" value="Next" type="submit" />
         </div>    
     }
+</div>
+<div id="ageDialog" title="Please enter an age">
+    <ul class="modalErrorContainer" style="display: none">
+    </ul>
+    <form id="ageForm" action="">
+    <fieldset>
+        <div class="modal-label">
+            Age:
+        </div>
+        <div>
+            <input type="text" name="age" id="modal_age" class="required modal-input text ui-widget-content ui-corner-all" />
+        </div>
+    </fieldset>
+    </form>
 </div>
