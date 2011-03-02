@@ -11,10 +11,9 @@ namespace OpenEhs.Domain
 
         public virtual int Id { get; private set; }
         public virtual string Name { get; set; }
-        public virtual string Instruction { get; set; }
-        public virtual DateTime StartDate { get; set; }
-        public virtual DateTime ExpDate { get; set; }
-        public virtual Patient Patient { get; set; }
+        public virtual string Description { get; set; }
+        public virtual IList<PatientMedication> Patients { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
     }

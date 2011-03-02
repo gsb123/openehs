@@ -43,8 +43,8 @@ namespace OpenEhs.Domain
         public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }
         public virtual IList<PatientProblem> Problems { get; set; }
         public virtual IList<PatientAllergy> Allergies { get; set; }
+        public virtual IList<PatientMedication> Medications { get; set; }
         public virtual IList<PatientImmunization> Immunizations { get; set; }
-        public virtual IList<Medication> Medications { get; set; }
 
         #endregion
     }

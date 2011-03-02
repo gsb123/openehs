@@ -7,12 +7,14 @@
     <id name="Id" column="MedicationID">
       <generator class="native" />
     </id>
-    <property name="Name" not-null="true" length="30" />
-    <property name="Instruction" not-null="true" />
-    <property name="StartDate" not-null="true" />
-    <property name="ExpDate" not-null="true" />
+    <property name="Name" not-null="true" length="250" />
+    <property name="Description" not-null="true" />
+    <property name="IsActive" not-null="true" />
 
-    <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
+    <bag name="Patients" table="PatientMedication" cascade="none" lazy="false">
+      <key column="MedicationID" />
+      <one-to-many class="PatientMedication" />
+    </bag>
 
   </class>
 </hibernate-mapping>

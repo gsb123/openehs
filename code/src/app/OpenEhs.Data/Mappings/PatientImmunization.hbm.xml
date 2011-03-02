@@ -10,7 +10,7 @@
 
     <many-to-one name="Patient" column="PatientID" unique="true" cascade="all" />
     <many-to-one name="Immunization" column="ImmunizationID" unique="true" cascade="all" />
-    <property name="DateAdministered" not-null="true" length="30" />
+    <property name="DateAdministered" not-null="true" />
 
   </class>
 </hibernate-mapping>

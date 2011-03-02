@@ -288,7 +288,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Medications")]
-        public IList<Medication> Medications
+        public IList<PatientMedication> Medications
         {
             get
             {
@@ -300,7 +300,7 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<Medication> CurrentMedications
+        public IList<PatientMedication> CurrentMedications
         {
             get
             {
@@ -312,7 +312,7 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<Medication> PastMedications
+        public IList<PatientMedication> PastMedications
         {
             get
             {
@@ -443,6 +443,15 @@ namespace OpenEhs.Web.Models
             {
                 AllergyRepository allergy = new AllergyRepository();
                 return allergy.GetAll();
+            }
+        }
+
+        public IList<Medication> AllMedications
+        {
+            get
+            {
+                MedicationRepository meds = new MedicationRepository();
+                return meds.GetAll();
             }
         }
 
@@ -577,6 +586,7 @@ namespace OpenEhs.Web.Models
             return false;
         }
 
+        /*
         public void AddMedication(Medication medication)
         {
             Medications.Add(medication);
@@ -605,6 +615,7 @@ namespace OpenEhs.Web.Models
 
             return false;
         }
+         */
 
         /// <summary>
         /// Get the ID for the invoice on the current PatientCheckIn (not checked out)
