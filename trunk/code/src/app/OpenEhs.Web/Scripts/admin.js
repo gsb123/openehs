@@ -279,6 +279,8 @@ $("#addCategoryDialog").dialog({
 
                     $("#addCategoryDialog").dialog("close");
 
+                    $("#model_deleteCategory").append('<option value="' + result.Id + '">' + result.Name + '</option>');
+
                     $("#model_categoryname").val("");
                     $("#model_model_categoryname").val("");
                     $("#model_categorydescription").val("");
@@ -692,6 +694,8 @@ $("#addTemplateCategoryDialog").dialog({
                 Template: $("#model_templateCategoryName").val()
             }, function (result) {
                     $("#addTemplateCategoryDialog").dialog("close");
+
+                    $("#model_deleteTemplate").append('<option value="' + result.ID + '">' + result.Name + '</option>');
 
                     $("#model_templateCategoryName").val("");
             }, "json");
