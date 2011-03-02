@@ -458,6 +458,164 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
+        #region AllergyMethods
+
+        public JsonResult EditAllergy()
+        {
+            try
+            {
+                AllergyRepository allergyRepo = new AllergyRepository();
+                Allergy allergy = allergyRepo.Get(int.Parse(Request.Form["Allergy"]));
+                allergy.Name = Request.Form["EditAllergy"];
+
+                return Json(new { 
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new { 
+                    error = "true"
+                });
+            }
+        }
+
+        public JsonResult DeleteAllergy()
+        {
+            try
+            {
+                AllergyRepository allergyRepo = new AllergyRepository();
+                allergyRepo.Remove(allergyRepo.Get(int.Parse(Request.Form["Allergy"])));
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        #endregion
+
+        #region ImmunizationMethods
+
+        public JsonResult EditImmunization()
+        {
+            try
+            {
+                ImmunizationRepository immunizationRepo = new ImmunizationRepository();
+                Immunization immunization = immunizationRepo.Get(int.Parse(Request.Form["Immunization"]));
+                immunization.VaccineType = Request.Form["EditImmunization"];
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        public JsonResult DeleteImmunization()
+        {
+            try
+            {
+                ImmunizationRepository immunizationRepo = new ImmunizationRepository();
+                immunizationRepo.Remove(immunizationRepo.Get(int.Parse(Request.Form["Immunization"])));
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        #endregion
+
+        #region MedicationMethods
+
+        public JsonResult EditMedication()
+        {
+            try
+            {
+                MedicationRepository medicationRepo = new MedicationRepository();
+                Medication medication = medicationRepo.Get(int.Parse(Request.Form["Medication"]));
+                medication.Name = Request.Form["EditMedication"];
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        public JsonResult DeleteMedication()
+        {
+            try
+            {
+                MedicationRepository medicationRepo = new MedicationRepository();
+                medicationRepo.Remove(medicationRepo.Get(int.Parse(Request.Form["Medication"])));
+
+                return Json(new
+                {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "true"
+                });
+            }
+        }
+
+        #endregion
+
+        #region TemplateCategoryMethods
+
+        public JsonResult AddTemplateCategory()
+        {
+            try
+            {
+                return Json(new {
+                    error = "false"
+                });
+            }
+            catch
+            {
+                return Json(new {
+                    error = "true"
+                });
+            }
+        }
+
+        #endregion
 
         #endregion
     }
