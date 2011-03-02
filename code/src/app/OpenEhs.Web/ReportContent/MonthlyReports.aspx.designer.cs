@@ -31,6 +31,15 @@ namespace OpenEhs.Web {
         protected global::System.Web.UI.WebControls.TextBox txtStartDate;
         
         /// <summary>
+        /// calendarStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendarStart;
+        
+        /// <summary>
         /// txtEndState control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace OpenEhs.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEndState;
+        
+        /// <summary>
+        /// calendarEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendarEnd;
         
         /// <summary>
         /// btnGenerate control.
