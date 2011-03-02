@@ -56,7 +56,7 @@
         <table class="style1" border="1px">
             <tr>
                 <td colspan="7" style="text-align: center" bgcolor="#FFFFCC">
-                    B. IN-PATIENTSSSSSSSSS</td>
+                    B. IN-PATIENTS</td>
             </tr>
             <tr>
                 <td class="style2" rowspan="2">
