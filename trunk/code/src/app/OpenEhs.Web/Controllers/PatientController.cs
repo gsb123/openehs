@@ -1271,11 +1271,14 @@ namespace OpenEhs.Web.Controllers
                     template.IsActive = true;
                     template.NoteTemplateCategory = noteCat;
                     templateRepo.Add(template);
+                    return Json(new
+                    {
+                        templateId = template.Id,
+                        templateTitle = template.Title,
+                        NoteBody = note.Body,
+                        error = "false"
+                    });
                 }
-
-
-
-
                 return Json(new
                 {
                     NoteBody = note.Body,
