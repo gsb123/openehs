@@ -78,6 +78,25 @@ $(function () {
                     $("#saveAsTemplateDialog").dialog("close");
                     $("#templateCheckBox").removeAttr("checked");
 
+                    $("#modal_GetStaffSurgeon").val("");
+                    $("#modal_GetStaffSurgeonAssistant").val("");
+                    $("#modal_GetStaffAnaesthetist").val("");
+                    $("#modal_GetStaffAnaesthetistAssistant").val("");
+                    $("#modal_GetStaffNurse").val("");
+                    $("#modal_GetStaffConsultant").val("");
+                    $("#surgeryStartTime").val("");
+                    $("#surgeryEndTime").val("");
+                    $("#modal_GetSurgeryLocation").val("");
+                    $("#caseType1").val("");
+                    $("#caseType2").val("");
+                    $("#templateCheckBox").removeAttr("checked");
+                    $("#model_templateTitleSurgery").val();
+                    $("#surgeryNoteTextBox").val("");
+
+
+
+                    $("#surgeryPrewrittenNoteSelect").append('<option value="' + result.Id + '">' + result.Name + '</option>');
+
 
                 }, "json");
             },
