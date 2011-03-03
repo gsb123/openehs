@@ -356,7 +356,7 @@ CREATE TABLE Note
     Title                       varchar(30)         NULL,
     `Type`                      varchar(20)         NOT NULL,
     Body                        longtext            NOT NULL,
-    DateCreated                 timestamp           NOT NULL                DEFAULT CURRENT_TIMESTAMP,
+    DateCreated                 datetime            NOT NULL,
     StaffID                     int                 NOT NULL,
     NoteTemplateCategoryID      int                 NULL,
     PatientCheckInID            int                 NOT NULL,
