@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Web.Mvc;
 using OpenEhs.Data;
 using OpenEhs.Data.Common;
@@ -30,5 +31,23 @@ namespace OpenEhs.Web.Models
         {
             Users = users;
         }
+
+        public static string RolesToString(IList<Role> roles)
+        {
+            var result = new StringBuilder();
+
+            for (var index = 0; index < roles.Count; index++)
+            {
+                if (index == roles.Count - 1)
+                {
+                    result.Append(roles[index].Name);
+                }
+
+                result.AppendFormat("{0}, ", roles[index].Name);
+            }
+
+            return result.ToString();
+        }
+
     }
 }

@@ -58,7 +58,7 @@
         
         #tabs
         {
-        	width: 500px;
+        	width: 550px;
         	margin: 0 auto;
         }
         
@@ -68,11 +68,7 @@
         }
     </style>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#tabs").tabs();
-        });
-    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/membership/user.details.js")"></script>
 }
 <h2>User Details</h2>
 @using (Html.BeginForm())
@@ -84,7 +80,7 @@
     </ul>
     <div id="AccountTab" class="group">
         @Html.LabelFor(m => m.Username)
-        @Html.TextBoxFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @disabled = false })
         @Html.LabelFor(m => m.Password)
         @Html.TextBoxFor(m => m.Password)
         <div id="RoleList" class="group">
@@ -103,6 +99,15 @@
             }
             <div id="RoleActions" class="group">
                 <button id="AddRoleButton" name="AddRoleButton">Add Role</button>
+                <div id="AddRoleDialog">
+                    @using (Html.BeginForm())
+                    {
+                        <div>
+                            @Html.LabelFor(m => m.SelectedRole)
+                            @Html.DropDownListFor(m => m.SelectedRole, Model.AvailableRoles)
+                        </div>
+                    }
+                </div>
             </div>
             <div id="AddRoleDialog">
             </div>
