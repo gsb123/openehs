@@ -157,12 +157,12 @@
                 var label = dymo.label.framework.openLabelXml(labelXml);
 
                 //Get the value from bcdata field.
-                label.setObjectText("BC_TOP", document.getElementById('PatientId').value);
-                label.setObjectText("BC_BOTTOM_LEFT", document.getElementById('PatientId').value);
-                label.setObjectText("BC_BOTTOM_RIGHT", document.getElementById('PatientId').value);
-                label.setObjectText("TEXT_TOP", document.getElementById('LastName').value + ", " + document.getElementById('FirstName').value + " EMS" + document.getElementById('PatientId').value);
-                label.setObjectText("TEXT_BOTTOM_LEFT", "EMS" + document.getElementById('PatientId').value);
-                label.setObjectText("TEXT_BOTTOM_RIGHT", "EMS" + document.getElementById('PatientId').value);
+                label.setObjectText("BC_TOP", document.getElementById('patientId').value);
+                label.setObjectText("BC_BOTTOM_LEFT", document.getElementById('patientId').value);
+                label.setObjectText("BC_BOTTOM_RIGHT", document.getElementById('patientId').value);
+                label.setObjectText("TEXT_TOP", document.getElementById('patientLName').value + ", " + document.getElementById('patientFName').value + " EMS" + document.getElementById('patientId').value);
+                label.setObjectText("TEXT_BOTTOM_LEFT", "EMS" + document.getElementById('patientId').value);
+                label.setObjectText("TEXT_BOTTOM_RIGHT", "EMS" + document.getElementById('patientId').value);
 
                 // select printer to print on
                 // for simplicity sake just use the first LabelWriter printer
