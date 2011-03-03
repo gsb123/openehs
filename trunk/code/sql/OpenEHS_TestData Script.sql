@@ -2413,3 +2413,34 @@ NOW(),
 '32 oz.',
 2
 );
+
+INSERT INTO User
+(
+    Username,
+    EmailAddress,
+    ApplicationName,
+    `Password`,
+    PasswordQuestion,
+    PasswordAnswer,
+    DateCreated,
+    LastLogin,
+    LastActivity,
+    LastPasswordChange,
+    IsOnline,
+    IpAddress
+)
+VALUES
+(
+'admin',
+'',
+'',
+'Iforget',
+null,
+null,
+NOW(),
+null,
+null,
+null,
+0,
+null
+);
