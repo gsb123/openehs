@@ -114,7 +114,16 @@
 
 		<p style="text-align: center;"><b>Select from pre-written</b></p>
 
-		<input id="autoCompleteTemplate">
+		<select id="surgeryPrewrittenNoteSelect" name="surgeryPrewrittenNoteBox">
+            <option value="">Select Template...</option>
+            @if (Model.CurrentUser != null)
+            {
+                foreach (var template in Model.CurrentUser.Staff.Templates)
+                {
+                <option value="@template.Id">@template.Title</option>
+                }
+            }
+        </select>
 
 	</fieldset>
 

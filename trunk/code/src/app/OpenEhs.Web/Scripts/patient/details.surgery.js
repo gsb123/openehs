@@ -63,4 +63,11 @@ $(function () {
     };
     $("#surgeryNoteTextBox").ckeditor(ckConfig);
 
+    $("#surgeryPrewrittenNoteSelect").live('change', function () {
+        $.post("/Patient/TemplateDetail", {
+            ID: $("#surgeryPrewrittenNoteSelect").val()
+        }, function (result) {
+            $("textarea#surgeryNoteTextBox").val(result.body);
+        }, "json");
+    });
 });

@@ -963,10 +963,11 @@ namespace OpenEhs.Web.Controllers
 
                 //Build new objects
                 Surgery surgery = new Surgery();
+                Note note = new Note();
 
                 //Get patient object
                 int patientID = int.Parse(Request.Form["patientID"]);
-                var patient = patientRepo.Get(patientID);
+                Patient patient = patientRepo.Get(patientID);
 
                 //Get current open patient checkin 
                 var query = from checkin in patient.PatientCheckIns
@@ -975,7 +976,6 @@ namespace OpenEhs.Web.Controllers
                 PatientCheckIn openCheckIn = query.First<PatientCheckIn>();
 
                 surgery.Location = locationRepo.Get(int.Parse(Request.Form["theatreNumber"]));
-
                 surgery.StartTime = DateTime.Parse(Request.Form["startTime"]);
                 surgery.EndTime = DateTime.Parse(Request.Form["endTime"]);
 
@@ -983,6 +983,30 @@ namespace OpenEhs.Web.Controllers
                 openCheckIn.Surgeries.Add(surgery);
                 surgery.CheckIn = openCheckIn;
                 surgery.CaseType = (CaseType)Enum.Parse(typeof(CaseType), Request.Form["caseType"]);
+
+                //Build Note
+                Staff author = staffRepo.Get(int.Parse(Request.Form["StaffId"]));
+                note.Author = author;
+                note.Body = Request.Form["NoteBody"];
+                note.PatientCheckIns = openCheckIn;
+                note.Title = "";
+                note.Type = NoteType.Surgery;
+                note.IsActive = true;
+                openCheckIn.Notes.Add(note);
+
+                if (Request.Form["TemplateTitle"] != null)
+                {
+                    TemplateRepository templateRepo = new TemplateRepository();
+                    NoteTemplateRepository noteRepo = new NoteTemplateRepository();
+                    NoteTemplateCategory noteCat = noteRepo.Get(2);
+                    Template template = new Template();
+                    template.Title = Request.Form["TemplateTitle"];
+                    template.Staff = author;
+                    template.Body = note.Body;
+                    template.IsActive = true;
+                    template.NoteTemplateCategory = noteCat;
+                    templateRepo.Add(template);
+                }
 
                 UnitOfWork.CurrentSession.Flush();
 
