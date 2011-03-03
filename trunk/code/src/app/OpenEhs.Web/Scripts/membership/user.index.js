@@ -36,7 +36,7 @@ $(document).ready(function () {
     });
 
     $(".approvedCheckbox").click(function (event) {
-        var id = 0;
+        var id = $(this).attr("name");
         event.stopPropagation();
         if ($(this).is(":checked")) {
             // Approve the user.
