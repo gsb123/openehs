@@ -1,0 +1,130 @@
+﻿label
+{
+    font-size: 1.4em;
+    display: block;
+}
+
+fieldset
+{
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 10px 20px;
+	margin-top: 10px;
+}
+
+legend
+{
+	font-size: 1.2em;
+}
+
+.fieldGroup
+{
+	float: left;
+	margin: 0 5px 10px 5px;
+}
+
+#SubHeading
+{
+	margin: 0 auto 10px auto;
+	width: 650px;
+}
+
+#SubHeading h2
+{
+	color: #333;
+	text-shadow: 0 1px 0 #999;
+	-moz-text-shadow: 0 1px 0 #999;
+	-webkit-text-shadow: 0 1px 0 #999;
+}
+
+#UserActions
+{
+    width: 650px;
+    margin: 0 auto;
+    padding: 10px;
+}
+        
+#UserActions div
+{
+	font-size: 1.4em;
+    float: right;
+}
+
+#UserActions div input
+{
+	font-size: 1.1em;
+	padding: 5px 15px;
+	margin-left: 15px;
+}
+        
+#RoleActions
+{
+    float: right;
+}
+        
+#RoleList
+{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 10px #ccc;
+    -moz-box-shadow: 0px 0px 10px #ccc;
+    -webkit-box-shadow: 0px 0px 10px #ccc;
+    margin: 20px 0;
+    padding: 10px 20px;
+}
+        
+#RoleList h4
+{
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+}
+    
+#tabs input
+{
+    font-size: 1.4em;
+}
+        
+#tabs button
+{
+    font-size: 1.4em;
+}
+        
+#tabs
+{
+    width: 650px;
+    margin: 0 auto;
+}
+        
+#tabs ul
+{
+    font-size: 1.2em;
+}
+
+#Staff_PhoneNumber
+{
+	width: 150px;
+}
+
+#EmailAddress
+{
+	width: 250px;
+}
+
+#Staff_Address_Street1, #Staff_Address_Street2
+{
+	width: 425px;
+}
+  
+#Staff_FirstName, #Staff_MiddleName, #Staff_LastName
+{
+	width: 180px;
+}
+
+#Staff_Address_City, #Staff_Address_Region
+{
+	width: 150px;
+}

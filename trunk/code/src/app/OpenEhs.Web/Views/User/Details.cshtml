@@ -4,73 +4,16 @@
 }
 @section head
 {
-    <style type="text/css">
-        label
-        {
-        	font-size: 1.4em;
-        	display: block;
-        }
-        
-        #UserActions
-        {
-        	width: 550px;
-        	margin: 0 auto;
-        }
-        
-        #UserActions div
-        {
-        	float: right;
-        }
-        
-        #RoleActions
-        {
-            float: right;
-        }
-        
-        #RoleList
-        {
-            border-radius: 5px;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            box-shadow: 0px 0px 10px #ccc;
-            -moz-box-shadow: 0px 0px 10px #ccc;
-            -webkit-box-shadow: 0px 0px 10px #ccc;
-            margin: 20px 0;
-            padding: 10px 20px;
-        }
-        
-        #RoleList h4
-        {
-            border-radius: 5px 5px 0 0;
-            -moz-border-radius: 5px 5px 0 0;
-            -webkit-border-radius: 5px 5px 0 0;
-        }
-    
-        #tabs input
-        {
-        	font-size: 1.4em;
-        }
-        
-        #tabs button
-        {
-            font-size: 1.4em;
-        }
-        
-        #tabs
-        {
-        	width: 550px;
-        	margin: 0 auto;
-        }
-        
-        #tabs ul
-        {
-        	font-size: 1.2em;
-        }
-    </style>
+        <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/membership/user.details.css")" />
+        <script type="text/javascript" src="@Url.Content("~/Scripts/membership/user.details.js")"></script>
 
-    <script type="text/javascript" src="@Url.Content("~/Scripts/membership/user.details.js")"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#admin-tab").addClass("current");
+            });
+        </script>
 }
-<h2>User Details</h2>
+<div id="SubHeading"><h2>User Details</h2></div>
 @using (Html.BeginForm())
 {
 <div id="tabs" class="group">
@@ -79,10 +22,18 @@
         <li><a href="#ContactInfoTab">Contact Info.</a></li>
     </ul>
     <div id="AccountTab" class="group">
-        @Html.LabelFor(m => m.Username)
-        @Html.TextBoxFor(m => m.Username, new { @disabled = false })
-        @Html.LabelFor(m => m.Password)
-        @Html.TextBoxFor(m => m.Password)
+        <div class="group">
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.Username)
+                <h2>@Model.Username</h2>
+            </div>
+        </div>
+        <div class="group">
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.Password)
+                @Html.TextBoxFor(m => m.Password)
+            </div>
+        </div>
         <div id="RoleList" class="group">
             <h4>Roles</h4>
             @if (Model.Roles.Count > 0)
@@ -112,26 +63,54 @@
         </div>
     </div>
     <div id="ContactInfoTab" class="group">
-        @Html.LabelFor(m => m.Staff.FirstName)
-        @Html.TextBoxFor(m => m.Staff.FirstName)
-        @Html.LabelFor(m => m.Staff.MiddleName)
-        @Html.TextBoxFor(m => m.Staff.MiddleName)
-        @Html.LabelFor(m => m.Staff.LastName)
-        @Html.TextBoxFor(m => m.Staff.LastName)
-        @Html.LabelFor(m => m.Staff.PhoneNumber)
-        @Html.TextBoxFor(m => m.Staff.PhoneNumber)
-        @Html.LabelFor(m => m.EmailAddress)
-        @Html.TextBoxFor(m => m.EmailAddress)
+        <div>
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.Staff.FirstName)
+                @Html.TextBoxFor(m => m.Staff.FirstName)
+            </div>
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.Staff.MiddleName)
+                @Html.TextBoxFor(m => m.Staff.MiddleName)
+            </div>
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.Staff.LastName)
+                @Html.TextBoxFor(m => m.Staff.LastName)
+            </div>
+        </div>
+        <div>
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.Staff.PhoneNumber)
+                @Html.TextBoxFor(m => m.Staff.PhoneNumber)
+            </div>
+            <div class="fieldGroup">
+                @Html.LabelFor(m => m.EmailAddress)
+                @Html.TextBoxFor(m => m.EmailAddress)
+            </div>
+        </div>
         <fieldset>
             <legend>Address</legend>
-            @Html.LabelFor(m => m.Staff.Address.Street1)
-            @Html.TextBoxFor(m => m.Staff.Address.Street1)
-            @Html.LabelFor(m => m.Staff.Address.Street2)
-            @Html.TextBoxFor(m => m.Staff.Address.Street2)
-            @Html.LabelFor(m => m.Staff.Address.City)
-            @Html.TextBoxFor(m => m.Staff.Address.City)
-            @Html.LabelFor(m => m.Staff.Address.Region)
-            @Html.TextBoxFor(m => m.Staff.Address.Region)
+            <div>
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Staff.Address.Street1)
+                    @Html.TextBoxFor(m => m.Staff.Address.Street1)
+                </div>
+            </div>
+            <div>
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Staff.Address.Street2)
+                    @Html.TextBoxFor(m => m.Staff.Address.Street2)
+                </div>
+            </div>
+            <div class="group">
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Staff.Address.City)
+                    @Html.TextBoxFor(m => m.Staff.Address.City)
+                </div>
+                <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Staff.Address.Region)
+                    @Html.TextBoxFor(m => m.Staff.Address.Region)
+                </div>
+            </div>
         </fieldset>
     </div>
 </div>
