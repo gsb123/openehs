@@ -4,122 +4,93 @@
 }
 @section head
 {
-	
-	<script src="@Url.Content("~/Scripts/Dashboard.js")" type="text/javascript"></script>
-
+    <script src="@Url.Content("~/Scripts/Dashboard.js")" type="text/javascript"></script>
     <style type="text/css">
-		#openCheckIns
-		{
-			width: 500px;
-			margin-left: 220px;
-			margin-top: 50px;
-		}
-
-		#openCheckIns p
-		{
-			margin-left: 50px;
-		}
-
-		#openCheckIns input
-		{
-			margin-top: 3px;
-			float: right;
-			height: 25;
-			width: 120px;
-			font-size: 14px;
-			margin-right: 50px;
-		}
-
-		#openCheckIns fieldset
-		{
-			border-width: medium;
-		}
-
-		#openCheckIns fieldset legend
-		{
-			font-size: 15px;
-			font-weight: bold;
-		}
-
-		#openCheckInSelect
-		{
-			margin-top: 5px;
-			margin-left: 10px;
-			height: 25px;
-			font-size: 14px;
-		}
-
-		#openCheckinsList table
-		{
-			width: 400px;
-			margin-top: 20px;
-			margin-left: 36px;
-		}
-
-		#openCheckinsList table td, #RecentlyAccessedList table th
-		{
-			padding: 10px;
-		}
-
-		#openCheckinsList table tr:hover
-		{
-			background-color: #c0e0ff;
-		}
-
-		#openCheckinsList table td
-		{
-			cursor: pointer;
-		}
-
-
+        #openCheckIns {
+            width: 500px;
+            margin-left: 220px;
+            margin-top: 50px;
+        }
+        
+        #openCheckIns p {
+            margin-left: 50px;
+        }
+        
+        #openCheckIns input {
+            margin-top: 3px;
+            float: right;
+            height: 25;
+            width: 120px;
+            font-size: 14px;
+            margin-right: 50px;
+        }
+        
+        #openCheckIns fieldset {
+            border-width: medium;
+        }
+        
+        #openCheckIns fieldset legend {
+            font-size: 15px;
+            font-weight: bold;
+        }
+        
+        #openCheckInSelect {
+            margin-top: 5px;
+            margin-left: 10px;
+            height: 25px;
+            font-size: 14px;
+        }
+        
+        #openCheckinsList table {
+            width: 400px;
+            margin-top: 20px;
+            margin-left: 36px;
+        }
+        
+        #openCheckinsList table td, #RecentlyAccessedList table th {
+            padding: 10px;
+        }
+        
+        #openCheckinsList table tr:hover {
+            background-color: #c0e0ff;
+        }
+        
+        #openCheckinsList table td {
+            cursor: pointer;
+        }
     </style>
 }
-
-
 <div id="openCheckIns">
-
-	<fieldset>
-		<legend>Open Checkins</legend>
-
-		<p>Select a Location:
-
-		<select id="openCheckInSelect" name="loactionBox">
-
-			<option>Select Location...</option>
-
-			@foreach (var loc in Model.GetLocations)
-            {
-                <option value="@loc.Department">@loc.Department</option>
-            }
-		</select>
-
-		<input id="showOpenCheckins" type="button" value="Show Checkins" />
-
-		</p>
-
-		<div id="openCheckinsList">
-    <table id="searchCheckinResult">
-        <thead>
-            <tr>
-                <th class="IdColumn">
-			        ID #
-                </th>
-                <th class="NameColumn">
-                    Name
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+    <fieldset>
+        <legend>Open Checkins</legend>
+        <p>
+            Select a Location:
+            <select id="openCheckInSelect" name="loactionBox">
+                <option>Select Location...</option>
+                @foreach (var loc in Model.GetLocations) {
+                    <option value="@loc.Department">@loc.Department</option>
+                }
+            </select>
+            <input id="showOpenCheckins" type="button" value="Show Checkins" />
+        </p>
+        <div id="openCheckinsList">
+            <table id="searchCheckinResult">
+                <thead>
+                    <tr>
+                        <th class="IdColumn">
+                            ID #
+                        </th>
+                        <th class="NameColumn">
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
 </div>
-
-	</fieldset>
-
-</div>
-
-
 @*<ul>
 foreach (var patient in Model.PatientsInMyWard)
 @*{
