@@ -586,3 +586,24 @@ BEGIN
 END;
 $$
 DELIMITER ;
+
+/****************************
+Do not delete anything below
+****************************/
+
+insert into NoteTemplateCategory 
+(
+TemplateCategoryName
+) values 
+(
+'General'
+);
+
+insert into NoteTemplateCategory 
+(
+TemplateCategoryName
+) 
+values 
+(
+'Surgery'
+);
