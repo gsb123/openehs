@@ -134,6 +134,7 @@ $(function () {
             }, function (result) {
                     $("#addProductDialog").dialog("close");
 
+                    $("#model_productSelect").append('<option value="' + result.Id + '">' + result.Name + '</option>');
 
                     $("#model_name").val("");
                     $("#model_unit").val("");
@@ -200,6 +201,7 @@ $("#editProductDialog").dialog({
                 Price: $("#model_editprodprice").val(),
             }, function (result) {
                     $("#editProductDialog").dialog("close");
+                    
 
                     $("#model_editprodname").val("");
                     $("#model_editprodunit").val("");
@@ -249,6 +251,8 @@ $("#addLocationDialog").dialog({
                 RoomNumber: $("#model_addroomnumber").val()
             }, function (result) {
                     $("#addLocationDialog").dialog("close");
+
+                    $("#model_departmentRoom").append('<option value="' + result.Id + '">' + result.Name + '</option>');
 
                     $("#model_departmentname").val("");
                     $("#model_addroomnumber").val("");
@@ -335,6 +339,8 @@ $("#addServiceDialog").dialog({
                 Cost: $("#model_servicecost").val()
             }, function (result) {
                     $("#addServiceDialog").dialog("close");
+
+                    $("#model_editService").append('<option value="' + result.Id + '">' + result.Name + '</option>');
 
                     $("#model_servicename").val("");
                     $("#model_servicecost").val("");
@@ -586,6 +592,8 @@ $("#editAllergyDialog").dialog({
                 EditAllergy: $("#model_allergyEditName").val()
             }, function (result) {
                     $("#editAllergyDialog").dialog("close");
+
+                    $("#model_deleteAllergy").append('<option value="' + result.Id + '">' + result.Name + '</option>');
 
                     $("#model_selectededAllergyName").val("");
                     $("#model_allergyEditName").val("");
