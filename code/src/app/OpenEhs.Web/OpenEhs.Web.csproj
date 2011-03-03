@@ -147,6 +147,7 @@
     <Content Include="Content\membership\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\membership\user.details.css" />
+    <Content Include="Content\membership\user.index.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\patient.create.css" />
     <Content Include="Content\patient.main.css" />
@@ -367,6 +368,7 @@
     <Content Include="Scripts\jquery.ui.timepicker.js" />
     <Content Include="Scripts\membership\user.details.js" />
     <Content Include="Scripts\membership\registration.js" />
+    <Content Include="Scripts\membership\user.index.js" />
     <Content Include="Scripts\patient\create.main.js" />
     <Content Include="Scripts\patient\details.billing.js" />
     <Content Include="Scripts\patient\details.pmh.js" />
