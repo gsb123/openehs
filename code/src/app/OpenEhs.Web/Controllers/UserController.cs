@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using OpenEhs.Data;
+using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
@@ -57,6 +58,12 @@ namespace OpenEhs.Web.Controllers
             user.RemoveRole(roleToRemove);
 
             return Json(new {success = true});
+        }
+
+        [HttpPost]
+        public ActionResult ApproveUser(int id)
+        {
+            return null;
         }
     }
 }
