@@ -950,7 +950,9 @@ namespace OpenEhs.Web.Controllers
         #endregion
 
         #region Surgery
-
+        
+        [HttpPost]
+        [ValidateInput(false)]
         public JsonResult AddSurgery()
         {
             try
@@ -985,13 +987,14 @@ namespace OpenEhs.Web.Controllers
                 surgery.CaseType = (CaseType)Enum.Parse(typeof(CaseType), Request.Form["caseType"]);
 
                 //Build Note
-                Staff author = staffRepo.Get(int.Parse(Request.Form["StaffId"]));
+                Staff author = staffRepo.Get(int.Parse(Request.Form["staffID"]));
                 note.Author = author;
                 note.Body = Request.Form["NoteBody"];
                 note.PatientCheckIns = openCheckIn;
                 note.Title = "";
                 note.Type = NoteType.Surgery;
                 note.IsActive = true;
+                note.DateCreated = DateTime.Now;
                 openCheckIn.Notes.Add(note);
 
                 UnitOfWork.CurrentSession.Flush();

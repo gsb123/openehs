@@ -16,7 +16,7 @@ $(function () {
             data: {
                 patientID: $("#patientId").val(),
                 surgeon: $("select[name='surgeonSelect'] option:selected").val(),
-                staffID: $("#StaffId").val(),
+                staffID: $("#staffId").val(),
                 surgeonAssistant: $("select[name='surgeonAssistantSelect'] option:selected").val(),
                 anaesthetist: $("select[name='anaesthetistSelect'] option:selected").val(),
                 anaesthetistAssistant: $("select[name='anaesthetistAssistantSelect'] option:selected").val(),
@@ -25,7 +25,8 @@ $(function () {
                 startTime: $("#surgeryStartTime").val(),
                 endTime: $("#surgeryEndTime").val(),
                 theatreNumber: $("select[name='theatreNumber'] option:selected").val(),
-                caseType: $("input:radio[name='modal_caseType']:checked").val()
+                caseType: $("input:radio[name='modal_caseType']:checked").val(),
+                NoteBody: $("#surgeryNoteTextBox").val()
             },
             success: function (response) {
                 alert("Surgery Submitted");
@@ -62,7 +63,7 @@ $(function () {
                 $.post("/Patient/AddSurgery", {
                     //This is where all the text boxes go
                     patientID: $("#patientId").val(),
-                    staffID: $("#StaffId").val(),
+                    staffID: $("#staffId").val(),
                     surgeon: $("select[name='surgeonSelect'] option:selected").val(),
                     surgeonAssistant: $("select[name='surgeonAssistantSelect'] option:selected").val(),
                     anaesthetist: $("select[name='anaesthetistSelect'] option:selected").val(),
