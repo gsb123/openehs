@@ -63,7 +63,7 @@ namespace OpenEhs.Web.Controllers
         [HttpPost]
         public ActionResult ApproveUser(int id)
         {
-            return null;
+            return Json(new { message = "Hello, I am in the controller." });
         }
     }
 }
