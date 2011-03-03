@@ -1355,6 +1355,19 @@ margin-bottom: 10px;
     display: none;
 }
 
+#pmhChartLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+}
+
+#pmhChartInfo
+{
+    clear: both;
+    display: none;
+}
+
 #centerForOutputChart
 {
 	text-align: center;
