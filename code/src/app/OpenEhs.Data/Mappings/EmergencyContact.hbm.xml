@@ -9,7 +9,7 @@
     </id>
     <property name="FirstName" not-null="true" length="30" />
     <property name="LastName" not-null="true" length="30" />
-    <property name="PhoneNumber" not-null="true" length="20" />
+    <property name="PhoneNumber" not-null="false" length="20" />
     <property name="Relationship" not-null="true" />
 
     <many-to-one name="Address" column="AddressID" unique="true" cascade="all" />
