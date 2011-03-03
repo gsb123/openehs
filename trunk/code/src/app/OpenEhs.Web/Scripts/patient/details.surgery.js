@@ -16,6 +16,7 @@ $(function () {
             data: {
                 patientID: $("#patientId").val(),
                 surgeon: $("select[name='surgeonSelect'] option:selected").val(),
+                staffID: $("#StaffId").val(),
                 surgeonAssistant: $("select[name='surgeonAssistantSelect'] option:selected").val(),
                 anaesthetist: $("select[name='anaesthetistSelect'] option:selected").val(),
                 anaesthetistAssistant: $("select[name='anaesthetistAssistantSelect'] option:selected").val(),
