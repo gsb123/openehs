@@ -994,20 +994,6 @@ namespace OpenEhs.Web.Controllers
                 note.IsActive = true;
                 openCheckIn.Notes.Add(note);
 
-                if (Request.Form["TemplateTitle"] != null)
-                {
-                    TemplateRepository templateRepo = new TemplateRepository();
-                    NoteTemplateRepository noteRepo = new NoteTemplateRepository();
-                    NoteTemplateCategory noteCat = noteRepo.Get(2);
-                    Template template = new Template();
-                    template.Title = Request.Form["TemplateTitle"];
-                    template.Staff = author;
-                    template.Body = note.Body;
-                    template.IsActive = true;
-                    template.NoteTemplateCategory = noteCat;
-                    templateRepo.Add(template);
-                }
-
                 UnitOfWork.CurrentSession.Flush();
 
                 //Surgeon
@@ -1067,6 +1053,27 @@ namespace OpenEhs.Web.Controllers
                     ssRepo.Add(consultant);
                 }
 
+                //Save Template
+                if (Request.Form["NoteTitle"] != null)
+                {
+                    TemplateRepository templateRepo = new TemplateRepository();
+                    NoteTemplateRepository noteRepo = new NoteTemplateRepository();
+                    NoteTemplateCategory noteCat = noteRepo.Get(2);
+                    Template template = new Template();
+                    template.Title = Request.Form["NoteTitle"];
+                    template.Staff = author;
+                    template.Body = note.Body;
+                    template.IsActive = true;
+                    template.NoteTemplateCategory = noteCat;
+                    templateRepo.Add(template);
+                    return Json(new
+                    {
+                        Id = template.Id,
+                        Name = template.Title,
+                        NoteBody = note.Body,
+                        error = "false"
+                    });
+                }
                 return Json(new
                 {
                     error = "false"
