@@ -41,7 +41,11 @@ $(function () {
 
                 htmlOutput += "</tbody></table>";
 
-                htmlOutput += "<b>Notes: </b><br />This is where all the notes will go when mappings work...";
+                htmlOutput += "<div id=\"pmhNoteLink\"><b>Notes...</b></div><div id=\"pmhNoteInfo\">";
+
+                htmlOutput += "Encounter Note";
+
+                htmlOutput += "</div>";
 
                 htmlOutput += "<div id=\"pmhChartLink\"><b>Charting...</b></div><div id=\"pmhChartInfo\">";
 
@@ -118,6 +122,10 @@ $(function () {
 
     });
 
+
+    $("#pmhNoteLink").live('click', function () {
+        $("#pmhNoteInfo").slideToggle("slow", function () { });
+    });
 
     $("#pmhChartLink").live('click', function () {
         $("#pmhChartInfo").slideToggle("slow", function () { });

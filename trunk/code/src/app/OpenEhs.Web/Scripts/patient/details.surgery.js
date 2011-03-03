@@ -47,6 +47,67 @@ $(function () {
         });
     });
 
+    $("#templateCheckBox").click('click', function () {
+        $("#saveAsTemplateDialog").dialog("open");
+    });
+
+    $("#saveAsTemplateDialog").dialog({
+        autoOpen: false,
+        height: 170,
+        width: 420,
+        modal: true,
+        buttons: {
+            "Submit Surgery": function () {
+                $.post("/Patient/AddSurgery", {
+                    //This is where all the text boxes go
+                    patientID: $("#patientId").val(),
+                    surgeon: $("select[name='surgeonSelect'] option:selected").val(),
+                    surgeonAssistant: $("select[name='surgeonAssistantSelect'] option:selected").val(),
+                    anaesthetist: $("select[name='anaesthetistSelect'] option:selected").val(),
+                    anaesthetistAssistant: $("select[name='anaesthetistAssistantSelect'] option:selected").val(),
+                    nurse: $("select[name='nurseSelect'] option:selected").val(),
+                    consultant: $("select[name='consultantSelect'] option:selected").val(),
+                    startTime: $("#surgeryStartTime").val(),
+                    endTime: $("#surgeryEndTime").val(),
+                    theatreNumber: $("select[name='theatreNumber'] option:selected").val(),
+                    caseType: $("input:radio[name='modal_caseType']:checked").val(),
+                    NoteTitle: $("#model_templateTitleSurgery").val(),
+                    NoteBody: $("#surgeryNoteTextBox").val()
+
+                }, function (result) {
+                    $("#saveAsTemplateDialog").dialog("close");
+                    $("#templateCheckBox").removeAttr("checked");
+
+
+                }, "json");
+            },
+            Cancel: function () {
+
+                $("#modal_GetStaffSurgeon").val("");
+                $("#modal_GetStaffSurgeonAssistant").val("");
+                $("#modal_GetStaffAnaesthetist").val("");
+                $("#modal_GetStaffAnaesthetistAssistant").val("");
+                $("#modal_GetStaffNurse").val("");
+                $("#modal_GetStaffConsultant").val("");
+                $("#surgeryStartTime").val("");
+                $("#surgeryEndTime").val("");
+                $("#modal_GetSurgeryLocation").val("");
+                $("#caseType1").val("");
+                $("#caseType2").val("");
+                $("#templateCheckBox").removeAttr("checked");
+                $("#model_templateTitleSurgery").val();
+                $("#surgeryNoteTextBox").val("");
+
+
+
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+
+        }
+    });
+
     $("#surgeryEndTime").timepicker({});
 
     $("#surgeryStartTime").timepicker({});
