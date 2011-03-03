@@ -1214,6 +1214,23 @@ VALUES
 );
 */
 
+CALL sp_insertStaff
+(
+    "",
+    "",
+    "Accra",
+    "Accra",
+    "Ghana",
+    "admin",
+    "iForget",
+    "A",
+    "Korle Bu",
+    "",
+    "Administrator",
+    "222-1234567",
+    4,
+    null
+);
 
 CALL sp_insertStaff
 (
@@ -2412,37 +2429,6 @@ NOW(),
 'Orange Juice',
 '32 oz.',
 2
-);
-
-INSERT INTO User
-(
-    Username,
-    EmailAddress,
-    ApplicationName,
-    `Password`,
-    PasswordQuestion,
-    PasswordAnswer,
-    DateCreated,
-    LastLogin,
-    LastActivity,
-    LastPasswordChange,
-    IsOnline,
-    IpAddress
-)
-VALUES
-(
-'admin',
-'',
-'',
-'Iforget',
-null,
-null,
-NOW(),
-null,
-null,
-null,
-0,
-null
 );
 
 INSERT INTO Note

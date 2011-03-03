@@ -36,12 +36,13 @@ $(document).ready(function () {
     });
 
     $(".approvedCheckbox").click(function (event) {
-        var id = $(this).attr("name");
+        var id = $(this).attr("name").match(/\d/);
+
         event.stopPropagation();
+
         if ($(this).is(":checked")) {
-            // Approve the user.
             $.post("/User/ApproveUser/" + id, function (data) {
-                alert("Success: " + data);
+                // animation here.
             });
         }
     });
