@@ -147,7 +147,9 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
-                    error = false
+                    error = false,
+                    Name = product.Name,
+                    Id = product.Id
                 });
             }
             catch
@@ -338,7 +340,9 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
-                    error = false
+                    error = false,
+                    Id = loc.Id,
+                    Name = loc.Department
                 });
             }
             catch
@@ -447,7 +451,9 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
-                    error = false
+                    error = false,
+                    Name = service.Name,
+                    Id = service.Id
                 });
             }
             catch
