@@ -1349,13 +1349,13 @@ margin-bottom: 10px;
     cursor: pointer;
 }
 
-#pmhChartInfo
+#pmhNoteInfo
 {
     clear: both;
     display: none;
 }
 
-#pmhChartLink
+#pmhNoteLink
 {
     clear: both;
     color: #00f;
