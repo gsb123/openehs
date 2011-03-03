@@ -43,7 +43,16 @@ $(function () {
 
                 htmlOutput += "<div id=\"pmhNoteLink\"><b>Notes...</b></div><div id=\"pmhNoteInfo\">";
 
-                htmlOutput += "Encounter Note";
+                htmlOutput += "<b>Encounter Note:</b><br />";
+
+
+                for (var r = 0; r < checkin.Note.length; r++) {
+
+                    var note = checkin.Note[r];
+
+                    htmlOutput += "" + note.Body + "<br /><br />";
+                }
+
 
                 htmlOutput += "</div>";
 

@@ -919,6 +919,18 @@ namespace OpenEhs.Web.Controllers
                         });
                     }
 
+                    IList<object> noteList = new List<object>();
+
+                    foreach (var g in result.Notes)
+                    {
+                        noteList.Add(new
+                        {
+                            g.Body,
+                            g.Author.FirstName,
+                            g.Author.LastName
+                        });
+                    }
+
                     resultSet.Add(new
                     {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -928,7 +940,8 @@ namespace OpenEhs.Web.Controllers
                         Vitals = visitList,
                         FeedChart = feedList,
                         OutputChart = outputList,
-                        IntakeChart = intakeList
+                        IntakeChart = intakeList,
+                        Note = noteList
                     });
                 }
 
