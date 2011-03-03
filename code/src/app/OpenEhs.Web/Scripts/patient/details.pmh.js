@@ -50,7 +50,9 @@ $(function () {
 
                     var note = checkin.Note[r];
 
-                    htmlOutput += "" + note.Body + "<br /><br />";
+                    htmlOutput += "<b>Note Author: </b>" + note.FirstName + ", " + note.LastName + "<br />";
+
+                    htmlOutput += "" + note.Body + "<br />";
                 }
 
 
@@ -102,22 +104,40 @@ $(function () {
 
                 htmlOutput += "<div id=\"pmhSurgeryLink\"><b>Surgery...</b></div><div id=\"pmhSurgeryInfo\">";
 
-                htmlOutput += "<b>Start Time:</b><br />";
+                for (var t = 0; t < checkin.Surgery.length; t++) {
 
-                htmlOutput += "<b>End Time:</b><br />";
+                    var surgery = checkin.Surgery[t];
 
-                htmlOutput += "<b>Case Type:</b><br />";
+                    htmlOutput += "<b>Start Time:</b>" + " " + surgery.StartTime + "<br />";
+
+                    htmlOutput += "<b>End Time:</b>" + " " + surgery.EndTime + "<br />";
+
+                    htmlOutput += "<b>Case Type:</b>" + " " + surgery.CaseType + "<br />";
+                }
 
                 htmlOutput += "<b>Surgery Staff:</b><br />";
 
                 htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Surgeon:</b><br />";
+
                 htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Surgeon Assistant:</b><br />";
+
                 htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Anaesthetist:</b><br />";
+
                 htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Anaesthetist Assistant:</b><br />";
+
                 htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Nurse:</b><br />";
+
                 htmlOutput += "&nbsp;&nbsp;&nbsp;&nbsp;<b>Consultant:</b><br />";
 
                 htmlOutput += "<b>Notes:</b><br />";
+
+                for (var p = 0; p < checkin.SurgeryNote.length; p++) {
+
+                    var surgeryNote = checkin.SurgeryNote[p];
+
+                    htmlOutput += "" + surgeryNote.Body + "<br />";
+                }
+
 
                 htmlOutput += "</div>";
 

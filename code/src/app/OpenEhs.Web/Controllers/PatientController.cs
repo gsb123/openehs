@@ -182,7 +182,8 @@ namespace OpenEhs.Web.Controllers
         #region CreatePatient
 
         [HttpPost]
-        public ActionResult Confirmation(int id) {
+        public ActionResult Confirmation(int id)
+        {
 
             var patient = _patientRepository.Get(id);
             return View(patient);
@@ -233,7 +234,7 @@ namespace OpenEhs.Web.Controllers
 
             UnitOfWork.CurrentSession.Flush();
 
-            return RedirectToAction("Confirmation", new { id = patient.Id});
+            return RedirectToAction("Confirmation", new { id = patient.Id });
         }
 
         #endregion
@@ -930,6 +931,30 @@ namespace OpenEhs.Web.Controllers
                                          });
                     }
 
+                    IList<object> noteSurgeryList = new List<object>();
+
+                    foreach (var g in result.Notes.Where(g => g.Type == NoteType.Surgery))
+                    {
+                        noteSurgeryList.Add(new
+                        {
+                            g.Body
+                        });
+                    }
+
+                    
+
+                    IList<object> surgery = new List<object>();
+                    foreach (var o in result.Surgeries)
+                    {
+                        surgery.Add(new
+                        {
+                            StartTime = o.StartTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                            EndTime = o.EndTime.ToString("dd/MM/yyyy HH:mm:ss"),
+                            CaseType = Enum.GetName(typeof(CaseType), o.CaseType)
+                        });
+                    }
+
+
                     resultSet.Add(new
                     {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -940,7 +965,9 @@ namespace OpenEhs.Web.Controllers
                         FeedChart = feedList,
                         OutputChart = outputList,
                         IntakeChart = intakeList,
-                        Note = noteList
+                        Note = noteList,
+                        SurgeryNote = noteSurgeryList,
+                        Surgery = surgery
                     });
                 }
 
@@ -962,7 +989,7 @@ namespace OpenEhs.Web.Controllers
         #endregion
 
         #region Surgery
-        
+
         [HttpPost]
         [ValidateInput(false)]
         public JsonResult AddSurgery()
