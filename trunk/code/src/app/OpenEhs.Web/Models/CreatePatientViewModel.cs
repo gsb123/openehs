@@ -84,19 +84,22 @@ namespace OpenEhs.Web.Models
             }
         }
 
-
+        [Required(ErrorMessage = "Emergency Contact's street address is required.")]
         [Display(Name = "Street 1")]
         public string EcStreet1 { get; set; }
 
         [Display(Name = "Street 2")]
         public string EcStreet2 { get; set; }
 
+        [Required(ErrorMessage = "Emergency Contact's city is required.")]
         [Display(Name = "City")]
         public string EcCity { get; set; }
 
+        [Required(ErrorMessage = "Emergency Contact's region is required.")]
         [Display(Name = "Region")]
         public string EcRegion { get; set; }
 
+        [Required(ErrorMessage = "Emergency Contact's country is required.")]
         [Display(Name = "Country")]
         public string EcCountry { get; set; }
 
