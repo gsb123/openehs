@@ -364,6 +364,7 @@
     <Content Include="Scripts\jquery.form.wizard-3.0.4.js" />
     <Content Include="Scripts\jquery.form.wizard-3.0.4.min.js" />
     <Content Include="Scripts\jquery.ui.timepicker.js" />
+    <Content Include="Scripts\membership\user.details.js" />
     <Content Include="Scripts\membership\registration.js" />
     <Content Include="Scripts\patient\create.main.js" />
     <Content Include="Scripts\patient\details.billing.js" />

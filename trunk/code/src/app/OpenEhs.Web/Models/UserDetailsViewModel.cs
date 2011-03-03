@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using OpenEhs.Data;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Models
@@ -31,6 +35,7 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [Display(Name = "Email Address")]
         public string EmailAddress
         {
             get
@@ -46,6 +51,22 @@ namespace OpenEhs.Web.Models
         public IList<Role> Roles
         {
             get { return _user.Roles; }
+        }
+
+        [Display(Name = "Role")]
+        public Role SelectedRole { get; set; }
+
+        [Display(Name = "Roles")]
+        public SelectList AvailableRoles
+        {
+            get
+            {
+                var roles = new List<Role>(new RoleRepository().GetAll());
+                roles.Sort();
+                roles.Insert(0, new Role("All", "", DateTime.Now));
+
+                return new SelectList(roles, "Id", "Name");
+            }
         }
 
         public Staff Staff

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Web.Mvc;
 using OpenEhs.Data;
-using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
@@ -36,26 +34,29 @@ namespace OpenEhs.Web.Controllers
         public ActionResult AddRole(int id)
         {
             var roleToAdd = _roleRepository.Get(id);
-            var user = _userRepository.Get(ViewBag.CurrentUserId);
+            var user = _userRepository.Get(Convert.ToInt32(ViewBag.CurrentUserId));
 
-            return Json(new { name = "Blah" });
+            try
+            {
+                user.AddRole(roleToAdd);
+            }
+            catch (ArgumentException ex)
+            {
+                return Json(new {success = false, error = ex.Message});
+            }
+
+            return Json(new {success = true});
         }
 
-        private static string RolesToString(IList<Role> roles)
+        [HttpPost]
+        public ActionResult RemoveRole(int id)
         {
-            var result = new StringBuilder();
+            var roleToRemove = _roleRepository.Get(id);
+            var user = _userRepository.Get(Convert.ToInt32(ViewBag.CurrentUserId));
 
-            for(var index = 0; index < roles.Count; index++)
-            {
-                if (index == roles.Count - 1)
-                {
-                    result.Append(roles[index].Name);
-                }
+            user.RemoveRole(roleToRemove);
 
-                result.AppendFormat("{0}, ", roles[index].Name);
-            }
-            
-            return result.ToString();
+            return Json(new {success = true});
         }
     }
 }
