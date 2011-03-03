@@ -2444,7 +2444,7 @@ PatientCheckInID
 VALUES
 (
 null,
-1,
+0,
 'This is a test note for PMH testing. If your reading this that means you didnt get commit 800 or 900',
 NOW(),
 1,
@@ -2465,7 +2465,7 @@ PatientCheckInID
 VALUES
 (
 null,
-1,
+0,
 'I know Matt is crying inside about not getting these numbers but it was good comedy for me and JD.',
 NOW(),
 1,
@@ -2486,8 +2486,29 @@ PatientCheckInID
 VALUES
 (
 null,
-1,
+0,
 'P.S. Cameron and JD think Matt plays soccer like a little girl!!!',
+NOW(),
+1,
+1,
+1
+);
+
+INSERT INTO Note
+(
+Title,
+Type,
+Body,
+DateCreated,
+StaffID,
+NoteTemplateCategoryID,
+PatientCheckInID
+)
+VALUES
+(
+null,
+1,
+'This surgery went very very bad. We were supposed to do a mole removal and we accidently amputated a leg! Oops',
 NOW(),
 1,
 1,
