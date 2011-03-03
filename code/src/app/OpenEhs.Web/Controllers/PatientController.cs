@@ -42,10 +42,63 @@ namespace OpenEhs.Web.Controllers
             return View(psvModel);
         }
 
+        #region CreatePatient
+
         public ActionResult Create()
         {
             return View(new CreatePatientViewModel());
         }
+
+        public ActionResult Confirmation(int id) {
+
+            var patient = _patientRepository.Get(id);
+            return View(patient);
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreatePatientViewModel model) {
+            var patient = new Patient {
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                DateOfBirth = model.DateOfBirth,
+                DateOfDeath = DateTime.MinValue,
+                Gender = model.Gender,
+                TribeRace = model.TribeRace,
+                Religion = model.Region,
+                Address = new Address {
+                    Street1 = model.Street1,
+                    Street2 = model.Street2,
+                    City = model.City,
+                    Region = model.Region,
+                    Country = model.Country
+                },
+                EmergencyContact = new EmergencyContact {
+                    FirstName = model.EcFirstName,
+                    LastName = model.EcLastName,
+                    PhoneNumber = model.EcPhoneNumber,
+                    Relationship = model.EcRelationship,
+                    Address = new Address {
+                        Street1 = model.EcStreet1,
+                        Street2 = model.EcStreet2,
+                        City = model.EcCity,
+                        Region = model.EcRegion,
+                        Country = model.EcCountry
+                    },
+                    IsActive = true
+                },
+                IsActive = true
+            };
+
+            _patientRepository.Add(patient);
+
+            UnitOfWork.CurrentSession.Flush();
+
+            return RedirectToAction("Confirmation", new { id = patient.Id });
+        }
+
+        #endregion
 
         public ActionResult Details(int id)
         {
@@ -178,66 +231,6 @@ namespace OpenEhs.Web.Controllers
         #endregion
 
         #region JsonResults
-
-        #region CreatePatient
-
-        [HttpPost]
-        public ActionResult Confirmation(int id)
-        {
-
-            var patient = _patientRepository.Get(id);
-            return View(patient);
-        }
-
-        [HttpPost]
-        public ActionResult Create(CreatePatientViewModel model)
-        {
-            var patient = new Patient
-                              {
-                                  FirstName = model.FirstName,
-                                  MiddleName = model.MiddleName,
-                                  LastName = model.LastName,
-                                  PhoneNumber = model.PhoneNumber,
-                                  DateOfBirth = model.DateOfBirth,
-                                  DateOfDeath = DateTime.MinValue,
-                                  Gender = model.Gender,
-                                  TribeRace = model.TribeRace,
-                                  Religion = model.Region,
-                                  Address = new Address
-                                                {
-                                                    Street1 = model.Street1,
-                                                    Street2 = model.Street2,
-                                                    City = model.City,
-                                                    Region = model.Region,
-                                                    Country = model.Country
-                                                },
-                                  EmergencyContact = new EmergencyContact
-                                                         {
-                                                             FirstName = model.EcFirstName,
-                                                             LastName = model.EcLastName,
-                                                             PhoneNumber = model.EcPhoneNumber,
-                                                             Relationship = model.EcRelationship,
-                                                             Address = new Address
-                                                                           {
-                                                                               Street1 = model.EcStreet1,
-                                                                               Street2 = model.EcStreet2,
-                                                                               City = model.EcCity,
-                                                                               Region = model.EcRegion,
-                                                                               Country = model.EcCountry
-                                                                           },
-                                                             IsActive = true
-                                                         },
-                                  IsActive = true
-                              };
-
-            _patientRepository.Add(patient);
-
-            UnitOfWork.CurrentSession.Flush();
-
-            return RedirectToAction("Confirmation", new { id = patient.Id });
-        }
-
-        #endregion
 
         [HttpPost]
         [ValidateInput(false)]
