@@ -17,7 +17,8 @@ $(function () {
         buttons: {
             "Calculate DoB": function () {
                 var date = new Date();
-                date.setFullYear(date.getFullYear - $("#modal_age").val());
+                var newYear = date.getFullYear() - $("#modal_age").val();
+                date.setFullYear(newYear);
                 $('#DateOfBirth').datepicker("setDate", date);
                 $(this).dialog("close");
             },
@@ -35,7 +36,7 @@ $(function () {
         buttonImage: "/Content/themes/base/images/calendar.png",
         buttonImageOnly: true,
         changeYear: true,
-        yearRange: "1900:@DateTime.Now.Year"
+        yearRange: "1900:" + new Date().getFullYear()
 
     }).focus(function () {
         $("#DateOfBirth").datepicker("show");
