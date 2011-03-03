@@ -61,6 +61,7 @@ $(function () {
                 $.post("/Patient/AddSurgery", {
                     //This is where all the text boxes go
                     patientID: $("#patientId").val(),
+                    staffID: $("#StaffId").val(),
                     surgeon: $("select[name='surgeonSelect'] option:selected").val(),
                     surgeonAssistant: $("select[name='surgeonAssistantSelect'] option:selected").val(),
                     anaesthetist: $("select[name='anaesthetistSelect'] option:selected").val(),
