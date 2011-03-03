@@ -6,7 +6,7 @@
 @section head
 {
     <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/membership/user.index.css")" />
-    <script type="text/javascript" src="@Url.Content("~/Script/membership/user.index.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/membership/user.index.js")"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -18,13 +18,13 @@
 
 <h2>User Management</h2>
 <div class="group">
-@using (Html.BeginForm())
-{
-    <input type="submit" name="NewUserButton" id="NewUserButton" value="New User" />
-    @Html.DropDownListFor(m => m.SelectedRole, Model.Roles)
-    @Html.TextBoxFor(m => m.SearchTerm)
-}
-
+    @using (Html.BeginForm())
+    {
+        <!--<a href="#" id="NewUserButton">New User</a>-->
+        <input type="button" id="NewUserButton" name="NewUserButton" value="New User" />
+        @Html.DropDownListFor(m => m.SelectedRole, Model.Roles)
+        @Html.TextBoxFor(m => m.SearchTerm)
+    }
     <table id="UserList">
         <thead>
             <tr>
@@ -41,7 +41,7 @@
                 <td class="usernameColumn">@Html.ActionLink(user.Username, "Details", new { Id = user.Id })</td>
                 <td class="nameColumn">@String.Format("{1}, {0}", user.Staff.FirstName, user.Staff.LastName)</td>
                 <td class="rolesColumn">@user.Roles.ToString()</td>
-                <td class="approvedColumn">@Html.CheckBox("approvedCheckbox", user.IsApproved)</td>
+                <td class="approvedColumn">@Html.CheckBox(String.Format("chk_{0}", user.Id), user.IsApproved, new { @class = "approvedCheckbox" })</td>
             </tr>
         }
         </tbody>

@@ -921,14 +921,13 @@ namespace OpenEhs.Web.Controllers
 
                     IList<object> noteList = new List<object>();
 
-                    foreach (var g in result.Notes)
+                    foreach (var g in result.Notes.Where(g => g.Type == NoteType.General))
                     {
-                        noteList.Add(new
-                        {
-                            g.Body,
-                            g.Author.FirstName,
-                            g.Author.LastName
-                        });
+                        noteList.Add(new {
+                                             g.Body,
+                                             g.Author.FirstName,
+                                             g.Author.LastName
+                                         });
                     }
 
                     resultSet.Add(new

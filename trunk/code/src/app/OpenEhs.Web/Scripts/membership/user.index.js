@@ -1,4 +1,8 @@
-﻿$(document).ready(function () {
+﻿/// <reference path="../jquery-1.4.4.js" />
+/// <reference path="../jquery-ui.js" />
+
+
+$(document).ready(function () {
     $("#SearchTerm").val("Search").addClass("blurSearchTextbox");
 
     $("#SearchTerm").focus(function () {
@@ -24,6 +28,21 @@
 
         if (href) {
             window.location = href;
+        }
+    });
+
+    $("#NewUserButton").click(function () {
+        window.location = "/Account/Register";
+    });
+
+    $(".approvedCheckbox").click(function (event) {
+        var id = 0;
+        event.stopPropagation();
+        if ($(this).is(":checked")) {
+            // Approve the user.
+            $.post("/User/ApproveUser/" + id, function (data) {
+                alert("Success: " + data);
+            });
         }
     });
 });
