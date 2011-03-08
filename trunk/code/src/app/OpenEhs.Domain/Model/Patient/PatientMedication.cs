@@ -11,6 +11,9 @@ namespace OpenEhs.Domain
 
         public virtual int Id { get; set; }
         public virtual string Instruction { get; set; }
+        public virtual string Dosage { get; set; }
+        public virtual string Frequency { get; set; }
+        public virtual MedicationRouteOfAdministrationType ROA { get; set; }
         public virtual DateTime StartDate { get; set; }
         public virtual DateTime ExpDate { get; set; }
         public virtual Patient Patient { get; set; }

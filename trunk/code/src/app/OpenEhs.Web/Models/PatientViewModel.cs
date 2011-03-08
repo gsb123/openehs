@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using OpenEhs.Data;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OpenEhs.Web.Models
 {
@@ -657,6 +658,18 @@ namespace OpenEhs.Web.Models
                 return userRepo.Get(HttpContext.Current.User.Identity.Name);
             }
         }
+
+        public SelectList MedicationRouteOfAdministrationType
+        {
+            get
+            {
+                var types = from MedicationRouteOfAdministrationType s in Enum.GetValues(typeof(MedicationRouteOfAdministrationType))
+                            select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
         #endregion
 
     }
