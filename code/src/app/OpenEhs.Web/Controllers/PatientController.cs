@@ -796,7 +796,7 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
-        #region Visit
+        #region PastMedicalHistory
 
         public JsonResult SearchVisit()
         {
@@ -943,7 +943,8 @@ namespace OpenEhs.Web.Controllers
                         {
                             StartTime = o.StartTime.ToString("dd/MM/yyyy HH:mm:ss"),
                             EndTime = o.EndTime.ToString("dd/MM/yyyy HH:mm:ss"),
-                            CaseType = Enum.GetName(typeof(CaseType), o.CaseType)
+                            CaseType = Enum.GetName(typeof(CaseType), o.CaseType),
+                            Staff = GetStaff(o)
                         });
                     }
 
@@ -977,6 +978,22 @@ namespace OpenEhs.Web.Controllers
                     //errorMessage = e.Message
                 });
             }
+        }
+
+        private IList<object> GetStaff(Surgery surgery)
+        {
+            IList<object> result = new List<object>();
+            foreach (var staff in surgery.Staff)
+            {
+                result.Add(new
+                {
+                    Role = Enum.GetName(typeof(StaffRole), staff.Role),
+                    Name = staff.Staff.FirstName + " " + staff.Staff.LastName
+
+                });
+            }
+            return result;
+
         }
 
         #endregion
