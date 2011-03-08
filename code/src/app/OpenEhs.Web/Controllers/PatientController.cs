@@ -617,7 +617,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["Temperature"] != "")
                     vitals.Temperature = float.Parse(Request.Form["Temperature"]);
                 vitals.Type = (VitalsType)Enum.Parse(typeof(VitalsType), Request.Form["type"]);
-                vitals.Time = DateTime.Now;
+                vitals.Time = DateTime.Parse(Request.Form["Date"] + " " + Request.Form["Time"]);
                 vitals.IsActive = true;
 
                 //Add new vitals object to patient

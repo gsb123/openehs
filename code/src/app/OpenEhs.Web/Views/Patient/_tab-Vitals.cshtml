@@ -20,27 +20,34 @@
                     Surgery</label>
                 <input type="radio" id="vitalsType5" name="modal_vitalsType" value="4" /><label for="vitalsType5">Post-Surgery</label>
             </div>
-            <label for="modal_vitalHeight">
-                Height</label>
-            <input type="text" name="modal_vitalHeight" id="modal_vitalHeight" class="ui-widget-content ui-corner-all" /><br />
-            <label for="modal_vitalWeight">
-                Weight</label>
-            <input type="text" name="modal_vitalWeight" id="modal_vitalWeight" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="modal_vitalTemperature">
-                Temperature</label>
-            <input type="text" name="modal_vitalTemperature" id="modal_vitalTemperature" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="modal_vitalHeartRate">
-                Heart Rate</label>
-            <input type="text" name="modal_vitalHeartRate" id="modal_vitalHeartRate" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="modal_vitalBpSystolic">
-                Systolic BP</label>
-            <input type="text" name="modal_vitalBpSystolic" id="modal_vitalBpSystolic" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="modal_vitalBpDiastolic">
-                Diastolic BP</label>
-            <input type="text" name="modal_vitalBpDiastolic" id="modal_vitalBpDiastolic" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="modal_vitalRespiratoryRate">
-                Respiratory Rate</label>
-            <input type="text" name="modal_vitalRespiratoryRate" id="modal_vitalRespiratoryRate" class="text ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalDate">
+                Date</label>
+            <input type="text" name="modal_vitalDate" id="modal_vitalDate" class="required modal-input text ui-widget-content ui-corner-all datepicker" /><br />
+            <label class="modal-label-long" for="modal_vitalTime">Time</label>
+            <input id="modal_vitalTime" class="text modal-input ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalHeight">
+                Height (cm)</label>
+            <input type="text" name="modal_vitalHeight" id="modal_vitalHeight" class="modal-input ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalWeight">
+                Weight (kg)</label>
+            <input type="text" name="modal_vitalWeight" id="modal_vitalWeight" class="text modal-input ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalTemperature">
+                Temperature (&deg;C)</label>
+            <input type="text" name="modal_vitalTemperature" id="modal_vitalTemperature" class="text modal-input ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalHeartRate">
+                Heart Rate (bpm)</label>
+            <input type="text" name="modal_vitalHeartRate" id="modal_vitalHeartRate" class="text modal-input ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalBpSystolic">
+                Blood Pressure (mmHg)</label>
+            <input type="text" name="modal_vitalBpSystolic" id="modal_vitalBpSystolic" size="4"
+                class="text modal-input-small ui-widget-content ui-corner-all" />
+            /
+            <input type="text" name="modal_vitalBpDiastolic" id="modal_vitalBpDiastolic" size="4"
+                class="modal-input-small text ui-widget-content ui-corner-all" /><br />
+            <label class="modal-label-long" for="modal_vitalRespiratoryRate">
+                Respiratory Rate (Hz)</label>
+            <input type="text" name="modal_vitalRespiratoryRate" id="modal_vitalRespiratoryRate"
+                class="modal-input text ui-widget-content ui-corner-all" /><br />
             </form>
         </fieldset>
     </div>
