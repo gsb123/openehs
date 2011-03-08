@@ -44,7 +44,8 @@ $(function () {
                     $("#newNoteDialog").dialog("close");
                     var output = result.NoteBody + '<br />';
                     $("#submittedNoteList").append(output);
-                    $("#prewrittenNoteSelect").append('<option value="' + result.templateId + '" >' + result.templateTitle + '</option>');
+                    if (typeof result.templateId != 'undefined')
+                        $("#prewrittenNoteSelect").append('<option value="' + result.templateId + '" >' + result.templateTitle + '</option>');
                     $("#prewrittenNoteSelect").val("");
                     $("#NotesTextBox").val("");
                     $("#templateTitle").val("");
