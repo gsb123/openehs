@@ -42,25 +42,20 @@ $(function () {
                     StaffId: $("#staffId").val()
                 }, function (result) {
                     $("#newNoteDialog").dialog("close");
-
-
                     var output = result.NoteBody + '<br />';
                     $("#submittedNoteList").append(output);
-
                     $("#prewrittenNoteSelect").append('<option value="' + result.templateId + '" >' + result.templateTitle + '</option>');
-                    //TODO: NEED TO MAKE THIS RESPOND TO THE BULLETS AND OTHER INPUTS
-
-
+                    $("#prewrittenNoteSelect").val("");
                     $("#NotesTextBox").val("");
                     $("#templateTitle").val("");
-
+                    $("#templateNoteTitle").hide();
                 }, "json");
             },
             Cancel: function () {
                 $("#NotesTextBox").val("");
                 $("#templateTitle").val("");
-
-
+                $("#templateNoteTitle").hide();
+                $("#prewrittenNoteSelect").val("");
                 $(this).dialog("close");
             }
         },
@@ -71,8 +66,8 @@ $(function () {
 
 
     $("#templateNoteCheckBox").live('click', function () {
-        var htmlOutput = '<div><br /><br /><fieldset id="templateTitleFS"><b>Template Title:</b><br /><input id="templateTitle"></fieldset></div>';
-
+        var htmlOutput = '<div id="templateNoteTitle"><br /><br /><fieldset id="templateTitleFS"><b>Template Title:</b><br /><input id="templateTitle"></fieldset></div>';
+        $("#templateNoteTitle").show();
         $("#addTempTitleDIV").replaceWith(htmlOutput);
     });
 
