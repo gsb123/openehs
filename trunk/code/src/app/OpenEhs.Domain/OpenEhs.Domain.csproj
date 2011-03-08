@@ -44,6 +44,7 @@
     <Compile Include="Model\Common Interfaces\IEntity.cs" />
     <Compile Include="Model\Charting\FeedChart.cs" />
     <Compile Include="Model\Note\NoteType.cs" />
+    <Compile Include="Model\Patient\BloodTypes.cs" />
     <Compile Include="Model\Patient\Immunization.cs" />
     <Compile Include="Model\Patient\Medication.cs" />
     <Compile Include="Model\Patient\MedicationRouteOfAdministrationType.cs" />
@@ -52,6 +53,9 @@
     <Compile Include="Model\Patient\PatientMedication.cs" />
     <Compile Include="Model\Patient\PatientProblem.cs" />
     <Compile Include="Model\Patient\Problem.cs" />
+    <Compile Include="Model\Patient\Races.cs" />
+    <Compile Include="Model\Patient\Religions.cs" />
+    <Compile Include="Model\Patient\Tribes.cs" />
     <Compile Include="Model\Surgery\CaseType.cs" />
     <Compile Include="Model\Surgery\StaffRole.cs" />
     <Compile Include="Model\Surgery\SurgeryStaff.cs" />

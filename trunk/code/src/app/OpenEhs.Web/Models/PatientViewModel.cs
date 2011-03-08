@@ -157,7 +157,7 @@ namespace OpenEhs.Web.Models
         }
 
         [DisplayName("Blood Type")]
-        public string BloodType
+        public BloodTypes BloodType
         {
             get
             {
@@ -169,22 +169,34 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required]
-        [DisplayName("Tribe/Race")]
-        public string TribeRace
+        [DisplayName("Tribe")]
+        public Tribes Tribe
         {
             get
             {
-                return _patient.TribeRace;
+                return _patient.Tribe;
             }
             set
             {
-                _patient.TribeRace = value;
+                _patient.Tribe = value;
+            }
+        }
+
+        [DisplayName("Race")]
+        public Races Race
+        {
+            get
+            {
+                return _patient.Race;
+            }
+            set
+            {
+                _patient.Race = value;
             }
         }
 
         [DisplayName("Religion")]
-        public string Religion
+        public Religions Religion
         {
             get
             {

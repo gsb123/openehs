@@ -1421,3 +1421,24 @@ margin-bottom: 10px;
 {
 	margin-bottom: 5px;
 }
+
+#NoteList li
+{
+    font-size: 1.4em;
+    list-style: none;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    width: 600px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 50px;
+    line-height: 50px;
+	padding-left: 10px;
+	margin-left: 15px;
+}
+
+#NoteList
+{
+	margin-top: 40px;
+}

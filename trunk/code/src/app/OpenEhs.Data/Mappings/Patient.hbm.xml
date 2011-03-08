@@ -16,9 +16,10 @@
 
     <many-to-one name="Address" column="AddressID" unique="true" cascade="all" />
 
-    <property name="BloodType" not-null="false" length="10"/>
-    <property name="TribeRace" not-null="false" length="30"/>
-    <property name="Religion" not-null="false" length="30" />
+    <property name="BloodType" not-null="false"/>
+    <property name="Tribe" not-null="false"/>
+    <property name="Race" not-null="false"/>
+    <property name="Religion" not-null="false"/>
     <property name="Note" column="PatientNote" not-null="false" />
     <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
     <property name="DateOfDeath" column="DateOfDeath" not-null="false" />

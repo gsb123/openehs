@@ -65,8 +65,9 @@ namespace OpenEhs.Web.Controllers
                 DateOfBirth = model.DateOfBirth,
                 DateOfDeath = DateTime.MinValue,
                 Gender = model.Gender,
-                TribeRace = model.TribeRace,
-                Religion = model.Region,
+                Tribe = model.SelectedTribe,
+                Race = model.SelectedRace,
+                Religion = model.SelectedReligion,
                 Address = new Address {
                     Street1 = model.Street1,
                     Street2 = model.Street2,
