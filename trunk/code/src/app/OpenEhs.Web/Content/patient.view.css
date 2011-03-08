@@ -57,6 +57,13 @@ legend
     margin-bottom: 5px;
 }
 
+.modal-input-small {
+    font-size: 1.2em;
+    padding: 4px;
+    border: solid 1px #777777;
+    width: 40px;
+    margin-bottom: 5px;
+}
 .modal-input .datepicker {
     margin-right: 5px;
 }

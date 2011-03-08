@@ -65,8 +65,8 @@ $(function () {
 
     $("#newVitalDialog").dialog({
         autoOpen: false,
-        height: 400,
-        width: 500,
+        height: 425,
+        width: 450,
         modal: true,
         buttons: {
             "Save Vital": function () {
@@ -75,6 +75,8 @@ $(function () {
                         type: "POST",
                         url: "/Patient/AddVital",
                         data: {
+                            date: $("#modal_vitalDate").val(),
+                            time: $("#modal_vitalTime").val(),
                             patientID: $("#patientId").val(),
                             height: $("#modal_vitalHeight").val(),
                             weight: $("#modal_vitalWeight").val(),
@@ -136,5 +138,16 @@ $(function () {
     });
 
     $("#vitalsRadio").buttonset();
+    $("#addVitals .datepicker").datepicker({
+        showOn: "button",
+        buttonImage: "/Content/themes/base/images/calendar.png",
+        buttonImageOnly: true,
+        changeYear: true,
+        defaultDate: (new Date()).getTime()
+    }).focus(function () {
+        $(this).datepicker("show");
+    });
+
+    $("#modal_vitalTime").timepicker({});
 
 });
