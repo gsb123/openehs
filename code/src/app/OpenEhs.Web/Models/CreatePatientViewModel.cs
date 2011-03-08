@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Domain;
+using System.Collections.Generic;
 
 namespace OpenEhs.Web.Models
 {
@@ -47,14 +48,6 @@ namespace OpenEhs.Web.Models
         [Required(ErrorMessage = "Patient's Country is required")]
         public string Country { get; set; }
 
-        [Display(Name = "Blood Type")]
-        public string BloodType { get; set; }
-
-        [Display(Name = "Tribe/Race")]
-        public string TribeRace { get; set; }
-
-        public string Religion { get; set; }
-
         [Display(Name = "Old Physical Number")]
         public string OldPhysicalRecordNumber { get; set; }
 
@@ -79,6 +72,61 @@ namespace OpenEhs.Web.Models
             {
                 var types = from Relationship s in Enum.GetValues(typeof(Relationship))
                             select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public Tribes SelectedTribe { get; set; }
+
+        public SelectList Tribes
+        {
+            get
+            {
+                var types = from Tribes t in Enum.GetValues(typeof(Tribes))
+                            select new { Id = t, Name = t.ToString() };
+
+                //var tribe = new List<object>(types);
+                //tribe.Insert(0, new { Id = 0, Name = "Select One..." });
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public Races SelectedRace { get; set; }
+
+        public SelectList Races
+        {
+            get
+            {
+                var types = from Races r in Enum.GetValues(typeof(Races))
+                            select new { Id = r, Name = r.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public Religions SelectedReligion { get; set; }
+
+        public SelectList Religions
+        {
+            get
+            {
+                var types = from Religions y in Enum.GetValues(typeof(Religions))
+                            select new { Id = y, Name = y.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public BloodTypes SelectedBloodType { get; set; }
+
+        public SelectList BloodType
+        {
+            get
+            {
+                var types = from BloodTypes o in Enum.GetValues(typeof(BloodTypes))
+                            select new { Id = o, Name = o.ToString() };
 
                 return new SelectList(types, "Id", "Name");
             }

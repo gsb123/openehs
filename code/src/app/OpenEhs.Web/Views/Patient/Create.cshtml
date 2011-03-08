@@ -66,12 +66,16 @@
                     @Html.TextBoxFor(m => m.PhoneNumber)
                 </div>
                 <div class="fieldGroup group">
-                    @Html.LabelFor(m => m.TribeRace)
-                    @Html.TextBoxFor(m => m.TribeRace)
+                    @Html.LabelFor(m => m.Tribes)
+                    @Html.DropDownListFor(m => m.SelectedTribe, Model.Tribes)
+                </div>
+				<div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Races)
+                    @Html.DropDownListFor(m => m.SelectedRace, Model.Races)
                 </div>
                 <div class="fieldGroup group">
-                    @Html.LabelFor(m => m.Religion)
-                    @Html.TextBoxFor(m => m.Religion)
+                    @Html.LabelFor(m => m.Religions)
+                    @Html.DropDownListFor(m => m.SelectedReligion, Model.Religions)
                 </div>
             </div>
             <fieldset>

@@ -32,9 +32,10 @@ namespace OpenEhs.Domain
         public virtual string PhoneNumber { get; set; }
         public virtual EmergencyContact EmergencyContact { get; set; }
         public virtual Address Address { get; set; }
-        public virtual string BloodType { get; set; }
-        public virtual string TribeRace { get; set; }
-        public virtual string Religion { get; set; }
+        public virtual BloodTypes BloodType { get; set; }
+        public virtual Tribes Tribe { get; set; }
+        public virtual Races Race { get; set; }
+        public virtual Religions Religion { get; set; }
         public virtual string Note { get; set; }
         public virtual string OldPhysicalRecordNumber { get; set; }
         public virtual DateTime DateOfDeath { get; set; }

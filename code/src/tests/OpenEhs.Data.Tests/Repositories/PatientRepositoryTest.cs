@@ -39,7 +39,7 @@ namespace OpenEhs.Data.Tests.Repositories
                                           },
                                   //Allergies = new List<Allergy> {new Allergy {Name = "Peanut Butter"}},
                                   DateOfBirth = new DateTime(1980, 03, 17),
-                                  BloodType = "O+",
+                                  //BloodType = "O+",
                                   Gender = Gender.Male,
                                   FirstName = "Matthew",
                                   MiddleName = "Scott",
@@ -59,9 +59,9 @@ namespace OpenEhs.Data.Tests.Repositories
                                                                          Country = "USA"
                                                                      }
                                                          },
-                                  PhoneNumber = "801-726-8585",
-                                  Religion = "Muslim",
-                                  TribeRace = "Anglo-Saxon"
+                                  PhoneNumber = "801-726-8585"
+                                  //Religion = "Muslim",
+                                  //TribeRace = "Anglo-Saxon"
                               };
 
             repo.Add(patient);

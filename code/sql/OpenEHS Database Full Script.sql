@@ -85,8 +85,9 @@ Gender                      int                 NOT NULL,
 PhoneNumber                 varchar(20)         NULL,
 AddressID                   int                 NOT NULL,
 BloodType                   int                 NULL,
-TribeRace                   varchar(30)         NULL,
-Religion                    varchar(30)         NULL,
+Tribe                       int                 NULL,
+Race                        int                 NULL,
+Religion                    int                 NULL,
 PatientNote                 longtext            NULL,
 OldPhysicalRecordNumb       varchar(50)         Null,
 EmergencyContactID          int                 NULL,
@@ -96,12 +97,15 @@ IsActive                    bit(1)              NOT NULL                DEFAULT 
 
 CREATE TABLE PatientMedication
 (
-PatientMedicationID         int         AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-Instruction                 text        NULL,
-StartDate                   datetime    NOT NULL,
-ExpDate                     datetime    NOT NULL,
-PatientID                   int         NOT NULL,
-MedicationID                int         NOT NULL
+PatientMedicationID         int             AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
+Instruction                 text            NULL,
+StartDate                   datetime        NOT NULL,
+ExpDate                     datetime        NOT NULL,
+Dose                        varchar(15)     NOT NULL,
+Frequency                   varchar(20)     NOT NULL,
+Administration              int             NOT NULL,
+PatientID                   int             NOT NULL,
+MedicationID                int             NOT NULL
 );
 
 CREATE TABLE Medication
@@ -534,8 +538,6 @@ BEGIN
     SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), substr(NEW.FirstName,2));
     SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), substr(NEW.MiddleName,2));
     SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), substr(NEW.LastName,2));
-    SET NEW.TribeRace = CONCAT(UCASE(substr(NEW.TribeRace,1,1)), substr(NEW.TribeRace,2));
-    SET NEW.Religion = CONCAT(UCASE(substr(NEW.Religion,1,1)), substr(NEW.Religion,2));
 END;
 $$
 DELIMITER ;
