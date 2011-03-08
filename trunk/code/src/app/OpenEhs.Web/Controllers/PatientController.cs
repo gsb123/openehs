@@ -1325,7 +1325,7 @@ namespace OpenEhs.Web.Controllers
                 note.IsActive = true;
                 openCheckIn.Notes.Add(note);
 
-                if (Request.Form["TemplateTitle"] != null)
+                if (Request.Form["TemplateTitle"] != null && Request.Form["TemplateTitle"] != "")
                 {
                     TemplateRepository templateRepo = new TemplateRepository();
                     NoteTemplateRepository noteRepo = new NoteTemplateRepository();

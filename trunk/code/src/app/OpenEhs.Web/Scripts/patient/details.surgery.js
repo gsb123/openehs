@@ -97,8 +97,8 @@ $(function () {
                     $("#surgeryNoteTextBox").val("");
 
 
-
-                    $("#surgeryPrewrittenNoteSelect").append('<option value="' + result.Id + '">' + result.Name + '</option>');
+                    if (typeof result.Id != 'undefined')
+                        $("#surgeryPrewrittenNoteSelect").append('<option value="' + result.Id + '">' + result.Name + '</option>');
 
 
                 }, "json");
