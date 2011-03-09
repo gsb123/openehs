@@ -178,10 +178,8 @@ PatientType                 tinyint         NOT NULL,
 PatientID                   int             NOT NULL,
 InvoiceID                   int             NOT NULL,
 CheckOutTime                datetime        NULL,
-Diagnosis                   text            NULL,
 LocationID                  int             NOT NULL,
 StaffID                     int             NULL,
-TimeOfDeath                 datetime        NULL,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
 
@@ -597,6 +595,93 @@ DELIMITER ;
 Do not delete anything below
 ****************************/
 
+/************************************
+* sp_insertStaff inserts into 
+* Staff table.
+************************************/
+
+DELIMITER | 
+CREATE PROCEDURE sp_insertStaff
+(
+IN i_Street1                varchar(30),
+IN i_Street2                varchar(30),
+IN i_City                   varchar(30),
+IN i_Region                 varchar(30),
+IN i_Country                varchar(30),
+IN i_UserName               varchar(30),
+IN i_Password               varchar(30),
+IN i_LIP                    char(1),
+IN i_FirstName              varchar(30),
+IN i_MiddleName             varchar(30),
+IN i_LastName               varchar(30),
+IN i_PhoneNumber            varchar(20),
+IN i_StaffType              tinyint(1),
+IN i_LN                     varchar(20)
+)
+
+BEGIN
+
+DECLARE _returnAddID int;
+DECLARE _returnUserID int;
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
+i_Street1,
+i_Street2,
+i_City,
+i_Region,
+i_Country
+);
+
+SELECT LAST_INSERT_ID() INTO _returnAddID;
+
+INSERT INTO User
+(
+UserName,
+`Password`
+)
+VALUES
+(
+i_UserName,
+i_Password
+);
+
+SELECT LAST_INSERT_ID() INTO _returnUserID;
+
+INSERT INTO Staff
+(
+FirstName,
+MiddleName,
+LastName,
+PhoneNumber,
+StaffType,
+LicenseNumber,
+AddressID,
+UserID
+)
+VALUES
+(
+i_FirstName,
+i_MiddleName,
+i_LastName,
+i_PhoneNumber,
+i_StaffType,
+i_LN,
+_returnAddID,
+_returnUserID
+);
+
+END ||
+DELIMITER ;
+
 insert into NoteTemplateCategory 
 (
 TemplateCategoryName
@@ -612,4 +697,63 @@ TemplateCategoryName
 values 
 (
 'Surgery'
+);
+
+/*****************************************************
+    Role
+*****************************************************/
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "Sysop",
+    "The system administrator.",
+    "2011-02-21 00:00:00"
+);
+
+/*****************************************************
+    Address
+*****************************************************/
+
+INSERT INTO Address
+(
+Street1,
+Street2,
+City,
+Region,
+Country
+)
+VALUES
+(
+'P.O. Box DS 89',
+'',
+'Dansoman',
+'Accra',
+'Ghana'
+);
+
+/*****************************************************
+    Admin
+*****************************************************/
+
+CALL sp_insertStaff
+(
+    "",
+    "",
+    "Accra",
+    "Accra",
+    "Ghana",
+    "admin",
+    "Passw0rd",
+    "A",
+    "MLKMC",
+    "",
+    "Administrator",
+    "",
+    4,
+    null
 );
