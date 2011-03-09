@@ -1183,21 +1183,19 @@ namespace OpenEhs.Web.Controllers
         {
             try
             {
-                var patientId = int.Parse(Request.Form["patientID"]);
-                var Name = int.Parse(Request.Form["name"]);
-                var instructions = Request.Form["instructions"];
-                DateTime date = DateTime.Parse(Request.Form["expDate"]);
-
                 PatientRepository repo = new PatientRepository();
-                var patient = repo.Get(patientId);
+                Patient patient = repo.Get(int.Parse(Request.Form["patientID"]));
                 PatientMedicationRepositiry pmr = new PatientMedicationRepositiry();
                 MedicationRepository medRepo = new MedicationRepository();
 
                 PatientMedication pMed = new PatientMedication();
-                pMed.Medication = medRepo.Get(Name);
-                pMed.Instruction = instructions;
+                pMed.Medication = medRepo.Get(int.Parse(Request.Form["name"]));
+                pMed.Instruction = Request.Form["instructions"];
                 pMed.StartDate = DateTime.Now;
-                pMed.ExpDate = date;
+                pMed.ExpDate = DateTime.Parse(Request.Form["expDate"]);
+                pMed.Administration = (MedicationRouteOfAdministrationType)Enum.Parse(typeof(MedicationRouteOfAdministrationType), Request.Form["route"]);
+                pMed.Dose = Request.Form["dose"];
+                pMed.Frequency = Request.Form["frequency"];
                 pMed.Patient = patient;
 
                 pmr.Add(pMed);
@@ -1207,6 +1205,9 @@ namespace OpenEhs.Web.Controllers
                                     error = "false",
                                     id = pMed.Medication.Id,
                                     name = pMed.Medication.Name,
+                                    dose = pMed.Dose,
+                                    frequency = pMed.Frequency,
+                                    route = Enum.GetName(typeof(OpenEhs.Domain.MedicationRouteOfAdministrationType), pMed.Administration),
                                     instructions = pMed.Instruction,
                                     startDate = pMed.StartDate.ToString("dd/MM/yyyy"),
                                     expDate = pMed.ExpDate.ToString("dd/MM/yyyy")

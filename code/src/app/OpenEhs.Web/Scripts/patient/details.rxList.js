@@ -19,13 +19,13 @@ $(function () {
     });
 
     $("#addRxForm").validate({
-    errorLabelContainer: $("#newMedicationDialog .modalErrorContainer"),
-    wrapper: "li",
-    messages: {
-    name: "A medication name is required",
-    //instructions: "Instructions are required",
-    expdate: "An expiration date is required"
-    }
+        errorLabelContainer: $("#newMedicationDialog .modalErrorContainer"),
+        wrapper: "li",
+        messages: {
+            name: "A medication name is required",
+            //instructions: "Instructions are required",
+            expdate: "An expiration date is required"
+        }
     });
 
     $("#newMedicationDialog").dialog({
@@ -39,33 +39,34 @@ $(function () {
             },
             "Save Medication": function () {
                 if ($("#addRxForm").valid()) {
-                $.post("/Patient/AddMedicationToPatient", {
-                    patientID: $("#patientId").val(),
-                    name: $("#medicationDropDownList").val(),
-                    instructions: $("#modal_medicationInstructions").val(),
-                    expDate: $("#RxExpDatePicker").val()
-                }, function (response) {
-                    if (response.error == "false") {
-
-                        //$("#MedicationListOne").hide();
+                    $.post("/Patient/AddMedicationToPatient", {
+                        patientID: $("#patientId").val(),
+                        name: $("#medicationDropDownList").val(),
+                        dose: $("#modal_medicationDosage").val(),
+                        frequency: $("#modal_medicationFrequency").val(),
+                        expDate: $("#RxExpDatePicker").val(),
+                        route: $("#medicationROA").val(),
+                        instructions: $("#modal_medicationInstructions").val()
+                    }, function (response) {
                         $("#addRxForm").dialog("close");
 
-                        var newMedication = '<li><div><b>Name: </b>' + response.name + '</div><div><b>Instructions: </b>' + response.instructions + '</div><div><b>Start Date: </b>' + response.startDate + '</div><div><b>Exp Date: </b>' + response.expDate + '</div></li>';
-                        //console.log(newMedication);
+                        var newMedication = '<li><div><b>Name: </b>' + response.name + '</div>' +
+                                            '<div><b>Dosage: </b>' + response.dose + '</div>' +
+                                            '<div><b>Frequency: </b>' + response.frequency + '</div>' +
+                                            '<div><b>Route: </b>' + response.route + '</div>' +
+                                            '<div><b>Instructions: </b>' + response.instructions + '</div>' +
+                                            '<div><b>Start Date: </b>' + response.startDate + '</div>' + 
+                                            '<div><b>Exp Date: </b>' + response.expDate + '</div></li>';
                         $("#MedicationListTwo").append(newMedication);
 
-                        //$("#medication_" + response.medication.id).fadeIn("normal", function () { });
-
-                        $("#patientId").val("");
                         $("#medicationDropDownList").val("");
+                        $("#modal_medicationDosage").val("");
+                        $("#modal_medicationFrequency").val("");
+                        $("#medicationROA").val("");
                         $("#modal_medicationInstructions").val("");
                         $("#RxExpDatePicker").val("");
-
-                    } else {
-                        alert("Error adding medication");
-                    }
-                });
-                $(this).dialog("close");
+                    });
+                    $(this).dialog("close");
                 }
             },
             Cancel: function () {
