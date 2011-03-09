@@ -14,6 +14,7 @@ namespace OpenEhs.Web.Models
 
     public class PatientViewModel
     {
+        
         private Patient _patient;
         private Staff _staff;
         private ImmunizationRepository _immunization;
