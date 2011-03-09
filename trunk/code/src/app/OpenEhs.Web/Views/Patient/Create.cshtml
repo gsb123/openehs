@@ -73,11 +73,34 @@
                     @Html.LabelFor(m => m.Races)
                     @Html.DropDownListFor(m => m.SelectedRace, Model.Races)
                 </div>
-                <div class="fieldGroup group">
+            </div>
+
+			<div class="group">
+				<div class="fieldGroup group">
                     @Html.LabelFor(m => m.Religions)
                     @Html.DropDownListFor(m => m.SelectedReligion, Model.Religions)
                 </div>
-            </div>
+				<div class="fieldGroup group">
+                    @Html.LabelFor(m => m.Education)
+                    @Html.DropDownListFor(m => m.SelectedEducation , Model.Education)
+                </div>
+				<div class="fieldGroup group">
+                    @Html.LabelFor(m => m.pOccupation)
+                    @Html.TextBoxFor(m => m.pOccupation , Model.pOccupation)
+                </div>
+			</div>
+
+			<div class="group">
+				<div class="fieldGroup group">
+                    @Html.LabelFor(m => m.InsuranceNumber)
+                    @Html.TextBoxFor(m => m.InsuranceNumber, Model.InsuranceNumber)
+                </div>
+				<div class="fieldGroup group">
+                    @Html.LabelFor(m => m.InsuranceExpiration)
+                    @Html.EditorFor(m => m.InsuranceExpiration)
+                </div>
+			</div>
+
             <fieldset>
                 <legend>Address</legend>
                 <div class="group">

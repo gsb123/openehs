@@ -20,6 +20,12 @@
     <property name="Tribe" not-null="false"/>
     <property name="Race" not-null="false"/>
     <property name="Religion" not-null="false"/>
+    <property name="Education" not-null="false"/>
+    <property name="Occupation" not-null="false"/>
+
+    <property name="InsuranceNumber" not-null="false"/>
+    <property name="InsuranceExpiration" not-null="false"/>
+
     <property name="Note" column="PatientNote" not-null="false" />
     <property name="OldPhysicalRecordNumber" column="OldPhysicalRecordNumb" not-null="false" />
     <property name="DateOfDeath" column="DateOfDeath" not-null="false" />

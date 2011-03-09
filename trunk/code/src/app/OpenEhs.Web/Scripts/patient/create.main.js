@@ -42,6 +42,17 @@ $(function () {
         $("#DateOfBirth").datepicker("show");
     });
 
+    $("#InsuranceExpiration").datepicker({
+        showOn: "button",
+        buttonImage: "/Content/themes/base/images/calendar.png",
+        buttonImageOnly: true,
+        changeYear: true,
+        yearRange: "1900:" + new Date().getFullYear()
+
+    }).focus(function () {
+        $("#InsuranceExpiration").datepicker("show");
+    });
+
     $("#newPatientContainer form").formwizard({
         formPluginEnabled: false,
         historyEnabled: true,

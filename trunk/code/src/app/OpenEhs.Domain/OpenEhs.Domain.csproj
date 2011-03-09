@@ -45,6 +45,7 @@
     <Compile Include="Model\Charting\FeedChart.cs" />
     <Compile Include="Model\Note\NoteType.cs" />
     <Compile Include="Model\Patient\BloodTypes.cs" />
+    <Compile Include="Model\Patient\Education.cs" />
     <Compile Include="Model\Patient\Immunization.cs" />
     <Compile Include="Model\Patient\Medication.cs" />
     <Compile Include="Model\Patient\MedicationRouteOfAdministrationType.cs" />
