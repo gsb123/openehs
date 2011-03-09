@@ -15,7 +15,13 @@
             <div id="vitalsRadio">
                 <input type="radio" id="vitalsType1" name="modal_vitalsType" value="0" /><label for="vitalsType1">Initial</label>
                 <input type="radio" id="vitalsType2" name="modal_vitalsType" value="1" /><label for="vitalsType2">Discharge</label>
-                <input type="radio" id="vitalsType3" name="modal_vitalsType" value="2" /><label for="vitalsType3">Maintanence</label>
+                @if(Model.GetOpenCheckin!=null)
+                {
+                    if(Model.GetOpenCheckin.PatientType == OpenEhs.Domain.PatientCheckinType.InPatient)
+                    {
+                        <input type="radio" id="vitalsType3" name="modal_vitalsType" value="2" /><label for="vitalsType3">Maintanence</label>
+                    }
+                }
                 <input type="radio" id="vitalsType4" name="modal_vitalsType" value="3" /><label for="vitalsType4">Pre
                     Surgery</label>
                 <input type="radio" id="vitalsType5" name="modal_vitalsType" value="4" /><label for="vitalsType5">Post-Surgery</label>
