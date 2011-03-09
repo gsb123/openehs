@@ -34,7 +34,7 @@ $(function () {
         width: 710,
         modal: true,
         buttons: {
-            "Submit Note": function () {
+            "Save": function () {
                 $.post("/Patient/AddNote", {
                     patientID: $("#patientId").val(),
                     NoteBody: $("#NotesTextBox").val(),
