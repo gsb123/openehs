@@ -104,19 +104,16 @@ $(function () {
     // ------------------------------------------------- //
     $("#checkOutModal").dialog({
         autoOpen: false,
-        height: 225,
+        height: 170,
         width: 375,
         modal: true,
         buttons: {
-            "Check Out": function () {
+            "Confirm": function () {
                 $.ajax({
                     type: "POST",
                     url: "/Patient/CheckOut",
                     data: {
-                        patientID: $("#patientId").val(),
-                        diagnosis: $("#modal_checkOutDiagnosis").val(),
-                        deceased: $("#modal_death:checked").val(),
-                        timeOfDeath: $("#modal_TimeOfDeath").val()
+                        patientID: $("#patientId").val()
                     },
                     success: function (response) {
                         $("#checkOutButton").hide();

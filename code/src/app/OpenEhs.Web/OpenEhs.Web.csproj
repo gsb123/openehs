@@ -533,7 +533,7 @@
     <Content Include="Views\Help\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Patient\_tab-Notes.cshtml" />
+    <Content Include="Views\Patient\_tab-Diagnosis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Patient\_tab-PMH.cshtml" />

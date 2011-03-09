@@ -723,14 +723,6 @@ namespace OpenEhs.Web.Controllers
                             select checkin;
 
                 PatientCheckIn checkIn = query.First<PatientCheckIn>();
-                checkIn.CheckOutTime = DateTime.Now;
-                checkIn.Diagnosis = Request.Form["diagnosis"];
-
-                if (Request.Form["deceased"] == "on")
-                {
-                    checkIn.TimeOfDeath = DateTime.Parse(Request.Form["timeOfDeath"]);
-                    patient.DateOfBirth = DateTime.Parse(Request.Form["timeOfDeath"]);
-                }
 
                 var surgeryQuery = from surgery in checkIn.Surgeries
                                    where surgery.EndTime == DateTime.MinValue
@@ -958,7 +950,6 @@ namespace OpenEhs.Web.Controllers
                     resultSet.Add(new
                     {
                         date = result.CheckInTime.ToString("dd/MM/yyyy HH:mm:ss"),
-                        result.Diagnosis,
                         firstName = result.AttendingStaff.FirstName,
                         lastName = result.AttendingStaff.LastName,
                         Vitals = visitList,
@@ -1318,7 +1309,7 @@ namespace OpenEhs.Web.Controllers
 
         #endregion
 
-        #region Notes
+        #region Diagnosis
         [HttpPost]
         [ValidateInput(false)]
         public JsonResult AddNote()

@@ -78,7 +78,7 @@
 			<li><a href="#patientView-Immunizations">Immunizations</a></li>
             <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
             <li><a href="#patientView-Allergies">Allergies</a></li>
-            <li><a href="#patientView-Notes">Notes</a></li>
+            <li><a href="#patientView-Diagnosis">Diagnosis</a></li>
             <li><a href="#patientView-Charting">Charting</a></li>
             <li><a href="#patientView-Surgery">New Surgery</a></li>
             <li><a href="#patientView-PMH">PMH</a></li>
@@ -104,8 +104,8 @@
         <div id="#patientView-Allergy">
             @Html.Partial("_tab-Allergy", Model)
         </div>
-        <div id="#patientView-Notes">
-            @Html.Partial("_tab-Notes", Model)
+        <div id="#patientView-Diagnosis">
+            @Html.Partial("_tab-Diagnosis", Model)
         </div>
         <div id="#patientView-Charting">
             @Html.Partial("_tab-Charting", Model)
@@ -146,17 +146,14 @@
             </form>
         </fieldset>
     </div>
-    <div id="checkOutModal" title="Check Out @Model.FirstName @Model.LastName">
-    <fieldset>
-        <legend>Check Out Details</legend>
-        <form id="checkOut" action="">
-            <label for="diagnosis">Diagnosis</label>
-            <input type="text" name="diagnosis" id="modal_checkOutDiagnosis" class="text ui-widget-content ui-corner-all" /><br />
-            <label for="death">Deceased</label>
-            <input type="checkbox" name="death" id="modal_death" />
-            <label for="timeOfDeath">Time of Death</label>
-            <input name="timeOfDeath" id="modal_TimeOfDeath" class="selectBackgroundColor" />
-        </form>
-    </fieldset>
+    <div id="checkOutModal" title="Check Out">
+    @if (Model.MiddleName != "")
+    {
+        <h2>Are you sure you want to check out @Model.FirstName @Model.MiddleName @Model.LastName?</h2>
+    }
+    else
+    {
+        <h2>Are you sure you want to check out @Model.FirstName @Model.LastName?</h2>
+    }
     </div>
 </div>

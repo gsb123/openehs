@@ -1,9 +1,9 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
 <div id="noteHeader" class="group">
     <h2 id="notes">
-        Notes
+        Diagnosis
     </h2>
-    <input id="submitNoteButton" name="submitNoteButton" type="button" value="Add Note" />
+    <input id="submitNoteButton" name="submitNoteButton" type="button" value="Add Diagnosis" />
 </div>
 <div>
     <ul id="submittedNoteList">
@@ -16,7 +16,7 @@
         }
     </ul>
 </div>
-<div id="newNoteDialog" title="New Note">
+<div id="newNoteDialog" title="Diagnosis">
     <ul class="modalErrorContainer" style="display: none">
     </ul>
     
@@ -26,7 +26,7 @@
         </div>
         <div id="Notes">
             <label for="NotesTextBox" id="surgeryNoteLable">
-                <b>Notes</b></label>
+                <b>Diagnosis</b></label>
             <textarea rows="30" cols="20" name="NotesTextBox" id="NotesTextBox"></textarea>
         </div>
         <fieldset id="templateOptions">
