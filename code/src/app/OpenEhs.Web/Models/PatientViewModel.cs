@@ -77,6 +77,45 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [DisplayName("Occupation")]
+        public string Occupation
+        {
+            get
+            {
+                return _patient.Occupation;
+            }
+            set
+            {
+                _patient.Occupation = value;
+            }
+        }
+
+        [DisplayName("Insurance Number")]
+        public string InsuranceNumber
+        {
+            get
+            {
+                return _patient.InsuranceNumber;
+            }
+            set
+            {
+                _patient.InsuranceNumber = value;
+            }
+        }
+
+        [DisplayName("Insurance Expiration")]
+        public DateTime InsuranceExpiration
+        {
+            get
+            {
+                return _patient.InsuranceExpiration;
+            }
+            set
+            {
+                _patient.InsuranceExpiration = value;
+            }
+        }
+
         [Required]
         [DisplayName("Date of Birth")]
         public DateTime DateOfBirth
@@ -112,6 +151,19 @@ namespace OpenEhs.Web.Models
             set
             {
                 _patient.Gender = value;
+            }
+        }
+
+        [DisplayName("Education")]
+        public Education Education
+        {
+            get
+            {
+                return _patient.Education;
+            }
+            set
+            {
+                _patient.Education = value;
             }
         }
 

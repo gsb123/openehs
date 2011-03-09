@@ -67,7 +67,12 @@ namespace OpenEhs.Web.Controllers
                 Gender = model.Gender,
                 Tribe = model.SelectedTribe,
                 Race = model.SelectedRace,
+                Occupation = model.pOccupation,
+                Education = model.SelectedEducation,
                 Religion = model.SelectedReligion,
+                InsuranceNumber = model.InsuranceNumber,
+                InsuranceExpiration = model.InsuranceExpiration,
+                OldPhysicalRecordNumber = model.OldPhysicalRecordNumber,
                 Address = new Address {
                     Street1 = model.Street1,
                     Street2 = model.Street2,

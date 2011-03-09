@@ -36,6 +36,10 @@ namespace OpenEhs.Domain
         public virtual Tribes Tribe { get; set; }
         public virtual Races Race { get; set; }
         public virtual Religions Religion { get; set; }
+        public virtual Education Education { get; set; }
+        public virtual string Occupation { get; set; }
+        public virtual string InsuranceNumber { get; set; }
+        public virtual DateTime InsuranceExpiration { get; set; }
         public virtual string Note { get; set; }
         public virtual string OldPhysicalRecordNumber { get; set; }
         public virtual DateTime DateOfDeath { get; set; }

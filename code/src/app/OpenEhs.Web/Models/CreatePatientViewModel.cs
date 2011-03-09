@@ -21,7 +21,7 @@ namespace OpenEhs.Web.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage="Patient's Date of Birth is required")]
-        [DataType(DataType.Date, ErrorMessage = "Patient's Last Name is required")]
+        [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
@@ -61,6 +61,17 @@ namespace OpenEhs.Web.Models
 
         [Display(Name = "Phone Number")]
         public string EcPhoneNumber { get; set; }
+
+        [Display(Name = "Occupation")]
+        public string pOccupation { get; set; }
+
+        [Display(Name = "Insurance Number")]
+        public string InsuranceNumber { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Insurance Expiration")]
+        public DateTime InsuranceExpiration { get; set; }
 
         [Required(ErrorMessage = "Emergency Contact's Relationship with the patient is required")]
         [Display(Name = "Relationship")]
@@ -127,6 +138,19 @@ namespace OpenEhs.Web.Models
             {
                 var types = from BloodTypes o in Enum.GetValues(typeof(BloodTypes))
                             select new { Id = o, Name = o.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public Education SelectedEducation { get; set; }
+
+        public SelectList Education
+        {
+            get
+            {
+                var types = from Education a in Enum.GetValues(typeof(Education))
+                            select new { Id = a, Name = a.ToString() };
 
                 return new SelectList(types, "Id", "Name");
             }
