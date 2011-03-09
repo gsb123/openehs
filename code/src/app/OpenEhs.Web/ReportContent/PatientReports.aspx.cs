@@ -48,7 +48,7 @@ namespace OpenEhs.Web
                                     "AND p.PatientID = c.PatientID " +
                                     "AND c.CheckOutTime IS NOT NULL " +
                                     "AND c.PatientType = 1 " +
-                                    "AND c.TimeOfDeath = '0001-01-01 00:00:00' " +
+                                    "AND p.DateOfDeath = '0001-01-01 00:00:00' " +
                                     "AND c.CheckOutTime >= @startDate AND c.CheckOutTime <= @endDate " +
                                     "AND c.CheckOutTime >= c.CheckinTime;";
 
@@ -60,7 +60,7 @@ namespace OpenEhs.Web
                                     "AND p.PatientID = c.PatientID " +
                                     "AND c.CheckOutTime IS NOT NULL " +
                                     "AND c.PatientType = 1 " +
-                                    "AND c.TimeOfDeath != '0001-01-01 00:00:00' " +
+                                    "AND p.DateOfDeath != '0001-01-01 00:00:00' " +
                                     "AND c.CheckOutTime >= @startDate AND c.CheckOutTime <= @endDate " +
                                     "AND c.CheckOutTime >= c.CheckinTime;";
 
@@ -76,7 +76,7 @@ namespace OpenEhs.Web
                                                     "WHERE p.Gender = @gender " +
                                                         "AND p.PatientID = c.PatientID " +
                                                         "AND c.PatientType = 1 " +
-                                                        "AND c.TimeOfDeath = '0001-01-01 00:00:00' " +
+                                                        "AND p.DateOfDeath = '0001-01-01 00:00:00' " +
                                                         "AND c.CheckOutTime >= @startDate AND c.CheckOutTime <= @endDate " +
                                                         "AND c.CheckOutTime >= c.CheckinTime;";
 
@@ -85,7 +85,7 @@ namespace OpenEhs.Web
                                                     "WHERE p.Gender = @gender " +
                                                         "AND p.PatientID = c.PatientID " +
                                                         "AND c.PatientType = 1 " +
-                                                        "AND c.TimeOfDeath != '0001-01-01 00:00:00' " +
+                                                        "AND p.DateOfDeath != '0001-01-01 00:00:00' " +
                                                         "AND c.CheckOutTime >= @startDate AND c.CheckOutTime <= @endDate "+
                                                         "AND c.CheckOutTime >= c.CheckinTime;";
 

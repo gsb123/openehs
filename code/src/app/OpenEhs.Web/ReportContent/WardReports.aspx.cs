@@ -95,8 +95,9 @@ namespace OpenEhs.Web.ReportContent
         private void generateTotalDeaths()
         {
             string select = "SELECT COUNT(*) " +
-                                "FROM patientcheckin "+
-                                "WHERE DATE(TimeOfDeath) = @date";
+                                "FROM patientcheckin c, patient p "+
+                                "WHERE p.PatientID = c.PatientID " +
+                                "AND DATE(p.DateOfDeath) = @date";
             lblTotalDeaths.Text = summaryQuery(select, txtDate.Text);
         }
 
@@ -140,7 +141,7 @@ namespace OpenEhs.Web.ReportContent
                                     "FROM patient p, patientcheckin c, location l "+
                                     "WHERE p.PatientID = c.PatientID "+
                                         "AND c.LocationID = l.LocationID "+
-                                        "AND DATE(c.TimeOfDeath) = @date;";
+                                        "AND DATE(p.DateOfDeath) = @date;";
 
 
             MySqlConnection connection = new MySqlConnection(connectionString);
