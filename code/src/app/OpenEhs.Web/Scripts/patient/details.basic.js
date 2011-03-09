@@ -42,6 +42,10 @@ $(function () {
         $("#InsuranceExpiration").removeAttr("disabled");
         $("#MiddleName").removeAttr("disabled");
         $("#LastName").removeAttr("disabled");
+        $("#Tribe").removeAttr("disabled");
+        $("#Education").removeAttr("disabled");
+        $("#Race").removeAttr("disabled");
+        $("#Occupation").removeAttr("disabled");
         $("#MaleGenderRadio").removeAttr("disabled");
         $("#FemaleGenderRadio").removeAttr("disabled");
         $("#DateOfBirth").removeAttr("disabled");
@@ -87,7 +91,13 @@ $(function () {
                 EC_Address_City: $("#EmergencyContact_Address_City").val(),
                 EC_Address_Region: $("#EmergencyContact_Address_Region").val(),
                 Note: $("#patientNoteTextBox").val(),
-                IsActive: $("#IsActive").val()
+                IsActive: $("#IsActive").val(),
+                Tribe: $("#Tribe").val(),
+                Race: $("#Race").val(),
+                Education: $("#Education").val(),
+                Occupation: $("#Occupation").val(),
+                InsuranceNumber: $("#InsuranceNumber").val(),
+                InsuranceExpiration: $("#InsuranceExpiration").val()
             },
             success: function (response) {
                 $("#FirstName").attr("disabled", "disabled");
@@ -109,6 +119,12 @@ $(function () {
                 $("#EmergencyContact_Address_City").attr("disabled", "disabled");
                 $("#EmergencyContact_Address_Region").attr("disabled", "disabled");
                 $("#IsActive").attr("disabled", "disabled");
+                $("#Tribe").attr("disabled", "disabled");
+                $("#Race").attr("disabled", "disabled");
+                $("#Education").attr("disabled", "disabled");
+                $("#Occupation").attr("disabled", "disabled");
+                $("#InsuranceNumber").attr("disabled", "disabled");
+                $("#InsuranceExpiration").attr("disabled", "disabled");
                 $("#savePatientInfoButton").hide();
                 $("#editPatientInfoButton").show();
             },

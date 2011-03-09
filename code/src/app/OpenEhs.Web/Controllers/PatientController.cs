@@ -263,6 +263,15 @@ namespace OpenEhs.Web.Controllers
                 patient.EmergencyContact.Address.City = Request.Form["EC_Address_City"];
                 patient.EmergencyContact.Address.Region = Request.Form["EC_Address_Region"];
                 patient.Note = Request.Form["Note"];
+                patient.Tribe = (Tribes)Enum.Parse(typeof(Tribes), Request.Form["Tribe"]);
+                patient.Race = (Races)Enum.Parse(typeof(Races), Request.Form["Race"]);
+                patient.Occupation = Request.Form["Occupation"];
+                patient.InsuranceNumber = Request.Form["InsuranceNumber"];
+                if (Request.Form["InsuranceExpiration"] != "")
+                    patient.InsuranceExpiration = DateTime.Parse(Request.Form["InsuranceExpiration"]);
+                else
+                    patient.InsuranceExpiration = DateTime.MinValue;
+                patient.Education = (Education)Enum.Parse(typeof(Education), Request.Form["Education"]);
                 patient.IsActive = bool.Parse(Request.Form["IsActive"]);
 
                 return Json(new

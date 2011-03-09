@@ -18,7 +18,8 @@
         });
     </script>
     <style type="text/css">
-        #confirmation {
+        #confirmation
+        {
             margin: 50px auto 0px auto;
             width: 700px;
             border: solid 1px #CCCCCC;
@@ -27,25 +28,37 @@
             -moz-box-shadow: 0 0 20px #CCCCCC;
         }
         
-        .optionButton {
+        .optionButton
+        {
             font-size: 18px;
             width: 225px;
             margin-left: 20px;
         }
-        #headerText {
+        #headerText
+        {
             text-align: center;
             margin-bottom: 25px;
         }
         
-        #options {
+        #options
+        {
             margin-bottom: 10px;
         }
     </style>
 }
 <div id="confirmation">
-    <h3 id="headerText">
-        Successfully created patient record for <i>@Model.FirstName @Model.LastName</i>
-    </h3>
+    @if (Model.MiddleName != "")
+    {
+        <h3 id="headerText">
+            Successfully created patient record for <i>@Model.FirstName @Model.MiddleName @Model.LastName</i>
+        </h3>
+    }
+    else
+    {
+        <h3 id="headerText">
+            Successfully created patient record for <i>@Model.FirstName @Model.LastName</i>
+        </h3>
+    }
     <div>
         <h3 id="options">
             Options:
@@ -54,7 +67,8 @@
             <input type="hidden" id="patientId" value="@Model.Id"/>
             <input type="hidden" id="patientFName" value="@Model.FirstName"/>
             <input type="hidden" id="patientLName" value="@Model.LastName"/>
-            <button type="button" class="optionButton" id="printButton">Print Patient Barcode</button>
+            <button type="button" class="optionButton" id="printButton">
+                Print Patient Barcode</button>
             @* TODO Implement if statement to check if user has rights to even go to patient details *@
             <input type="button" class="optionButton" id="patientDetailsButton" value="Go to Patient Details" />
         </div>

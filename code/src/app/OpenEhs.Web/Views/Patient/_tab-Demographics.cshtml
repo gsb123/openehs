@@ -5,7 +5,6 @@
         <div class="group">
             <div class="column">
                 @Html.LabelFor(model => model.PatientId)<br />
-                @Html.TextBoxFor(model => model.PatientId, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.OldPhysicalRecordNumber)<br />
                 @Html.TextBoxFor(model => model.OldPhysicalRecordNumber, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.FirstName)<br />
@@ -47,7 +46,7 @@
                 @Html.LabelFor(model => model.Tribe)<br />
                 @Html.DropDownListFor(model => model.Tribe, Model.Tribes, "Choose an option...", new { disabled="disabled", @class = "modal-input ui-widget-content ui-corner-all" })<br />
                 @Html.LabelFor(model => model.Education)<br />
-                @Html.TextBoxFor(model => model.Education, new { disabled = "disabled" })
+                @Html.DropDownListFor(model => model.Education, Model.Educations, "Choose an option...", new { disabled="disabled", @class = "modal-input ui-widget-content ui-corner-all" })<br />
             </div>
             <div class="column">
                 @Html.LabelFor(model => model.Race)<br />

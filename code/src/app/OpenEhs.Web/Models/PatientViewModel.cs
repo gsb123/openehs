@@ -757,6 +757,17 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public SelectList Educations
+        {
+            get
+            {
+                var types = from Education s in Enum.GetValues(typeof(Education))
+                            select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
         #endregion
 
     }

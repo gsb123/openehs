@@ -13,6 +13,7 @@ namespace OpenEhs.Domain
         PacificIslander,
         MiddleEastern,
         Hispanic,
+        Unknown,
         Other
     }
 }

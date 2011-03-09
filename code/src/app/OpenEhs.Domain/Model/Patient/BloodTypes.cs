@@ -14,6 +14,7 @@ namespace OpenEhs.Domain
         ABnegative,
         Anegative,
         Bnegative,
-        Onegative
+        Onegative,
+        Unknown
     }
 }

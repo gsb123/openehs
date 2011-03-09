@@ -18,7 +18,7 @@ namespace OpenEhs.Web.Models
         public string MiddleName { get; set; }
 
         [Required(ErrorMessage="Patient's Last Name is required")]
-        [Display(Name = "Last Name")]
+        [Display(Name = "Surname")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage="Patient's Date of Birth is required")]
@@ -134,7 +134,7 @@ namespace OpenEhs.Web.Models
         }
 
         public Religions SelectedReligion { get; set; }
-
+        [Display(Name = "Religion")]
         [Display(Name = "Religion")]
         public SelectList Religions
         {
@@ -195,6 +195,7 @@ namespace OpenEhs.Web.Models
         public CreatePatientViewModel()
         {
             DateOfBirth = DateTime.Now;
+            InsuranceExpiration = DateTime.Now;
         }
     }
 }
