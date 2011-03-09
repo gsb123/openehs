@@ -25,5 +25,9 @@ namespace OpenEhs.Web.Controllers {
             return View();
         }
 
+        public ActionResult BillingSearch() {
+            return View();
+        }
+
     }
 }
