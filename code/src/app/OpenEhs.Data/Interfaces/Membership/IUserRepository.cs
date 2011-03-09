@@ -13,6 +13,7 @@ namespace OpenEhs.Data
 {
     public interface IUserRepository : IRepository<User>
     {
+        new User Get(int id);
         User Get(string username);
         IList<User> Find(string username, string password);
         bool CheckForUsernameAvailability(string username);
