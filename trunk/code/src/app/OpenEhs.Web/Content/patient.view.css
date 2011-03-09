@@ -153,11 +153,11 @@ legend
     width: 80px;
 }
 
-#FirstName, #MiddleName, #LastName, #PhoneNumber {
+#FirstName, #MiddleName, #LastName, #PhoneNumber, #InsuranceNumber {
     width: 125px;
 }
 
-#DateOfBirth {
+#DateOfBirth, #InsuranceExpiration {
     width: 80px;
 }
 

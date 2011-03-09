@@ -48,7 +48,7 @@ namespace OpenEhs.Web.Models
         [Required(ErrorMessage = "Patient's Country is required")]
         public string Country { get; set; }
 
-        [Display(Name = "Old Physical Number")]
+        [Display(Name = "Old Record Number")]
         public string OldPhysicalRecordNumber { get; set; }
 
         [Required(ErrorMessage="Emergency Contact's First Name is required")]

@@ -6,6 +6,8 @@
             <div class="column">
                 @Html.LabelFor(model => model.PatientId)<br />
                 @Html.TextBoxFor(model => model.PatientId, new { disabled = "disabled" })<br />
+				@Html.LabelFor(model => model.OldPhysicalRecordNumber)<br />
+                @Html.TextBoxFor(model => model.OldPhysicalRecordNumber, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.FirstName)<br />
                 @Html.TextBoxFor(model => model.FirstName, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.MiddleName)<br />
@@ -24,7 +26,11 @@
                 @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
                 @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth), new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.PhoneNumber)<br />
-                @Html.TextBoxFor(model => model.PhoneNumber, new { disabled = "disabled" })
+                @Html.TextBoxFor(model => model.PhoneNumber, new { disabled = "disabled" })<br />
+				@Html.LabelFor(model => model.InsuranceNumber)<br />
+                @Html.TextBoxFor(model => model.InsuranceNumber, new { disabled = "disabled" })<br />
+				@Html.LabelFor(model => model.InsuranceExpiration)<br />
+                @Html.TextBox("InsuranceExpiration", String.Format("{0:d}", Model.InsuranceExpiration), new { disabled = "disabled" })
             </div>
         </div>
         <div id="BasicMoreInfoLink">
