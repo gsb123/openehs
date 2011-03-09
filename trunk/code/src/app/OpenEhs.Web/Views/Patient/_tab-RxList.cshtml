@@ -99,6 +99,15 @@
                         <b>Name: </b>@medication.Medication.Name
                     </div>
                     <div>
+                        <b>Dosage: </b>@medication.Dose
+                    </div>
+                    <div>
+                        <b>Frequency: </b>@medication.Frequency
+                    </div>
+                    <div>
+                        <b>Route: </b>@Enum.GetName(typeof(OpenEhs.Domain.MedicationRouteOfAdministrationType), medication.Administration)
+                    </div>
+                    <div>
                         <b>Instructions: </b>@medication.Instruction</div>
                     <div>
                         <b>Start Date: </b>@medication.StartDate.Date.ToString("MM/dd/yyyy")</div>
