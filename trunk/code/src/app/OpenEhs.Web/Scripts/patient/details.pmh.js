@@ -28,7 +28,7 @@ $(function () {
                 var checkin = response[0];
                 var htmlOutput = "<div id=\"replaceDIV\"><ul class=\"visitSummaryList\"><li><p class=\"visitSummaryHeader\"><u>Encounter</u></p><b>Visit Date: </b>" + checkin.date +
                     "<br /><b>Diagnosis: </b>" + checkin.Diagnosis +
-                    "<br /><b>Attending Staff: </b>" + checkin.firstName + ", " + checkin.lastName +
+                    "<br /><b>Attending Staff: </b>" + checkin.lastName + ", " + checkin.firstName +
                     "<br /><b>Recorded Vitals: </b><br />" +
                     "<table class=\"detailsTable\"><thead><tr><th>Time</th><th>Type</th><th>Height(cm)</th><th>Weight(kg)</th><th>Temp(&deg;C)</th><th>HR(bpm)</th><th>BP(mmHg)</th><th>RR(Hz)</th></tr></thead><tbody>";
 
