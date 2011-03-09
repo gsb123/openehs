@@ -9,8 +9,6 @@
     <property name="CheckInTime" not-null="true" />
     <property name="PatientType" not-null="true" />
     <property name="CheckOutTime" not-null="false" />
-    <property name="Diagnosis" not-null="false" />
-    <property name="TimeOfDeath" not-null="false" />
 
     <many-to-one name="AttendingStaff"
                  class="Staff"
