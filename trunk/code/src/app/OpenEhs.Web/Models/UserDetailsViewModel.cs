@@ -11,6 +11,11 @@ namespace OpenEhs.Web.Models
     {
         private User _user;
 
+        public int UserId
+        {
+            get { return _user.Id; }
+        }
+
         public string Username
         {
             get

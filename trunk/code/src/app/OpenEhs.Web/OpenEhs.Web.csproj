@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="Content\admin.css" />
     <Content Include="Content\billing.main.css" />
+    <Content Include="Content\billing.print.css" />
     <Content Include="Content\elements.css" />
     <Content Include="Content\footer.css" />
     <Content Include="Content\hacks.css" />

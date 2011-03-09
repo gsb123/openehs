@@ -34,9 +34,6 @@ legend
 #SubHeading h2
 {
 	color: #333;
-	text-shadow: 0 1px 0 #999;
-	-moz-text-shadow: 0 1px 0 #999;
-	-webkit-text-shadow: 0 1px 0 #999;
 }
 
 #UserActions
@@ -75,12 +72,28 @@ legend
     margin: 20px 0;
     padding: 10px 20px;
 }
+
+#RoleList ul li
+{
+    margin: 10px 0;
+    padding: 10px 15px;
+    background-color: #ccc;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
         
 #RoleList h4
 {
     border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
+}
+
+.RoleName
+{
+    float: left;
 }
     
 #tabs input
@@ -127,4 +140,27 @@ legend
 #Staff_Address_City, #Staff_Address_Region
 {
 	width: 150px;
+}
+
+#AddRoleButton
+{
+    padding: 5px 15px;
+}
+
+#AddRoleDialog select
+{
+    font-size: 1.4em;
+    width: 250px;
+}
+
+#AddRoleDialog select option
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.RemoveRoleAction
+{
+    cursor: pointer;
+    float: right;
 }

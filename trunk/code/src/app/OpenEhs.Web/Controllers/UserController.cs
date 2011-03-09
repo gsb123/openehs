@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Web.Mvc;
 using OpenEhs.Data;
-using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
     public class UserController : Controller
     {
-        private IUserRepository _userRepository;
-        private IRoleRepository _roleRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
 
         public UserController()
         {
@@ -27,15 +26,30 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewBag.CurrentUserId = id;
             return View(new UserDetailsViewModel(_userRepository.Get(id)));
         }
 
         [HttpPost]
-        public ActionResult AddRole(int id)
+        public ActionResult Details(UserDetailsViewModel model)
+        {
+            var user = _userRepository.Get(model.UserId);
+
+            user.Password = model.Password;
+            user.Staff.Address = model.Staff.Address;
+            user.Staff.FirstName = model.Staff.FirstName;
+            user.Staff.MiddleName = model.Staff.MiddleName;
+            user.Staff.LastName = model.Staff.LastName;
+            user.Staff.PhoneNumber = model.Staff.PhoneNumber;
+            user.EmailAddress = model.EmailAddress;
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult AddRole(int id, int userId)
         {
             var roleToAdd = _roleRepository.Get(id);
-            var user = _userRepository.Get(Convert.ToInt32(ViewBag.CurrentUserId));
+            var user = _userRepository.Get(userId);
 
             try
             {
@@ -46,16 +60,20 @@ namespace OpenEhs.Web.Controllers
                 return Json(new {success = false, error = ex.Message});
             }
 
-            return Json(new {success = true});
+            UnitOfWork.CurrentSession.Flush();
+
+            return Json(new {success = true, RoleName = roleToAdd.Name, RoleId = roleToAdd.Id});
         }
 
         [HttpPost]
-        public ActionResult RemoveRole(int id)
+        public ActionResult RemoveRole(int id, int userId)
         {
             var roleToRemove = _roleRepository.Get(id);
-            var user = _userRepository.Get(Convert.ToInt32(ViewBag.CurrentUserId));
+            var user = _userRepository.Get(userId);
 
             user.RemoveRole(roleToRemove);
+
+            UnitOfWork.CurrentSession.Flush();
 
             return Json(new {success = true});
         }
@@ -63,7 +81,11 @@ namespace OpenEhs.Web.Controllers
         [HttpPost]
         public ActionResult ApproveUser(int id)
         {
-            return Json(new { message = "Hello, I am in the controller." });
+            var user = _userRepository.Get(id);
+
+            user.IsApproved = !user.IsApproved;
+
+            return Json(new { success = true });
         }
     }
 }

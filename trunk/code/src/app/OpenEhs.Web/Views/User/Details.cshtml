@@ -1,6 +1,6 @@
 ﻿@model OpenEhs.Web.Models.UserDetailsViewModel
 @{
-    ViewBag.Title = "OpenEHS - User Details";
+    ViewBag.Title = "User Details";
 }
 @section head
 {
@@ -36,24 +36,25 @@
         </div>
         <div id="RoleList" class="group">
             <h4>Roles</h4>
+            <ul>
             @if (Model.Roles.Count > 0)
             {
-            <ul>
-                @foreach (var role in Model.Roles)
+                foreach (var role in Model.Roles)
                 {
-                <li>
-                    <div>@role.Name</div>
-                    <div><a href="#">X</a></div>
+                <li class="group">
+                    <div class="RoleName group">@role.Name</div>
+                    <div class="RemoveRoleAction group"><img src="@Url.Content("~/images/common/icons/16x16/Delete.png")" id="@role.Id" alt="Remove Role" /></div>
                 </li>
                 }
-            </ul>
             }
+            </ul>
             <div id="RoleActions" class="group">
-                <button id="AddRoleButton" name="AddRoleButton">Add Role</button>
+                <input id="AddRoleButton" type="button" value="Add Role" />
                 <div id="AddRoleDialog">
                     @using (Html.BeginForm())
                     {
                         <div>
+                            @Html.HiddenFor(m => m.UserId)
                             @Html.LabelFor(m => m.SelectedRole)
                             @Html.DropDownListFor(m => m.SelectedRole, Model.AvailableRoles)
                         </div>
