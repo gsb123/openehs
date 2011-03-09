@@ -65,5 +65,11 @@ $(function () {
         $("#ageDialog").dialog("open");
     });
 
-    //$("#Country option:selected").val("");
+    $("#copy").click(function () {
+        $("#EcStreet1").val($("#Street1").val());
+        $("#EcStreet2").val($("#Street2").val());
+        $("#EcCity").val($("#City").val());
+        $("#EcRegion").val($("#Region").val());
+        $("#EcCountry").val($("#Country").val());
+    });
 });

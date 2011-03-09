@@ -7,10 +7,11 @@ namespace OpenEhs.Domain
 {
     public enum MedicationRouteOfAdministrationType
     {
-        Orally = 0,
-        Rectally = 1,
-        Intravenously = 2,
-        Inhalational = 3,
-        Nasally = 4
+        Orally,
+        Rectally,
+        Intravenously,
+        Inhalational,
+        Nasally,
+        Other
     }
 }

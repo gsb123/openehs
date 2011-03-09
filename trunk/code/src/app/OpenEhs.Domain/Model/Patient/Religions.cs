@@ -13,6 +13,7 @@ namespace OpenEhs.Domain
         Catholicism,
         Protestantism,
         LDS,
+        Unknown,
         Other
     }
 }

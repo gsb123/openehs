@@ -17,6 +17,8 @@ namespace OpenEhs.Domain
         MoshiDagomba,
         Ga,
         Yoruba,
-        Gurma
+        Gurma,
+        Other,
+        Unknown
     }
 }
