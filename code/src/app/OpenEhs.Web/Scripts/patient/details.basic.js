@@ -14,6 +14,13 @@ $(function () {
         changeYear: true
     });
 
+    $("#InsuranceExpiration").datepicker({
+        showOn: "button",
+        buttonImage: "/Content/themes/base/images/calendar.png",
+        buttonImageOnly: true,
+        changeYear: true
+    });
+
     $("#EmergencyContactMoreInfoLink").click(function () {
         $("#EmergencyContactMoreInfo").slideToggle("slow", function () { });
     });
@@ -22,11 +29,17 @@ $(function () {
         $("#BasicMoreInfo").slideToggle("slow", function () { });
     });
 
+    $("#AddressLink").click(function () {
+        $("#BasicAddress").slideToggle("slow", function () { });
+    });
+
     $("#checkOutButton").button();
     $("#checkOutButton").hide();
 
     $("#editPatientInfoButton").button().click(function () {
         $("#FirstName").removeAttr("disabled");
+        $("#InsuranceNumber").removeAttr("disabled");
+        $("#InsuranceExpiration").removeAttr("disabled");
         $("#MiddleName").removeAttr("disabled");
         $("#LastName").removeAttr("disabled");
         $("#MaleGenderRadio").removeAttr("disabled");

@@ -318,6 +318,20 @@ fieldset
     display: none;
 }
 
+#AddressLink
+{
+    clear: both;
+    color: #00f;
+    cursor: pointer;
+    margin: 10px 0px 5px 0px;
+}
+
+#BasicAddress
+{
+    clear: both;
+    display: none;
+}
+
 #EmergencyContactMoreInfoLink {
     color: #00f;
     cursor: pointer;

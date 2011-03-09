@@ -65,7 +65,7 @@ namespace OpenEhs.Web.Models
         }
 
         [Required]
-        [DisplayName("Last Name")]
+        [DisplayName("Surname")]
         public string LastName
         {
             get
@@ -729,6 +729,28 @@ namespace OpenEhs.Web.Models
             get
             {
                 var types = from MedicationRouteOfAdministrationType s in Enum.GetValues(typeof(MedicationRouteOfAdministrationType))
+                            select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public SelectList Tribes
+        {
+            get
+            {
+                var types = from Tribes s in Enum.GetValues(typeof(Tribes))
+                            select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public SelectList Races
+        {
+            get
+            {
+                var types = from Races s in Enum.GetValues(typeof(Races))
                             select new { Id = s, Name = s.ToString() };
 
                 return new SelectList(types, "Id", "Name");
