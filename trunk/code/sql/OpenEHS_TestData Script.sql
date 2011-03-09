@@ -1680,7 +1680,7 @@ INSERT INTO PatientCheckIn
 VALUE
 (
     '2011-01-05 12:45:10',
-    2,
+    0,
     100000,
     2,
     NOW(),
@@ -1705,7 +1705,7 @@ INSERT INTO PatientCheckIn
 VALUE
 (
     NOW(),
-    2,
+    1,
     100001,
     3,
     NOW(),
@@ -1730,7 +1730,7 @@ INSERT INTO PatientCheckIn
 VALUE
 (
     NOW(),
-    3,
+    0,
     100002,
     4,
     NOW(),
