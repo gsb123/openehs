@@ -37,7 +37,7 @@ namespace OpenEhs.Data.Tests.Repositories
                                                                  Street2 = "Apt. 1B",
                                                                  City = "Ogden",
                                                                  Region = "Utah",
-                                                                 Country = "USA",
+                                                                 //Country = "USA",
                                                                  IsActive = true
                                                              }
                                            },

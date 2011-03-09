@@ -95,7 +95,7 @@ namespace OpenEhs.Web.Models
         public string Region { get; set; }
 
         [Required]
-        public string Country { get; set; }
+        public Country Country { get; set; }
 
         public string Username { get; set; }
 

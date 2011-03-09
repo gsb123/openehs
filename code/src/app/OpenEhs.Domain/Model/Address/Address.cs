@@ -17,7 +17,7 @@ namespace OpenEhs.Domain
         public virtual string Street2 { get; set; }
         public virtual string City { get; set; }
         public virtual string Region { get; set; }
-        public virtual string Country { get; set; }
+        public virtual Country Country { get; set; }
         public virtual bool IsActive { get; set; }
 
         #endregion

@@ -34,7 +34,7 @@ namespace OpenEhs.Data.Tests.Repositories
                                               Street1 = "123 Main Street",
                                               City = "Accra",
                                               Region = "Greater Accra",
-                                              Country = "Ghana",
+                                              //Country = "Ghana",
                                               IsActive = true
                                           },
                                   //Allergies = new List<Allergy> {new Allergy {Name = "Peanut Butter"}},
@@ -56,7 +56,7 @@ namespace OpenEhs.Data.Tests.Repositories
                                                                          Street1 = "1288 E. 4790 N.",
                                                                          City = "Ogden",
                                                                          Region = "Utah",
-                                                                         Country = "USA"
+                                                                         //Country = "USA"
                                                                      }
                                                          },
                                   PhoneNumber = "801-726-8585"

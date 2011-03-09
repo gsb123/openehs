@@ -459,9 +459,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Patient\_Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Category\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Domain;
 using System.Collections.Generic;
+using OpenEhs.Data;
 
 namespace OpenEhs.Web.Models
 {
@@ -46,7 +47,23 @@ namespace OpenEhs.Web.Models
         public string Region { get; set; }
 
         [Required(ErrorMessage = "Patient's Country is required")]
-        public string Country { get; set; }
+        public Country Country { get; set; }
+
+        [Required(ErrorMessage = "Patient's Country is required")]
+        public SelectList Countries
+        {
+            get
+            {
+                var countryRepo = new CountryRepository();
+
+                var countries = countryRepo.GetAll();
+
+                var country = from c in countries
+                              select new { Id = c.Id, Name = c.Name };
+
+                return new SelectList(country, "Id", "Name");
+            }
+        }
 
         [Display(Name = "Old Record Number")]
         public string OldPhysicalRecordNumber { get; set; }
@@ -90,6 +107,7 @@ namespace OpenEhs.Web.Models
 
         public Tribes SelectedTribe { get; set; }
 
+        [Display(Name = "Tribe")]
         public SelectList Tribes
         {
             get
@@ -97,15 +115,13 @@ namespace OpenEhs.Web.Models
                 var types = from Tribes t in Enum.GetValues(typeof(Tribes))
                             select new { Id = t, Name = t.ToString() };
 
-                //var tribe = new List<object>(types);
-                //tribe.Insert(0, new { Id = 0, Name = "Select One..." });
-
                 return new SelectList(types, "Id", "Name");
             }
         }
 
         public Races SelectedRace { get; set; }
 
+        [Display(Name = "Race")]
         public SelectList Races
         {
             get
@@ -119,6 +135,7 @@ namespace OpenEhs.Web.Models
 
         public Religions SelectedReligion { get; set; }
 
+        [Display(Name = "Religion")]
         public SelectList Religions
         {
             get
@@ -173,7 +190,7 @@ namespace OpenEhs.Web.Models
 
         [Required(ErrorMessage = "Emergency Contact's country is required.")]
         [Display(Name = "Country")]
-        public string EcCountry { get; set; }
+        public Country EcCountry { get; set; }
 
         public CreatePatientViewModel()
         {
