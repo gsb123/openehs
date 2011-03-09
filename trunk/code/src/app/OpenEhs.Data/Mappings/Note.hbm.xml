@@ -12,18 +12,11 @@
     <property name="DateCreated" not-null="true" />
     <property name="Type" not-null="true" />
 
-
-
     <many-to-one name="Author" column="StaffID" unique="true" cascade="all" />
-
-
 
     <many-to-one name="PatientCheckIns" column="PatientCheckInID" unique="true" cascade="all" />
 
-
     <many-to-one name="NoteTemplateCategory" column="NoteTemplateCategoryID" unique="true" cascade="all" />
-    
-    
     
     <property name="IsActive" not-null="true" />
   </class>

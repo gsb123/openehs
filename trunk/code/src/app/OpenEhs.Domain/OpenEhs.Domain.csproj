@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Address\Country.cs" />
     <Compile Include="Model\Charting\IntakeChart.cs" />
     <Compile Include="Model\Charting\OutputChart.cs" />
     <Compile Include="Model\CheckIn\Location.cs" />

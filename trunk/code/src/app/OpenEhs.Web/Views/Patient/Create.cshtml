@@ -126,7 +126,7 @@
                     </div>
                     <div class="fieldGroup group">
                         @Html.LabelFor(m => m.Country)
-                        @Html.DropDownListFor(m => m.Country, new SelectList(new[] { "Ghana" }))
+                        @Html.DropDownListFor(m => m.Country, Model.Countries)
                     </div>
                 </div>
             </fieldset>

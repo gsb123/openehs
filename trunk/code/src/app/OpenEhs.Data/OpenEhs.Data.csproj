@@ -67,6 +67,7 @@
     <Compile Include="Common\IPagedList.cs" />
     <Compile Include="Common\PagedList.cs" />
     <Compile Include="Interfaces\IAllergyRepository.cs" />
+    <Compile Include="Interfaces\ICountryRepository.cs" />
     <Compile Include="Interfaces\ILocationRepository.cs" />
     <Compile Include="Interfaces\IMedicationRepository.cs" />
     <Compile Include="Interfaces\INoteTemplateRepository.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Interfaces\Membership\IRoleRepository.cs" />
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
     <Compile Include="Interfaces\IImmunizationRepository.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\ImmunizationRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\MedicationRepository.cs" />
@@ -133,6 +135,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Mappings\Country.hbm.xml" />
     <EmbeddedResource Include="Mappings\PatientMedication.hbm.xml" />
     <EmbeddedResource Include="Mappings\Medication.hbm.xml">
       <SubType>Designer</SubType>

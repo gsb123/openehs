@@ -64,4 +64,6 @@ $(function () {
     $("#btnAge").click(function () {
         $("#ageDialog").dialog("open");
     });
+
+    //$("#Country option:selected").val("");
 });

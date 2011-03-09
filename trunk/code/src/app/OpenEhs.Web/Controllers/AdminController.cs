@@ -25,6 +25,7 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 StaffRepository staffRepo = new StaffRepository();
+                CountryRepository countryRepo = new CountryRepository();
 
                 //Staff Object
                 Staff staff = new Staff();
@@ -45,7 +46,7 @@ namespace OpenEhs.Web.Controllers
                     address.Street2 = Request.Form["Street2"];
                 address.City = Request.Form["City"];
                 address.Region = Request.Form["Region"];
-                address.Country = Request.Form["Country"];
+                address.Country = countryRepo.Get(int.Parse(Request.Form["Country"]));
                 address.IsActive = true;
                 staff.Address = address;
 

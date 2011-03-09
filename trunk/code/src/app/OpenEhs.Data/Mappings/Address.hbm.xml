@@ -11,7 +11,13 @@
     <property name="Street2" not-null="false" length="50" />
     <property name="City" not-null="true" length="30" />
     <property name="Region" not-null="true" length="30" />
-    <property name="Country" not-null="true" length="30" />
+    
+    <many-to-one name="Country"
+             class="Country"
+             column="CountryID"
+             cascade="all"
+             unique="true" />
+
     <property name="IsActive" not-null="true" />   
   </class>
 </hibernate-mapping>
