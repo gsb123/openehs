@@ -49,18 +49,15 @@ namespace OpenEhs.Web.Models
         public Country Country { get; set; }
 
         [Required(ErrorMessage = "Patient's Country is required")]
+        [Display(Name = "Tribe")]
         public SelectList Countries
         {
             get
             {
-                var countryRepo = new CountryRepository();
+                var types = from Country t in Enum.GetValues(typeof(Country))
+                            select new { Id = t, Name = t.ToString() };
 
-                var countries = countryRepo.GetAll();
-
-                var country = from c in countries
-                              select new { Id = c.Id, Name = c.Name };
-
-                return new SelectList(country, "Id", "Name");
+                return new SelectList(types, "Id", "Name");
             }
         }
 
