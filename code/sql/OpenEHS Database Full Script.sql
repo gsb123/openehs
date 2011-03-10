@@ -314,7 +314,7 @@ CREATE TABLE Staff
     FirstName                   varchar(30)         NOT NULL,
     MiddleName                  varchar(30)         NULL,
     LastName                    varchar(30)         NOT NULL,
-    PhoneNumber                 varchar(20)         NOT NULL,
+    PhoneNumber                 varchar(20)         NULL,
     StaffType                   tinyint(1)          NOT NULL,
     LicenseNumber               varchar(20)         NULL                    Default NULL,
     AddressID                   int                 NOT NULL,

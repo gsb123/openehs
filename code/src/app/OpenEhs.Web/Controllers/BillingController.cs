@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Domain;
 using OpenEhs.Web.Models;
@@ -9,6 +8,7 @@ using System.Globalization;
 
 namespace OpenEhs.Web.Controllers
 {
+    [Authorize]
     public class BillingController : Controller
     {
         //

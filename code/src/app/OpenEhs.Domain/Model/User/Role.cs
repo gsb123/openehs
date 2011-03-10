@@ -75,5 +75,10 @@ namespace OpenEhs.Domain
         {
             return Name.CompareTo(other.Name);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -15,12 +15,10 @@
     </script>
 }
 
-
 <h2>User Management</h2>
 <div class="group">
     @using (Html.BeginForm())
     {
-        <!--<a href="#" id="NewUserButton">New User</a>-->
         <input type="button" id="NewUserButton" name="NewUserButton" value="New User" />
         @Html.DropDownListFor(m => m.SelectedRole, Model.Roles)
         @Html.TextBoxFor(m => m.SearchTerm)

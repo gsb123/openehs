@@ -3,15 +3,11 @@
 namespace OpenEhs.Web.Controllers
 {
     [Authorize]
-    public class ReportsController : Controller
+    public class RoleController : Controller
     {
-        //
-        // GET: /Reports/
-
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }
