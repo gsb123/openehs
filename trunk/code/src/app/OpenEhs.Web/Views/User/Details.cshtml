@@ -51,14 +51,14 @@
             <div id="RoleActions" class="group">
                 <input id="AddRoleButton" type="button" value="Add Role" />
                 <div id="AddRoleDialog">
-                    @using (Html.BeginForm())
-                    {
-                        <div>
-                            @Html.HiddenFor(m => m.UserId)
-                            @Html.LabelFor(m => m.SelectedRole)
-                            @Html.DropDownListFor(m => m.SelectedRole, Model.AvailableRoles)
-                        </div>
-                    }
+                    @*@using (Html.BeginForm())
+                    {*@
+                    <div>
+                        @Html.HiddenFor(m => m.UserId)
+                        @Html.LabelFor(m => m.SelectedRole)
+                        @Html.DropDownListFor(m => m.SelectedRole, Model.AvailableRoles)
+                    </div>
+                    @*}*@
                 </div>
             </div>
         </div>

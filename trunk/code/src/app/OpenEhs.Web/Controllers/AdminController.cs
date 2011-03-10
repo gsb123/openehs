@@ -8,7 +8,7 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Administrators")]
     public class AdminController : Controller
     {
         public ActionResult Index()
