@@ -13,12 +13,12 @@
         }
         
         #openCheckIns p {
-            margin-left: 50px;
+            margin-left: 40px;
         }
         
         #openCheckIns input {
             margin-top: 3px;
-            float: right;
+            margin-left: 20px;
             height: 25;
             width: 120px;
             font-size: 14px;
@@ -27,6 +27,7 @@
         
         #openCheckIns fieldset {
             border-width: medium;
+			width: 500px;
         }
         
         #openCheckIns fieldset legend {
@@ -64,7 +65,6 @@
     <fieldset>
         <legend>Open Checkins</legend>
         <p>
-            Select a Location:
             <select id="openCheckInSelect" name="loactionBox">
                 <option>Select Location...</option>
                 @foreach (var loc in Model.GetLocations) {
