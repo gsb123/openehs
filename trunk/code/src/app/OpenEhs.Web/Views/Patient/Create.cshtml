@@ -179,8 +179,8 @@
                         @Html.TextBoxFor(m => m.EcRegion)
                     </div>
                     <div class="fieldGroup group">
-                        @Html.LabelFor(m => m.EcCountry)
-                        @Html.DropDownListFor(m => m.EcCountry, new SelectList(new[] { "Ghana" }))
+						@Html.LabelFor(m => m.EcCountry)
+                        @Html.DropDownListFor(m => m.EcCountry, Model.Countries)
                     </div>
                 </div>
             </fieldset>
