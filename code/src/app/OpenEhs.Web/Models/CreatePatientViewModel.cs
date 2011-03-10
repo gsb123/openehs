@@ -61,7 +61,7 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Display(Name = "Old Record Number")]
+        [Display(Name = "Old Korle Bu ID")]
         public string OldPhysicalRecordNumber { get; set; }
 
         [Required(ErrorMessage="Emergency Contact's First Name is required")]

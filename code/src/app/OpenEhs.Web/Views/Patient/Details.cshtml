@@ -132,7 +132,7 @@
                 <select name="location" id="modal_checkinLocation">
                 @foreach (var location in Model.GetLocations)
                 {
-                    <option value="@location.Id">@location.Department Room: @location.RoomNumber</option>
+                    <option value="@location.Id">@location.Department @location.RoomNumber</option>
                 }
                 </select>
                 <br />
