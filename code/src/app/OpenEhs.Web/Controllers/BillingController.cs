@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Administrators")]
     public class BillingController : Controller
     {
         //

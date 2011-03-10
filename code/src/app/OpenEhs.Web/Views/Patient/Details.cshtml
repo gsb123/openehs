@@ -71,6 +71,7 @@
     <div>
         <ul>
             <li><a href="#patientView-Demographics">Demographics</a></li>
+            @if (User.IsInRole("Administrators")) {
             <li><a href="#patientView-Vitals">Vitals</a></li>
             <li><a href="#patientView-RxList">Rx List</a></li>
 			<li><a href="#patientView-Immunizations">Immunizations</a></li>
@@ -80,7 +81,8 @@
             <li><a href="#patientView-Charting">Charting</a></li>
             <li><a href="#patientView-Surgery">New Surgery</a></li>
             <li><a href="#patientView-PMH">PMH</a></li>
-            <li id="pickme"><a href="#patientView-Billing">Resources</a></li>
+            <li><a href="#patientView-Billing">Resources</a></li>
+            }
         </ul>
     </div>
     <div>

@@ -2,7 +2,7 @@
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Administrators, OPDAdministrators")]
     public class ReportsController : Controller
     {
         //

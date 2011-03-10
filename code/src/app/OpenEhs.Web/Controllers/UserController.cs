@@ -5,7 +5,7 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Administrators")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;

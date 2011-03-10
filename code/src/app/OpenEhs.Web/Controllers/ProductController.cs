@@ -4,7 +4,7 @@ using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Administrators")]
     public class ProductController : Controller
     {
         //

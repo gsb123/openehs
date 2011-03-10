@@ -11,7 +11,7 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="OPDClerks, OPDAdministrators, Administrators")]
     public class PatientController : Controller
     {
         private IPatientRepository _patientRepository;

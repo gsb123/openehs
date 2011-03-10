@@ -2,7 +2,7 @@
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Administrators")]
     public class RoleController : Controller
     {
         public ActionResult Index()

@@ -1,4 +1,4 @@
-/*****************************************************************************
+﻿/*****************************************************************************
  * Project: Open Electronic Healthcare System
  * Group: Ghana Team
  * Date: Jan-3-2011
@@ -990,8 +990,34 @@ INSERT INTO Role
 )
 VALUES
 (
-    "Sysop",
+    "Administrators",
     "The system administrator.",
+    "2011-02-21 00:00:00"
+);
+
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "OPDClerks",
+    "OPD Clerks",
+    "2011-02-21 00:00:00"
+);
+
+INSERT INTO Role
+(
+    `Name`,
+    Description,
+    DateCreated
+)
+VALUES
+(
+    "OPDAdministrators",
+    "Administrator over OPD clerks.",
     "2011-02-21 00:00:00"
 );
 
