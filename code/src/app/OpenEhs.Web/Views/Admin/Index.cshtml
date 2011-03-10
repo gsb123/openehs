@@ -19,17 +19,7 @@
 
     <fieldset id="fsLeftMargin" class="setFieldSetWidth">
         <legend class="legendTextSize">Manage Users</legend>
-
-        <input id="addUser" type="button" value="Add User" />
-
-        <br />
-
-        <input id="editUser" type="button" value="Edit User" />
-
-        <br />
-
-        <input id="deleteUser" type="button" value="Delete User" />
-
+        <a href="/admin/user" style="font-size: 2em;">User List</a>
     </fieldset>
 
 	<fieldset id="fsLeftMarginRowTwo" class="setFieldSetWidth">
@@ -152,33 +142,11 @@
 
 
 <div>
-
     <fieldset id="fsDatabaseBackup">
         <legend class="legendTextSize">Database Backup</legend>
-        
-		<input type="button" name="backupDatabase" title="backupDatabase" class="backupDatabase" />
-
-		<input type="button" name="restoreDatabase" title="restoreDatabase" class="restoreDatabase" />
-
-		<!-- This way is total hack on how to space this out but oh well... Dont have much time to mess with it! -->
-
-		<p><b id="backupLable"><tt>Backup Database &nbsp &nbsp <spacer> Restore Database</tt></b></p>
-
+        @Html.ActionLink("Backup", "BackupDatabase")
     </fieldset>
-
 </div>
-
-<div>
-
-	<fieldset id="fsSystemLogs">
-		<legend class="legendTextSize">System Logs</legend>
-
-		I DONT KNOW WHAT GOES IN HERE, IT IS JUST IN THE MOCKUPS...
-
-	</fieldset
-
-</div>
-
 <div id="addProductDialog" title="Add New Product">
     <ul class="modalErrorContainer" style="display: none">
     </ul>

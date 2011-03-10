@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 using OpenEhs.Domain;
 using System;
@@ -15,6 +16,13 @@ namespace OpenEhs.Web.Controllers
         {
             var viewModel = new AdminViewModel();
             return View(viewModel);
+        }
+
+        public ActionResult BackupDatabase()
+        {
+            MySqlUtilities.Backup("openehs_database", ConfigurationManager.AppSettings["MySql.RootPassword"], ConfigurationManager.AppSettings["Backup.Directory"]);
+
+            return RedirectToAction("Index");
         }
 
         #region JsonResults
