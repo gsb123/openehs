@@ -44,7 +44,7 @@
                             </li>
                             <li>
                                 @Html.LabelFor(m => m.LicenseNumber)
-                                @Html.TextBoxFor(m => m.LicenseNumber, new { @id = "licenseNumberTextbox" })
+                                @Html.TextBoxFor(m => m.LicenseNumber, new { @id = "licenseNumberTextbox", @maxlength = "20" })
                             </li>
                         </ul>
                     </div>

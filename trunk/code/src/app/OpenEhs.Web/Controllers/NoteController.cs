@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using OpenEhs.Domain;
-using OpenEhs.Data;
 
 namespace OpenEhs.Web.Controllers
 {
+    [Authorize]
     public class NoteController : Controller
     {
         //

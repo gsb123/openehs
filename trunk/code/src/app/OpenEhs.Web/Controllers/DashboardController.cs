@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Data;
 using OpenEhs.Domain;
@@ -9,6 +7,7 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         private IPatientRepository _patientRepository;

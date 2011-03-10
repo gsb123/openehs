@@ -10,7 +10,7 @@
     <property name="FirstName" not-null="true" length="30" />
     <property name="MiddleName" not-null="false" length="30" />
     <property name="LastName" not-null="true" length="30" />
-    <property name="PhoneNumber" not-null="true" length="20" />
+    <property name="PhoneNumber" not-null="false" length="20" />
     <property name="StaffType" not-null="true" />
     <property name="LicenseNumber" not-null="false" length="20" />
 

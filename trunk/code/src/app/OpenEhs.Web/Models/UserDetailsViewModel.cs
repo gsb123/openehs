@@ -68,7 +68,6 @@ namespace OpenEhs.Web.Models
             {
                 var roles = new List<Role>(new RoleRepository().GetAll());
                 roles.Sort();
-                roles.Insert(0, new Role("All", "", DateTime.Now));
 
                 return new SelectList(roles, "Id", "Name");
             }

@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Domain;
-using System.Collections.Generic;
 using OpenEhs.Data;
 
 namespace OpenEhs.Web.Models
@@ -134,7 +133,6 @@ namespace OpenEhs.Web.Models
         }
 
         public Religions SelectedReligion { get; set; }
-        [Display(Name = "Religion")]
         [Display(Name = "Religion")]
         public SelectList Religions
         {

@@ -36,14 +36,18 @@ $(document).ready(function () {
     });
 
     $(".approvedCheckbox").click(function (event) {
-        var id = $(this).attr("name").match(/\d/);
+        var userId = $(this).attr("name").match(/\d/);
 
         event.stopPropagation();
 
-        if ($(this).is(":checked")) {
-            $.post("/User/ApproveUser/" + id, function (data) {
-                // animation here.
-            });
-        }
+        $.ajax({
+            type: "POST",
+            url: "/Admin/User/Approve",
+            data: {
+                id: userId[0]
+            },
+            success: function () {  },
+            dataType: "json"
+        });
     });
 });

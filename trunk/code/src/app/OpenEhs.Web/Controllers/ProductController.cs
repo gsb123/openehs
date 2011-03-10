@@ -4,6 +4,7 @@ using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         //

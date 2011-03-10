@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using OpenEhs.Data;
 using OpenEhs.Domain;
 
 namespace OpenEhs.Web.Controllers
 {
+    [Authorize]
     public class StaffController : Controller
     {
         //

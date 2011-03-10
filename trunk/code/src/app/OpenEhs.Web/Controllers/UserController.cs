@@ -5,6 +5,7 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -79,7 +80,7 @@ namespace OpenEhs.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ApproveUser(int id)
+        public ActionResult Approve(int id)
         {
             var user = _userRepository.Get(id);
 
