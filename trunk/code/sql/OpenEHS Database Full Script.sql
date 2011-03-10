@@ -172,7 +172,7 @@ CREATE TABLE Location
 (
 LocationID          int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
 Department          varchar(20)         NOT NULL,
-RoomNumber          varchar(15)         NOT NULL,
+RoomNumber          varchar(15)         NULL,
 IsActive            bit                 NOT NULL            DEFAULT 1
 );
 
@@ -853,6 +853,27 @@ VALUES
 ('Yemen'),
 ('Zambia'),
 ('Zimbabwe');
+
+/*********************************************
+Country List
+*********************************************/
+
+INSERT INTO Location (Department, RoomNumber)
+VALUES
+('Eye Clinic', ''),
+('ENT Clinic', ''),
+('Physician Clinic', ''),
+('Surgical Clinic', ''),
+('Urology Clinic', ''),
+('Neurology Clinic', ''),
+('Anesthetic Clinic', ''),
+('Renal Clinic', ''),
+('Gastro Clinic', ''),
+('Endocrine Clinic', ''),
+('Orthopedic Clinic', ''),
+('Dermatology Clinic', ''),
+('Neuro Surgery Clinic', ''),
+('Vascluar Clinic', '');
 
 /************************************
 * sp_insertStaff inserts into 
