@@ -54,7 +54,7 @@ Street1             varchar(50)         NOT NULL,
 Street2             varchar(50)         NULL,
 City                varchar(30)         NOT NULL,
 Region              varchar(30)         NOT NULL,
-CountryID           int                 NOT NULL,
+Country             varchar(30)         NOT NULL,
 IsActive            bit(1)              NOT NULL                DEFAULT 1
 );
 
