@@ -11,14 +11,16 @@ $(function () {
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
         buttonImageOnly: true,
-        changeYear: true
+        changeYear: true,
+        yearRange: "1900:" + new Date().getFullYear()
     });
 
     $("#InsuranceExpiration").datepicker({
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
         buttonImageOnly: true,
-        changeYear: true
+        changeYear: true,
+        yearRange: "1900:" + new Date().getFullYear()
     });
 
     $("#EmergencyContactMoreInfoLink").click(function () {
