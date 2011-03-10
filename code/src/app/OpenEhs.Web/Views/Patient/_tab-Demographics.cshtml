@@ -5,6 +5,7 @@
         <div class="group">
             <div class="column">
                 @Html.LabelFor(model => model.PatientId)<br />
+                @Html.TextBoxFor(model => model.PatientId, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.OldPhysicalRecordNumber)<br />
                 @Html.TextBoxFor(model => model.OldPhysicalRecordNumber, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.FirstName)<br />
@@ -64,7 +65,7 @@
                 @Html.LabelFor(model => model.Address.City)<br />
                 @Html.TextBoxFor(model => model.Address.City, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.Address.Country)<br />
-                @Html.TextBoxFor(model => model.Address.Country, new { disabled = "disabled" })
+                @Html.DropDownListFor(model => model.Address.Country, Model.Countries, new { disabled = "disabled" })
             </div>
             <div class="column">
                 @Html.LabelFor(model => model.Address.Street2)<br />
@@ -92,7 +93,9 @@
             @Html.LabelFor(model => model.EmergencyContact.Address.City)<br />
             @Html.TextBoxFor(model => model.EmergencyContact.Address.City, new { disabled = "disabled" })<br />
             @Html.LabelFor(model => model.EmergencyContact.Address.Region)<br />
-            @Html.TextBoxFor(model => model.EmergencyContact.Address.Region, new { disabled = "disabled" })
+            @Html.TextBoxFor(model => model.EmergencyContact.Address.Region, new { disabled = "disabled" })<br />
+            @Html.LabelFor(model => model.EmergencyContact.Address.Country)<br />
+            @Html.DropDownListFor(model => model.EmergencyContact.Address.Country, Model.Countries, new { disabled = "disabled" })
         </div>
     </fieldset>
 </div>

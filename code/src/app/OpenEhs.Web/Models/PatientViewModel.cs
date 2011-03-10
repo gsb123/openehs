@@ -557,6 +557,17 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public SelectList Countries
+        {
+            get
+            {
+                var types = from Country t in Enum.GetValues(typeof(Country))
+                            select new { Id = t, Name = t.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
         #endregion
 
 
