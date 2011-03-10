@@ -56,6 +56,7 @@ $(function () {
         $("#Address_Street2").removeAttr("disabled");
         $("#Address_City").removeAttr("disabled");
         $("#Address_Region").removeAttr("disabled");
+        $("#Address_Country").removeAttr("disabled");
         $("#EmergencyContact_FirstName").removeAttr("disabled");
         $("#EmergencyContact_LastName").removeAttr("disabled");
         $("#EmergencyContact_PhoneNumber").removeAttr("disabled");
@@ -63,6 +64,7 @@ $(function () {
         $("#EmergencyContact_Address_Street2").removeAttr("disabled");
         $("#EmergencyContact_Address_City").removeAttr("disabled");
         $("#EmergencyContact_Address_Region").removeAttr("disabled");
+        $("#EmergencyContact_Address_Country").removeAttr("disabled");
         $("#IsActive").removeAttr("disabled");
         $("#editPatientInfoButton").hide();
         $("#savePatientInfoButton").show();
@@ -85,6 +87,7 @@ $(function () {
                 Address_Street2: $("#Address_Street2").val(),
                 Address_City: $("#Address_City").val(),
                 Address_Region: $("#Address_Region").val(),
+                Address_Country: $("#Address_Country").val(),
                 EC_FirstName: $("#EmergencyContact_FirstName").val(),
                 EC_LastName: $("#EmergencyContact_LastName").val(),
                 EC_PhoneNumber: $("#EmergencyContact_PhoneNumber").val(),
@@ -92,6 +95,7 @@ $(function () {
                 EC_Address_Street2: $("#EmergencyContact_Address_Street2").val(),
                 EC_Address_City: $("#EmergencyContact_Address_City").val(),
                 EC_Address_Region: $("#EmergencyContact_Address_Region").val(),
+                EC_Address_Country: $("#EmergencyContact_Address_Country").val(),
                 Note: $("#patientNoteTextBox").val(),
                 IsActive: $("#IsActive").val(),
                 Tribe: $("#Tribe").val(),
@@ -113,6 +117,7 @@ $(function () {
                 $("#Address_Street2").attr("disabled", "disabled");
                 $("#Address_City").attr("disabled", "disabled");
                 $("#Address_Region").attr("disabled", "disabled");
+                $("#Address_Country").attr("disabled", "disabled");
                 $("#EmergencyContact_FirstName").attr("disabled", "disabled");
                 $("#EmergencyContact_LastName").attr("disabled", "disabled");
                 $("#EmergencyContact_PhoneNumber").attr("disabled", "disabled");
@@ -120,6 +125,7 @@ $(function () {
                 $("#EmergencyContact_Address_Street2").attr("disabled", "disabled");
                 $("#EmergencyContact_Address_City").attr("disabled", "disabled");
                 $("#EmergencyContact_Address_Region").attr("disabled", "disabled");
+                $("#EmergencyContact_Address_Country").attr("disabled", "disabled");
                 $("#IsActive").attr("disabled", "disabled");
                 $("#Tribe").attr("disabled", "disabled");
                 $("#Race").attr("disabled", "disabled");

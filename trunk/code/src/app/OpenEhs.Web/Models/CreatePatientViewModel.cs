@@ -49,7 +49,7 @@ namespace OpenEhs.Web.Models
         public Country Country { get; set; }
 
         [Required(ErrorMessage = "Patient's Country is required")]
-        [Display(Name = "Tribe")]
+        [Display(Name = "Country")]
         public SelectList Countries
         {
             get

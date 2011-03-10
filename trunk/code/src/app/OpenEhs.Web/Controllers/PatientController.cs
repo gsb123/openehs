@@ -254,6 +254,7 @@ namespace OpenEhs.Web.Controllers
                 patient.Address.Street2 = Request.Form["Address_Street2"];
                 patient.Address.City = Request.Form["Address_City"];
                 patient.Address.Region = Request.Form["Address_Region"];
+                patient.Address.Country = (Country)Enum.Parse(typeof(Country), Request.Form["Address_Country"]);
                 patient.EmergencyContact.FirstName = Request.Form["EC_FirstName"];
                 patient.EmergencyContact.LastName = Request.Form["EC_LastName"];
                 patient.EmergencyContact.PhoneNumber = Request.Form["EC_PhoneNumber"];
@@ -261,6 +262,7 @@ namespace OpenEhs.Web.Controllers
                 patient.EmergencyContact.Address.Street2 = Request.Form["EC_Address_Street2"];
                 patient.EmergencyContact.Address.City = Request.Form["EC_Address_City"];
                 patient.EmergencyContact.Address.Region = Request.Form["EC_Address_Region"];
+                patient.EmergencyContact.Address.Country = (Country)Enum.Parse(typeof(Country),Request.Form["EC_Address_Country"]);
                 patient.Note = Request.Form["Note"];
                 patient.Tribe = (Tribes)Enum.Parse(typeof(Tribes), Request.Form["Tribe"]);
                 patient.Race = (Races)Enum.Parse(typeof(Races), Request.Form["Race"]);
