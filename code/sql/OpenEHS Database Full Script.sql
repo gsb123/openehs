@@ -54,7 +54,7 @@ Street1             varchar(50)         NOT NULL,
 Street2             varchar(50)         NULL,
 City                varchar(30)         NOT NULL,
 Region              varchar(30)         NOT NULL,
-Country             varchar(30)         NOT NULL,
+Country             int                 NOT NULL,
 IsActive            bit(1)              NOT NULL                DEFAULT 1
 );
 
@@ -494,10 +494,6 @@ ALTER TABLE Vitals
 ADD CONSTRAINT FK_VitalsMustHavePatientCheckInID
 FOREIGN KEY (PatientCheckInID) REFERENCES PatientCheckIn(PatientCheckInID);
 
-ALTER TABLE Address
-ADD CONSTRAINT FK_AddressMustHavePatientCountryID
-FOREIGN KEY (CountryID) REFERENCES Country(CountryID);
-
 ALTER TABLE PatientProblem
 ADD CONSTRAINT FK_PatientProblemMustHavePatientID
 FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
@@ -550,6 +546,7 @@ BEGIN
     SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), substr(NEW.FirstName,2));
     SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), substr(NEW.MiddleName,2));
     SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), substr(NEW.LastName,2));
+    SET NEW.Occupation = CONCAT(UCASE(substr(NEW.Occupation,1,1)), substr(NEW.Occupation,2));
 END;
 $$
 DELIMITER ;
@@ -869,7 +866,7 @@ IN i_Street1                varchar(30),
 IN i_Street2                varchar(30),
 IN i_City                   varchar(30),
 IN i_Region                 varchar(30),
-IN i_CountryID              int,
+IN i_Country                int,
 IN i_UserName               varchar(30),
 IN i_Password               varchar(30),
 IN i_LIP                    char(1),
@@ -892,7 +889,7 @@ Street1,
 Street2,
 City,
 Region,
-CountryID
+Country
 )
 VALUES
 (
@@ -900,7 +897,7 @@ i_Street1,
 i_Street2,
 i_City,
 i_Region,
-i_CountryID
+i_Country
 );
 
 SELECT LAST_INSERT_ID() INTO _returnAddID;
@@ -987,7 +984,7 @@ Street1,
 Street2,
 City,
 Region,
-CountryID
+Country
 )
 VALUES
 (
