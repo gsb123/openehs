@@ -25,5 +25,14 @@ namespace OpenEhs.Web.Controllers {
             return View();
         }
 
+        public ActionResult PrinterSetup(){
+            return View();
+        }
+
+        public ActionResult PrintExistingPatientBarcode()
+        {
+            return View();
+        }
+
     }
 }
