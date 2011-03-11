@@ -9,7 +9,13 @@ namespace OpenEhs.Web.Controllers {
             return View();
         }
 
-        public ActionResult PatientSearch() {
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public ActionResult PatientSearch()
+        {
             return View();
         }
 
@@ -25,7 +31,13 @@ namespace OpenEhs.Web.Controllers {
             return View();
         }
 
-        public ActionResult PrinterSetup(){
+        public ActionResult BillingDetails()
+        {
+            return View();
+        }
+
+        public ActionResult PrinterSetup()
+        {
             return View();
         }
 
