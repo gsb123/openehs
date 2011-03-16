@@ -26,9 +26,6 @@ namespace OpenEhs.Web.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage="Patient's Gender is required")]
-        public Gender Gender { get; set; }
-
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
@@ -188,6 +185,20 @@ namespace OpenEhs.Web.Models
             {
                 var types = from Education a in Enum.GetValues(typeof(Education))
                             select new { Id = a, Name = a.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        [Required(ErrorMessage = "Patient's Gender is required")]
+        public Gender SelectedGender { get; set; }
+        
+        public SelectList Genders
+        {
+            get
+            {
+                var types = from Gender s in Enum.GetValues(typeof(Gender))
+                            select new { Id = s, Name = s.ToString() };
 
                 return new SelectList(types, "Id", "Name");
             }

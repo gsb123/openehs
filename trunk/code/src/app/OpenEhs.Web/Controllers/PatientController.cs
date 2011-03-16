@@ -63,7 +63,7 @@ namespace OpenEhs.Web.Controllers
                 PhoneNumber = model.PhoneNumber,
                 DateOfBirth = model.DateOfBirth,
                 DateOfDeath = DateTime.MinValue,
-                Gender = model.Gender,
+                Gender = model.SelectedGender,
                 Tribe = model.SelectedTribe,
                 Race = model.SelectedRace,
                 Occupation = model.pOccupation,

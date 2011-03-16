@@ -44,16 +44,12 @@
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.DateOfBirth)
                     @Html.EditorFor(m => m.DateOfBirth)
+					@Html.TextBoxFor(m => m.DateOfBirth)
                     <input type="button" id="btnAge" value="Age" />
                 </div>
                 <div class="fieldGroup group">
-                    @Html.LabelFor(m => m.Gender)
-                    <div id="GenderRadio">
-                        @Html.RadioButtonFor(m => m.Gender, "Male", new { @id = "MaleGenderRadio" })
-                        @Html.Label("MaleGenderRadio", "Male")
-                        @Html.RadioButtonFor(m => m.Gender, "Female", new { @id = "FemaleGenderRadio" })
-                        @Html.Label("FemaleGenderRadio", "Female")
-                    </div>
+						@Html.LabelFor(m => m.Genders)
+						@Html.DropDownListFor(m => m.SelectedGender , Model.Genders)
                 </div>
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.OldPhysicalRecordNumber)
