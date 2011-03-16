@@ -122,7 +122,7 @@
                     </div>
                     <div class="fieldGroup group">
                         @Html.LabelFor(m => m.Region)
-                        @Html.TextBoxFor(m => m.Region)
+                        @Html.DropDownListFor(m => m.Region, Model.Regions)
                     </div>
                     <div class="fieldGroup group">
                         @Html.LabelFor(m => m.Country)
@@ -176,7 +176,7 @@
                     </div>
                     <div class="fieldGroup group">
                         @Html.LabelFor(m => m.EcRegion)
-                        @Html.TextBoxFor(m => m.EcRegion)
+                        @Html.DropDownListFor(m => m.EcRegion, Model.Regions)
                     </div>
                     <div class="fieldGroup group">
 						@Html.LabelFor(m => m.EcCountry)

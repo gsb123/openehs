@@ -72,4 +72,8 @@ $(function () {
         $("#EcRegion").val($("#Region").val());
         $("#EcCountry").val($("#Country").val());
     });
+
+    $("#Country").val("Ghana");
+    $("#EcCountry").val("Ghana");
+    $("#Region").val("Greater Accra");
 });

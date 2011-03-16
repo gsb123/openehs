@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Domain;
-using OpenEhs.Data;
 
 namespace OpenEhs.Web.Models
 {
@@ -45,6 +45,31 @@ namespace OpenEhs.Web.Models
         [Required(ErrorMessage = "Patient's Region is required")]
         public string Region { get; set; }
 
+        [Required(ErrorMessage = "Patient's Region is requireds")]
+        [Display(Name = "Region")]
+        public SelectList Regions
+        {
+            get 
+            { 
+                var regions = new List<object>
+                                  {
+                                      new {Value = "Eastern", Text = "Eastern"},
+                                      new {Value = "Central", Text = "Central"},
+                                      new {Value = "Western", Text = "Western"},
+                                      new {Value = "Northern", Text = "Northern"},
+                                      new {Value = "Ashanti", Text = "Ashanti"},
+                                      new {Value = "Volta", Text = "Volta"},
+                                      new {Value = "Brong-Ahafo", Text = "Brong-Ahafo"},
+                                      new {Value = "Upper East", Text = "Upper East"},
+                                      new {Value = "Upper West", Text = "Upper West"},
+                                      new {Value = "Greater Accra", Text = "Greater Accra"},
+                                      new {Value = "Other", Text = "Other"}
+                                  };
+
+                return new SelectList(regions, "Value", "Text", new { Value = "Greater Accra", Text = "Greater Accra" });
+            }
+        }
+
         [Required(ErrorMessage = "Patient's Country is required")]
         public Country Country { get; set; }
 
@@ -57,7 +82,7 @@ namespace OpenEhs.Web.Models
                 var types = from Country t in Enum.GetValues(typeof(Country))
                             select new { Id = t, Name = t.ToString() };
 
-                return new SelectList(types, "Id", "Name");
+                return new SelectList(types, "Id", "Name", "Ghana");
             }
         }
 
