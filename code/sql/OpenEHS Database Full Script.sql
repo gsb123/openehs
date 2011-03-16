@@ -64,7 +64,7 @@ EmergencyContactID          int              AUTO_INCREMENT          PRIMARY KEY
 FirstName                   varchar(30)      NOT NULL,
 LastName                    varchar(30)      NOT NULL,
 PhoneNumber                 varchar(20)      NULL,
-Relationship                bit(3)           NOT NULL,
+Relationship                int              NOT NULL,
 AddressID                   int              NOT NULL,
 IsActive                    bit(1)           NOT NULL                DEFAULT 1
 );
@@ -102,6 +102,7 @@ InsuranceNumber             varchar(20)         NULL,
 InsuranceExpiration         datetime            NULL,
 EmergencyContactID          int                 NULL,
 DateOfDeath                 datetime            NULL,
+CreationDate                datetime            NOT NULL,
 IsActive                    bit(1)              NOT NULL                DEFAULT 1
 ) AUTO_INCREMENT= 100000;
 
@@ -543,10 +544,10 @@ BEFORE INSERT ON Patient
 FOR EACH ROW
 
 BEGIN
-    SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), substr(NEW.FirstName,2));
-    SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), substr(NEW.MiddleName,2));
-    SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), substr(NEW.LastName,2));
-    SET NEW.Occupation = CONCAT(UCASE(substr(NEW.Occupation,1,1)), substr(NEW.Occupation,2));
+    SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), (LCASE(substr(NEW.FirstName,2))));
+    SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), (LCASE(substr(NEW.MiddleName,2))));
+    SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), (LCASE(substr(NEW.LastName,2))));
+    SET NEW.Occupation = CONCAT(UCASE(substr(NEW.Occupation,1,1)), (LCASE(substr(NEW.Occupation,2))));
 END;
 $$
 DELIMITER ;
@@ -560,8 +561,8 @@ BEFORE INSERT ON EmergencyContact
 FOR EACH ROW
 
 BEGIN
-    SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), substr(NEW.FirstName,2));
-    SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), substr(NEW.LastName,2));
+    SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), (LCASE(substr(NEW.FirstName,2))));
+    SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), (LCASE(substr(NEW.LastName,2))));
 END;
 $$
 DELIMITER ;
@@ -575,9 +576,9 @@ BEFORE INSERT ON Staff
 FOR EACH ROW
 
 BEGIN
-    SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), substr(NEW.FirstName,2));
-    SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), substr(NEW.MiddleName,2));
-    SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), substr(NEW.LastName,2));
+    SET NEW.FirstName = CONCAT(UCASE(substr(NEW.FirstName,1,1)), (LCASE(substr(NEW.FirstName,2))));
+    SET NEW.MiddleName = CONCAT(UCASE(substr(NEW.MiddleName,1,1)), (LCASE(substr(NEW.MiddleName,2))));
+    SET NEW.LastName = CONCAT(UCASE(substr(NEW.LastName,1,1)), (LCASE(substr(NEW.LastName,2))));
 END;
 $$
 DELIMITER ;
@@ -591,8 +592,8 @@ BEFORE INSERT ON Address
 FOR EACH ROW
 
 BEGIN
-    SET NEW.City = CONCAT(UCASE(substr(NEW.City,1,1)), substr(NEW.City,2));
-    SET NEW.Region = CONCAT(UCASE(substr(NEW.Region,1,1)), substr(NEW.Region,2));
+    SET NEW.City = CONCAT(UCASE(substr(NEW.City,1,1)), (LCASE(substr(NEW.City,2))));
+    SET NEW.Region = CONCAT(UCASE(substr(NEW.Region,1,1)), (LCASE(substr(NEW.Region,2))));
 END;
 $$
 DELIMITER ;
