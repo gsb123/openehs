@@ -14,19 +14,22 @@
                 @Html.TextBoxFor(model => model.MiddleName, new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.LastName)<br />
                 @Html.TextBoxFor(model => model.LastName, new { disabled = "disabled" })<br />
+
+
+                <div id="GenderRadio">
+                    
+				@Html.LabelFor(model => model.Gender)<br />
+                @Html.DropDownListFor(model => model.Gender, Model.Genders, "Choose Gender...", new { disabled = "disabled", @class = "modal-input ui-widget-content ui-corner-all" })<br />
+
+                </div>
+
             </div>
             <div class="column">
 
 				@Html.LabelFor(model => model.CreationDate)<br />
-                @Html.TextBoxFor(model => model.CreationDate, new { disabled = "disabled" })<br />
+                @Html.TextBox("CreationDate", String.Format("{0:d}", Model.CreationDate), new { disabled = "disabled" })<br />
 
-                @Html.LabelFor(model => model.Gender, "Gender")<br />
-                <div id="GenderRadio">
-                    @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio", disabled = "disabled" })
-                    @Html.Label("MaleGenderRadio", "Male")
-                    @Html.RadioButtonFor(model => model.Gender, "Female", new { @id = "FemaleGenderRadio", disabled = "disabled" })
-                    @Html.Label("FemaleGenderRadio", "Female")
-                </div>
+                
                 @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
                 @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth), new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.PhoneNumber)<br />

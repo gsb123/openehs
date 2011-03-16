@@ -794,6 +794,17 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public SelectList Genders
+        {
+            get
+            {
+                var types = from Gender s in Enum.GetValues(typeof(Gender))
+                            select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
         #endregion
 
     }

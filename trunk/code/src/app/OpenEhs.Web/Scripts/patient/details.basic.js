@@ -23,6 +23,16 @@ $(function () {
         yearRange: "1900:" + new Date().getFullYear()
     });
 
+    /*
+    $("#CreationDate").datepicker({
+    showOn: "button",
+    //buttonImage: "/Content/themes/base/images/calendar.png",
+    buttonImageOnly: true,
+    changeYear: true,
+    //yearRange: "1900:" + new Date().getFullYear()
+    });
+    */
+
     $("#EmergencyContactMoreInfoLink").click(function () {
         $("#EmergencyContactMoreInfo").slideToggle("slow", function () { });
     });
@@ -37,6 +47,8 @@ $(function () {
 
     $("#checkOutButton").button();
     $("#checkOutButton").hide();
+
+    $("#GenderRadio").buttonset();
 
     $("#editPatientInfoButton").button().click(function () {
         $("#FirstName").removeAttr("disabled");
@@ -55,6 +67,7 @@ $(function () {
         $("#Address_Street1").removeAttr("disabled");
         $("#Address_Street2").removeAttr("disabled");
         $("#Address_City").removeAttr("disabled");
+        $("#Gender").removeAttr("disabled");
         $("#Address_Region").removeAttr("disabled");
         $("#Address_Country").removeAttr("disabled");
         $("#EmergencyContact_FirstName").removeAttr("disabled");
@@ -79,8 +92,8 @@ $(function () {
                 FirstName: $("#FirstName").val(),
                 MiddleName: $("#MiddleName").val(),
                 LastName: $("#LastName").val(),
-                MaleGenderRadio: $("#MaleGenderRadio").val(),
-                FemaleGenderRadio: $("#FemaleGenderRadio").val(),
+                //MaleGenderRadio: $("#MaleGenderRadio").val(),
+                //FemaleGenderRadio: $("#FemaleGenderRadio").val(),
                 DateOfBirth: $("#DateOfBirth").val(),
                 PhoneNumber: $("#PhoneNumber").val(),
                 Address_Street1: $("#Address_Street1").val(),
@@ -99,6 +112,7 @@ $(function () {
                 Note: $("#patientNoteTextBox").val(),
                 IsActive: $("#IsActive").val(),
                 Tribe: $("#Tribe").val(),
+                Gender: $("#Gender").val(),
                 Race: $("#Race").val(),
                 Education: $("#Education").val(),
                 Occupation: $("#Occupation").val(),
@@ -113,6 +127,7 @@ $(function () {
                 $("#FemaleGenderRadio").attr("disabled", "disabled");
                 $("#DateOfBirth").attr("disabled", "disabled");
                 $("#PhoneNumber").attr("disabled", "disabled");
+                $("#Gender").attr("disabled", "disabled");
                 $("#Address_Street1").attr("disabled", "disabled");
                 $("#Address_Street2").attr("disabled", "disabled");
                 $("#Address_City").attr("disabled", "disabled");
