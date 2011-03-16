@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace OpenEhs.Domain
+﻿namespace OpenEhs.Domain
 {
     public enum Religions
     {
         Babism,
         Bahai,
-        Christianity,
-        Catholicism,
-        Protestantism,
+        Christian,
+        Catholic,
+        Hindu,
         LDS,
+        Muslim,
+        Protestant,
+        Traditionalist,
         Unknown,
         Other
     }
