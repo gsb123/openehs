@@ -43,6 +43,7 @@ namespace OpenEhs.Domain
         public virtual string Note { get; set; }
         public virtual string OldPhysicalRecordNumber { get; set; }
         public virtual DateTime DateOfDeath { get; set; }
+        public virtual DateTime CreationDate { get; set; }
         public virtual bool IsActive { get; set; }
 
         public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }

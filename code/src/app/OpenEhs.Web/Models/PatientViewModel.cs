@@ -104,6 +104,21 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayName("Creation Date")]
+        public DateTime CreationDate
+        {
+            get
+            {
+                return _patient.CreationDate;
+            }
+            set
+            {
+                _patient.CreationDate = value;
+            }
+        }
+
         [DisplayName("Insurance Expiration")]
         public DateTime InsuranceExpiration
         {

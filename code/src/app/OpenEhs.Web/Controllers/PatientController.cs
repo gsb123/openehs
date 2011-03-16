@@ -72,6 +72,7 @@ namespace OpenEhs.Web.Controllers
                 InsuranceNumber = model.InsuranceNumber,
                 InsuranceExpiration = model.InsuranceExpiration,
                 OldPhysicalRecordNumber = model.OldPhysicalRecordNumber,
+                CreationDate = DateTime.Now,
                 Address = new Address {
                     Street1 = model.Street1,
                     Street2 = model.Street2,

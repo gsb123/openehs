@@ -16,6 +16,10 @@
                 @Html.TextBoxFor(model => model.LastName, new { disabled = "disabled" })<br />
             </div>
             <div class="column">
+
+				@Html.LabelFor(model => model.CreationDate)<br />
+                @Html.TextBoxFor(model => model.CreationDate, new { disabled = "disabled" })<br />
+
                 @Html.LabelFor(model => model.Gender, "Gender")<br />
                 <div id="GenderRadio">
                     @Html.RadioButtonFor(model => model.Gender, "Male", new { @id = "MaleGenderRadio", disabled = "disabled" })
