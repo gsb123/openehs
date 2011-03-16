@@ -33,10 +33,10 @@ namespace OpenEhs.Web.Models
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage="Patient's Street Address is required")]
-        [Display(Name = "Address 1")]
+        [Display(Name = "Residental Address")]
         public string Street1 { get; set; }
 
-        [Display(Name = "Address 2")]
+        [Display(Name = "Business Address")]
         public string Street2 { get; set; }
 
         [Required(ErrorMessage = "Patient's City is required")]
@@ -189,7 +189,7 @@ namespace OpenEhs.Web.Models
 
         public CreatePatientViewModel()
         {
-            DateOfBirth = DateTime.Now;
+            //DateOfBirth = DateTime.Now;
             InsuranceExpiration = DateTime.Now;
         }
     }

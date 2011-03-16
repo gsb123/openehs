@@ -13,7 +13,11 @@ namespace OpenEhs.Domain
         Spouse = 0,
         Father = 1,
         Mother = 2,
-        Sibling = 3,
-        Other = 4
+        Brother = 3,
+        Sister = 4,
+        InLaw = 5,
+        Aunt = 6,
+        Cousin = 7,
+        Other = 8
     }
 }
