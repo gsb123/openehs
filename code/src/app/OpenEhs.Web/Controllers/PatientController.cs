@@ -266,6 +266,7 @@ namespace OpenEhs.Web.Controllers
                 patient.EmergencyContact.Address.Country = (Country)Enum.Parse(typeof(Country),Request.Form["EC_Address_Country"]);
                 patient.Note = Request.Form["Note"];
                 patient.Tribe = (Tribes)Enum.Parse(typeof(Tribes), Request.Form["Tribe"]);
+                patient.Gender = (Gender)Enum.Parse(typeof(Gender), Request.Form["Gender"]);
                 patient.Race = (Races)Enum.Parse(typeof(Races), Request.Form["Race"]);
                 patient.Occupation = Request.Form["Occupation"];
                 patient.InsuranceNumber = Request.Form["InsuranceNumber"];
