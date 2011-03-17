@@ -20,8 +20,6 @@
     @using (Html.BeginForm())
     {
         <input type="button" id="NewUserButton" name="NewUserButton" value="New User" />
-        @Html.DropDownListFor(m => m.SelectedRole, Model.Roles)
-        @Html.TextBoxFor(m => m.SearchTerm)
     }
     <table id="UserList">
         <thead>

@@ -161,7 +161,7 @@ namespace OpenEhs.Infrastructure.Security
 
         public override bool ValidateUser(string username, string password)
         {
-            var users = _userRepository.Find(username, password);
+            var users = _userRepository.Find(username.ToLower(), password);
             return users.Count != 0;
         }
 

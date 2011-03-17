@@ -136,6 +136,7 @@
     <Compile Include="ReportContent\PatientReports.aspx.designer.cs">
       <DependentUpon>PatientReports.aspx</DependentUpon>
     </Compile>
+    <Content Include="Content\dashboard.css" />
     <Content Include="Content\help.css" />
     <Content Include="Scripts\reports\reports.dailyward.js" />
   </ItemGroup>
