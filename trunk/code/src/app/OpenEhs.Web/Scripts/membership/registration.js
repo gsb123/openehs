@@ -25,7 +25,7 @@ $(function () {
 
     $("#lastNameTextbox").blur(function () {
         if ($("#firstNameTextbox").val() != "") {
-            CheckForUsernameAvailability($("#firstNameTextbox").val() + "." + $("#lastNameTextbox").val());
+            CheckForUsernameAvailability($("#firstNameTextbox").val().substring(0, 1) + $("#lastNameTextbox").val());
         }
     });
 
