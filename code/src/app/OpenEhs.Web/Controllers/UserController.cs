@@ -31,17 +31,20 @@ namespace OpenEhs.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(UserDetailsViewModel model)
+        public ActionResult Details(int id, FormCollection collection)
         {
-            var user = _userRepository.Get(model.UserId);
+            var user = _userRepository.Get(id);
 
-            user.Password = model.Password;
-            user.Staff.Address = model.Staff.Address;
-            user.Staff.FirstName = model.Staff.FirstName;
-            user.Staff.MiddleName = model.Staff.MiddleName;
-            user.Staff.LastName = model.Staff.LastName;
-            user.Staff.PhoneNumber = model.Staff.PhoneNumber;
-            user.EmailAddress = model.EmailAddress;
+            user.Password = collection["Password"];
+            user.EmailAddress = collection["EmailAddress"];
+            user.Staff.FirstName = collection["Staff.FirstName"];
+            user.Staff.MiddleName = collection["Staff.MiddleName"];
+            user.Staff.LastName = collection["Staff.LastName"];
+            user.Staff.Address.Street1 = collection["Staff.Address.Street1"];
+            user.Staff.Address.Street2 = collection["Staff.Address.Street2"];
+            user.Staff.Address.City = collection["Staff.Address.City"];
+            user.Staff.Address.Region = collection["Staff.Address.Region"];
+            user.Staff.PhoneNumber = collection["Staff.PhoneNumber"];
 
             return RedirectToAction("Index");
         }

@@ -16,7 +16,7 @@ namespace OpenEhs.Web.Models
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
 
-        [Required(ErrorMessage="Patient's Last Name is required")]
+        [Required(ErrorMessage="Patient's Surname is required")]
         [Display(Name = "Surname")]
         public string LastName { get; set; }
 
