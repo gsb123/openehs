@@ -23,6 +23,9 @@
     <property name="Education" not-null="false"/>
     <property name="Occupation" not-null="false"/>
 
+    <property name="PlaceOfBirth" not-null="false"/>
+    <property name="MaritalStatus" not-null="false"/>
+
     <property name="InsuranceNumber" not-null="false"/>
     <property name="InsuranceExpiration" not-null="false"/>
 
