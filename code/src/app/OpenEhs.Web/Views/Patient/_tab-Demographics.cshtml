@@ -28,8 +28,8 @@
 
 				@Html.LabelFor(model => model.CreationDate)<br />
                 @Html.TextBox("CreationDate", String.Format("{0:d}", Model.CreationDate), new { disabled = "disabled" })<br />
-
-                
+                @Html.LabelFor(model => model.PlaceOfBirth)<br />
+                @Html.TextBoxFor(model => model.PlaceOfBirth, new { disabled = "disabled" }) <br />
                 @Html.LabelFor(model => model.DateOfBirth, "DOB")<br />
                 @Html.TextBox("DateOfBirth", String.Format("{0:d}", Model.DateOfBirth), new { disabled = "disabled" })<br />
                 @Html.LabelFor(model => model.PhoneNumber)<br />
@@ -55,6 +55,8 @@
                 @Html.DropDownListFor(model => model.Tribe, Model.Tribes, "Choose an option...", new { disabled = "disabled", @class = "modal-input ui-widget-content ui-corner-all" })<br />
                 @Html.LabelFor(model => model.Education)<br />
                 @Html.DropDownListFor(model => model.Education, Model.Educations, "Choose an option...", new { disabled = "disabled", @class = "modal-input ui-widget-content ui-corner-all" })<br />
+                @Html.LabelFor(model => model.MaritalStatus)<br />
+                @Html.DropDownListFor(model => model.MaritalStatus, Model.MaritalStatuses, "Choose an option...", new { disabled = "disabled", @class = "modal-input ui-widget-content ui-corner-all" })<br />
             </div>
             <div class="column">
                 @Html.LabelFor(model => model.Race)<br />

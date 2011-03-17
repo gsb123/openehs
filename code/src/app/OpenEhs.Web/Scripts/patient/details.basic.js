@@ -62,11 +62,13 @@ $(function () {
         $("#Occupation").removeAttr("disabled");
         $("#MaleGenderRadio").removeAttr("disabled");
         $("#FemaleGenderRadio").removeAttr("disabled");
+        $("#PlaceOfBirth").removeAttr("disabled");
         $("#DateOfBirth").removeAttr("disabled");
         $("#PhoneNumber").removeAttr("disabled");
         $("#Address_Street1").removeAttr("disabled");
         $("#Address_Street2").removeAttr("disabled");
         $("#Address_City").removeAttr("disabled");
+        $("#MaritalStatus").removeAttr("disabled");
         $("#Gender").removeAttr("disabled");
         $("#Address_Region").removeAttr("disabled");
         $("#Address_Country").removeAttr("disabled");
@@ -94,6 +96,7 @@ $(function () {
                 LastName: $("#LastName").val(),
                 //MaleGenderRadio: $("#MaleGenderRadio").val(),
                 //FemaleGenderRadio: $("#FemaleGenderRadio").val(),
+                PlaceOfBirth: $("#PlaceOfBirth").val(),
                 DateOfBirth: $("#DateOfBirth").val(),
                 PhoneNumber: $("#PhoneNumber").val(),
                 Address_Street1: $("#Address_Street1").val(),
@@ -112,6 +115,7 @@ $(function () {
                 Note: $("#patientNoteTextBox").val(),
                 IsActive: $("#IsActive").val(),
                 Tribe: $("#Tribe").val(),
+                MaritalStatus: $("#MaritalStatus").val(),
                 Gender: $("#Gender").val(),
                 Race: $("#Race").val(),
                 Education: $("#Education").val(),
@@ -125,6 +129,7 @@ $(function () {
                 $("#LastName").attr("disabled", "disabled");
                 $("#MaleGenderRadio").attr("disabled", "disabled");
                 $("#FemaleGenderRadio").attr("disabled", "disabled");
+                $("#PlaceOfBirth").attr("disabled", "disabled");
                 $("#DateOfBirth").attr("disabled", "disabled");
                 $("#PhoneNumber").attr("disabled", "disabled");
                 $("#Gender").attr("disabled", "disabled");
@@ -144,6 +149,7 @@ $(function () {
                 $("#IsActive").attr("disabled", "disabled");
                 $("#Tribe").attr("disabled", "disabled");
                 $("#Race").attr("disabled", "disabled");
+                $("#MaritalStatus").attr("disabled", "disabled");
                 $("#Education").attr("disabled", "disabled");
                 $("#Occupation").attr("disabled", "disabled");
                 $("#InsuranceNumber").attr("disabled", "disabled");
