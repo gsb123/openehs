@@ -49,7 +49,7 @@
 </ul>
 <div id="patientViewHeader" class="group">
     <div id="patientInfo">
-        @if (Model.MiddleName != String.Empty)
+        @if (!String.IsNullOrEmpty(Model.MiddleName))
         {
             if (Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 50)
             {
@@ -66,11 +66,11 @@
         }
         else
         {
-            if (Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 50)
+            if (Model.FirstName.Length + Model.LastName.Length > 50)
             {
                 <h7>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h7>
             }
-            else if (Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 30)
+            else if (Model.FirstName.Length + Model.LastName.Length > 30)
             {
                 <h5>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h5>
             }
