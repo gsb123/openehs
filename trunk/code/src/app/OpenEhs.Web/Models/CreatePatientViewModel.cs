@@ -20,6 +20,9 @@ namespace OpenEhs.Web.Models
         [Display(Name = "Surname")]
         public string LastName { get; set; }
 
+        [Display(Name = "Place of Birth")]
+        public string PlaceOfBirth { get; set; }
+
         [Required(ErrorMessage="Patient's Date of Birth is required")]
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
@@ -28,6 +31,20 @@ namespace OpenEhs.Web.Models
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
+        public MaritalStatus SelectedMaritalStatus { get; set; }
+
+        [Display(Name = "Marital Status")]
+        public SelectList MaritalStatus
+        {
+            get
+            {
+                var types = from MaritalStatus t in Enum.GetValues(typeof(MaritalStatus))
+                            select new { Id = t, Name = t.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
 
         [Required(ErrorMessage="Patient's Street Address is required")]
         [Display(Name = "Residental Address")]
