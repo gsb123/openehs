@@ -7,6 +7,7 @@ namespace OpenEhs.Domain
 {
     public enum Education
     {
+        NotApplicable,
         Primary,
         JrHighShcool,
         SeniorHighSchool,
