@@ -212,7 +212,7 @@ namespace OpenEhs.Web.Models
         public Gender SelectedGender { get; set; }
 
         [Display(Name = "Gender")]
-        public SelectList Genders
+        public SelectList Gender
         {
             get
             {
