@@ -51,14 +51,38 @@
     <div id="patientInfo">
         @if (Model.MiddleName != String.Empty)
         {
-            <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h2>
+            if (Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 50)
+            {
+                <h7>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h7>
+            }
+            else if(Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 30)
+            {
+                <h5>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h5>
+            }
+            else
+            {
+                <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h2>
+            }
         }
         else
         {
-            <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h2>
+            if (Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 50)
+            {
+                <h7>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h7>
+            }
+            else if (Model.MiddleName.Length + Model.FirstName.Length + Model.LastName.Length > 30)
+            {
+                <h5>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h5>
+            }
+            else
+            {
+                <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h2>
+            }
         }
-        <h2 id="patientAge" style="margin-left: 20px; font-weight: normal;">
-            Age: @Model.Age</h2>
+    </div>
+    <div id="ageInfo">
+        <h3 id="patientAge">
+            Age: @Model.Age</h3>
     </div>
     <div id="patientButtons">
         <input value="New Check-In" id="newCheckInButton" type="button" />
