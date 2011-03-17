@@ -242,7 +242,8 @@ namespace OpenEhs.Web.Models
         public CreatePatientViewModel()
         {
             //DateOfBirth = DateTime.Now;
-            InsuranceExpiration = DateTime.Now;
+            DateOfBirth = new DateTime(1900, 1, 1);
+            InsuranceExpiration = DateTime.MinValue;
         }
     }
 }

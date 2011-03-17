@@ -72,7 +72,7 @@ namespace OpenEhs.Web.Controllers
                 Education = model.SelectedEducation,
                 Religion = model.SelectedReligion,
                 InsuranceNumber = model.InsuranceNumber,
-                InsuranceExpiration = model.InsuranceExpiration,
+                //InsuranceExpiration = model.InsuranceExpiration,
                 OldPhysicalRecordNumber = model.OldPhysicalRecordNumber,
                 CreationDate = DateTime.Now,
                 Address = new Address {
@@ -98,6 +98,11 @@ namespace OpenEhs.Web.Controllers
                 IsActive = true
             };
 
+            //add insurance expiration if it's been set
+            if(model.InsuranceExpiration != DateTime.MinValue)
+            {
+                patient.InsuranceExpiration = model.InsuranceExpiration;
+            }
             _patientRepository.Add(patient);
 
             UnitOfWork.CurrentSession.Flush();

@@ -179,6 +179,18 @@ legend
     border-radius: 3px;
 }
 
+#patientInfo
+{
+    float: left;
+    width: 425px;
+}
+
+#ageInfo
+{
+    font-weight: normal;
+    float: left;
+}
+
 #patientViewHeader h2 {
     float: left;
     padding: 0px;
