@@ -14,7 +14,8 @@ $(function () {
         buttonImage: "/Content/themes/base/images/calendar.png",
         buttonImageOnly: true,
         changeYear: true,
-        yearRange: "1900:" + new Date().getFullYear()
+        yearRange: "1900:" + new Date().getFullYear(),
+        
 
     }).focus(function () {
         $("#DateOfBirth").datepicker("show");
@@ -38,8 +39,6 @@ $(function () {
         focusFirstInput: true,
         disableUIStyles: true
     });
-
-    $()
 
     $("#Age").blur(function () {
         var date = new Date();
