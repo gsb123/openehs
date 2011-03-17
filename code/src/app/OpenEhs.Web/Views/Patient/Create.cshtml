@@ -42,10 +42,18 @@
             </div>
             <div class="group">
                 <div class="fieldGroup group">
+                    @Html.LabelFor(m => m.PlaceOfBirth)
+					@Html.TextBoxFor(m => m.PlaceOfBirth)
+                </div>
+                <div class="fieldGroup group">
                     @Html.LabelFor(m => m.DateOfBirth)
                     @Html.EditorFor(m => m.DateOfBirth)
 					@Html.TextBoxFor(m => m.DateOfBirth)
                     <input type="button" id="btnAge" value="Age" />
+                </div>
+                <div class="fieldGroup group">
+						@Html.LabelFor(m => m.MaritalStatus)
+						@Html.DropDownListFor(m => m.SelectedMaritalStatus , Model.MaritalStatus)
                 </div>
                 <div class="fieldGroup group">
 						@Html.LabelFor(m => m.Genders)
