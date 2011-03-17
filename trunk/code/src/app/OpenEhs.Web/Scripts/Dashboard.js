@@ -4,6 +4,7 @@
 /// <reference path="../jquery-jvert-tabs-1.1.4.js" />
 
 $(function () {
+    $("#CreatePatientButton").button();
 
     $("#showOpenCheckins").button().click(function () {
         $.ajax({
