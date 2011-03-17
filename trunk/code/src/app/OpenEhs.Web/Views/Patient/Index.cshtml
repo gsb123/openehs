@@ -37,7 +37,8 @@
         @using (Html.BeginForm("Index", "Patient"))
         {
             <input type="text" name="PatientSearchTextBox" id="PatientSearchTextBox" />
-            <button name="Search" id="SearchPatientButton">Search</button>
+            <button name="Search" id="SearchPatientButton">
+                Search</button>
         }
         <script type="text/javascript">
             $(function () {
@@ -87,38 +88,38 @@
         <thead>
             <tr>
                 <th class="IdColumn">
-			        ID #
+                    ID #
                 </th>
                 <th class="NameColumn">
                     Name
                 </th>
                 <th class="DateOfBirthColumn">
-                    DOB
+                    Age
                 </th>
             </tr>
         </thead>
         <tbody>
-        @foreach (var patient in Model.Patients)
-        {
-            <tr>
-                <td class="IdColumn">
-                    @String.Format("{0}", patient.Id)
-                </td>
-                <td class="NameColumn">
-                    @if (patient.MiddleName != String.Empty)
-                    {
-                        @Html.ActionLink(String.Format("{2}, {0} {1}", patient.FirstName, patient.MiddleName, patient.LastName.ToUpper()), "Details", new { id = patient.Id })
-                    }
-                    else
-                    {
-                        @Html.ActionLink(String.Format("{1}, {0}", patient.FirstName, patient.LastName.ToUpper()), "Details", new { id = patient.Id })
-                    }
-                </td>
-                <td class="DateOfBirthColumn">
-                    @String.Format("{0:dd/MMM/yyyy}", patient.DateOfBirth)
-                </td>
-            </tr>
-        }
+            @foreach (var patient in Model.Patients)
+            {
+                <tr>
+                    <td class="IdColumn">
+                        @String.Format("{0}", patient.Id)
+                    </td>
+                    <td class="NameColumn">
+                        @if (patient.MiddleName != String.Empty)
+                        {
+                            @Html.ActionLink(String.Format("{2}, {0} {1}", patient.FirstName, patient.MiddleName, patient.LastName.ToUpper()), "Details", new { id = patient.Id })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(String.Format("{1}, {0}", patient.FirstName, patient.LastName.ToUpper()), "Details", new { id = patient.Id })
+                        }
+                    </td>
+                    <td class="DateOfBirthColumn">
+                        @patient.Age
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

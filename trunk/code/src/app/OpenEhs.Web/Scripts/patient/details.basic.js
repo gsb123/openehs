@@ -94,8 +94,6 @@ $(function () {
                 FirstName: $("#FirstName").val(),
                 MiddleName: $("#MiddleName").val(),
                 LastName: $("#LastName").val(),
-                //MaleGenderRadio: $("#MaleGenderRadio").val(),
-                //FemaleGenderRadio: $("#FemaleGenderRadio").val(),
                 PlaceOfBirth: $("#PlaceOfBirth").val(),
                 DateOfBirth: $("#DateOfBirth").val(),
                 PhoneNumber: $("#PhoneNumber").val(),
@@ -124,6 +122,12 @@ $(function () {
                 InsuranceExpiration: $("#InsuranceExpiration").val()
             },
             success: function (response) {
+                if (response.MiddleName == "") {
+                    $("#patientInfo").html('<h2>' + response.LastName + ', ' + response.FirstName + '</h2><h2 style="margin-left: 20px; font-weight: normal;" id="patientAge">Age: ' + response.Age + '</h2>');
+                }
+                else {
+                    $("#patientInfo").html("<h2>" + response.LastName + ", " + response.FirstName + " " + response.MiddleName + '</h2><h2 style="margin-left: 20px; font-weight: normal;" id="patientAge">Age: ' + response.Age + '</h2>');
+                }
                 $("#FirstName").attr("disabled", "disabled");
                 $("#MiddleName").attr("disabled", "disabled");
                 $("#LastName").attr("disabled", "disabled");
