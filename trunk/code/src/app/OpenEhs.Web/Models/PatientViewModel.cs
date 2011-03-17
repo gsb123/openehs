@@ -132,6 +132,19 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [DisplayName("Place of Birth")]
+        public string PlaceOfBirth
+        {
+            get
+            {
+                return _patient.PlaceOfBirth;
+            }
+            set
+            {
+                _patient.PlaceOfBirth = value;
+            }
+        }
+
         [Required]
         [DisplayName("Date of Birth")]
         public DateTime DateOfBirth
@@ -167,6 +180,19 @@ namespace OpenEhs.Web.Models
             set
             {
                 _patient.Gender = value;
+            }
+        }
+
+        [DisplayName("Marital Status")]
+        public MaritalStatus MaritalStatus
+        {
+            get
+            {
+                return _patient.MaritalStatus;
+            }
+            set
+            {
+                _patient.MaritalStatus = value;
             }
         }
 
@@ -788,6 +814,17 @@ namespace OpenEhs.Web.Models
             get
             {
                 var types = from Education s in Enum.GetValues(typeof(Education))
+                            select new { Id = s, Name = s.ToString() };
+
+                return new SelectList(types, "Id", "Name");
+            }
+        }
+
+        public SelectList MaritalStatuses
+        {
+            get
+            {
+                var types = from MaritalStatus s in Enum.GetValues(typeof(MaritalStatus))
                             select new { Id = s, Name = s.ToString() };
 
                 return new SelectList(types, "Id", "Name");

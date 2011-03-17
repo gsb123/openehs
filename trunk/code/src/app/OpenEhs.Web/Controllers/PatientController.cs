@@ -251,6 +251,7 @@ namespace OpenEhs.Web.Controllers
                 patient.FirstName = Request.Form["FirstName"];
                 patient.MiddleName = Request.Form["MiddleName"];
                 patient.LastName = Request.Form["LastName"];
+                patient.PlaceOfBirth = Request.Form["PlaceOfBirth"];
                 patient.DateOfBirth = DateTime.Parse(Request.Form["DateOfBirth"]);
                 patient.PhoneNumber = Request.Form["PhoneNumber"];
                 patient.Address.Street1 = Request.Form["Address_Street1"];
@@ -268,6 +269,7 @@ namespace OpenEhs.Web.Controllers
                 patient.EmergencyContact.Address.Country = (Country)Enum.Parse(typeof(Country),Request.Form["EC_Address_Country"]);
                 patient.Note = Request.Form["Note"];
                 patient.Tribe = (Tribes)Enum.Parse(typeof(Tribes), Request.Form["Tribe"]);
+                patient.MaritalStatus = (MaritalStatus)Enum.Parse(typeof(MaritalStatus), Request.Form["MaritalStatus"]);
                 patient.Gender = (Gender)Enum.Parse(typeof(Gender), Request.Form["Gender"]);
                 patient.Race = (Races)Enum.Parse(typeof(Races), Request.Form["Race"]);
                 patient.Occupation = Request.Form["Occupation"];
