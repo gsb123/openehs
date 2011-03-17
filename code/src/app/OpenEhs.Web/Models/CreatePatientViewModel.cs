@@ -207,10 +207,11 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Display(Name = "Gender")]
+       
         [Required(ErrorMessage = "Patient's Gender is required")]
         public Gender SelectedGender { get; set; }
-        
+
+        [Display(Name = "Gender")]
         public SelectList Genders
         {
             get

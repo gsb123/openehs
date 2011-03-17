@@ -1,8 +1,11 @@
 ﻿@model OpenEhs.Web.Models.PatientViewModel
 @{
-    if (Model.MiddleName != String.Empty) {
+    if (Model.MiddleName != String.Empty)
+    {
         ViewBag.Title = String.Format("Patient: {2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName);
-    } else {
+    }
+    else
+    {
         ViewBag.Title = String.Format("Patient: {1}, {0}", Model.FirstName, Model.LastName);
     }
 }
@@ -20,7 +23,6 @@
     <script src="@Url.Content("~/Scripts/jquery.ui.timepicker.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/PrintLabelPatient.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/DYMO.Label.Framework.1.0.beta.js")" type="text/javascript"></script>
-
     <script src="@Url.Content("~/Scripts/patient/details.main.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/patient/details.vitals.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/patient/details.visitHistory.js")" type="text/javascript"></script>
@@ -35,8 +37,6 @@
     <script src="@Url.Content("~/Scripts/patient/details.notes.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/patient/details.pmh.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/patient/details.billing.js")" type="text/javascript"></script>
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#patients-tab").addClass("current");
@@ -48,14 +48,19 @@
     <li>Patient</li>
 </ul>
 <div id="patientViewHeader" class="group">
-    @if (Model.MiddleName != String.Empty) {
-        <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h2>
-    } else {
-        <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h2>
-    }
-    <h2 style="margin-left: 20px; font-weight: normal;">
-        Age: @Model.Age</h2>
-    <div>
+    <div id="patientInfo">
+        @if (Model.MiddleName != String.Empty)
+        {
+            <h2>@String.Format("{2}, {0} {1}", Model.FirstName, Model.MiddleName, Model.LastName.ToUpper())</h2>
+        }
+        else
+        {
+            <h2>@String.Format("{1}, {0}", Model.FirstName, Model.LastName.ToUpper())</h2>
+        }
+        <h2 id="patientAge" style="margin-left: 20px; font-weight: normal;">
+            Age: @Model.Age</h2>
+    </div>
+    <div id="patientButtons">
         <input value="New Check-In" id="newCheckInButton" type="button" />
         <input value="Check Out" id="checkOutButton" type="button" />
         <input value="Edit Patient" id="editPatientInfoButton" type="button" />
@@ -71,17 +76,18 @@
     <div>
         <ul>
             <li><a href="#patientView-Demographics">Demographics</a></li>
-            @if (User.IsInRole("Administrators")) {
-            <li><a href="#patientView-Vitals">Vitals</a></li>
-            <li><a href="#patientView-RxList">Rx List</a></li>
-			<li><a href="#patientView-Immunizations">Immunizations</a></li>
-            <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
-            <li><a href="#patientView-Allergies">Allergies</a></li>
-            <li><a href="#patientView-Diagnosis">Diagnosis</a></li>
-            <li><a href="#patientView-Charting">Charting</a></li>
-            <li><a href="#patientView-Surgery">New Surgery</a></li>
-            <li><a href="#patientView-PMH">PMH</a></li>
-            <li><a href="#patientView-Billing">Resources</a></li>
+            @if (User.IsInRole("Administrators"))
+            {
+                <li><a href="#patientView-Vitals">Vitals</a></li>
+                <li><a href="#patientView-RxList">Rx List</a></li>
+                <li><a href="#patientView-Immunizations">Immunizations</a></li>
+                <li><a href="#patientView-ChronicDiseases">Chronic Diseases</a></li>
+                <li><a href="#patientView-Allergies">Allergies</a></li>
+                <li><a href="#patientView-Diagnosis">Diagnosis</a></li>
+                <li><a href="#patientView-Charting">Charting</a></li>
+                <li><a href="#patientView-Surgery">New Surgery</a></li>
+                <li><a href="#patientView-PMH">PMH</a></li>
+                <li><a href="#patientView-Billing">Resources</a></li>
             }
         </ul>
     </div>
@@ -90,14 +96,14 @@
             @Html.Partial("_tab-Demographics", Model)
         </div>
         <div id="#patientView-Vitals">
-            @Html.Partial("_tab-Vitals",Model)
+            @Html.Partial("_tab-Vitals", Model)
         </div>
         <div id="#patientView-RxList">
             @Html.Partial("_tab-RxList", Model)
         </div>
-		<div id="#patientView-Immunizations">
-			@Html.Partial("_tab-Immunizations", Model)
-		</div>
+        <div id="#patientView-Immunizations">
+            @Html.Partial("_tab-Immunizations", Model)
+        </div>
         <div id="#patientView-ChronicDiseases">
             @Html.Partial("_tab-ChronicDiseases", Model)
         </div>
@@ -124,36 +130,42 @@
         <fieldset>
             <legend>Enter Checkin Information</legend>
             <form id="addCheckin" action="">
-                <div id="checkinRadio">
-                    <input type="radio" id="checkinType1" name="modal_checkinType" value="0" /><label for="checkinType1">Outpatient</label>
-                    <input type="radio" id="checkinType2" name="modal_checkinType" value="1" /><label for="checkinType2">Inpatient</label>
-                </div>
-                <label for="location">Location</label>
-                <select name="location" id="modal_checkinLocation">
+            <div id="checkinRadio">
+                <input type="radio" id="checkinType1" name="modal_checkinType" value="0" /><label
+                    for="checkinType1">Outpatient</label>
+                <input type="radio" id="checkinType2" name="modal_checkinType" value="1" /><label
+                    for="checkinType2">Inpatient</label>
+            </div>
+            <label for="location">
+                Location</label>
+            <select name="location" id="modal_checkinLocation">
                 @foreach (var location in Model.GetLocations)
                 {
                     <option value="@location.Id">@location.Department @location.RoomNumber</option>
                 }
-                </select>
-                <br />
-                <label for="staff">Attending Phsyician</label>
-                <select name="staff" id="modal_checkinStff">
+            </select>
+            <br />
+            <label for="staff">
+                Attending Phsyician</label>
+            <select name="staff" id="modal_checkinStff">
                 @foreach (var staff in Model.GetActivePhysicians)
                 {
                     <option value="@staff.Id">@staff.LastName , @staff.FirstName</option>
                 }
-                </select>
+            </select>
             </form>
         </fieldset>
     </div>
     <div id="checkOutModal" title="Check Out">
-    @if (Model.MiddleName != "")
-    {
-        <h2>Are you sure you want to check out @Model.FirstName @Model.MiddleName @Model.LastName?</h2>
-    }
-    else
-    {
-        <h2>Are you sure you want to check out @Model.FirstName @Model.LastName?</h2>
-    }
+        @if (Model.MiddleName != "")
+        {
+            <h2>
+                Are you sure you want to check out @Model.FirstName @Model.MiddleName @Model.LastName?</h2>
+        }
+        else
+        {
+            <h2>
+                Are you sure you want to check out @Model.FirstName @Model.LastName?</h2>
+        }
     </div>
 </div>

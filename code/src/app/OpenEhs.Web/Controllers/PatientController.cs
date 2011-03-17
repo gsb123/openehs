@@ -283,6 +283,10 @@ namespace OpenEhs.Web.Controllers
 
                 return Json(new
                 {
+                    FirstName = patient.FirstName,
+                    MiddleName = patient.MiddleName,
+                    LastName = patient.LastName.ToUpper(),
+                    Age = patient.Age,
                     error = "false"
                 });
             }
