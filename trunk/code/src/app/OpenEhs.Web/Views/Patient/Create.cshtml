@@ -19,7 +19,8 @@
 <div id="newPatientContainer" class="group">
     <h2>
         New Patient</h2>
-    @using (Html.BeginForm("Create", "Patient", FormMethod.Post, new { @id = "createPatientForm", @class = "group" })) {
+    @using (Html.BeginForm("Create", "Patient", FormMethod.Post, new { @id = "createPatientForm", @class = "group" })) 
+	{
         <div>
             @Html.ValidationSummary(false)
         </div>
@@ -45,25 +46,29 @@
                     @Html.LabelFor(m => m.PlaceOfBirth)
 					@Html.TextBoxFor(m => m.PlaceOfBirth)
                 </div>
+				<div class="fieldGroup group">
+					<label for="Age">Age</label>
+					<input type="text" maxlength="3" name="Age" id="Age" />
+				</div>
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.DateOfBirth)
                     @Html.EditorFor(m => m.DateOfBirth)
-					@Html.TextBoxFor(m => m.DateOfBirth)
-                    <input type="button" id="btnAge" value="Age" />
                 </div>
-                <div class="fieldGroup group">
+            </div>
+			<div class="group">
+				<div class="fieldGroup group">
+						@Html.LabelFor(m => m.Gender)
+						@Html.DropDownListFor(m => m.SelectedGender , Model.Gender)
+                </div>
+				<div class="fieldGroup group">
 						@Html.LabelFor(m => m.MaritalStatus)
 						@Html.DropDownListFor(m => m.SelectedMaritalStatus , Model.MaritalStatus)
-                </div>
-                <div class="fieldGroup group">
-						@Html.LabelFor(m => m.Genders)
-						@Html.DropDownListFor(m => m.SelectedGender , Model.Genders)
                 </div>
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.OldPhysicalRecordNumber)
                     @Html.TextBoxFor(m => m.OldPhysicalRecordNumber)
                 </div>
-            </div>
+			</div>
             <div class="group">
                 <div class="fieldGroup group">
                     @Html.LabelFor(m => m.PhoneNumber)

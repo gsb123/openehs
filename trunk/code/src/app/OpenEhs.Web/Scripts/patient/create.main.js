@@ -9,28 +9,6 @@ $(function () {
     // Turns off autocomplete for all text inputs
     $("input[type=text]").attr("autocomplete", "off");
 
-    $("#ageDialog").dialog({
-        autoOpen: false,
-        height: 170,
-        width: 200,
-        modal: true,
-        buttons: {
-            "Calculate DoB": function () {
-                var date = new Date();
-                var newYear = date.getFullYear() - $("#modal_age").val();
-                date.setFullYear(newYear);
-                $('#DateOfBirth').datepicker("setDate", date);
-                $(this).dialog("close");
-            },
-            Cancel: function () {
-                $(this).dialog("close");
-            }
-        },
-        close: function () {
-
-        }
-    });
-
     $("#DateOfBirth").datepicker({
         showOn: "button",
         buttonImage: "/Content/themes/base/images/calendar.png",
@@ -61,8 +39,13 @@ $(function () {
         disableUIStyles: true
     });
 
-    $("#btnAge").click(function () {
-        $("#ageDialog").dialog("open");
+    $()
+
+    $("#Age").blur(function () {
+        var date = new Date();
+        var newYear = date.getFullYear() - $("#Age").val();
+        date.setFullYear(newYear);
+        $('#DateOfBirth').datepicker("setDate", date);
     });
 
     $("#copy").click(function () {

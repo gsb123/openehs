@@ -38,6 +38,12 @@ h2, h3 {
     width: 100px;
 }
 
+#Age
+{
+	width: 25px;
+	text-align: center;
+}
+
 #FirstName, #MiddleName, #LastName, #EcFirstName, #EcLastName {
     width: 170px;
 }
