@@ -224,11 +224,8 @@ namespace OpenEhs.Web.Models
         }
 
         [Required(ErrorMessage = "Emergency Contact's street address is required.")]
-        [Display(Name = "Street 1")]
+        [Display(Name = "Residential Address")]
         public string EcStreet1 { get; set; }
-
-        [Display(Name = "Street 2")]
-        public string EcStreet2 { get; set; }
 
         [Required(ErrorMessage = "Emergency Contact's city is required.")]
         [Display(Name = "City")]

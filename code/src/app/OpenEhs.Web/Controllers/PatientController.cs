@@ -89,7 +89,6 @@ namespace OpenEhs.Web.Controllers
                     Relationship = model.EcRelationship,
                     Address = new Address {
                         Street1 = model.EcStreet1,
-                        Street2 = model.EcStreet2,
                         City = model.EcCity,
                         Region = model.EcRegion,
                         Country = model.EcCountry
