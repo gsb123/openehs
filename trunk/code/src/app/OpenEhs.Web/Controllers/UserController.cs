@@ -37,14 +37,14 @@ namespace OpenEhs.Web.Controllers
 
             user.Password = collection["Password"];
             user.EmailAddress = collection["EmailAddress"];
-            user.Staff.FirstName = collection["Staff.FirstName"];
-            user.Staff.MiddleName = collection["Staff.MiddleName"];
-            user.Staff.LastName = collection["Staff.LastName"];
-            user.Staff.Address.Street1 = collection["Staff.Address.Street1"];
-            user.Staff.Address.Street2 = collection["Staff.Address.Street2"];
-            user.Staff.Address.City = collection["Staff.Address.City"];
-            user.Staff.Address.Region = collection["Staff.Address.Region"];
-            user.Staff.PhoneNumber = collection["Staff.PhoneNumber"];
+            user.FirstName = collection["Staff.FirstName"];
+            user.MiddleName = collection["Staff.MiddleName"];
+            user.LastName = collection["Staff.LastName"];
+            user.Address.Street1 = collection["Staff.Address.Street1"];
+            user.Address.Street2 = collection["Staff.Address.Street2"];
+            user.Address.City = collection["Staff.Address.City"];
+            user.Address.Region = collection["Staff.Address.Region"];
+            user.PhoneNumber = collection["Staff.PhoneNumber"];
 
             return RedirectToAction("Index");
         }

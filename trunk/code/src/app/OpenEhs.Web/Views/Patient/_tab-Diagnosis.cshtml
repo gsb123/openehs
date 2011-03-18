@@ -38,7 +38,7 @@
                 <option value="">Select Template...</option>
                 @if (Model.CurrentUser != null)
                 {
-                    foreach (var template in Model.CurrentUser.Staff.Templates)
+                    foreach (var template in Model.CurrentUser.Templates)
                     {
                     <option value="@template.Id">@template.Title</option>
                     }

@@ -11,9 +11,9 @@
     <property name="Role" not-null="true" />
 
     <many-to-one name="Staff"
-                 class="Staff"
+                 class="User"
                  unique="true"
-                 column="StaffID" />
+                 column="UserID" />
 
     <many-to-one name="Surgery"
                  class="Surgery"

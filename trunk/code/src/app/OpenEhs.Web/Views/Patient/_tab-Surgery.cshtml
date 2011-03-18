@@ -19,7 +19,7 @@
             Surgeon:</label>
         <select name="surgeonSelect" id="modal_GetStaffSurgeon" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
-            @foreach (var staff in Model.GetStaff)
+            @foreach (var staff in Model.Users)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
@@ -28,7 +28,7 @@
             Surgeon Assistant:</label>
         <select name="surgeonAssistantSelect" id="modal_GetStaffSurgeonAssistant" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
-            @foreach (var staff in Model.GetStaff)
+            @foreach (var staff in Model.Users)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
@@ -37,7 +37,7 @@
             Anaesthetist:</label>
         <select name="anaesthetistSelect" id="modal_GetStaffAnaesthetist" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
-            @foreach (var staff in Model.GetStaff)
+            @foreach (var staff in Model.Users)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
@@ -46,7 +46,7 @@
             Anaesthetist Assistant:</label>
         <select name="anaesthetistAssistantSelect" id="modal_GetStaffAnaesthetistAssistant" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
-            @foreach (var staff in Model.GetStaff)
+            @foreach (var staff in Model.Users)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
@@ -55,7 +55,7 @@
             Nurse:</label>
         <select name="nurseSelect" id="modal_GetStaffNurse" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
-            @foreach (var staff in Model.GetStaff)
+            @foreach (var staff in Model.Users)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
@@ -64,7 +64,7 @@
             Consultant:</label>
         <select name="consultantSelect" id="modal_GetStaffConsultant" class="selectBackgroundColor">
             <option value="">Select Staff...</option>
-            @foreach (var staff in Model.GetStaff)
+            @foreach (var staff in Model.Users)
             {
                 <option value="@staff.Id">@staff.FirstName, @staff.LastName</option>
             }
@@ -118,7 +118,7 @@
             <option value="">Select Template...</option>
             @if (Model.CurrentUser != null)
             {
-                foreach (var template in Model.CurrentUser.Staff.Templates)
+                foreach (var template in Model.CurrentUser.Templates)
                 {
                 <option value="@template.Id">@template.Title</option>
                 }

@@ -16,13 +16,19 @@ namespace OpenEhs.Domain
         #region Properties
 
         public virtual int Id { get; private set; }
+        public virtual string FirstName { get; set; }
+        public virtual string MiddleName { get; set; }
+        public virtual string LastName { get; set; }
         public virtual string Username { get; set; }
+        public virtual string EmailAddress { get; set; }
+        public virtual string PhoneNumber { get; set; }
+        public virtual StaffType StaffType { get; set; }
+        public virtual string LicenseNumber { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual string ApplicationName { get; set; }
         public virtual string Password { get; set; }
-        public virtual IList<Role> Roles { get; private set; }
         public virtual string PasswordQuestion { get; set; }
         public virtual string PasswordAnswer { get; set; }
-        public virtual string EmailAddress { get; set; }
-        public virtual string ApplicationName { get; set; }
         public virtual DateTime DateCreated { get; set; }
         public virtual DateTime LastLogin { get; set; }
         public virtual DateTime LastActivity { get; set; }
@@ -30,12 +36,15 @@ namespace OpenEhs.Domain
         public virtual bool IsOnline { get; set; }
         public virtual string IpAddress { get; set; }
         public virtual bool IsLockedOut { get; set; }
-        public virtual DateTime LastLockout { get; set; }
         public virtual int FailedPasswordAttemptCount { get; set; }
         public virtual bool IsApproved { get; set; }
         public virtual bool IsActive { get; set; }
-        public virtual Staff Staff { get; set; }
-        
+        public virtual IList<Role> Roles { get; private set; }
+        public virtual IList<Surgery> Surgery { get; set; }
+        public virtual IList<PatientCheckIn> PatientCheckIns { get; set; }
+        public virtual IList<Template> Templates { get; set; }
+        //public virtual DateTime LastLockout { get; set; }
+
         #endregion
 
 
@@ -43,7 +52,7 @@ namespace OpenEhs.Domain
 
         public User()
             : this(String.Empty, String.Empty, String.Empty, String.Empty, String.Empty, false)
-        {}
+        { }
 
         public User(string username, string password, string emailAddress, string passwordQuestion, string passwordAnswer, bool isApproved)
         {
@@ -58,7 +67,7 @@ namespace OpenEhs.Domain
         #endregion
 
         #region Methods
-        
+
         public virtual void AddRole(Role role)
         {
             if (!Roles.Contains(role))

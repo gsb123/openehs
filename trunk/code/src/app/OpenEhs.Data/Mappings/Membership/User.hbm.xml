@@ -6,6 +6,35 @@
     <id name="Id" column="UserID">
       <generator class="native" />
     </id>
+
+    <property name="FirstName" not-null="true" length="50" />
+    <property name="MiddleName" not-null="false" length="50" />
+    <property name="LastName" not-null="true" length="50" />
+    <property name="PhoneNumber" not-null="false" length="20" />
+    <property name="StaffType" not-null="true" />
+    <property name="LicenseNumber" not-null="false" length="20" />
+
+    <many-to-one name="Address"
+                 class="Address"
+                 column="AddressID"
+                 cascade="all"
+                 unique="true" />
+
+    <bag name="Surgery" table="SurgeryStaff" cascade="none" lazy="false">
+      <key column="UserID" />
+      <one-to-many class="SurgeryStaff" />
+    </bag>
+
+    <bag name="PatientCheckIns" table="PatientCheckIn" cascade="none" lazy="false">
+      <key column="UserID" />
+      <one-to-many class="PatientCheckIn" />
+    </bag>
+
+    <bag name="Templates" table="Template" cascade="all" lazy="false">
+      <key column="UserID" />
+      <one-to-many class="Template" />
+    </bag>
+    
     <property name="Username" not-null="true" length="30" />
     <property name="EmailAddress" not-null="false" length="50" />
     <property name="ApplicationName" not-null="false" length="30" />
@@ -27,10 +56,6 @@
       <key column="UserID" />
       <many-to-many class="Role" column="RoleID" />
     </bag>
-
-    <one-to-one name="Staff"
-                class="Staff"
-                property-ref="User" />
     
   </class>
 </hibernate-mapping>

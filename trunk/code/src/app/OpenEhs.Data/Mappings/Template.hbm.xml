@@ -10,7 +10,7 @@
     <property name="Body" column="TemplateBody" not-null="true" />
 
     <many-to-one name="NoteTemplateCategory" column="NoteTemplateCategoryID" unique="true" cascade="all" />
-    <many-to-one name="Staff" column="StaffID" unique="true" cascade="all" />
+    <many-to-one name="Staff" column="UserID" unique="true" cascade="all" />
     <property name="Title" not-null="true" />
     
     <property name="IsActive" not-null="true" />

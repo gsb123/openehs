@@ -105,5 +105,12 @@ namespace OpenEhs.Data
 
             return criteria.List<User>();
         }
+
+        public IList<User> FindByType(StaffType staffType)
+        {
+            ICriteria criteria = Session.CreateCriteria<User>().Add(Restrictions.Eq("StaffType", staffType));
+
+            return criteria.List<User>();
+        }
     }
 }

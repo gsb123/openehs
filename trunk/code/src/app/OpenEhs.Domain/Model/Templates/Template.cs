@@ -13,7 +13,7 @@ namespace OpenEhs.Domain
         public virtual int Id { get; private set; }
         public virtual string Title { get; set; }
         public virtual string Body { get; set; }
-        public virtual Staff Staff { get; set; }
+        public virtual User Staff { get; set; }
         public virtual NoteTemplateCategory NoteTemplateCategory { get; set; }
         public virtual bool IsActive { get; set; }
     }

@@ -22,27 +22,24 @@ namespace OpenEhs.Data.Tests.Repositories
                                Username = "matthew.kimber",
                                Password = "password",
                                EmailAddress = "matthew.kimber@gmail.com",
-                               Staff = new Staff
-                                           {
-                                               FirstName = "Matthew",
-                                               MiddleName = "Scott",
-                                               LastName = "Kimber",
-                                               PhoneNumber = "222-1234567",
-                                               IsActive = true,
-                                               LicenseNumber = "ABCDEFG123",
-                                               StaffType = StaffType.Physician,
-                                               Address = new Address
-                                                             {
-                                                                 Street1 = "939 E. 490 N.",
-                                                                 Street2 = "Apt. 1B",
-                                                                 City = "Ogden",
-                                                                 Region = "Utah",
-                                                                 //Country = "USA",
-                                                                 IsActive = true
-                                                             }
-                                           },
-                                DateCreated = DateTime.Now,
-                                IsApproved = true
+                               FirstName = "Matthew",
+                               MiddleName = "Scott",
+                               LastName = "Kimber",
+                               PhoneNumber = "222-1234567",
+                               IsActive = true,
+                               LicenseNumber = "ABCDEFG123",
+                               StaffType = StaffType.Physician,
+                               Address = new Address
+                                             {
+                                                 Street1 = "939 E. 490 N.",
+                                                 Street2 = "Apt. 1B",
+                                                 City = "Ogden",
+                                                 Region = "Utah",
+                                                 //Country = "USA",
+                                                 IsActive = true
+                                             },
+                               DateCreated = DateTime.Now,
+                               IsApproved = true
                            };
 
             repo.Add(user);

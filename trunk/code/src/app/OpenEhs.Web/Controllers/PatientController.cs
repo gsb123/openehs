@@ -11,14 +11,16 @@ using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
 {
-    [Authorize(Roles="OPDClerks, OPDAdministrators, Administrators")]
+    [Authorize(Roles = "OPDClerks, OPDAdministrators, Administrators")]
     public class PatientController : Controller
     {
         private IPatientRepository _patientRepository;
+        private IAddressRepository _addressRepository;
 
         public PatientController()
         {
             _patientRepository = new PatientRepository();
+            _addressRepository = new AddressRepository();
         }
 
         #region Regular Expressions
@@ -48,15 +50,40 @@ namespace OpenEhs.Web.Controllers
             return View(new CreatePatientViewModel());
         }
 
-        public ActionResult Confirmation(int id) {
+        public ActionResult Confirmation(int id)
+        {
 
             var patient = _patientRepository.Get(id);
             return View(patient);
         }
 
         [HttpPost]
-        public ActionResult Create(CreatePatientViewModel model) {
-            var patient = new Patient {
+        public ActionResult Create(CreatePatientViewModel model)
+        {
+
+            Address PatientAddress = new Address
+            {
+                Street1 = model.Street1,
+                Street2 = model.Street2,
+                City = model.City,
+                Region = model.Region,
+                Country = model.Country,
+                IsActive = true
+            };
+            _addressRepository.Add(PatientAddress);
+
+            Address ECAddress = new Address
+            {
+                Street1 = model.EcStreet1,
+                City = model.EcCity,
+                Region = model.EcRegion,
+                Country = model.EcCountry,
+                IsActive = true
+            };
+            _addressRepository.Add(ECAddress);
+
+            var patient = new Patient
+            {
                 FirstName = model.FirstName,
                 MiddleName = model.MiddleName,
                 LastName = model.LastName,
@@ -72,34 +99,23 @@ namespace OpenEhs.Web.Controllers
                 Education = model.SelectedEducation,
                 Religion = model.SelectedReligion,
                 InsuranceNumber = model.InsuranceNumber,
-                //InsuranceExpiration = model.InsuranceExpiration,
                 OldPhysicalRecordNumber = model.OldPhysicalRecordNumber,
                 CreationDate = DateTime.Now,
-                Address = new Address {
-                    Street1 = model.Street1,
-                    Street2 = model.Street2,
-                    City = model.City,
-                    Region = model.Region,
-                    Country = model.Country
-                },
-                EmergencyContact = new EmergencyContact {
+                Address = PatientAddress,
+                EmergencyContact = new EmergencyContact
+                {
                     FirstName = model.EcFirstName,
                     LastName = model.EcLastName,
                     PhoneNumber = model.EcPhoneNumber,
                     Relationship = model.EcRelationship,
-                    Address = new Address {
-                        Street1 = model.EcStreet1,
-                        City = model.EcCity,
-                        Region = model.EcRegion,
-                        Country = model.EcCountry
-                    },
+                    Address = ECAddress,
                     IsActive = true
                 },
                 IsActive = true
             };
 
             //add insurance expiration if it's been set
-            if(model.InsuranceExpiration != DateTime.MinValue)
+            if (model.InsuranceExpiration != DateTime.MinValue)
             {
                 patient.InsuranceExpiration = model.InsuranceExpiration;
             }
@@ -270,7 +286,7 @@ namespace OpenEhs.Web.Controllers
                 patient.EmergencyContact.Address.Street2 = Request.Form["EC_Address_Street2"];
                 patient.EmergencyContact.Address.City = Request.Form["EC_Address_City"];
                 patient.EmergencyContact.Address.Region = Request.Form["EC_Address_Region"];
-                patient.EmergencyContact.Address.Country = (Country)Enum.Parse(typeof(Country),Request.Form["EC_Address_Country"]);
+                patient.EmergencyContact.Address.Country = (Country)Enum.Parse(typeof(Country), Request.Form["EC_Address_Country"]);
                 patient.Note = Request.Form["Note"];
                 patient.Tribe = (Tribes)Enum.Parse(typeof(Tribes), Request.Form["Tribe"]);
                 patient.MaritalStatus = (MaritalStatus)Enum.Parse(typeof(MaritalStatus), Request.Form["MaritalStatus"]);
@@ -694,8 +710,8 @@ namespace OpenEhs.Web.Controllers
 
                 //Get Staff Object
                 int staffId = int.Parse(Request.Form["staffID"]);
-                StaffRepository staffRepo = new StaffRepository();
-                var staff = staffRepo.Get(staffId);
+                UserRepository userRepo = new UserRepository();
+                var staff = userRepo.Get(staffId);
 
                 //Get Location Object
                 int locationId = int.Parse(Request.Form["locationID"]);
@@ -939,11 +955,12 @@ namespace OpenEhs.Web.Controllers
 
                     foreach (var g in result.Notes.Where(g => g.Type == NoteType.General))
                     {
-                        noteList.Add(new {
-                                             g.Body,
-                                             g.Author.FirstName,
-                                             g.Author.LastName
-                                         });
+                        noteList.Add(new
+                        {
+                            g.Body,
+                            g.Author.FirstName,
+                            g.Author.LastName
+                        });
                     }
 
                     IList<object> noteSurgeryList = new List<object>();
@@ -956,7 +973,7 @@ namespace OpenEhs.Web.Controllers
                         });
                     }
 
-                    
+
 
                     IList<object> surgery = new List<object>();
                     foreach (var o in result.Surgeries)
@@ -1029,7 +1046,7 @@ namespace OpenEhs.Web.Controllers
             {
                 //Repositories
                 PatientRepository patientRepo = new PatientRepository();
-                StaffRepository staffRepo = new StaffRepository();
+                UserRepository userRepo = new UserRepository();
                 LocationRepository locationRepo = new LocationRepository();
                 SurgeryStaffRepository ssRepo = new SurgeryStaffRepository();
 
@@ -1057,7 +1074,7 @@ namespace OpenEhs.Web.Controllers
                 surgery.CaseType = (CaseType)Enum.Parse(typeof(CaseType), Request.Form["caseType"]);
 
                 //Build Note
-                Staff author = staffRepo.Get(int.Parse(Request.Form["staffID"]));
+                User author = userRepo.Get(int.Parse(Request.Form["staffID"]));
                 note.Author = author;
                 note.Body = Request.Form["NoteBody"];
                 note.PatientCheckIns = openCheckIn;
@@ -1073,7 +1090,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["surgeon"] != "")
                 {
                     SurgeryStaff surgeon = new SurgeryStaff();
-                    surgeon.Staff = staffRepo.Get(int.Parse(Request.Form["surgeon"]));
+                    surgeon.Staff = userRepo.Get(int.Parse(Request.Form["surgeon"]));
                     surgeon.Surgery = surgery;
                     surgeon.Role = StaffRole.Surgeon;
                     ssRepo.Add(surgeon);
@@ -1083,7 +1100,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["surgeonAssistant"] != "")
                 {
                     SurgeryStaff surgeonAssistant = new SurgeryStaff();
-                    surgeonAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["surgeonAssistant"]));
+                    surgeonAssistant.Staff = userRepo.Get(int.Parse(Request.Form["surgeonAssistant"]));
                     surgeonAssistant.Surgery = surgery;
                     surgeonAssistant.Role = StaffRole.SurgeonAssistant;
                     ssRepo.Add(surgeonAssistant);
@@ -1093,7 +1110,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["anaesthetist"] != "")
                 {
                     SurgeryStaff anaesthetist = new SurgeryStaff();
-                    anaesthetist.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetist"]));
+                    anaesthetist.Staff = userRepo.Get(int.Parse(Request.Form["anaesthetist"]));
                     anaesthetist.Role = StaffRole.Anaesthetist;
                     anaesthetist.Surgery = surgery;
                     ssRepo.Add(anaesthetist);
@@ -1102,7 +1119,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["anaesthetistAssistant"] != "")
                 {
                     SurgeryStaff anaesthetistAssistant = new SurgeryStaff();
-                    anaesthetistAssistant.Staff = staffRepo.Get(int.Parse(Request.Form["anaesthetistAssistant"]));
+                    anaesthetistAssistant.Staff = userRepo.Get(int.Parse(Request.Form["anaesthetistAssistant"]));
                     anaesthetistAssistant.Role = StaffRole.AnaesthetistAssistant;
                     anaesthetistAssistant.Surgery = surgery;
                     ssRepo.Add(anaesthetistAssistant);
@@ -1111,7 +1128,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["nurse"] != "")
                 {
                     SurgeryStaff nurse = new SurgeryStaff();
-                    nurse.Staff = staffRepo.Get(int.Parse(Request.Form["nurse"]));
+                    nurse.Staff = userRepo.Get(int.Parse(Request.Form["nurse"]));
                     nurse.Role = StaffRole.Nurse;
                     nurse.Surgery = surgery;
                     ssRepo.Add(nurse);
@@ -1120,7 +1137,7 @@ namespace OpenEhs.Web.Controllers
                 if (Request.Form["consultant"] != "")
                 {
                     SurgeryStaff consultant = new SurgeryStaff();
-                    consultant.Staff = staffRepo.Get(int.Parse(Request.Form["consultant"]));
+                    consultant.Staff = userRepo.Get(int.Parse(Request.Form["consultant"]));
                     consultant.Role = StaffRole.Consultant;
                     consultant.Surgery = surgery;
                     ssRepo.Add(consultant);
@@ -1341,11 +1358,11 @@ namespace OpenEhs.Web.Controllers
             try
             {
                 PatientRepository patientRepo = new PatientRepository();
-                StaffRepository staffRepo = new StaffRepository();
-                Staff staff = new Staff();
+                UserRepository userRepo = new UserRepository();
+                User staff = new User();
 
                 if (Request.Form["StaffId"] != "")
-                    staff = staffRepo.Get(int.Parse(Request.Form["StaffId"]));
+                    staff = userRepo.Get(int.Parse(Request.Form["StaffId"]));
 
                 Patient patient = patientRepo.Get(int.Parse(Request.Form["PatientId"]));
 

@@ -26,7 +26,7 @@ namespace OpenEhs.Domain
         public virtual IList<Surgery> Surgeries { get; set; }
         public virtual IList<Note> Notes { get; set; }
         public virtual Location Location { get; set; }
-        public virtual Staff AttendingStaff { get; set; }
+        public virtual User AttendingStaff { get; set; }
         public virtual IList<FeedChart> FeedChart { get; set; }
         public virtual IList<IntakeChart> IntakeChart { get; set; }
         public virtual IList<OutputChart> OutputChart { get; set; }

@@ -16,7 +16,7 @@ namespace OpenEhs.Web.Models
     {
         
         private Patient _patient;
-        private Staff _staff;
+        private User _user;
         private ImmunizationRepository _immunization;
 
         public PatientViewModel(int patientId)
@@ -407,6 +407,15 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        public IList<User> Users
+        {
+            get
+            {
+                UserRepository userRepo = new UserRepository();
+                return userRepo.GetAll();
+            }
+        }
+
         public IList<PatientMedication> CurrentMedications
         {
             get
@@ -517,11 +526,11 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<Staff> GetStaff
+        public IList<User> GetUser
         {
             get
             {
-                StaffRepository staffMembers = new StaffRepository();
+                UserRepository staffMembers = new UserRepository();
                 return staffMembers.GetAll();
             }
         }
@@ -562,12 +571,12 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        public IList<Staff> GetActivePhysicians
+        public IList<User> GetActivePhysicians
         {
             get
             {
-                StaffRepository staff = new StaffRepository();
-                return staff.FindByType(StaffType.Physician);
+                UserRepository user = new UserRepository();
+                return user.FindByType(StaffType.Physician);
             }
         }
 
@@ -644,37 +653,6 @@ namespace OpenEhs.Web.Models
             return false;
         }
 
-        /*
-        public void AddProblem(Problem problem)
-        {
-            Problems.Add(problem);
-        }
-
-        public void RemoveProblem(Problem problem)
-        {
-            Problems.Remove(problem);
-        }
-
-        /// <summary>
-        /// Remove the problem by ID
-        /// </summary>
-        /// <param name="problemId">ID of the problem to remove</param>
-        /// <returns>If the problem was successfully removed</returns>
-        public bool RemoveProblem(int problemId)
-        {
-            foreach (Problem problem in Problems)
-            {
-                if (problem.Id == problemId)
-                {
-                    Problems.Remove(problem);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-         */
-
         public void AddImmunization(PatientImmunization immunization)
         {
             Immunizations.Add(immunization);
@@ -703,37 +681,6 @@ namespace OpenEhs.Web.Models
 
             return false;
         }
-
-        /*
-        public void AddMedication(Medication medication)
-        {
-            Medications.Add(medication);
-        }
-
-        public void RemoveMedication(Medication medication)
-        {
-            Medications.Remove(medication);
-        }
-
-        /// <summary>
-        /// Remove the medication by ID
-        /// </summary>
-        /// <param name="medicationId">ID of the medication to remove</param>
-        /// <returns>If the medication was successfully removed</returns>
-        public bool RemoveMedication(int medicationId)
-        {
-            foreach (Medication medication in Medications)
-            {
-                if (medication.Id == medicationId)
-                {
-                    Medications.Remove(medication);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-         */
 
         /// <summary>
         /// Get the ID for the invoice on the current PatientCheckIn (not checked out)
