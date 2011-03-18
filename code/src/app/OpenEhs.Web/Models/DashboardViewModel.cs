@@ -10,7 +10,7 @@ namespace OpenEhs.Web.Models
     public class DashboardViewModel
     {
         private Patient _patient;
-        private Staff _staff;
+        private User _user;
 
         [DisplayName("CheckIns")]
         public IList<PatientCheckIn> PatientCheckIns

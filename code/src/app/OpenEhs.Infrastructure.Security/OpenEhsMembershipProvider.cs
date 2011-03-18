@@ -154,7 +154,6 @@ namespace OpenEhs.Infrastructure.Security
             existing.PasswordQuestion = user.PasswordQuestion;
             existing.IsApproved = user.IsApproved;
             existing.IsLockedOut = user.IsLockedOut;
-            existing.LastLockout = user.LastLockoutDate;
             existing.LastLogin = user.LastLoginDate;
             existing.IsOnline = user.IsOnline;
         }
@@ -241,7 +240,7 @@ namespace OpenEhs.Infrastructure.Security
                                       user.LastLogin,
                                       user.LastActivity,
                                       user.LastPasswordChange,
-                                      user.LastLockout);
+                                      DateTime.MinValue);
         }
 
         #endregion

@@ -17,7 +17,7 @@
  *      See "First Time Run Instructions.txt" file in SQL folder
  *
  * IsActive:
- *      In every table there is a field 'IsActive', this field is used to determin
+ *      In every table there is a field 'IsActive', this field is used to determine
  *      if the table is active or inactive aka 'DELETED'. This field is automatically
  *      defaulted to 1 which is set to active. When deleting a table from the database
  *      you are really only doing an update to change the bit field to 0 which means
@@ -188,7 +188,7 @@ PatientID                   int             NOT NULL,
 InvoiceID                   int             NOT NULL,
 CheckOutTime                datetime        NULL,
 LocationID                  int             NOT NULL,
-StaffID                     int             NULL,
+UserID                     int             NULL,
 IsActive                    bit             NOT NULL                    DEFAULT 1
 );
 
@@ -286,8 +286,15 @@ CREATE TABLE Service
 CREATE TABLE `User`
 (
     UserID                      int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    Username                    varchar(30)         NOT NULL,
+    FirstName                   varchar(50)         NOT NULL,
+    MiddleName                  varchar(50)         NULL,
+    LastName                    varchar(50)         NOT NULL,
+    Username                    varchar(50)         NOT NULL,
     EmailAddress                varchar(50)         NULL,
+    PhoneNumber                 varchar(20)         NULL,
+    StaffType                   tinyint(1)          NOT NULL,
+    LicenseNumber               varchar(20)         NULL                    Default NULL,
+    AddressID                   int                 NOT NULL,
     ApplicationName             varchar(30)         NULL,
     `Password`                  varchar(30)         NOT NULL,
     PasswordQuestion            varchar(50)         NULL,
@@ -309,20 +316,6 @@ CREATE TABLE UserRole
     UserRoleID                  int                 NOT NULL                PRIMARY KEY         AUTO_INCREMENT,
     UserID                      int                 NOT NULL,
     RoleID                      int                 NOT NULL
-);
-
-CREATE TABLE Staff
-(
-    StaffID                     int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    FirstName                   varchar(30)         NOT NULL,
-    MiddleName                  varchar(30)         NULL,
-    LastName                    varchar(30)         NOT NULL,
-    PhoneNumber                 varchar(20)         NULL,
-    StaffType                   tinyint(1)          NOT NULL,
-    LicenseNumber               varchar(20)         NULL                    Default NULL,
-    AddressID                   int                 NOT NULL,
-    UserID                      int                 NOT NULL,
-    IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
 CREATE TABLE Vitals
@@ -354,7 +347,7 @@ CREATE TABLE Surgery
 CREATE TABLE SurgeryStaff
 (
     SurgeryStaffID              int                 AUTO_INCREMENT          PRIMARY KEY         NOT NULL,
-    StaffID                     int                 NOT NULL,
+    UserID                     int                 NOT NULL,
     SurgeryID                   int                 NOT NULL,
     Role                        int                 NOT NULL
 );
@@ -372,7 +365,7 @@ CREATE TABLE Note
     `Type`                      varchar(20)         NOT NULL,
     Body                        longtext            NOT NULL,
     DateCreated                 datetime            NOT NULL,
-    StaffID                     int                 NOT NULL,
+    UserID                     int                 NOT NULL,
     NoteTemplateCategoryID      int                 NULL,
     PatientCheckInID            int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
@@ -384,7 +377,7 @@ CREATE TABLE Template
     Title                       varchar(150)        NOT NULL,
     TemplateBody                longtext            NOT NULL,
     NoteTemplateCategoryID      int                 NOT NULL,
-    StaffID                     int                 NOT NULL,
+    UserID                     int                 NOT NULL,
     IsActive                    bit(1)              NOT NULL                DEFAULT 1
 );
 
@@ -412,15 +405,6 @@ ALTER TABLE Patient
 ADD CONSTRAINT FK_PatientMustHaveEmergencyContactID
 FOREIGN KEY (EmergencyContactID) REFERENCES EmergencyContact(EmergencyContactID);
 
-ALTER TABLE Staff
-ADD CONSTRAINT FK_StaffMustHaveAddressID
-FOREIGN KEY (AddressID) REFERENCES Address(AddressID);
-
-ALTER TABLE Staff
-ADD CONSTRAINT FK_StaffMustHaveUserID
-FOREIGN KEY (UserID) REFERENCES User(UserID);
-
-
 ALTER TABLE PatientAllergy
 ADD CONSTRAINT FK_PatientAllergyMustHavePatientID
 FOREIGN KEY (PatientID) REFERENCES Patient(PatientID);
@@ -438,8 +422,8 @@ ADD CONSTRAINT FK_PatientCheckInMustHaveLocationID
 FOREIGN KEY (LocationID) REFERENCES Location(LocationID);
 
 ALTER TABLE PatientCheckIn
-ADD CONSTRAINT FK_PatientCheckInMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
+ADD CONSTRAINT FK_PatientCheckInMustHaveUserID
+FOREIGN KEY (UserID) REFERENCES `User`(UserID);
 
 ALTER TABLE FeedChart
 ADD CONSTRAINT FK_FeedChartMustHavePatientCheckInID
@@ -470,8 +454,8 @@ ADD CONSTRAINT FK_PaymentMustHaveInvoiceID
 FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID);
 
 ALTER TABLE Note
-ADD CONSTRAINT FK_NoteMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
+ADD CONSTRAINT FK_NoteMustHaveUserID
+FOREIGN KEY (UserID) REFERENCES `User`(UserID);
 
 ALTER TABLE Note
 ADD CONSTRAINT FK_NoteMustHavePatientCheckInID
@@ -486,8 +470,8 @@ ADD CONSTRAINT FK_SurgeryMustHaveLocationID
 FOREIGN KEY (LocationID) REFERENCES Location(LocationID);
 
 ALTER TABLE SurgeryStaff
-ADD CONSTRAINT FK_SurgeryStaffMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
+ADD CONSTRAINT FK_SurgeryStaffMustHaveUserID
+FOREIGN KEY (UserID) REFERENCES `User`(UserID);
 
 ALTER TABLE SurgeryStaff
 ADD CONSTRAINT FK_SurgeryStaffMustHaveSurgeryID
@@ -506,8 +490,8 @@ ADD CONSTRAINT FK_PatientProblemMustHaveProblemID
 FOREIGN KEY (ProblemID) REFERENCES Problem(ProblemID);
 
 ALTER TABLE Template
-ADD CONSTRAINT TemplateMustHaveStaffID
-FOREIGN KEY (StaffID) REFERENCES Staff(StaffID);
+ADD CONSTRAINT TemplateMustHaveUserID
+FOREIGN KEY (UserID) REFERENCES `User`(UserID);
 
 ALTER TABLE Template
 ADD CONSTRAINT TemplateMustHaveNoteTemplateCategoryID
@@ -573,7 +557,7 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE TRIGGER tr_AutoCorrectFormatStaffName
-BEFORE INSERT ON Staff
+BEFORE INSERT ON `User`
 
 FOR EACH ROW
 
@@ -878,92 +862,6 @@ VALUES
 ('Neuro Surgery Clinic', ''),
 ('Vascluar Clinic', '');
 
-/************************************
-* sp_insertStaff inserts into 
-* Staff table.
-************************************/
-
-DELIMITER | 
-CREATE PROCEDURE sp_insertStaff
-(
-IN i_Street1                varchar(30),
-IN i_Street2                varchar(30),
-IN i_City                   varchar(30),
-IN i_Region                 varchar(30),
-IN i_Country                int,
-IN i_UserName               varchar(30),
-IN i_Password               varchar(30),
-IN i_LIP                    char(1),
-IN i_FirstName              varchar(30),
-IN i_MiddleName             varchar(30),
-IN i_LastName               varchar(30),
-IN i_PhoneNumber            varchar(20),
-IN i_StaffType              tinyint(1),
-IN i_LN                     varchar(20)
-)
-
-BEGIN
-
-DECLARE _returnAddID int;
-DECLARE _returnUserID int;
-
-INSERT INTO Address
-(
-Street1,
-Street2,
-City,
-Region,
-Country
-)
-VALUES
-(
-i_Street1,
-i_Street2,
-i_City,
-i_Region,
-i_Country
-);
-
-SELECT LAST_INSERT_ID() INTO _returnAddID;
-
-INSERT INTO User
-(
-UserName,
-`Password`
-)
-VALUES
-(
-i_UserName,
-i_Password
-);
-
-SELECT LAST_INSERT_ID() INTO _returnUserID;
-
-INSERT INTO Staff
-(
-FirstName,
-MiddleName,
-LastName,
-PhoneNumber,
-StaffType,
-LicenseNumber,
-AddressID,
-UserID
-)
-VALUES
-(
-i_FirstName,
-i_MiddleName,
-i_LastName,
-i_PhoneNumber,
-i_StaffType,
-i_LN,
-_returnAddID,
-_returnUserID
-);
-
-END ||
-DELIMITER ;
 
 insert into NoteTemplateCategory 
 (
@@ -1057,24 +955,4 @@ VALUES
 104
 );
 
-/*****************************************************
-    Admin
-*****************************************************/
-
-CALL sp_insertStaff
-(
-    "",
-    "",
-    "Accra",
-    "Accra",
-    104,
-    "admin",
-    "Passw0rd",
-    "A",
-    "MLKMC",
-    "",
-    "Administrator",
-    "",
-    4,
-    null
-);
+INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Username`, `StaffType`, `AddressID`, `Password`, `IsActive`) VALUES (1, 'Admin', 'Admin', 'admin', 4, 1, 'Passw0rd', 1);

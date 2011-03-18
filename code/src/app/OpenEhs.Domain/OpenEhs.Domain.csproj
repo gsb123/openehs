@@ -83,7 +83,6 @@
     <Compile Include="Model\Patient\Relationship.cs" />
     <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Service\Service.cs" />
-    <Compile Include="Model\Staff\Staff.cs" />
     <Compile Include="Model\Staff\StaffType.cs" />
     <Compile Include="Model\Surgery\Surgery.cs" />
     <Compile Include="Model\Vitals\Vitals.cs" />

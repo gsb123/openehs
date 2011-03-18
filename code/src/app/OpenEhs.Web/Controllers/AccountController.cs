@@ -11,7 +11,6 @@ namespace OpenEhs.Web.Controllers
     public class AccountController : Controller
     {
         private IUserRepository _userRepository;
-        private IStaffRepository _staffRepository;
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 
@@ -26,7 +25,6 @@ namespace OpenEhs.Web.Controllers
         public AccountController()
         {
             _userRepository = new UserRepository();
-            _staffRepository = new StaffRepository();
         }
 
         // **************************************
@@ -97,7 +95,7 @@ namespace OpenEhs.Web.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    var staff = new Staff
+                    var User = new User
                                     {
                                         FirstName = model.FirstName,
                                         MiddleName = model.MiddleName,
@@ -106,44 +104,40 @@ namespace OpenEhs.Web.Controllers
                                         LicenseNumber = model.LicenseNumber,
                                         PhoneNumber = model.PhoneNumber,
                                         Address = new Address
-                                                      {
-                                                          Street1 = model.Street1,
-                                                          Street2 = model.Street2,
-                                                          City = model.City,
-                                                          Region = model.Region,
-                                                          Country = model.Country,
-                                                          IsActive = true
-                                                      },
-                                        User = new User
-                                                   {
-                                                       Username = model.Username,
-                                                       Password = model.Password,
-                                                       EmailAddress = model.Email,
-                                                       LastActivity = DateTime.Now,
-                                                       LastLogin = DateTime.Now,
-                                                       DateCreated = DateTime.Now,
-                                                       PasswordQuestion = String.Empty,
-                                                       PasswordAnswer = String.Empty,
-                                                       LastPasswordChange = DateTime.MinValue,
-                                                       LastLockout = DateTime.MinValue,
-                                                       ApplicationName = "/",
-                                                       IpAddress = Request.ServerVariables["REMOTE_ADDR"],
-                                                       IsActive = true,
-                                                       IsApproved = false,
-                                                       IsLockedOut = false,
-                                                       IsOnline = true,
-                                                       FailedPasswordAttemptCount = 0
-                                                   }
+                                        {
+                                            Street1 = model.Street1,
+                                            Street2 = model.Street2,
+                                            City = model.City,
+                                            Region = model.Region,
+                                            Country = model.Country,
+                                            IsActive = true
+                                        },
+                                        Username = model.Username,
+                                        Password = model.Password,
+                                        EmailAddress = model.Email,
+                                        LastActivity = DateTime.Now,
+                                        LastLogin = DateTime.Now,
+                                        DateCreated = DateTime.Now,
+                                        PasswordQuestion = String.Empty,
+                                        PasswordAnswer = String.Empty,
+                                        LastPasswordChange = DateTime.MinValue,
+                                        ApplicationName = "/",
+                                        IpAddress = Request.ServerVariables["REMOTE_ADDR"],
+                                        IsActive = true,
+                                        IsApproved = false,
+                                        IsLockedOut = false,
+                                        IsOnline = true,
+                                        FailedPasswordAttemptCount = 0
                                     };
 
 
-                    _staffRepository.Add(staff);
+                    _userRepository.Add(User);
 
-                    FormsService.SignIn(staff.User.Username, false);
+                    FormsService.SignIn(User.Username, false);
 
                     if (Request.IsAjaxRequest())
                     {
-                        return Json(new {success = true});
+                        return Json(new { success = true });
                     }
 
                     return RedirectToAction("Index", "Dashboard");
@@ -164,7 +158,7 @@ namespace OpenEhs.Web.Controllers
         {
             username = username.ToLower();
             var isAvailable = _userRepository.CheckForUsernameAvailability(username);
-            return Json(new {requestedUsername = username});
+            return Json(new { requestedUsername = username });
         }
 
         // **************************************

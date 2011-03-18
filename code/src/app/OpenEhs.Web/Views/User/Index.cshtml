@@ -35,7 +35,7 @@
         {
             <tr>
                 <td class="usernameColumn">@Html.ActionLink(user.Username, "Details", new { Id = user.Id })</td>
-                <td class="nameColumn">@String.Format("{1}, {0}", user.Staff.FirstName, user.Staff.LastName)</td>
+                <td class="nameColumn">@String.Format("{1}, {0}", user.FirstName, user.LastName)</td>
                 <td class="rolesColumn">@user.Roles.ToString()</td>
                 <td class="approvedColumn">@Html.CheckBox(String.Format("chk_{0}", user.Id), user.IsApproved, new { @class = "approvedCheckbox" })</td>
             </tr>

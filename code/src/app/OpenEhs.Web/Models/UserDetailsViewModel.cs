@@ -53,6 +53,70 @@ namespace OpenEhs.Web.Models
             }
         }
 
+        [Display(Name = "First Name")]
+        public string FirstName
+        {
+            get
+            {
+                return _user.FirstName;
+            }
+            set
+            {
+                _user.FirstName = value;
+            }
+        }
+
+        [Display(Name = "Middle Name")]
+        public string MiddleName
+        {
+            get
+            {
+                return _user.MiddleName;
+            }
+            set
+            {
+                _user.MiddleName = value;
+            }
+        }
+
+        [Display(Name = "Last Name")]
+        public string LastName
+        {
+            get
+            {
+                return _user.LastName;
+            }
+            set
+            {
+                _user.LastName = value;
+            }
+        }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber
+        {
+            get
+            {
+                return _user.PhoneNumber;
+            }
+            set
+            {
+                _user.PhoneNumber = value;
+            }
+        }
+
+        public Address Address
+        {
+            get
+            {
+                return _user.Address;
+            }
+            set
+            {
+                _user.Address = value; 
+            }
+        }
+
         public IList<Role> Roles
         {
             get { return _user.Roles; }
@@ -70,18 +134,6 @@ namespace OpenEhs.Web.Models
                 roles.Sort();
 
                 return new SelectList(roles, "Id", "Name");
-            }
-        }
-
-        public Staff Staff
-        {
-            get
-            {
-                return _user.Staff;
-            }
-            set
-            {
-                _user.Staff = value;
             }
         }
 

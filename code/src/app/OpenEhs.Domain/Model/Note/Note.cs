@@ -19,7 +19,7 @@ namespace OpenEhs.Domain
         public virtual string Title { get; set; }
         public virtual string Body { get; set; }
         public virtual DateTime DateCreated { get; set; }
-        public virtual Staff Author { get; set; }
+        public virtual User Author { get; set; }
         public virtual NoteTemplateCategory NoteTemplateCategory { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual PatientCheckIn PatientCheckIns { get; set; }

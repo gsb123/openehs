@@ -11,8 +11,8 @@
     <property name="CheckOutTime" not-null="false" />
 
     <many-to-one name="AttendingStaff"
-                 class="Staff"
-                 column="StaffID"
+                 class="User"
+                 column="UserID"
                  cascade="save-update"
                  unique="true" />
     
