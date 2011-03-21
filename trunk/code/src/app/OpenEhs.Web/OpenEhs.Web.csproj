@@ -137,6 +137,30 @@
     </Compile>
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\help.css" />
+    <Content Include="images\help\BillingDetails1.PNG" />
+    <Content Include="images\help\BillingDetails2.PNG" />
+    <Content Include="images\help\BillingDetails3.PNG" />
+    <Content Include="images\help\BillingDetails4.PNG" />
+    <Content Include="images\help\BillingDetails5.PNG" />
+    <Content Include="images\help\BillingDetails6.PNG" />
+    <Content Include="images\help\createpatient1.png" />
+    <Content Include="images\help\createpatient2.png" />
+    <Content Include="images\help\createpatient3.png" />
+    <Content Include="images\help\createpatient4.png" />
+    <Content Include="images\help\createpatient5.png" />
+    <Content Include="images\help\createpatient6.png" />
+    <Content Include="images\help\Dashboard1.PNG" />
+    <Content Include="images\help\Dashboard2.PNG" />
+    <Content Include="images\help\Dashboard3.PNG" />
+    <Content Include="images\help\Dashboard4.PNG" />
+    <Content Include="images\help\Dashboard5.PNG" />
+    <Content Include="images\help\PatientResources1.PNG" />
+    <Content Include="images\help\PatientResources2a.PNG" />
+    <Content Include="images\help\PatientResources2c.PNG" />
+    <Content Include="images\help\PatientResources2e.PNG" />
+    <Content Include="images\help\PatientResources3a.PNG" />
+    <Content Include="images\help\PatientResources3c.PNG" />
+    <Content Include="images\help\PatientResources4.PNG" />
     <Content Include="Scripts\reports\reports.dailyward.js" />
   </ItemGroup>
   <ItemGroup>
