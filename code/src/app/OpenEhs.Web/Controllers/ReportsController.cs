@@ -13,5 +13,15 @@ namespace OpenEhs.Web.Controllers
             return View();
         }
 
+        public ActionResult DailyWardReport()
+        {
+            return View();
+        }
+
+        public ActionResult PatientReport()
+        {
+            return View();
+        }
+
     }
 }

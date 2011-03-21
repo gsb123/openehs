@@ -18,30 +18,11 @@
 
 @using (Html.BeginForm())
 {
-    <table>
-        <tr>
-            <td>Select a Location:</td>
-            <td>
-                <select id="WardSelect" name="WardSelect">
-                    <option>Select Location...</option>
-                    @foreach (var loc in Model.Locations)
-                    {
-                        <option value="@loc.Department">@loc.Department</option>
-                    }
-                </select>
-            </td>
-            <td>Select a Date:</td>
-            <td>@Html.EditorFor(m => m.Date)</td>
-            <td>&nbsp;</td><td><input type="submit" value="Select" id="ButtonDailyReportSubmit" name="ButtonDailyReportSubmit" /></td>
-        </tr>
-    </table>
+
 }
 
 <table>
-    <tr>
-        <td>Date</td>
-        <td>@Model.Date</td>    
-    </tr>
+
 </table>
 
 
