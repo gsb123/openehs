@@ -202,8 +202,6 @@ ALTER TABLE User MODIFY DateCreated timestamp NOT NULL;
 
 ALTER TABLE User MODIFY IsOnline bit NOT NULL;
 
-ALTER TABLE User MODIFY FirstName varchar(50) NOT NULL;
-
 ALTER TABLE User MODIFY IsLockedOut bit NOT NULL;
 
 ALTER TABLE User MODIFY FailedPasswordAttemptCount int NOT NULL;
