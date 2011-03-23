@@ -54,7 +54,7 @@
 }
 /* css for link on tab that's open */
 .vtabs .vtabs-tab-column ul li a.open, .vtabs .vtabs-tab-column ul li a.closed {
-	font: 11px Helvetica, Arial, sans-serif;
+	font: 11px Arial, sans-serif;
 	font-weight: bold;
 	margin: 0px;
 	padding: 0px;

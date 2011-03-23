@@ -16,13 +16,10 @@ namespace OpenEhs.Web.Models
     {
         
         private Patient _patient;
-        private User _user;
-        private ImmunizationRepository _immunization;
 
         public PatientViewModel(int patientId)
         {
             _patient = new PatientRepository().Get(patientId);
-            _immunization = new ImmunizationRepository();
         }
 
         #region Patient Properties
