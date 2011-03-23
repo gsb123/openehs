@@ -13,7 +13,7 @@ namespace OpenEhs.Domain
         Physician = 0,
         Surgeon = 1,
         Nurse = 2,
-        Receptionist = 3,
+        OPDClerk = 3,
         Administrator = 4
     }
 }
