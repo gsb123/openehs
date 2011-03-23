@@ -77,13 +77,14 @@ namespace OpenEhs.Web.Controllers
         // **************************************
         // URL: /Account/Register
         // **************************************
-
+        [Authorize]
         public ActionResult Register()
         {
             ViewBag.PasswordLength = MembershipService.MinPasswordLength;
             return View(new RegisterModel());
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
@@ -133,14 +134,14 @@ namespace OpenEhs.Web.Controllers
 
                     _userRepository.Add(User);
 
-                    FormsService.SignIn(User.Username, false);
+                    //FormsService.SignIn(User.Username, false);
 
                     if (Request.IsAjaxRequest())
                     {
                         return Json(new { success = true });
                     }
 
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Index", "User");
                 }
                 else
                 {

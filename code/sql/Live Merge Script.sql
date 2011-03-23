@@ -152,6 +152,51 @@ CALL sp_mergeStaffUser
 1
 );
 
+CALL sp_mergeStaffUser
+(
+3
+);
+
+CALL sp_mergeStaffUser
+(
+4
+);
+
+CALL sp_mergeStaffUser
+(
+5
+);
+
+CALL sp_mergeStaffUser
+(
+6
+);
+
+CALL sp_mergeStaffUser
+(
+7
+);
+
+CALL sp_mergeStaffUser
+(
+8
+);
+
+CALL sp_mergeStaffUser
+(
+9
+);
+
+CALL sp_mergeStaffUser
+(
+10
+);
+
+CALL sp_mergeStaffUser
+(
+12
+);
+
 ALTER TABLE Staff
 DROP FOREIGN KEY FK_StaffMustHaveAddressID;
 
