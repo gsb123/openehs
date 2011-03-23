@@ -159,6 +159,18 @@ namespace OpenEhs.Web.Controllers
         {
             username = username.ToLower();
             var isAvailable = _userRepository.CheckForUsernameAvailability(username);
+            var suffix = 1;
+
+            // HACK!!!
+            if (!isAvailable)
+            {
+                username = username + suffix;
+                if (_userRepository.CheckForUsernameAvailability(username))
+                    return Json(new { requestedUsername = username });
+                
+                throw new ArgumentException("That username has already been taken. Please contact your system administrator.", "username");
+            }
+
             return Json(new { requestedUsername = username });
         }
 
