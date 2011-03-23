@@ -45,6 +45,7 @@ namespace OpenEhs.Data
 
             ICriteria criteria = Session.CreateCriteria<User>()
                 .SetFirstResult((pageIndex - 1)*pageSize)
+                .AddOrder(Order.Asc("Username"))
                 .SetMaxResults(pageSize);
 
             return new PagedList<User>(criteria.List<User>(), pageSize, pageSize, rowCount.Value);
