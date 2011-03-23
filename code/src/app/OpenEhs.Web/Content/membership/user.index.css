@@ -8,6 +8,11 @@
     float: right;
     width: 400px;
 }
+
+#NewUserButton
+{
+	margin: 10px 0;
+}
         
 .focusSearchTextbox
 {

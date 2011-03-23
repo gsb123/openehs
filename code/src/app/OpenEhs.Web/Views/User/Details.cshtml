@@ -13,6 +13,10 @@
             });
         </script>
 }
+<ul id="crumbs">
+    <li>@Html.ActionLink("User List", "Index")</li>
+    <li>User: @Model.Username</li>
+</ul>
 <div id="SubHeading"><h2>User Details</h2></div>
 @using (Html.BeginForm())
 {
