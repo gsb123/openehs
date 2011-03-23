@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
 using OpenEhs.Data;
 using OpenEhs.Domain;
@@ -116,6 +117,45 @@ namespace OpenEhs.Web.Models
                 _user.Address = value; 
             }
         }
+
+        [Required(ErrorMessage = "User's Region is required.")]
+        [Display(Name = "Region")]
+        public SelectList Regions
+        {
+            get
+            {
+                var regions = new List<object>
+                                  {
+                                      new {Value = "Eastern", Text = "Eastern"},
+                                      new {Value = "Central", Text = "Central"},
+                                      new {Value = "Western", Text = "Western"},
+                                      new {Value = "Northern", Text = "Northern"},
+                                      new {Value = "Ashanti", Text = "Ashanti"},
+                                      new {Value = "Volta", Text = "Volta"},
+                                      new {Value = "Brong-Ahafo", Text = "Brong-Ahafo"},
+                                      new {Value = "Upper East", Text = "Upper East"},
+                                      new {Value = "Upper West", Text = "Upper West"},
+                                      new {Value = "Greater Accra", Text = "Greater Accra"},
+                                      new {Value = "Other", Text = "Other"}
+                                  };
+
+                return new SelectList(regions, "Value", "Text", new { Value = "Greater Accra", Text = "Greater Accra" });
+            }
+        }
+
+        [Required(ErrorMessage = "User's Country is required.")]
+        [Display(Name = "Country")]
+        public SelectList Countries
+        {
+            get
+            {
+                var types = from Country t in Enum.GetValues(typeof(Country))
+                            select new { Id = t, Name = t.ToString() };
+
+                return new SelectList(types, "Id", "Name", "Ghana");
+            }
+        }
+
 
         public IList<Role> Roles
         {

@@ -9,21 +9,21 @@ namespace OpenEhs.Web.Models
 {
     public class CreatePatientViewModel
     {
-        [Required(ErrorMessage="Patient's First Name is required")]
+        [Required(ErrorMessage="Patient's First Name is required.")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
 
-        [Required(ErrorMessage="Patient's Surname is required")]
+        [Required(ErrorMessage="Patient's Surname is required.")]
         [Display(Name = "Surname")]
         public string LastName { get; set; }
 
         [Display(Name = "Place of Birth")]
         public string PlaceOfBirth { get; set; }
 
-        [Required(ErrorMessage="Patient's Date of Birth is required")]
+        [Required(ErrorMessage="Patient's Date of Birth is required.")]
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
@@ -46,20 +46,20 @@ namespace OpenEhs.Web.Models
             }
         }
 
-        [Required(ErrorMessage="Patient's Street Address is required")]
-        [Display(Name = "Residental Address")]
+        [Required(ErrorMessage="Patient's Street Address is required.")]
+        [Display(Name = "Residential Address")]
         public string Street1 { get; set; }
 
         [Display(Name = "Business Address")]
         public string Street2 { get; set; }
 
-        [Required(ErrorMessage = "Patient's City is required")]
+        [Required(ErrorMessage = "Patient's City is required.")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Patient's Region is required")]
+        [Required(ErrorMessage = "Patient's Region is required.")]
         public string Region { get; set; }
 
-        [Required(ErrorMessage = "Patient's Region is requireds")]
+        [Required(ErrorMessage = "Patient's Region is required.")]
         [Display(Name = "Region")]
         public SelectList Regions
         {

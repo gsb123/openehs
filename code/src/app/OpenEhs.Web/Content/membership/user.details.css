@@ -96,7 +96,7 @@ legend
     float: left;
 }
     
-#tabs input
+#tabs input, #tabs select
 {
     font-size: 1.4em;
 }
@@ -117,7 +117,7 @@ legend
     font-size: 1.2em;
 }
 
-#Staff_PhoneNumber
+#PhoneNumber
 {
 	width: 150px;
 }
@@ -127,17 +127,17 @@ legend
 	width: 250px;
 }
 
-#Staff_Address_Street1, #Staff_Address_Street2
+#Address_Street1, #Address_Street2
 {
 	width: 425px;
 }
   
-#Staff_FirstName, #Staff_MiddleName, #Staff_LastName
+#FirstName, #MiddleName, #LastName
 {
 	width: 180px;
 }
 
-#Staff_Address_City, #Staff_Address_Region
+#Address_City, #Address_Region
 {
 	width: 150px;
 }
@@ -151,12 +151,6 @@ legend
 {
     font-size: 1.4em;
     width: 250px;
-}
-
-#AddRoleDialog select option
-{
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 .RemoveRoleAction

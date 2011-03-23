@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using OpenEhs.Data;
+using OpenEhs.Domain;
 using OpenEhs.Web.Models;
 
 namespace OpenEhs.Web.Controllers
@@ -44,6 +45,9 @@ namespace OpenEhs.Web.Controllers
             user.Address.Street2 = collection["Address.Street2"];
             user.Address.City = collection["Address.City"];
             user.Address.Region = collection["Address.Region"];
+            Country selectedCountry;
+            Enum.TryParse(collection["Address.Country"], out selectedCountry);
+            user.Address.Country = selectedCountry;
             user.PhoneNumber = collection["PhoneNumber"];
 
             return RedirectToAction("Index");
