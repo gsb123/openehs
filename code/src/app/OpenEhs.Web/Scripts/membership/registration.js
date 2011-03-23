@@ -41,4 +41,7 @@ $(function () {
                 "json"
         );
     }
+
+    $("#Country").val("Ghana");
+    $("#Region").val("Greater Accra");
 });
