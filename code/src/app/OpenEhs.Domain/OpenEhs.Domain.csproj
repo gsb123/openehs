@@ -31,8 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="mysql.data">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Users\dfarnes\Desktop\mysql\mysql.data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
@@ -59,6 +63,7 @@
     <Compile Include="Model\Patient\Races.cs" />
     <Compile Include="Model\Patient\Religions.cs" />
     <Compile Include="Model\Patient\Tribes.cs" />
+    <Compile Include="Model\Report\Report.cs" />
     <Compile Include="Model\Surgery\CaseType.cs" />
     <Compile Include="Model\Surgery\StaffRole.cs" />
     <Compile Include="Model\Surgery\SurgeryStaff.cs" />
