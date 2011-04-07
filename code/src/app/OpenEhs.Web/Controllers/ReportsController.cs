@@ -19,16 +19,17 @@ namespace OpenEhs.Web.Controllers
 
         public ActionResult UserReport()
         {
-            return View(new DataView());
+            return View(new UserReportViewModel());
         }
 
+        [HttpPost]
         public ActionResult UserReport(FormCollection collection)
         {
             string selectStatement = "SELECT  u.LastName, " +
                         "u.Firstname, " +
                         "COUNT(c.CheckinTime) " +
                         "FROM user u, patient p, patientcheckin c " +
-                        "WHERE u.UserID = c.UserID AND c.PatientID = p.PatientID AND c.CheckinTime >= @date AND c.CheckinTime <= @date " +
+                        "WHERE u.UserID = c.UserID AND c.PatientID = p.PatientID AND DATE(c.CheckinTime) = @date " +
                         "GROUP BY u.LastName, u.FirstName;";
 
             string ConnectionString = ConfigurationManager.ConnectionStrings["OpenEhs.ConnectionString"].ConnectionString;
@@ -47,7 +48,7 @@ namespace OpenEhs.Web.Controllers
 
             System.Data.DataView dv1 = new System.Data.DataView(tableReport);
 
-            return View();
+            return View(new UserReportViewModel(date, dv1));
         }
 
         public ActionResult LocationReport()
