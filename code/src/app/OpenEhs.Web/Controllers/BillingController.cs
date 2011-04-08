@@ -154,7 +154,10 @@ namespace OpenEhs.Web.Controllers
             return new RedirectResult("/Billing/Edit/" + lineItem.Invoice.Id);
         }
 
-
+        /// <summary>
+        /// Add a payment to the Billing invoice.
+        /// </summary>
+        /// <returns>Json object used to update the billing cshtml view through javascript.</returns>
         public JsonResult AddPayment()
         {
             try

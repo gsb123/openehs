@@ -26,6 +26,10 @@ namespace OpenEhs.Web.Models
 
         #region Billing
 
+        /// <summary>
+        /// Create a viewmodel for the specified InvoiceId.
+        /// </summary>
+        /// <param name="InvoiceId">The ID of the invoice to view.</param>
         public BillingViewModel(int InvoiceId)
         {
             _invoice = new InvoiceRepository().Get(InvoiceId);

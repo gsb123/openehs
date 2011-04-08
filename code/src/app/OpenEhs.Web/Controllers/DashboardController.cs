@@ -27,6 +27,10 @@ namespace OpenEhs.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Get the list of active checkins.
+        /// </summary>
+        /// <returns>A Json object containing the list of active checkins.</returns>
         public JsonResult ActiveCheckIns()
         {
             try

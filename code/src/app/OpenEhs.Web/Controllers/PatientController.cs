@@ -1267,6 +1267,10 @@ namespace OpenEhs.Web.Controllers
 
         #region Billing
 
+        /// <summary>
+        /// Add an item to the patient's invoice.
+        /// </summary>
+        /// <returns>The Jason object so it can be immediately displayed.</returns>
         public JsonResult AddInvoiceItem()
         {
             try
@@ -1315,7 +1319,7 @@ namespace OpenEhs.Web.Controllers
                             lineItem.Quantity
 
                         });
-                    }
+                    } //Service
                     else if (Request.Form["service"] != "")
                     {
                         lineItem.Service = serviceRepo.Get(int.Parse(Request.Form["service"]));
