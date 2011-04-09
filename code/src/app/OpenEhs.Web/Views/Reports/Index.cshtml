@@ -3,24 +3,20 @@
 }
 @section head
 {
+    <link href="@Url.Content("~/Content/help.css")" rel="Stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
             $("#reports-tab").addClass("current");
+            $("#links li:odd").addClass("striped");
         });
     </script>
-
-    <style type="text/css">
-        .link
-        {
-        	font-family:Sans-Serif;
-        	font-size:large;
-        }
-        
-    </style>
 }
 
 <h2>Reports</h2>
 <br />
-@Html.ActionLink("User Report", "UserReport");
-<br />
-@Html.ActionLink("Location Report", "LocationReport");
+<fieldset id="linksContainer">
+    <ul id="links">
+        <li>@Html.ActionLink("User Report", "UserReport")</li>
+        <li>@Html.ActionLink("Location Report", "LocationReport")</li>
+    </ul>
+</fieldset>

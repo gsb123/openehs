@@ -100,7 +100,6 @@
     <Compile Include="Interfaces\Membership\IRoleRepository.cs" />
     <Compile Include="Interfaces\Membership\IUserRepository.cs" />
     <Compile Include="Interfaces\IImmunizationRepository.cs" />
-    <Compile Include="Repositories\UserReportRepository.cs" />
     <None Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\ImmunizationRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
