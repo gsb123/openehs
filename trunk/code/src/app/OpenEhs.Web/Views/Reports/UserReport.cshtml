@@ -12,12 +12,18 @@
     </script>
 }
 <h2>User Report</h2>
+<br />
 @using (Html.BeginForm())
-{
+{    
+    <p>
+    Select a Date 
     @Html.EditorFor(m => m.SelectedDate)
-    <input type="submit" value="Run" />
+    <input type="submit" value="Create Report" />
+    </p>
+    <br />
 }
 
+@Html.ActionLink("Back to Reports", "Index")
 @if (Model.Data != null)
 {
 <table>
@@ -44,11 +50,12 @@
             <td class="FirstName">
                 @String.Format("{0}", record[1].ToString())
             </td>
-            <td class="PatientsServed">
+            <td class="PatientsServed" align="center">
                 @String.Format("{0}", record[2].ToString())
             </td>
         </tr>
         }
     </tbody>
 </table>
+@Html.ActionLink("Back to Reports", "Index")
 }

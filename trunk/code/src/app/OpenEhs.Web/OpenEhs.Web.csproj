@@ -115,6 +115,7 @@
     <Compile Include="Models\CreatePatientViewModel.cs" />
     <Compile Include="Models\DailyWardReportViewModel.cs" />
     <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\LocationReportViewModel.cs" />
     <Compile Include="Models\PatientSearchViewModel.cs" />
     <Compile Include="Models\PatientViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
