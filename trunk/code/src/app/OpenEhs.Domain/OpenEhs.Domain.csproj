@@ -63,7 +63,6 @@
     <Compile Include="Model\Patient\Races.cs" />
     <Compile Include="Model\Patient\Religions.cs" />
     <Compile Include="Model\Patient\Tribes.cs" />
-    <Compile Include="Model\Report\Report.cs" />
     <Compile Include="Model\Surgery\CaseType.cs" />
     <Compile Include="Model\Surgery\StaffRole.cs" />
     <Compile Include="Model\Surgery\SurgeryStaff.cs" />
@@ -98,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Labs\" />
+    <Folder Include="Model\Report\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Domain Class Diagram.cd" />
