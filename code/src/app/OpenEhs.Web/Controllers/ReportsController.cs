@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Text.RegularExpressions;
 using MySql;
+using MySql.Data;
 
 namespace OpenEhs.Web.Controllers
 {
