@@ -4,6 +4,7 @@ using OpenEhs.Web.Models;
 using System.Configuration;
 using System.Data;
 using System.Text.RegularExpressions;
+using MySql;
 
 namespace OpenEhs.Web.Controllers
 {
