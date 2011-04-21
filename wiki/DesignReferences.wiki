@@ -7,14 +7,18 @@ Below you will find links and references to sources that provide valuable insigh
   * [http://www.scrubnotes.com/2007/08/how-to-write-historyphysical-or-soap.html How to Write a SOAP Note]
   * [http://en.wikipedia.org/wiki/Admission_note Admission Notes]
 
+
 ===Medical Terminology===
   * [http://www.medicalmnemonics.com/ Medical Mnemonics]
+
 
 ===Ghana Specific===
   * [http://www.nhis.gov.gh/ National Health Insurance Scheme]
 
+
 ===World Health Organization===
   * [http://www.who.int/classifications/icd/en/ International Classification of Diseases (ICD)]
+
 
 ===Wikipedia===
   * [http://en.wikipedia.org/wiki/Medical_record Medial Record (Medical Chart)]
