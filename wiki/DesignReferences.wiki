@@ -20,4 +20,4 @@ Below you will find links and references to sources that provide valuable insigh
   * [http://en.wikipedia.org/wiki/Medical_record Medial Record (Medical Chart)]
   * [http://en.wikipedia.org/wiki/Electronic_health_record Electronic Health Record]
   * [http://en.wikipedia.org/wiki/Electronic_medical_record Electronic Medical Record]
-* [http://en.wikipedia.org/wiki/Current_Procedural_Terminology Current Procedural Terminology]
+  * [http://en.wikipedia.org/wiki/Current_Procedural_Terminology Current Procedural Terminology]
